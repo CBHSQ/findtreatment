@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
+import "styled-components/macro";
 import tw from "tailwind.macro";
-import flag from "./images/us_flag_small.png";
 
 const Nav = () => {
   return (
@@ -30,19 +29,19 @@ const Nav = () => {
         <div css={tw`text-sm lg:flex-grow`}>
           <a
             href="#responsive-header"
-            css={tw`block mt-4 lg:inline-block lg:mt-0 mr-4`}
+            css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
           >
             Getting Started
           </a>
           <a
             href="#responsive-header"
-            css={tw`block mt-4 lg:inline-block lg:mt-0 mr-4`}
+            css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
           >
             Resources
           </a>
           <a
             href="#responsive-header"
-            css={tw`block mt-4 lg:inline-block lg:mt-0`}
+            css={tw`block mt-4 lg:inline-block lg:mt-6`}
           >
             Providers
           </a>

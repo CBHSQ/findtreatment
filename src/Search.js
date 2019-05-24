@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import styled from "styled-components/macro";
+import "styled-components/macro";
 import tw from "tailwind.macro";
 import * as API from "./utils/api";
 
@@ -29,12 +29,16 @@ class Search extends Component {
     const { query } = this.state;
 
     return (
-      <form css={tw`max-w-4xl mx-auto mb-12 px-6`} onSubmit={this.handleSubmit}>
+      <form
+        className="container"
+        css={tw`max-w-4xl mx-auto mb-12 px-6`}
+        onSubmit={this.handleSubmit}
+      >
         <div css={tw`flex flex-wrap -mx-3 mb-2`}>
           <div css={tw`w-full md:w-2/5 px-3 mb-6 md:mb-0`}>
             <label
               css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-              for="search-zip"
+              htmlFor="search-zip"
             >
               Location
             </label>
@@ -50,7 +54,7 @@ class Search extends Component {
           <div css={tw`w-full md:w-2/5 px-3 mb-6 md:mb-0`}>
             <label
               css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-              for="search-type"
+              htmlFor="search-type"
             >
               Service type
             </label>

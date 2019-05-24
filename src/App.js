@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import styled from "styled-components/macro";
+import "styled-components/macro";
 import tw from "tailwind.macro";
 import Banner from "./Banner";
 import Nav from "./Nav";
@@ -10,7 +10,7 @@ import Results from "./Results";
 class App extends Component {
   render() {
     return (
-      <div css={tw`overflow-hidden`}>
+      <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
         <Banner />
         <Nav />
         <Route exact path="/" render={() => <Home />} />

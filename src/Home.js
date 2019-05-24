@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components/macro";
+import "styled-components/macro";
 import tw from "tailwind.macro";
 import Search from "./Search";
 
@@ -7,7 +7,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <div clasName="container" css={tw`mx-auto px-6 text-center mb-10`}>
+        <div className="container" css={tw`mx-auto px-6 text-center mb-10`}>
           <h2 css={tw`text-5xl`}>Find help near you</h2>
           <span>
             Quickly find providers in your area based on your specific needs
