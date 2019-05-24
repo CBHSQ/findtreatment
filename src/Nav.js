@@ -10,7 +10,7 @@ const Nav = () => {
       css={tw`mx-auto p-6 flex items-center justify-between flex-wrap`}
     >
       <span css={tw`font-semibold text-2xl tracking-tight`}>
-        Location Finder
+        Treatment Finder
       </span>
       <div css={tw`block lg:hidden`}>
         <button
