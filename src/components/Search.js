@@ -2,36 +2,35 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "styled-components/macro";
 import tw from "tailwind.macro";
-import * as API from "./utils/api";
 
 class Search extends Component {
   state = {
-    query: "",
-    locations: {}
+    query: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    API.search(this.state.query).then(locations => {
-      this.props.history.push({
-        pathname: "/results",
-        state: { locations }
-      });
+    this.props.history.push({
+      pathname: "/results",
+      state: { query: this.state.query }
     });
   };
 
-  updateQuery = value => {
-    this.setState({ query: value });
+  handleInputChange = e => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
-    const { query } = this.state;
-
     return (
       <form
         className="container"
-        css={tw`max-w-4xl mx-auto mb-12 px-6`}
+        css={tw`max-w-4xl mx-auto mb-12`}
         onSubmit={this.handleSubmit}
       >
         <div css={tw`flex flex-wrap -mx-3 mb-2`}>
@@ -46,9 +45,10 @@ class Search extends Component {
               css={tw`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
               id="search-zip"
               type="text"
-              value={query}
               placeholder="City, state, or postal code"
-              onChange={event => this.updateQuery(event.target.value)}
+              name="query"
+              value={this.state.query}
+              onChange={this.handleInputChange}
             />
           </div>
           <div css={tw`w-full md:w-2/5 px-3 mb-6 md:mb-0`}>

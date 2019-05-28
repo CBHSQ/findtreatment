@@ -599,10 +599,24 @@ video {
   height: auto;
 }
 
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
 .container {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 @media (min-width: 640px) {

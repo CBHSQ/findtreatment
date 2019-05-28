@@ -13,7 +13,11 @@ class App extends Component {
       <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
         <Banner />
         <Nav />
-        <Route exact path="/" render={() => <Home />} />
+        <Route
+          exact
+          path="/"
+          render={() => <Home updateQuery={this.updateQuery} />}
+        />
         <Route path="/results" render={() => <Results />} />
       </div>
     );
