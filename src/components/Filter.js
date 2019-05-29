@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "styled-components/macro";
 import tw from "tailwind.macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 class Filter extends Component {
   state = {
-    query: ""
+    query: {
+      location: "",
+      typeFacility: ""
+    }
   };
 
   handleSubmit = e => {
@@ -19,7 +24,10 @@ class Filter extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      query: {
+        ...this.state.query,
+        [name]: value || ""
+      }
     });
   };
 
@@ -38,8 +46,8 @@ class Filter extends Component {
             id="search-zip"
             type="text"
             placeholder="City, state, or postal code"
-            name="query"
-            value={this.state.query || this.props.query}
+            name="location"
+            value={this.state.query.location || this.props.query.location}
             onChange={this.handleInputChange}
           />
         </div>
@@ -54,10 +62,15 @@ class Filter extends Component {
             <select
               css={tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
               id="search-type"
+              name="typeFacility"
+              value={
+                this.state.query.typeFacility || this.props.query.typeFacility
+              }
+              onChange={this.handleInputChange}
             >
-              <option>All facilities</option>
-              <option>Substance use</option>
-              <option>Mental health</option>
+              <option value="">All providers</option>
+              <option value="SA">Substance use</option>
+              <option value="MH">Mental health</option>
             </select>
             <div
               css={tw`pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700`}
@@ -71,6 +84,10 @@ class Filter extends Component {
               </svg>
             </div>
           </div>
+        </div>
+        <div css={tw`mb-6`}>
+          More filters{" "}
+          <FontAwesomeIcon icon={faAngleDown} css={tw`text-blue-500 ml-1`} />
         </div>
         <div css={tw`flex items-end w-full mb-6`}>
           <button

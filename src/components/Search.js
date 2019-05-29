@@ -5,7 +5,10 @@ import tw from "tailwind.macro";
 
 class Search extends Component {
   state = {
-    query: ""
+    query: {
+      location: "",
+      typeFacility: ""
+    }
   };
 
   handleSubmit = e => {
@@ -22,7 +25,10 @@ class Search extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      query: {
+        ...this.state.query,
+        [name]: value
+      }
     });
   };
 
@@ -46,8 +52,8 @@ class Search extends Component {
               id="search-zip"
               type="text"
               placeholder="City, state, or postal code"
-              name="query"
-              value={this.state.query}
+              name="location"
+              value={this.state.query.location}
               onChange={this.handleInputChange}
             />
           </div>
@@ -62,10 +68,13 @@ class Search extends Component {
               <select
                 css={tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
                 id="search-type"
+                name="typeFacility"
+                value={this.state.query.typeFacility}
+                onChange={this.handleInputChange}
               >
-                <option>All facilities</option>
-                <option>Substance use</option>
-                <option>Mental health</option>
+                <option value="">All providers</option>
+                <option value="SA">Substance use</option>
+                <option value="MH">Mental health</option>
               </select>
               <div
                 css={tw`pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700`}

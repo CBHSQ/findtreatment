@@ -15,8 +15,12 @@ class Results extends Component {
     this.updateLocations(this.props.location.state.query);
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   updateLocations = query => {
-    API.search(this.props.location.state.query).then(locations => {
+    API.getAll(query).then(locations => {
       this.setState({
         locations
       });
@@ -27,13 +31,19 @@ class Results extends Component {
     const { locations } = this.state;
     return (
       <div className="container">
-        <h1 css={tw`mb-6`}>
-          Results{" "}
-          <span css={tw`text-lg text-gray-600 font-light`}>
-            Treatment facilities near you
-          </span>
-        </h1>
-
+        <div css={tw`flex justify-between items-center mb-6`}>
+          <h1>
+            Results{" "}
+            <span css={tw`text-lg text-gray-600 font-light`}>
+              Treatment providers near you
+            </span>
+          </h1>
+          {locations.length && (
+            <span css={tw`text-gray-500`}>
+              Showing 1-{locations.length} of {locations.length}
+            </span>
+          )}
+        </div>
         <div css={tw`flex -mx-6`}>
           <div css={tw`w-3/5 px-6`}>
             <ul css={tw``}>

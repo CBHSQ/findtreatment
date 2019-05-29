@@ -19,34 +19,47 @@ class Home extends Component {
             <div css={tw`flex flex-wrap -mx-6`}>
               <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>
-                    Learn about substance abuse treatment
-                  </h3>
-                  <p>
+                  <h3 css={tw`text-xl mb-4`}>Getting to recovery</h3>
+                  <p css={tw`mb-6`}>
                     SAMHSA aims to answer questions and find the best ways to
                     prevent, diagnose, or substance abuse, addiction, and mental
                     health problems.
                   </p>
+                  <button
+                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
+                  >
+                    Learn more
+                  </button>
                 </div>
               </div>
               <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Types of treatment</h3>
-                  <p>
+                  <h3 css={tw`text-xl mb-4`}>Support for addiction</h3>
+                  <p css={tw`mb-6`}>
                     SAMHSA aims to answer questions and find the best ways to
                     prevent, diagnose, or substance abuse, addiction, and mental
                     health problems.
                   </p>
+                  <button
+                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
+                  >
+                    Learn more
+                  </button>
                 </div>
               </div>
               <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Risks and benefits</h3>
-                  <p>
+                  <h3 css={tw`text-xl mb-4`}>Helping a loved one</h3>
+                  <p css={tw`mb-6`}>
                     SAMHSA aims to answer questions and find the best ways to
                     prevent, diagnose, or substance abuse, addiction, and mental
                     health problems.
                   </p>
+                  <button
+                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
+                  >
+                    Learn more
+                  </button>
                 </div>
               </div>
             </div>
