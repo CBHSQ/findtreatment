@@ -1,4 +1,4 @@
-import { locations } from "./_DATA.js";
+import { locations, planets } from "./_DATA.js";
 
 export function getAll(query) {
   return new Promise((res, rej) => {
@@ -13,6 +13,10 @@ export function getDetails(id) {
 }
 
 const filterResults = (query, locations) => {
+  if (planets.includes(query.location.toLowerCase())) {
+    return;
+  }
+
   return locations.filter(location => {
     if (query.typeFacility && query.typeFacility !== location.typeFacility) {
       return false;
