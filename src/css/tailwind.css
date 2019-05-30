@@ -611,6 +611,12 @@ h3 {
   font-size: 1.125rem;
 }
 
+@media (min-width: 1024px) {
+  .samhsa-helpline {
+    top: -29px;
+  }
+}
+
 .container {
   width: 100%;
   margin-right: auto;

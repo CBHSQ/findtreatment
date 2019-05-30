@@ -8,6 +8,7 @@ import Nav from "./Nav";
 import Home from "./Home";
 import Results from "./Results";
 import Details from "./Details";
+import Footer from "./Footer";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/results" component={Results} />
           <Route path="/details/:providerId" component={Details} />
         </Switch>
+        <Footer />
       </div>
     );
   }
