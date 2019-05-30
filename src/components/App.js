@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import "styled-components/macro";
 import tw from "tailwind.macro";
+import HelpLine from "./HelpLine";
 import Banner from "./Banner";
 import Nav from "./Nav";
 import Home from "./Home";
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
         <Banner />
+        <HelpLine />
         <Nav />
         <Switch>
           <Route
