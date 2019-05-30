@@ -18,11 +18,7 @@ class App extends Component {
         <HelpLine />
         <Nav />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <Home updateQuery={this.updateQuery} />}
-          />
+          <Route exact path="/" component={Home} />
           <Route path="/results" component={Results} />
           <Route path="/details/:providerId" component={Details} />
         </Switch>

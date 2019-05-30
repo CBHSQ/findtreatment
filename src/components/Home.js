@@ -13,7 +13,7 @@ class Home extends Component {
             Quickly find providers in your area based on your specific needs
           </span>
         </div>
-        <Search updateQuery={this.props.updateQuery} />
+        <Search />
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:p-12`}>
             <div css={tw`flex flex-wrap -mx-6`}>

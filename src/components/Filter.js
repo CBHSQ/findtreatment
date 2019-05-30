@@ -13,6 +13,14 @@ class Filter extends Component {
     }
   };
 
+  componentDidMount() {
+    if (this.props.query) {
+      this.setState({
+        query: this.props.query
+      });
+    }
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.updateLocations(this.state.query);
@@ -26,7 +34,7 @@ class Filter extends Component {
     this.setState({
       query: {
         ...this.state.query,
-        [name]: value || ""
+        [name]: value
       }
     });
   };
@@ -47,7 +55,7 @@ class Filter extends Component {
             type="text"
             placeholder="City, state, or postal code"
             name="location"
-            value={this.state.query.location || this.props.query.location}
+            value={this.state.query.location}
             onChange={this.handleInputChange}
           />
         </div>
@@ -63,9 +71,7 @@ class Filter extends Component {
               css={tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
               id="search-type"
               name="typeFacility"
-              value={
-                this.state.query.typeFacility || this.props.query.typeFacility
-              }
+              value={this.state.query.typeFacility}
               onChange={this.handleInputChange}
             >
               <option value="">All providers</option>
