@@ -42,7 +42,6 @@ class App extends Component {
         <HelpLine />
         <Nav />
         <Switch>
-          <Route path="/dashboard" />
           <Route
             exact
             path="/"

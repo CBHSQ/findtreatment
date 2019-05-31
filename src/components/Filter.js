@@ -114,7 +114,7 @@ class Filter extends Component {
             </div>
           </>
         )}
-        <button onClick={this.toggleHidden}>
+        <button css={tw`mb-6`} onClick={this.toggleHidden}>
           {this.state.isHidden ? "More" : "Less"} filters
           <FontAwesomeIcon
             icon={this.state.isHidden ? faAngleDown : faAngleUp}
