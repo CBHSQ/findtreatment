@@ -6,7 +6,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const NoResults = () => {
   return (
-    <div css={tw`shadow border rounded p-6 text-center`}>
+    <div css={tw`shadow border rounded p-6 text-center mb-6`}>
       <h2 css={tw`mb-6`}>
         <span css={tw`block font-bold text-3xl`}>Oops!</span>We couldn't find
         any providers near you.

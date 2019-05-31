@@ -13,11 +13,14 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.updateLocations(this.props.location.state.query);
+    this.updateLocations(this.props.query);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     window.scrollTo(0, 0);
+    if (this.props.query !== prevProps.query) {
+      this.updateLocations(this.props.query);
+    }
   }
 
   updateLocations = query => {
@@ -60,7 +63,8 @@ class Results extends Component {
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
             <Filter
-              query={this.props.location.state.query}
+              query={this.props.query}
+              handleInputChange={this.props.handleInputChange}
               updateLocations={this.updateLocations}
             />
           </div>

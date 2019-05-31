@@ -4,31 +4,10 @@ import "styled-components/macro";
 import tw from "tailwind.macro";
 
 class Search extends Component {
-  state = {
-    query: {
-      location: "",
-      typeFacility: ""
-    }
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     this.props.history.push({
-      pathname: "/results",
-      state: { query: this.state.query }
-    });
-  };
-
-  handleInputChange = e => {
-    const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      query: {
-        ...this.state.query,
-        [name]: value
-      }
+      pathname: "/results"
     });
   };
 
@@ -53,8 +32,8 @@ class Search extends Component {
               type="text"
               placeholder="City, state, or postal code"
               name="location"
-              value={this.state.query.location}
-              onChange={this.handleInputChange}
+              value={this.props.query.location}
+              onChange={this.props.handleInputChange}
             />
           </div>
           <div css={tw`w-full md:w-2/5 px-3 mb-6 md:mb-0`}>
@@ -69,8 +48,8 @@ class Search extends Component {
                 css={tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
                 id="search-type"
                 name="typeFacility"
-                value={this.state.query.typeFacility}
-                onChange={this.handleInputChange}
+                value={this.props.query.typeFacility}
+                onChange={this.props.handleInputChange}
               >
                 <option value="">All providers</option>
                 <option value="SA">Substance use</option>

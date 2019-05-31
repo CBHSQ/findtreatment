@@ -6,42 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 class Filter extends Component {
-  state = {
-    query: {
-      location: "",
-      typeFacility: ""
-    }
-  };
-
-  componentDidMount() {
-    if (this.props.query) {
-      this.setState({
-        query: this.props.query
-      });
-    }
-  }
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.updateLocations(this.state.query);
-  };
-
-  handleInputChange = e => {
-    const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      query: {
-        ...this.state.query,
-        [name]: value
-      }
-    });
-  };
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <>
         <div css={tw`w-full mb-6`}>
           <label
             css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
@@ -55,8 +22,8 @@ class Filter extends Component {
             type="text"
             placeholder="City, state, or postal code"
             name="location"
-            value={this.state.query.location}
-            onChange={this.handleInputChange}
+            value={this.props.query.location}
+            onChange={this.props.handleInputChange}
           />
         </div>
         <div css={tw`w-full mb-6`}>
@@ -71,8 +38,8 @@ class Filter extends Component {
               css={tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
               id="search-type"
               name="typeFacility"
-              value={this.state.query.typeFacility}
-              onChange={this.handleInputChange}
+              value={this.props.query.typeFacility}
+              onChange={this.props.handleInputChange}
             >
               <option value="">All providers</option>
               <option value="SA">Substance use</option>
@@ -95,15 +62,7 @@ class Filter extends Component {
           More filters{" "}
           <FontAwesomeIcon icon={faAngleDown} css={tw`text-blue-500 ml-1`} />
         </div>
-        <div css={tw`flex items-end w-full mb-6`}>
-          <button
-            css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
-            type="submit"
-          >
-            Update
-          </button>
-        </div>
-      </form>
+      </>
     );
   }
 }

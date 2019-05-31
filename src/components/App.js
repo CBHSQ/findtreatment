@@ -11,6 +11,26 @@ import Details from "./Details";
 import Footer from "./Footer";
 
 class App extends Component {
+  state = {
+    query: {
+      location: "",
+      typeFacility: ""
+    }
+  };
+
+  handleInputChange = e => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      query: {
+        ...this.state.query,
+        [name]: value
+      }
+    });
+  };
+
   render() {
     return (
       <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
@@ -18,8 +38,26 @@ class App extends Component {
         <HelpLine />
         <Nav />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/results" component={Results} />
+          <Route path="/dashboard" />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home
+                query={this.state.query}
+                handleInputChange={this.handleInputChange}
+              />
+            )}
+          />
+          <Route
+            path="/results"
+            render={props => (
+              <Results
+                query={this.state.query}
+                handleInputChange={this.handleInputChange}
+              />
+            )}
+          />
           <Route path="/details/:providerId" component={Details} />
         </Switch>
         <Footer />
