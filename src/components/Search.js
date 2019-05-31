@@ -54,13 +54,13 @@ class Search extends Component {
             <Select
               label="Setting"
               name="setting"
-              value={this.props.query.location}
+              value={this.props.query.setting}
               onChange={this.props.handleInputChange}
               options={[
-                { name: "All settings", value: "" },
-                { name: "Hospital inpatient", value: "" },
-                { name: "Outpatient", value: "" },
-                { name: "Residential", value: "" }
+                { name: "All settings" },
+                { name: "Hospital inpatient" },
+                { name: "Outpatient" },
+                { name: "Residential" }
               ]}
             />
           </div>
@@ -71,15 +71,15 @@ class Search extends Component {
               value={this.props.query.payment}
               onChange={this.props.handleInputChange}
               options={[
-                { name: "All payments", value: "" },
-                { name: "IHS/Tribal/Urban funds", value: "" },
-                { name: "Medicare", value: "" },
-                { name: "Medicaid", value: "" },
-                { name: "Military insurance", value: "" },
-                { name: "No payment accepted", value: "" },
-                { name: "Private health insurance", value: "" },
-                { name: "Cash or self-payment", value: "" },
-                { name: "State-financed health insurance", value: "" }
+                { name: "All payments" },
+                { name: "IHS/Tribal/Urban funds" },
+                { name: "Medicare" },
+                { name: "Medicaid" },
+                { name: "Military insurance" },
+                { name: "No payment accepted" },
+                { name: "Private health insurance" },
+                { name: "Cash or self-payment" },
+                { name: "State-financed health insurance" }
               ]}
             />
           </div>

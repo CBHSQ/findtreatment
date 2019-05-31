@@ -19,8 +19,10 @@ const Select = props => {
           value={props.value}
           onChange={props.onChange}
         >
-          {props.options.map(option => (
-            <option value={option.value}>{option.name}</option>
+          {props.options.map((option, index) => (
+            <option key={index} value={option.value || option.name}>
+              {option.name}
+            </option>
           ))}
         </select>
         <div

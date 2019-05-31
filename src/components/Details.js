@@ -53,8 +53,8 @@ class Details extends Component {
               <div css={tw`mb-3 pb-3 border-b`} key={service.f2}>
                 <h4 css={tw`font-light uppercase`}>{service.f1}</h4>
                 <ul css={tw`text-sm leading-relaxed text-gray-700`}>
-                  {service.f3.split("; ").map(item => (
-                    <li>{item}</li>
+                  {service.f3.split("; ").map((item, index) => (
+                    <li key={index}>{item}</li>
                   ))}
                 </ul>
               </div>
