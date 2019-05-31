@@ -42,6 +42,13 @@ const Card = props => {
             : "Mental health"}
         </span>
       </p>
+      <p css={tw`mb-4`}>
+        Call hours:{" "}
+        <span css={tw`font-semibold`}>
+          9:00 AM - 6:00 PM
+        </span>
+      </p>
+
       <div css={tw`flex items-center`}>
         <a
           css={tw`bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2`}
