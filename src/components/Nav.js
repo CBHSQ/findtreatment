@@ -33,19 +33,19 @@ const Nav = () => {
               href="#responsive-header"
               css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
             >
-              Getting Started
+              Locate treatment
             </a>
             <a
               href="#responsive-header"
               css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
             >
-              Resources
+              Recovery Resources
             </a>
             <a
               href="#responsive-header"
               css={tw`block mt-4 lg:inline-block lg:mt-0`}
             >
-              Providers
+              About Us 
             </a>
           </div>
         </div>
