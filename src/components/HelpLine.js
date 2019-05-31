@@ -6,7 +6,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const HelpLine = () => {
   return (
-    <div className="container" css={tw`lg:relative lg:mx-auto`}>
+    <div className="container" css={tw`lg:relative lg:mx-auto px-0`}>
       <a
         href="tel:18006624357"
         className="samhsa-helpline"

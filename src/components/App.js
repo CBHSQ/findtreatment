@@ -14,7 +14,11 @@ class App extends Component {
   state = {
     query: {
       location: "",
-      typeFacility: ""
+      typeFacility: "",
+      setting: "",
+      payment: "",
+      age: "",
+      type: ""
     }
   };
 
