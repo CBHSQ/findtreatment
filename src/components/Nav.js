@@ -27,7 +27,7 @@ class Nav extends Component {
           <div css={tw`block lg:hidden`}>
             <button
               onClick={this.toggleHidden}
-              css={tw`flex items-center px-3 py-2 border rounded text-gray-400 border-gray-400`}
+              css={tw`flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600`}
             >
               <svg
                 css={tw`fill-current h-3 w-3`}

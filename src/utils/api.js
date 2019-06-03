@@ -14,15 +14,15 @@ export function getDetails(id) {
 
 const filterResults = (query, locations) => {
   if (planets.includes(query.location.toLowerCase())) {
-    return;
+    return [];
   }
 
   return locations.filter(location => {
-    if (
-      query.typeFacility &&
-      query.typeFacility !== "All" &&
-      query.typeFacility !== location.typeFacility
-    ) {
+    if (query.typeFacility === "All") {
+      return true;
+    }
+
+    if (query.typeFacility !== location.typeFacility) {
       return false;
     }
     return true;

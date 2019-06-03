@@ -7,6 +7,7 @@ import NoResults from "./NoResults";
 import Card from "./Card";
 import Pagination from "./Pagination";
 import Filter from "./Filter";
+import MapContainer from "./MapContainer";
 
 class Results extends Component {
   state = {
@@ -67,10 +68,19 @@ class Results extends Component {
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
             <Filter
+              css={tw`mb-6`}
               query={this.props.query}
               handleInputChange={this.props.handleInputChange}
               updateLocations={this.updateLocations}
             />
+
+            {locations.length > 0 && (
+              <div css={tw`pt-6 border-t`}>
+                <div css={tw`relative h-64 w-full mb-6`}>
+                  <MapContainer />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

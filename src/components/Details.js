@@ -36,18 +36,6 @@ class Details extends Component {
                 </span>
               )}
             </h1>
-            <div css={tw`text-gray-600 mb-4`}>
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                css={tw`text-gray-400 mr-1`}
-              />
-              {this.state.provider.street1},{" "}
-              {this.state.provider.street2
-                ? this.state.provider.street2 + ", "
-                : ""}
-              {this.state.provider.city}, {this.state.provider.state}{" "}
-              {this.state.provider.zip}
-            </div>
             <h2 css={tw`mb-2`}>Services</h2>
             {this.state.provider.services.map(service => (
               <div css={tw`mb-3 pb-3 border-b`} key={service.f2}>
@@ -59,14 +47,26 @@ class Details extends Component {
                 </ul>
               </div>
             ))}
-            <h2 css={tw`mb-4`}>Location</h2>
-            <div css={tw`relative h-64 w-full mb-6`}>
-              <MapContainer />
-            </div>
           </div>
           <div css={tw`relative w-full md:w-2/5 px-6 mb-6 `}>
+            <h2 css={tw`mb-4`}>Location</h2>
+            <div css={tw`relative h-64 w-full mb-2`}>
+              <MapContainer />
+            </div>
+            <div css={tw`text-gray-600 mb-6`}>
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                css={tw`text-gray-400 mr-1`}
+              />
+              {this.state.provider.street1},{" "}
+              {this.state.provider.street2
+                ? this.state.provider.street2 + ", "
+                : ""}
+              {this.state.provider.city}, {this.state.provider.state}{" "}
+              {this.state.provider.zip}
+            </div>
             <button
-              css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold p-4 rounded inline-flex items-center mb-6`}
+              css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold p-4 rounded justify-center items-center`}
             >
               <FontAwesomeIcon
                 icon={faPhone}
