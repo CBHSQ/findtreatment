@@ -10,8 +10,13 @@ module.exports = {
       lg: "1024px",
       xl: "1280px"
     },
-    extend: {}
+    extend: {
+      maxWidth: {
+        "7xl": "80rem"
+      }
+    }
   },
   variants: {},
+  corePlugins: ["container", "display", "fontSize", "preflight"],
   plugins: []
 };
