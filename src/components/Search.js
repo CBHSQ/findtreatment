@@ -16,11 +16,11 @@ class Search extends Component {
     return (
       <form
         className="container"
-        css={tw`max-w-5xl mx-auto mb-12`}
+        css={tw`lg:max-w-5xl mx-auto mb-12`}
         onSubmit={this.handleSubmit}
       >
         <div css={tw`flex flex-wrap -mx-3 mb-2`}>
-          <div css={tw`w-full md:w-1/4 px-3 mb-6 md:mb-0`}>
+          <div css={tw`w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
             <label
               css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
               htmlFor="search-zip"
@@ -37,7 +37,7 @@ class Search extends Component {
               onChange={this.props.handleInputChange}
             />
           </div>
-          <div css={tw`w-full md:w-1/4 px-3 mb-6 md:mb-0`}>
+          <div css={tw`w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
             <Select
               label="Service type"
               name="typeFacility"
@@ -50,7 +50,7 @@ class Search extends Component {
               ]}
             />
           </div>
-          <div css={tw`w-full md:w-1/4 px-3 mb-6 md:mb-0`}>
+          <div css={tw`w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
             <Select
               label="Payment"
               name="payment"
@@ -69,7 +69,7 @@ class Search extends Component {
               ]}
             />
           </div>
-          <div css={tw`flex items-end w-full md:w-1/4 px-3 mb-6 md:mb-0`}>
+          <div css={tw`flex items-end w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
             <button
               css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
               type="submit"

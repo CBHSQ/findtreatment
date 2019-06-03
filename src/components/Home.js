@@ -18,9 +18,9 @@ class Home extends Component {
           handleInputChange={this.props.handleInputChange}
         />
         <div css={tw`bg-gray-200`}>
-          <div className="container" css={tw`mx-auto py-6 lg:p-12`}>
+          <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`flex flex-wrap -mx-6`}>
-              <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
+              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
                   <h3 css={tw`text-xl mb-4`}>Getting to recovery</h3>
                   <p css={tw`mb-6`}>
@@ -35,7 +35,7 @@ class Home extends Component {
                   </button>
                 </div>
               </div>
-              <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
+              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
                   <h3 css={tw`text-xl mb-4`}>Support for addiction</h3>
                   <p css={tw`mb-6`}>
@@ -50,7 +50,7 @@ class Home extends Component {
                   </button>
                 </div>
               </div>
-              <div css={tw`flex w-full md:w-1/3 px-6 mb-6 md:mb-0 `}>
+              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
                   <h3 css={tw`text-xl mb-4`}>Helping a loved one</h3>
                   <p css={tw`mb-6`}>
