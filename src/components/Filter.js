@@ -44,7 +44,7 @@ class Filter extends Component {
             value={this.props.query.typeFacility}
             onChange={this.props.handleInputChange}
             options={[
-              { name: "All providers", value: "" },
+              { name: "All providers", value: "All" },
               { name: "Substance use", value: "SA" },
               { name: "Mental health", value: "MH" }
             ]}

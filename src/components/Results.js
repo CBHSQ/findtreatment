@@ -5,10 +5,12 @@ import tw from "tailwind.macro";
 import * as API from "../utils/api";
 import NoResults from "./NoResults";
 import Card from "./Card";
+import Pagination from "./Pagination";
 import Filter from "./Filter";
 
 class Results extends Component {
   state = {
+    count: 0,
     locations: []
   };
 
@@ -26,30 +28,31 @@ class Results extends Component {
   updateLocations = query => {
     API.getAll(query).then(locations => {
       this.setState({
-        locations: locations || []
+        count: locations.length,
+        locations: locations.slice(0, 10)
       });
     });
   };
 
   render() {
-    const { locations } = this.state;
+    const { count, locations } = this.state;
     return (
       <div className="container">
-        <div css={tw`flex justify-between items-center mb-6`}>
-          <h1>
-            Results{" "}
-            <span css={tw`text-lg text-gray-600 font-light`}>
-              Treatment providers near you
-            </span>
-          </h1>
-          {locations.length > 0 && (
-            <span css={tw`text-gray-500`}>
-              Showing 1-{locations.length} of {locations.length}
-            </span>
-          )}
-        </div>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
+            <div css={tw`lg:flex lg:justify-between lg:items-baseline mb-6`}>
+              <h1 css={tw`mb-2 lg:mb-0`}>
+                Results{" "}
+                <span css={tw`text-lg text-gray-600 font-light`}>
+                  Treatment providers near you
+                </span>
+              </h1>
+              {locations.length > 0 && (
+                <span css={tw`block text-gray-500`}>
+                  Showing 1-{locations.length} of {count}
+                </span>
+              )}
+            </div>
             <ul css={tw``}>
               {locations.length > 0 ? (
                 locations.map(result => (
@@ -59,6 +62,7 @@ class Results extends Component {
                 <NoResults />
               )}
             </ul>
+            {locations.length > 0 && <Pagination />}
           </div>
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>

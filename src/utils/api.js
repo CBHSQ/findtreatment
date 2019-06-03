@@ -18,18 +18,13 @@ const filterResults = (query, locations) => {
   }
 
   return locations.filter(location => {
-    if (query.typeFacility && query.typeFacility !== location.typeFacility) {
+    if (
+      query.typeFacility &&
+      query.typeFacility !== "All" &&
+      query.typeFacility !== location.typeFacility
+    ) {
       return false;
     }
-    // if (
-    //   query.typeFacility &&
-    //   location.services.filter(
-    //     service =>
-    //       service.f1 === "Type of Care" && service.f3 === query.typeFacility
-    //   ).length < 1
-    // ) {
-    //   return false;
-    // }
     return true;
   });
 };
