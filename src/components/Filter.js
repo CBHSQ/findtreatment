@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import "styled-components/macro";
 import tw from "tailwind.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -84,7 +83,7 @@ class Filter extends Component {
           />
         </div>
         {!this.state.isHidden && (
-          <>
+          <div className="filter-container">
             <div css={tw`w-full mb-6`}>
               <Select
                 label="Type of care"
@@ -112,9 +111,13 @@ class Filter extends Component {
                 ]}
               />
             </div>
-          </>
+          </div>
         )}
-        <button css={tw`mb-6`} onClick={this.toggleHidden}>
+        <button
+          className="filter-link"
+          css={tw`mb-6`}
+          onClick={this.toggleHidden}
+        >
           {this.state.isHidden ? "More" : "Less"} filters
           <FontAwesomeIcon
             icon={this.state.isHidden ? faAngleDown : faAngleUp}
@@ -126,4 +129,4 @@ class Filter extends Component {
   }
 }
 
-export default withRouter(Filter);
+export default Filter;

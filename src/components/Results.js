@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import "styled-components/macro";
 import tw from "tailwind.macro";
 import * as API from "../utils/api";
@@ -88,4 +87,4 @@ class Results extends Component {
   }
 }
 
-export default withRouter(Results);
+export default Results;

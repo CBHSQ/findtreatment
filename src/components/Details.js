@@ -3,10 +3,10 @@ import "styled-components/macro";
 import tw from "tailwind.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMapMarkerAlt,
   faPhone,
   faExternalLinkAlt,
-  faFlag
+  faFlag,
+  faPrint
 } from "@fortawesome/free-solid-svg-icons";
 import * as API from "../utils/api";
 import MapContainer from "./MapContainer";
@@ -86,18 +86,21 @@ class Details extends Component {
                 <MapContainer />
               </div>
               <div css={tw`text-gray-600`}>
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  css={tw`text-gray-400 mr-1`}
-                />
                 {this.state.provider.street1},{" "}
                 {this.state.provider.street2
                   ? this.state.provider.street2 + ", "
                   : ""}
+                <br />
                 {this.state.provider.city}, {this.state.provider.state}{" "}
                 {this.state.provider.zip}
               </div>
             </div>
+            <button
+              css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center`}
+            >
+              <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
+              Print provider details
+            </button>
             <button
               css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center`}
             >
