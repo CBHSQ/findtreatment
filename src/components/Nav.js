@@ -61,7 +61,7 @@ class Nav extends Component {
                 href="#responsive-header"
                 css={tw`block mt-4 lg:inline-block lg:mt-0`}
               >
-                About Us
+                About us
               </a>
             </div>
           </div>
