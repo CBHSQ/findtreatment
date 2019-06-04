@@ -22,7 +22,7 @@ class Home extends Component {
             <div css={tw`flex flex-wrap -mx-6`}>
               <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Getting started/h3>
+                  <h3 css={tw`text-xl mb-4`}>Support for addiction</h3>
                   <p css={tw`mb-6`}>
                     SAMHSA aims to answer questions and find the best ways to
                     prevent, diagnose, or substance abuse, addiction, and mental
@@ -64,9 +64,10 @@ class Home extends Component {
                     Learn more
                   </button>
                 </div>
-                    <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
+              </div>
+              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
                 <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Support for addiction</h3>
+                  <h3 css={tw`text-xl mb-4`}>Getting to recovery</h3>
                   <p css={tw`mb-6`}>
                     SAMHSA aims to answer questions and find the best ways to
                     prevent, diagnose, or substance abuse, addiction, and mental
@@ -86,5 +87,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;
