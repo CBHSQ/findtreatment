@@ -41,13 +41,13 @@ class Home extends Component {
           handleInputChange={this.props.handleInputChange}
         />
         <div css={tw`bg-gray-200`}>
-          <div className="container" css={tw`mx-auto py-2 py-12`}>
+          <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
               <h3 css={tw`text-4xl font-light text-gray-700`}>
                 Getting started
               </h3>
             </div>
-            <div css={tw`flex flex-wrap -mx-6`}>
+            <div css={tw`flex flex-wrap -mx-2`}>
               {content.map(card => (
                 <div css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0 `}>
                   <div
