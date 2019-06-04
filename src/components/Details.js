@@ -33,7 +33,7 @@ class Details extends Component {
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
-            <h1 css={tw`font-bold mb-2`}>
+            <h1 css={tw`font-bold mb-6`}>
               {this.state.provider.name1}
               {this.state.provider.name2 && (
                 <span css={tw`block text-lg font-light`}>
@@ -41,19 +41,26 @@ class Details extends Component {
                 </span>
               )}
             </h1>
-            <div css={tw`lg:flex items-center mb-6`}>
-              <button
-                css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0`}
-              >
-                <FontAwesomeIcon
-                  icon={faPhone}
-                  css={tw`fill-current w-4 h-4 mr-2`}
-                />
-                <a href={`tel:${this.state.provider.phone}`}>
-                  <span css={tw`font-light`}>Schedule Appointment | </span>
-                  {this.state.provider.phone}
-                </a>
-              </button>
+            <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
+            <div css={tw`lg:flex items-start mb-6`}>
+              <div>
+                <button
+                  css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0`}
+                >
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    css={tw`fill-current w-4 h-4 mr-2`}
+                  />
+                  <a href={`tel:${this.state.provider.phone}`}>
+                    <span css={tw`font-light`}>Schedule Appointment | </span>
+                    {this.state.provider.phone}
+                  </a>
+                </button>
+                <p css={tw`mb-2 text-gray-700 italic`}>
+                  Call hours:{" "}
+                  <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
+                </p>
+              </div>
               {this.state.provider.website && (
                 <a
                   href={this.state.provider.website}
@@ -67,11 +74,13 @@ class Details extends Component {
                 </a>
               )}
             </div>
-            <h2 css={tw`mb-2`}>Services</h2>
+            <h2 css={tw`mb-2 font-semibold`}>Services</h2>
             {this.state.provider.services.map(service => (
-              <div css={tw`mb-3 pb-3 border-b`} key={service.f2}>
-                <h4 css={tw`font-light uppercase`}>{service.f1}</h4>
-                <ul css={tw`text-sm leading-relaxed text-gray-700`}>
+              <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
+                <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
+                <ul
+                  css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
+                >
                   {service.f3.split("; ").map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -96,7 +105,7 @@ class Details extends Component {
               </div>
             </div>
             <button
-              css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center`}
+              css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center mb-4`}
             >
               <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
               Print provider details
