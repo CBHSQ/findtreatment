@@ -8,7 +8,7 @@ class Home extends Component {
     return (
       <>
         <div className="container" css={tw`mx-auto text-center mb-10`}>
-          <h2 css={tw`text-5xl font-light`}>Find help near you</h2>
+          <h2 css={tw`text-3xl lg:text-5xl font-light`}>Find help near you</h2>
           <span>
             Quickly find providers in your area based on your specific needs
           </span>

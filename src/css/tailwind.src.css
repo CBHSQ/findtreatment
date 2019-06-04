@@ -1,13 +1,25 @@
 @tailwind base;
 
 h1 {
-  @apply text-2xl;
-}
-h2 {
   @apply text-xl;
 }
-h3 {
+h2 {
   @apply text-lg;
+}
+h3 {
+  @apply text-base;
+}
+
+@screen lg {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
 }
 
 @screen lg {
