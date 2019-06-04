@@ -55,7 +55,7 @@ class Nav extends Component {
                 href="#responsive-header"
                 css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
               >
-                Recovery Resources
+                Getting started
               </a>
               <a
                 href="#responsive-header"
