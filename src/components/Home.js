@@ -7,24 +7,24 @@ class Home extends Component {
   render() {
     const content = [
       {
-        heading: "Support for addiction",
+        heading: "Understanding addiction",
         body:
-          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+          "Substance use and mental health problems are treatable, and help is available."
       },
       {
-        heading: "Understanding treatment options",
+        heading: "Treatment options",
         body:
-          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+          "Find out more about different types of treatment and finding a good fit."
       },
       {
-        heading: "What to look for in a provider",
+        heading: "Finding a provider",
         body:
-          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+          "Learn how to identify quality treatment, and ask the right questions of providers and insurance companies."
       },
       {
         heading: "Getting to recovery",
         body:
-          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+          "Know what to expect and how to find support on the road to recovery."
       }
     ];
 
