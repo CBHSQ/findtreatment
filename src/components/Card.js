@@ -47,9 +47,9 @@ const Card = props => {
           Call hours: <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
         </p>
       </div>
-      <div css={tw`flex items-center`}>
+      <div css={tw`lg:flex items-center`}>
         <a
-          css={tw`bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2`}
+          css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0 justify-center lg:justify-start`}
           href={`tel:${props.location.phone}`}
         >
           <FontAwesomeIcon icon={faPhone} css={tw`text-gray-200 mr-2`} />
@@ -59,7 +59,7 @@ const Card = props => {
         {props.location.website && (
           <a
             href={props.location.website}
-            css={tw`bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
+            css={tw`w-full lg:w-auto bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded inline-flex items-center justify-center lg:justify-start`}
           >
             <FontAwesomeIcon
               icon={faExternalLinkAlt}

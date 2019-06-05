@@ -41,38 +41,40 @@ class Details extends Component {
                 </span>
               )}
             </h1>
-            <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
-            <div css={tw`lg:flex items-start mb-6`}>
-              <div>
-                <button
-                  css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0`}
-                >
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    css={tw`fill-current w-4 h-4 mr-2`}
-                  />
-                  <a href={`tel:${this.state.provider.phone}`}>
-                    <span css={tw`font-light`}>Schedule Appointment | </span>
-                    {this.state.provider.phone}
+            <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
+              <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
+              <p css={tw`mb-2 text-gray-700 italic`}>
+                Call hours:{" "}
+                <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
+              </p>
+              <div css={tw`lg:flex items-start`}>
+                <div>
+                  <button
+                    css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      css={tw`fill-current w-4 h-4 mr-2`}
+                    />
+                    <a href={`tel:${this.state.provider.phone}`}>
+                      <span css={tw`font-light`}>Schedule Appointment | </span>
+                      {this.state.provider.phone}
+                    </a>
+                  </button>
+                </div>
+                {this.state.provider.website && (
+                  <a
+                    href={this.state.provider.website}
+                    css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faExternalLinkAlt}
+                      css={tw`text-gray-700 mr-2`}
+                    />
+                    Visit website
                   </a>
-                </button>
-                <p css={tw`mb-2 text-gray-700 italic`}>
-                  Call hours:{" "}
-                  <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
-                </p>
+                )}
               </div>
-              {this.state.provider.website && (
-                <a
-                  href={this.state.provider.website}
-                  css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
-                >
-                  <FontAwesomeIcon
-                    icon={faExternalLinkAlt}
-                    css={tw`text-gray-700 mr-2`}
-                  />
-                  Visit website
-                </a>
-              )}
             </div>
             <h2 css={tw`mb-2 font-semibold`}>Services</h2>
             {this.state.provider.services.map(service => (

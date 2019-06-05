@@ -59,7 +59,7 @@ class Home extends Component {
                     <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
                     <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
                     <button
-                      css={tw`text-blue-700 font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
+                      css={tw`text-blue-600 font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
                     >
                       Learn more
                     </button>
