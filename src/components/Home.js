@@ -5,6 +5,29 @@ import Search from "./Search";
 
 class Home extends Component {
   render() {
+    const content = [
+      {
+        heading: "Support for addiction",
+        body:
+          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+      },
+      {
+        heading: "Understanding treatment options",
+        body:
+          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+      },
+      {
+        heading: "What to look for in a provider",
+        body:
+          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+      },
+      {
+        heading: "Getting to recovery",
+        body:
+          "SAMHSA aims to answer questions and find the best ways to prevent, diagnose, or substance abuse, addiction, and mental health problems."
+      }
+    ];
+
     return (
       <>
         <div className="container" css={tw`mx-auto text-center mb-10`}>
@@ -19,52 +42,27 @@ class Home extends Component {
         />
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
-            <div css={tw`flex flex-wrap -mx-6`}>
-              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
-                <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Getting to recovery</h3>
-                  <p css={tw`mb-6`}>
-                    SAMHSA aims to answer questions and find the best ways to
-                    prevent, diagnose, or substance abuse, addiction, and mental
-                    health problems.
-                  </p>
-                  <button
-                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
+            <div css={tw`mb-6 text-center`}>
+              <h3 css={tw`text-4xl font-light text-gray-700`}>
+                Getting started
+              </h3>
+            </div>
+            <div css={tw`flex flex-wrap -mx-2`}>
+              {content.map(card => (
+                <div css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0 `}>
+                  <div
+                    css={tw`flex flex-col bg-white rounded p-6 text-gray-700`}
                   >
-                    Learn more
-                  </button>
+                    <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
+                    <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
+                    <button
+                      css={tw`text-blue-700 font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
+                    >
+                      Learn more
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
-                <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Support for addiction</h3>
-                  <p css={tw`mb-6`}>
-                    SAMHSA aims to answer questions and find the best ways to
-                    prevent, diagnose, or substance abuse, addiction, and mental
-                    health problems.
-                  </p>
-                  <button
-                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
-                  >
-                    Learn more
-                  </button>
-                </div>
-              </div>
-              <div css={tw`flex w-full lg:w-1/3 px-6 mb-6 lg:mb-0 `}>
-                <div css={tw`bg-white rounded p-6`}>
-                  <h3 css={tw`text-xl mb-4`}>Helping a loved one</h3>
-                  <p css={tw`mb-6`}>
-                    SAMHSA aims to answer questions and find the best ways to
-                    prevent, diagnose, or substance abuse, addiction, and mental
-                    health problems.
-                  </p>
-                  <button
-                    css={tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
-                  >
-                    Learn more
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
