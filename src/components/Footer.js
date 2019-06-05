@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
             <h4 css={tw`font-bold mb-1`}>Other types of treatment</h4>
-            <ul css={tw`mb-2`}>
+            <ul css={tw`mb-6`}>
               <li>
                 <a href="https://www.samhsa.gov/medication-assisted-treatment/practitioner-program-data/treatment-practitioner-locator">
                   Buprenorphine practitioners
