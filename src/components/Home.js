@@ -54,7 +54,7 @@ class Home extends Component {
                   css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0 `}
                 >
                   <div
-                    css={tw`flex flex-col bg-white rounded p-6 text-gray-700`}
+                    css={tw`flex flex-col w-full bg-white rounded p-6 text-gray-700`}
                   >
                     <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
                     <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
