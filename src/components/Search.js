@@ -46,7 +46,8 @@ class Search extends Component {
               options={[
                 { name: "All providers", value: "All" },
                 { name: "Substance use", value: "SA" },
-                { name: "Mental health", value: "MH" }
+                { name: "Mental health", value: "MH" },
+                { name: "I'm not sure", value: "All" }
               ]}
             />
           </div>
@@ -57,15 +58,15 @@ class Search extends Component {
               value={this.props.query.payment}
               onChange={this.props.handleInputChange}
               options={[
-                { name: "All payments" },
-                { name: "IHS/Tribal/Urban funds" },
+                { name: "All payment types" },
+                { name: "No payment accepted (free treatment for all clients)" },
+                { name: "Cash or self-payment" },
                 { name: "Medicare" },
                 { name: "Medicaid" },
+                { name: "State-financed health insurance" },
                 { name: "Military insurance" },
-                { name: "No payment accepted" },
                 { name: "Private health insurance" },
-                { name: "Cash or self-payment" },
-                { name: "State-financed health insurance" }
+                { name: "IHS/Tribal/Urban funds" }
               ]}
             />
           </div>
