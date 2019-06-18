@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import * as API from "../utils/api";
-import NoResults from "./NoResults";
-import Card from "./Card";
-import Pagination from "./Pagination";
-import Filter from "./Filter";
-import MapContainer from "./MapContainer";
+import React, { Component } from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import axios from 'axios';
+import API from '../utils/API';
+import NoResults from './NoResults';
+import Card from './Card';
+import Pagination from './Pagination';
+import Filter from './Filter';
+import MapContainer from './MapContainer';
 
 class Results extends Component {
   state = {
@@ -26,12 +27,24 @@ class Results extends Component {
   }
 
   updateLocations = query => {
-    API.getAll(query).then(locations => {
-      this.setState({
-        count: locations.length,
-        locations: locations.slice(0, 10)
+    const params = new URLSearchParams();
+    params.append('sType', 'SA');
+    params.append('sAddr', '38.0685423,-78.48401660000002');
+    params.append('pageSize', 10);
+    params.append('page', 1);
+    params.append('sort', 0);
+    axios
+      .post('http://localhost:9011/locator/listing', params)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          count: response.data.recordCount,
+          locations: response.data.rows
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-    });
   };
 
   render() {
@@ -42,7 +55,7 @@ class Results extends Component {
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
             <div css={tw`lg:flex lg:justify-between lg:items-baseline mb-6`}>
               <h1 css={tw`mb-2 lg:mb-0`}>
-                Results{" "}
+                Results{' '}
                 <span css={tw`text-lg text-gray-600 font-light`}>
                   Treatment providers near you
                 </span>

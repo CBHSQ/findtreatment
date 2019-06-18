@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import HelpLine from "./HelpLine";
-import Banner from "./Banner";
-import Nav from "./Nav";
-import Home from "./Home";
-import Results from "./Results";
-import Details from "./Details";
-import Footer from "./Footer";
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import HelpLine from './HelpLine';
+import Banner from './Banner';
+import Nav from './Nav';
+import Home from './Home';
+import Results from './Results';
+import Details from './Details';
+import Footer from './Footer';
 
 class App extends Component {
   state = {
     query: {
-      location: "",
-      typeFacility: "All",
-      setting: "",
-      payment: "",
-      age: "",
-      type: ""
+      location: '',
+      typeFacility: 'All',
+      setting: '',
+      payment: '',
+      age: '',
+      type: ''
     }
   };
 
   handleInputChange = e => {
     const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({

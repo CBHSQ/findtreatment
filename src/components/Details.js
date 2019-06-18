@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { Component } from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPhone,
   faExternalLinkAlt,
   faFlag,
   faPrint
-} from "@fortawesome/free-solid-svg-icons";
-import * as API from "../utils/api";
-import MapContainer from "./MapContainer";
+} from '@fortawesome/free-solid-svg-icons';
+import MapContainer from './MapContainer';
 
 class Details extends Component {
   state = {
@@ -20,12 +19,6 @@ class Details extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.providerId;
-
-    API.getDetails(id).then(provider => {
-      this.setState({
-        provider: provider[0]
-      });
-    });
   }
 
   render() {
@@ -44,7 +37,7 @@ class Details extends Component {
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
               <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
               <p css={tw`mb-2 text-gray-700 italic`}>
-                Call hours:{" "}
+                Call hours:{' '}
                 <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
               </p>
               <div css={tw`lg:flex items-start`}>
@@ -83,7 +76,7 @@ class Details extends Component {
                 <ul
                   css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
                 >
-                  {service.f3.split("; ").map((item, index) => (
+                  {service.f3.split('; ').map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
                 </ul>
@@ -97,12 +90,12 @@ class Details extends Component {
                 <MapContainer />
               </div>
               <div css={tw`text-gray-600`}>
-                {this.state.provider.street1},{" "}
+                {this.state.provider.street1},{' '}
                 {this.state.provider.street2
-                  ? this.state.provider.street2 + ", "
-                  : ""}
+                  ? this.state.provider.street2 + ', '
+                  : ''}
                 <br />
-                {this.state.provider.city}, {this.state.provider.state}{" "}
+                {this.state.provider.city}, {this.state.provider.state}{' '}
                 {this.state.provider.zip}
               </div>
             </div>
