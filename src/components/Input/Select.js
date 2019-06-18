@@ -1,6 +1,6 @@
-import React from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
+import React from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 const Select = props => {
   return (

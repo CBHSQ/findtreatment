@@ -26,26 +26,24 @@ class Results extends Component {
     }
   }
 
-  updateLocations = query => {
+  async updateLocations(query) {
     const params = new URLSearchParams();
-    params.append('sType', 'SA');
+
+    params.append('sType', query.typeFacility);
     params.append('sAddr', '38.0685423,-78.48401660000002');
     params.append('pageSize', 10);
     params.append('page', 1);
     params.append('sort', 0);
-    axios
-      .post('http://localhost:9011/locator/listing', params)
-      .then(response => {
-        console.log(response);
-        this.setState({
-          count: response.data.recordCount,
-          locations: response.data.rows
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+
+    let data = await API.post('/listing', params);
+    data = data.data;
+
+    this.setState({
+      ...this.state,
+      count: data.recordCount,
+      locations: data.rows
+    });
+  }
 
   render() {
     const { count, locations } = this.state;

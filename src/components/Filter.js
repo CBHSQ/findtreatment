@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { Select } from "./Input";
+import React, { Component } from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { Select } from './Input';
 
 class Filter extends Component {
   state = {
@@ -43,10 +43,10 @@ class Filter extends Component {
             value={this.props.query.typeFacility}
             onChange={this.props.handleInputChange}
             options={[
-              { name: "All providers", value: "All" },
-              { name: "Substance use", value: "SA" },
-              { name: "Mental health", value: "MH" },
-              { name: "I'm not sure", value: "All" }
+              { name: 'All providers', value: 'BOTH' },
+              { name: 'Substance use', value: 'SA' },
+              { name: 'Mental health', value: 'MH' },
+              { name: "I'm not sure", value: 'BOTH' }
             ]}
           />
         </div>
@@ -57,10 +57,10 @@ class Filter extends Component {
             value={this.props.query.setting}
             onChange={this.props.handleInputChange}
             options={[
-              { name: "All settings" },
-              { name: "Hospital inpatient" },
-              { name: "Outpatient" },
-              { name: "Residential" }
+              { name: 'All settings' },
+              { name: 'Hospital inpatient' },
+              { name: 'Outpatient' },
+              { name: 'Residential' }
             ]}
           />
         </div>
@@ -71,16 +71,16 @@ class Filter extends Component {
             value={this.props.query.payment}
             onChange={this.props.handleInputChange}
             options={[
-              { name: "All payment types" },
-              { name: "No payment accepted (free treatment for all clients)" },
-              { name: "Cash or self-payment" },
-              { name: "Medicare" },
-              { name: "Medicaid" },
-              { name: "State-financed health insurance" },
-              { name: "Military insurance" },
-              { name: "Private health insurance" },
-              { name: "IHS/Tribal/Urban funds" },
-              { name: "I'm not sure"}
+              { name: 'All payment types' },
+              { name: 'No payment accepted (free treatment for all clients)' },
+              { name: 'Cash or self-payment' },
+              { name: 'Medicare' },
+              { name: 'Medicaid' },
+              { name: 'State-financed health insurance' },
+              { name: 'Military insurance' },
+              { name: 'Private health insurance' },
+              { name: 'IHS/Tribal/Urban funds' },
+              { name: "I'm not sure" }
             ]}
           />
         </div>
@@ -93,9 +93,9 @@ class Filter extends Component {
                 value={this.props.query.type}
                 onChange={this.props.handleInputChange}
                 options={[
-                  { name: "All types" },
-                  { name: "Detoxification" },
-                  { name: "Substance use tretament" }
+                  { name: 'All types' },
+                  { name: 'Detoxification' },
+                  { name: 'Substance use tretament' }
                 ]}
               />
             </div>
@@ -106,10 +106,10 @@ class Filter extends Component {
                 value={this.props.query.age}
                 onChange={this.props.handleInputChange}
                 options={[
-                  { name: "All age groups" },
-                  { name: "Adults" },
-                  { name: "Children/adolescents" },
-                  { name: "Young adults" }
+                  { name: 'All age groups' },
+                  { name: 'Adults' },
+                  { name: 'Children/adolescents' },
+                  { name: 'Young adults' }
                 ]}
               />
             </div>
@@ -120,7 +120,7 @@ class Filter extends Component {
           css={tw`mb-6`}
           onClick={this.toggleHidden}
         >
-          {this.state.isHidden ? "More" : "Less"} filters
+          {this.state.isHidden ? 'More' : 'Less'} filters
           <FontAwesomeIcon
             icon={this.state.isHidden ? faAngleDown : faAngleUp}
             css={tw`text-blue-500 ml-1`}

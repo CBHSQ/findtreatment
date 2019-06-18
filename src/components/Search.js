@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { Select } from "./Input";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { Select } from './Input';
 
 class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.history.push({
-      pathname: "/results"
+      pathname: '/results'
     });
   };
 
@@ -44,10 +44,10 @@ class Search extends Component {
               value={this.props.query.typeFacility}
               onChange={this.props.handleInputChange}
               options={[
-                { name: "All providers", value: "All" },
-                { name: "Substance use", value: "SA" },
-                { name: "Mental health", value: "MH" },
-                { name: "I'm not sure", value: "All" }
+                { name: 'All providers', value: 'BOTH' },
+                { name: 'Substance use', value: 'SA' },
+                { name: 'Mental health', value: 'MH' },
+                { name: "I'm not sure", value: 'BOTH' }
               ]}
             />
           </div>
@@ -58,15 +58,17 @@ class Search extends Component {
               value={this.props.query.payment}
               onChange={this.props.handleInputChange}
               options={[
-                { name: "All payment types" },
-                { name: "No payment accepted (free treatment for all clients)" },
-                { name: "Cash or self-payment" },
-                { name: "Medicare" },
-                { name: "Medicaid" },
-                { name: "State-financed health insurance" },
-                { name: "Military insurance" },
-                { name: "Private health insurance" },
-                { name: "IHS/Tribal/Urban funds" }
+                { name: 'All payment types' },
+                {
+                  name: 'No payment accepted (free treatment for all clients)'
+                },
+                { name: 'Cash or self-payment' },
+                { name: 'Medicare' },
+                { name: 'Medicaid' },
+                { name: 'State-financed health insurance' },
+                { name: 'Military insurance' },
+                { name: 'Private health insurance' },
+                { name: 'IHS/Tribal/Urban funds' }
               ]}
             />
           </div>
