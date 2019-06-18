@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import axios from 'axios';
-import API from '../utils/API';
+import API from '../utils/api';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -39,7 +38,6 @@ class Results extends Component {
     data = data.data;
 
     this.setState({
-      ...this.state,
       count: data.recordCount,
       locations: data.rows
     });
