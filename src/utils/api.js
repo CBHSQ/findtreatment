@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://bhsis01.eagletechva.com/locator/',
+  baseURL: 'http://localhost:9011/locator/',
   responseType: 'json'
 });

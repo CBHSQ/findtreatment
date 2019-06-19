@@ -13,13 +13,10 @@ import Footer from './Footer';
 class App extends Component {
   state = {
     query: {
-      location: '',
-      typeFacility: 'All',
-      setting: '',
-      payment: '',
-      age: '',
-      type: ''
-    }
+      sAddr: '',
+      sType: 'BOTH'
+    },
+    location: ''
   };
 
   handleInputChange = e => {
@@ -32,6 +29,16 @@ class App extends Component {
         ...this.state.query,
         [name]: value
       }
+    });
+  };
+
+  handleLocationChange = suggest => {
+    this.setState({
+      query: {
+        ...this.state.query,
+        sAddr: `${suggest.location.lat}, ${suggest.location.lng}`
+      },
+      location: suggest.description
     });
   };
 
@@ -49,6 +56,7 @@ class App extends Component {
               <Home
                 query={this.state.query}
                 handleInputChange={this.handleInputChange}
+                handleLocationChange={this.handleLocationChange}
               />
             )}
           />
@@ -57,7 +65,9 @@ class App extends Component {
             render={props => (
               <Results
                 query={this.state.query}
+                location={this.state.location}
                 handleInputChange={this.handleInputChange}
+                handleLocationChange={this.handleLocationChange}
               />
             )}
           />

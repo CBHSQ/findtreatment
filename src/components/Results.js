@@ -26,21 +26,29 @@ class Results extends Component {
   }
 
   async updateLocations(query) {
-    const params = new URLSearchParams();
+    try {
+      const params = new URLSearchParams();
 
-    params.append('sType', query.typeFacility);
-    params.append('sAddr', '38.0685423,-78.48401660000002');
-    params.append('pageSize', 10);
-    params.append('page', 1);
-    params.append('sort', 0);
+      params.append('sType', query.sType);
+      params.append('sAddr', query.sAddr);
+      params.append('pageSize', 10);
+      params.append('page', 1);
+      params.append('sort', 0);
+      params.append('page', 1);
+      params.append('limitType', 2);
+      params.append('limitValue', 16093.44);
 
-    let data = await API.post('/listing', params);
-    data = data.data;
+      const res = await API.post('/listing', params);
 
-    this.setState({
-      count: data.recordCount,
-      locations: data.rows
-    });
+      if (res.data) {
+        this.setState({
+          count: res.data.recordCount,
+          locations: res.data.rows
+        });
+      }
+    } catch (error) {
+      console.error(`foo: ${error}`);
+    }
   }
 
   render() {
@@ -78,15 +86,14 @@ class Results extends Component {
             <Filter
               css={tw`mb-6`}
               query={this.props.query}
+              location={this.props.location}
               handleInputChange={this.props.handleInputChange}
-              updateLocations={this.updateLocations}
+              handleLocationChange={this.props.handleLocationChange}
             />
 
             {locations.length > 0 && (
               <div css={tw`pt-6 border-t`}>
-                <div css={tw`relative h-64 w-full mb-6`}>
-                  <MapContainer />
-                </div>
+                <div css={tw`relative h-64 w-full mb-6`}></div>
               </div>
             )}
           </div>

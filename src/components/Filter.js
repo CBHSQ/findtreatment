@@ -3,7 +3,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import { Select } from './Input';
+import { Location, Select } from './Input';
 
 class Filter extends Component {
   state = {
@@ -20,33 +20,21 @@ class Filter extends Component {
     return (
       <>
         <div css={tw`w-full mb-6`}>
-          <label
-            css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-            htmlFor="search-zip"
-          >
-            Location
-          </label>
-          <input
-            css={tw`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
-            id="search-zip"
-            type="text"
-            placeholder="City, state, or postal code"
-            name="location"
-            value={this.props.query.location}
-            onChange={this.props.handleInputChange}
+          <Location
+            handleLocationChange={this.props.handleLocationChange}
+            location={this.props.location}
           />
         </div>
         <div css={tw`w-full mb-6`}>
           <Select
             label="Service type"
-            name="typeFacility"
-            value={this.props.query.typeFacility}
+            name="sType"
+            value={this.props.query.sType}
             onChange={this.props.handleInputChange}
             options={[
               { name: 'All providers', value: 'BOTH' },
               { name: 'Substance use', value: 'SA' },
-              { name: 'Mental health', value: 'MH' },
-              { name: "I'm not sure", value: 'BOTH' }
+              { name: 'Mental health', value: 'MH' }
             ]}
           />
         </div>

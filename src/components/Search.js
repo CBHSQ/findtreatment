@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { Select } from './Input';
+import { Location, Select } from './Input';
 
 class Search extends Component {
   handleSubmit = e => {
@@ -21,33 +21,18 @@ class Search extends Component {
       >
         <div css={tw`flex flex-wrap -mx-3 mb-2`}>
           <div css={tw`w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
-            <label
-              css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-              htmlFor="search-zip"
-            >
-              Location
-            </label>
-            <input
-              css={tw`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
-              id="search-zip"
-              type="text"
-              placeholder="City, state, or postal code"
-              name="location"
-              value={this.props.query.location}
-              onChange={this.props.handleInputChange}
-            />
+            <Location handleLocationChange={this.props.handleLocationChange} />
           </div>
           <div css={tw`w-full lg:w-1/4 px-3 mb-6 lg:mb-0`}>
             <Select
               label="Service type"
-              name="typeFacility"
-              value={this.props.query.typeFacility}
+              name="sType"
+              value={this.props.query.sType}
               onChange={this.props.handleInputChange}
               options={[
                 { name: 'All providers', value: 'BOTH' },
                 { name: 'Substance use', value: 'SA' },
-                { name: 'Mental health', value: 'MH' },
-                { name: "I'm not sure", value: 'BOTH' }
+                { name: 'Mental health', value: 'MH' }
               ]}
             />
           </div>
