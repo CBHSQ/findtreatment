@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'http://localhost:9011/locator/',
+  baseURL: process.env.REACT_APP_API_URL,
   responseType: 'json'
 });

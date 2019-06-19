@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import API from '../utils/api';
+import { connect } from 'react-redux';
+import { handleReceiveLocations } from '../actions/locations';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -9,50 +10,22 @@ import Filter from './Filter';
 import MapContainer from './MapContainer';
 
 class Results extends Component {
-  state = {
-    count: 0,
-    locations: []
-  };
-
   componentDidMount() {
-    this.updateLocations(this.props.query);
+    const { dispatch } = this.props;
+    dispatch(handleReceiveLocations(this.props.query));
   }
 
   componentDidUpdate(prevProps) {
+    const { dispatch } = this.props;
     window.scrollTo(0, 0);
     if (this.props.query !== prevProps.query) {
-      this.updateLocations(this.props.query);
-    }
-  }
-
-  async updateLocations(query) {
-    try {
-      const params = new URLSearchParams();
-
-      params.append('sType', query.sType);
-      params.append('sAddr', query.sAddr);
-      params.append('pageSize', 10);
-      params.append('page', 1);
-      params.append('sort', 0);
-      params.append('page', 1);
-      params.append('limitType', 2);
-      params.append('limitValue', 16093.44);
-
-      const res = await API.post('/listing', params);
-
-      if (res.data) {
-        this.setState({
-          count: res.data.recordCount,
-          locations: res.data.rows
-        });
-      }
-    } catch (error) {
-      console.error(`foo: ${error}`);
+      dispatch(handleReceiveLocations(this.props.query));
     }
   }
 
   render() {
-    const { count, locations } = this.state;
+    const hasResults = this.props.rows && this.props.rows.length > 0;
+
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
@@ -64,22 +37,22 @@ class Results extends Component {
                   Treatment providers near you
                 </span>
               </h1>
-              {locations.length > 0 && (
+              {hasResults && (
                 <span css={tw`block text-gray-500`}>
-                  Showing 1-{locations.length} of {count}
+                  Showing 1-{this.props.rows.length} of {this.props.recordCount}
                 </span>
               )}
             </div>
             <ul css={tw``}>
-              {locations.length > 0 ? (
-                locations.map(result => (
+              {hasResults ? (
+                this.props.rows.map(result => (
                   <Card key={result.frid} location={result} />
                 ))
               ) : (
                 <NoResults />
               )}
             </ul>
-            {locations.length > 0 && <Pagination />}
+            {hasResults && <Pagination />}
           </div>
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
@@ -91,7 +64,7 @@ class Results extends Component {
               handleLocationChange={this.props.handleLocationChange}
             />
 
-            {locations.length > 0 && (
+            {hasResults && (
               <div css={tw`pt-6 border-t`}>
                 <div css={tw`relative h-64 w-full mb-6`}></div>
               </div>
@@ -103,4 +76,11 @@ class Results extends Component {
   }
 }
 
-export default Results;
+const mapStateToProps = ({ locations }) => {
+  return {
+    recordCount: locations.recordCount,
+    rows: locations.rows
+  };
+};
+
+export default connect(mapStateToProps)(Results);
