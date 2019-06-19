@@ -30,29 +30,38 @@ class Results extends Component {
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
-            <div css={tw`lg:flex lg:justify-between lg:items-baseline mb-6`}>
-              <h1 css={tw`mb-2 lg:mb-0`}>
-                Results{' '}
-                <span css={tw`text-lg text-gray-600 font-light`}>
-                  Treatment providers near you
-                </span>
-              </h1>
-              {hasResults && (
-                <span css={tw`block text-gray-500`}>
-                  Showing 1-{this.props.rows.length} of {this.props.recordCount}
-                </span>
-              )}
-            </div>
-            <ul css={tw``}>
-              {hasResults ? (
-                this.props.rows.map(result => (
-                  <Card key={result.frid} location={result} />
-                ))
-              ) : (
-                <NoResults />
-              )}
-            </ul>
-            {hasResults && <Pagination />}
+            {this.props.loading ? (
+              <div css={tw`text-center py-6 italic`}>Loading results...</div>
+            ) : (
+              <div>
+                <div
+                  css={tw`lg:flex lg:justify-between lg:items-baseline mb-6`}
+                >
+                  <h1 css={tw`mb-2 lg:mb-0`}>
+                    Results{' '}
+                    <span css={tw`text-lg text-gray-600 font-light`}>
+                      Treatment providers near you
+                    </span>
+                  </h1>
+                  {hasResults && (
+                    <span css={tw`block text-gray-500`}>
+                      Showing 1-{this.props.rows.length} of{' '}
+                      {this.props.recordCount}
+                    </span>
+                  )}
+                </div>
+                <ul css={tw``}>
+                  {hasResults ? (
+                    this.props.rows.map(result => (
+                      <Card key={result.frid} location={result} />
+                    ))
+                  ) : (
+                    <NoResults />
+                  )}
+                </ul>
+                {hasResults && <Pagination />}
+              </div>
+            )}
           </div>
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
@@ -78,8 +87,9 @@ class Results extends Component {
 
 const mapStateToProps = ({ locations }) => {
   return {
-    recordCount: locations.recordCount,
-    rows: locations.rows
+    loading: locations.loading,
+    recordCount: locations.data.recordCount,
+    rows: locations.data.rows
   };
 };
 
