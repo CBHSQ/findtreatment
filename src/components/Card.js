@@ -1,21 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMapMarkerAlt,
   faPhone,
   faExternalLinkAlt
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 const Card = props => {
   return (
     <li css={tw`shadow border rounded p-6 mb-6`}>
       <div css={tw`flex justify-between`}>
         <Link
-          to={`/details/${props.location.frid}`}
           css={tw`text-blue-700 hover:text-blue-800`}
+          to={{
+            pathname: '/details',
+            state: {
+              ...props.location
+            }
+          }}
         >
           <h2 css={tw`font-bold mb-2`}>
             {props.location.name1}
@@ -30,17 +35,17 @@ const Card = props => {
       </div>
       <div css={tw`text-gray-600 mb-4`}>
         <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
-        {props.location.street1},{" "}
-        {props.location.street2 ? props.location.street2 + ", " : ""}
+        {props.location.street1},{' '}
+        {props.location.street2 ? props.location.street2 + ', ' : ''}
         {props.location.city}, {props.location.state} {props.location.zip}
       </div>
       <div css={tw`mb-4`}>
         <p>
-          Provider type:{" "}
+          Provider type:{' '}
           <span css={tw`font-semibold`}>
-            {props.location.typeFacility === "SA"
-              ? "Substance use"
-              : "Mental health"}
+            {props.location.typeFacility === 'SA'
+              ? 'Substance use'
+              : 'Mental health'}
           </span>
         </p>
         <p>

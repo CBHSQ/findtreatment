@@ -7,7 +7,6 @@ import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
 import Filter from './Filter';
-import MapContainer from './MapContainer';
 
 class Results extends Component {
   componentDidMount() {

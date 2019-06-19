@@ -71,7 +71,7 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/details/:providerId" component={Details} />
+          <Route path="/details" component={Details} />
         </Switch>
         <Footer />
       </div>
