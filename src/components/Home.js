@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Search from './Form/Search';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { handleReceiveLocations } from '../actions/locations';
+import Search from './Search';
 
 class Home extends Component {
+  submit = values => {
+    const { dispatch } = this.props;
+    dispatch(handleReceiveLocations(values));
+    this.props.history.push({
+      pathname: '/results'
+    });
+  };
+
   render() {
     const content = [
       {
@@ -36,7 +47,7 @@ class Home extends Component {
             Quickly find providers in your area based on your specific needs
           </span>
         </div>
-        <Search />
+        <Search layout="Home" />
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
@@ -71,4 +82,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(connect()(Home));

@@ -1,15 +1,11 @@
 import React from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import Label from './Label';
 
 const Select = ({ input, name, label, options }) => (
   <div>
-    <label
-      htmlFor={name}
-      css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-    >
-      {label}
-    </label>
+    <Label name={name} label={label} />
     <div css={tw`relative`}>
       <select name={name} {...input} className="input-select">
         {options.map(option => (

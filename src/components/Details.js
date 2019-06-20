@@ -12,17 +12,25 @@ import MapContainer from './MapContainer';
 
 class Details extends Component {
   render() {
+    const {
+      name1,
+      name2,
+      street1,
+      street2,
+      city,
+      state,
+      zip,
+      services,
+      phone,
+      website
+    } = this.props.location.state;
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
             <h1 css={tw`font-bold mb-6`}>
-              {this.props.location.state.name1}
-              {this.props.location.state.name2 && (
-                <span css={tw`block text-lg font-light`}>
-                  {this.props.location.state.name2}
-                </span>
-              )}
+              {name1}
+              {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
               <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
@@ -39,15 +47,15 @@ class Details extends Component {
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <a href={`tel:${this.props.location.state.phone}`}>
+                    <a href={`tel:${phone}`}>
                       <span css={tw`font-light`}>Schedule Appointment | </span>
-                      {this.props.location.state.phone}
+                      {phone}
                     </a>
                   </button>
                 </div>
-                {this.props.location.state.website && (
+                {website && (
                   <a
-                    href={this.props.location.state.website}
+                    href={website}
                     css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
                   >
                     <FontAwesomeIcon
@@ -60,7 +68,7 @@ class Details extends Component {
               </div>
             </div>
             <h2 css={tw`mb-2 font-semibold`}>Services</h2>
-            {this.props.location.state.services.map(service => (
+            {services.map(service => (
               <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
                 <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
                 <ul
@@ -80,14 +88,9 @@ class Details extends Component {
                 <MapContainer />
               </div>
               <div css={tw`text-gray-600`}>
-                {this.props.location.state.street1},{' '}
-                {this.props.location.state.street2
-                  ? this.props.location.state.street2 + ', '
-                  : ''}
+                {street1}, {street2 ? street2 + ', ' : ''}
                 <br />
-                {this.props.location.state.city},{' '}
-                {this.props.location.state.state}{' '}
-                {this.props.location.state.zip}
+                {city}, {state} {zip}
               </div>
             </div>
             <button

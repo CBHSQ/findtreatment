@@ -4,7 +4,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Location, Select } from '../Input';
 
-let SearchForm = props => {
+let SearchHome = props => {
   const { handleSubmit } = props;
   return (
     <form css={tw`lg:max-w-5xl mx-auto mb-12`} onSubmit={handleSubmit}>
@@ -42,19 +42,13 @@ let SearchForm = props => {
   );
 };
 
-SearchForm = reduxForm({
+SearchHome = reduxForm({
   form: 'search',
   initialValues: {
     type: 'BOTH',
-    location: {
-      location: {
-        lat: '',
-        lng: ''
-      }
-    },
     distance: 16093.4
   },
   destroyOnUnmount: false
-})(SearchForm);
+})(SearchHome);
 
-export default SearchForm;
+export default SearchHome;

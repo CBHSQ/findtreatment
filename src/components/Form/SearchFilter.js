@@ -4,7 +4,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Location, Select } from '../Input';
 
-let FilterForm = props => {
+let SearchFilter = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -44,7 +44,7 @@ let FilterForm = props => {
       </div>
       <div css={tw`w-full mb-6`}>
         <button
-          css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
+          css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
           type="submit"
         >
           Update providers
@@ -54,19 +54,13 @@ let FilterForm = props => {
   );
 };
 
-FilterForm = reduxForm({
+SearchFilter = reduxForm({
   form: 'search',
   initialValues: {
     type: 'BOTH',
-    location: {
-      location: {
-        lat: '',
-        lng: ''
-      }
-    },
     distance: 16093.4
   },
   destroyOnUnmount: false
-})(FilterForm);
+})(SearchFilter);
 
-export default FilterForm;
+export default SearchFilter;

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
-import Filter from './Form/Filter';
+import Search from './Search';
+import MapContainer from './MapContainer';
 
 class Results extends Component {
   componentDidUpdate() {
@@ -13,13 +14,14 @@ class Results extends Component {
   }
 
   render() {
-    const hasResults = this.props.rows && this.props.rows.length > 0;
+    const { loading, rows, page, totalPages, recordCount } = this.props;
+    const hasResults = rows && rows.length > 0;
 
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
-            {this.props.loading ? (
+            {loading ? (
               <div css={tw`text-center py-6 italic`}>Loading results...</div>
             ) : (
               <div>
@@ -34,37 +36,33 @@ class Results extends Component {
                   </h1>
                   {hasResults && (
                     <span css={tw`block text-gray-500`}>
-                      Showing page {this.props.page} of {this.props.totalPages}{' '}
-                      <span css={tw`italic`}>
-                        ({this.props.recordCount} results)
-                      </span>
+                      Showing page {this.props.page} of {totalPages}{' '}
+                      <span css={tw`italic`}>({recordCount} results)</span>
                     </span>
                   )}
                 </div>
                 <ul css={tw``}>
                   {hasResults ? (
-                    this.props.rows.map(result => (
-                      <Card key={result.frid} location={result} />
-                    ))
+                    rows.map(result => <Card key={result.frid} {...result} />)
                   ) : (
                     <NoResults />
                   )}
                 </ul>
                 {hasResults && (
-                  <Pagination
-                    page={this.props.page}
-                    totalPages={this.props.totalPages}
-                  />
+                  <Pagination page={page} totalPages={totalPages} />
                 )}
               </div>
             )}
           </div>
-          <div css={tw`w-full lg:w-2/5 px-6`}>
+          <div css={tw`w-full lg:w-2/5 px-6 mb-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
-            <Filter css={tw`mb-6`} />
+            <Search layout="Filter" css={tw`mb-6`} />
+
             {hasResults && (
               <div css={tw`pt-6 border-t`}>
-                <div css={tw`relative h-64 w-full mb-6`}></div>
+                <div css={tw`relative h-64 w-full mb-6`}>
+                  <MapContainer />
+                </div>
               </div>
             )}
           </div>
@@ -75,15 +73,10 @@ class Results extends Component {
 }
 
 const mapStateToProps = ({ locations }) => {
-  if (locations.data) {
-    return {
-      loading: locations.loading,
-      page: locations.data.page,
-      recordCount: locations.data.recordCount,
-      rows: locations.data.rows,
-      totalPages: locations.data.totalPages
-    };
-  }
+  return {
+    loading: locations.loading,
+    ...locations.data
+  };
 };
 
 export default connect(mapStateToProps)(Results);

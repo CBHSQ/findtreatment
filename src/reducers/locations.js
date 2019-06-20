@@ -4,10 +4,6 @@ import {
 } from '../actions/locations';
 
 const initialState = {
-  data: {
-    recordCount: 0,
-    rows: []
-  },
   loading: false
 };
 

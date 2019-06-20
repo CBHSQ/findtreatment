@@ -10,8 +10,6 @@ class Pagination extends Component {
   handlePageClick = data => {
     const { dispatch, values } = this.props;
 
-    console.log(data, values);
-
     dispatch(
       handleReceiveLocations({
         ...values,
@@ -34,17 +32,14 @@ class Pagination extends Component {
           onPageChange={this.handlePageClick}
           forcePage={this.props.page - 1}
           containerClassName={'flex border rounded'}
-          pageLinkClassName={
-            'block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2'
-          }
-          activeLinkClassName={
-            'block text-white bg-blue-500 border-r border-blue-500 px-3 py-2'
-          }
+          pageClassName={'text-blue-500'}
+          pageLinkClassName={'block border-r px-3 py-2'}
+          activeLinkClassName={'text-white bg-blue-500'}
           previousLinkClassName={
             'block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2'
           }
           nextLinkClassName={
-            'block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2'
+            'block hover:text-white hover:bg-blue-500 text-blue-500 px-3 py-2'
           }
         />
       </div>
