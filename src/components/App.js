@@ -2,75 +2,20 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import HelpLine from './HelpLine';
-import Banner from './Banner';
-import Nav from './Nav';
+import Header from './Header';
 import Home from './Home';
 import Results from './Results';
 import Details from './Details';
 import Footer from './Footer';
 
 class App extends Component {
-  state = {
-    query: {
-      sAddr: '',
-      sType: 'BOTH'
-    },
-    location: ''
-  };
-
-  handleInputChange = e => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      query: {
-        ...this.state.query,
-        [name]: value
-      }
-    });
-  };
-
-  handleLocationChange = suggest => {
-    this.setState({
-      query: {
-        ...this.state.query,
-        sAddr: `${suggest.location.lat}, ${suggest.location.lng}`
-      },
-      location: suggest.description
-    });
-  };
-
   render() {
     return (
       <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
-        <Banner />
-        <HelpLine />
-        <Nav />
+        <Header />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <Home
-                query={this.state.query}
-                handleInputChange={this.handleInputChange}
-                handleLocationChange={this.handleLocationChange}
-              />
-            )}
-          />
-          <Route
-            path="/results"
-            render={props => (
-              <Results
-                query={this.state.query}
-                location={this.state.location}
-                handleInputChange={this.handleInputChange}
-                handleLocationChange={this.handleLocationChange}
-              />
-            )}
-          />
+          <Route exact path="/" component={Home} />
+          <Route path="/results" component={Results} />
           <Route path="/details" component={Details} />
         </Switch>
         <Footer />

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "styled-components/macro";
-import tw from "tailwind.macro";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
 
 class Nav extends Component {
   state = {
@@ -41,7 +41,7 @@ class Nav extends Component {
           </div>
 
           <div
-            className={this.state.isHidden ? "hidden lg:block" : "block"}
+            className={this.state.isHidden ? 'hidden lg:block' : 'block'}
             css={tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
           >
             <div css={tw`text-sm lg:flex-grow`}>

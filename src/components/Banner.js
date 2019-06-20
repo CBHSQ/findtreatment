@@ -1,7 +1,7 @@
-import React from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import flag from "../images/us_flag_small.png";
+import React from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import flag from '../images/us_flag_small.png';
 
 const Banner = () => {
   return (

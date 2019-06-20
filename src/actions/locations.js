@@ -22,11 +22,17 @@ export function handleReceiveLocations(query) {
 
     const params = new URLSearchParams();
 
-    params.append('sType', query.sType);
-    params.append('sAddr', query.sAddr);
+    params.append('sType', query.type);
+    params.append(
+      'sAddr',
+      `${query.location.location.lat}, ${query.location.location.lng}`
+    );
     params.append('pageSize', 10);
     params.append('limitType', 2);
-    params.append('limitValue', 16093.44);
+    params.append('limitValue', query.distance);
+    if (query.page) {
+      params.append('page', query.page);
+    }
 
     return API.post('/listing', params)
       .then(response => {

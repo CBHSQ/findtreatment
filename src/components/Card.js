@@ -41,15 +41,8 @@ const Card = props => {
       </div>
       <div css={tw`mb-4`}>
         <p>
-          Provider type:{' '}
-          <span css={tw`font-semibold`}>
-            {props.location.typeFacility === 'SA'
-              ? 'Substance use'
-              : 'Mental health'}
-          </span>
-        </p>
-        <p>
-          Call hours: <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
+          Type of care:{' '}
+          <span css={tw`font-semibold`}>{props.location.services[0].f3}</span>
         </p>
       </div>
       <div css={tw`lg:flex items-center`}>

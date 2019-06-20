@@ -2,24 +2,14 @@ import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
-import { handleReceiveLocations } from '../actions/locations';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
-import Filter from './Filter';
+import Filter from './Form/Filter';
 
 class Results extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(handleReceiveLocations(this.props.query));
-  }
-
-  componentDidUpdate(prevProps) {
-    const { dispatch } = this.props;
+  componentDidUpdate() {
     window.scrollTo(0, 0);
-    if (this.props.query !== prevProps.query) {
-      dispatch(handleReceiveLocations(this.props.query));
-    }
   }
 
   render() {
@@ -44,8 +34,10 @@ class Results extends Component {
                   </h1>
                   {hasResults && (
                     <span css={tw`block text-gray-500`}>
-                      Showing 1-{this.props.rows.length} of{' '}
-                      {this.props.recordCount}
+                      Showing page {this.props.page} of {this.props.totalPages}{' '}
+                      <span css={tw`italic`}>
+                        ({this.props.recordCount} results)
+                      </span>
                     </span>
                   )}
                 </div>
@@ -58,20 +50,18 @@ class Results extends Component {
                     <NoResults />
                   )}
                 </ul>
-                {hasResults && <Pagination />}
+                {hasResults && (
+                  <Pagination
+                    page={this.props.page}
+                    totalPages={this.props.totalPages}
+                  />
+                )}
               </div>
             )}
           </div>
           <div css={tw`w-full lg:w-2/5 px-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
-            <Filter
-              css={tw`mb-6`}
-              query={this.props.query}
-              location={this.props.location}
-              handleInputChange={this.props.handleInputChange}
-              handleLocationChange={this.props.handleLocationChange}
-            />
-
+            <Filter css={tw`mb-6`} />
             {hasResults && (
               <div css={tw`pt-6 border-t`}>
                 <div css={tw`relative h-64 w-full mb-6`}></div>
@@ -85,11 +75,15 @@ class Results extends Component {
 }
 
 const mapStateToProps = ({ locations }) => {
-  return {
-    loading: locations.loading,
-    recordCount: locations.data.recordCount,
-    rows: locations.data.rows
-  };
+  if (locations.data) {
+    return {
+      loading: locations.loading,
+      page: locations.data.page,
+      recordCount: locations.data.recordCount,
+      rows: locations.data.rows,
+      totalPages: locations.data.totalPages
+    };
+  }
 };
 
 export default connect(mapStateToProps)(Results);

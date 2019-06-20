@@ -16,7 +16,5 @@ module.exports = {
       }
     }
   },
-  variants: {},
-  corePlugins: ['container', 'display', 'fontSize', 'preflight'],
   plugins: []
 };

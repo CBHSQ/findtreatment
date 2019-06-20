@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Search from './Search';
+import Search from './Form/Search';
 
 class Home extends Component {
   render() {
@@ -36,11 +36,7 @@ class Home extends Component {
             Quickly find providers in your area based on your specific needs
           </span>
         </div>
-        <Search
-          query={this.props.query}
-          handleInputChange={this.props.handleInputChange}
-          handleLocationChange={this.props.handleLocationChange}
-        />
+        <Search />
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>

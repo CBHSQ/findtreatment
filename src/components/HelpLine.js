@@ -1,8 +1,8 @@
-import React from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const HelpLine = () => {
   return (
@@ -18,7 +18,7 @@ const HelpLine = () => {
           <FontAwesomeIcon icon={faPhone} css={tw`fill-current w-4 h-4`} />
         </div>
         <div css={tw`py-2 px-2 lg:px-4`}>
-          <strong>Need help now?</strong> Call us{" "}
+          <strong>Need help now?</strong> Call us{' '}
           <span css={tw`font-semibold`}>1-800-662-HELP (4357)</span>
         </div>
       </a>

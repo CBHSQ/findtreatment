@@ -1,37 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Geosuggest from 'react-geosuggest';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
-class Location extends Component {
-  onSuggestSelect = suggest => {
-    if (suggest) {
-      this.props.handleLocationChange(suggest);
-    }
-  };
+const Location = ({ input, name, label, placeholder }) => (
+  <div>
+    <label
+      htmlFor={name}
+      css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
+    >
+      {label}
+    </label>
+    <LocationContainer>
+      <div>
+        <Geosuggest
+          placeholder={placeholder}
+          name={name}
+          initialValue={input.value.label}
+          country="us"
+          types={['(regions)']}
+          placeDetailFields={[]}
+          autoActivateFirstSuggest={true}
+          onSuggestSelect={suggest => {
+            suggest && input.onChange(suggest);
+          }}
+          {...input}
+        />
+      </div>
+    </LocationContainer>
+  </div>
+);
 
-  render() {
-    return (
-      <LocationSearch>
-        <div>
-          <Geosuggest
-            placeholder="City, state, or zip code"
-            country="us"
-            types={['(regions)']}
-            placeDetailFields={[]}
-            autoActivateFirstSuggest={true}
-            id="search-location"
-            label="Location"
-            onSuggestSelect={this.onSuggestSelect}
-            initialValue={this.props.location}
-          />
-        </div>
-      </LocationSearch>
-    );
-  }
-}
-
-const LocationSearch = styled.div`
+const LocationContainer = styled.div`
   .geosuggest {
     ${tw`relative`}
   }
