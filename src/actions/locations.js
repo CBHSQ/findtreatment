@@ -32,7 +32,7 @@ export function handleReceiveLocations(query) {
       })
       .catch(error => {
         throw error;
-        // TODO: Handle network erros
+        // TODO: Handle network errors
       });
   };
 }

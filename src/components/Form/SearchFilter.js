@@ -18,18 +18,6 @@ let SearchFilter = props => {
       </div>
       <div css={tw`w-full mb-6`}>
         <Field
-          name="type"
-          label="Service type"
-          component={Select}
-          options={[
-            { value: 'BOTH', label: 'All providers' },
-            { value: 'SA', label: 'Substance use' },
-            { value: 'MH', label: 'Mental health' }
-          ]}
-        />
-      </div>
-      <div css={tw`w-full mb-6`}>
-        <Field
           name="distance"
           label="Distance"
           component={Select}
@@ -39,6 +27,18 @@ let SearchFilter = props => {
             { value: 40233.6, label: '25 miles' },
             { value: 80467.2, label: '50 miles' },
             { value: 160934, label: '100 miles' }
+          ]}
+        />
+      </div>
+      <div css={tw`w-full mb-6`}>
+        <Field
+          name="type"
+          label="Service type"
+          component={Select}
+          options={[
+            { value: 'BOTH', label: 'All providers' },
+            { value: 'SA', label: 'Substance use' },
+            { value: 'MH', label: 'Mental health' }
           ]}
         />
       </div>

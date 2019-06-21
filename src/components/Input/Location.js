@@ -21,6 +21,10 @@ class Location extends Component {
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
             initialValue={input.value.label}
+            onFocus={() => {
+              input.onChange(null);
+              this._geoSuggest.clear();
+            }}
             onSuggestSelect={suggest => {
               if (!suggest) input.onChange(null);
               input.onChange(suggest);

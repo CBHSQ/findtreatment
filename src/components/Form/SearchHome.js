@@ -7,7 +7,7 @@ import { Location, Select } from '../Input';
 let SearchHome = props => {
   const { handleSubmit } = props;
   return (
-    <form css={tw`lg:max-w-5xl mx-auto mb-12`} onSubmit={handleSubmit}>
+    <form css={tw`lg:max-w-5xl mx-auto mb-12 px-6`} onSubmit={handleSubmit}>
       <div css={tw`flex flex-wrap -mx-3 mb-2`}>
         <div css={tw`w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
           <Field

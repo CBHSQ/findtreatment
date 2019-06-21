@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMapMarkerAlt,
-  faPhone,
-  faExternalLinkAlt
-} from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Card = props => {
   const {
@@ -50,31 +46,39 @@ const Card = props => {
       </div>
       <div css={tw`mb-4`}>
         <p>
-          Type of care: <span css={tw`font-semibold`}>{services[0].f3}</span>
-        </p>
-      </div>
-      <div css={tw`lg:flex items-center`}>
-        <a
-          css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0 justify-center lg:justify-start`}
-          href={`tel:${phone}`}
-        >
-          <FontAwesomeIcon icon={faPhone} css={tw`text-gray-200 mr-2`} />
-          {phone}
-        </a>
-
-        {website && (
-          <a
-            href={website}
-            css={tw`w-full lg:w-auto bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded inline-flex items-center justify-center lg:justify-start`}
-          >
-            <FontAwesomeIcon
-              icon={faExternalLinkAlt}
-              css={tw`text-gray-700 mr-2`}
-            />
-            Visit website
+          <span css={tw`font-semibold`}>Phone:</span>{' '}
+          <a href={`tel:${phone}`} css={tw``}>
+            {phone}
           </a>
+        </p>
+        {website && (
+          <p>
+            <span css={tw`font-semibold`}>Website:</span>{' '}
+            <a href={website} css={tw`text-blue-700 hover:text-blue-800`}>
+              {website}
+            </a>
+          </p>
         )}
       </div>
+      <p css={tw`mb-4`}>
+        <span css={tw`font-semibold`}>Type of care:</span>{' '}
+        <span>{services[0].f3}</span>
+      </p>
+
+      <Link
+        to={{
+          pathname: '/details',
+          state: {
+            ...props
+          }
+        }}
+      >
+        <button
+          css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center justify-center lg:justify-start`}
+        >
+          View provider details
+        </button>
+      </Link>
     </li>
   );
 };
