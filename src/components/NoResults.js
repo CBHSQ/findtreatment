@@ -1,8 +1,8 @@
-import React from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const NoResults = () => {
   return (

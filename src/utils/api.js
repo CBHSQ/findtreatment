@@ -1,30 +1,28 @@
-import { locations, planets } from "./_DATA.js";
+import axios from 'axios';
 
-export function getAll(query) {
-  return new Promise((res, rej) => {
-    res(filterResults(query, locations.rows));
-  });
-}
+export default axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  responseType: 'json'
+});
 
-export function getDetails(id) {
-  return new Promise((res, rej) => {
-    res(locations.rows.filter(provider => provider.frid === id));
-  });
-}
+export const buildParams = query => {
+  const { type, location, distance, page, language, ...rest } = query;
+  const codes = Object.values(rest);
+  const hasCodes = codes.length >= 1;
+  const params = new URLSearchParams();
 
-const filterResults = (query, locations) => {
-  if (planets.includes(query.location.toLowerCase())) {
-    return [];
-  }
+  params.append('sType', 'BOTH');
+  hasCodes && params.append('sCodes', codes.toString());
+  language && params.append('sLanguages', language);
+  params.append(
+    'sAddr',
+    location && `${location.location.lat}, ${location.location.lng}`
+  );
+  params.append('limitType', 2);
+  params.append('limitValue', distance);
+  params.append('pageSize', 10);
+  params.append('page', page || 1);
+  params.append('sort', 0);
 
-  return locations.filter(location => {
-    if (query.typeFacility === "All") {
-      return true;
-    }
-
-    if (query.typeFacility !== location.typeFacility) {
-      return false;
-    }
-    return true;
-  });
+  return params;
 };

@@ -1,15 +1,15 @@
-import React from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
   faTwitterSquare,
   faYoutubeSquare
-} from "@fortawesome/free-brands-svg-icons";
-import { ReactComponent as LogoSAMHSA } from "../images/logo-samhsa.svg";
-import { ReactComponent as LogoHHS } from "../images/logo-hhs.svg";
+} from '@fortawesome/free-brands-svg-icons';
+import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
+import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
 const Footer = () => {
   return (

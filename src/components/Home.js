@@ -1,30 +1,41 @@
-import React, { Component } from "react";
-import "styled-components/macro";
-import tw from "tailwind.macro";
-import Search from "./Search";
+import React, { Component } from 'react';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { handleReceiveLocations } from '../actions/locations';
+import Search from './Search';
 
 class Home extends Component {
+  submit = values => {
+    const { dispatch } = this.props;
+    dispatch(handleReceiveLocations(values));
+    this.props.history.push({
+      pathname: '/results'
+    });
+  };
+
   render() {
     const content = [
       {
-        heading: "Understanding addiction",
+        heading: 'Understanding addiction',
         body:
-          "Substance use and mental health problems are treatable, and help is available."
+          'Substance use and mental health problems are treatable, and help is available.'
       },
       {
-        heading: "Treatment options",
+        heading: 'Treatment options',
         body:
-          "Find out more about different types of treatment and finding a good fit."
+          'Find out more about different types of treatment and finding a good fit.'
       },
       {
-        heading: "Finding a provider",
+        heading: 'Finding a provider',
         body:
-          "Learn how to identify quality treatment, and ask the right questions of providers and insurance companies."
+          'Learn how to identify quality treatment, and ask the right questions of providers and insurance companies.'
       },
       {
-        heading: "Getting to recovery",
+        heading: 'Getting to recovery',
         body:
-          "Know what to expect and how to find support on the road to recovery."
+          'Know what to expect and how to find support on the road to recovery.'
       }
     ];
 
@@ -36,10 +47,7 @@ class Home extends Component {
             Quickly find providers in your area based on your specific needs
           </span>
         </div>
-        <Search
-          query={this.props.query}
-          handleInputChange={this.props.handleInputChange}
-        />
+        <Search layout="Home" />
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
@@ -74,4 +82,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(connect()(Home));
