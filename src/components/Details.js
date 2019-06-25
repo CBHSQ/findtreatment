@@ -34,10 +34,6 @@ class Details extends Component {
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
               <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
-              <p css={tw`mb-2 text-gray-700 italic`}>
-                Call hours:{' '}
-                <span css={tw`font-semibold`}>9:00 AM - 6:00 PM</span>
-              </p>
               <div css={tw`lg:flex items-start`}>
                 <div>
                   <button
