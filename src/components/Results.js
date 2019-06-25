@@ -8,7 +8,7 @@ import Pagination from './Pagination';
 import Search from './Search';
 import MapContainer from './MapContainer';
 
-class Results extends Component {
+export class Results extends Component {
   componentDidUpdate() {
     window.scrollTo(0, 0);
   }
@@ -22,7 +22,12 @@ class Results extends Component {
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
             {loading ? (
-              <div css={tw`text-center py-6 italic`}>Loading results...</div>
+              <div
+                className="results-loading"
+                css={tw`text-center py-6 italic`}
+              >
+                Loading results...
+              </div>
             ) : (
               <div>
                 <div
@@ -73,9 +78,10 @@ class Results extends Component {
 }
 
 const mapStateToProps = ({ locations }) => {
+  const { loading, data } = locations;
   return {
-    loading: locations.loading,
-    ...locations.data
+    loading,
+    ...data
   };
 };
 

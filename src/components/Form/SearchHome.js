@@ -42,7 +42,7 @@ let SearchHome = props => {
   );
 };
 
-SearchHome = reduxForm({
+export default reduxForm({
   form: 'search',
   initialValues: {
     type: 'BOTH',
@@ -50,5 +50,3 @@ SearchHome = reduxForm({
   },
   destroyOnUnmount: false
 })(SearchHome);
-
-export default SearchHome;
