@@ -1,17 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Results } from './Results';
+import ResultsList from './ResultsList';
 import Card from './Card';
 import NoResults from './NoResults';
 
 describe('Results component', () => {
-  window.scrollTo = jest.fn();
-
   it('shows a loading message', () => {
     const props = {
       loading: true
     };
-    const component = shallow(<Results {...props} />);
+    const component = shallow(<ResultsList {...props} />);
     expect(component.find('.results-loading').length).toBe(1);
     expect(component.find(NoResults).length).toBe(0);
     expect(component.find(Card).length).toBe(0);
@@ -30,7 +28,7 @@ describe('Results component', () => {
         }
       ]
     };
-    const component = shallow(<Results {...props} />);
+    const component = shallow(<ResultsList {...props} />);
     expect(component.find('.results-loading').length).toBe(0);
     expect(component.find(NoResults).length).toBe(0);
     expect(component.find(Card).length).toBe(1);
@@ -44,7 +42,7 @@ describe('Results component', () => {
       recordCount: 0,
       rows: []
     };
-    const component = shallow(<Results {...props} />);
+    const component = shallow(<ResultsList {...props} />);
     expect(component.find('.results-loading').length).toBe(0);
     expect(component.find(NoResults).length).toBe(1);
     expect(component.find(Card).length).toBe(0);

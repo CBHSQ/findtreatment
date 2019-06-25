@@ -6,21 +6,27 @@ import ResultsList from './ResultsList';
 import Search from './Search';
 import MapContainer from './MapContainer';
 
-export class Results extends Component {
+class Results extends Component {
   componentDidUpdate() {
     window.scrollTo(0, 0);
   }
 
   render() {
     const { loading, data } = this.props;
-    const { rows } = data;
+    const { rows, page, totalPages, recordCount } = data;
     const hasResults = rows && rows.length > 0;
 
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
-            <ResultsList loading={loading} data={data} />
+            <ResultsList
+              loading={loading}
+              rows={rows}
+              page={page}
+              totalPages={totalPages}
+              recordCount={recordCount}
+            />
           </div>
           <div css={tw`w-full lg:w-2/5 px-6 mb-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>

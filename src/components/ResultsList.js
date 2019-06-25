@@ -7,8 +7,7 @@ import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {
-    const { loading, data } = this.props;
-    const { rows, page, totalPages, recordCount } = data;
+    const { loading, rows, page, totalPages, recordCount } = this.props;
     const hasResults = rows && rows.length > 0;
 
     if (loading) {
