@@ -6,10 +6,13 @@ export default axios.create({
 });
 
 export const buildParams = query => {
+  const { type, location, distance, page, ...rest } = query;
+  const codes = Object.values(rest);
+  const hasCodes = codes.length >= 1;
   const params = new URLSearchParams();
-  const { type, location, distance, page } = query;
 
   params.append('sType', type);
+  hasCodes && params.append('sCodes', codes.toString());
   params.append(
     'sAddr',
     location && `${location.location.lat}, ${location.location.lng}`
@@ -18,6 +21,7 @@ export const buildParams = query => {
   params.append('limitValue', distance);
   params.append('pageSize', 10);
   params.append('page', page || 1);
+  params.append('sort', 0);
 
   return params;
 };

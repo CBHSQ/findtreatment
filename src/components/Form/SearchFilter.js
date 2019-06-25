@@ -5,6 +5,7 @@ import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Location, Select } from '../Input';
+import * as FilterOptions from '../../utils/filters';
 
 export class SearchFilter extends Component {
   state = {
@@ -56,7 +57,34 @@ export class SearchFilter extends Component {
             ]}
           />
         </div>
-        {!this.state.isHidden && <div className="filter-container">Test</div>}
+        {!this.state.isHidden && (
+          <div className="filter-container">
+            <div css={tw`w-full mb-6`}>
+              <Field
+                name="payment"
+                label="Payment options"
+                component={Select}
+                options={FilterOptions.payment}
+              />
+            </div>
+            <div css={tw`w-full mb-6`}>
+              <Field
+                name="age"
+                label="Age"
+                component={Select}
+                options={FilterOptions.age}
+              />
+            </div>
+            <div css={tw`w-full mb-6`}>
+              <Field
+                name="gender"
+                label="Gender"
+                component={Select}
+                options={FilterOptions.gender}
+              />
+            </div>
+          </div>
+        )}
         <button
           className="filter-link"
           css={tw`mb-6`}

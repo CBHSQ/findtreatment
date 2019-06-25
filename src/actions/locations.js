@@ -2,6 +2,7 @@ import API, { buildParams } from '../utils/api';
 
 export const RECEIVE_LOCATIONS_BEGIN = 'RECEIVE_LOCATIONS_BEGIN';
 export const RECEIVE_LOCATIONS_SUCCESS = 'RECEIVE_LOCATIONS_SUCCESS';
+export const RECEIVE_LOCATIONS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
 
 export const receiveLocationsBegin = () => {
   return {
@@ -12,7 +13,13 @@ export const receiveLocationsBegin = () => {
 export const receiveLocationsSucess = data => {
   return {
     type: RECEIVE_LOCATIONS_SUCCESS,
-    data
+    payload: { data }
+  };
+};
+
+export const receiveLocationsFailure = error => {
+  return {
+    type: RECEIVE_LOCATIONS_FAILURE
   };
 };
 
@@ -27,12 +34,11 @@ export function handleReceiveLocations(query) {
         if (response.data) {
           dispatch(receiveLocationsSucess(response.data));
         } else {
-          // TODO: Handle bad/empty response
+          dispatch(receiveLocationsFailure());
         }
       })
       .catch(error => {
-        throw error;
-        // TODO: Handle network errors
+        console.log(error);
       });
   };
 }
