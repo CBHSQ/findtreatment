@@ -3,11 +3,12 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Label from './Label';
 
-const Select = ({ input, name, label, options }) => (
+const Select = ({ input, name, label, plural, hideFirst, options }) => (
   <div>
     <Label name={name} label={label} />
     <div css={tw`relative`}>
       <select name={name} {...input} className="input-select">
+        {!hideFirst && <option value="">All {plural.toLowerCase()}</option>}
         {options.map(option => (
           <option key={option.value} value={option.value}>
             {option.label}

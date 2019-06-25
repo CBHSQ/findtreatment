@@ -2,31 +2,19 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { Location, Select } from '../Input';
+import { Location } from '../Input';
 
 let SearchHome = props => {
   const { handleSubmit } = props;
   return (
-    <form css={tw`lg:max-w-5xl mx-auto mb-12 px-6`} onSubmit={handleSubmit}>
+    <form css={tw`lg:max-w-3xl mx-auto mb-12 px-6`} onSubmit={handleSubmit}>
       <div css={tw`flex flex-wrap -mx-3 mb-2`}>
-        <div css={tw`w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
+        <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
           <Field
             label="Location"
             component={Location}
             name="location"
             placeholder="City, state, or zip code"
-          />
-        </div>
-        <div css={tw`w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
-          <Field
-            name="type"
-            label="Service type"
-            component={Select}
-            options={[
-              { value: 'BOTH', label: 'All providers' },
-              { value: 'SA', label: 'Substance use' },
-              { value: 'MH', label: 'Mental health' }
-            ]}
           />
         </div>
         <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
@@ -45,7 +33,6 @@ let SearchHome = props => {
 export default reduxForm({
   form: 'search',
   initialValues: {
-    type: 'BOTH',
     distance: 16093.4
   },
   destroyOnUnmount: false

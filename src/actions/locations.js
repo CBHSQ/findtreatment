@@ -2,7 +2,7 @@ import API, { buildParams } from '../utils/api';
 
 export const RECEIVE_LOCATIONS_BEGIN = 'RECEIVE_LOCATIONS_BEGIN';
 export const RECEIVE_LOCATIONS_SUCCESS = 'RECEIVE_LOCATIONS_SUCCESS';
-export const RECEIVE_LOCATIONS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
+export const RECEIVE_LOCATIONS_FAILURE = 'RECEIVE_LOCATIONS_FAILURE';
 
 export const receiveLocationsBegin = () => {
   return {

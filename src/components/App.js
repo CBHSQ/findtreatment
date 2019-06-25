@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { connect } from 'react-redux';
+import { handleReceiveLanguages } from '../actions/languages';
 import Header from './Header';
 import Home from './Home';
 import Results from './Results';
@@ -9,6 +11,11 @@ import Details from './Details';
 import Footer from './Footer';
 
 class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(handleReceiveLanguages());
+  }
+
   render() {
     return (
       <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
@@ -24,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

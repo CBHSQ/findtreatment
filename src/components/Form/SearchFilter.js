@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Location, Select } from '../Input';
@@ -19,68 +20,82 @@ export class SearchFilter extends Component {
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, data } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
-        <div css={tw`w-full mb-6`}>
-          <Field
-            label="Location"
-            component={Location}
-            name="location"
-            placeholder="City, state, or zip code"
-          />
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-2/3 px-3 mb-6 md:mb-0">
+            <Field
+              label="Location"
+              component={Location}
+              name="location"
+              placeholder="City, state, or zip code"
+            />
+          </div>
+          <div class="w-full md:w-1/3 px-3">
+            <Field
+              name="distance"
+              label="Distance"
+              hideFirst={true}
+              component={Select}
+              options={[
+                { value: 8046.72, label: '5 miles' },
+                { value: 16093.4, label: '10 miles' },
+                { value: 40233.6, label: '25 miles' },
+                { value: 80467.2, label: '50 miles' },
+                { value: 160934, label: '100 miles' }
+              ]}
+            />
+          </div>
         </div>
         <div css={tw`w-full mb-6`}>
           <Field
-            name="distance"
-            label="Distance"
+            name="payment"
+            label="Payment options"
+            plural="payment options"
             component={Select}
-            options={[
-              { value: 8046.72, label: '5 miles' },
-              { value: 16093.4, label: '10 miles' },
-              { value: 40233.6, label: '25 miles' },
-              { value: 80467.2, label: '50 miles' },
-              { value: 160934, label: '100 miles' }
-            ]}
+            options={FilterOptions.payment}
           />
         </div>
         <div css={tw`w-full mb-6`}>
           <Field
             name="type"
-            label="Service type"
+            label="Type of care"
+            plural="types of care"
             component={Select}
-            options={[
-              { value: 'BOTH', label: 'All providers' },
-              { value: 'SA', label: 'Substance use' },
-              { value: 'MH', label: 'Mental health' }
-            ]}
+            options={FilterOptions.type}
           />
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <Field
+              name="age"
+              label="Age"
+              plural="ages"
+              component={Select}
+              options={FilterOptions.age}
+            />
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <Field
+              name="gender"
+              label="Gender"
+              plural="genders"
+              component={Select}
+              options={FilterOptions.gender}
+            />
+          </div>
         </div>
         {!this.state.isHidden && (
           <div className="filter-container">
             <div css={tw`w-full mb-6`}>
               <Field
-                name="payment"
-                label="Payment options"
+                name="language"
+                label="Language"
+                plural="languages"
                 component={Select}
-                options={FilterOptions.payment}
-              />
-            </div>
-            <div css={tw`w-full mb-6`}>
-              <Field
-                name="age"
-                label="Age"
-                component={Select}
-                options={FilterOptions.age}
-              />
-            </div>
-            <div css={tw`w-full mb-6`}>
-              <Field
-                name="gender"
-                label="Gender"
-                component={Select}
-                options={FilterOptions.gender}
+                options={data}
               />
             </div>
           </div>
@@ -110,6 +125,16 @@ export class SearchFilter extends Component {
   }
 }
 
+const mapStateToProps = ({ languages }) => {
+  console.log(languages);
+  const { loading, data } = languages;
+
+  return {
+    loading,
+    data
+  };
+};
+
 export default reduxForm({
   form: 'search',
   initialValues: {
@@ -117,4 +142,4 @@ export default reduxForm({
     distance: 16093.4
   },
   destroyOnUnmount: false
-})(SearchFilter);
+})(connect(mapStateToProps)(SearchFilter));
