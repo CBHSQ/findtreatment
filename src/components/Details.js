@@ -49,7 +49,7 @@ class Details extends Component {
                     </a>
                   </button>
                 </div>
-                {website && (
+                {website !== 'http://' && (
                   <a
                     href={website}
                     css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}

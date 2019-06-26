@@ -126,7 +126,6 @@ export class SearchFilter extends Component {
 }
 
 const mapStateToProps = ({ languages }) => {
-  console.log(languages);
   const { loading, data } = languages;
 
   return {

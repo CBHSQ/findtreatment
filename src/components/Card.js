@@ -51,7 +51,7 @@ const Card = props => {
             {phone}
           </a>
         </p>
-        {website && (
+        {website !== 'http://' && (
           <p>
             <span css={tw`font-semibold`}>Website:</span>{' '}
             <a href={website} css={tw`text-blue-700 hover:text-blue-800`}>
