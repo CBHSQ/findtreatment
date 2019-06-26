@@ -54,7 +54,11 @@ const Card = props => {
         {website !== 'http://' && (
           <p>
             <span css={tw`font-semibold`}>Website:</span>{' '}
-            <a href={website} css={tw`text-blue-700 hover:text-blue-800`}>
+            <a
+              href={website}
+              target="_blank"
+              css={tw`text-blue-700 hover:text-blue-800`}
+            >
               {website}
             </a>
           </p>

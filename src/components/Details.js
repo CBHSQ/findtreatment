@@ -52,6 +52,8 @@ class Details extends Component {
                 {website !== 'http://' && (
                   <a
                     href={website}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
                   >
                     <FontAwesomeIcon
