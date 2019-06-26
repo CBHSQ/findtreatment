@@ -4,20 +4,20 @@ export const RECEIVE_LANGUAGES_BEGIN = 'RECEIVE_LANGUAGES_BEGIN';
 export const RECEIVE_LANGUAGES_SUCCESS = 'RECEIVE_LANGUAGES_SUCCESS';
 export const RECEIVE_LANGUAGES_FAILURE = 'RECEIVE_LANGUAGES_FAILURE';
 
-export const receiveLocationsBegin = () => {
+export const receiveLanguagesBegin = () => {
   return {
     type: RECEIVE_LANGUAGES_BEGIN
   };
 };
 
-export const receiveLocationsSucess = data => {
+export const receiveLanguagesSucess = data => {
   return {
     type: RECEIVE_LANGUAGES_SUCCESS,
     payload: { data }
   };
 };
 
-export const receiveLocationsFailure = error => {
+export const receiveLanguagesFailure = error => {
   return {
     type: RECEIVE_LANGUAGES_FAILURE
   };
@@ -25,11 +25,11 @@ export const receiveLocationsFailure = error => {
 
 export function handleReceiveLanguages() {
   return dispatch => {
-    dispatch(receiveLocationsBegin());
+    dispatch(receiveLanguagesBegin());
 
     return API.get('/languages')
       .then(response => {
-        dispatch(receiveLocationsSucess(response.data));
+        dispatch(receiveLanguagesSucess(response.data));
       })
       .catch(error => {
         console.log(error);

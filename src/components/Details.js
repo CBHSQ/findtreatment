@@ -83,7 +83,10 @@ class Details extends Component {
             <div css={tw`border-b pb-6 mb-6`}>
               <h2 css={tw`mb-4`}>Location</h2>
               <div css={tw`relative h-64 w-full mb-2`}>
-                <MapContainer />
+                <MapContainer
+                  rows={[this.props.location.state]}
+                  singleMarker={true}
+                />
               </div>
               <div css={tw`text-gray-600`}>
                 {street1}, {street2 ? street2 + ', ' : ''}

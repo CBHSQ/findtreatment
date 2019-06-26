@@ -1,29 +1,29 @@
 import {
-  RECEIVE_LOCATIONS_BEGIN,
-  RECEIVE_LOCATIONS_SUCCESS,
-  RECEIVE_LOCATIONS_FAILURE
-} from '../actions/locations';
+  RECEIVE_FACILITIES_BEGIN,
+  RECEIVE_FACILITIES_SUCCESS,
+  RECEIVE_FACILITIES_FAILURE
+} from '../actions/facilities';
 
 const initialState = {
   data: {},
   loading: false
 };
 
-export default function locations(state = initialState, action) {
+export default function facilities(state = initialState, action) {
   switch (action.type) {
-    case RECEIVE_LOCATIONS_BEGIN:
+    case RECEIVE_FACILITIES_BEGIN:
       return {
         ...state,
         error: false,
         loading: true
       };
-    case RECEIVE_LOCATIONS_SUCCESS:
+    case RECEIVE_FACILITIES_SUCCESS:
       return {
         ...state,
         loading: false,
         data: action.payload.data
       };
-    case RECEIVE_LOCATIONS_FAILURE:
+    case RECEIVE_FACILITIES_FAILURE:
       return {
         ...state,
         loading: false,

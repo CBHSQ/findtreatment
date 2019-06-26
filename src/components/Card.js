@@ -57,6 +57,7 @@ const Card = props => {
             <a
               href={website}
               target="_blank"
+              rel="noopener noreferrer"
               css={tw`text-blue-700 hover:text-blue-800`}
             >
               {website}

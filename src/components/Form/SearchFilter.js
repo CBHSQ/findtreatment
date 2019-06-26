@@ -24,8 +24,8 @@ export class SearchFilter extends Component {
 
     return (
       <form onSubmit={handleSubmit}>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-2/3 px-3 mb-6 md:mb-0">
+        <div css={tw`flex flex-wrap -mx-3 mb-6`}>
+          <div css={tw`w-full md:w-2/3 px-3 mb-6 md:mb-0`}>
             <Field
               label="Location"
               component={Location}
@@ -33,7 +33,7 @@ export class SearchFilter extends Component {
               placeholder="City, state, or zip code"
             />
           </div>
-          <div class="w-full md:w-1/3 px-3">
+          <div css={tw`w-full md:w-1/3 px-3`}>
             <Field
               name="distance"
               label="Distance"
@@ -67,8 +67,8 @@ export class SearchFilter extends Component {
             options={FilterOptions.type}
           />
         </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div css={tw`flex flex-wrap -mx-3 mb-6`}>
+          <div css={tw`w-full md:w-1/2 px-3 mb-6 md:mb-0`}>
             <Field
               name="age"
               label="Age"
@@ -77,7 +77,7 @@ export class SearchFilter extends Component {
               options={FilterOptions.age}
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
+          <div css={tw`w-full md:w-1/2 px-3`}>
             <Field
               name="gender"
               label="Gender"

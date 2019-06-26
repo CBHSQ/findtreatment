@@ -34,7 +34,7 @@ class Results extends Component {
             {hasResults && (
               <div css={tw`pt-6 border-t`}>
                 <div css={tw`relative h-64 w-full mb-6`}>
-                  <MapContainer />
+                  <MapContainer rows={rows} />
                 </div>
               </div>
             )}
@@ -45,8 +45,8 @@ class Results extends Component {
   }
 }
 
-const mapStateToProps = ({ locations }) => {
-  const { loading, data } = locations;
+const mapStateToProps = ({ facilities }) => {
+  const { loading, data } = facilities;
 
   return {
     loading,

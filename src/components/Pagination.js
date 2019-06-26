@@ -4,14 +4,14 @@ import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { handleReceiveLocations } from '../actions/locations';
+import { handleReceiveFacilities } from '../actions/facilities';
 
 class Pagination extends Component {
   handlePageClick = data => {
     const { dispatch, values } = this.props;
 
     dispatch(
-      handleReceiveLocations({
+      handleReceiveFacilities({
         ...values,
         page: data.selected + 1
       })
