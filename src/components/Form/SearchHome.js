@@ -32,8 +32,5 @@ let SearchHome = props => {
 
 export default reduxForm({
   form: 'search',
-  initialValues: {
-    distance: 16093.4
-  },
   destroyOnUnmount: false
 })(SearchHome);

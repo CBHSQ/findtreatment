@@ -6,16 +6,16 @@ import Label from './Label';
 
 class Location extends Component {
   render() {
-    const { input, name, label, placeholder } = this.props;
+    const { input, label, placeholder } = this.props;
 
     return (
       <div>
-        <Label name={name} label={label} />
+        <Label name={input.name} label={label} />
         <LocationContainer>
           <Geosuggest
+            name={input.name}
             ref={el => (this._geoSuggest = el)}
             placeholder={placeholder}
-            name={name}
             country="us"
             types={['(regions)']}
             placeDetailFields={[]}
