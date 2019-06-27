@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
+import { getFormValues } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
@@ -17,7 +18,7 @@ const RowFlex = styled.div`
   ${tw`flex flex-wrap -mx-3 mb-6`}
 `;
 
-export class SearchFilter extends Component {
+export class Filters extends Component {
   state = {
     isHidden: true
   };
@@ -134,10 +135,15 @@ export class SearchFilter extends Component {
   }
 }
 
-const mapStateToProps = ({ languages }) => {
+const mapStateToProps = state => {
+  const { languages } = state;
   const { loading, data } = languages;
 
   return {
+    initialValues: {
+      ...getFormValues('homepage')(state),
+      distance: 16093.4
+    },
     loading,
     data
   };
@@ -149,15 +155,12 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default reduxForm({
-  form: 'search',
-  initialValues: {
-    distance: 16093.4
-  },
-  destroyOnUnmount: false
-})(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SearchFilter)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  reduxForm({
+    form: 'filters',
+    destroyOnUnmount: false
+  })(Filters)
 );

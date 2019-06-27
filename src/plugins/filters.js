@@ -15,7 +15,7 @@ const resetFilters = values => {
 };
 
 export default {
-  search(state, action) {
+  filters(state, action) {
     switch (action.type) {
       case RESET_ADVANCED_FILTERS: {
         return {
