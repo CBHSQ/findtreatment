@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
+import { resetAdvancedFilters } from '../../actions/filters';s
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -22,9 +23,16 @@ export class SearchFilter extends Component {
   };
 
   toggleHidden = () => {
-    this.setState({
-      isHidden: !this.state.isHidden
-    });
+    this.setState(
+      {
+        isHidden: !this.state.isHidden
+      },
+      () => {
+        if (this.state.isHidden) {
+          this.props.resetAdvancedFilters();
+        }
+      }
+    );
   };
 
   render() {
@@ -135,10 +143,21 @@ const mapStateToProps = ({ languages }) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  resetAdvancedFilters() {
+    dispatch(resetAdvancedFilters());
+  }
+});
+
 export default reduxForm({
   form: 'search',
   initialValues: {
     distance: 16093.4
   },
   destroyOnUnmount: false
-})(connect(mapStateToProps)(SearchFilter));
+})(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchFilter)
+);

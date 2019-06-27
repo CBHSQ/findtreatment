@@ -31,6 +31,7 @@
     "tailwindcss": "^1.0.1"
   },
   "scripts": {
+    "dev": "npm install && npm run start",
     "start": "npm run tailwind:css && react-scripts start",
     "build": "npm run tailwind:css && react-scripts build",
     "test": "react-scripts test",
