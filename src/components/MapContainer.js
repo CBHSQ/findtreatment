@@ -51,8 +51,10 @@ export class MapContainer extends Component {
       <Map
         google={window.google}
         initialCenter={
-          singleMarker &&
-          new window.google.maps.LatLng(rows[0].latitude, rows[0].longitude)
+          singleMarker && {
+            lat: rows[0].latitude,
+            lng: rows[0].longitude
+          }
         }
         zoom={singleMarker && 15}
         style={mapStyles}
