@@ -18,8 +18,10 @@ export const buildParams = query => {
     'sAddr',
     location && `${location.location.lat}, ${location.location.lng}`
   );
-  params.append('limitType', 2);
-  params.append('limitValue', distance || 16093.4);
+  if (distance !== 'All') {
+    params.append('limitType', 2);
+    params.append('limitValue', distance || 16093.4);
+  }
   params.append('pageSize', 10);
   params.append('page', page || 1);
   params.append('sort', 0);

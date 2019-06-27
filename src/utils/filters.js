@@ -8,16 +8,16 @@ export const distance = [
   { value: 16093.4, label: '10 miles' },
   { value: 40233.6, label: '25 miles' },
   { value: 80467.2, label: '50 miles' },
-  { value: 160934, label: '100 miles' }
+  { value: 160934, label: '100 miles' },
+  { value: 'All', label: '100+ miles' }
 ];
 
 export const gender = [
   { value: 'MALE', label: 'Male' },
-  { value: 'FEM', label: 'Female' },
+  { value: 'FEM', label: 'Female' }
 ];
 
 export const payment = [
-  
   { value: 'PI', label: 'Private health insurance' },
   { value: 'MD', label: 'Medicaid' },
   { value: 'MC', label: 'Medicare' },
@@ -42,7 +42,6 @@ export const type = [
   { value: 'RES', label: 'Residential' },
   {
     value: 'CT',
-    label:
-      'Telemedicine (including internet and mobile programs)'
+    label: 'Telemedicine (including internet and mobile programs)'
   }
 ];
