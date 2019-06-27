@@ -20,4 +20,20 @@ describe('Filter component', () => {
     toggleBtn.simulate('click');
     expect(component.find('.filter-container').length).toBe(1);
   });
+
+  it('calls resetAdvancedFilters method when filters are hidden', () => {
+    const mockDispatch = jest.fn();
+    const component = shallow(
+      <SearchFilter resetAdvancedFilters={mockDispatch} />
+    );
+    const toggleBtn = component.find('.filter-link');
+
+    toggleBtn.simulate('click');
+
+    expect(mockDispatch.mock.calls.length).toBe(0);
+
+    toggleBtn.simulate('click');
+
+    expect(mockDispatch.mock.calls.length).toBe(1);
+  });
 });

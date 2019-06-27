@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
-import { resetAdvancedFilters } from '../../actions/filters';s
+import { resetAdvancedFilters } from '../../actions/filters';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
