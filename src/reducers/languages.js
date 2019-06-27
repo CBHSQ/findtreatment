@@ -14,7 +14,6 @@ export default function languages(state = initialState, action) {
     case RECEIVE_LANGUAGES_BEGIN:
       return {
         ...state,
-        error: false,
         loading: true
       };
     case RECEIVE_LANGUAGES_SUCCESS:

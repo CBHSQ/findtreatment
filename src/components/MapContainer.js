@@ -12,8 +12,7 @@ export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {},
-    bounds: null
+    selectedPlace: {}
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -32,22 +31,17 @@ export class MapContainer extends Component {
     }
   };
 
-  makeBounds = () => {
+  adjustMap = (mapProps, map) => {
     const { rows } = this.props;
     const bounds = new window.google.maps.LatLngBounds();
 
     rows.map(location => {
-      return bounds.extend({
-        lat: +location.latitude,
-        lng: +location.longitude
-      });
+      return bounds.extend(
+        new window.google.maps.LatLng(location.latitude, location.longitude)
+      );
     });
 
-    this.setState({ bounds });
-  };
-
-  onReady = () => {
-    this.makeBounds();
+    map.fitBounds(bounds);
   };
 
   render() {
@@ -57,26 +51,24 @@ export class MapContainer extends Component {
       <Map
         google={window.google}
         initialCenter={
-          singleMarker && {
-            lat: rows[0].latitude,
-            lng: rows[0].longitude
-          }
+          singleMarker &&
+          new window.google.maps.LatLng(rows[0].latitude, rows[0].longitude)
         }
         zoom={singleMarker && 15}
         style={mapStyles}
         fullscreenControl={false}
         mapTypeControl={false}
         streetViewControl={false}
-        bounds={!singleMarker && this.state.bounds}
-        onReady={!singleMarker && this.onReady}
+        onReady={!singleMarker && this.adjustMap}
         onClick={this.onMapClicked}
       >
         {rows.map(location => {
+          const { latitude, longitude } = location;
           return (
             <Marker
               key={location.frid}
               name={location.name1}
-              position={{ lat: location.latitude, lng: location.longitude }}
+              position={new window.google.maps.LatLng(latitude, longitude)}
               onClick={this.onMarkerClick}
             />
           );
@@ -85,9 +77,7 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
         >
-          <div>
-            <span css={tw`font-bold`}>{this.state.selectedPlace.name}</span>
-          </div>
+          <span css={tw`font-bold`}>{this.state.selectedPlace.name}</span>
         </InfoWindow>
       </Map>
     );

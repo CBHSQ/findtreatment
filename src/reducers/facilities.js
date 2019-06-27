@@ -14,7 +14,6 @@ export default function facilities(state = initialState, action) {
     case RECEIVE_FACILITIES_BEGIN:
       return {
         ...state,
-        error: false,
         loading: true
       };
     case RECEIVE_FACILITIES_SUCCESS:

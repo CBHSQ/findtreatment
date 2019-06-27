@@ -31,7 +31,7 @@ class Results extends Component {
           <div css={tw`w-full lg:w-2/5 px-6 mb-6`}>
             <h2 css={tw`mb-6`}>Filters</h2>
             <Search layout="Filter" css={tw`mb-6`} />
-            {hasResults && (
+            {!loading && hasResults && (
               <div css={tw`pt-6 border-t`}>
                 <div css={tw`relative h-64 w-full mb-6`}>
                   <MapContainer rows={rows} />
