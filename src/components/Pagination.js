@@ -2,9 +2,37 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { handleReceiveFacilities } from '../actions/facilities';
+
+const StyledPagination = styled.div`
+  ${tw`w-full mb-6 flex justify-center`}
+
+  ul {
+    ${tw`flex border rounded`}
+  }
+
+  li {
+    ${tw`text-blue-500`}
+  }
+
+  li:not(.previous):not(.next) a {
+    ${tw`block border-r px-3 py-2`}
+  }
+
+  .selected {
+    ${tw`text-white bg-blue-500`}
+  }
+
+  .previous {
+    ${tw`block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2`}
+  }
+
+  .next {
+    ${tw`block hover:text-white hover:bg-blue-500 text-blue-500 px-3 py-2`}
+  }
+`;
 
 class Pagination extends Component {
   handlePageClick = data => {
@@ -19,30 +47,22 @@ class Pagination extends Component {
   };
 
   render() {
+    const { page, totalPages } = this.props;
+
     return (
-      <div css={tw`w-full mb-6 flex justify-center`}>
+      <StyledPagination>
         <ReactPaginate
           previousLabel={'Previous'}
           nextLabel={'Next'}
           breakLabel={'...'}
           breakClassName={'break-me'}
-          pageCount={this.props.totalPages}
+          pageCount={totalPages}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={this.handlePageClick}
-          forcePage={this.props.page - 1}
-          containerClassName={'flex border rounded'}
-          pageClassName={'text-blue-500'}
-          pageLinkClassName={'block border-r px-3 py-2'}
-          activeLinkClassName={'text-white bg-blue-500'}
-          previousLinkClassName={
-            'block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2'
-          }
-          nextLinkClassName={
-            'block hover:text-white hover:bg-blue-500 text-blue-500 px-3 py-2'
-          }
+          forcePage={page - 1}
         />
-      </div>
+      </StyledPagination>
     );
   }
 }

@@ -19,7 +19,7 @@ export const buildParams = query => {
     location && `${location.location.lat}, ${location.location.lng}`
   );
   params.append('limitType', 2);
-  params.append('limitValue', distance);
+  params.append('limitValue', distance || 16093.4);
   params.append('pageSize', 10);
   params.append('page', page || 1);
   params.append('sort', 0);

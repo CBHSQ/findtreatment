@@ -1,16 +1,15 @@
 import React from 'react';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
-const Label = props => {
-  return (
-    <label
-      htmlFor={props.name}
-      css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-    >
-      {props.label}
-    </label>
-  );
+const StyledLabel = styled.label`
+  select {
+    ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
+  }
+`;
+
+const Label = ({ label, name }) => {
+  return <StyledLabel htmlFor={name}>{label}</StyledLabel>;
 };
 
 export default Label;

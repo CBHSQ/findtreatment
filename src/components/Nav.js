@@ -15,6 +15,8 @@ class Nav extends Component {
   };
 
   render() {
+    const { isHidden } = this.state;
+
     return (
       <div css={tw`border-b mb-6`}>
         <nav
@@ -41,7 +43,7 @@ class Nav extends Component {
           </div>
 
           <div
-            className={this.state.isHidden ? 'hidden lg:block' : 'block'}
+            className={isHidden ? 'hidden lg:block' : 'block'}
             css={tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
           >
             <div css={tw`text-sm lg:flex-grow`}>

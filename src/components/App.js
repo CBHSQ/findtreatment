@@ -13,6 +13,7 @@ import Footer from './Footer';
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
+
     dispatch(handleReceiveLanguages());
   }
 
