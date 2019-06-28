@@ -16,7 +16,7 @@ class Location extends Component {
             name={input.name}
             ref={el => (this._geoSuggest = el)}
             placeholder={placeholder}
-            country="us"
+            country={['us', 'pr', 'vi', 'gu', 'mp', 'as']}
             types={['(regions)']}
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
