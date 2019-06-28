@@ -37,7 +37,7 @@ describe('Filters component', () => {
 
   it('calls resetFilters() when reset filter button is clicked', () => {
     const resetFn = jest.fn();
-    const component = shallow(<Filters reset={resetFn} />);
+    const component = shallow(<Filters resetAllFilters={resetFn} />);
     const resetBtn = component.find('.reset-filters');
 
     resetBtn.simulate('click');

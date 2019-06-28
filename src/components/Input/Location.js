@@ -33,6 +33,7 @@ class Location extends Component {
             queryDelay={100}
             onFocus={this.handleFocus}
             onSuggestSelect={this.handleSuggest}
+            onChange={value => input.onChange(value)}
           />
         </LocationContainer>
       </div>

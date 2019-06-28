@@ -1,4 +1,8 @@
-import { RESET_ADVANCED_FILTERS } from '../actions/filters';
+import { RESET_ADVANCED_FILTERS, RESET_ALL_FILTERS } from '../actions/filters';
+
+export const initialFilterState = {
+  distance: 16093.4
+};
 
 const advancedFilters = ['language', 'VET', 'GL', 'mat'];
 const resetFilters = values => {
@@ -21,6 +25,12 @@ export default {
         return {
           ...state,
           values: resetFilters(state.values)
+        };
+      }
+      case RESET_ALL_FILTERS: {
+        return {
+          ...state,
+          values: { ...initialFilterState }
         };
       }
       default:
