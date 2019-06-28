@@ -8,8 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
-import { resetAdvancedFilters } from '../../actions/filters';
 import Button from './Button';
+import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
+import { initialFilterState } from '../../plugins/filters';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -37,12 +38,29 @@ export class Filters extends Component {
     );
   };
 
+  handleReset = () => {
+    this.props.resetAllFilters();
+  };
+
   render() {
     const { handleSubmit, data } = this.props;
     const { isHidden } = this.state;
 
     return (
       <form onSubmit={handleSubmit} css={tw`mb-6`}>
+        <RowFlex>
+          <h2 css={tw`w-5/6 mb-6`}>Filters</h2>
+          <div css={tw`w-1/6 h-12`}>
+            <button
+              className="reset-filters"
+              css={tw`inline-block mt-1 font-bold text-blue-500 hover:text-blue-800`}
+              onClick={this.handleReset}
+              type="button"
+            >
+              Reset
+            </button>
+          </div>
+        </RowFlex>
         <RowFlex>
           <div css={tw`w-full md:w-2/3 px-3 mb-6 md:mb-0`}>
             <Field
@@ -183,7 +201,7 @@ const mapStateToProps = state => {
   return {
     initialValues: {
       ...getFormValues('homepage')(state),
-      distance: 16093.4
+      ...initialFilterState
     },
     loading,
     data
@@ -193,6 +211,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   resetAdvancedFilters() {
     dispatch(resetAdvancedFilters());
+  },
+  resetAllFilters() {
+    dispatch(resetAllFilters());
   }
 });
 

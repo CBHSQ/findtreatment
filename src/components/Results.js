@@ -36,7 +36,6 @@ class Results extends Component {
             />
           </div>
           <div css={tw`w-full lg:w-2/5 px-6 mb-6`}>
-            <h2 css={tw`mb-6`}>Filters</h2>
             <Filters onSubmit={this.submit} />
             {!loading && hasResults && (
               <div css={tw`pt-6 border-t`}>
