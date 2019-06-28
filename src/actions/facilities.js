@@ -1,3 +1,4 @@
+import qs from 'qs';
 import API, { buildParams } from '../utils/api';
 
 export const RECEIVE_FACILITIES_BEGIN = 'RECEIVE_FACILITIES_BEGIN';
@@ -28,8 +29,14 @@ export function handleReceiveFacilities(query) {
     dispatch(receiveFacilitiesBegin());
 
     const params = buildParams(query);
+    const options = {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: qs.stringify(params),
+      url: '/listing'
+    };
 
-    return API.post('/listing', params)
+    return API(options)
       .then(response => {
         if (response.data) {
           dispatch(receiveFacilitiesSucess(response.data));

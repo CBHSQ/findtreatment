@@ -6,25 +6,64 @@ export default axios.create({
 });
 
 export const buildParams = query => {
-  const { type, location, distance, page, language, ...rest } = query;
-  const codes = Object.values(rest);
-  const hasCodes = codes.length >= 1;
-  const params = new URLSearchParams();
+  const initialValues = {
+    sType: 'BOTH',
+    sCodes: '',
+    pageSize: 10,
+    page: 1,
+    sort: 0
+  };
 
-  params.append('sType', 'BOTH');
-  hasCodes && params.append('sCodes', codes.toString());
-  language && params.append('sLanguages', language);
-  params.append(
-    'sAddr',
-    location && `${location.location.lat}, ${location.location.lng}`
-  );
-  if (distance !== 'All') {
-    params.append('limitType', 2);
-    params.append('limitValue', distance || 16093.4);
+  const params = Object.entries(query).reduce((memo, [key, value]) => {
+    if (key === 'distance' && value !== 'All') {
+      return {
+        ...memo,
+        limitType: 2,
+        limitValue: 16093.4
+      };
+    }
+
+    if (key === 'languages') {
+      return {
+        ...memo,
+        sLanguages: value
+      };
+    }
+
+    if (key === 'location') {
+      return {
+        ...memo,
+        sAddr: `${value.location.lat}, ${value.location.lng}`
+      };
+    }
+
+    if (key === 'page') {
+      return {
+        ...memo,
+        page: value
+      };
+    }
+
+    if (key === 'type' && value === 'Intake') {
+      return memo;
+    }
+
+    return {
+      ...memo,
+      sCodes:
+        memo.sCodes
+          .split(',')
+          .filter(v => !!v)
+          .concat(value)
+          .join() || undefined
+    };
+  }, initialValues);
+
+  if (!params.sCodes) {
+    const { sCodes, ...finalParams } = params;
+
+    return finalParams;
   }
-  params.append('pageSize', 10);
-  params.append('page', page || 1);
-  params.append('sort', 0);
 
   return params;
 };

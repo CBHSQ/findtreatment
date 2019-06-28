@@ -36,6 +36,8 @@ export const payment = [
 ];
 
 export const type = [
+  { value: 'Intake', label: 'Intake assessment offered' },
+  { value: 'ISC', label: 'Interim services for clients available' },
   { value: 'DT', label: 'Detoxification' },
   { value: 'OP', label: 'Outpatient' },
   { value: 'HI', label: 'Hospital inpatient' },
