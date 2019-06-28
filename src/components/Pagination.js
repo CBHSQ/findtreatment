@@ -68,5 +68,5 @@ class Pagination extends Component {
 }
 
 export default connect(state => ({
-  values: getFormValues('search')(state)
+  values: getFormValues('filters')(state)
 }))(Pagination);
