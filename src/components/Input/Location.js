@@ -23,12 +23,12 @@ class Location extends Component {
             queryDelay={0}
             initialValue={input.value.label}
             onFocus={() => {
-              input.onChange('');
+              input.onChange(null);
               this._geoSuggest.clear();
             }}
             onSuggestSelect={suggest => {
-              if (!suggest) input.onChange('');
-              input.onChange(suggest);
+              if (!suggest) return input.onChange(null);
+              return input.onChange(suggest);
             }}
           />
         </LocationContainer>

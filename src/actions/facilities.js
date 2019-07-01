@@ -45,7 +45,7 @@ export function handleReceiveFacilities(query) {
         }
       })
       .catch(error => {
-        console.log(error);
+        dispatch(receiveFacilitiesFailure());
       });
   };
 }
