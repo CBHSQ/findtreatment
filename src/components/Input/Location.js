@@ -20,6 +20,7 @@ class Location extends Component {
             types={['(regions)']}
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
+            queryDelay={0}
             initialValue={input.value.label}
             onFocus={() => {
               input.onChange(null);
