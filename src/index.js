@@ -6,7 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import store from './store';
 import App from './components/App';
 
-import './css/tailwind.css';
+import './css/build/tailwind.css';
 
 ReactDOM.render(
   <Provider store={store}>
