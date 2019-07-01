@@ -33,7 +33,12 @@ class Homepage extends Component {
             />
           </div>
           <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
-            <Button primary disable={!hasValidLocation} type="submit">
+            <Button
+              primary
+              disable={!hasValidLocation}
+              css={tw`w-full`}
+              type="submit"
+            >
               Find treatment
             </Button>
           </div>

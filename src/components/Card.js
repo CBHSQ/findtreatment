@@ -4,6 +4,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import Button from './Form/Button';
 
 const Card = props => {
   const {
@@ -78,11 +79,7 @@ const Card = props => {
           }
         }}
       >
-        <button
-          css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center justify-center lg:justify-start`}
-        >
-          View provider details
-        </button>
+        <Button primary>View provider details</Button>
       </Link>
     </li>
   );

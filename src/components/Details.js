@@ -9,6 +9,7 @@ import {
   faPrint
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './MapContainer';
+import Button from './Form/Button';
 
 class Details extends Component {
   render() {
@@ -36,9 +37,7 @@ class Details extends Component {
               <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
               <div css={tw`lg:flex items-start`}>
                 <div>
-                  <button
-                    css={tw`w-full lg:w-auto bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2 mb-2 lg:mb-0`}
-                  >
+                  <Button primary>
                     <FontAwesomeIcon
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
@@ -47,14 +46,14 @@ class Details extends Component {
                       <span css={tw`font-light`}>Schedule Appointment | </span>
                       {phone}
                     </a>
-                  </button>
+                  </Button>
                 </div>
                 {website !== 'http://' && (
                   <a
                     href={website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-2 px-4 rounded`}
+                    css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
                     <FontAwesomeIcon
                       icon={faExternalLinkAlt}
@@ -94,18 +93,14 @@ class Details extends Component {
                 {city}, {state} {zip}
               </div>
             </div>
-            <button
-              css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center mb-4`}
-            >
+            <Button secondary css={tw`w-full mb-3`}>
               <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
               Print provider details
-            </button>
-            <button
-              css={tw`w-full bg-gray-100 hover:bg-gray-200 inline-flex items-center border rounded py-2 px-4 justify-center`}
-            >
+            </Button>
+            <Button secondary>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing
-            </button>
+            </Button>
           </div>
         </div>
       </div>

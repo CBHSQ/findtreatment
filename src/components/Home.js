@@ -5,6 +5,7 @@ import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Homepage from './Form/Homepage';
+import Button from './Form/Button';
 
 const content = [
   {
@@ -67,11 +68,7 @@ class Home extends Component {
                   >
                     <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
                     <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
-                    <button
-                      css={tw`text-blue-600 font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
-                    >
-                      Learn more
-                    </button>
+                    <Button outline>Learn more</Button>
                   </div>
                 </div>
               ))}
