@@ -115,7 +115,7 @@ export class Filters extends Component {
               <span
                 css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
               >
-                Special programs
+                Special programs offered
               </span>
               <label css={tw`block`}>
                 <Field
