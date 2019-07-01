@@ -100,15 +100,57 @@ export class Filters extends Component {
           </div>
         </RowFlex>
         {!this.state.isHidden && (
-          <Row className="filter-container">
-            <Field
-              name="language"
-              label="Language"
-              plural="languages"
-              component={Select}
-              options={data}
-            />
-          </Row>
+          <div className="filter-container">
+            <Row>
+              <Field
+                name="language"
+                label="Language"
+                plural="languages"
+                component={Select}
+                options={data}
+              />
+            </Row>
+            <Row>
+              <span
+                css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
+              >
+                Special programs
+              </span>
+              <label css={tw`block`}>
+                <Field
+                  css={tw`mr-2 leading-tight`}
+                  type="checkbox"
+                  name="VET"
+                  component="input"
+                  format={v => v === 'VET'}
+                  normalize={v => (v ? 'VET' : '')}
+                />
+                <span css={tw`text-sm`}>Veterans</span>
+              </label>
+              <label css={tw`block`}>
+                <Field
+                  css={tw`mr-2 leading-tight`}
+                  type="checkbox"
+                  name="GL"
+                  component="input"
+                  format={v => v === 'GL'}
+                  normalize={v => (v ? 'GL' : '')}
+                />
+                <span css={tw`text-sm`}>
+                  Lesbian, gay, bisexual, transgender (LGBT)
+                </span>
+              </label>
+            </Row>
+            <Row>
+              <Field
+                name="mat"
+                label="Opioid medication-assisted treatment"
+                plural="treatments"
+                component={Select}
+                options={filterOptions.mat}
+              />
+            </Row>
+          </div>
         )}
         <button
           className="filter-link"

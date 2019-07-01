@@ -3,9 +3,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
 const StyledLabel = styled.label`
-  select {
-    ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-  }
+  ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
 `;
 
 const Label = ({ label, name }) => {

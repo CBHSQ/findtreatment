@@ -17,6 +17,12 @@ export const gender = [
   { value: 'FEM', label: 'Female' }
 ];
 
+export const mat = [
+  { value: 'BU', label: 'Buprenorphine' },
+  { value: 'METH', label: 'Methadone' },
+  { value: 'NU', label: 'Naltrexone' }
+];
+
 export const payment = [
   { value: 'PI', label: 'Private health insurance' },
   { value: 'MD', label: 'Medicaid' },
