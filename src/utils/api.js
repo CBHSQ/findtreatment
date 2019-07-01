@@ -9,6 +9,8 @@ export const buildParams = query => {
   const initialValues = {
     sType: 'BOTH',
     sCodes: '',
+    limitType: 2,
+    limitValue: 16093.4,
     pageSize: 10,
     page: 1,
     sort: 0
@@ -18,8 +20,7 @@ export const buildParams = query => {
     if (key === 'distance' && value !== 'All') {
       return {
         ...memo,
-        limitType: 2,
-        limitValue: 16093.4
+        limitValue: value
       };
     }
 
