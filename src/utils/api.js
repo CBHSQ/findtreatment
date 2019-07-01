@@ -17,10 +17,10 @@ export const buildParams = query => {
   };
 
   const params = Object.entries(query).reduce((memo, [key, value]) => {
-    if (key === 'distance' && value !== 'All') {
+    if (key === 'distance') {
       return {
         ...memo,
-        limitValue: value
+        limitValue: value !== 'All' ? value : memo.limitValue
       };
     }
 
