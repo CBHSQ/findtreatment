@@ -1,6 +1,6 @@
 export const age = [
-  { value: 'ADLT', label: 'Adults' },
-  { value: 'CHLD', label: 'Children/adolescents' }
+  { value: 'ADLT', label: 'Adults (18 and older)' },
+  { value: 'CHLD', label: 'Children/adolescents (17 and under)' }
 ];
 
 export const distance = [
@@ -33,7 +33,7 @@ export const payment = [
   },
   {
     value: 'SS',
-    label: 'Sliding fee scale (fee is based on income and other factors)'
+    label: 'Sliding fee scale (payment assistance where fee is based on income and other factors)'
   },
   { value: 'NP', label: 'Free or no-cost care' },
   { value: 'SF', label: 'Cash or self-payment' },
@@ -42,9 +42,9 @@ export const payment = [
 ];
 
 export const type = [
-  { value: 'Intake', label: 'Intake assessment offered' },
-  { value: 'ISC', label: 'Interim services for clients available' },
-  { value: 'DT', label: 'Detoxification' },
+  { value: 'Intake', label: 'Assessment/Pretreatment' },
+  { value: 'ISC', label: 'Interim care' },
+  { value: 'DT', label: 'Detox' },
   { value: 'OP', label: 'Outpatient' },
   { value: 'HI', label: 'Hospital inpatient' },
   { value: 'RES', label: 'Residential' },
