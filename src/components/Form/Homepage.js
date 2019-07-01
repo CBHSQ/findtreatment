@@ -1,35 +1,62 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm, getFormValues } from 'redux-form';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import Button from './Button';
 import { Location } from '../Input';
 
-let Homepage = props => {
-  const { handleSubmit } = props;
-  return (
-    <form css={tw`lg:max-w-3xl mx-auto mb-12 px-6`} onSubmit={handleSubmit}>
-      <div css={tw`flex flex-wrap -mx-3 mb-2`}>
-        <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
-          <Field
-            label="Location"
-            component={Location}
-            name="location"
-            placeholder="City, state, or zip code"
-          />
+class Homepage extends Component {
+  handleSubmit = submitEvent => {
+    if (!this.props.hasValidLocation) {
+      return submitEvent.preventDefault();
+    }
+
+    this.props.handleSubmit(submitEvent);
+  };
+
+  render() {
+    const { hasValidLocation } = this.props;
+
+    return (
+      <form
+        css={tw`lg:max-w-3xl mx-auto mb-12 px-6`}
+        onSubmit={this.handleSubmit}
+      >
+        <div css={tw`flex flex-wrap -mx-3 mb-2`}>
+          <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
+            <Field
+              label="Location"
+              component={Location}
+              name="location"
+              placeholder="City, state, or zip code"
+            />
+          </div>
+          <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
+            <Button
+              primary
+              disable={!hasValidLocation}
+              css={tw`w-full`}
+              type="submit"
+            >
+              Find treatment
+            </Button>
+          </div>
         </div>
-        <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
-          <button
-            css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded  leading-tight border border-blue-500`}
-            type="submit"
-          >
-            Find treatment
-          </button>
-        </div>
-      </div>
-    </form>
-  );
+      </form>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  const values = getFormValues('homepage')(state);
+  const hasValidLocation = values && values.location;
+
+  return {
+    hasValidLocation
+  };
 };
 
 export default reduxForm({
   form: 'homepage'
-})(Homepage);
+})(connect(mapStateToProps)(Homepage));

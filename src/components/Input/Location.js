@@ -5,6 +5,15 @@ import tw from 'tailwind.macro';
 import Label from './Label';
 
 class Location extends Component {
+  handleFocus = () => {
+    this.props.input.onChange('');
+    this._geoSuggest.clear();
+  };
+
+  handleSuggest = suggest => {
+    this.props.input.onChange(suggest || '');
+  };
+
   render() {
     const { input, label, placeholder } = this.props;
 
@@ -20,16 +29,10 @@ class Location extends Component {
             types={['(regions)']}
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
-            queryDelay={0}
             initialValue={input.value.label}
-            onFocus={() => {
-              input.onChange('');
-              this._geoSuggest.clear();
-            }}
-            onSuggestSelect={suggest => {
-              if (!suggest) return input.onChange('');
-              return input.onChange(suggest);
-            }}
+            queryDelay={100}
+            onFocus={this.handleFocus}
+            onSuggestSelect={this.handleSuggest}
           />
         </LocationContainer>
       </div>

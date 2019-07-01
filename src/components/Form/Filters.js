@@ -9,6 +9,7 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
 import { resetAdvancedFilters } from '../../actions/filters';
+import Button from './Button';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -166,12 +167,9 @@ export class Filters extends Component {
           />
         </button>
         <Row>
-          <button
-            css={tw`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded leading-tight border border-blue-500`}
-            type="submit"
-          >
+          <Button primary css={tw`w-full`} type="submit">
             Update providers
-          </button>
+          </Button>
         </Row>
       </form>
     );
