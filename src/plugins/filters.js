@@ -1,6 +1,6 @@
 import { RESET_ADVANCED_FILTERS } from '../actions/filters';
 
-const advancedFilters = ['language'];
+const advancedFilters = ['language', 'VET', 'GL', 'mat'];
 const resetFilters = values => {
   return Object.entries(values).reduce((memo, [key, value]) => {
     if (advancedFilters.includes(key)) {

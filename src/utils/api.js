@@ -52,11 +52,12 @@ export const buildParams = query => {
     return {
       ...memo,
       sCodes:
+        value &&
         memo.sCodes
           .split(',')
           .filter(v => !!v)
           .concat(value)
-          .join() || undefined
+          .join()
     };
   }, initialValues);
 
