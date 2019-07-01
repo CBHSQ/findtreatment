@@ -10,7 +10,7 @@
 
 # production
 /build
-tailwind.css
+/src/css/build/**/*
 
 # misc
 .DS_Store
@@ -22,5 +22,3 @@ tailwind.css
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/src/css/**/*
