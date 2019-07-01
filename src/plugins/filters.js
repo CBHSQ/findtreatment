@@ -30,7 +30,7 @@ export default {
       case RESET_ALL_FILTERS: {
         return {
           ...state,
-          values: { ...initialFilterState }
+          values: { ...initialFilterState, location: state.values.location }
         };
       }
       default:

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, getFormValues } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
 import Button from './Button';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
+import { handleReceiveFacilities } from '../../actions/facilities';
 import { initialFilterState } from '../../plugins/filters';
 
 const Row = styled.div`
@@ -39,7 +39,7 @@ export class Filters extends Component {
   };
 
   handleReset = () => {
-    this.props.resetAllFilters();
+    this.props.resetAllFilters({ location: this.props.location });
   };
 
   render() {
@@ -197,12 +197,15 @@ export class Filters extends Component {
 const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
+  const locationValue =
+    getFormValues('homepage')(state) || getFormValues('filters')(state);
 
   return {
     initialValues: {
-      ...getFormValues('homepage')(state),
-      ...initialFilterState
+      ...initialFilterState,
+      ...locationValue
     },
+    location: locationValue && locationValue.location,
     loading,
     data
   };
@@ -212,8 +215,10 @@ const mapDispatchToProps = dispatch => ({
   resetAdvancedFilters() {
     dispatch(resetAdvancedFilters());
   },
-  resetAllFilters() {
+
+  resetAllFilters(location) {
     dispatch(resetAllFilters());
+    dispatch(handleReceiveFacilities(location));
   }
 });
 
