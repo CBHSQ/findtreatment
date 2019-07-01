@@ -48,6 +48,7 @@ export const type = [
   { value: 'OP', label: 'Outpatient' },
   { value: 'HI', label: 'Hospital inpatient' },
   { value: 'RES', label: 'Residential' },
+  { value: 'WI', label: 'Psychiatric emergency walk-in services' },
   {
     value: 'CT',
     label: 'Telemedicine (including internet and mobile programs)'
