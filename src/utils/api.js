@@ -9,8 +9,6 @@ export const buildParams = query => {
   const initialValues = {
     sType: 'BOTH',
     sCodes: '',
-    limitType: 2,
-    limitValue: 16093.4,
     pageSize: 10,
     page: 1,
     sort: 0
@@ -18,10 +16,13 @@ export const buildParams = query => {
 
   const params = Object.entries(query).reduce((memo, [key, value]) => {
     if (key === 'distance') {
-      return {
-        ...memo,
-        limitValue: value !== 'All' ? value : memo.limitValue
-      };
+      return value !== 'All'
+        ? {
+            ...memo,
+            limitType: 2,
+            limitValue: value
+          }
+        : memo;
     }
 
     if (key === 'languages') {
@@ -51,13 +52,11 @@ export const buildParams = query => {
 
     return {
       ...memo,
-      sCodes:
-        value &&
-        memo.sCodes
-          .split(',')
-          .filter(v => !!v)
-          .concat(value)
-          .join()
+      sCodes: memo.sCodes
+        .split(',')
+        .filter(v => !!v)
+        .concat(value)
+        .join()
     };
   }, initialValues);
 
