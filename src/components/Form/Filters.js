@@ -48,9 +48,9 @@ export class Filters extends Component {
 
     return (
       <form onSubmit={handleSubmit} css={tw`mb-6`}>
-        <RowFlex>
-          <h2 css={tw`w-5/6 mb-6`}>Filters</h2>
-          <div css={tw`w-1/6 h-12`}>
+        <RowFlex css={tw`justify-between`}>
+          <h2 css={tw`px-3`}>Filters</h2>
+          <div css={tw`px-3`}>
             <button
               className="reset-filters"
               css={tw`inline-block mt-1 font-bold text-blue-500 hover:text-blue-800`}
