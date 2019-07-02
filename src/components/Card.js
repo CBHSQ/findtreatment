@@ -25,7 +25,6 @@ const Card = props => {
     <li css={tw`shadow border rounded p-6 mb-6`}>
       <div css={tw`flex justify-between`}>
         <Link
-          css={tw`text-blue-700 hover:text-blue-800`}
           to={{
             pathname: '/details',
             state: {
@@ -48,19 +47,12 @@ const Card = props => {
       <div css={tw`mb-4`}>
         <p>
           <span css={tw`font-semibold`}>Phone:</span>{' '}
-          <a href={`tel:${phone}`} css={tw``}>
-            {phone}
-          </a>
+          <a href={`tel:${phone}`}>{phone}</a>
         </p>
         {website !== 'http://' && (
           <p>
             <span css={tw`font-semibold`}>Website:</span>{' '}
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              css={tw`text-blue-700 hover:text-blue-800`}
-            >
+            <a href={website} target="_blank" rel="noopener noreferrer">
               {website}
             </a>
           </p>
