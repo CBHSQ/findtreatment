@@ -34,4 +34,14 @@ describe('Filters component', () => {
 
     expect(mockDispatch.mock.calls.length).toBe(1);
   });
+
+  it('calls resetFilters() when reset filter button is clicked', () => {
+    const resetFn = jest.fn();
+    const component = shallow(<Filters resetAllFilters={resetFn} />);
+    const resetBtn = component.find('.reset-filters');
+
+    resetBtn.simulate('click');
+
+    expect(resetFn.mock.calls.length).toBe(1);
+  });
 });

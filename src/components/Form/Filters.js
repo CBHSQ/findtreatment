@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, getFormValues } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
-import { resetAdvancedFilters } from '../../actions/filters';
 import Button from './Button';
+import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
+import { handleReceiveFacilities } from '../../actions/facilities';
+import { initialFilterState } from '../../plugins/filters';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -37,12 +38,29 @@ export class Filters extends Component {
     );
   };
 
+  handleReset = () => {
+    this.props.resetAllFilters({ location: this.props.location });
+  };
+
   render() {
     const { handleSubmit, data } = this.props;
     const { isHidden } = this.state;
 
     return (
       <form onSubmit={handleSubmit} css={tw`mb-6`}>
+        <RowFlex css={tw`justify-between`}>
+          <h2 css={tw`px-3`}>Filters</h2>
+          <div css={tw`px-3`}>
+            <button
+              className="reset-filters"
+              css={tw`inline-block mt-1 font-bold text-blue-500 hover:text-blue-800`}
+              onClick={this.handleReset}
+              type="button"
+            >
+              Reset
+            </button>
+          </div>
+        </RowFlex>
         <RowFlex>
           <div css={tw`w-full md:w-2/3 px-3 mb-6 md:mb-0`}>
             <Field
@@ -179,12 +197,15 @@ export class Filters extends Component {
 const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
+  const locationValue =
+    getFormValues('homepage')(state) || getFormValues('filters')(state);
 
   return {
     initialValues: {
-      ...getFormValues('homepage')(state),
-      distance: 16093.4
+      ...initialFilterState,
+      ...locationValue
     },
+    location: locationValue && locationValue.location,
     loading,
     data
   };
@@ -193,6 +214,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   resetAdvancedFilters() {
     dispatch(resetAdvancedFilters());
+  },
+
+  resetAllFilters(location) {
+    dispatch(resetAllFilters());
+    dispatch(handleReceiveFacilities(location));
   }
 });
 
