@@ -146,7 +146,7 @@ export class Filters extends Component {
             <Row>
               <Field
                 name="mat"
-                label="Opioid medication-assisted treatment"
+                label="Type of medication-assisted treatment (MAT)"
                 plural="treatments"
                 component={Select}
                 options={filterOptions.mat}
