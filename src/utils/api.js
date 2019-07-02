@@ -5,15 +5,15 @@ export default axios.create({
   responseType: 'json'
 });
 
-export const buildParams = query => {
-  const initialValues = {
-    sType: 'BOTH',
-    sCodes: '',
-    pageSize: 10,
-    page: 1,
-    sort: 0
-  };
+const initialValues = {
+  sType: 'BOTH',
+  sCodes: '',
+  pageSize: 10,
+  page: 1,
+  sort: 0
+};
 
+export const buildParams = query => {
   const params = Object.entries(query).reduce((memo, [key, value]) => {
     if (key === 'distance') {
       return value !== 'All'
