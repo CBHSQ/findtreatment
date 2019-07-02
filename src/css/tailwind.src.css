@@ -22,6 +22,14 @@ h3 {
   }
 }
 
+a {
+  color: theme('colors.blue.700');
+}
+
+a:hover {
+  color: theme('colors.blue.800');
+}
+
 @screen lg {
   .samhsa-helpline {
     top: -29px;

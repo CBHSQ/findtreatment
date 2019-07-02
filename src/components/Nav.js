@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+
+const StyledNav = styled.div`
+  ${tw`border-b mb-6`}
+
+  a {
+    ${tw`text-gray-900 hover:text-gray-900`}
+  }
+`;
+
+const MobileNav = styled.div`
+  ${tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
+
+  ${({ isHidden }) => (isHidden ? tw`hidden lg:block` : tw`block`)}
+`;
 
 class Nav extends Component {
   state = {
@@ -18,7 +32,7 @@ class Nav extends Component {
     const { isHidden } = this.state;
 
     return (
-      <div css={tw`border-b mb-6`}>
+      <StyledNav>
         <nav
           className="container"
           css={tw`mx-auto py-6 flex items-center justify-between flex-wrap`}
@@ -42,10 +56,7 @@ class Nav extends Component {
             </button>
           </div>
 
-          <div
-            className={isHidden ? 'hidden lg:block' : 'block'}
-            css={tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
-          >
+          <MobileNav isHidden={isHidden}>
             <div css={tw`text-sm lg:flex-grow`}>
               <a
                 href="#responsive-header"
@@ -66,9 +77,9 @@ class Nav extends Component {
                 About us
               </a>
             </div>
-          </div>
+          </MobileNav>
         </nav>
-      </div>
+      </StyledNav>
     );
   }
 }

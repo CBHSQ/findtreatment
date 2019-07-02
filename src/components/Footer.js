@@ -1,5 +1,5 @@
 import React from 'react';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,9 +11,17 @@ import {
 import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
+const StyledFooter = styled.div`
+  ${tw`bg-gray-800 text-gray-200 text-xs`}
+
+  a {
+    ${tw`text-white hover:text-white`}
+  }
+`;
+
 const Footer = () => {
   return (
-    <div css={tw`bg-gray-800 text-gray-200 text-xs`}>
+    <StyledFooter>
       <div className="container" css={tw`py-6 lg:p-12`}>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
@@ -89,7 +97,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </StyledFooter>
   );
 };
 

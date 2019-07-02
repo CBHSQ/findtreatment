@@ -42,7 +42,10 @@ class Details extends Component {
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <a href={`tel:${phone}`}>
+                    <a
+                      href={`tel:${phone}`}
+                      css={tw`text-white hover:text-white`}
+                    >
                       <span css={tw`font-light`}>Schedule Appointment | </span>
                       {phone}
                     </a>
@@ -53,7 +56,7 @@ class Details extends Component {
                     href={website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    css={tw`w-full lg:w-auto block bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
+                    css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
                     <FontAwesomeIcon
                       icon={faExternalLinkAlt}
