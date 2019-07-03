@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { InfoWindow, Map, Marker } from 'google-maps-react';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
 const mapStyles = {
@@ -8,35 +9,57 @@ const mapStyles = {
   height: '100%'
 };
 
+const defaultZoomLevel = 15;
+const initialState = {
+  showingInfoWindow: false,
+  activeMarker: {},
+  selectedPlace: {}
+};
+
+const propTypes = {
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      frid: PropTypes.string,
+      latitude: PropTypes.string,
+      longitude: PropTypes.string,
+      name1: PropTypes.string
+    })
+  ).isRequired,
+  singleMarker: PropTypes.bool
+};
+
+const MarkerText = styled.span`
+  ${tw`font-bold`}
+`;
+
 export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
+  static propTypes = propTypes;
+  static defaultProps = {
+    singleMarker: false
   };
 
-  onMarkerClick = (props, marker, e) =>
+  state = initialState;
+
+  onMarkerClick = (props, marker, _) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  };
 
-  onMapClicked = props => {
+  onMapClicked = () => {
     if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
+      this.setState(initialState);
     }
   };
 
-  adjustMap = (mapProps, map) => {
+  adjustMap = (_, map) => {
     const { rows } = this.props;
     const bounds = new window.google.maps.LatLngBounds();
 
-    rows.map(location => {
-      return bounds.extend(
+    rows.forEach(location => {
+      bounds.extend(
         new window.google.maps.LatLng(location.latitude, location.longitude)
       );
     });
@@ -44,19 +67,31 @@ export class MapContainer extends Component {
     map.fitBounds(bounds);
   };
 
+  getInitialCenter() {
+    if (!this.props.singleMarker) {
+      return;
+    }
+
+    const { latitude, longitude } = this.props.rows[0];
+
+    return {
+      lat: latitude,
+      lng: longitude
+    };
+  }
+
+  getInitialZoom() {
+    return this.props.singleMarker ? defaultZoomLevel : undefined;
+  }
+
   render() {
     const { rows, singleMarker } = this.props;
 
     return (
       <Map
         google={window.google}
-        initialCenter={
-          singleMarker && {
-            lat: rows[0].latitude,
-            lng: rows[0].longitude
-          }
-        }
-        zoom={singleMarker && 15}
+        initialCenter={this.getInitialCenter()}
+        zoom={this.getInitialZoom()}
         style={mapStyles}
         fullscreenControl={false}
         mapTypeControl={false}
@@ -79,7 +114,7 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
         >
-          <span css={tw`font-bold`}>{this.state.selectedPlace.name}</span>
+          <MarkerText>{this.state.selectedPlace.name}</MarkerText>
         </InfoWindow>
       </Map>
     );
