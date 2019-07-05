@@ -19,11 +19,6 @@ const content = [
       'Find out more about different types of treatment and finding a good fit.'
   },
   {
-    heading: 'Finding a provider',
-    body:
-      'Learn how to identify quality treatment, and ask the right questions of providers and insurance companies.'
-  },
-  {
     heading: 'Getting to recovery',
     body: 'Know what to expect and how to find support on the road to recovery.'
   }
