@@ -8,23 +8,12 @@ const NoResults = () => {
   return (
     <div css={tw`shadow border rounded p-6 text-center mb-6`}>
       <h2 css={tw`mb-6`}>
-        <span css={tw`block font-bold text-3xl`}>Oops!</span>We couldn't find
-        any providers near you.
+        <span css={tw`block font-bold text-3xl`}>This search didn't find any providers near you.</span>Try expanding your search by applying less filters, like your ZIP code and the type of treatment you need.
       </h2>
       <div css={tw`max-w-md mx-auto`}>
         <p css={tw`mb-6`}>
-          Please try expanding your search criteria. If you need assistance our
-          national helpline is available 24/7 and can assist you with treatment
-          referrals and information.
+          If you need assistance, our national helpline is available 24/7 and can assist you with treatment referrals and information. Call <a href="tel:+1-800-662-4357">+1-800-662-HELP (4357)</a> to speak to someone.
         </p>
-
-        <a
-          href="tel:18006624357"
-          css={tw`bg-blue-500 hover:bg-blue-700 text-white font-semibold p-4 rounded inline-flex items-center justify-center`}
-        >
-          <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
-          1-800-662-HELP (4357)
-        </a>
       </div>
     </div>
   );
