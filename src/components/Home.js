@@ -54,7 +54,7 @@ class Home extends Component {
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
               <h3 css={tw`text-4xl font-light text-gray-700`}>
-                Getting started
+                What to expect
               </h3>
             </div>
             <div css={tw`flex flex-wrap -mx-2`}>
