@@ -56,7 +56,7 @@ class Home extends Component {
               {content.map((card, index) => (
                 <div
                   key={index}
-                  css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0 `}
+                  css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0 `}
                 >
                   <div
                     css={tw`flex flex-col w-full bg-white rounded p-6 text-gray-700`}
