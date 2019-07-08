@@ -19,11 +19,6 @@ const content = [
       'Find out more about different types of treatment and finding a good fit.'
   },
   {
-    heading: 'Finding a provider',
-    body:
-      'Learn how to identify quality treatment, and ask the right questions of providers and insurance companies.'
-  },
-  {
     heading: 'Getting to recovery',
     body: 'Know what to expect and how to find support on the road to recovery.'
   }
@@ -46,7 +41,7 @@ class Home extends Component {
         <div className="container" css={tw`mx-auto text-center mb-10`}>
           <h2 css={tw`text-3xl lg:text-5xl font-light`}>Find help near you</h2>
           <span>
-            Quickly find providers in your area based on your specific needs
+            Quickly find providers who treat substance use disorders and addiction
           </span>
         </div>
         <Homepage onSubmit={this.submit} />
@@ -54,14 +49,14 @@ class Home extends Component {
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
               <h3 css={tw`text-4xl font-light text-gray-700`}>
-                Getting started
+                What to expect
               </h3>
             </div>
             <div css={tw`flex flex-wrap -mx-2`}>
               {content.map((card, index) => (
                 <div
                   key={index}
-                  css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0 `}
+                  css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0 `}
                 >
                   <div
                     css={tw`flex flex-col w-full bg-white rounded p-6 text-gray-700`}
