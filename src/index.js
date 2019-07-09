@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import ScrollToTop from './components/ScrollToTop';
 import configureStore, { history } from './store';
+import { GOOGLE_ANALYTICS_UA } from './utils/constants';
 import App from './components/App';
 
 import './css/build/tailwind.css';
 
-ReactGA.initialize('UA-143220884-1');
+ReactGA.initialize(GOOGLE_ANALYTICS_UA);
 
 const store = configureStore({}, history);
 

@@ -8,13 +8,13 @@ import createRootReducer from './reducers';
 
 export const history = createBrowserHistory();
 
+const middleware = [routerMiddleware(history), thunk, googleAnalytics, logger];
+
 export default function configureStore(preloadedState) {
   const store = createStore(
     createRootReducer(history),
     preloadedState,
-    compose(
-      applyMiddleware(routerMiddleware(history), thunk, googleAnalytics, logger)
-    )
+    compose(applyMiddleware(...middleware))
   );
 
   return store;

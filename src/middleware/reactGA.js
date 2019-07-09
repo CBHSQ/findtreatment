@@ -6,7 +6,7 @@ const trackEvent = action => {
   ReactGA.event({
     category: `Form: ${action.meta.form}`,
     action: `Selected: ${action.payload}`,
-    label: `Input: ${action.meta.field}`
+    label: `Field: ${action.meta.field}`
   });
 };
 
@@ -31,7 +31,7 @@ export const googleAnalytics = store => next => action => {
   }
 
   if (action.type === '@@redux-form/CHANGE') {
-    if (action.payload !== '' && action.meta.field !== 'location') {
+    if (action.meta.field !== 'location') {
       trackEvent(action);
     }
   }
