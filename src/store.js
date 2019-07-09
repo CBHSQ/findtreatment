@@ -10,7 +10,13 @@ export const history = createBrowserHistory({
   basename: process.env.REACT_APP_FEDERALIST_BASEURL
 });
 
-const middleware = [routerMiddleware(history), thunk, googleAnalytics, logger];
+const middleware = [routerMiddleware(history), thunk];
+
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(logger);
+} else {
+  middleware.push(googleAnalytics);
+}
 
 export default function configureStore(preloadedState) {
   const store = createStore(
