@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
@@ -9,16 +9,19 @@ import Button from './Form/Button';
 
 const content = [
   {
+    slug: 'understanding-addiction',
     heading: 'Understanding addiction',
     body:
       'Substance use and mental health problems are treatable, and help is available.'
   },
   {
+    slug: 'treatment-options',
     heading: 'Treatment options',
     body:
       'Find out more about different types of treatment and finding a good fit.'
   },
   {
+    slug: 'getting-to-recovery',
     heading: 'Getting to recovery',
     body: 'Know what to expect and how to find support on the road to recovery.'
   }
@@ -41,7 +44,8 @@ class Home extends Component {
         <div className="container" css={tw`mx-auto text-center mb-10`}>
           <h2 css={tw`text-3xl lg:text-5xl font-light`}>Find help near you</h2>
           <span>
-            Quickly find providers who treat substance use disorders and addiction
+            Quickly find providers who treat substance use disorders and
+            addiction
           </span>
         </div>
         <Homepage onSubmit={this.submit} />
@@ -53,9 +57,9 @@ class Home extends Component {
               </h3>
             </div>
             <div css={tw`flex flex-wrap -mx-2`}>
-              {content.map((card, index) => (
+              {content.map(card => (
                 <div
-                  key={index}
+                  key={card.slug}
                   css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0 `}
                 >
                   <div
@@ -63,7 +67,9 @@ class Home extends Component {
                   >
                     <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
                     <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
-                    <Button outline>Learn more</Button>
+                    <Link to={`/content/${card.slug}`}>
+                      <Button outline>Learn more</Button>
+                    </Link>
                   </div>
                 </div>
               ))}
