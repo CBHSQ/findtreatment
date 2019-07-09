@@ -1,4 +1,9 @@
-export const topics = [
+import React from 'react';
+import { Link } from 'react-router-dom';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+
+export default () => [
   {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
@@ -7,7 +12,11 @@ export const topics = [
     subTopics: [
       {
         name: 'Why is it hard?',
-        body: ''
+        body: (
+          <p css={tw`block`}>
+            <strong>This</strong> is a test <Link to="/">link</Link>
+          </p>
+        )
       },
       {
         name: 'How do I stop?',

@@ -5,12 +5,12 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import NoMatch from './NoMatch';
 import { convertToSlug } from '../utils/misc';
-import { topics, lipsum } from '../utils/topics';
+import topics, { lipsum } from '../utils/topics';
 
 class Page extends Component {
   render() {
     const { match } = this.props;
-    const topic = topics.find(({ id }) => id === match.params.pageId);
+    const topic = topics().find(({ id }) => id === match.params.pageId);
 
     if (!topic) {
       return <NoMatch />;
@@ -22,7 +22,7 @@ class Page extends Component {
           <div css={tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}>
             <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
             <ul>
-              {topics.map(({ name, id, subTopics }) => (
+              {topics().map(({ name, id, subTopics }) => (
                 <li key={id} css={tw`mb-4`}>
                   <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
                     {name}
@@ -53,7 +53,7 @@ class Page extends Component {
                 <h2 id={convertToSlug(name)} css={tw`font-bold`}>
                   {name}
                 </h2>
-                <p css={tw`mb-4`}>{body || lipsum}</p>
+                <div css={tw`mb-4`}>{body || lipsum}</div>
               </div>
             ))}
           </div>
