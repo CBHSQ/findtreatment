@@ -16,10 +16,7 @@ const store = configureStore({}, history);
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter
-      history={history}
-      basename={process.env.REACT_APP_FEDERALIST_BASEURL}
-    >
+    <ConnectedRouter history={history}>
       <ScrollToTop>
         <App />
       </ScrollToTop>

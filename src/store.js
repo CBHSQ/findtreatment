@@ -6,7 +6,9 @@ import logger from 'redux-logger';
 import { googleAnalytics } from './middleware/reactGA';
 import createRootReducer from './reducers';
 
-export const history = createBrowserHistory();
+export const history = createBrowserHistory({
+  basename: process.env.REACT_APP_FEDERALIST_BASEURL
+});
 
 const middleware = [routerMiddleware(history), thunk, googleAnalytics, logger];
 
