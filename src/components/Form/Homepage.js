@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
+import { initialFilterState } from '../../plugins/filters';
 
 const Form = styled.form`
   ${tw`lg:max-w-3xl mx-auto mb-12 px-6`}
@@ -54,5 +55,6 @@ const mapStateToProps = state => {
 
 export { Homepage };
 export default reduxForm({
-  form: 'homepage'
+  form: 'homepage',
+  initialValues: initialFilterState
 })(connect(mapStateToProps)(Homepage));
