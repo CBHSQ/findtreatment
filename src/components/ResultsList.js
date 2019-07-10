@@ -39,7 +39,7 @@ export class ResultsList extends Component {
         <div
           css={tw`mb-6 rounded bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3`}
         >
-          <p css={tw`font-bold`}>Before you call</p>
+          <p css={tw`font-bold`}>Before you visit</p>
           <p css={tw`text-sm`}>
             Before visiting a facility, call to make sure they have the services
             you need. Not sure what you need? All facilities are licensed by
