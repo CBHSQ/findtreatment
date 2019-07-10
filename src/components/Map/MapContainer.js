@@ -4,6 +4,8 @@ import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
 import { GOOGLE_API_KEY } from '../utils/constants';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import InfoWindowEx from './InfoWindowEx';
+import Button from '../Form/Button';
 
 const mapStyles = {
   width: '100%',
@@ -14,7 +16,9 @@ const defaultZoomLevel = 15;
 const initialState = {
   showingInfoWindow: false,
   activeMarker: {},
-  selectedPlace: {}
+  selectedPlace: {
+    details: {}
+  }
 };
 
 const propTypes = {
@@ -87,6 +91,7 @@ export class MapContainer extends Component {
 
   render() {
     const { rows, singleMarker } = this.props;
+    const { activeMarker, showingInfoWindow, selectedPlace } = this.state;
 
     return (
       <Map
@@ -106,17 +111,31 @@ export class MapContainer extends Component {
             <Marker
               key={location.frid}
               name={location.name1}
+              details={location}
               position={new window.google.maps.LatLng(latitude, longitude)}
               onClick={this.onMarkerClick}
             />
           );
         })}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-        >
-          <MarkerText>{this.state.selectedPlace.name}</MarkerText>
-        </InfoWindow>
+        <InfoWindowEx marker={activeMarker} visible={showingInfoWindow}>
+          <MarkerText>
+            <h4>{selectedPlace.details.name1}</h4>
+            <p css={tw`font-normal mb-2`}>{selectedPlace.details.phone}</p>
+            {!singleMarker && (
+              <Link
+                to={{
+                  pathname: '/details',
+                  state: selectedPlace.details
+                }}
+                css={tw`block`}
+              >
+                <Button css={tw`p-1 w-full`} primary>
+                  View provider details
+                </Button>
+              </Link>
+            )}
+          </MarkerText>
+        </InfoWindowEx>
       </Map>
     );
   }

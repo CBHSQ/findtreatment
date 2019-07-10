@@ -6,31 +6,26 @@ const locations = [
   {
     latitude: '79.7833853960037',
     longitude: '27.2689918940887',
-    frid: 'abcd1',
     name1: 'facility1'
   },
   {
     latitude: '27.6489242445678',
     longitude: '-9.4354017404834',
-    frid: 'abcd2',
     name1: 'facility2'
   },
   {
     latitude: '-51.9591500423849',
     longitude: '19.2025181371719',
-    frid: 'abcd3',
     name1: 'facility3'
   },
   {
     latitude: '83.5859301500022',
     longitude: '31.8948447704315',
-    frid: 'abcd4',
     name1: 'facility4'
   },
   {
     latitude: '-56.1149036698043',
     longitude: '42.5037826504558',
-    frid: 'abcd5',
     name1: 'facility5'
   }
 ];
@@ -47,7 +42,7 @@ describe('MapContainer component', () => {
 
   describe('initial state', () => {
     it('does not render an InfoWindow without user input', () => {
-      const infoWindow = component.find('InfoWindow');
+      const infoWindow = component.find('InfoWindowEx');
 
       expect(infoWindow.prop('visible')).toBe(false);
     });
@@ -66,10 +61,10 @@ describe('MapContainer component', () => {
 
         firstMarker.simulate('click', firstMarker.props(), {}, {});
 
-        const infoWindow = component.find('InfoWindow');
+        const infoWindow = component.find('InfoWindowEx');
 
         expect(infoWindow.prop('visible')).toBe(true);
-        expect(infoWindow.find('MapContainer__MarkerText').text()).toBe(
+        expect(infoWindow.find('MapContainer__MarkerText h4').text()).toBe(
           firstMarker.prop('name')
         );
       });
@@ -81,13 +76,13 @@ describe('MapContainer component', () => {
 
         firstMarker.simulate('click', firstMarker.props(), {}, {});
 
-        const infoWindow = component.find('InfoWindow');
+        const infoWindow = component.find('InfoWindowEx');
 
         expect(infoWindow.prop('visible')).toBe(true);
 
         component.find('Map').simulate('click');
 
-        expect(component.find('InfoWindow').prop('visible')).toBe(false);
+        expect(component.find('InfoWindowEx').prop('visible')).toBe(false);
       });
 
       it('adjusts the bounds when dragged', () => {
