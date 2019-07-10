@@ -69,10 +69,10 @@ export default () => [
     ]
   },
   {
-    name: 'Getting to recovery',
-    id: 'getting-to-recovery',
+    name: 'Paying for treatment',
+    id: 'paying-for-treatment',
     description:
-      'Know what to expect and how to find support on the road to recovery.',
+      'Learn more about the cost of treatment and payment options.',
     subTopics: [
       {
         name: 'Long-term recovery',
