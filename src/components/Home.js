@@ -21,9 +21,9 @@ const content = [
       'Find out more about different types of treatment and finding a good fit.'
   },
   {
-    slug: 'getting-to-recovery',
-    heading: 'Getting to recovery',
-    body: 'Know what to expect and how to find support on the road to recovery.'
+    slug: 'paying-for-treatment',
+    heading: 'Paying for treatment',
+    body: 'Learn more about the cost of treatment and payment options.'
   }
 ];
 
