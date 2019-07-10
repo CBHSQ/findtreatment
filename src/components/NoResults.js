@@ -12,7 +12,7 @@ const NoResults = () => {
       </h2>
       <div css={tw`max-w-md mx-auto`}>
         <p css={tw`mb-6`}>
-          Try expanding your search by applying less filters, like only your ZIP code and payment option.
+          Try expanding your search by applying fewer filters,<br> like only your ZIP code and payment option.
         </p>
         <p css={tw`mb-6`}>
           If you need assistance, our national helpline is available 24/7 and can assist you with treatment referrals and information. Call <a href="tel:+1-800-662-4357">1-800-662-HELP (4357)</a> to speak to someone.
