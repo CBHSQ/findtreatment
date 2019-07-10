@@ -7,10 +7,6 @@ import Button from './Button';
 import { Location } from '../Input';
 import { initialFilterState } from '../../plugins/filters';
 
-const Form = styled.form`
-  ${tw`lg:max-w-3xl mx-auto mb-12 px-6`}
-`;
-
 class Homepage extends Component {
   handleSubmit = submitEvent => {
     if (!this.props.location) {
@@ -24,8 +20,8 @@ class Homepage extends Component {
     const { location } = this.props;
 
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <div css={tw`flex flex-wrap -mx-3 mb-2`}>
+      <form onSubmit={this.handleSubmit} css={tw`mb-10`}>
+        <div css={tw`flex flex-wrap -mx-3`}>
           <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
             <Field
               label="Location"
@@ -40,7 +36,7 @@ class Homepage extends Component {
             </Button>
           </div>
         </div>
-      </Form>
+      </form>
     );
   }
 }

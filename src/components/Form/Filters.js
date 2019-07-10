@@ -49,16 +49,22 @@ export class Filters extends Component {
     return (
       <form onSubmit={handleSubmit} css={tw`mb-6`}>
         <RowFlex css={tw`justify-between`}>
-          <h2 css={tw`px-3`}>Filters</h2>
           <div css={tw`px-3`}>
-            <button
+            <h2>Filters</h2>
+            <p css={tw`text-sm text-gray-600 font-light`}>
+              Search for facilities that match your needs.
+            </p>
+          </div>
+          <div css={tw`px-3`}>
+            <Button
+              outline
               className="reset-filters"
-              css={tw`inline-block mt-1 font-bold text-blue-500 hover:text-blue-800`}
+              css={tw`px-2 py-1 mt-1`}
               onClick={this.handleReset}
               type="button"
             >
               Reset
-            </button>
+            </Button>
           </div>
         </RowFlex>
         <RowFlex>
@@ -188,6 +194,12 @@ export class Filters extends Component {
           <Button primary css={tw`w-full`} type="submit">
             Update providers
           </Button>
+        </Row>
+        <Row>
+          <p css={tw`text-sm text-gray-700`}>
+            Too many or too few results? Add or remove search filters related to
+            the treatment you’re looking for.
+          </p>
         </Row>
       </form>
     );

@@ -48,7 +48,17 @@ class Home extends Component {
             addiction
           </span>
         </div>
-        <Homepage onSubmit={this.submit} />
+        <div css={tw`max-w-3xl mx-auto mb-10 px-6`}>
+          <Homepage onSubmit={this.submit} />
+          <p
+            css={tw`lg:max-w-xl italic mx-auto text-xs mb-6 text-center text-gray-700`}
+          >
+            All facilities are licensed by their states. Provider data is
+            collected, maintained, and verified by the Substance Abuse and
+            Mental Health Services Administration (SAMHSA) through an annual
+            survey.
+          </p>
+        </div>
         <div css={tw`bg-gray-200`}>
           <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
