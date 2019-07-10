@@ -14,6 +14,12 @@ const Header = () => {
           <a css={tw`underline`} href="https://forms.gle/35ZHQCGBkxCsJcs78">
             We want to hear from you.
           </a>
+          <div css={tw`font-normal text-sm`}>
+            Visit current site at{' '}
+            <a css={tw`underline`} href="https://findtreatment.samhsa.gov">
+              findtreatment.samhsa.gov
+            </a>
+          </div>
         </div>
       </div>
       <div css={tw`bg-gray-200`}>
