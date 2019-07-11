@@ -3,10 +3,19 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga';
+
+const sendClick = () => {
+  ReactGA.event({
+    category: `Link`,
+    action: `Helpline link clicked`
+  });
+};
 
 const HelpLine = () => {
   return (
     <a
+      onClick={() => sendClick()}
       href="tel:18006624357"
       css={tw`w-full lg:w-auto lg:absolute lg:right-0 lg:top-0 lg:mr-6 bg-red-700 text-white hover:text-white text-sm lg:rounded-b flex items-center lg:items-stretch justify-center lg:justify-start shadow-md`}
     >

@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
+import ReactGA from 'react-ga';
 
 class Details extends Component {
   renderService(service) {
@@ -30,12 +31,21 @@ class Details extends Component {
     );
   }
 
+  flagData = frid => {
+    ReactGA.event({
+      category: `Listing Data Report`,
+      action: `Data issue reported for frid`,
+      label: frid.frid
+    });
+  };
+
   render() {
     if (!this.props.facility) {
       return <Redirect to="/" />;
     }
 
     const {
+      frid,
       name1,
       name2,
       street1,
@@ -122,7 +132,7 @@ class Details extends Component {
               <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
               Print provider details
             </Button>
-            <Button secondary>
+            <Button secondary onClick={() => this.flagData({ frid })}>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing
             </Button>
