@@ -12,18 +12,18 @@ const content = [
     slug: 'understanding-addiction',
     heading: 'Understanding addiction',
     body:
-      'Substance use and mental health problems are treatable, and help is available.'
+      'Addiction is a chronic disease that changes the brain and alters decision-making. Treatment works, help is available, and people recover from addiction every day.'
   },
   {
     slug: 'treatment-options',
     heading: 'Treatment options',
     body:
-      'Find out more about different types of treatment and finding a good fit.'
+      'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.'
   },
   {
-    slug: 'getting-to-recovery',
-    heading: 'Getting to recovery',
-    body: 'Know what to expect and how to find support on the road to recovery.'
+    slug: 'paying-for-treatment',
+    heading: 'Paying for treatment',
+    body: 'Learn more about the cost of treatment and payment options.'
   }
 ];
 

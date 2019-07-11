@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
-import MapContainer from './MapContainer';
+import { shallow } from 'enzyme';
+import { MapContainer } from './MapContainer';
 
 const locations = [
   {
