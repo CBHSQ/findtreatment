@@ -3,7 +3,7 @@ import { InfoWindow } from 'google-maps-react';
 
 // Fix for https://github.com/fullstackreact/google-maps-react/issues/70
 
-class InfoWindowEx extends InfoWindow {
+class DOMInfoWindow extends InfoWindow {
   renderInfoWindow() {
     InfoWindow.prototype.renderInfoWindow.call(this);
     this.elem = document.createElement('div');
@@ -17,4 +17,4 @@ class InfoWindowEx extends InfoWindow {
   }
 }
 
-export default InfoWindowEx;
+export default DOMInfoWindow;
