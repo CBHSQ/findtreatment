@@ -13,35 +13,224 @@ export default () => [
     name: 'Understanding addiction',
     id: 'understanding-addiction',
     description:
-      'Substance use and mental health problems are treatable, and help is available.',
+      'Addiction is a chronic disease that changes the brain and alters decision-making. Treatment works, help is available, and people recover from addiction every day.',
     subTopics: [
       {
-        name: 'Why is it hard?',
+        name: 'Addiction can affect anyone',
         body: (
-          <p css={tw`block`}>
-            <strong>This</strong> is a test <Link to="/">link</Link>
-          </p>
+          <>
+            <p>
+              People from all backgrounds experience addiction. Addiction
+              doesn't care how old you are, how much money you make, or the
+              color of your skin - it has no bias. While the initial choice to
+              use a drug is often voluntary, the powerful effects of addiction
+              makes it very hard to stop, even if someone wants to.
+            </p>
+            <p>
+              When drugs or alcohol are used so often that they have significant
+              negative effects on your life, making it unlivable to the quality
+              it was before, this is called a <strong>substance use
+              disorder</strong>.
+            </p>
+            <p>
+              It causes intense cravings for alcohol or drugs, and can include:
+                <ul>
+                  <li>
+                    Using illegal drugs like heroin or cocaine, or excessive
+                    alcohol drinking.
+                  </li>
+                  <li>
+                    Using prescription drugs in ways other than prescribed, or
+                    using someone else’s prescription.
+                  </li>
+                </ul>
+              </p>
+          </>
         )
       },
       {
-        name: 'How do I stop?',
-        body: ''
+        name: 'It’s hard to stop using drugs on your own',
+        body: (
+          <>
+          <p>
+            Addiction is a chronic and treatable disease. Repeated drug use
+            changes the brain, including the parts that help exert
+            self-control. That’s why even if someone feels ready to stop
+            using drugs, or knows the drug is causing harm, they may not be
+            able to.
+          </p>
+          <p>
+            Some common behaviors of addiction and substance use disorder
+            include:
+              <ol>
+                <li>
+                  Trying to stop or cut down on drug use, but not being
+                  able to.
+                </li>
+                <li>
+                  Using drugs because of being angry or upset with other
+                  people
+                </li>
+                <li>
+                  Taking one drug to get over the effects of another.
+                </li>
+                <li>
+                  Making mistakes at school or on the job because of using drugs.
+                </li>
+                <li>
+                  Drug use hurting relationships with family and friends.
+                </li>
+                <li>
+                  Being scared at the thought of running out of drugs.
+                </li>
+                <li>
+                  Stealing drugs or money to pay for drugs.
+                </li>
+                <li>
+                  Being arrested or hospitalized for drug use.
+                </li>
+                <li>
+                  Developing a tolerance, and needing larger amounts of
+                  drugs or alcohol to get high.
+                </li>
+                <li>
+                  Overdosing on drugs.
+                </li>
+              </ol>
+            </p>
+          </>
+        )
       },
       {
-        name: 'Building a support team',
-        body: ''
+        name: 'Asking for help is the first important step',
+        body: (
+          <>
+            <p>
+              It takes courage to seek help for a drug problem. But
+              remember: treatment works, there are many paths to help, and
+              people recover every day.
+            </p>
+            <p>
+              Like other chronic diseases, addiction can be managed
+              successfully. It can take several attempts at treatment to
+              find the right approach. Treatment helps people disrupt
+              addiction's powerful effects on the brain and behavior and
+              regain control of their lives.
+            </p>
+            <p>
+              Our treatment locator lists facilities across the country. We
+              have guidance about what to expect when looking for treatment,
+              including <u>different kinds of treatment</u> and
+              <u> understanding how to pay for treatment</u>.
+            </p>
+            <p>
+              If treatment isn’t the next right step for you, you can still
+              find someone to talk to:
+                <ul>
+                  <li>
+                    <strong>Talking to a professional therapist or
+                    counselor.</strong>Your primary care doctor can
+                    recommend therapists in your care network, and NAMI has
+                    locations around the country with resources for finding
+                    a therapist.
+                      <a href="https://www.nami.org/local/"> https://www.nami.org/local
+                      </a>
+                  </li>
+                  <li>
+                    <strong>Joining a support group of peers.</strong>
+                    People who have common life experiences have a unique
+                    ability to help each other. Peers can be very
+                    supportive since they have “been there” and serve as
+                    living examples that individuals can and do recover.
+                    There are peer groups for people in recovery as well as
+                    their families and loved ones, including:
+                  </li>
+                    <ul>
+                      <li>
+                        Narcotics Anonymous <a href="www.na.org">(www.na.org)</a>,
+                        and Nar-Anon <a href="https://www.nar-anon.org/">(www.nar-anon.org)</a>
+                      </li>
+                      <li>
+                        Alcoholics Anonymous <a href="www.aa.org">(www.aa.org)</a>,
+                        and Al-Anon <a href="https://al-anon.org/">(https://al-anon.org)</a>
+                      </li>
+                      <li>
+                        Faces and Voices of Recovery <a href="www.facesandvoicesofrecovery.org">(www.facesandvoicesofrecovery.org)</a>
+                      </li>
+                      </ul>
+                </ul>
+            </p>
+          </>
+        )
       },
       {
-        name: 'What is a SUD?',
-        body: ''
+        name: 'You cannot do someone else’s recovery for them',
+        body: (
+          <>
+            <p>
+              If you think your family member or friend might be addicted,
+              you cannot fix the problem by yourself, or force them into
+              treatment. If the person is initially not willing to be
+              helped, learning more about drug addiction for your own
+              knowledge, and see if there are resources or information that
+              might convince them to seek help.
+            </p>
+            <p>
+              Everyone acts differently when they start treatment. Some
+              people are very happy to be getting treatment at last; others
+              suffer a great deal while they adjust to a new life and
+              attempt to live it without alcohol and drugs. They may be sad,
+              angry, or confused. It is important for you to realize that
+              these are normal reactions and to get support for yourself.
+            </p>
+          </>
+        )
       },
       {
-        name: 'Why are some people affected?',
-        body: ''
-      }
-    ]
-  },
-  {
+        name: 'Supporting recovery and caring for yourself',
+        body: (
+          <>
+          <p>
+            Many treatment professionals consider substance use disorders
+            family diseases. To help everyone recover and cope, family may
+            be asked to take part in treatment. This may involve going to
+            a family education program or to counseling for families or
+            couples.
+          </p>
+          <p>
+            As you and your family member recover, remember:
+              <ul>
+                <li>
+                  You are participating in treatment for
+                  <strong> yourself</strong>, not just for the sake of the
+                  person who used substances.
+                </li>
+                <li>
+                  Your loved one’s recovery, sobriety, or abstinence does
+                  not depend on you.
+                </li>
+                <li>
+                  Your family’s recovery does not depend on the recovery
+                  of the person who used substances.
+                </li>
+                <li>
+                  You did not cause your family member’s substance use
+                  disorder. It is not your fault.
+                </li>
+              </ul>
+            </p>
+            <p>
+              You still may have hurt feelings and anger from the past
+              that need to be resolved. You need support to understand
+              and deal with these feelings, and you need to support your
+              loved one’s efforts to get well.
+            </p>
+            </>
+          )
+        }
+      ]
+    },
+    {
     name: 'Treatment options',
     id: 'treatment-options',
     description:
@@ -378,7 +567,7 @@ export default () => [
             <p>
               Although no single recovery pathway is right for everyone, people
               who are addicted to opioids are usually more successful with
-              <strong>medication-assisted treatment (MAT)</strong>. This
+              <strong> medication-assisted treatment (MAT)</strong>. This
               treatment uses FDA-approved medication together with counseling
               and behavioral therapies.
             </p>
