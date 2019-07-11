@@ -696,24 +696,152 @@ export default () => [
     description: 'Learn more about the cost of treatment and payment options.',
     subTopics: [
       {
-        name: 'Long-term recovery',
-        body: ''
+        name: 'Understanding the cost of treatment',
+        body: (
+          <>
+            <p>
+              Understanding the costs of and how to pay for treatment can be
+              hard and confusing. Unfortunately, resources aren’t always well
+              organized or easy to find. The best way to make sure you choose
+              care you can afford is by asking questions, taking notes, and
+              making sure you know what kind of support you’re eligible for.
+            </p>
+            <p>
+              Don’t let money stop you from finding treatment. There are free and
+              low-cost facilities across the country, and many others accept
+              Medicaid or private insurance. Your state also has funding set aside
+              to help people without insurance afford treatment.
+            </p>
+            <h3>
+              <strong>Does insurance cover substance use treatment?</strong>
+            </h3>
+            <p>
+              The Mental Health Parity and Addiction Equity Act (MHPAEA) of 2008
+              requires health insurers and group health plans to provide the
+              <strong> same level of benefits</strong> for mental and/or
+              substance use treatment and services that they do for medical and
+              surgical care. That means your insurance company can’t tell you
+              “we don’t do substance abuse treatment” or “mental health isn’t
+              covered” — if they do, they’re breaking the law.
+            </p>
+            <p>
+              If you’ve been denied coverage for treatment, this
+              <a href="https://www.hhs.gov/mental-health-and-addiction-insurance-help"> Mental Health and Addiction Insurance Help</a> tool can help you find the right resources to solve issues with your insurance.
+            </p>
+          </>
+    )
+  },
+      {
+        name: 'If you have insurance',
+        body: (
+          <>
+            <p>
+              Call the number on the back of your card or on your insurer’s
+              website and ask about coverage for substance abuse.
+            </p>
+            <p>
+              You’ll likely have a <strong>deductible</strong> — a specific
+              amount of money you’ll need to pay out-of-pocket before your
+              benefits start covering costs. Find out how much that deductible
+              is and how much you’ve already paid towards it for the year. Any
+              medical expense, not just treatment, can count towards that total.
+            </p>
+            <p>
+              Then, ask your insurer for <strong>a list of preferred facilities
+              or providers</strong> in your area. Choosing from this list will
+              help prevent unexpected costs down the line, because your
+              insurance will be more willing to cover the services you receive.
+            </p>
+            <p>
+              Just as with other kinds of medical care, you may have a
+              <strong> co-pay</strong> — a small amount of money you need to pay
+              upfront to the providers or facilities you visit. Find out how
+              much that is, as well as how many appointments or days of
+              treatment are covered per year.
+            </p>
+            <p>
+              You can also ask your insurer if they have
+              <strong> case managers</strong>. A case manager is a registered
+              nurse, social worker, or other licensed healthcare provider who
+              can work with you directly. Their services are usually covered by
+              the cost you’re already paying to your insurance. They’ll help
+              you evaluate your options and choose what makes the most medical
+              and financial sense.
+            </p>
+            <p>
+              It can take multiple calls to figure this information out, and
+              these can be difficult conversations to have. If you have a
+              trusted family member or friend who can help, there is a way your
+              insurer can authorize them to make decisions on your behalf. Ask
+              your insurer for more details about how to set this up.
+            </p>
+          </>
+        )
       },
       {
-        name: 'Helping someone through recovery',
-        body: ''
-      },
-      {
-        name: 'Basic living needs',
-        body: ''
-      },
-      {
-        name: 'For caregivers',
-        body: ''
-      },
-      {
-        name: 'What is family therapy?',
-        body: ''
+        name: 'If you don’t have insurance',
+        body: (
+          <>
+            <p>
+              Some facilities offer free or low-cost care, sliding scale fees
+              based on your income, or have payment assistance available.
+            </p>
+            <p>
+              You’ll need an <strong> estimate of your annual income </strong>
+              and a correct count of your family members to determine if you’re
+              eligible for some services. You don’t have to know exactly how
+              much you make — get as close as you can, and don’t worry if it’s
+              not perfect. (For a list of what counts as income, visit
+              <a href="https://www.healthcare.gov/income-and-household-information/income/"> this page on healthcare.gov.</a>
+            </p>
+            <p>
+              Additionally, every state has funding to provide treatment for
+              people without insurance. Contact your <strong> state agency </strong>
+             for information on how the process works in your state.
+            </p>
+            <p>
+              You may also be able to purchase insurance now and take advantage
+              of those benefits as soon as you can (usually two weeks to one
+              month after you sign up). You’ll be able to enroll in a new
+              plan if you:
+                <ul>
+                  <li>
+                    Do it during an <strong> open enrollment period</strong>.
+                    For a limited period of time each year, federal- and
+                    state-run insurance exchanges allow anyone to sign up for
+                    or change their plans. In most states, enrollment for 2020
+                    will be <strong> November 1 - December 15, 2019</strong>.
+                  </li>
+                  <li>
+                    Have a <strong> qualifying life event </strong>
+                    For 60 days after a major change in your life — like having
+                    a baby, getting married or divorced, or getting U.S.
+                    citizenship — you’re eligible to sign up for new insurance.
+                    <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/"> Learn more about qualifying events. </a>
+                  </li>
+                  <li>
+                    Are <strong> eligible for Medicaid</strong>. In most states,
+                    if you make less than $17,236 as an individual or $29,435
+                    in a family of three, you’re eligible for free or low-cost
+                    health coverage. You can apply for Medicaid at any time —
+                    <strong> there’s no enrollment period</strong> — so contact
+                    your state agency for more details if you think you might
+                    be eligible.
+                  </li>
+                </ul>
+              </p>
+              <p>
+                Some individual treatment facilities offer <strong> grants or
+                scholarships</strong> to help offset the cost of attending. Not
+                all of these will cover your whole stay, though, and many will
+                revoke funding if you don’t complete their program — leaving
+                you financially responsible for the time you spent there.
+                Before accepting any grants or scholarships, make sure you ask
+                questions about what (if any) strings are attached to that
+                money.
+              </p>
+          </>
+        )
       }
     ]
   }
