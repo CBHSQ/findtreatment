@@ -145,7 +145,7 @@ export default () => [
                 <ul>
                   <li>
                     <strong>Talking to a professional therapist or
-                    counselor.</strong>Your primary care doctor can
+                    counselor. </strong>Your primary care doctor can
                     recommend therapists in your care network, and NAMI has
                     locations around the country with resources for finding
                     a therapist.
@@ -153,7 +153,7 @@ export default () => [
                       </a>
                   </li>
                   <li>
-                    <strong>Joining a support group of peers.</strong>
+                    <strong>Joining a support group of peers. </strong>
                     People who have common life experiences have a unique
                     ability to help each other. Peers can be very
                     supportive since they have “been there” and serve as
