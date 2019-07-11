@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { handleReceiveFacilities } from '../actions/facilities';
 import ResultsList from './ResultsList';
 import Filters from './Form/Filters';
-import MapContainer from './MapContainer';
+import MapContainer from './Map/MapContainer';
 
 class Results extends Component {
   componentDidUpdate() {
