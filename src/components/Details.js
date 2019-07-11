@@ -11,7 +11,7 @@ import {
   faFlag,
   faPrint
 } from '@fortawesome/free-solid-svg-icons';
-import MapContainer from './MapContainer';
+import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
 
 class Details extends Component {
