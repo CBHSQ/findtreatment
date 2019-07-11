@@ -15,6 +15,21 @@ import MapContainer from './MapContainer';
 import Button from './Form/Button';
 
 class Details extends Component {
+  renderService(service) {
+    return (
+      <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
+        <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
+        <ul
+          css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
+        >
+          {service.f3.split('; ').map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   render() {
     if (!this.props.facility) {
       return <Redirect to="/" />;
@@ -76,19 +91,7 @@ class Details extends Component {
               </div>
             </div>
             <h2 css={tw`mb-2 font-semibold`}>Services</h2>
-            {services &&
-              services.map(service => (
-                <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
-                  <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
-                  <ul
-                    css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
-                  >
-                    {service.f3.split('; ').map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            {services.map(this.renderService)}
           </div>
           <div css={tw`relative w-full md:w-2/5 px-6 mb-6 `}>
             <div css={tw`border-b pb-6 mb-6`}>
