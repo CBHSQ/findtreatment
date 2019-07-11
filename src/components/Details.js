@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
-import ReactGA from 'react-ga';
+import ReactGA, { OutboundLink } from 'react-ga';
 
 class Details extends Component {
   renderService(service) {
@@ -75,18 +75,19 @@ class Details extends Component {
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <a
-                      href={`tel:${phone}`}
+                    <OutboundLink
+                      to={`tel:${phone}`}
+                      eventAction="Facility Phone # clicked"
                       css={tw`text-white hover:text-white`}
                     >
                       <span css={tw`font-light`}>Schedule Appointment | </span>
                       {phone}
-                    </a>
+                    </OutboundLink>
                   </Button>
                 </div>
                 {website !== 'http://' && (
-                  <a
-                    href={website}
+                  <OutboundLink
+                    to={website}
                     target="_blank"
                     rel="noopener noreferrer"
                     css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
@@ -96,7 +97,7 @@ class Details extends Component {
                       css={tw`text-gray-700 mr-2`}
                     />
                     Visit website
-                  </a>
+                  </OutboundLink>
                 )}
               </div>
             </div>
