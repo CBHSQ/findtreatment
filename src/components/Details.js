@@ -91,9 +91,19 @@ class Details extends Component {
                 />
               </div>
               <div css={tw`text-gray-600`}>
-                {street1}, {street2 ? street2 + ', ' : ''}
+                {street1}, {street2 && street2 + ','}
                 <br />
                 {city}, {state} {zip}
+                <br />
+                <a
+                  css={tw`font-bold`}
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                    `${street1}, ${street2 &&
+                      street2 + ','} ${city}, ${state} ${zip}`
+                  )}`}
+                >
+                  Get driving directions
+                </a>
               </div>
             </div>
             <Button secondary css={tw`w-full mb-3`}>
