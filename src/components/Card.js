@@ -43,7 +43,7 @@ const Card = props => {
       </div>
       <div css={tw`text-gray-600 mb-4`}>
         <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
-        {street1}, {street2 ? street2 + ', ' : ''}
+        {street1}, {street2 && street2 + ', '}
         {city}, {state} {zip}
       </div>
       <div css={tw`mb-4`}>
