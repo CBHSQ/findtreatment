@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InfoWindow, Map, Marker } from 'google-maps-react';
-import styled from 'styled-components/macro';
-import tw from 'tailwind.macro';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import { GOOGLE_API_KEY } from '../../utils/constants';
+import DOMInfoWindow from './DOMInfoWindow';
+import InfoWindowText from './InfoWindowText';
 
 const mapStyles = {
   width: '100%',
@@ -13,7 +14,9 @@ const defaultZoomLevel = 15;
 const initialState = {
   showingInfoWindow: false,
   activeMarker: {},
-  selectedPlace: {}
+  selectedPlace: {
+    details: {}
+  }
 };
 
 const propTypes = {
@@ -27,10 +30,6 @@ const propTypes = {
   ).isRequired,
   singleMarker: PropTypes.bool
 };
-
-const MarkerText = styled.span`
-  ${tw`font-bold`}
-`;
 
 export class MapContainer extends Component {
   static propTypes = propTypes;
@@ -86,6 +85,7 @@ export class MapContainer extends Component {
 
   render() {
     const { rows, singleMarker } = this.props;
+    const { activeMarker, showingInfoWindow, selectedPlace } = this.state;
 
     return (
       <Map
@@ -105,20 +105,23 @@ export class MapContainer extends Component {
             <Marker
               key={location.frid}
               name={location.name1}
+              details={location}
               position={new window.google.maps.LatLng(latitude, longitude)}
               onClick={this.onMarkerClick}
             />
           );
         })}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-        >
-          <MarkerText>{this.state.selectedPlace.name}</MarkerText>
-        </InfoWindow>
+        <DOMInfoWindow marker={activeMarker} visible={showingInfoWindow}>
+          <InfoWindowText
+            selectedPlace={selectedPlace}
+            singleMarker={singleMarker}
+          />
+        </DOMInfoWindow>
       </Map>
     );
   }
 }
 
-export default MapContainer;
+export default GoogleApiWrapper({
+  apiKey: GOOGLE_API_KEY
+})(MapContainer);

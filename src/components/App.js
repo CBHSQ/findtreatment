@@ -8,6 +8,7 @@ import Header from './Header';
 import Home from './Home';
 import Results from './Results';
 import Details from './Details';
+import Page from './Page';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/results" component={Results} />
           <Route path="/details" component={Details} />
+          <Route path="/content/:pageId" component={Page} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
