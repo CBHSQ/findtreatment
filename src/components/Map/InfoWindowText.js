@@ -9,10 +9,15 @@ export const InfoWindowText = props => {
 
   return (
     <>
-      <h4 className="infowindow__heading" css={tw`font-bold`}>
+      <h4 className="infowindow__heading" css={tw`mb-2 font-bold`}>
         {selectedPlace.details.name1}
       </h4>
-      <p css={tw`font-normal mb-2`}>{selectedPlace.details.phone}</p>
+      <p css={tw`font-normal mb-4`}>
+        Phone:{' '}
+        <a href="tel:{selectedPlace.details.phone}">
+          {selectedPlace.details.phone}
+        </a>
+      </p>
       {!singleMarker && (
         <Link
           to={{
