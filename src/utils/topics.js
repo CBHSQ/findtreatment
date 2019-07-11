@@ -27,6 +27,22 @@ export default () => [
               makes it very hard to stop, even if someone wants to.
             </p>
             <p>
+              <blockquote>
+                  <p>
+                    "Opioid use disorder is a chronic but treatable brain disease,
+                    and not a moral failing or character flaw. Like many other
+                    chronic medical conditions, opioid use disorder is both
+                    treatable, and in many cases, preventable. It is also a disease
+                    that must be addressed with compassion."
+                  </p>
+                  <footer>—Jerome M. Adams, M.D., M.P.H.,
+                    <cite>
+                      Vice Admiral, U.S. Public Health Service Surgeon General
+                    </cite>
+                  </footer>
+                </blockquote>
+            </p>
+            <p>
               When drugs or alcohol are used so often that they have significant
               negative effects on your life, making it unlivable to the quality
               it was before, this is called a <strong>substance use
