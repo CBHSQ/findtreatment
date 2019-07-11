@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
@@ -8,6 +9,7 @@ import Button from './Form/Button';
 
 const Card = props => {
   const {
+    frid,
     name1,
     name2,
     miles,
@@ -28,7 +30,7 @@ const Card = props => {
           to={{
             pathname: '/details',
             state: {
-              ...props
+              id: frid
             }
           }}
         >
@@ -67,7 +69,7 @@ const Card = props => {
         to={{
           pathname: '/details',
           state: {
-            ...props
+            id: frid
           }
         }}
       >
@@ -75,6 +77,21 @@ const Card = props => {
       </Link>
     </li>
   );
+};
+
+Card.propTypes = {
+  frid: PropTypes.string.isRequired,
+  name1: PropTypes.string.isRequired,
+  name2: PropTypes.string,
+  miles: PropTypes.number.isRequired,
+  street1: PropTypes.string.isRequired,
+  street2: PropTypes.string,
+  city: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  zip: PropTypes.string.isRequired,
+  services: PropTypes.array.isRequired,
+  phone: PropTypes.string.isRequired,
+  website: PropTypes.string
 };
 
 export default Card;
