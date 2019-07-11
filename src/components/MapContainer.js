@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InfoWindow, Map, Marker } from 'google-maps-react';
+import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import { GOOGLE_API_KEY } from '../utils/constants';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
@@ -121,4 +122,6 @@ export class MapContainer extends Component {
   }
 }
 
-export default MapContainer;
+export default GoogleApiWrapper({
+  apiKey: GOOGLE_API_KEY
+})(MapContainer);
