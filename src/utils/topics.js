@@ -263,9 +263,9 @@ export default () => [
               services and facility are a good fit for you.
             </p>
             <p>
-              <strong>This is a confidential call</strong>. Answering the questions honestly is
-              important, and you won’t be reported to law enforcement for
-              talking about using illegal drugs.
+              <strong>This is a confidential call</strong>. Answering the
+              questions honestly is important, and you won’t be reported to law
+              enforcement for talking about using illegal drugs.
             </p>
             <p>
               If a facility can’t see you within 48 hours, try another one. A
@@ -569,10 +569,10 @@ export default () => [
               </em>
             </p>
             <p>
-              Telemedicine can be a tremendous help to people who are unable to regularly 
-              get to a treatment facility. While it’s not the first step in treatment, 
-              telemedicine can be a key part of a treatment plan, especially for patients 
-              living far away from a facility. 
+              Telemedicine can be a tremendous help to people who are unable to regularly
+              get to a treatment facility. While it’s not the first step in treatment,
+              telemedicine can be a key part of a treatment plan, especially for patients
+              living far away from a facility.
             </p>
           </>
         )
