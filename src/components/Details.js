@@ -77,7 +77,7 @@ class Details extends Component {
                     />
                     <OutboundLink
                       to={`tel:${phone}`}
-                      eventAction="Facility Phone # clicked"
+                      eventLabel="Facility Phone #"
                       css={tw`text-white hover:text-white`}
                     >
                       <span css={tw`font-light`}>Schedule Appointment | </span>
@@ -89,6 +89,7 @@ class Details extends Component {
                   <OutboundLink
                     to={website}
                     target="_blank"
+                    eventLabel="Facility website"
                     rel="noopener noreferrer"
                     css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
