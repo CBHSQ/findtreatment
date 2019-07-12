@@ -24,6 +24,7 @@
     "react-router-dom": "^5.0.0",
     "react-router-hash-link": "^1.2.1",
     "react-scripts": "3.0.1",
+    "react-sizes": "^2.0.0",
     "react-test-renderer": "^16.8.6",
     "redux": "^4.0.4",
     "redux-form": "^8.2.4",

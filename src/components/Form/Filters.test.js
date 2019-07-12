@@ -4,7 +4,7 @@ import { Filters } from './Filters';
 
 describe('Filters component', () => {
   it('displays correct toggle link text', () => {
-    const component = shallow(<Filters />);
+    const component = shallow(<Filters isDesktop={true} />);
     const toggleBtn = component.find('.filter-link');
 
     expect(toggleBtn.text()).toBe('More filters');
@@ -13,7 +13,7 @@ describe('Filters component', () => {
   });
 
   it('toggle additional filter container', () => {
-    const component = shallow(<Filters />);
+    const component = shallow(<Filters isDesktop={true} />);
     const toggleBtn = component.find('.filter-link');
 
     expect(component.find('.filter-container').length).toBe(0);
@@ -23,7 +23,9 @@ describe('Filters component', () => {
 
   it('calls resetAdvancedFilters method when filters are hidden', () => {
     const mockDispatch = jest.fn();
-    const component = shallow(<Filters resetAdvancedFilters={mockDispatch} />);
+    const component = shallow(
+      <Filters isDesktop={true} resetAdvancedFilters={mockDispatch} />
+    );
     const toggleBtn = component.find('.filter-link');
 
     toggleBtn.simulate('click');
@@ -37,7 +39,9 @@ describe('Filters component', () => {
 
   it('calls resetFilters() when reset filter button is clicked', () => {
     const resetFn = jest.fn();
-    const component = shallow(<Filters resetAllFilters={resetFn} />);
+    const component = shallow(
+      <Filters isDesktop={true} resetAllFilters={resetFn} />
+    );
     const resetBtn = component.find('.reset-filters');
 
     resetBtn.simulate('click');
