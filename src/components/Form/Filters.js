@@ -73,7 +73,7 @@ export class Filters extends Component {
               label="Location"
               component={Location}
               name="location"
-              placeholder="City, state, or zip code"
+              placeholder="City or zip code"
               format={v => (v ? v : '')}
             />
           </div>
