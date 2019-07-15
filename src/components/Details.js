@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
+import ReactGA, { OutboundLink } from 'react-ga';
 
 class Details extends Component {
   renderService(service) {
@@ -30,12 +31,21 @@ class Details extends Component {
     );
   }
 
+  flagData = frid => {
+    ReactGA.event({
+      category: `Listing Data Report`,
+      action: `Data issue reported for frid`,
+      label: frid.frid
+    });
+  };
+
   render() {
     if (!this.props.facility) {
       return <Redirect to="/" />;
     }
 
     const {
+      frid,
       name1,
       name2,
       street1,
@@ -65,19 +75,21 @@ class Details extends Component {
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <a
-                      href={`tel:${phone}`}
+                    <OutboundLink
+                      to={`tel:${phone}`}
+                      eventLabel="Facility Phone #"
                       css={tw`text-white hover:text-white`}
                     >
                       <span css={tw`font-light`}>Schedule Appointment | </span>
                       {phone}
-                    </a>
+                    </OutboundLink>
                   </Button>
                 </div>
                 {website !== 'http://' && (
-                  <a
-                    href={website}
+                  <OutboundLink
+                    to={website}
                     target="_blank"
+                    eventLabel="Facility website"
                     rel="noopener noreferrer"
                     css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
@@ -86,7 +98,7 @@ class Details extends Component {
                       css={tw`text-gray-700 mr-2`}
                     />
                     Visit website
-                  </a>
+                  </OutboundLink>
                 )}
               </div>
             </div>
@@ -122,7 +134,7 @@ class Details extends Component {
               <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
               Print provider details
             </Button>
-            <Button secondary>
+            <Button secondary onClick={() => this.flagData({ frid })}>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing
             </Button>

@@ -4,6 +4,7 @@ import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import Button from './Form/Button';
+import { OutboundLink } from 'react-ga';
 
 const NoMatch = () => {
   return (
@@ -16,12 +17,12 @@ const NoMatch = () => {
           Our national helpline is available 24/7 and can assist you with
           treatment referrals and information.
         </p>
-        <a href="tel:18006624357">
+        <OutboundLink eventLabel="Helpline link from 404" to="tel:18006624357">
           <Button primary>
             <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
             1-800-662-HELP (4357)
           </Button>
-        </a>
+        </OutboundLink>
       </div>
     </div>
   );

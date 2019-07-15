@@ -1,6 +1,7 @@
 import React from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { OutboundLink } from 'react-ga';
 
 const NoResults = () => {
   return (
@@ -18,8 +19,13 @@ const NoResults = () => {
         <p css={tw`mb-6`}>
           If you need assistance, our national helpline is available 24/7 and
           can assist you with treatment referrals and information. Call{' '}
-          <a href="tel:+1-800-662-4357">1-800-662-HELP (4357)</a> to speak to
-          someone.
+          <OutboundLink
+            eventLabel="Helpline link from no results"
+            to="tel:+1-800-662-4357"
+          >
+            1-800-662-HELP (4357)
+          </OutboundLink>{' '}
+          to speak to someone.
         </p>
       </div>
     </div>
