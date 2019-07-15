@@ -67,7 +67,7 @@ class Details extends Component {
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
-              <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
+              <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
               <div css={tw`lg:flex items-start`}>
                 <div>
                   <Button primary>
