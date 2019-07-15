@@ -1,4 +1,8 @@
-import { RESET_ADVANCED_FILTERS, RESET_ALL_FILTERS } from '../actions/filters';
+import {
+  RESET_ADVANCED_FILTERS,
+  RESET_ALL_FILTERS,
+  DESTROY_FILTERS
+} from '../actions/filters';
 
 export const initialFilterState = {
   distance: 16093.4
@@ -32,6 +36,9 @@ export default {
           ...state,
           values: { ...initialFilterState, location: state.values.location }
         };
+      }
+      case DESTROY_FILTERS: {
+        return undefined;
       }
       default:
         return state;

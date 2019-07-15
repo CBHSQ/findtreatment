@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
+import { destroyFilters } from '../../actions/filters';
 import { initialFilterState } from '../../plugins/filters';
 
 const Form = styled.form`
@@ -12,6 +13,12 @@ const Form = styled.form`
 `;
 
 class Homepage extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(destroyFilters());
+  }
+
   handleSubmit = submitEvent => {
     if (!this.props.location) {
       return submitEvent.preventDefault();
