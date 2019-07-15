@@ -44,8 +44,9 @@ class Home extends Component {
         <div className="container" css={tw`mx-auto text-center mb-10`}>
           <h2 css={tw`text-3xl lg:text-5xl font-light`}>Find help near you</h2>
           <span>
-            Quickly find providers who treat substance use disorders and
-            addiction
+            Quickly find providers who treat{' '}
+            <strong>substance use disorders</strong> and{' '}
+            <strong>addiction</strong>
           </span>
         </div>
         <div css={tw`max-w-3xl mx-auto mb-10 px-6`}>
