@@ -80,7 +80,7 @@ class Details extends Component {
                       eventLabel="Facility Phone #"
                       css={tw`text-white hover:text-white`}
                     >
-                      <span css={tw`font-light`}>Schedule Appointment | </span>
+                      <span css={tw`font-light`}>Call | </span>
                       {phone}
                     </OutboundLink>
                   </Button>
@@ -130,10 +130,6 @@ class Details extends Component {
                 </a>
               </div>
             </div>
-            <Button secondary css={tw`w-full mb-3`}>
-              <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
-              Print provider details
-            </Button>
             <Button secondary onClick={() => this.flagData({ frid })}>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing

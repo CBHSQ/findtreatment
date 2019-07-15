@@ -62,19 +62,13 @@ class Nav extends Component {
                 href="#responsive-header"
                 css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
               >
-                Locate treatment
+                Search for treatment
               </a>
               <a
                 href="#responsive-header"
                 css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
               >
                 What to expect
-              </a>
-              <a
-                href="#responsive-header"
-                css={tw`block mt-4 lg:inline-block lg:mt-0`}
-              >
-                About us
               </a>
             </div>
           </MobileNav>

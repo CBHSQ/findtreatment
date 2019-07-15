@@ -34,8 +34,8 @@ const Footer = () => {
               </a>
             </div>
             <p css={tw`leading-relaxed`}>
-              Our mission is to reduce the impact of substance abuse and mental
-              illness on America's communities.
+              SAMHSA's mission is to reduce the impact of substance abuse and
+              mental illness on America's communities.
             </p>
           </div>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
@@ -54,8 +54,11 @@ const Footer = () => {
             </ul>
             <h4 css={tw`font-bold mb-1`}>Providers</h4>
             <ul>
-              <li>List your facility</li>
-              <li>Updating your information</li>
+              <li>
+                <a href="https://findtreatment.samhsa.gov/locator/link-AppIns#.XSywJNNKiuo">
+                  List your facility
+                </a>
+              </li>
             </ul>
           </div>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
@@ -66,14 +69,24 @@ const Footer = () => {
               <li>
                 <a href="https://www.samhsa.gov/privacy">Privacy policy</a>
               </li>
-              <li>FOIA</li>
-              <li>USA.gov</li>
-              <li>Accessibility</li>
-              <li>Submit feedback</li>
+              <li>
+                <a href="https://www.usa.gov/">USA.gov</a>
+              </li>
+              <li>
+                <a href="https://www.samhsa.gov/foia">FOIA</a>
+              </li>
+              <li>
+                <a href="https://www.samhsa.gov/accessibility">Accessibility</a>
+              </li>
+              <li>
+                <a href="https://forms.gle/8Zf4sCUcgn8Cmoqb6">
+                  Submit feedback
+                </a>
+              </li>
             </ul>
           </div>
           <div css={tw`w-full lg:flex-1 px-6`}>
-            <h3 css={tw`mb-2`}>Contact us</h3>
+            <h3 css={tw`mb-2`}>Contact SAMHSA</h3>
             <p css={tw`mb-4`}>
               5600 Fishers Ln
               <br />
@@ -83,17 +96,6 @@ const Footer = () => {
               <br />
               (1-877-726-4727)
             </p>
-            <ul>
-              <li css={tw`inline-block mr-2`}>
-                <FontAwesomeIcon icon={faFacebookSquare} className="fa-2x" />
-              </li>
-              <li css={tw`inline-block mr-2`}>
-                <FontAwesomeIcon icon={faTwitterSquare} className="fa-2x" />
-              </li>
-              <li css={tw`inline-block`}>
-                <FontAwesomeIcon icon={faYoutubeSquare} className="fa-2x" />
-              </li>
-            </ul>
           </div>
         </div>
       </div>
