@@ -37,9 +37,6 @@ export default {
           values: { ...initialFilterState, location: state.values.location }
         };
       }
-      case DESTROY_FILTERS: {
-        return undefined;
-      }
       default:
         return state;
     }

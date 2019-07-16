@@ -5,8 +5,8 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
-import { destroyFilters } from '../../actions/filters';
 import { initialFilterState } from '../../plugins/filters';
+import { destroyFacilities } from '../../actions/facilities';
 
 const Form = styled.form`
   ${tw`mb-10`}
@@ -15,8 +15,7 @@ const Form = styled.form`
 class Homepage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-
-    dispatch(destroyFilters());
+    dispatch(destroyFacilities());
   }
 
   handleSubmit = submitEvent => {

@@ -278,6 +278,7 @@ export default connect(
 )(
   reduxForm({
     form: 'filters',
+    enableReinitialize: true,
     destroyOnUnmount: false
   })(withSizes(mapSizesToProps)(Filters))
 );
