@@ -1,6 +1,7 @@
 import React from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { OutboundLink } from 'react-ga';
 import { Link } from 'react-router-dom';
 import Button from '../Form/Button';
 
@@ -14,9 +15,12 @@ export const InfoWindowText = props => {
       </h4>
       <p css={tw`font-normal mb-4`}>
         Phone:{' '}
-        <a href="tel:{selectedPlace.details.phone}">
+        <OutboundLink
+          to={`tel:${selectedPlace.details.phone}`}
+          eventLabel="Facility phone link from map"
+        >
           {selectedPlace.details.phone}
-        </a>
+        </OutboundLink>
       </p>
       {!singleMarker && (
         <Link

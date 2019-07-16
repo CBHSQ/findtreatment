@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL:
+    process.env.REACT_APP_BRANCH === process.env.REACT_APP_PROD_BRANCH
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_DEV_API_URL,
   responseType: 'json'
 });
 

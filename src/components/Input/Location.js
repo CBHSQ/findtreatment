@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Geosuggest from 'react-geosuggest';
-import { GoogleApiWrapper } from 'google-maps-react';
-import { GOOGLE_API_KEY } from '../../utils/constants';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Label from './Label';
@@ -95,6 +93,4 @@ const LocationContainer = styled.div`
   }
 `;
 
-export default GoogleApiWrapper({
-  apiKey: GOOGLE_API_KEY
-})(Location);
+export default Location;

@@ -5,12 +5,15 @@ import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import ScrollToTop from './components/ScrollToTop';
 import configureStore, { history } from './store';
-import { GOOGLE_ANALYTICS_UA } from './utils/constants';
 import App from './components/App';
 
 import './css/build/tailwind.css';
 
-ReactGA.initialize(GOOGLE_ANALYTICS_UA);
+ReactGA.initialize(
+  process.env.REACT_APP_BRANCH === process.env.REACT_APP_PROD_BRANCH
+    ? process.env.REACT_APP_PROD_GA_TRACKING_ID
+    : process.env.REACT_APP_DEV_GA_TRACKING_ID
+);
 
 const store = configureStore({}, history);
 

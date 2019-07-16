@@ -109,7 +109,7 @@ export class Filters extends Component {
           <div css={tw`w-full md:w-1/2 px-3 mb-6 md:mb-0`}>
             <Field
               name="age"
-              label="Age"
+              label="Ages accepted"
               plural="ages"
               component={Select}
               options={filterOptions.age}
@@ -118,7 +118,7 @@ export class Filters extends Component {
           <div css={tw`w-full md:w-1/2 px-3`}>
             <Field
               name="gender"
-              label="Gender"
+              label="Genders accepted"
               plural="genders"
               component={Select}
               options={filterOptions.gender}

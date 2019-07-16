@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPhone,
   faExternalLinkAlt,
-  faFlag,
-  faPrint
+  faFlag
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
+import ReactGA, { OutboundLink } from 'react-ga';
 
 class Details extends Component {
   renderService(service) {
@@ -30,12 +30,21 @@ class Details extends Component {
     );
   }
 
+  flagData = frid => {
+    ReactGA.event({
+      category: `Listing Data Report`,
+      action: `Data issue reported for frid`,
+      label: frid.frid
+    });
+  };
+
   render() {
     if (!this.props.facility) {
       return <Redirect to="/" />;
     }
 
     const {
+      frid,
       name1,
       name2,
       street1,
@@ -57,36 +66,38 @@ class Details extends Component {
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
-              <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
+              <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
               <div css={tw`lg:flex items-start`}>
-                <div>
-                  <Button primary>
+                <OutboundLink to={`tel:${phone}`} eventLabel="Facility Phone #">
+                  <Button
+                    primary
+                    css={tw`w-full lg:w-auto lg:mr-2 mb-2 lg:mb-0`}
+                  >
                     <FontAwesomeIcon
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <a
-                      href={`tel:${phone}`}
-                      css={tw`text-white hover:text-white`}
-                    >
-                      <span css={tw`font-light`}>Schedule Appointment | </span>
+                    <div>
+                      <span css={tw`inline-block font-normal`}>Call</span>{' '}
                       {phone}
-                    </a>
+                    </div>
                   </Button>
-                </div>
+                </OutboundLink>
                 {website !== 'http://' && (
-                  <a
-                    href={website}
+                  <OutboundLink
+                    to={website}
                     target="_blank"
+                    eventLabel="Facility website"
                     rel="noopener noreferrer"
-                    css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
-                    <FontAwesomeIcon
-                      icon={faExternalLinkAlt}
-                      css={tw`text-gray-700 mr-2`}
-                    />
-                    Visit website
-                  </a>
+                    <Button base css={tw`w-full lg:w-auto`}>
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        css={tw`fill-current w-4 h-4 mr-2`}
+                      />
+                      Visit website
+                    </Button>
+                  </OutboundLink>
                 )}
               </div>
             </div>
@@ -107,22 +118,19 @@ class Details extends Component {
                 <br />
                 {city}, {state} {zip}
                 <br />
-                <a
-                  css={tw`font-bold`}
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                <OutboundLink
+                  eventLabel="Driving directions link from details"
+                  to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
                     `${street1}, ${street2 &&
                       street2 + ','} ${city}, ${state} ${zip}`
                   )}`}
+                  css={tw`font-bold`}
                 >
                   Get driving directions
-                </a>
+                </OutboundLink>
               </div>
             </div>
-            <Button secondary css={tw`w-full mb-3`}>
-              <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
-              Print provider details
-            </Button>
-            <Button secondary>
+            <Button secondary onClick={() => this.flagData({ frid })}>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing
             </Button>

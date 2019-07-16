@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import { GOOGLE_API_KEY } from '../../utils/constants';
+import { Map, Marker } from 'google-maps-react';
 import DOMInfoWindow from './DOMInfoWindow';
 import InfoWindowText from './InfoWindowText';
 
@@ -122,6 +121,4 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: GOOGLE_API_KEY
-})(MapContainer);
+export default MapContainer;
