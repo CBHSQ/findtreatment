@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Button from './Form/Button';
@@ -49,14 +50,24 @@ const Card = props => {
       <div css={tw`mb-4`}>
         <p>
           <span css={tw`font-semibold`}>Phone:</span>{' '}
-          <a href={`tel:${phone}`}>{phone}</a>
+          <OutboundLink
+            eventLabel="Facility phone link from card"
+            to={`tel:${phone}`}
+          >
+            {phone}
+          </OutboundLink>
         </p>
         {website !== 'http://' && (
           <p>
             <span css={tw`font-semibold`}>Website:</span>{' '}
-            <a href={website} target="_blank" rel="noopener noreferrer">
+            <OutboundLink
+              eventLabel="Facility website link from card"
+              to={website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {website}
-            </a>
+            </OutboundLink>
           </p>
         )}
       </div>

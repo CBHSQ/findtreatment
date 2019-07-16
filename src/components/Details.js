@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPhone,
   faExternalLinkAlt,
-  faFlag,
-  faPrint
+  faFlag
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
@@ -119,15 +118,16 @@ class Details extends Component {
                 <br />
                 {city}, {state} {zip}
                 <br />
-                <a
-                  css={tw`font-bold`}
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                <OutboundLink
+                  eventLabel="Driving directions link from details"
+                  to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
                     `${street1}, ${street2 &&
                       street2 + ','} ${city}, ${state} ${zip}`
                   )}`}
+                  css={tw`font-bold`}
                 >
                   Get driving directions
-                </a>
+                </OutboundLink>
               </div>
             </div>
             <Button secondary onClick={() => this.flagData({ frid })}>

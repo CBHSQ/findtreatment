@@ -2,12 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebookSquare,
-  faTwitterSquare,
-  faYoutubeSquare
-} from '@fortawesome/free-brands-svg-icons';
+import { OutboundLink } from 'react-ga';
 import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
@@ -26,12 +21,18 @@ const Footer = () => {
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
             <div css={tw`flex items-center mb-6 text-white`}>
-              <a href="https://www.samhsa.gov/">
+              <OutboundLink
+                to="https://www.samhsa.gov/"
+                eventLabel="SAMHSA link from footer"
+              >
                 <LogoSAMHSA css={tw`fill-current mr-4`} />
-              </a>
-              <a href="https://www.hhs.gov/">
+              </OutboundLink>
+              <OutboundLink
+                to="https://www.hhs.gov/"
+                eventLabel="HHS link from footer"
+              >
                 <LogoHHS css={tw`fill-current`} />
-              </a>
+              </OutboundLink>
             </div>
             <p css={tw`leading-relaxed`}>
               SAMHSA's mission is to reduce the impact of substance abuse and
@@ -42,22 +43,31 @@ const Footer = () => {
             <h4 css={tw`font-bold mb-1`}>Other types of treatment</h4>
             <ul css={tw`mb-6`}>
               <li>
-                <a href="https://www.samhsa.gov/medication-assisted-treatment/practitioner-program-data/treatment-practitioner-locator">
+                <OutboundLink
+                  to="https://www.samhsa.gov/medication-assisted-treatment/practitioner-program-data/treatment-practitioner-locator"
+                  eventLabel="Buprenorphine practitioners link from footer"
+                >
                   Buprenorphine practitioners
-                </a>
+                </OutboundLink>
               </li>
               <li>
-                <a href="https://dpt2.samhsa.gov/treatment/directory.aspx">
+                <OutboundLink
+                  to="https://dpt2.samhsa.gov/treatment/directory.aspx"
+                  eventLabel="Opioid treatment programs link from footer"
+                >
                   Opioid treatment programs
-                </a>
+                </OutboundLink>
               </li>
             </ul>
             <h4 css={tw`font-bold mb-1`}>Providers</h4>
             <ul>
               <li>
-                <a href="https://findtreatment.samhsa.gov/locator/link-AppIns#.XSywJNNKiuo">
+                <OutboundLink
+                  to="https://findtreatment.samhsa.gov/locator/link-AppIns#.XSywJNNKiuo"
+                  eventLabel="List your facility link from footer"
+                >
                   List your facility
-                </a>
+                </OutboundLink>
               </li>
             </ul>
           </div>
@@ -67,21 +77,44 @@ const Footer = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="https://www.samhsa.gov/privacy">Privacy policy</a>
+                <OutboundLink
+                  to="https://www.samhsa.gov/privacy"
+                  eventLabel="Privacy policy link from footer"
+                >
+                  Privacy policy
+                </OutboundLink>
               </li>
               <li>
-                <a href="https://www.usa.gov/">USA.gov</a>
+                <OutboundLink
+                  to="https://www.usa.gov/"
+                  eventLabel="USA.gov link from footer"
+                >
+                  USA.gov
+                </OutboundLink>
               </li>
               <li>
-                <a href="https://www.samhsa.gov/foia">FOIA</a>
+                <OutboundLink
+                  to="https://www.samhsa.gov/foia"
+                  eventLabel="FOIA link from footer"
+                >
+                  FOIA
+                </OutboundLink>
               </li>
               <li>
-                <a href="https://www.samhsa.gov/accessibility">Accessibility</a>
+                <OutboundLink
+                  to="https://www.samhsa.gov/accessibility"
+                  eventLabel="Accessibility link from footer"
+                >
+                  Accessibility
+                </OutboundLink>
               </li>
               <li>
-                <a href="https://forms.gle/8Zf4sCUcgn8Cmoqb6">
+                <OutboundLink
+                  to="https://forms.gle/8Zf4sCUcgn8Cmoqb6"
+                  eventLabel="Submit feedback link from footer"
+                >
                   Submit feedback
-                </a>
+                </OutboundLink>
               </li>
             </ul>
           </div>
