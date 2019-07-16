@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPhone,
   faExternalLinkAlt,
-  faFlag,
-  faPrint
+  faFlag
 } from '@fortawesome/free-solid-svg-icons';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
@@ -67,7 +66,7 @@ class Details extends Component {
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
-              <h2 css={tw`mb-2 font-semibold`}>Next steps:</h2>
+              <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
               <div css={tw`lg:flex items-start`}>
                 <div>
                   <Button primary>
@@ -80,7 +79,7 @@ class Details extends Component {
                       eventLabel="Facility Phone #"
                       css={tw`text-white hover:text-white`}
                     >
-                      <span css={tw`font-light`}>Schedule Appointment | </span>
+                      <span css={tw`font-light`}>Call | </span>
                       {phone}
                     </OutboundLink>
                   </Button>
@@ -119,21 +118,18 @@ class Details extends Component {
                 <br />
                 {city}, {state} {zip}
                 <br />
-                <a
-                  css={tw`font-bold`}
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                <OutboundLink
+                  eventLabel="Driving directions link from details"
+                  to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
                     `${street1}, ${street2 &&
                       street2 + ','} ${city}, ${state} ${zip}`
                   )}`}
+                  css={tw`font-bold`}
                 >
                   Get driving directions
-                </a>
+                </OutboundLink>
               </div>
             </div>
-            <Button secondary css={tw`w-full mb-3`}>
-              <FontAwesomeIcon icon={faPrint} css={tw`mr-2`} />
-              Print provider details
-            </Button>
             <Button secondary onClick={() => this.flagData({ frid })}>
               <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
               Report a problem with this listing

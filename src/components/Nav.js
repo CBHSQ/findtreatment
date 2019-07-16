@@ -58,24 +58,12 @@ class Nav extends Component {
 
           <MobileNav isHidden={isHidden}>
             <div css={tw`text-sm lg:flex-grow`}>
-              <a
-                href="#responsive-header"
-                css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
-              >
-                Locate treatment
-              </a>
-              <a
-                href="#responsive-header"
-                css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}
-              >
+              <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}>
+                Search for treatment
+              </Link>
+              <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0`}>
                 What to expect
-              </a>
-              <a
-                href="#responsive-header"
-                css={tw`block mt-4 lg:inline-block lg:mt-0`}
-              >
-                About us
-              </a>
+              </Link>
             </div>
           </MobileNav>
         </nav>

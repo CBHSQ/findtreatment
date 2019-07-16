@@ -17,8 +17,8 @@ const NoResults = () => {
           <br /> like only your ZIP code and payment option.
         </p>
         <p css={tw`mb-6`}>
-          If you need assistance, our national helpline is available 24/7 and
-          can assist you with treatment referrals and information. Call{' '}
+          If you need assistance, SAMHSA's national helpline is available 24/7
+          and can assist you with treatment referrals and information. Call{' '}
           <OutboundLink
             eventLabel="Helpline link from no results"
             to="tel:+1-800-662-4357"

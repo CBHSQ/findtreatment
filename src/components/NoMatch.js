@@ -14,7 +14,7 @@ const NoMatch = () => {
       </h2>
       <div css={tw`max-w-xl mx-auto`}>
         <p css={tw`text-xl mb-6`}>
-          Our national helpline is available 24/7 and can assist you with
+          SAMHSA's national helpline is available 24/7 and can assist you with
           treatment referrals and information.
         </p>
         <OutboundLink eventLabel="Helpline link from 404" to="tel:18006624357">
