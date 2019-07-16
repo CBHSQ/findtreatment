@@ -9,7 +9,7 @@ import { OutboundLink } from 'react-ga';
 const Header = () => {
   return (
     <>
-      <div css={tw`bg-yellow-400`}>
+      <div css={tw`bg-yellow-300`}>
         <div className="container" css={tw`py-4 font-bold`}>
           We are testing a new design for our treatment locator. Have feedback?{' '}
           <OutboundLink
