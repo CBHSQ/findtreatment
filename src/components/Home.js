@@ -54,10 +54,11 @@ class Home extends Component {
           <p
             css={tw`lg:max-w-xl italic mx-auto text-xs mb-6 text-center text-gray-700`}
           >
-            All facilities are licensed by their states. Provider data is
-            collected, maintained, and verified by the Substance Abuse and
-            Mental Health Services Administration (SAMHSA) through an annual
-            survey.
+            Provider data is collected, maintained, and verified by the
+            Substance Abuse and Mental Health Services Administration (SAMHSA)
+            through an annual survey. All substance use treatment facilities are
+            licensed by the state they're in, though license requirements differ
+            by state.
           </p>
         </div>
         <div css={tw`bg-gray-200`}>
