@@ -13,6 +13,10 @@ const Button = styled.button`
   ${props => props.outline && tw`text-blue-600 border border-blue-500`}
 
   ${props =>
+    props.base &&
+    tw`hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400`}
+
+  ${props =>
     props.disable && tw`hover:bg-blue-500 cursor-not-allowed opacity-50`}
 `;
 

@@ -68,35 +68,35 @@ class Details extends Component {
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
               <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
               <div css={tw`lg:flex items-start`}>
-                <div>
-                  <Button primary>
+                <OutboundLink to={`tel:${phone}`} eventLabel="Facility Phone #">
+                  <Button
+                    primary
+                    css={tw`w-full lg:w-auto lg:mr-2 mb-2 lg:mb-0`}
+                  >
                     <FontAwesomeIcon
                       icon={faPhone}
                       css={tw`fill-current w-4 h-4 mr-2`}
                     />
-                    <OutboundLink
-                      to={`tel:${phone}`}
-                      eventLabel="Facility Phone #"
-                      css={tw`text-white hover:text-white`}
-                    >
-                      <span css={tw`font-light`}>Call | </span>
+                    <div>
+                      <span css={tw`inline-block font-normal`}>Call</span>{' '}
                       {phone}
-                    </OutboundLink>
+                    </div>
                   </Button>
-                </div>
+                </OutboundLink>
                 {website !== 'http://' && (
                   <OutboundLink
                     to={website}
                     target="_blank"
                     eventLabel="Facility website"
                     rel="noopener noreferrer"
-                    css={tw`w-full lg:w-auto block hover:text-gray-900 text-gray-900 bg-gray-300 hover:bg-gray-400 font-semibold py-3 px-4 rounded ml-2`}
                   >
-                    <FontAwesomeIcon
-                      icon={faExternalLinkAlt}
-                      css={tw`text-gray-700 mr-2`}
-                    />
-                    Visit website
+                    <Button base css={tw`w-full lg:w-auto`}>
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        css={tw`fill-current w-4 h-4 mr-2`}
+                      />
+                      Visit website
+                    </Button>
                   </OutboundLink>
                 )}
               </div>
