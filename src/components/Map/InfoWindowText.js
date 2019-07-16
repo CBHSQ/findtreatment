@@ -26,7 +26,7 @@ export const InfoWindowText = props => {
         <Link
           to={{
             pathname: '/details',
-            state: selectedPlace.details
+            state: { id: selectedPlace.details.frid }
           }}
           css={tw`block`}
         >
