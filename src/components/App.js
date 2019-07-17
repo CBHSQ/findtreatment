@@ -20,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div css={tw`font-sans text-gray-900 leading-normal overflow-hidden`}>
+      <div css={tw`font-sans text-gray-900 leading-normal`}>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
