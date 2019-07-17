@@ -5,7 +5,6 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
-import { initialFilterState } from '../../plugins/filters';
 import { destroyFacilities } from '../../actions/facilities';
 
 const Form = styled.form`
@@ -59,13 +58,17 @@ const mapStateToProps = state => {
   const values = getFormValues('homepage')(state);
 
   return {
+    initialValues: {
+      ...getFormValues('filters')(state)
+    },
     location: values && values.location
   };
 };
 
 export { Homepage };
-export default reduxForm({
-  form: 'homepage',
-  initialValues: initialFilterState,
-  destroyOnUnmount: false
-})(connect(mapStateToProps)(Homepage));
+export default connect(mapStateToProps)(
+  reduxForm({
+    form: 'homepage',
+    destroyOnUnmount: false
+  })(Homepage)
+);
