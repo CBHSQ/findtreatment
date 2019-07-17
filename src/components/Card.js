@@ -73,7 +73,7 @@ const Card = props => {
       </div>
       <p css={tw`mb-4`}>
         <span css={tw`font-semibold`}>Type of care:</span>{' '}
-        <span>{services[1].f3}</span>
+        <span>{services[0].f3}</span>
       </p>
 
       <Link
