@@ -1,7 +1,8 @@
 import {
   RECEIVE_FACILITIES_BEGIN,
   RECEIVE_FACILITIES_SUCCESS,
-  RECEIVE_FACILITIES_FAILURE
+  RECEIVE_FACILITIES_FAILURE,
+  DESTROY_FACILITIES
 } from '../actions/facilities';
 
 const initialState = {
@@ -28,6 +29,8 @@ export default function facilities(state = initialState, action) {
         loading: false,
         data: {}
       };
+    case DESTROY_FACILITIES:
+      return initialState;
     default:
       return state;
   }
