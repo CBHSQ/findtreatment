@@ -1,10 +1,11 @@
 import { RESET_ADVANCED_FILTERS, RESET_ALL_FILTERS } from '../actions/filters';
+import { ADVANCED_FILTERS, DEFAULT_DISTANCE } from '../utils/constants';
 
 const initialFilterState = {
-  distance: 16093.4
+  distance: DEFAULT_DISTANCE
 };
 
-const advancedFilters = ['language', 'VET', 'GL', 'mat'];
+const advancedFilters = ADVANCED_FILTERS;
 const resetFilters = values => {
   return Object.entries(values).reduce((memo, [key, value]) => {
     if (advancedFilters.includes(key)) {
