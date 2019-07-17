@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import 'styled-components/macro';
-import tw from 'tailwind.macro';
 
 export default () => [
   {
