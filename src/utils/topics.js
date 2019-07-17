@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 
@@ -34,17 +33,17 @@ export default () => [
             </p>
             <p>
               It causes intense cravings for alcohol or drugs, and can include:
-              <ul>
-                <li>
-                  Using illegal drugs like heroin or cocaine, or excessive
-                  alcohol drinking.
-                </li>
-                <li>
-                  Using prescription drugs in ways other than prescribed, or
-                  using someone else’s prescription.
-                </li>
-              </ul>
             </p>
+            <ul>
+              <li>
+                Using illegal drugs like heroin or cocaine, or excessive alcohol
+                drinking.
+              </li>
+              <li>
+                Using prescription drugs in ways other than prescribed, or using
+                someone else’s prescription.
+              </li>
+            </ul>
           </>
         )
       },
@@ -61,29 +60,28 @@ export default () => [
             <p>
               Some common behaviors of addiction and substance use disorder
               include:
-              <ol>
-                <li>
-                  Trying to stop or cut down on drug use, but not being able to.
-                </li>
-                <li>
-                  Using drugs because of being angry or upset with other people
-                </li>
-                <li>Taking one drug to get over the effects of another.</li>
-                <li>
-                  Making mistakes at school or on the job because of using
-                  drugs.
-                </li>
-                <li>Drug use hurting relationships with family and friends.</li>
-                <li>Being scared at the thought of running out of drugs.</li>
-                <li>Stealing drugs or money to pay for drugs.</li>
-                <li>Being arrested or hospitalized for drug use.</li>
-                <li>
-                  Developing a tolerance, and needing larger amounts of drugs or
-                  alcohol to get high.
-                </li>
-                <li>Overdosing on drugs.</li>
-              </ol>
             </p>
+            <ol>
+              <li>
+                Trying to stop or cut down on drug use, but not being able to.
+              </li>
+              <li>
+                Using drugs because of being angry or upset with other people
+              </li>
+              <li>Taking one drug to get over the effects of another.</li>
+              <li>
+                Making mistakes at school or on the job because of using drugs.
+              </li>
+              <li>Drug use hurting relationships with family and friends.</li>
+              <li>Being scared at the thought of running out of drugs.</li>
+              <li>Stealing drugs or money to pay for drugs.</li>
+              <li>Being arrested or hospitalized for drug use.</li>
+              <li>
+                Developing a tolerance, and needing larger amounts of drugs or
+                alcohol to get high.
+              </li>
+              <li>Overdosing on drugs.</li>
+            </ol>
           </>
         )
       },
@@ -112,48 +110,47 @@ export default () => [
             <p>
               If treatment isn’t the next right step for you, you can still find
               someone to talk to:
+            </p>
+            <ul>
+              <li>
+                <strong>
+                  Talking to a professional therapist or counselor.{' '}
+                </strong>
+                Your primary care doctor can recommend therapists in your care
+                network, and NAMI has locations around the country with
+                resources for finding a therapist.
+                <a href="https://www.nami.org/local/">
+                  {' '}
+                  https://www.nami.org/local
+                </a>
+              </li>
+              <li>
+                <strong>Joining a support group of peers. </strong>
+                People who have common life experiences have a unique ability to
+                help each other. Peers can be very supportive since they have
+                “been there” and serve as living examples that individuals can
+                and do recover. There are peer groups for people in recovery as
+                well as their families and loved ones, including:
+              </li>
               <ul>
                 <li>
-                  <strong>
-                    Talking to a professional therapist or counselor.{' '}
-                  </strong>
-                  Your primary care doctor can recommend therapists in your care
-                  network, and NAMI has locations around the country with
-                  resources for finding a therapist.
-                  <a href="https://www.nami.org/local/">
-                    {' '}
-                    https://www.nami.org/local
-                  </a>
+                  Narcotics Anonymous <a href="www.na.org">(www.na.org)</a>, and
+                  Nar-Anon{' '}
+                  <a href="https://www.nar-anon.org/">(www.nar-anon.org)</a>
                 </li>
                 <li>
-                  <strong>Joining a support group of peers. </strong>
-                  People who have common life experiences have a unique ability
-                  to help each other. Peers can be very supportive since they
-                  have “been there” and serve as living examples that
-                  individuals can and do recover. There are peer groups for
-                  people in recovery as well as their families and loved ones,
-                  including:
+                  Alcoholics Anonymous <a href="www.aa.org">(www.aa.org)</a>,
+                  and Al-Anon{' '}
+                  <a href="https://al-anon.org/">(https://al-anon.org)</a>
                 </li>
-                <ul>
-                  <li>
-                    Narcotics Anonymous <a href="www.na.org">(www.na.org)</a>,
-                    and Nar-Anon{' '}
-                    <a href="https://www.nar-anon.org/">(www.nar-anon.org)</a>
-                  </li>
-                  <li>
-                    Alcoholics Anonymous <a href="www.aa.org">(www.aa.org)</a>,
-                    and Al-Anon{' '}
-                    <a href="https://al-anon.org/">(https://al-anon.org)</a>
-                  </li>
-                  <li>
-                    Faces and Voices of Recovery{' '}
-                    <a href="www.facesandvoicesofrecovery.org">
-                      (www.facesandvoicesofrecovery.org)
-                    </a>
-                  </li>
-                </ul>
+                <li>
+                  Faces and Voices of Recovery{' '}
+                  <a href="www.facesandvoicesofrecovery.org">
+                    (www.facesandvoicesofrecovery.org)
+                  </a>
+                </li>
               </ul>
-            </p>
+            </ul>
           </>
         )
       },
@@ -189,28 +186,26 @@ export default () => [
               asked to take part in treatment. This may involve going to a
               family education program or to counseling for families or couples.
             </p>
-            <p>
-              As you and your family member recover, remember:
-              <ul>
-                <li>
-                  You are participating in treatment for
-                  <strong> yourself</strong>, not just for the sake of the
-                  person who used substances.
-                </li>
-                <li>
-                  Your loved one’s recovery, sobriety, or abstinence does not
-                  depend on you.
-                </li>
-                <li>
-                  Your family’s recovery does not depend on the recovery of the
-                  person who used substances.
-                </li>
-                <li>
-                  You did not cause your family member’s substance use disorder.
-                  It is not your fault.
-                </li>
-              </ul>
-            </p>
+            <p>As you and your family member recover, remember:</p>
+            <ul>
+              <li>
+                You are participating in treatment for
+                <strong> yourself</strong>, not just for the sake of the person
+                who used substances.
+              </li>
+              <li>
+                Your loved one’s recovery, sobriety, or abstinence does not
+                depend on you.
+              </li>
+              <li>
+                Your family’s recovery does not depend on the recovery of the
+                person who used substances.
+              </li>
+              <li>
+                You did not cause your family member’s substance use disorder.
+                It is not your fault.
+              </li>
+            </ul>
             <p>
               You still may have hurt feelings and anger from the past that need
               to be resolved. You need support to understand and deal with these
@@ -428,9 +423,7 @@ export default () => [
               There are many kinds of treatment; your recovery may include one
               or more of these.
             </p>
-            <h3>
-              <strong>Detoxification/Detox</strong>
-            </h3>
+            <h3>Detoxification/Detox</h3>
             <p>
               <em>Supervised withdrawal from substance use</em>
             </p>
@@ -440,9 +433,7 @@ export default () => [
               <strong>Detoxification by itself is not treatment</strong>; it is
               a first step that can prepare a person for treatment.
             </p>
-            <h3>
-              <strong>Interim care</strong>
-            </h3>
+            <h3>Interim care</h3>
             <p>
               <em>When immediate admission to other care isn’t available</em>
             </p>
@@ -452,9 +443,7 @@ export default () => [
               be a helpful bridge from beginning recovery to admission to a
               regular outpatient, inpatient, or residential setting
             </p>
-            <h3>
-              <strong>Outpatient</strong>
-            </h3>
+            <h3>Outpatient</h3>
             <p>
               <em>
                 Treatment at a program site while a patient lives on their own
@@ -471,9 +460,7 @@ export default () => [
               attendance and others meeting one to three times per week.
               Outpatient care usually lasts from about 2 months to 1 year.
             </p>
-            <h3>
-              <strong>Hospital inpatient</strong>
-            </h3>
+            <h3>Hospital inpatient</h3>
             <p>
               <em>24/7 care connected to a hospital, lasting days or weeks</em>
             </p>
@@ -488,9 +475,7 @@ export default () => [
               treatment to fully understand their needs and make a treatment
               plan.
             </p>
-            <h3>
-              <strong>Residential</strong>
-            </h3>
+            <h3>Residential</h3>
             <p>
               <em>Live-in care, lasting for one month to one year</em>
             </p>
@@ -506,9 +491,7 @@ export default () => [
               also help people with very serious disorders who have been unable
               to get and stay sober or drug free in other treatment.
             </p>
-            <h3>
-              <strong>Psychiatric Emergency Walk-in Services</strong>
-            </h3>
+            <h3>Psychiatric Emergency Walk-in Services</h3>
             <p>
               <em>
                 Walk-in help for urgent/emergency mental health evaluation
@@ -519,11 +502,7 @@ export default () => [
               less intensive setting than a hospital, though they may recommend
               hospitalization when appropriate.
             </p>
-            <h3>
-              <strong>
-                Telemedicine (including internet and mobile options)
-              </strong>
-            </h3>
+            <h3>Telemedicine (including internet and mobile options)</h3>
             <p>
               <em>
                 Care given over the phone or online to support treatment and
@@ -555,11 +534,9 @@ export default () => [
               addiction: methadone, buprenorphine, and naltrexone.
             </p>
             <h3>
-              <strong>Methadone</strong>
+              Methadone{' '}
+              <span css={tw`italic font-light lowercase`}>(METH-ah-dohn)</span>
             </h3>
-            <h4>
-              <em>(METH-ah-dohn)</em>
-            </h4>
             <p>
               Methadone is a long-acting medication that reduces cravings and
               withdrawal symptoms. It can block the euphoric effects of
@@ -584,11 +561,11 @@ export default () => [
               treatment for opioid use disorder during pregnancy.
             </p>
             <h3>
-              <strong>Buprenorphine</strong>
+              Buprenorphine
+              <span css={tw`italic font-light lowercase`}>
+                (byoo-preh-NOR-feen)
+              </span>
             </h3>
-            <h4>
-              <em>(byoo-preh-NOR-feen)</em>
-            </h4>
             <p>
               Buprenorphine works in a similar way to methadone, controlling
               withdrawal symptoms and blocking cravings. Buprenorphine is
@@ -615,11 +592,9 @@ export default () => [
               injecting it.
             </p>
             <h3>
-              <strong>Naltrexone</strong>
+              Naltrexone{' '}
+              <span css={tw`italic font-light lowercase`}>(nal-TREX-ohn)</span>
             </h3>
-            <h4>
-              <em>(nal-TREX-ohn)</em>
-            </h4>
             <p>
               Naltrexone blocks the ability of opioids to eliminate pain and
               induce euphoria. This removes the rewarding aspects of opioid use
@@ -674,13 +649,11 @@ export default () => [
               Medicaid or private insurance. Your state also has funding set
               aside to help people without insurance afford treatment.
             </p>
-            <h3>
-              <strong>Does insurance cover substance use treatment?</strong>
-            </h3>
+            <h3>Does insurance cover substance use treatment?</h3>
             <p>
               The Mental Health Parity and Addiction Equity Act (MHPAEA) of 2008
               requires health insurers and group health plans to provide the
-              <strong> same level of benefits</strong> for mental and/or
+              <strong>same level of benefits</strong> for mental and/or
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
               “we don’t do substance abuse treatment” or “mental health isn’t
@@ -689,7 +662,6 @@ export default () => [
             <p>
               If you’ve been denied coverage for treatment, this
               <a href="https://www.hhs.gov/mental-health-and-addiction-insurance-help">
-                {' '}
                 Mental Health and Addiction Insurance Help
               </a>{' '}
               tool can help you find the right resources to solve issues with
@@ -722,14 +694,14 @@ export default () => [
             </p>
             <p>
               Just as with other kinds of medical care, you may have a
-              <strong> co-pay</strong> — a small amount of money you need to pay
+              <strong>co-pay</strong> — a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
             </p>
             <p>
               You can also ask your insurer if they have
-              <strong> case managers</strong>. A case manager is a registered
+              <strong>case managers</strong>. A case manager is a registered
               nurse, social worker, or other licensed healthcare provider who
               can work with you directly. Their services are usually covered by
               the cost you’re already paying to your insurance. They’ll help you
@@ -755,20 +727,19 @@ export default () => [
               based on your income, or have payment assistance available.
             </p>
             <p>
-              You’ll need an <strong> estimate of your annual income </strong>
+              You’ll need an <strong>estimate of your annual income</strong>
               and a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
               not perfect. (For a list of what counts as income, visit
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
-                {' '}
                 this page on healthcare.gov.
               </a>
             </p>
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <strong> state agency </strong>
+              <strong>state agency</strong>
               for information on how the process works in your state.
             </p>
             <p>
@@ -776,39 +747,38 @@ export default () => [
               of those benefits as soon as you can (usually two weeks to one
               month after you sign up). You’ll be able to enroll in a new plan
               if you:
-              <ul>
-                <li>
-                  Do it during an <strong> open enrollment period</strong>. For
-                  a limited period of time each year, federal- and state-run
-                  insurance exchanges allow anyone to sign up for or change
-                  their plans. In most states, enrollment for 2020 will be{' '}
-                  <strong> November 1 - December 15, 2019</strong>.
-                </li>
-                <li>
-                  Have a <strong> qualifying life event </strong>
-                  For 60 days after a major change in your life — like having a
-                  baby, getting married or divorced, or getting U.S. citizenship
-                  — you’re eligible to sign up for new insurance.
-                  <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
-                    {' '}
-                    Learn more about qualifying events.{' '}
-                  </a>
-                </li>
-                <li>
-                  Are <strong> eligible for Medicaid</strong>. In most states,
-                  if you make less than $17,236 as an individual or $29,435 in a
-                  family of three, you’re eligible for free or low-cost health
-                  coverage. You can apply for Medicaid at any time —
-                  <strong> there’s no enrollment period</strong> — so contact
-                  your state agency for more details if you think you might be
-                  eligible.
-                </li>
-              </ul>
             </p>
+            <ul>
+              <li>
+                Do it during an <strong> open enrollment period</strong>. For a
+                limited period of time each year, federal- and state-run
+                insurance exchanges allow anyone to sign up for or change their
+                plans. In most states, enrollment for 2020 will be{' '}
+                <strong>November 1 - December 15, 2019</strong>.
+              </li>
+              <li>
+                Have a <strong>qualifying life event</strong>
+                For 60 days after a major change in your life — like having a
+                baby, getting married or divorced, or getting U.S. citizenship —
+                you’re eligible to sign up for new insurance.
+                <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
+                  Learn more about qualifying events.
+                </a>
+              </li>
+              <li>
+                Are <strong>eligible for Medicaid</strong>. In most states, if
+                you make less than $17,236 as an individual or $29,435 in a
+                family of three, you’re eligible for free or low-cost health
+                coverage. You can apply for Medicaid at any time —
+                <strong>there’s no enrollment period</strong> — so contact your
+                state agency for more details if you think you might be
+                eligible.
+              </li>
+            </ul>
             <p>
               Some individual treatment facilities offer{' '}
-              <strong> grants or scholarships</strong> to help offset the cost
-              of attending. Not all of these will cover your whole stay, though,
+              <strong>grants or scholarships</strong> to help offset the cost of
+              attending. Not all of these will cover your whole stay, though,
               and many will revoke funding if you don’t complete their program —
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
@@ -820,6 +790,3 @@ export default () => [
     ]
   }
 ];
-
-export const lipsum =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas augue non felis gravida, in efficitur sapien viverra. Mauris dapibus ultrices libero, at convallis tortor pellentesque a. Sed vestibulum nisi eu tristique laoreet. Nullam iaculis nisi metus, at aliquet quam dignissim ac. Suspendisse quis justo eget sem vulputate euismod. Duis a egestas dolor, vitae interdum nulla. Fusce semper nunc ex, sit amet mattis ipsum finibus ac. Aliquam congue, orci varius faucibus elementum, nibh neque gravida odio, id aliquet purus tellus a diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum tempor augue sit amet lectus hendrerit, et ullamcorper nisi tristique. Duis fermentum aliquet nibh ac consectetur. Quisque nulla orci, finibus in tellus eu, pharetra viverra erat. Donec lobortis tristique aliquam. Aliquam in mollis dui. Suspendisse a lacus ac tellus auctor pulvinar at nec metus.';
