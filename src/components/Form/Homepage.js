@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 
   return {
     initialValues: {
-      ...getFormValues('filters')(state)
+      ...state.form.filters
     },
     location: values && values.location
   };
