@@ -5,30 +5,65 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import NoMatch from './NoMatch';
 import { convertToSlug } from '../utils/misc';
-import topics, { lipsum } from '../utils/topics';
+import topics from '../utils/topics';
 
 const StyledPage = styled.div`
   ${tw`flex flex-wrap -mx-6`}
 `;
 
+const SideBar = styled.div`
+  ${tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}
+`;
+
 const Content = styled.div`
   ${tw`w-full lg:w-2/3 px-6 mb-6`}
 
+  div:last-child {
+    ${tw`border-b-0 mb-0 pb-0`}
+  }
+
+  div > *:last-child {
+    ${tw`mb-0`}
+  }
+
+  h1,
+  h2,
+  h3 {
+    ${tw`font-bold mb-4`}
+  }
+
+  h3 {
+    ${tw`uppercase font-semibold text-sm`}
+  }
+
   p {
-    ${tw`mb-2`}
+    ${tw`mb-4`}
+  }
+
+  ul,
+  ol {
+    ${tw`pl-4 ml-4 mb-4 list-outside`}
   }
 
   ul {
-    ${tw`ml-4 my-2 list-inside list-disc`}
+    ${tw`list-disc`}
   }
 
   ol {
-    ${tw`ml-4 my-2 list-inside list-decimal`}
+    ${tw`list-decimal`}
   }
 
   li {
     ${tw`mb-2`}
   }
+
+  li > ul {
+    ${tw`mt-2`}
+  }
+`;
+
+const Topic = styled.div`
+  ${tw`border-b mb-8 pb-8 max-w-xl`}
 `;
 
 class Page extends Component {
@@ -43,7 +78,7 @@ class Page extends Component {
     return (
       <div className="container">
         <StyledPage>
-          <div css={tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}>
+          <SideBar>
             <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
               <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
               <ul>
@@ -78,17 +113,17 @@ class Page extends Component {
                 ))}
               </ul>
             </div>
-          </div>
+          </SideBar>
           <Content>
-            <h1 css={tw`font-bold lg:text-5xl`}>{topic.name}</h1>
-            <p css={tw`text-xl font-light mb-4`}>{topic.description}</p>
+            <h1 css={tw`text-5xl`}>{topic.name}</h1>
+            <p css={tw`text-xl font-light mb-8 max-w-xl`}>
+              {topic.description}
+            </p>
             {topic.subTopics.map(({ name, body }) => (
-              <div key={convertToSlug(name)}>
-                <h2 id={convertToSlug(name)} css={tw`font-bold`}>
-                  {name}
-                </h2>
-                <div css={tw`mb-8`}>{body || lipsum}</div>
-              </div>
+              <Topic key={convertToSlug(name)}>
+                <h2 id={convertToSlug(name)}>{name}</h2>
+                {body}
+              </Topic>
             ))}
           </Content>
         </StyledPage>
