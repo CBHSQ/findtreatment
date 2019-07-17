@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import NoMatch from './NoMatch';
 import { convertToSlug } from '../utils/misc';
 import topics, { lipsum } from '../utils/topics';
+
+const StyledPage = styled.div`
+  ${tw`flex flex-wrap -mx-6`}
+`;
+
+const Content = styled.div`
+  ${tw`w-full lg:w-2/3 px-6 mb-6`}
+
+  p {
+    ${tw`mb-2`}
+  }
+
+  ul {
+    ${tw`ml-4 my-2 list-inside list-disc`}
+  }
+
+  ol {
+    ${tw`ml-4 my-2 list-inside list-decimal`}
+  }
+
+  li {
+    ${tw`mb-2`}
+  }
+`;
 
 class Page extends Component {
   render() {
@@ -18,7 +42,7 @@ class Page extends Component {
 
     return (
       <div className="container">
-        <div css={tw`flex flex-wrap -mx-6`}>
+        <StyledPage>
           <div css={tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}>
             <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
               <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
@@ -55,7 +79,7 @@ class Page extends Component {
               </ul>
             </div>
           </div>
-          <div css={tw`w-full lg:w-2/3 px-6 mb-6`}>
+          <Content>
             <h1 css={tw`font-bold lg:text-5xl`}>{topic.name}</h1>
             <p css={tw`text-xl font-light mb-4`}>{topic.description}</p>
             {topic.subTopics.map(({ name, body }) => (
@@ -63,11 +87,11 @@ class Page extends Component {
                 <h2 id={convertToSlug(name)} css={tw`font-bold`}>
                   {name}
                 </h2>
-                <div css={tw`mb-4`}>{body || lipsum}</div>
+                <div css={tw`mb-8`}>{body || lipsum}</div>
               </div>
             ))}
-          </div>
-        </div>
+          </Content>
+        </StyledPage>
       </div>
     );
   }
