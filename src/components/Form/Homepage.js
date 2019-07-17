@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
+import { destroyFilters } from '../../actions/filters';
 import { initialFilterState } from '../../plugins/filters';
 
 const Form = styled.form`
@@ -12,6 +13,12 @@ const Form = styled.form`
 `;
 
 class Homepage extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(destroyFilters());
+  }
+
   handleSubmit = submitEvent => {
     if (!this.props.location) {
       return submitEvent.preventDefault();
@@ -31,7 +38,7 @@ class Homepage extends Component {
               label="Location"
               component={Location}
               name="location"
-              placeholder="City, state, or zip code"
+              placeholder="City or zip code"
             />
           </div>
           <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>

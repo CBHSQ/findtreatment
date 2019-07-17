@@ -44,8 +44,9 @@ class Home extends Component {
         <div className="container" css={tw`mx-auto text-center mb-10`}>
           <h2 css={tw`text-3xl lg:text-5xl font-light`}>Find help near you</h2>
           <span>
-            Quickly find providers who treat substance use disorders and
-            addiction
+            Quickly find providers who treat{' '}
+            <strong>substance use disorders</strong> and{' '}
+            <strong>addiction</strong>
           </span>
         </div>
         <div css={tw`max-w-3xl mx-auto mb-10 px-6`}>
@@ -53,10 +54,11 @@ class Home extends Component {
           <p
             css={tw`lg:max-w-xl italic mx-auto text-xs mb-6 text-center text-gray-700`}
           >
-            All facilities are licensed by their states. Provider data is
-            collected, maintained, and verified by the Substance Abuse and
-            Mental Health Services Administration (SAMHSA) through an annual
-            survey.
+            Provider data is collected, maintained, and verified by the
+            Substance Abuse and Mental Health Services Administration (SAMHSA)
+            through an annual survey. All substance use treatment facilities are
+            licensed by the state they're in, though license requirements differ
+            by state.
           </p>
         </div>
         <div css={tw`bg-gray-200`}>

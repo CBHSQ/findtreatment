@@ -1,13 +1,16 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Button from './Form/Button';
 
 const Card = props => {
   const {
+    frid,
     name1,
     name2,
     miles,
@@ -28,7 +31,7 @@ const Card = props => {
           to={{
             pathname: '/details',
             state: {
-              ...props
+              id: frid
             }
           }}
         >
@@ -41,20 +44,30 @@ const Card = props => {
       </div>
       <div css={tw`text-gray-600 mb-4`}>
         <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
-        {street1}, {street2 ? street2 + ', ' : ''}
+        {street1}, {street2 && street2 + ', '}
         {city}, {state} {zip}
       </div>
       <div css={tw`mb-4`}>
         <p>
           <span css={tw`font-semibold`}>Phone:</span>{' '}
-          <a href={`tel:${phone}`}>{phone}</a>
+          <OutboundLink
+            eventLabel="Facility phone link from card"
+            to={`tel:${phone}`}
+          >
+            {phone}
+          </OutboundLink>
         </p>
         {website !== 'http://' && (
           <p>
             <span css={tw`font-semibold`}>Website:</span>{' '}
-            <a href={website} target="_blank" rel="noopener noreferrer">
+            <OutboundLink
+              eventLabel="Facility website link from card"
+              to={website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {website}
-            </a>
+            </OutboundLink>
           </p>
         )}
       </div>
@@ -67,7 +80,7 @@ const Card = props => {
         to={{
           pathname: '/details',
           state: {
-            ...props
+            id: frid
           }
         }}
       >
@@ -75,6 +88,21 @@ const Card = props => {
       </Link>
     </li>
   );
+};
+
+Card.propTypes = {
+  frid: PropTypes.string.isRequired,
+  name1: PropTypes.string.isRequired,
+  name2: PropTypes.string,
+  miles: PropTypes.number.isRequired,
+  street1: PropTypes.string.isRequired,
+  street2: PropTypes.string,
+  city: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  zip: PropTypes.string.isRequired,
+  services: PropTypes.array.isRequired,
+  phone: PropTypes.string.isRequired,
+  website: PropTypes.string
 };
 
 export default Card;
