@@ -11,7 +11,6 @@ import { Location, Select } from '../Input';
 import Button from './Button';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
-import { initialFilterState } from '../../plugins/filters';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -137,28 +136,17 @@ export class Filters extends Component {
                 options={filterOptions.type}
               />
             </Row>
-            <RowFlex>
-              <div css={tw`w-full md:w-1/2 px-3 mb-6 md:mb-0`}>
-                <Field
-                  name="age"
-                  label="Ages accepted"
-                  plural="ages"
-                  component={Select}
-                  options={filterOptions.age}
-                />
-              </div>
-              <div css={tw`w-full md:w-1/2 px-3`}>
-                <Field
-                  name="gender"
-                  label="Genders accepted"
-                  plural="genders"
-                  component={Select}
-                  options={filterOptions.gender}
-                />
-              </div>
-            </RowFlex>
             {!this.state.isHidden && (
               <div className="filter-container">
+                <Row>
+                  <Field
+                    name="age"
+                    label="Ages accepted"
+                    plural="ages"
+                    component={Select}
+                    options={filterOptions.age}
+                  />
+                </Row>
                 <Row>
                   <Field
                     name="language"
@@ -252,7 +240,6 @@ const mapStateToProps = state => {
 
   return {
     initialValues: {
-      ...initialFilterState,
       ...locationValue
     },
     location: locationValue && locationValue.location,
@@ -278,6 +265,7 @@ export default connect(
 )(
   reduxForm({
     form: 'filters',
+    enableReinitialize: true,
     destroyOnUnmount: false
   })(withSizes(mapSizesToProps)(Filters))
 );

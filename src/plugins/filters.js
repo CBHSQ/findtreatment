@@ -1,10 +1,6 @@
-import {
-  RESET_ADVANCED_FILTERS,
-  RESET_ALL_FILTERS,
-  DESTROY_FILTERS
-} from '../actions/filters';
+import { RESET_ADVANCED_FILTERS, RESET_ALL_FILTERS } from '../actions/filters';
 
-export const initialFilterState = {
+const initialFilterState = {
   distance: 16093.4
 };
 
@@ -23,7 +19,7 @@ const resetFilters = values => {
 };
 
 export default {
-  filters(state, action) {
+  filters(state = initialFilterState, action) {
     switch (action.type) {
       case RESET_ADVANCED_FILTERS: {
         return {
@@ -36,9 +32,6 @@ export default {
           ...state,
           values: { ...initialFilterState, location: state.values.location }
         };
-      }
-      case DESTROY_FILTERS: {
-        return undefined;
       }
       default:
         return state;
