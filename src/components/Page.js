@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import Sticker from 'Stickyfill';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import NoMatch from './NoMatch';
@@ -20,40 +21,42 @@ class Page extends Component {
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}>
-            <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
-              <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
-              <ul>
-                {topics().map(({ name, id, subTopics }) => (
-                  <li key={id} css={tw`mb-4`}>
-                    <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
-                      {name}
-                    </Link>
-                    {id === match.params.pageId && (
-                      <ul css={tw`my-2`}>
-                        {subTopics.map(({ name, body }) => (
-                          <li key={convertToSlug(name)} css={tw`mb-3`}>
-                            <HashLink
-                              smooth
-                              to={`#${convertToSlug(name)}`}
-                              css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
-                              style={
-                                location.hash === `#${convertToSlug(name)}`
-                                  ? {
-                                      borderColor: '#3182ce'
-                                    }
-                                  : {}
-                              }
-                            >
-                              {name}
-                            </HashLink>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Sticker>
+              <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
+                <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
+                <ul>
+                  {topics().map(({ name, id, subTopics }) => (
+                    <li key={id} css={tw`mb-4`}>
+                      <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
+                        {name}
+                      </Link>
+                      {id === match.params.pageId && (
+                        <ul css={tw`my-2`}>
+                          {subTopics.map(({ name, body }) => (
+                            <li key={convertToSlug(name)} css={tw`mb-3`}>
+                              <HashLink
+                                smooth
+                                to={`#${convertToSlug(name)}`}
+                                css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
+                                style={
+                                  location.hash === `#${convertToSlug(name)}`
+                                    ? {
+                                        borderColor: '#3182ce'
+                                      }
+                                    : {}
+                                }
+                              >
+                                {name}
+                              </HashLink>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Sticker>
           </div>
           <div css={tw`w-full lg:w-2/3 px-6 mb-6`}>
             <h1 css={tw`font-bold lg:text-5xl`}>{topic.name}</h1>
