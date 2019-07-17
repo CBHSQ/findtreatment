@@ -33,7 +33,7 @@ const Content = styled.div`
 
 class Page extends Component {
   render() {
-    const { match } = this.props;
+    const { match, location } = this.props;
     const topic = topics().find(({ id }) => id === match.params.pageId);
 
     if (!topic) {
@@ -44,30 +44,40 @@ class Page extends Component {
       <div className="container">
         <StyledPage>
           <div css={tw`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`}>
-            <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
-            <ul>
-              {topics().map(({ name, id, subTopics }) => (
-                <li key={id} css={tw`mb-4`}>
-                  <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
-                    {name}
-                  </Link>
-                  {id === match.params.pageId && (
-                    <ul css={tw`my-2`}>
-                      {subTopics.map(({ name, body }) => (
-                        <li key={convertToSlug(name)} css={tw`mb-3`}>
-                          <HashLink
-                            to={`#${convertToSlug(name)}`}
-                            css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
-                          >
-                            {name}
-                          </HashLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
+              <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
+              <ul>
+                {topics().map(({ name, id, subTopics }) => (
+                  <li key={id} css={tw`mb-4`}>
+                    <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
+                      {name}
+                    </Link>
+                    {id === match.params.pageId && (
+                      <ul css={tw`my-2`}>
+                        {subTopics.map(({ name, body }) => (
+                          <li key={convertToSlug(name)} css={tw`mb-3`}>
+                            <HashLink
+                              smooth
+                              to={`#${convertToSlug(name)}`}
+                              css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
+                              style={
+                                location.hash === `#${convertToSlug(name)}`
+                                  ? {
+                                      borderColor: '#3182ce'
+                                    }
+                                  : {}
+                              }
+                            >
+                              {name}
+                            </HashLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <Content>
             <h1 css={tw`font-bold lg:text-5xl`}>{topic.name}</h1>
