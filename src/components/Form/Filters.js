@@ -11,7 +11,6 @@ import { Location, Select } from '../Input';
 import Button from './Button';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
-import { initialFilterState } from '../../plugins/filters';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -252,7 +251,6 @@ const mapStateToProps = state => {
 
   return {
     initialValues: {
-      ...initialFilterState,
       ...locationValue
     },
     location: locationValue && locationValue.location,
@@ -278,6 +276,7 @@ export default connect(
 )(
   reduxForm({
     form: 'filters',
+    enableReinitialize: true,
     destroyOnUnmount: false
   })(withSizes(mapSizesToProps)(Filters))
 );

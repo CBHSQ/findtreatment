@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues } from 'redux-form';
+import { Field, reduxForm, getFormValues, reset } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Button from './Button';
 import { Location } from '../Input';
-import { destroyFilters } from '../../actions/filters';
-import { initialFilterState } from '../../plugins/filters';
+import { destroyFacilities } from '../../actions/facilities';
 
 const Form = styled.form`
   ${tw`mb-10`}
@@ -14,9 +13,12 @@ const Form = styled.form`
 
 class Homepage extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, location } = this.props;
 
-    dispatch(destroyFilters());
+    if (location) {
+      dispatch(reset('homepage'));
+      dispatch(destroyFacilities());
+    }
   }
 
   handleSubmit = submitEvent => {
@@ -56,12 +58,17 @@ const mapStateToProps = state => {
   const values = getFormValues('homepage')(state);
 
   return {
+    initialValues: {
+      ...state.form.filters
+    },
     location: values && values.location
   };
 };
 
 export { Homepage };
-export default reduxForm({
-  form: 'homepage',
-  initialValues: initialFilterState
-})(connect(mapStateToProps)(Homepage));
+export default connect(mapStateToProps)(
+  reduxForm({
+    form: 'homepage',
+    destroyOnUnmount: false
+  })(Homepage)
+);
