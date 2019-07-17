@@ -141,20 +141,20 @@ export class Filters extends Component {
               <div className="filter-container">
                 <Row>
                   <Field
-                    name="language"
-                    label="Language"
-                    plural="languages"
-                    component={Select}
-                    options={data}
-                  />
-                </Row>
-                <Row>
-                  <Field
                     name="age"
                     label="Ages accepted"
                     plural="ages"
                     component={Select}
                     options={filterOptions.age}
+                  />
+                </Row>
+                <Row>
+                  <Field
+                    name="language"
+                    label="Language"
+                    plural="languages"
+                    component={Select}
+                    options={data}
                   />
                 </Row>
                 <Row>
