@@ -7,13 +7,34 @@ export default () => [
   {
     name: 'What to expect',
     id: 'what-to-expect',
-    description: 'blurb'
+    description:
+      'Treatment works, help is available, and people recover every day.',
+    subTopics: [
+      {
+        name: 'What to expect',
+        body: (
+          <>
+            <p>
+              Beginning recovery can be overwhelming and intimidating. While
+              everyone's path to recovery is unique, there are certain things
+              you can expect and be ready for when you start.
+            </p>
+            <p>
+              There is help. From understanding more about addiction and
+              treatment options, to being ready to navigate insurance and
+              payment, this information can help you feel more confident as you
+              take the next step to finding treatment.
+            </p>
+          </>
+        )
+      }
+    ]
   },
   {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
     description:
-      'Addiction is a chronic disease that changes the brain and alters decision-making. Treatment works, help is available, and people recover from addiction every day.',
+      'Addiction is a chronic disease that changes the brain and alters decision-making.',
     subTopics: [
       {
         name: 'Addiction can affect anyone',

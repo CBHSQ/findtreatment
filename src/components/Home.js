@@ -12,7 +12,7 @@ const content = [
     slug: 'understanding-addiction',
     heading: 'Understanding addiction',
     body:
-      'Addiction is a chronic disease that changes the brain and alters decision-making. Treatment works, help is available, and people recover from addiction every day.'
+      'Addiction is a chronic disease that changes the brain and alters decision-making.'
   },
   {
     slug: 'treatment-options',
@@ -67,6 +67,10 @@ class Home extends Component {
               <h3 css={tw`text-4xl font-light text-gray-700`}>
                 What to expect
               </h3>
+              <h4 css={tw`text-xl font-light text-gray-700`}>
+                Treatment works, help is available, and people recover every
+                day.
+              </h4>
             </div>
             <div css={tw`flex flex-wrap -mx-2`}>
               {content.map(card => (
