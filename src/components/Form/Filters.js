@@ -136,28 +136,17 @@ export class Filters extends Component {
                 options={filterOptions.type}
               />
             </Row>
-            <RowFlex>
-              <div css={tw`w-full md:w-1/2 px-3 mb-6 md:mb-0`}>
-                <Field
-                  name="age"
-                  label="Ages accepted"
-                  plural="ages"
-                  component={Select}
-                  options={filterOptions.age}
-                />
-              </div>
-              <div css={tw`w-full md:w-1/2 px-3`}>
-                <Field
-                  name="gender"
-                  label="Genders accepted"
-                  plural="genders"
-                  component={Select}
-                  options={filterOptions.gender}
-                />
-              </div>
-            </RowFlex>
             {!this.state.isHidden && (
               <div className="filter-container">
+                <Row>
+                  <Field
+                    name="age"
+                    label="Ages accepted"
+                    plural="ages"
+                    component={Select}
+                    options={filterOptions.age}
+                  />
+                </Row>
                 <Row>
                   <Field
                     name="language"
