@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { connect } from 'react-redux';
 import withSizes from 'react-sizes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { handleReceiveLanguages } from '../../actions/languages';
+import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
+import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
 import Button from './Button';
-import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
-import { handleReceiveFacilities } from '../../actions/facilities';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -21,6 +22,11 @@ const RowFlex = styled.div`
 `;
 
 export class Filters extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(handleReceiveLanguages());
+  }
+
   state = {
     isHidden: true
   };
