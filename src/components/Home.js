@@ -68,7 +68,7 @@ class Home extends Component {
                 What to expect
               </h3>
               <h4 css={tw`text-xl font-light text-gray-700`}>
-                Treatment works, help is available, and people recover every
+                Help is available, treatment works, and people recover every
                 day.
               </h4>
             </div>

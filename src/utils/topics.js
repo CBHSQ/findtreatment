@@ -7,7 +7,7 @@ export default () => [
     name: 'What to expect',
     id: 'what-to-expect',
     description:
-      'Treatment works, help is available, and people recover every day.',
+      'Help is available, treatment works, and people recover every day.',
     subTopics: [
       {
         name: 'What to expect',
