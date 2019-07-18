@@ -579,6 +579,7 @@ export default () => [
             <h3>
               Buprenorphine
               <span css={tw`italic font-light lowercase`}>
+                {' '}
                 (byoo-preh-NOR-feen)
               </span>
             </h3>
