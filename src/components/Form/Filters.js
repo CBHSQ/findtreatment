@@ -45,7 +45,7 @@ export class Filters extends Component {
   };
 
   handleReset = () => {
-    const { resetAllFilters, initialValues = {}, location } = this.props;
+    const { resetAllFilters, initialValues, location } = this.props;
 
     resetAllFilters({
       distance: initialValues.distance,
