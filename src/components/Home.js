@@ -67,10 +67,10 @@ class Home extends Component {
               <h3 css={tw`text-4xl font-light text-gray-700`}>
                 What to expect
               </h3>
-              <h4 css={tw`text-xl font-light text-gray-700`}>
+              <span css={tw`block text-xl font-light text-gray-700`}>
                 Help is available, treatment works, and people recover every
                 day.
-              </h4>
+              </span>
             </div>
             <div css={tw`flex flex-wrap -mx-2`}>
               {content.map(card => (
