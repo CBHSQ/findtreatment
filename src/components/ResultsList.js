@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { Link } from 'react-router-dom';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -40,10 +41,27 @@ export class ResultsList extends Component {
           css={tw`mb-6 rounded bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3`}
         >
           <p css={tw`font-bold`}>Before you visit</p>
-          <p css={tw`text-sm`}>
+          <p css={tw`text-sm mb-4`}>
             Before visiting a facility, call to make sure they have the services
-            you need. Not sure what you need? All facilities are licensed by
-            their states, and provide assessments.
+            you need.{' '}
+            <Link
+              to="/content/treatment-options#calling-a-facility"
+              css={tw`font-bold underline`}
+            >
+              What to expect when you call
+            </Link>
+            .
+          </p>
+          <p css={tw`text-sm`}>
+            Not sure what you need?{' '}
+            <Link
+              to="/content/treatment-options#types-of-treatment"
+              css={tw`font-bold underline`}
+            >
+              Learn more about different types of treatment
+            </Link>
+            . All facilities are licensed by their states, and provide
+            assessments.
           </p>
         </div>
         <ul css={tw``}>

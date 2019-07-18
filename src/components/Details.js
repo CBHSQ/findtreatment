@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -100,6 +100,12 @@ class Details extends Component {
                   </OutboundLink>
                 )}
               </div>
+              <Link
+                to="/content/treatment-options#calling-a-facility"
+                css={tw`mb-2 text-sm`}
+              >
+                What to expect when you call
+              </Link>
             </div>
             <h2 css={tw`mb-2 font-semibold`}>Services</h2>
             {services.map(this.renderService)}
