@@ -61,7 +61,10 @@ class Nav extends Component {
               <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}>
                 Search for treatment
               </Link>
-              <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0`}>
+              <Link
+                to="/content/what-to-expect"
+                css={tw`block mt-4 lg:inline-block lg:mt-0`}
+              >
                 What to expect
               </Link>
             </div>

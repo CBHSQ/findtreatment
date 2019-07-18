@@ -16,7 +16,7 @@ const SideBar = styled.div`
 `;
 
 const Content = styled.div`
-  ${tw`w-full lg:w-2/3 px-6 mb-6`}
+  ${tw`w-full lg:w-2/3 px-6 mb-10`}
 
   div:last-child {
     ${tw`border-b-0 mb-0 pb-0`}
@@ -89,24 +89,25 @@ class Page extends Component {
                     </Link>
                     {id === match.params.pageId && (
                       <ul css={tw`my-2`}>
-                        {subTopics.map(({ name, body }) => (
-                          <li key={convertToSlug(name)} css={tw`mb-3`}>
-                            <HashLink
-                              smooth
-                              to={`#${convertToSlug(name)}`}
-                              css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
-                              style={
-                                location.hash === `#${convertToSlug(name)}`
-                                  ? {
-                                      borderColor: '#3182ce'
-                                    }
-                                  : {}
-                              }
-                            >
-                              {name}
-                            </HashLink>
-                          </li>
-                        ))}
+                        {subTopics &&
+                          subTopics.map(({ name, body }) => (
+                            <li key={convertToSlug(name)} css={tw`mb-3`}>
+                              <HashLink
+                                smooth
+                                to={`#${convertToSlug(name)}`}
+                                css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
+                                style={
+                                  location.hash === `#${convertToSlug(name)}`
+                                    ? {
+                                        borderColor: '#3182ce'
+                                      }
+                                    : {}
+                                }
+                              >
+                                {name}
+                              </HashLink>
+                            </li>
+                          ))}
                       </ul>
                     )}
                   </li>
@@ -115,16 +116,20 @@ class Page extends Component {
             </div>
           </SideBar>
           <Content>
-            <h1 css={tw`text-5xl`}>{topic.name}</h1>
-            <p css={tw`text-xl font-light mb-8 max-w-xl`}>
-              {topic.description}
-            </p>
-            {topic.subTopics.map(({ name, body }) => (
-              <Topic key={convertToSlug(name)}>
-                <h2 id={convertToSlug(name)}>{name}</h2>
-                {body}
-              </Topic>
-            ))}
+            {topic.name && <h1 css={tw`text-5xl`}>{topic.name}</h1>}
+            {topic.description && (
+              <p css={tw`text-xl font-light mb-8 max-w-xl`}>
+                {topic.description}
+              </p>
+            )}
+            {topic.body && <Topic>{topic.body}</Topic>}
+            {topic.subTopics &&
+              topic.subTopics.map(({ name, body }) => (
+                <Topic key={convertToSlug(name)}>
+                  <h2 id={convertToSlug(name)}>{name}</h2>
+                  {body}
+                </Topic>
+              ))}
           </Content>
         </StyledPage>
       </div>
