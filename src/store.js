@@ -3,7 +3,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { googleAnalytics } from './middleware/reactGA';
+import { analytics } from './middleware/analytics';
 import createRootReducer from './reducers';
 
 export const history = createBrowserHistory({
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
   middleware.push(logger);
 } else {
-  middleware.push(googleAnalytics);
+  middleware.push(analytics);
 }
 
 export default function configureStore(preloadedState) {
