@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { Link } from 'react-router-dom';
 import Label from './Label';
 
 const StyledSelect = styled.div`
@@ -13,9 +14,26 @@ const Arrow = styled.div`
   ${tw`pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700`}
 `;
 
-const Select = ({ input, name, label, plural, hideFirst, options }) => (
+const Select = ({
+  input,
+  name,
+  label,
+  plural,
+  hideFirst,
+  helpURL,
+  helpText,
+  options
+}) => (
   <StyledSelect>
-    <Label name={name} label={label} />
+    <div css={tw`flex justify-between items-center`}>
+      <Label name={name} label={label} />
+      {helpURL && helpURL && (
+        <Link to={helpURL} css={tw`mb-2 text-sm`}>
+          {helpText}
+        </Link>
+      )}
+    </div>
+
     <div css={tw`relative`}>
       <select name={name} {...input}>
         {!hideFirst && <option value="">All {plural.toLowerCase()}</option>}

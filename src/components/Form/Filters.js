@@ -4,6 +4,7 @@ import { Field, reduxForm, getFormValues } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import withSizes from 'react-sizes';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { handleReceiveLanguages } from '../../actions/languages';
@@ -131,6 +132,8 @@ export class Filters extends Component {
                 plural="payment options"
                 component={Select}
                 options={filterOptions.payment}
+                helpURL="/content/paying-for-treatment"
+                helpText="Not sure?"
               />
             </Row>
             <Row>
@@ -140,6 +143,8 @@ export class Filters extends Component {
                 plural="types of care"
                 component={Select}
                 options={filterOptions.type}
+                helpURL="/content/treatment-options#types-of-treatment"
+                helpText="Not sure?"
               />
             </Row>
             {!this.state.isHidden && (
@@ -201,6 +206,12 @@ export class Filters extends Component {
                     component={Select}
                     options={filterOptions.mat}
                   />
+                  <Link
+                    to="/content/treatment-options#medications-used-in-treatment"
+                    css={tw`mb-2 text-sm`}
+                  >
+                    What are the differences between these medications?
+                  </Link>
                 </Row>
               </div>
             )}
