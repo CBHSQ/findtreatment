@@ -6,22 +6,28 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Homepage from './Form/Homepage';
 import Button from './Form/Button';
+import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
+import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
+import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
 
 const content = [
   {
     slug: 'understanding-addiction',
+    icon: <IconAddiction css={tw`w-24 h-24`} />,
     heading: 'Understanding addiction',
     body:
       'Addiction is a chronic disease that changes the brain and alters decision-making.'
   },
   {
     slug: 'treatment-options',
+    icon: <IconTreament css={tw`w-24 h-24`} />,
     heading: 'Treatment options',
     body:
       'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.'
   },
   {
     slug: 'paying-for-treatment',
+    icon: <IconPayment css={tw`w-24 h-24`} />,
     heading: 'Paying for treatment',
     body: 'Learn more about the cost of treatment and payment options.'
   }
@@ -62,7 +68,7 @@ class Home extends Component {
           </p>
         </div>
         <div css={tw`bg-gray-200`}>
-          <div className="container" css={tw`mx-auto py-6 lg:py-12`}>
+          <div css={tw`mx-auto max-w-5xl px-6 py-6 lg:py-12`}>
             <div css={tw`mb-6 text-center`}>
               <h3 css={tw`text-4xl font-light text-gray-700`}>
                 What to expect
@@ -76,16 +82,26 @@ class Home extends Component {
               {content.map(card => (
                 <div
                   key={card.slug}
-                  css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0 `}
+                  css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0`}
                 >
                   <div
-                    css={tw`flex flex-col w-full bg-white rounded p-6 text-gray-700`}
+                    css={tw`flex flex-col w-full bg-white rounded p-6 text-gray-700 text-center`}
                   >
+                    <div>
+                      <Link
+                        css={tw`inline-block mb-4`}
+                        to={`/content/${card.slug}`}
+                      >
+                        {card.icon}
+                      </Link>
+                    </div>
                     <h4 css={tw`text-xl mb-4 leading-tight`}>{card.heading}</h4>
                     <p css={tw`flex-auto  mb-6 text-sm`}>{card.body}</p>
-                    <Link to={`/content/${card.slug}`}>
-                      <Button outline>Learn more</Button>
-                    </Link>
+                    <div>
+                      <Link to={`/content/${card.slug}`}>
+                        <Button outline>Learn more</Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
