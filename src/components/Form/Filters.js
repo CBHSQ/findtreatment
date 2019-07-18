@@ -45,7 +45,12 @@ export class Filters extends Component {
   };
 
   handleReset = () => {
-    this.props.resetAllFilters({ location: this.props.location });
+    const { resetAllFilters, initialValues = {}, location } = this.props;
+
+    resetAllFilters({
+      distance: initialValues.distance,
+      location
+    });
   };
 
   render() {
@@ -259,9 +264,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(resetAdvancedFilters());
   },
 
-  resetAllFilters(location) {
+  resetAllFilters(query) {
     dispatch(resetAllFilters());
-    dispatch(handleReceiveFacilities(location));
+    dispatch(handleReceiveFacilities(query));
   }
 });
 
