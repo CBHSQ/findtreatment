@@ -1,12 +1,71 @@
 import React from 'react';
+import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import 'styled-components/macro';
-import tw from 'tailwind.macro';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 import Button from './Form/Button';
+
+const StyledHeading = tw.div`flex justify-between`;
+const StyledAddress = tw.address`text-gray-600 not-italic`;
+const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
+
+const CardHeading = ({ frid, name1, name2, miles }) => {
+  return (
+    <StyledHeading>
+      <Link to={{ pathname: '/details', state: { frid } }}>
+        <h2 css={tw`mb-2`}>
+          {name1}
+          {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
+        </h2>
+      </Link>
+      {miles && <span css={tw`text-gray-500`}>{miles} miles</span>}
+    </StyledHeading>
+  );
+};
+
+const CardAddress = ({ street1, street2, city, state, zip }) => (
+  <StyledAddress>
+    <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
+    {street1}, {street2 && street2 + ', '}
+    {city}, {state} {zip}
+  </StyledAddress>
+);
+
+const CardDetails = ({ phone, website, services }) => (
+  <>
+    <ul>
+      <li>
+        <span css={tw`font-semibold`}>Phone:</span>{' '}
+        <OutboundLink
+          eventLabel="Facility phone link from card"
+          to={`tel:${phone}`}
+        >
+          {phone}
+        </OutboundLink>
+      </li>
+      {website !== 'http://' && (
+        <li css={tw`truncate`}>
+          <span css={tw`font-semibold`}>Website:</span>{' '}
+          <OutboundLink
+            eventLabel="Facility website link from card"
+            to={website}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {website}
+          </OutboundLink>
+        </li>
+      )}
+    </ul>
+    <p>
+      <span css={tw`font-semibold`}>Type of care:</span> {services[0].f3}
+    </p>
+  </>
+);
 
 const Card = props => {
   const {
@@ -25,68 +84,20 @@ const Card = props => {
   } = props;
 
   return (
-    <li css={tw`shadow border rounded p-6 mb-6`}>
-      <div css={tw`flex justify-between`}>
-        <Link
-          to={{
-            pathname: '/details',
-            state: {
-              id: frid
-            }
-          }}
-        >
-          <h2 css={tw`font-bold mb-2`}>
-            {name1}
-            {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
-          </h2>
-        </Link>
-        <span css={tw`text-gray-500`}>{miles} miles</span>
-      </div>
-      <div css={tw`text-gray-600 mb-4`}>
-        <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
-        {street1}, {street2 && street2 + ', '}
-        {city}, {state} {zip}
-      </div>
-      <div css={tw`mb-4`}>
-        <p>
-          <span css={tw`font-semibold`}>Phone:</span>{' '}
-          <OutboundLink
-            eventLabel="Facility phone link from card"
-            to={`tel:${phone}`}
-          >
-            {phone}
-          </OutboundLink>
-        </p>
-        {website !== 'http://' && (
-          <p>
-            <span css={tw`font-semibold`}>Website:</span>{' '}
-            <OutboundLink
-              eventLabel="Facility website link from card"
-              to={website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {website}
-            </OutboundLink>
-          </p>
-        )}
-      </div>
-      <p css={tw`mb-4`}>
-        <span css={tw`font-semibold`}>Type of care:</span>{' '}
-        <span>{services[0].f3}</span>
-      </p>
-
-      <Link
-        to={{
-          pathname: '/details',
-          state: {
-            id: frid
-          }
-        }}
-      >
+    <StyledCard>
+      <CardHeading frid={frid} name1={name1} name2={name2} miles={miles} />
+      <CardAddress
+        street1={street1}
+        street2={street2}
+        city={city}
+        state={state}
+        zip={zip}
+      />
+      <CardDetails phone={phone} website={website} services={services} />
+      <Link to={{ pathname: '/details', state: { frid } }}>
         <Button primary>View provider details</Button>
       </Link>
-    </li>
+    </StyledCard>
   );
 };
 
@@ -94,7 +105,7 @@ Card.propTypes = {
   frid: PropTypes.string.isRequired,
   name1: PropTypes.string.isRequired,
   name2: PropTypes.string,
-  miles: PropTypes.number.isRequired,
+  miles: PropTypes.number,
   street1: PropTypes.string.isRequired,
   street2: PropTypes.string,
   city: PropTypes.string.isRequired,
