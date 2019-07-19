@@ -166,7 +166,7 @@ const mapStateToProps = ({ facilities }, ownProps) => {
   const { data } = facilities;
   const { rows } = data;
   const facility =
-    rows && rows.find(({ frid }) => frid === ownProps.location.state.id);
+    rows && rows.find(({ frid }) => frid === ownProps.location.state.frid);
 
   return {
     facility

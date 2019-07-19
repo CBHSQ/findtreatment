@@ -89,7 +89,7 @@ export class Filters extends Component {
             <RowFlex css={tw`hidden lg:flex justify-between`}>
               <div css={tw`px-3`}>
                 <h2>Filters</h2>
-                <p css={tw`text-sm text-gray-600 font-light`}>
+                <p css={tw`text-sm text-gray-600 font-light mb-0`}>
                   Search for facilities that match your needs.
                 </p>
               </div>
