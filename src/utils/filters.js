@@ -52,5 +52,13 @@ export const type = [
   {
     value: 'CT',
     label: 'Telemedicine (including internet and mobile programs)'
+  },
+  {
+    value: 'CO',
+    label: 'Co-occurring mental health and substance use treatment'
+  },
+  {
+    value: 'MH',
+    label: 'Mental health services only'
   }
 ];
