@@ -36,5 +36,13 @@ export const analytics = store => next => action => {
     }
   }
 
+  if (action.type === 'REPORT_FACILITY') {
+    ReactGA.event({
+      category: `Listing Data Report`,
+      action: `Data issue reported for frid`,
+      label: action.frid
+    });
+  }
+
   return next(action);
 };
