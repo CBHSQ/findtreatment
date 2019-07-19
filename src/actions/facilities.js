@@ -5,6 +5,7 @@ import ReactGA from 'react-ga';
 export const RECEIVE_FACILITIES_BEGIN = 'RECEIVE_FACILITIES_BEGIN';
 export const RECEIVE_FACILITIES_SUCCESS = 'RECEIVE_FACILITIES_SUCCESS';
 export const RECEIVE_FACILITIES_FAILURE = 'RECEIVE_FACILITIES_FAILURE';
+export const REPORT_FACILITY = 'REPORT_FACILITY';
 export const DESTROY_FACILITIES = 'DESTROY_FACILITIES';
 
 const trackSearchResults = (params, results) => {
@@ -32,6 +33,13 @@ export const receiveFacilitiesSucess = data => {
 export const receiveFacilitiesFailure = error => {
   return {
     type: RECEIVE_FACILITIES_FAILURE
+  };
+};
+
+export const reportFacility = frid => {
+  return {
+    type: REPORT_FACILITY,
+    frid
   };
 };
 

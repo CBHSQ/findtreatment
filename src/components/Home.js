@@ -62,9 +62,7 @@ class Home extends Component {
           >
             Provider data is collected, maintained, and verified by the
             Substance Abuse and Mental Health Services Administration (SAMHSA)
-            through an annual survey. All substance use treatment facilities are
-            licensed by the state they're in, though license requirements differ
-            by state.
+            through an annual survey.
           </p>
         </div>
         <div css={tw`bg-gray-200`}>
