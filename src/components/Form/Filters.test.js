@@ -47,7 +47,7 @@ describe('Filters component', () => {
   it('calls resetFilters() when reset filter button is clicked', () => {
     const resetFn = jest.fn();
     const component = shallow(
-      <Filters isDesktop={true} resetAllFilters={resetFn} />,
+      <Filters isDesktop={true} resetAllFilters={resetFn} initialValues={{}} />,
       {
         disableLifecycleMethods: true
       }
