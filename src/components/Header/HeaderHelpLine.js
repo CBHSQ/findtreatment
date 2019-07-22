@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 
-const HelpLine = () => {
+const HeaderHelpLine = () => {
   return (
     <OutboundLink
       eventLabel="Header Helpline link"
@@ -23,4 +23,4 @@ const HelpLine = () => {
   );
 };
 
-export default HelpLine;
+export default HeaderHelpLine;
