@@ -1,5 +1,6 @@
 import React from 'react';
 import tw from 'tailwind.macro';
+import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from './Header';
@@ -10,10 +11,15 @@ import Content from './Content';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 
-const StyledApp = tw.div`font-sans text-gray-900 leading-normal`;
+const GlobalStyle = createGlobalStyle`
+  body {
+    ${tw`font-sans text-gray-900 leading-normal`}
+  }
+`;
 
 const App = () => (
-  <StyledApp>
+  <>
+    <GlobalStyle />
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
@@ -23,7 +29,7 @@ const App = () => (
       <Route component={NoMatch} />
     </Switch>
     <Footer />
-  </StyledApp>
+  </>
 );
 
 export default App;
