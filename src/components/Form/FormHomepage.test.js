@@ -9,9 +9,9 @@ describe('HomePage component', () => {
         disableLifecycleMethods: true
       });
 
-      expect(component.find('Homepage___StyledButton').prop('disable')).toBe(
-        true
-      );
+      expect(
+        component.find('FormHomepage___StyledButton').prop('disable')
+      ).toBe(true);
     });
 
     it('disallows form submission', () => {
@@ -22,7 +22,7 @@ describe('HomePage component', () => {
       const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
       });
-      const form = component.find('Homepage__Form');
+      const form = component.find('FormHomepage__Form');
 
       form.simulate('submit', { preventDefault() {} });
 
@@ -35,9 +35,9 @@ describe('HomePage component', () => {
       const component = shallow(<FormHomepage location={{}} />, {
         disableLifecycleMethods: true
       });
-      expect(component.find('Homepage___StyledButton').prop('disable')).toBe(
-        false
-      );
+      expect(
+        component.find('FormHomepage___StyledButton').prop('disable')
+      ).toBe(false);
     });
 
     it('calls its handleSubmit prop when the form is submitted', () => {
@@ -49,7 +49,7 @@ describe('HomePage component', () => {
       const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
       });
-      const form = component.find('Homepage__Form');
+      const form = component.find('FormHomepage__Form');
 
       form.simulate('submit');
 
