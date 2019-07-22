@@ -8,16 +8,8 @@ import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {
-    const { loading, rows, page, totalPages, recordCount } = this.props;
+    const { rows, page, totalPages, recordCount } = this.props;
     const hasResults = rows && rows.length > 0;
-
-    if (loading) {
-      return (
-        <div className="results-loading" css={tw`text-center py-6 italic`}>
-          Loading results...
-        </div>
-      );
-    }
 
     if (!hasResults) {
       return <NoResults />;
