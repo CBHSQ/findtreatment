@@ -7,7 +7,7 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Button from './Form/Button';
+import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-600 not-italic`;

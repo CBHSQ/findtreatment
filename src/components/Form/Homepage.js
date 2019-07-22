@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Button from './Button';
-import { Location } from '../Input';
+import { Button, Location } from '../Input';
 import { destroyFacilities } from '../../actions/facilities';
 
 const Form = styled.form`

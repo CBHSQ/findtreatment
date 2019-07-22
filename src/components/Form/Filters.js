@@ -11,8 +11,7 @@ import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
-import { Location, Select } from '../Input';
-import Button from './Button';
+import { Button, Location, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}

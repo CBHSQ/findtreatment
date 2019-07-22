@@ -5,7 +5,7 @@ import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import Homepage from './Form/Homepage';
-import Button from './Form/Button';
+import { Button } from './Input';
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
 import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';

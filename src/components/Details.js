@@ -12,7 +12,7 @@ import {
 import { reportFacility } from '../actions/facilities';
 
 import MapContainer from './Map/MapContainer';
-import Button from './Form/Button';
+import { Button } from './Input';
 import { OutboundLink } from 'react-ga';
 
 export class Details extends Component {
