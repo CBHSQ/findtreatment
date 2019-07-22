@@ -11,7 +11,7 @@ import ResultsList from './ResultsList';
 import Filters from './Form/Filters';
 import MapContainer from './Map/MapContainer';
 
-class Results extends Component {
+export class Results extends Component {
   state = {
     filtersHidden: false,
     resultsHidden: false

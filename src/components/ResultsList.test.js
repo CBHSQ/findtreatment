@@ -5,16 +5,6 @@ import Card from './Card';
 import NoResults from './NoResults';
 
 describe('Results component', () => {
-  it('shows a loading message', () => {
-    const props = {
-      loading: true
-    };
-    const component = shallow(<ResultsList {...props} />);
-    expect(component.find('.results-loading').length).toBe(1);
-    expect(component.find(NoResults).length).toBe(0);
-    expect(component.find(Card).length).toBe(0);
-  });
-
   it('shows a provider card when there are results', () => {
     const props = {
       loading: false,
