@@ -21,7 +21,7 @@ const RowFlex = styled.div`
   ${tw`flex flex-wrap -mx-3 mb-6`}
 `;
 
-export class Filters extends Component {
+export class FormFilters extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(handleReceiveLanguages());
@@ -288,5 +288,5 @@ export default connect(
     form: 'filters',
     enableReinitialize: true,
     destroyOnUnmount: false
-  })(withSizes(mapSizesToProps)(Filters))
+  })(withSizes(mapSizesToProps)(FormFilters))
 );

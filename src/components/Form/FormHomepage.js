@@ -10,7 +10,7 @@ const Form = styled.form`
   ${tw`mb-10`}
 `;
 
-class Homepage extends Component {
+export class FormHomepage extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
 
@@ -64,10 +64,9 @@ const mapStateToProps = state => {
   };
 };
 
-export { Homepage };
 export default connect(mapStateToProps)(
   reduxForm({
     form: 'homepage',
     destroyOnUnmount: false
-  })(Homepage)
+  })(FormHomepage)
 );

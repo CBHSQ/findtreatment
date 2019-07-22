@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Homepage from './Form/Homepage';
+import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
@@ -56,7 +56,7 @@ class Home extends Component {
           </span>
         </div>
         <div css={tw`max-w-3xl mx-auto mb-10 px-6`}>
-          <Homepage onSubmit={this.submit} />
+          <FormHomepage onSubmit={this.submit} />
           <p
             css={tw`lg:max-w-xl italic mx-auto text-xs mb-6 text-center text-gray-700`}
           >

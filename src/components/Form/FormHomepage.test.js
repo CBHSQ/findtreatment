@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Homepage } from './Homepage';
+import { FormHomepage } from './FormHomepage';
 
 describe('HomePage component', () => {
   describe('with an invalid location prop', () => {
     it('disables the submit button without a valid location', () => {
-      const component = shallow(<Homepage />, {
+      const component = shallow(<FormHomepage />, {
         disableLifecycleMethods: true
       });
 
@@ -19,7 +19,7 @@ describe('HomePage component', () => {
       const props = {
         handleSubmit: mockSubmit
       };
-      const component = shallow(<Homepage {...props} />, {
+      const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
       });
       const form = component.find('Homepage__Form');
@@ -32,7 +32,7 @@ describe('HomePage component', () => {
 
   describe('with a valid location prop', () => {
     it('enables the submit button with a valid location', () => {
-      const component = shallow(<Homepage location={{}} />, {
+      const component = shallow(<FormHomepage location={{}} />, {
         disableLifecycleMethods: true
       });
       expect(component.find('Homepage___StyledButton').prop('disable')).toBe(
@@ -46,7 +46,7 @@ describe('HomePage component', () => {
         handleSubmit: mockSubmit,
         location: {}
       };
-      const component = shallow(<Homepage {...props} />, {
+      const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
       });
       const form = component.find('Homepage__Form');
