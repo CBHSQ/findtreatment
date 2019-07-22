@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { ReactComponent as Logo } from '../images/logo.svg';
 
 const StyledNav = styled.div`
   ${tw`border-b mb-6`}
@@ -35,10 +36,10 @@ class Nav extends Component {
       <StyledNav>
         <nav
           className="container"
-          css={tw`mx-auto py-6 flex items-center justify-between flex-wrap`}
+          css={tw`mx-auto py-8 flex items-center justify-between flex-wrap`}
         >
           <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
-            Treatment Finder
+            <Logo />
           </Link>
           <div css={tw`block lg:hidden`}>
             <button
@@ -57,7 +58,7 @@ class Nav extends Component {
           </div>
 
           <MobileNav isHidden={isHidden}>
-            <div css={tw`text-sm lg:flex-grow`}>
+            <div css={tw`text-sm lg:flex-grow lg:mt-1`}>
               <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}>
                 Search for treatment
               </Link>
