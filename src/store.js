@@ -7,7 +7,7 @@ import { analytics } from './middleware/analytics';
 import createRootReducer from './reducers';
 
 export const history = createBrowserHistory({
-  basename: process.env.REACT_APP_FEDERALIST_BASEURL
+  basename: process.env.PUBLIC_URL
 });
 
 const middleware = [routerMiddleware(history), thunk];

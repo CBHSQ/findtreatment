@@ -135,10 +135,7 @@ export default () => [
                 Your primary care doctor can recommend therapists in your care
                 network, and NAMI has locations around the country with
                 resources for finding a therapist.
-                <a href="https://www.nami.org/local/">
-                  {' '}
-                  https://www.nami.org/local
-                </a>
+                <a href="https://www.nami.org/local/">(nami.org/local)</a>
               </li>
               <li>
                 <strong>Joining a support group of peers. </strong>
@@ -150,19 +147,19 @@ export default () => [
               </li>
               <ul>
                 <li>
-                  Narcotics Anonymous <a href="www.na.org">(www.na.org)</a>, and
+                  Narcotics Anonymous <a href="https://na.org">(na.org)</a>, and
                   Nar-Anon{' '}
-                  <a href="https://www.nar-anon.org/">(www.nar-anon.org)</a>
+                  <a href="https://www.nar-anon.org/">(nar-anon.org)</a>
                 </li>
                 <li>
-                  Alcoholics Anonymous <a href="www.aa.org">(www.aa.org)</a>,
-                  and Al-Anon{' '}
-                  <a href="https://al-anon.org/">(https://al-anon.org)</a>
+                  Alcoholics Anonymous{' '}
+                  <a href="https://www.aa.org/">(aa.org)</a>, and Al-Anon{' '}
+                  <a href="https://al-anon.org/">(al-anon.org)</a>
                 </li>
                 <li>
                   Faces and Voices of Recovery{' '}
-                  <a href="www.facesandvoicesofrecovery.org">
-                    (www.facesandvoicesofrecovery.org)
+                  <a href="https://facesandvoicesofrecovery.org/">
+                    (facesandvoicesofrecovery.org)
                   </a>
                 </li>
               </ul>
