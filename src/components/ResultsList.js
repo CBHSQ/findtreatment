@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {
-    const { rows, page, totalPages, recordCount } = this.props;
+    const { loading, rows, page, totalPages, recordCount } = this.props;
     const hasResults = rows && rows.length > 0;
+
+    if (loading) {
+      return <Loading />;
+    }
 
     if (!hasResults) {
       return <NoResults />;

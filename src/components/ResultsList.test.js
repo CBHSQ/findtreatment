@@ -1,10 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import Loading from './Loading';
 import ResultsList from './ResultsList';
 import Card from './Card';
 import NoResults from './NoResults';
 
 describe('Results component', () => {
+  it('shows a loading message', () => {
+    const props = {
+      loading: true,
+      data: {}
+    };
+    const component = shallow(<ResultsList {...props} />);
+    expect(component.find(Loading).length).toBe(1);
+  });
+
   it('shows a provider card when there are results', () => {
     const props = {
       loading: false,

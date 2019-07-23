@@ -6,7 +6,6 @@ import withSizes from 'react-sizes';
 
 import { handleReceiveFacilities } from '../actions/facilities';
 
-import Loading from './Loading';
 import ResultsList from './ResultsList';
 import Filters from './Form/Filters';
 import MapContainer from './Map/MapContainer';
@@ -43,10 +42,6 @@ export class Results extends Component {
     const { rows, page, totalPages, recordCount } = data;
     const hasResults = rows && rows.length > 0;
 
-    if (loading) {
-      return <Loading />;
-    }
-
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
@@ -54,6 +49,7 @@ export class Results extends Component {
             {(isDesktop ||
               (!this.state.filtersHidden && !this.state.resultsHidden)) && (
               <ResultsList
+                loading={loading}
                 rows={rows}
                 page={page}
                 totalPages={totalPages}
@@ -70,7 +66,7 @@ export class Results extends Component {
               resultsHidden={this.state.resultsHidden}
               hasResults={hasResults}
             />
-            {((isDesktop && hasResults) ||
+            {((isDesktop && !loading && hasResults) ||
               (this.state.resultsHidden && !this.state.filtersHidden)) && (
               <div css={tw`lg:pt-6 lg:border-t`}>
                 <div css={tw`relative h-64 w-full mb-6`}>
