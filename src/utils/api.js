@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DEFAULT_PAGE_SIZE } from './constants';
 
 export default axios.create({
   baseURL:
@@ -11,7 +12,7 @@ export default axios.create({
 const initialValues = {
   sType: 'BOTH',
   sCodes: '',
-  pageSize: 10,
+  pageSize: DEFAULT_PAGE_SIZE,
   page: 1,
   sort: 0
 };
