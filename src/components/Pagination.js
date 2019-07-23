@@ -44,6 +44,8 @@ class Pagination extends Component {
         page: data.selected + 1
       })
     );
+
+    window.scrollTo(0, 0);
   };
 
   render() {
