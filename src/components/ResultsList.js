@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
+
+import { DEFAULT_PAGE_SIZE } from '../utils/constants';
+
+import Loading from './Loading';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -10,13 +14,10 @@ export class ResultsList extends Component {
   render() {
     const { loading, rows, page, totalPages, recordCount, params } = this.props;
     const hasResults = rows && rows.length > 0;
+    const offset = (page - 1) * DEFAULT_PAGE_SIZE;
 
     if (loading) {
-      return (
-        <div className="results-loading" css={tw`text-center py-6 italic`}>
-          Loading results...
-        </div>
-      );
+      return <Loading />;
     }
 
     if (!hasResults) {
@@ -33,8 +34,7 @@ export class ResultsList extends Component {
             </span>
           </h1>
           <span css={tw`block text-gray-500`}>
-            Showing page {page} of {totalPages}{' '}
-            <span css={tw`italic`}>({recordCount} results)</span>
+            Showing {offset + 1}-{offset + rows.length} of {recordCount}
           </span>
         </div>
         <div

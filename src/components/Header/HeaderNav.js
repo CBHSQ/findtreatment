@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
 const StyledNav = styled.div`
   ${tw`border-b mb-6`}
+`;
 
-  a {
-    ${tw`text-gray-900 hover:text-gray-900`}
+const StyledLink = styled(NavLink)`
+  ${tw`text-gray-900 block mt-4 lg:inline-block lg:mt-0 lg:pb-2 lg:border-b-4 lg:border-transparent lg:hover:border-blue-800`}
+
+  &.active {
+    ${tw`font-bold lg:border-blue-800`}
   }
 `;
 
@@ -17,7 +22,7 @@ const MobileNav = styled.div`
   ${({ isHidden }) => (isHidden ? tw`hidden lg:block` : tw`block`)}
 `;
 
-class Nav extends Component {
+class HeaderNav extends Component {
   state = {
     isHidden: true
   };
@@ -28,6 +33,10 @@ class Nav extends Component {
     });
   };
 
+  isContentSection = (match, location) => {
+    return location.pathname.includes(`/content`);
+  };
+
   render() {
     const { isHidden } = this.state;
 
@@ -35,10 +44,10 @@ class Nav extends Component {
       <StyledNav>
         <nav
           className="container"
-          css={tw`mx-auto py-6 flex items-center justify-between flex-wrap`}
+          css={tw`mx-auto py-8 flex items-center justify-between flex-wrap`}
         >
           <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
-            Treatment Finder
+            <Logo />
           </Link>
           <div css={tw`block lg:hidden`}>
             <button
@@ -57,16 +66,16 @@ class Nav extends Component {
           </div>
 
           <MobileNav isHidden={isHidden}>
-            <div css={tw`text-sm lg:flex-grow`}>
-              <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}>
+            <div css={tw`text-sm lg:flex-grow lg:mt-4`}>
+              <StyledLink to="/" exact css={tw`mr-6`}>
                 Search for treatment
-              </Link>
-              <Link
+              </StyledLink>
+              <StyledLink
                 to="/content/what-to-expect"
-                css={tw`block mt-4 lg:inline-block lg:mt-0`}
+                isActive={this.isContentSection}
               >
                 What to expect
-              </Link>
+              </StyledLink>
             </div>
           </MobileNav>
         </nav>
@@ -75,4 +84,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default HeaderNav;

@@ -4,8 +4,8 @@ import { withRouter, Link } from 'react-router-dom';
 import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Homepage from './Form/Homepage';
-import Button from './Form/Button';
+import FormHomepage from './Form/FormHomepage';
+import { Button } from './Input';
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
 import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
@@ -56,15 +56,13 @@ class Home extends Component {
           </span>
         </div>
         <div css={tw`max-w-3xl mx-auto mb-10 px-6`}>
-          <Homepage onSubmit={this.submit} />
+          <FormHomepage onSubmit={this.submit} />
           <p
             css={tw`lg:max-w-xl italic mx-auto text-xs mb-6 text-center text-gray-700`}
           >
             Provider data is collected, maintained, and verified by the
             Substance Abuse and Mental Health Services Administration (SAMHSA)
-            through an annual survey. All substance use treatment facilities are
-            licensed by the state they're in, though license requirements differ
-            by state.
+            through an annual survey.
           </p>
         </div>
         <div css={tw`bg-gray-200`}>

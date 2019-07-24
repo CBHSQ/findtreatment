@@ -3,7 +3,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import Button from './Form/Button';
+import { Button } from './Input';
 import { OutboundLink } from 'react-ga';
 
 const NoMatch = () => {

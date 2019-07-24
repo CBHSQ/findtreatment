@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import Button from './Button';
-import { Location } from '../Input';
+import { Button, Location } from '../Input';
 import { destroyFacilities } from '../../actions/facilities';
 
 const Form = styled.form`
   ${tw`mb-10`}
 `;
 
-class Homepage extends Component {
+export class FormHomepage extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
 
@@ -65,10 +64,9 @@ const mapStateToProps = state => {
   };
 };
 
-export { Homepage };
 export default connect(mapStateToProps)(
   reduxForm({
     form: 'homepage',
     destroyOnUnmount: false
-  })(Homepage)
+  })(FormHomepage)
 );

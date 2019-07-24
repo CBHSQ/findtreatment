@@ -3,7 +3,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { OutboundLink } from 'react-ga';
 import { Link } from 'react-router-dom';
-import Button from '../Form/Button';
+import { Button } from '../Input';
 
 export const InfoWindowText = props => {
   const { selectedPlace, singleMarker } = props;
@@ -26,7 +26,7 @@ export const InfoWindowText = props => {
         <Link
           to={{
             pathname: '/details',
-            state: { id: selectedPlace.details.frid }
+            state: { frid: selectedPlace.details.frid }
           }}
           css={tw`block`}
         >

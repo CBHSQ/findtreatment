@@ -14,6 +14,7 @@ import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
 import Button from './Button';
 import { DEFAULT_DISTANCE } from '../../utils/constants';
+import { Button, Location, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -23,7 +24,7 @@ const RowFlex = styled.div`
   ${tw`flex flex-wrap -mx-3 mb-6`}
 `;
 
-export class Filters extends Component {
+export class FormFilters extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(handleReceiveLanguages());
@@ -47,7 +48,12 @@ export class Filters extends Component {
   };
 
   handleReset = () => {
-    this.props.resetAllFilters({ location: this.props.location });
+    const { resetAllFilters, initialValues, location } = this.props;
+
+    resetAllFilters({
+      distance: initialValues.distance,
+      location
+    });
   };
 
   render() {
@@ -90,7 +96,7 @@ export class Filters extends Component {
             <RowFlex css={tw`hidden lg:flex justify-between`}>
               <div css={tw`px-3`}>
                 <h2>Filters</h2>
-                <p css={tw`text-sm text-gray-600 font-light`}>
+                <p css={tw`text-sm text-gray-600 font-light mb-0`}>
                   Search for facilities that match your needs.
                 </p>
               </div>
@@ -272,9 +278,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(resetAdvancedFilters());
   },
 
-  resetAllFilters(location) {
+  resetAllFilters(query) {
     dispatch(resetAllFilters());
-    dispatch(handleReceiveFacilities(location));
+    dispatch(handleReceiveFacilities(query));
   }
 });
 
@@ -289,5 +295,5 @@ export default connect(
     onChange: (values, dispatch) => {
       dispatch(submit('filters'));
     }
-  })(withSizes(mapSizesToProps)(Filters))
+  })(withSizes(mapSizesToProps)(FormFilters))
 );

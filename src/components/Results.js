@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
-import { handleReceiveFacilities } from '../actions/facilities';
 import withSizes from 'react-sizes';
+
+import { handleReceiveFacilities } from '../actions/facilities';
+
 import ResultsList from './ResultsList';
-import Filters from './Form/Filters';
+import FormFilters from './Form/FormFilters';
 import MapContainer from './Map/MapContainer';
 
-class Results extends Component {
+export class Results extends Component {
   state = {
     filtersHidden: false,
     resultsHidden: false
@@ -57,7 +59,7 @@ class Results extends Component {
             )}
           </div>
           <div css={tw`w-full lg:w-2/5 px-6 mb-6 order-first lg:order-last`}>
-            <Filters
+            <FormFilters
               onSubmit={this.submit}
               toggleFilters={this.toggleFilters}
               toggleResults={this.toggleResults}

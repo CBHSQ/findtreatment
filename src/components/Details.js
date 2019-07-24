@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import 'styled-components/macro';
@@ -12,11 +11,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { handleReceiveFacility } from '../actions/facility';
 import { convertToSlug, hash } from '../utils/misc';
-import MapContainer from './Map/MapContainer';
-import Button from './Form/Button';
-import ReactGA, { OutboundLink } from 'react-ga';
+import { reportFacility } from '../actions/facilities';
 
-class Details extends Component {
+import MapContainer from './Map/MapContainer';
+import { Button } from './Input';
+import { OutboundLink } from 'react-ga';
+
+export class Details extends Component {
   componentDidMount() {
     const { dispatch, match } = this.props;
 
@@ -45,12 +46,9 @@ class Details extends Component {
     );
   }
 
-  flagData = frid => {
-    ReactGA.event({
-      category: `Listing Data Report`,
-      action: `Data issue reported for frid`,
-      label: frid.frid
-    });
+  reportFacility = () => {
+    const { facility } = this.props;
+    this.props.reportFacility(facility.frid);
   };
 
   render() {
@@ -63,7 +61,6 @@ class Details extends Component {
     }
 
     const {
-      frid,
       name1,
       name2,
       street1,
@@ -155,10 +152,23 @@ class Details extends Component {
                 </OutboundLink>
               </div>
             </div>
-            <Button secondary onClick={() => this.flagData({ frid })}>
-              <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
-              Report a problem with this listing
-            </Button>
+            {!this.props.isReported ? (
+              <Button
+                className="report-facility"
+                secondary
+                onClick={this.reportFacility}
+              >
+                <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
+                Report a problem with this listing
+              </Button>
+            ) : (
+              <div
+                role="alert"
+                css={tw`w-full text-center rounded bg-green-100 border border-green-500 text-green-700 px-4 py-3`}
+              >
+                <strong>Thank you!</strong> Your feedback has been recorded.
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -166,23 +176,14 @@ class Details extends Component {
   }
 }
 
-Details.propTypes = {
-  frid: PropTypes.string.isRequired,
-  name1: PropTypes.string.isRequired,
-  name2: PropTypes.string,
-  miles: PropTypes.number.isRequired,
-  street1: PropTypes.string.isRequired,
-  street2: PropTypes.string,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  zip: PropTypes.string.isRequired,
-  services: PropTypes.array.isRequired,
-  phone: PropTypes.string.isRequired,
-  website: PropTypes.string
-};
+const mapDispatchToProps = dispatch => ({
+  reportFacility(frid) {
+    dispatch(reportFacility(frid));
+  }
+});
 
 const mapStateToProps = ({ facilities }, ownProps) => {
-  const { data } = facilities;
+  const { data, reported } = facilities;
   const { rows } = data;
   const hashedId = ownProps.match.params.facilitySlug
     .split('-')
@@ -192,8 +193,12 @@ const mapStateToProps = ({ facilities }, ownProps) => {
     rows && rows.find(({ name1, frid }) => hash(frid) === hashedId);
 
   return {
-    facility
+    facility,
+    isReported: facility && reported.includes(facility.frid)
   };
 };
 
-export default connect(mapStateToProps)(Details);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Details);
