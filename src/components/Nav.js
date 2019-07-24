@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { ReactComponent as Logo } from '../images/logo.svg';
 
 const StyledNav = styled.div`
   ${tw`border-b mb-6`}
+`;
 
-  a {
-    ${tw`text-gray-900 hover:text-gray-900`}
+const StyledLink = styled(NavLink)`
+  ${tw`text-gray-900 block mt-4 lg:inline-block lg:mt-0 lg:pb-2 lg:border-b-4 lg:border-transparent lg:hover:border-blue-800`}
+
+  &.active {
+    ${tw`font-bold lg:border-blue-800`}
   }
 `;
 
@@ -27,6 +31,10 @@ class Nav extends Component {
     this.setState({
       isHidden: !this.state.isHidden
     });
+  };
+
+  isContentSection = (match, location) => {
+    return location.pathname.includes(`/content`);
   };
 
   render() {
@@ -58,16 +66,16 @@ class Nav extends Component {
           </div>
 
           <MobileNav isHidden={isHidden}>
-            <div css={tw`text-sm lg:flex-grow lg:mt-1`}>
-              <Link to="/" css={tw`block mt-4 lg:inline-block lg:mt-0 mr-6`}>
+            <div css={tw`text-sm lg:flex-grow lg:mt-4`}>
+              <StyledLink to="/" exact css={tw`mr-6`}>
                 Search for treatment
-              </Link>
-              <Link
+              </StyledLink>
+              <StyledLink
                 to="/content/what-to-expect"
-                css={tw`block mt-4 lg:inline-block lg:mt-0`}
+                isActive={this.isContentSection}
               >
                 What to expect
-              </Link>
+              </StyledLink>
             </div>
           </MobileNav>
         </nav>
