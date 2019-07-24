@@ -11,7 +11,7 @@ import Content from './Content';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 
-import topics from '../utils/topics';
+import content from '../utils/content';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,25 +19,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => {
-  console.log(topics());
-  return (
-    <>
-      <GlobalStyle />
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/results" component={Results} />
-        <Route path="/details" component={Details} />
-        <Route
-          path="/content/:pageId"
-          render={() => <Content topics={topics()} />}
-        />
-        <Route component={NoMatch} />
-      </Switch>
-      <Footer />
-    </>
-  );
-};
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/results" component={Results} />
+      <Route path="/details" component={Details} />
+      <Route
+        path="/content/:pageId"
+        render={() => <Content content={content()} />}
+      />
+      <Route component={NoMatch} />
+    </Switch>
+    <Footer />
+  </>
+);
 
 export default App;

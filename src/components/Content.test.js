@@ -10,7 +10,7 @@ const testProps = {
       pageId: 'content-id'
     }
   },
-  topics: [
+  content: [
     {
       name: 'Content name',
       id: 'content-id',
@@ -52,10 +52,10 @@ describe('Content component', () => {
     });
 
     it('does not display subTopics if not present', () => {
-      const { subTopics, ...rest } = testProps.topics[0];
+      const { subTopics, ...rest } = testProps.content[0];
       const props = {
         ...testProps,
-        topics: [
+        content: [
           {
             ...rest
           }
@@ -105,10 +105,10 @@ describe('Content component', () => {
         body,
         subTopics,
         ...rest
-      } = testProps.topics[0];
+      } = testProps.content[0];
       const props = {
         ...testProps,
-        topics: [
+        content: [
           {
             ...rest
           }

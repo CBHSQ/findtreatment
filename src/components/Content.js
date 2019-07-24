@@ -68,12 +68,12 @@ export class Content extends Component {
   }
 
   renderSideBar = () => {
-    const { topics } = this.props;
+    const { content } = this.props;
     return (
       <SideBar>
         <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
           <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
-          <ul>{topics.map(this.renderSideBarLinks)}</ul>
+          <ul>{content.map(this.renderSideBarLinks)}</ul>
         </div>
       </SideBar>
     );
@@ -135,8 +135,8 @@ export class Content extends Component {
   };
 
   render() {
-    const { topics, match } = this.props;
-    const topic = topics.find(({ id }) => id === match.params.pageId);
+    const { content, match } = this.props;
+    const topic = content.find(({ id }) => id === match.params.pageId);
 
     return topic ? (
       <div className="container">
