@@ -11,8 +11,7 @@ import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
-import { Location, Select } from '../Input';
-import Button from './Button';
+import { Button, Location, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -22,7 +21,7 @@ const RowFlex = styled.div`
   ${tw`flex flex-wrap -mx-3 mb-6`}
 `;
 
-export class Filters extends Component {
+export class FormFilters extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(handleReceiveLanguages());
@@ -289,5 +288,5 @@ export default connect(
     form: 'filters',
     enableReinitialize: true,
     destroyOnUnmount: false
-  })(withSizes(mapSizesToProps)(Filters))
+  })(withSizes(mapSizesToProps)(FormFilters))
 );

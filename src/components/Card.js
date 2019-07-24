@@ -7,25 +7,31 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Button from './Form/Button';
+import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-600 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
 
-const CardHeading = ({ frid, name1, name2, miles }) => {
-  return (
-    <StyledHeading>
-      <Link to={{ pathname: '/details', state: { frid } }}>
-        <h2 css={tw`mb-2`}>
-          {name1}
-          {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
-        </h2>
-      </Link>
-      {miles && <span css={tw`text-gray-500`}>{miles} miles</span>}
-    </StyledHeading>
-  );
-};
+const CardHeading = ({ frid, name1, name2, miles }) => (
+  <StyledHeading>
+    <Link to={{ pathname: '/details', state: { frid } }}>
+      <h2 css={tw`mb-2`}>
+        {name1}
+        {name2 && (
+          <span className="card-name2" css={tw`block text-lg font-light`}>
+            {name2}
+          </span>
+        )}
+      </h2>
+    </Link>
+    {miles && (
+      <span className="card-miles" css={tw`text-gray-500`}>
+        {miles} miles
+      </span>
+    )}
+  </StyledHeading>
+);
 
 const CardAddress = ({ street1, street2, city, state, zip }) => (
   <StyledAddress>
@@ -48,7 +54,7 @@ const CardDetails = ({ phone, website, services }) => (
         </OutboundLink>
       </li>
       {website !== 'http://' && (
-        <li css={tw`truncate`}>
+        <li className="card-website" css={tw`truncate`}>
           <span css={tw`font-semibold`}>Website:</span>{' '}
           <OutboundLink
             eventLabel="Facility website link from card"

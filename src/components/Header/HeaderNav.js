@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { ReactComponent as Logo } from '../images/logo.svg';
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
 const StyledNav = styled.div`
   ${tw`border-b mb-6`}
@@ -22,7 +22,7 @@ const MobileNav = styled.div`
   ${({ isHidden }) => (isHidden ? tw`hidden lg:block` : tw`block`)}
 `;
 
-class Nav extends Component {
+class HeaderNav extends Component {
   state = {
     isHidden: true
   };
@@ -84,4 +84,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default HeaderNav;
