@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues } from 'redux-form';
+import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import withSizes from 'react-sizes';
@@ -13,6 +13,7 @@ import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
 import { Location, Select } from '../Input';
 import Button from './Button';
+import { DEFAULT_DISTANCE } from '../../utils/constants';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -257,6 +258,7 @@ const mapStateToProps = state => {
 
   return {
     initialValues: {
+      distance: DEFAULT_DISTANCE,
       ...locationValue
     },
     location: locationValue && locationValue.location,
@@ -283,6 +285,9 @@ export default connect(
   reduxForm({
     form: 'filters',
     enableReinitialize: true,
-    destroyOnUnmount: false
+    destroyOnUnmount: false,
+    onChange: (values, dispatch) => {
+      dispatch(submit('filters'));
+    }
   })(withSizes(mapSizesToProps)(Filters))
 );

@@ -21,7 +21,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/results" component={Results} />
-        <Route path="/details" component={Details} />
+        <Route exact path="/details" component={Details} />
+        <Route path="/details/:facilitySlug/:paramString" component={Details} />
         <Route path="/content/:pageId" component={Page} />
         <Route component={NoMatch} />
       </Switch>

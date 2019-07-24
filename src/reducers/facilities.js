@@ -21,7 +21,8 @@ export default function facilities(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: action.payload.data
+        data: action.payload.data,
+        params: action.payload.params
       };
     case RECEIVE_FACILITIES_FAILURE:
       return {

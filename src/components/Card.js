@@ -7,6 +7,16 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Button from './Form/Button';
+import { convertToSlug, hash } from '../utils/misc';
+
+const pathForFacility = ({ frid, name1, params }) => {
+  let slug = `${convertToSlug(name1)}-${hash(frid)}`;
+  let query = [encodeURIComponent(params.sAddr)];
+  if (params.limitValue) {
+    query.push(encodeURIComponent(params.limitValue));
+  }
+  return [slug, query.join(':')].join('/');
+};
 
 const Card = props => {
   const {
@@ -21,7 +31,8 @@ const Card = props => {
     zip,
     services,
     phone,
-    website
+    website,
+    params
   } = props;
 
   return (
@@ -29,7 +40,7 @@ const Card = props => {
       <div css={tw`flex justify-between`}>
         <Link
           to={{
-            pathname: '/details',
+            pathname: `/details/${pathForFacility({ frid, name1, params })}`,
             state: {
               id: frid
             }

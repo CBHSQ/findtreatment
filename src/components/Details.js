@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,11 +10,26 @@ import {
   faExternalLinkAlt,
   faFlag
 } from '@fortawesome/free-solid-svg-icons';
+import { handleReceiveFacility } from '../actions/facility';
+import { convertToSlug, hash } from '../utils/misc';
 import MapContainer from './Map/MapContainer';
 import Button from './Form/Button';
 import ReactGA, { OutboundLink } from 'react-ga';
 
 class Details extends Component {
+  componentDidMount() {
+    const { dispatch, match } = this.props;
+
+    if (match.params.facilitySlug && match.params.paramString) {
+      dispatch(
+        handleReceiveFacility({
+          slug: match.params.facilitySlug,
+          encodedParamString: match.params.paramString
+        })
+      );
+    }
+  }
+
   renderService(service) {
     return (
       <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
@@ -40,7 +55,11 @@ class Details extends Component {
 
   render() {
     if (!this.props.facility) {
-      return <Redirect to="/" />;
+      return (
+        <div className="results-loading" css={tw`text-center py-6 italic`}>
+          Loading details...
+        </div>
+      );
     }
 
     const {
@@ -165,8 +184,12 @@ Details.propTypes = {
 const mapStateToProps = ({ facilities }, ownProps) => {
   const { data } = facilities;
   const { rows } = data;
+  const hashedId = ownProps.match.params.facilitySlug
+    .split('-')
+    .slice(-1)
+    .pop();
   const facility =
-    rows && rows.find(({ frid }) => frid === ownProps.location.state.id);
+    rows && rows.find(({ name1, frid }) => hash(frid) === hashedId);
 
   return {
     facility

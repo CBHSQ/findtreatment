@@ -8,7 +8,7 @@ import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {
-    const { loading, rows, page, totalPages, recordCount } = this.props;
+    const { loading, rows, page, totalPages, recordCount, params } = this.props;
     const hasResults = rows && rows.length > 0;
 
     if (loading) {
@@ -66,7 +66,7 @@ export class ResultsList extends Component {
         </div>
         <ul css={tw``}>
           {rows.map(result => (
-            <Card key={result.frid} {...result} />
+            <Card key={result.frid} {...result} params={params} />
           ))}
         </ul>
         <Pagination page={page} totalPages={totalPages} />

@@ -36,7 +36,7 @@ class Results extends Component {
   };
 
   render() {
-    const { loading, data, isDesktop } = this.props;
+    const { loading, data, isDesktop, params } = this.props;
     const { rows, page, totalPages, recordCount } = data;
     const hasResults = rows && rows.length > 0;
 
@@ -52,6 +52,7 @@ class Results extends Component {
                 page={page}
                 totalPages={totalPages}
                 recordCount={recordCount}
+                params={params}
               />
             )}
           </div>
@@ -84,11 +85,12 @@ const mapSizesToProps = ({ width }) => ({
 });
 
 const mapStateToProps = ({ facilities }) => {
-  const { loading, data } = facilities;
+  const { loading, data, params } = facilities;
 
   return {
     loading,
-    data
+    data,
+    params
   };
 };
 
