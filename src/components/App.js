@@ -17,21 +17,20 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => {
-  return (
-    <StyledApp>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/results" component={Results} />
-        <Route exact path="/details" component={Details} />
-        <Route path="/details/:facilitySlug/:paramString" component={Details} />
-        <Route path="/content/:pageId" component={Content} />
-        <Route component={NoMatch} />
-      </Switch>
-      <Footer />
-    </StyledApp>
-  );
-};
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/results" component={Results} />
+      <Route exact path="/details" component={Details} />
+      <Route path="/details/:facilitySlug/:paramString" component={Details} />
+      <Route path="/content/:pageId" component={Content} />
+      <Route component={NoMatch} />
+    </Switch>
+    <Footer />
+  </>
+);
 
 export default App;

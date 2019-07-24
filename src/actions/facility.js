@@ -1,6 +1,5 @@
 import qs from 'qs';
 import API from '../utils/api';
-import { convertToSlug } from '../utils/misc';
 import * as facilitiesActions from './facilities';
 
 export const RECEIVE_FACILITY_BEGIN = 'RECEIVE_FACILITY_BEGIN';

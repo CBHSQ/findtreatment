@@ -10,11 +10,11 @@ import {
   faFlag
 } from '@fortawesome/free-solid-svg-icons';
 import { handleReceiveFacility } from '../actions/facility';
-import { convertToSlug, hash } from '../utils/misc';
 import { reportFacility } from '../actions/facilities';
 
 import MapContainer from './Map/MapContainer';
 import { Button } from './Input';
+import { hash } from '../utils/misc';
 import { OutboundLink } from 'react-ga';
 
 export class Details extends Component {
@@ -179,7 +179,8 @@ export class Details extends Component {
 const mapDispatchToProps = dispatch => ({
   reportFacility(frid) {
     dispatch(reportFacility(frid));
-  }
+  },
+  dispatch
 });
 
 const mapStateToProps = ({ facilities }, ownProps) => {

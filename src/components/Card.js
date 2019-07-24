@@ -22,9 +22,14 @@ const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-600 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
 
-const CardHeading = ({ frid, name1, name2, miles }) => (
+const CardHeading = ({ frid, name1, name2, miles, params }) => (
   <StyledHeading>
-    <Link to={{ pathname: '/details', state: { frid } }}>
+    <Link
+      to={{
+        pathname: `/details/${pathForFacility({ frid, name1, params })}`,
+        state: { frid }
+      }}
+    >
       <h2 css={tw`mb-2`}>
         {name1}
         {name2 && (
@@ -101,7 +106,13 @@ const Card = props => {
 
   return (
     <StyledCard>
-      <CardHeading frid={frid} name1={name1} name2={name2} miles={miles} />
+      <CardHeading
+        frid={frid}
+        name1={name1}
+        name2={name2}
+        miles={miles}
+        params={params}
+      />
       <CardAddress
         street1={street1}
         street2={street2}
