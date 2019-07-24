@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import tw from 'tailwind.macro';
+import styled from 'styled-components/macro';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
-import styled from 'styled-components/macro';
-import tw from 'tailwind.macro';
 import { handleReceiveFacilities } from '../actions/facilities';
 
 const StyledPagination = styled.div`
@@ -13,24 +13,20 @@ const StyledPagination = styled.div`
     ${tw`flex border rounded`}
   }
 
-  li {
-    ${tw`text-blue-500`}
+  a {
+    ${tw`block hover:bg-gray-300 border-r px-3 py-2`}
   }
 
-  li:not(.previous):not(.next) a {
-    ${tw`block border-r px-3 py-2`}
+  li:last-of-type a {
+    ${tw`border-r-0`}
   }
 
-  .selected {
-    ${tw`text-white bg-blue-500`}
+  .disabled a {
+    ${tw`text-gray-500 bg-transparent hover:bg-transparent cursor-not-allowed`}
   }
 
-  .previous {
-    ${tw`block hover:text-white hover:bg-blue-500 text-blue-500 border-r px-3 py-2`}
-  }
-
-  .next {
-    ${tw`block hover:text-white hover:bg-blue-500 text-blue-500 px-3 py-2`}
+  .selected a {
+    ${tw`text-white bg-blue-500 hover:bg-blue-500`}
   }
 `;
 
@@ -59,8 +55,8 @@ class Pagination extends Component {
           breakLabel={'...'}
           breakClassName={'break-me'}
           pageCount={totalPages}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={3}
           onPageChange={this.handlePageClick}
           forcePage={page - 1}
         />
