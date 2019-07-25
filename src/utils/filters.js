@@ -9,7 +9,7 @@ export const distance = [
   { value: 40233.6, label: '25 miles' },
   { value: 80467.2, label: '50 miles' },
   { value: 160934, label: '100 miles' },
-  { value: 'All', label: '100+ miles' }
+  { value: '', label: '100+ miles' }
 ];
 
 export const gender = [

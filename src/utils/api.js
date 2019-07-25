@@ -9,66 +9,47 @@ export default axios.create({
   responseType: 'json'
 });
 
-const initialValues = {
-  sType: 'BOTH',
-  sCodes: '',
-  pageSize: DEFAULT_PAGE_SIZE,
-  page: 1,
-  sort: 0
-};
-
 export const buildParams = query => {
-  const params = Object.entries(query).reduce((memo, [key, value]) => {
-    if (key === 'distance') {
-      return value !== 'All'
-        ? {
-            ...memo,
-            limitType: 2,
-            limitValue: value
-          }
-        : memo;
-    }
+  const { distance, language, location, page, type, ...codes } = query;
+  const codeValues = Object.values(codes);
 
-    if (key === 'languages') {
-      return {
-        ...memo,
-        sLanguages: value
-      };
-    }
+  const params = {
+    sType: parseType(type),
+    sCodes: parseCodes(type, codeValues),
+    pageSize: DEFAULT_PAGE_SIZE,
+    page: page || 1,
+    sAddr: location && `${location.location.lat}, ${location.location.lng}`,
+    limitType: distance && 2,
+    limitValue: distance && distance,
+    sLanguages: language && language
+  };
 
-    if (key === 'location') {
-      return {
-        ...memo,
-        sAddr: `${value.location.lat}, ${value.location.lng}`
-      };
-    }
-
-    if (key === 'page') {
-      return {
-        ...memo,
-        page: value
-      };
-    }
-
-    if (key === 'type' && value === 'Intake') {
-      return memo;
-    }
-
-    return {
-      ...memo,
-      sCodes: memo.sCodes
-        .split(',')
-        .filter(v => !!v)
-        .concat(value)
-        .join()
-    };
-  }, initialValues);
-
-  if (!params.sCodes) {
-    const { sCodes, ...finalParams } = params;
-
-    return finalParams;
-  }
+  Object.keys(params).forEach(
+    key => (params[key] == null || !params[key]) && delete params[key]
+  );
 
   return params;
+};
+
+const parseCodes = (type, codes) => {
+  const skipTypeCodes = ['Intake', 'MH'];
+
+  return !skipTypeCodes.includes(type)
+    ? codes
+        .concat(type)
+        .filter(code => !!code)
+        .toString()
+    : codes.toString();
+};
+
+const parseType = type => {
+  if (type === 'MH' || type === 'WI') {
+    return 'MH';
+  }
+
+  if (type === 'CO') {
+    return 'BOTH';
+  }
+
+  return 'SA';
 };

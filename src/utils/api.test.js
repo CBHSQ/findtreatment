@@ -4,10 +4,9 @@ describe('buildParams()', () => {
   it('sets an initial value', () => {
     const query = {};
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
@@ -16,37 +15,34 @@ describe('buildParams()', () => {
       distance: 160934
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       limitType: 2,
       limitValue: 160934,
       pageSize: 10,
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
   it('omits limitValue and limitType if distance is 100+ miles', () => {
     const query = {
-      distance: 'All'
+      distance: ''
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
   it('maps language value to sLanguages', () => {
     const query = {
-      languages: 'SP-Spanish'
+      language: 'SP-Spanish'
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
       sLanguages: 'SP-Spanish',
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
@@ -60,11 +56,10 @@ describe('buildParams()', () => {
       }
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
       sAddr: '32.4044445, -110.98642940000002',
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
@@ -73,10 +68,9 @@ describe('buildParams()', () => {
       page: 2
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
-      page: 2,
-      sort: 0
+      page: 2
     });
   });
 
@@ -86,11 +80,10 @@ describe('buildParams()', () => {
       gender: 'MALE'
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
       sCodes: 'ADLT,MALE',
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
@@ -99,10 +92,9 @@ describe('buildParams()', () => {
       type: 'Intake'
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 
@@ -111,10 +103,9 @@ describe('buildParams()', () => {
       sCodes: ''
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      sType: 'SA',
       pageSize: 10,
-      page: 1,
-      sort: 0
+      page: 1
     });
   });
 });
