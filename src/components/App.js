@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
+import withSizes from 'react-sizes';
 
+import ScreenContext from './ScreenContext';
 import Header from './Header';
 import Home from './Home';
 import Results from './Results';
@@ -17,19 +19,29 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/results" component={Results} />
-      <Route path="/details" component={Details} />
-      <Route path="/content/:pageId" component={Content} />
-      <Route component={NoMatch} />
-    </Switch>
-    <Footer />
-  </>
-);
+class App extends Component {
+  render() {
+    return (
+      <>
+        <ScreenContext.Provider value={this.props.isDesktop}>
+          <GlobalStyle />
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/results" component={Results} />
+            <Route path="/details" component={Details} />
+            <Route path="/content/:pageId" component={Content} />
+            <Route component={NoMatch} />
+          </Switch>
+          <Footer />
+        </ScreenContext.Provider>
+      </>
+    );
+  }
+}
 
-export default App;
+const mapSizesToProps = sizes => ({
+  isDesktop: withSizes.isDesktop(sizes)
+});
+
+export default withSizes(mapSizesToProps)(App);

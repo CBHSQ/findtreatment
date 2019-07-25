@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
-import withSizes from 'react-sizes';
 
 import { handleReceiveFacilities } from '../actions/facilities';
 
+import ScreenContext from './ScreenContext';
 import ResultsList from './ResultsList';
 import FormFilters from './Form/FormFilters';
 import MapContainer from './Map/MapContainer';
@@ -38,9 +38,10 @@ export class Results extends Component {
   };
 
   render() {
-    const { loading, data, isDesktop } = this.props;
+    const { loading, data } = this.props;
     const { rows, page, totalPages, recordCount } = data;
     const hasResults = rows && rows.length > 0;
+    const isDesktop = this.context;
 
     return (
       <div className="container">
@@ -80,10 +81,7 @@ export class Results extends Component {
     );
   }
 }
-
-const mapSizesToProps = ({ width }) => ({
-  isDesktop: width > 1024
-});
+Results.contextType = ScreenContext;
 
 const mapStateToProps = ({ facilities }) => {
   const { loading, data } = facilities;
@@ -94,4 +92,4 @@ const mapStateToProps = ({ facilities }) => {
   };
 };
 
-export default connect(mapStateToProps)(withSizes(mapSizesToProps)(Results));
+export default connect(mapStateToProps)(Results);
