@@ -5,7 +5,6 @@ import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import { convertToSlug, hashLinkScroll } from '../utils/misc';
-import topics from '../utils/topics';
 
 import NoMatch from './NoMatch';
 
@@ -48,10 +47,10 @@ const Main = styled.div`
 
   li {
     ${tw`mb-2`}
-  }
 
-  li > ul {
-    ${tw`mt-2`}
+    & > ul,ol {
+      ${tw`mt-2`}
+    }
   }
 `;
 
@@ -63,17 +62,18 @@ const MainSubTopic = styled.div`
   ${tw`border-b mb-8 pb-8 max-w-xl`}
 `;
 
-class Content extends Component {
+export class Content extends Component {
   componentDidMount() {
     hashLinkScroll();
   }
 
   renderSideBar = () => {
+    const { content } = this.props;
     return (
       <SideBar>
         <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
           <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
-          <ul>{topics().map(this.renderSideBarLinks)}</ul>
+          <ul>{content.map(this.renderSideBarLinks)}</ul>
         </div>
       </SideBar>
     );
@@ -87,7 +87,9 @@ class Content extends Component {
           {name}
         </Link>
         {id === match.params.pageId && subTopics && (
-          <ul css={tw`my-2`}>{subTopics.map(this.renderSideBarSubLinks)}</ul>
+          <ul className="sidebar-subtopics" css={tw`my-2`}>
+            {subTopics.map(this.renderSideBarSubLinks)}
+          </ul>
         )}
       </li>
     );
@@ -133,8 +135,8 @@ class Content extends Component {
   };
 
   render() {
-    const { match } = this.props;
-    const topic = topics().find(({ id }) => id === match.params.pageId);
+    const { content, match } = this.props;
+    const topic = content.find(({ id }) => id === match.params.pageId);
 
     return topic ? (
       <div className="container">
