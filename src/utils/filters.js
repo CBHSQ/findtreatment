@@ -42,7 +42,7 @@ export const payment = [
 ];
 
 export const type = [
-  { value: 'Intake', label: 'Assessment and pretreatment' },
+  { value: 'Custom-Intake', label: 'Assessment and pretreatment' },
   { value: 'ISC', label: 'Interim care' },
   { value: 'DT', label: 'Detox' },
   { value: 'OP', label: 'Outpatient' },
@@ -58,7 +58,7 @@ export const type = [
     label: 'Co-occurring mental health and substance use treatment'
   },
   {
-    value: 'MH',
+    value: 'Custom-Mental_Health',
     label: 'Mental health services only'
   }
 ];
