@@ -4,6 +4,8 @@ import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
 
+import content from '../utils/content';
+
 import ScreenContext from './ScreenContext';
 import Header from './Header';
 import Home from './Home';
@@ -22,20 +24,21 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   render() {
     return (
-      <>
-        <ScreenContext.Provider value={this.props.isDesktop}>
-          <GlobalStyle />
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/results" component={Results} />
-            <Route path="/details" component={Details} />
-            <Route path="/content/:pageId" component={Content} />
-            <Route component={NoMatch} />
-          </Switch>
-          <Footer />
-        </ScreenContext.Provider>
-      </>
+      <ScreenContext.Provider value={this.props.isDesktop}>
+        <GlobalStyle />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/results" component={Results} />
+          <Route path="/details" component={Details} />
+          <Route
+            path="/content/:pageId"
+            render={() => <Content content={content()} />}
+          />
+          <Route component={NoMatch} />
+        </Switch>
+        <Footer />
+      </ScreenContext.Provider>
     );
   }
 }
