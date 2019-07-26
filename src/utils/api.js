@@ -61,7 +61,7 @@ const serviceCodes = {
 
 const setServiceType = (type = '') => {
   if (
-    type.toLowerCase() === serviceCodes.MENTAL_HEALTH ||
+    type.toLowerCase() === serviceCodes.MENTAL_HEALTH.toLowerCase() ||
     type === serviceCodes.PSYCHIATRIC_WALK_IN
   ) {
     return serviceTypes.MENTAL_HEALTH;
