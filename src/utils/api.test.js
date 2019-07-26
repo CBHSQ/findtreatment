@@ -1,14 +1,16 @@
 import { buildParams } from './api';
 
+const testProps = {
+  sType: 'SA',
+  pageSize: 10,
+  page: 1,
+  sort: 0
+};
+
 describe('buildParams()', () => {
-  it('sets an initial value', () => {
+  it('sets default values', () => {
     const query = {};
-    expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      page: 1,
-      sort: 0
-    });
+    expect(buildParams(query)).toStrictEqual(testProps);
   });
 
   it('maps distance value to limitValue', () => {
@@ -16,37 +18,26 @@ describe('buildParams()', () => {
       distance: 160934
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
+      ...testProps,
       limitType: 2,
-      limitValue: 160934,
-      pageSize: 10,
-      page: 1,
-      sort: 0
+      limitValue: 160934
     });
   });
 
   it('omits limitValue and limitType if distance is 100+ miles', () => {
     const query = {
-      distance: 'All'
+      distance: ''
     };
-    expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      page: 1,
-      sort: 0
-    });
+    expect(buildParams(query)).toStrictEqual(testProps);
   });
 
   it('maps language value to sLanguages', () => {
     const query = {
-      languages: 'SP-Spanish'
+      language: 'SP-Spanish'
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      sLanguages: 'SP-Spanish',
-      page: 1,
-      sort: 0
+      ...testProps,
+      sLanguages: 'SP-Spanish'
     });
   });
 
@@ -60,11 +51,8 @@ describe('buildParams()', () => {
       }
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      sAddr: '32.4044445, -110.98642940000002',
-      page: 1,
-      sort: 0
+      ...testProps,
+      sAddr: '32.4044445, -110.98642940000002'
     });
   });
 
@@ -73,10 +61,8 @@ describe('buildParams()', () => {
       page: 2
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      page: 2,
-      sort: 0
+      ...testProps,
+      page: 2
     });
   });
 
@@ -86,35 +72,54 @@ describe('buildParams()', () => {
       gender: 'MALE'
     };
     expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      sCodes: 'ADLT,MALE',
-      page: 1,
-      sort: 0
+      ...testProps,
+      sCodes: 'ADLT,MALE'
     });
   });
 
   it('ignores intake type of care from sCodes', () => {
     const query = {
-      type: 'Intake'
+      type: 'Custom-Intake'
     };
-    expect(buildParams(query)).toStrictEqual({
-      sType: 'BOTH',
-      pageSize: 10,
-      page: 1,
-      sort: 0
-    });
+    expect(buildParams(query)).toStrictEqual(testProps);
   });
 
   it('remove sCodes if value is empty string', () => {
     const query = {
       sCodes: ''
     };
+    expect(buildParams(query)).toStrictEqual(testProps);
+  });
+
+  it('sets sType:MH, and sCode:WI if Psychiatric emergency walk-in services is chosen', () => {
+    const query = {
+      type: 'WI'
+    };
     expect(buildParams(query)).toStrictEqual({
+      ...testProps,
+      sType: 'MH',
+      sCodes: 'WI'
+    });
+  });
+
+  it('sets sType:BOTH, and sCode:CO if Co-occurring is chosen', () => {
+    const query = {
+      type: 'CO'
+    };
+    expect(buildParams(query)).toStrictEqual({
+      ...testProps,
       sType: 'BOTH',
-      pageSize: 10,
-      page: 1,
-      sort: 0
+      sCodes: 'CO'
+    });
+  });
+
+  it('sets sType:MH if Mental health services only is chosen', () => {
+    const query = {
+      type: 'Custom-Mental_Health'
+    };
+    expect(buildParams(query)).toStrictEqual({
+      ...testProps,
+      sType: 'MH'
     });
   });
 });

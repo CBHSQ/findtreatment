@@ -9,7 +9,7 @@ export const distance = [
   { value: 40233.6, label: '25 miles' },
   { value: 80467.2, label: '50 miles' },
   { value: 160934, label: '100 miles' },
-  { value: 'All', label: '100+ miles' }
+  { value: '', label: '100+ miles' }
 ];
 
 export const gender = [
@@ -42,7 +42,7 @@ export const payment = [
 ];
 
 export const type = [
-  { value: 'Intake', label: 'Assessment and pretreatment' },
+  { value: 'Custom-Intake', label: 'Assessment and pretreatment' },
   { value: 'ISC', label: 'Interim care' },
   { value: 'DT', label: 'Detox' },
   { value: 'OP', label: 'Outpatient' },
@@ -58,7 +58,7 @@ export const type = [
     label: 'Co-occurring mental health and substance use treatment'
   },
   {
-    value: 'MH',
+    value: 'Custom-Mental_Health',
     label: 'Mental health services only'
   }
 ];
