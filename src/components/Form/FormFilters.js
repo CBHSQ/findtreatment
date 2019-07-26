@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import tw from 'tailwind.macro';
+import styled from 'styled-components/macro';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
-import styled from 'styled-components/macro';
-import tw from 'tailwind.macro';
-import withSizes from 'react-sizes';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+
 import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
+
+import ScreenContext from '../ScreenContext';
 import { Button, Location, Select } from '../Input';
 
 const Row = styled.div`
@@ -57,7 +59,6 @@ export class FormFilters extends Component {
     const {
       handleSubmit,
       data,
-      isDesktop,
       toggleFilters,
       toggleResults,
       filtersHidden,
@@ -65,6 +66,7 @@ export class FormFilters extends Component {
       hasResults
     } = this.props;
     const { isHidden } = this.state;
+    const isDesktop = this.context;
 
     return (
       <>
@@ -248,10 +250,7 @@ export class FormFilters extends Component {
     );
   }
 }
-
-const mapSizesToProps = ({ width }) => ({
-  isDesktop: width > 1024
-});
+FormFilters.contextType = ScreenContext;
 
 const mapStateToProps = state => {
   const { languages } = state;
@@ -288,5 +287,5 @@ export default connect(
     form: 'filters',
     enableReinitialize: true,
     destroyOnUnmount: false
-  })(withSizes(mapSizesToProps)(FormFilters))
+  })(FormFilters)
 );

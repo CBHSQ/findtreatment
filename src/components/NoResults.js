@@ -13,8 +13,8 @@ const NoResults = () => {
       </h2>
       <div css={tw`max-w-md mx-auto`}>
         <p css={tw`mb-6`}>
-          Try expanding your search by applying fewer filters,
-          <br /> like only your ZIP code and payment option.
+          Try expanding your search by applying fewer filters, like only your
+          ZIP code and payment option, or expanding your search distance.
         </p>
         <p css={tw`mb-6`}>
           If you need assistance, SAMHSA's national helpline is available 24/7
