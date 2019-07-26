@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { DEFAULT_PAGE_SIZE } from './constants';
+import {
+  DEFAULT_PAGE_SIZE,
+  DEFAULT_LIMIT_TYPE,
+  DEFAULT_SORT
+} from './constants';
 
 export default axios.create({
   baseURL:
@@ -9,66 +13,56 @@ export default axios.create({
   responseType: 'json'
 });
 
-const initialValues = {
-  sType: 'BOTH',
-  sCodes: '',
-  pageSize: DEFAULT_PAGE_SIZE,
-  page: 1,
-  sort: 0
-};
-
 export const buildParams = query => {
-  const params = Object.entries(query).reduce((memo, [key, value]) => {
-    if (key === 'distance') {
-      return value !== 'All'
-        ? {
-            ...memo,
-            limitType: 2,
-            limitValue: value
-          }
-        : memo;
-    }
+  const { distance, language, location, page, type, ...sCodes } = query;
+  const serviceCodes = Object.values(sCodes);
 
-    if (key === 'languages') {
-      return {
-        ...memo,
-        sLanguages: value
-      };
-    }
+  const params = {
+    sType: setServiceType(type),
+    sCodes: combineServiceTypeAndServiceCodes(type, serviceCodes),
+    pageSize: DEFAULT_PAGE_SIZE,
+    page: page || 1,
+    sAddr: location && `${location.location.lat}, ${location.location.lng}`,
+    limitType: distance && DEFAULT_LIMIT_TYPE,
+    limitValue: distance || null,
+    sLanguages: language || null,
+    sort: DEFAULT_SORT
+  };
 
-    if (key === 'location') {
-      return {
-        ...memo,
-        sAddr: `${value.location.lat}, ${value.location.lng}`
-      };
-    }
-
-    if (key === 'page') {
-      return {
-        ...memo,
-        page: value
-      };
-    }
-
-    if (key === 'type' && value === 'Intake') {
-      return memo;
-    }
-
-    return {
-      ...memo,
-      sCodes: memo.sCodes
-        .split(',')
-        .filter(v => !!v)
-        .concat(value)
-        .join()
-    };
-  }, initialValues);
-
-  if (!params.sCodes) {
-    const { sCodes, ...finalParams } = params;
-
-    return finalParams;
-  }
+  Object.keys(params).forEach(
+    key => typeof params[key] !== 'number' && !params[key] && delete params[key]
+  );
 
   return params;
+};
+
+// Combines service type and service codes into string, omitting custom values
+// Custom values should be prepended with "Custom-""
+const combineServiceTypeAndServiceCodes = (type = '', serviceCodes = []) => {
+  return type.toLowerCase().startsWith('custom-')
+    ? serviceCodes.toString()
+    : serviceCodes
+        .concat(type)
+        .filter(code => !!code)
+        .toString();
+};
+
+// Set the service type (sType) based on filter choices
+// sType: SA = Substance use only, MH = Mental health only, BOTH = SA and MH
+const setServiceType = (type = '') => {
+  // If the service type is set to one of the following, set sType = MH
+  // * Custom-Mental_Health = Mental health services only
+  // * WI = Psychiatric emergency walk-in services
+  if (type.toLowerCase() === 'custom-mental_health' || type === 'WI') {
+    return 'MH';
+  }
+
+  // If the service type is set to one of the following, set sType = BOTH
+  // * CO = Co-occurring mental health and substance use treatment
+  if (type === 'CO') {
+    return 'BOTH';
+  }
+
+  // If the previous conditions are not met, default to sType = SA
+  return 'SA';
 };
