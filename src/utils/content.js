@@ -233,6 +233,7 @@ export default () => [
   {
     name: 'Understanding mental illness',
     id: 'understanding-mental-illness',
+    description: '<PENDING>',
     body: (
       <>
         <p>
