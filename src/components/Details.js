@@ -16,20 +16,20 @@ import { Button } from './Input';
 import { OutboundLink } from 'react-ga';
 
 export class Details extends Component {
-  renderService(service) {
-    return (
-      <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
-        <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
-        <ul
-          css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
-        >
-          {service.f3.split('; ').map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+  returnToResults = () => {
+    this.props.history.goBack();
+  };
+
+  renderService = service => (
+    <div css={tw`mb-4 pb-4 border-b`} key={service.f2}>
+      <h3 css={tw`font-semibold text-sm`}>{service.f1}</h3>
+      <ul css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}>
+        {service.f3.split('; ').map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 
   reportFacility = () => {
     const { facility } = this.props;
@@ -58,6 +58,9 @@ export class Details extends Component {
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
+            <Button link onClick={this.returnToResults}>
+              ❮ Return to results
+            </Button>
             <h1 css={tw`font-bold mb-6`}>
               {name1}
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
