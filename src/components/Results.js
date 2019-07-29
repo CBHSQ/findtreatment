@@ -46,19 +46,7 @@ export class Results extends Component {
     return (
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
-          <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
-            {(isDesktop ||
-              (!this.state.filtersHidden && !this.state.resultsHidden)) && (
-              <ResultsList
-                loading={loading}
-                rows={rows}
-                page={page}
-                totalPages={totalPages}
-                recordCount={recordCount}
-              />
-            )}
-          </div>
-          <div css={tw`w-full lg:w-2/5 px-6 mb-6 order-first lg:order-last`}>
+          <div css={tw`w-full lg:w-2/5 px-6 mb-6`}>
             <FormFilters
               onSubmit={this.submit}
               toggleFilters={this.toggleFilters}
@@ -74,6 +62,18 @@ export class Results extends Component {
                   <MapContainer rows={rows} />
                 </div>
               </div>
+            )}
+          </div>
+          <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
+            {(isDesktop ||
+              (!this.state.filtersHidden && !this.state.resultsHidden)) && (
+              <ResultsList
+                loading={loading}
+                rows={rows}
+                page={page}
+                totalPages={totalPages}
+                recordCount={recordCount}
+              />
             )}
           </div>
         </div>
