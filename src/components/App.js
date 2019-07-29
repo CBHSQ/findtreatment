@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
+import { PropTypes } from 'prop-types';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
@@ -42,6 +43,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isDesktop: PropTypes.bool.isRequired
+};
 
 const mapSizesToProps = sizes => ({
   isDesktop: withSizes.isDesktop(sizes)

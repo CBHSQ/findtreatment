@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
 import { Link } from 'react-router-dom';
@@ -251,6 +252,21 @@ export class FormFilters extends Component {
   }
 }
 FormFilters.contextType = ScreenContext;
+
+FormFilters.propTypes = {
+  data: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  filtersHidden: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  hasResults: PropTypes.bool.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  location: PropTypes.object,
+  resetAdvancedFilters: PropTypes.func.isRequired,
+  resetAllFilters: PropTypes.func.isRequired,
+  resultsHidden: PropTypes.bool.isRequired,
+  toggleFilters: PropTypes.func.isRequired,
+  toggleResults: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => {
   const { languages } = state;

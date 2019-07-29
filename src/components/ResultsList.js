@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { DEFAULT_PAGE_SIZE } from '../utils/constants';
@@ -12,8 +13,14 @@ import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {
-    const { loading, rows, page, totalPages, recordCount } = this.props;
-    const hasResults = rows && rows.length > 0;
+    const {
+      hasResults,
+      loading,
+      rows,
+      page,
+      totalPages,
+      recordCount
+    } = this.props;
     const offset = (page - 1) * DEFAULT_PAGE_SIZE;
 
     if (loading) {
@@ -74,5 +81,14 @@ export class ResultsList extends Component {
     );
   }
 }
+
+ResultsList.propTypes = {
+  hasResults: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  page: PropTypes.number,
+  recordCount: PropTypes.number,
+  rows: PropTypes.array,
+  totalPages: PropTypes.number
+};
 
 export default ResultsList;

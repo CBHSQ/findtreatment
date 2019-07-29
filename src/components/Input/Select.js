@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import Label from './Label';
 
@@ -16,7 +17,6 @@ const Arrow = styled.div`
 
 const Select = ({
   input,
-  name,
   label,
   plural,
   hideFirst,
@@ -26,8 +26,8 @@ const Select = ({
 }) => (
   <StyledSelect>
     <div css={tw`flex justify-between items-center`}>
-      <Label name={name} label={label} />
-      {helpURL && helpURL && (
+      <Label name={input.name} label={label} />
+      {helpURL && (
         <Link to={helpURL} css={tw`mb-2 text-sm`}>
           {helpText}
         </Link>
@@ -35,7 +35,7 @@ const Select = ({
     </div>
 
     <div css={tw`relative`}>
-      <select name={name} {...input}>
+      <select {...input}>
         {!hideFirst && <option value="">All {plural.toLowerCase()}</option>}
         {options.map(option => (
           <option key={option.value} value={option.value}>
@@ -55,5 +55,15 @@ const Select = ({
     </div>
   </StyledSelect>
 );
+
+Select.propTypes = {
+  helpText: PropTypes.string,
+  helpURL: PropTypes.string,
+  hideFirst: PropTypes.bool,
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  plural: PropTypes.string
+};
 
 export default Select;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { handleReceiveFacilities } from '../actions/facilities';
@@ -40,7 +41,7 @@ export class Results extends Component {
   render() {
     const { loading, data } = this.props;
     const { rows, page, totalPages, recordCount } = data;
-    const hasResults = rows && rows.length > 0;
+    const hasResults = !!(rows && rows.length > 0);
     const isDesktop = this.context;
 
     return (
@@ -55,6 +56,7 @@ export class Results extends Component {
                 page={page}
                 totalPages={totalPages}
                 recordCount={recordCount}
+                hasResults={hasResults}
               />
             )}
           </div>
@@ -82,6 +84,12 @@ export class Results extends Component {
   }
 }
 Results.contextType = ScreenContext;
+
+Results.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  data: PropTypes.object.isRequired
+};
 
 const mapStateToProps = ({ facilities }) => {
   const { loading, data } = facilities;
