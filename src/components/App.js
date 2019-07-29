@@ -28,7 +28,7 @@ class App extends Component {
         <GlobalStyle />
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={() => <Home content={content()} />} />
           <Route path="/results" component={Results} />
           <Route path="/details" component={Details} />
           <Route
