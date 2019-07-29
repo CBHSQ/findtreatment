@@ -51,8 +51,8 @@ class Home extends Component {
               Find help near you
             </h2>
             Quickly find providers who treat{' '}
-            <strong>substance use disorders</strong> and{' '}
-            <strong>addiction</strong>
+            <strong>substance use disorders</strong>, <strong>addiction</strong>
+            , and <strong>mental illness.</strong>
           </div>
           <div css={tw`lg:max-w-2xl lg:mx-auto mb-10`}>
             <FormHomepage onSubmit={this.submit} />
