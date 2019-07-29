@@ -1,11 +1,16 @@
 import React from 'react';
-import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import 'styled-components/macro';
+
+import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
+import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
+import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
 
 export default () => [
   {
     name: 'What to expect',
     id: 'what-to-expect',
+    hidden: true,
     description:
       'Help is available, treatment works, and people recover every day.',
     body: (
@@ -27,6 +32,7 @@ export default () => [
   {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
+    icon: <IconAddiction css={tw`w-24 h-24`} />,
     description:
       'Addiction is a chronic disease that changes the brain and alters decision-making.',
     subTopics: [
@@ -373,6 +379,7 @@ export default () => [
   {
     name: 'Treatment options',
     id: 'treatment-options',
+    icon: <IconTreament css={tw`w-24 h-24`} />,
     description:
       'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.',
     subTopics: [
@@ -802,6 +809,7 @@ export default () => [
   {
     name: 'Paying for treatment',
     id: 'paying-for-treatment',
+    icon: <IconPayment css={tw`w-24 h-24`} />,
     description: 'Learn more about the cost of treatment and payment options.',
     subTopics: [
       {
