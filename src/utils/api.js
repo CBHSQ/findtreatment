@@ -47,22 +47,29 @@ const combineServiceTypeAndServiceCodes = (type = '', serviceCodes = []) => {
         .toString();
 };
 
-// Set the service type (sType) based on filter choices
-// sType: SA = Substance use only, MH = Mental health only, BOTH = SA and MH
+const serviceTypes = {
+  SUBSTANCE_USE: 'SA', // Substance use only
+  MENTAL_HEALTH: 'MH', // Mental health only
+  BOTH: 'BOTH' // Subtance use and mental health
+};
+
+const serviceCodes = {
+  MENTAL_HEALTH: 'Custom-Mental_Health', // Mental health services only
+  PSYCHIATRIC_WALK_IN: 'WI', // Psychiatric emergency walk-in services
+  CO_OCCURRING: 'CO' // Co-occurring mental health and substance use treatment
+};
+
 const setServiceType = (type = '') => {
-  // If the service type is set to one of the following, set sType = MH
-  // * Custom-Mental_Health = Mental health services only
-  // * WI = Psychiatric emergency walk-in services
-  if (type.toLowerCase() === 'custom-mental_health' || type === 'WI') {
-    return 'MH';
+  if (
+    type.toLowerCase() === serviceCodes.MENTAL_HEALTH.toLowerCase() ||
+    type === serviceCodes.PSYCHIATRIC_WALK_IN
+  ) {
+    return serviceTypes.MENTAL_HEALTH;
   }
 
-  // If the service type is set to one of the following, set sType = BOTH
-  // * CO = Co-occurring mental health and substance use treatment
-  if (type === 'CO') {
-    return 'BOTH';
+  if (type === serviceCodes.CO_OCCURRING) {
+    return serviceTypes.BOTH;
   }
 
-  // If the previous conditions are not met, default to sType = SA
-  return 'SA';
+  return serviceTypes.SUBSTANCE_USE;
 };
