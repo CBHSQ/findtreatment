@@ -24,7 +24,7 @@ const Row = styled.div`
 `;
 
 const RowFlex = styled.div`
-  ${tw`flex flex-wrap -mx-3 mb-6`}
+  ${tw`flex flex-wrap -mx-2 mb-6`}
 `;
 
 const Form = styled.form`
@@ -83,13 +83,13 @@ export class FormFilters extends Component {
     return (
       <>
         <RowFlex css={tw`flex lg:hidden justify-between border-b pb-6`}>
-          <div css={tw`px-3`}>
+          <div css={tw`px-2`}>
             <Button outline onClick={toggleFilters}>
               {filtersHidden ? 'Cancel' : 'Filter'}
             </Button>
           </div>
           {filtersHidden ? (
-            <div css={tw`px-3`}>
+            <div css={tw`px-2`}>
               <Button primary onClick={handleSubmit}>
                 Update providers
               </Button>
@@ -130,7 +130,7 @@ export class FormFilters extends Component {
               </div>
             </div>
             <RowFlex>
-              <div css={tw`w-full md:w-2/3 px-3 mb-6 md:mb-0`}>
+              <div css={tw`w-full md:w-3/5 px-2 mb-6 md:mb-0`}>
                 <Field
                   label="Location"
                   component={Location}
@@ -139,7 +139,7 @@ export class FormFilters extends Component {
                   format={v => (v ? v : '')}
                 />
               </div>
-              <div css={tw`w-full md:w-1/3 px-3`}>
+              <div css={tw`w-full md:w-2/5 px-2`}>
                 <Field
                   name="distance"
                   label="Distance"
