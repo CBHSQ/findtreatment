@@ -127,8 +127,8 @@ export default () => [
             <p>
               Our treatment locator lists facilities across the country. We have
               guidance about what to expect when looking for treatment,
-              including <u>different kinds of treatment</u> and
-              <u> understanding how to pay for treatment</u>.
+              including <u>different kinds of treatment</u> and{' '}
+              <u>understanding how to pay for treatment</u>.
             </p>
             <p>
               If treatment isn’t the next right step for you, you can still find
@@ -848,7 +848,7 @@ export default () => [
             <h3>Does insurance cover substance use treatment?</h3>
             <p>
               The Mental Health Parity and Addiction Equity Act (MHPAEA) of 2008
-              requires health insurers and group health plans to provide the
+              requires health insurers and group health plans to provide the{' '}
               <strong>same level of benefits</strong> for mental and/or
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
@@ -856,7 +856,7 @@ export default () => [
               covered” — if they do, they’re breaking the law.
             </p>
             <p>
-              If you’ve been denied coverage for treatment, this
+              If you’ve been denied coverage for treatment, this{' '}
               <a href="https://www.hhs.gov/mental-health-and-addiction-insurance-help">
                 Mental Health and Addiction Insurance Help
               </a>{' '}
@@ -889,14 +889,14 @@ export default () => [
               to cover the services you receive.
             </p>
             <p>
-              Just as with other kinds of medical care, you may have a
+              Just as with other kinds of medical care, you may have a{' '}
               <strong>co-pay</strong> — a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
             </p>
             <p>
-              You can also ask your insurer if they have
+              You can also ask your insurer if they have{' '}
               <strong>case managers</strong>. A case manager is a registered
               nurse, social worker, or other licensed healthcare provider who
               can work with you directly. Their services are usually covered by
@@ -923,11 +923,11 @@ export default () => [
               based on your income, or have payment assistance available.
             </p>
             <p>
-              You’ll need an <strong>estimate of your annual income</strong>
-              and a correct count of your family members to determine if you’re
+              You’ll need an <strong>estimate of your annual income</strong> and
+              a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
-              not perfect. (For a list of what counts as income, visit
+              not perfect. (For a list of what counts as income, visit{' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 this page on healthcare.gov.
               </a>
@@ -935,8 +935,8 @@ export default () => [
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <strong>state agency</strong>
-              for information on how the process works in your state.
+              <strong>state agency</strong> for information on how the process
+              works in your state.
             </p>
             <p>
               You may also be able to purchase insurance now and take advantage
@@ -953,11 +953,12 @@ export default () => [
                 <strong>November 1 - December 15, 2019</strong>.
               </li>
               <li>
-                Have a <strong>qualifying life event</strong>
-                For 60 days after a major change in your life — like having a
-                baby, getting married or divorced, or getting U.S. citizenship —
-                you’re eligible to sign up for new insurance.
+                Have a <strong>qualifying life event</strong>. For 60 days after
+                a major change in your life — like having a baby, getting
+                married or divorced, or getting U.S. citizenship — you’re
+                eligible to sign up for new insurance.
                 <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
+                  {' '}
                   Learn more about qualifying events.
                 </a>
               </li>
@@ -965,7 +966,7 @@ export default () => [
                 Are <strong>eligible for Medicaid</strong>. In most states, if
                 you make less than $17,236 as an individual or $29,435 in a
                 family of three, you’re eligible for free or low-cost health
-                coverage. You can apply for Medicaid at any time —
+                coverage. You can apply for Medicaid at any time —{' '}
                 <strong>there’s no enrollment period</strong> — so contact your
                 state agency for more details if you think you might be
                 eligible.

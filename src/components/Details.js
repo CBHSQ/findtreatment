@@ -59,7 +59,7 @@ export class Details extends Component {
       <div className="container">
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
-            <Button link onClick={this.returnToResults}>
+            <Button link onClick={this.returnToResults} css={tw`print:hidden`}>
               ❮ Return to results
             </Button>
             <h1 css={tw`font-bold mb-6`}>
@@ -68,7 +68,15 @@ export class Details extends Component {
             </h1>
             <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
               <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
-              <div css={tw`lg:flex items-start`}>
+              <ul css={tw`hidden print:block`}>
+                <li>
+                  <span css={tw`font-bold`}>Phone:</span> {phone}
+                </li>
+                <li>
+                  <span css={tw`font-bold`}>Website:</span> {website}
+                </li>
+              </ul>
+              <div css={tw`lg:flex items-start print:hidden`}>
                 <OutboundLink to={`tel:${phone}`} eventLabel="Facility Phone #">
                   <Button
                     primary
@@ -103,7 +111,7 @@ export class Details extends Component {
               </div>
               <Link
                 to="/content/treatment-options#calling-a-facility"
-                css={tw`mb-2 text-sm`}
+                css={tw`mb-2 text-sm print:hidden`}
               >
                 What to expect when you call
               </Link>
@@ -140,6 +148,7 @@ export class Details extends Component {
             {!this.props.isReported ? (
               <Button
                 className="report-facility"
+                css={tw`print:hidden`}
                 secondary
                 onClick={this.reportFacility}
               >

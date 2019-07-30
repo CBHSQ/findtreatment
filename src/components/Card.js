@@ -100,7 +100,10 @@ const Card = props => {
         zip={zip}
       />
       <CardDetails phone={phone} website={website} services={services} />
-      <Link to={{ pathname: '/details', state: { frid } }}>
+      <Link
+        to={{ pathname: '/details', state: { frid } }}
+        css={tw`print:hidden`}
+      >
         <Button primary>View provider details</Button>
       </Link>
     </StyledCard>
