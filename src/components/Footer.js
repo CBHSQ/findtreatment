@@ -7,7 +7,7 @@ import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
 const StyledFooter = styled.div`
-  ${tw`bg-gray-800 text-gray-200 text-xs`}
+  ${tw`bg-gray-800 text-gray-200 text-xs print:hidden`}
 
   a {
     ${tw`text-white hover:text-white`}
