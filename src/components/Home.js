@@ -21,7 +21,7 @@ class Home extends Component {
 
   renderCards(card) {
     return (
-      <div key={card.id} css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0`}>
+      <div key={card.id} css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0`}>
         <div
           css={tw`flex flex-col w-full bg-white text-gray-700 text-center rounded shadow-md p-6 `}
         >
@@ -51,8 +51,8 @@ class Home extends Component {
               Find help near you
             </h2>
             Quickly find providers who treat{' '}
-            <strong>substance use disorders</strong> and{' '}
-            <strong>addiction</strong>
+            <strong>substance use disorders</strong>, <strong>addiction</strong>
+            , and <strong>mental illness.</strong>
           </div>
           <div css={tw`lg:max-w-2xl lg:mx-auto mb-10`}>
             <FormHomepage onSubmit={this.submit} />
