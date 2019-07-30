@@ -5,6 +5,7 @@ import {
   REPORT_FACILITY,
   DESTROY_FACILITIES
 } from '../actions/facilities';
+import { servicesToObject } from '../utils/misc';
 
 const initialState = {
   data: {},
@@ -23,7 +24,13 @@ export default function facilities(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: action.payload.data
+        data: {
+          ...action.payload.data,
+          rows: action.payload.data.rows.map(facility => ({
+            ...facility,
+            services: servicesToObject(facility.services)
+          }))
+        }
       };
     case RECEIVE_FACILITIES_FAILURE:
       return {

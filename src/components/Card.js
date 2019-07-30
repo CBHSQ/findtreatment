@@ -7,8 +7,6 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { servicesToObject } from '../utils/misc';
-
 import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
@@ -97,7 +95,6 @@ const Card = props => {
     phone,
     website
   } = props;
-  const servicesObj = servicesToObject(services);
 
   return (
     <StyledCard>
@@ -109,7 +106,7 @@ const Card = props => {
         state={state}
         zip={zip}
       />
-      <CardDetails phone={phone} website={website} services={servicesObj} />
+      <CardDetails phone={phone} website={website} services={services} />
       <Link
         to={{ pathname: '/details', state: { frid } }}
         css={tw`print:hidden`}
@@ -130,7 +127,7 @@ Card.propTypes = {
   city: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
   zip: PropTypes.string.isRequired,
-  services: PropTypes.array.isRequired,
+  services: PropTypes.object.isRequired,
   phone: PropTypes.string.isRequired,
   website: PropTypes.string
 };
