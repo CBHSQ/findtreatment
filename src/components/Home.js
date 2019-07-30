@@ -21,7 +21,7 @@ class Home extends Component {
 
   renderCards(card) {
     return (
-      <div key={card.id} css={tw`flex w-full lg:w-1/3 px-2 mb-6 lg:mb-0`}>
+      <div key={card.id} css={tw`flex w-full lg:w-1/4 px-2 mb-6 lg:mb-0`}>
         <div
           css={tw`flex flex-col w-full bg-white text-gray-700 text-center rounded shadow-md p-6 `}
         >

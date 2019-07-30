@@ -3,6 +3,7 @@ import tw from 'tailwind.macro';
 import 'styled-components/macro';
 
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
+import { ReactComponent as IconMentalHealth } from '../images/what-to-expect-mental-health.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
 import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
 
@@ -239,6 +240,7 @@ export default () => [
   {
     name: 'Understanding mental health',
     id: 'understanding-mental-health',
+    icon: <IconMentalHealth css={tw`w-24 h-24`} />,
     description:
       'About half of people with a substance use disorder also experience serious mental illness.',
     body: (
