@@ -22,6 +22,9 @@ module.exports = {
           '800': '#0F4756',
           '900': '#033340'
         }
+      },
+      screens: {
+        print: { raw: 'print' }
       }
     }
   },

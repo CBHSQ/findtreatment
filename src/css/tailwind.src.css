@@ -39,6 +39,12 @@ a:hover {
   color: theme('colors.blue.800');
 }
 
+@screen print {
+  a {
+    color: theme('colors.black');
+  }
+}
+
 address,
 ol,
 p,

@@ -17,7 +17,7 @@ import Footer from './Footer';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    ${tw`font-sans text-gray-900 leading-normal`}
+    ${tw`font-sans text-gray-900 leading-normal print:text-black`}
   }
 `;
 
