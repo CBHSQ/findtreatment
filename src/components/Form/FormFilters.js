@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDown,
+  faAngleUp,
+  faSlidersH
+} from '@fortawesome/free-solid-svg-icons';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
@@ -22,6 +26,14 @@ const Row = styled.div`
 
 const RowFlex = styled.div`
   ${tw`flex flex-wrap -mx-3 mb-6`}
+`;
+
+const Form = styled.form`
+  ${tw`bg-gray-200 rounded p-6 mb-6`}
+
+  input,select {
+    ${tw`bg-white`}
+  }
 `;
 
 export class FormFilters extends Component {
@@ -92,26 +104,32 @@ export class FormFilters extends Component {
           )}
         </RowFlex>
         {(isDesktop || filtersHidden) && (
-          <form onSubmit={handleSubmit} css={tw`mb-6`}>
-            <RowFlex css={tw`hidden lg:flex justify-between`}>
-              <div css={tw`px-3`}>
-                <h2>Filters</h2>
-                <p css={tw`text-sm text-gray-600 font-light mb-0`}>
-                  Search for facilities that match your needs.
+          <Form onSubmit={handleSubmit}>
+            <div css={tw`hidden lg:flex justify-between flex-no-wrap mb-6`}>
+              <div>
+                <h2>
+                  <FontAwesomeIcon
+                    icon={faSlidersH}
+                    css={tw`mr-1 text-gray-500`}
+                    rotation={90}
+                  />
+                  Filters
+                </h2>
+                <p css={tw`text-xs text-gray-700 font-light mb-0`}>
+                  Search for facilities that match your needs
                 </p>
               </div>
-              <div css={tw`px-3`}>
+              <div>
                 <Button
-                  outline
+                  link
                   className="reset-filters"
-                  css={tw`px-2 py-1 mt-1`}
                   onClick={this.handleReset}
                   type="button"
                 >
                   Reset
                 </Button>
               </div>
-            </RowFlex>
+            </div>
             <RowFlex>
               <div css={tw`w-full md:w-2/3 px-3 mb-6 md:mb-0`}>
                 <Field
@@ -239,13 +257,13 @@ export class FormFilters extends Component {
                 Update providers
               </Button>
             </Row>
-            <Row>
-              <p css={tw`text-sm text-gray-700`}>
+            <Row css={tw`mb-0`}>
+              <p css={tw`text-sm text-gray-700 mb-0`}>
                 Too many or too few results? Add or remove search filters
                 related to the treatment you’re looking for.
               </p>
             </Row>
-          </form>
+          </Form>
         )}
       </>
     );

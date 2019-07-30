@@ -3,6 +3,7 @@ import tw from 'tailwind.macro';
 import 'styled-components/macro';
 
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
+import { ReactComponent as IconMentalHealth } from '../images/what-to-expect-mental-health.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
 import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
 
@@ -230,6 +231,145 @@ export default () => [
               to be resolved. You need support to understand and deal with these
               feelings, and you need to support your loved one’s efforts to get
               well.
+            </p>
+          </>
+        )
+      }
+    ]
+  },
+  {
+    name: 'Understanding mental health',
+    id: 'understanding-mental-health',
+    icon: <IconMentalHealth css={tw`w-24 h-24`} />,
+    description:
+      'About half of people with a substance use disorder also experience serious mental illness.',
+    body: (
+      <>
+        <p>
+          Mental health disorders involve changes in thinking, mood, and/or
+          behavior. These can affect how we relate to others and make choices.
+          Reaching a level that can be formally diagnosed often depends on a
+          reduction in a person’s ability to function in their daily lives, at
+          home, work, or school, as a result of the disorder.
+        </p>
+        <p>
+          Having both a substance use and mental health disorder is called a{' '}
+          <strong>co-occuring disorder</strong>. Co-occurrence happens in about
+          half of people experiencing one of these disorders. Addressing both is
+          critical for success in recovery, and{' '}
+          <strong>integrated treatment</strong> programs can help.
+        </p>
+        <p>
+          Mental health disorders are not something you can just snap out of or
+          shake off, but asking for help is a critical first step. There are
+          many treatment approaches for mental health disorders.
+        </p>
+      </>
+    ),
+    subTopics: [
+      {
+        name: 'Serious mental illness',
+        body: (
+          <>
+            <p>
+              Like addiction, mental health disorders are treatable medical
+              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
+              will experience some form of mental health disorder, and 1 in
+              every 22 is living with a <strong>serious mental illness</strong>,
+              like schizophrenia, bipolar disorder, or major depressive
+              episodes. When a serious mental illness like this affects someone
+              under the age of 18, it’s called a{' '}
+              <strong>serious emotional disturbance</strong>.
+            </p>
+            <p>
+              A lot of stigma and judgement exists around serious mental
+              illness. People may expect someone with serious mental illness to
+              look visibly different, and they may tell someone they don’t "look
+              ill" or that they should just "get over it" by using willpower.
+            </p>
+          </>
+        )
+      },
+      {
+        name: 'Know the warning signs',
+        body: (
+          <>
+            <p>
+              Many people don't seek treatment for mental health disorders or
+              don’t know their symptoms could be connected to a mental health
+              condition. There's no easy test to tell if actions or thoughts are
+              typical for a person, symptoms of a physical illness, or signs of
+              a mental health disorder.
+            </p>
+            <p>
+              Each illness has its own symptoms, but common signs of mental
+              health disorders in adults and adolescents can include the
+              following:
+              <ul>
+                <li>Excessive worrying or fear</li>
+                <li>Feeling excessively sad or low</li>
+                <li>
+                  Confused thinking or problems concentrating and learning
+                </li>
+                <li>
+                  Extreme mood changes, including uncontrollable “highs” or
+                  feelings of euphoria
+                </li>
+                <li>Prolonged or strong feelings of irritability or anger</li>
+                <li>Avoiding friends and social activities</li>
+                <li>Difficulties understanding or relating to other people</li>
+                <li>
+                  Changes in sleeping habits or feeling tired and low energy
+                </li>
+                <li>
+                  Changes in eating habits such as increased hunger or lack of
+                  appetite
+                </li>
+                <li>Changes in sex drive</li>
+                <li>
+                  Difficulty perceiving reality (delusions or hallucinations, in
+                  which a person experiences and senses things that don't exist
+                  in objective reality)
+                </li>
+                <li>
+                  Inability to perceive changes in one’s own feelings, behavior
+                  or personality (”lack of insight” or anosognosia)
+                </li>
+                <li>Abuse of substances like alcohol or drugs</li>
+                <li>
+                  Multiple physical ailments without obvious causes (such as
+                  headaches, stomach aches, vague and ongoing “aches and pains”)
+                </li>
+                <li>Thinking about suicide</li>
+                <li>
+                  Inability to carry out daily activities or handle daily
+                  problems and stress
+                </li>
+                <li>
+                  An intense fear of weight gain or concern with appearance
+                </li>
+              </ul>
+            </p>
+            <p>
+              Mental health disorders can also begin to develop in young
+              children. Because they’re still learning how to identify and talk
+              about their thoughts and emotions, the most obvious symptoms are
+              behavioral. Symptoms in children may include the following:
+              <ul>
+                <li>Changes in school performance</li>
+                <li>
+                  Excessive worry or anxiety, for instance fighting to avoid bed
+                  or school
+                </li>
+                <li>Hyperactive behavior</li>
+                <li>Frequent nightmares</li>
+                <li>Frequent disobedience or aggression</li>
+                <li>Frequent temper tantrums</li>
+              </ul>
+            </p>
+            <p>
+              For many people, getting an accurate diagnosis is the first step
+              in a treatment plan.{' '}
             </p>
           </>
         )
@@ -534,6 +674,40 @@ export default () => [
               regularly get to a treatment facility. While it’s not the first
               step in treatment, telemedicine can be a key part of a treatment
               plan, especially for patients living far away from a facility.
+            </p>
+            <h3>Co-occurring mental health and substance use treatment</h3>
+            <p>
+              <em>
+                Integrated care that addresses substance use and mental illness
+              </em>
+            </p>
+            <p>
+              Having both a substance use and mental health disorder is called a{' '}
+              <strong>co-occuring disorder</strong>. About half of people who
+              experience one will also experience the other. Addressing both is
+              critical for success in recovery, and integrated treatment
+              programs can help.
+            </p>
+            <p>
+              Integrated care brings together different areas of expertise to
+              treat the whole person, and ensure that treatment for one factor
+              doesn’t interfere with treatment of others.
+            </p>
+            <h3>Mental health services</h3>
+            <p>
+              <em>Treatment specifically for mental illness</em>
+            </p>
+            <p>
+              Mental illness can be hard to pinpoint, but getting a diagnosis
+              and treatment can help return to stability. Mental health care
+              facilities offer a range of behavioral health and therapy
+              practices, but all of them can help you determine what would be
+              the right fit for your situation.
+            </p>
+            <p>
+              These facilities might not have care for substance use disorders
+              or addiction. Be sure to ask when you call if you need this kind
+              of care.
             </p>
           </>
         )
