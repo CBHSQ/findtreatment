@@ -38,7 +38,7 @@ export class ResultsList extends Component {
           </span>
         </div>
         <div
-          css={tw`mb-6 rounded bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3`}
+          css={tw`mb-6 rounded bg-blue-100 print:bg-transparent border border-blue-500 print:border-black text-blue-700 print:text-black px-4 py-3`}
         >
           <p css={tw`font-bold`}>Before you visit</p>
           <p css={tw`text-sm mb-4`}>
