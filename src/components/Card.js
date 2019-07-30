@@ -52,37 +52,35 @@ const CardAddress = ({ street1, street2, city, state, zip }) => (
   </StyledAddress>
 );
 
-const CardDetails = ({ phone, website, services }) => {
-  return (
-    <>
-      <ul>
-        <li>
-          <span css={tw`font-semibold`}>Phone:</span>{' '}
+const CardDetails = ({ phone, website, services }) => (
+  <>
+    <ul>
+      <li>
+        <span css={tw`font-semibold`}>Phone:</span>{' '}
+        <OutboundLink
+          eventLabel="Facility phone link from card"
+          to={`tel:${phone}`}
+        >
+          {phone}
+        </OutboundLink>
+      </li>
+      {website !== 'http://' && (
+        <li className="card-website" css={tw`truncate`}>
+          <span css={tw`font-semibold`}>Website:</span>{' '}
           <OutboundLink
-            eventLabel="Facility phone link from card"
-            to={`tel:${phone}`}
+            eventLabel="Facility website link from card"
+            to={website}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {phone}
+            {website}
           </OutboundLink>
         </li>
-        {website !== 'http://' && (
-          <li className="card-website" css={tw`truncate`}>
-            <span css={tw`font-semibold`}>Website:</span>{' '}
-            <OutboundLink
-              eventLabel="Facility website link from card"
-              to={website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {website}
-            </OutboundLink>
-          </li>
-        )}
-      </ul>
-      <p>{renderService(services.TC)}</p>
-    </>
-  );
-};
+      )}
+    </ul>
+    <p>{renderService(services.TC)}</p>
+  </>
+);
 
 const Card = props => {
   const {

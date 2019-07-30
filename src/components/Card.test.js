@@ -10,7 +10,7 @@ const testProps = {
   name1: 'My Treatment Facility',
   name2: 'Tucson Northwest',
   phone: '520-123-4376',
-  services: [{ f3: {} }],
+  services: [{ f1: 'Type of Care', f2: 'TC', f3: 'Substance use treatment' }],
   state: 'AZ',
   street1: '3295 West Desert Road',
   street2: 'Suite 150',
