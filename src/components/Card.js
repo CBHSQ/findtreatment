@@ -7,11 +7,22 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { servicesToObject } from '../utils/misc';
+
 import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-600 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
+
+const renderService = service => {
+  const { name, values } = service;
+  return (
+    <>
+      <span css={tw`font-semibold`}>{name}:</span> {values.join(', ')}
+    </>
+  );
+};
 
 const CardHeading = ({ frid, name1, name2, miles }) => (
   <StyledHeading>
@@ -41,37 +52,37 @@ const CardAddress = ({ street1, street2, city, state, zip }) => (
   </StyledAddress>
 );
 
-const CardDetails = ({ phone, website, services }) => (
-  <>
-    <ul>
-      <li>
-        <span css={tw`font-semibold`}>Phone:</span>{' '}
-        <OutboundLink
-          eventLabel="Facility phone link from card"
-          to={`tel:${phone}`}
-        >
-          {phone}
-        </OutboundLink>
-      </li>
-      {website !== 'http://' && (
-        <li className="card-website" css={tw`truncate`}>
-          <span css={tw`font-semibold`}>Website:</span>{' '}
+const CardDetails = ({ phone, website, services }) => {
+  return (
+    <>
+      <ul>
+        <li>
+          <span css={tw`font-semibold`}>Phone:</span>{' '}
           <OutboundLink
-            eventLabel="Facility website link from card"
-            to={website}
-            target="_blank"
-            rel="noopener noreferrer"
+            eventLabel="Facility phone link from card"
+            to={`tel:${phone}`}
           >
-            {website}
+            {phone}
           </OutboundLink>
         </li>
-      )}
-    </ul>
-    <p>
-      <span css={tw`font-semibold`}>Type of care:</span> {services[0].f3}
-    </p>
-  </>
-);
+        {website !== 'http://' && (
+          <li className="card-website" css={tw`truncate`}>
+            <span css={tw`font-semibold`}>Website:</span>{' '}
+            <OutboundLink
+              eventLabel="Facility website link from card"
+              to={website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {website}
+            </OutboundLink>
+          </li>
+        )}
+      </ul>
+      <p>{renderService(services.TC)}</p>
+    </>
+  );
+};
 
 const Card = props => {
   const {
@@ -88,6 +99,7 @@ const Card = props => {
     phone,
     website
   } = props;
+  const servicesObj = servicesToObject(services);
 
   return (
     <StyledCard>
@@ -99,7 +111,7 @@ const Card = props => {
         state={state}
         zip={zip}
       />
-      <CardDetails phone={phone} website={website} services={services} />
+      <CardDetails phone={phone} website={website} services={servicesObj} />
       <Link to={{ pathname: '/details', state: { frid } }}>
         <Button primary>View provider details</Button>
       </Link>

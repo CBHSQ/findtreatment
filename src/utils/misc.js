@@ -17,3 +17,9 @@ export const hashLinkScroll = () => {
     }, 0);
   }
 };
+
+export const servicesToObject = array =>
+  array.reduce((obj, item) => {
+    obj[item['f2']] = { name: item['f1'], values: item['f3'].split('; ') };
+    return obj;
+  }, {});
