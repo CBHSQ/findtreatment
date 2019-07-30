@@ -239,22 +239,23 @@ export default () => [
   {
     name: 'Understanding mental health',
     id: 'understanding-mental-health',
-    description: '<PENDING>',
+    description:
+      'About half of people with a substance use disorder also experience serious mental illness.',
     body: (
       <>
-        <p>
-          Having both a substance use and mental health disorder is called a
-          <strong> co-occuring disorder</strong>. About half of people who
-          experience one will also experience the other. Addressing both is
-          critical for success in recovery, and{' '}
-          <strong>integrated treatment</strong> programs can help.
-        </p>
         <p>
           Mental health disorders involve changes in thinking, mood, and/or
           behavior. These can affect how we relate to others and make choices.
           Reaching a level that can be formally diagnosed often depends on a
           reduction in a person’s ability to function in their daily lives, at
           home, work, or school, as a result of the disorder.
+        </p>
+        <p>
+          Having both a substance use and mental health disorder is called a{' '}
+          <strong>co-occuring disorder</strong>. Co-occurrence happens in about
+          half of people experiencing one of these disorders. Addressing both is
+          critical for success in recovery, and{' '}
+          <strong>integrated treatment</strong> programs can help.
         </p>
         <p>
           Mental health disorders are not something you can just snap out of or
@@ -688,11 +689,27 @@ export default () => [
               critical for success in recovery, and integrated treatment
               programs can help.
             </p>
+            <p>
+              Integrated care brings together different areas of expertise to
+              treat the whole person, and ensure that treatment for one factor
+              doesn’t interfere with treatment of others.
+            </p>
             <h3>Mental health services</h3>
             <p>
               <em>Treatment specifically for mental illness</em>
             </p>
-            <p></p>
+            <p>
+              Mental illness can be hard to pinpoint, but getting a diagnosis
+              and treatment can help return to stability. Mental health care
+              facilities offer a range of behavioral health and therapy
+              practices, but all of them can help you determine what would be
+              the right fit for your situation.
+            </p>
+            <p>
+              These facilities might not have care for substance use disorders
+              or addiction. Be sure to ask when you call if you need this kind
+              of care.
+            </p>
           </>
         )
       },
