@@ -848,7 +848,7 @@ export default () => [
             <h3>Does insurance cover substance use treatment?</h3>
             <p>
               The Mental Health Parity and Addiction Equity Act (MHPAEA) of 2008
-              requires health insurers and group health plans to provide the
+              requires health insurers and group health plans to provide the{' '}
               <strong>same level of benefits</strong> for mental and/or
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
@@ -856,7 +856,7 @@ export default () => [
               covered” — if they do, they’re breaking the law.
             </p>
             <p>
-              If you’ve been denied coverage for treatment, this
+              If you’ve been denied coverage for treatment, this{' '}
               <a href="https://www.hhs.gov/mental-health-and-addiction-insurance-help">
                 Mental Health and Addiction Insurance Help
               </a>{' '}
@@ -889,14 +889,14 @@ export default () => [
               to cover the services you receive.
             </p>
             <p>
-              Just as with other kinds of medical care, you may have a
+              Just as with other kinds of medical care, you may have a{' '}
               <strong>co-pay</strong> — a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
             </p>
             <p>
-              You can also ask your insurer if they have
+              You can also ask your insurer if they have{' '}
               <strong>case managers</strong>. A case manager is a registered
               nurse, social worker, or other licensed healthcare provider who
               can work with you directly. Their services are usually covered by
@@ -923,7 +923,7 @@ export default () => [
               based on your income, or have payment assistance available.
             </p>
             <p>
-              You’ll need an <strong>estimate of your annual income</strong>
+              You’ll need an <strong>estimate of your annual income</strong>{' '}
               and a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
@@ -935,7 +935,7 @@ export default () => [
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <strong>state agency</strong>
+              <strong>state agency</strong>{' '}
               for information on how the process works in your state.
             </p>
             <p>
@@ -953,7 +953,7 @@ export default () => [
                 <strong>November 1 - December 15, 2019</strong>.
               </li>
               <li>
-                Have a <strong>qualifying life event</strong>
+                Have a <strong>qualifying life event</strong>.{' '}
                 For 60 days after a major change in your life — like having a
                 baby, getting married or divorced, or getting U.S. citizenship —
                 you’re eligible to sign up for new insurance.
