@@ -368,9 +368,6 @@ export default () => [
             <p>
               For many people, getting an accurate diagnosis is the first step
               in a treatment plan.{' '}
-              <a href="https://www.nimh.nih.gov/health/topics/integrated-care/index.shtml">
-                www.nimh.nih.gov/health/topics/integrated-care/index.shtml
-              </a>
             </p>
           </>
         )
