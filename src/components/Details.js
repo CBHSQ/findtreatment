@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import 'styled-components/macro';
@@ -32,8 +33,8 @@ export class Details extends Component {
   );
 
   reportFacility = () => {
-    const { facility } = this.props;
-    this.props.reportFacility(facility.frid);
+    const { facility, reportFacility } = this.props;
+    reportFacility(facility.frid);
   };
 
   render() {
@@ -170,6 +171,24 @@ export class Details extends Component {
     );
   }
 }
+
+Details.propTypes = {
+  facility: PropTypes.shape({
+    frid: PropTypes.string.isRequired,
+    name1: PropTypes.string.isRequired,
+    name2: PropTypes.string,
+    miles: PropTypes.number,
+    street1: PropTypes.string.isRequired,
+    street2: PropTypes.string,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    zip: PropTypes.string.isRequired,
+    services: PropTypes.array.isRequired,
+    phone: PropTypes.string.isRequired,
+    website: PropTypes.string
+  }),
+  isReported: PropTypes.bool
+};
 
 const mapDispatchToProps = dispatch => ({
   reportFacility(frid) {

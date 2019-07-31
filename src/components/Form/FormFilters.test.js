@@ -2,9 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FormFilters } from './FormFilters';
 
+const testProps = {
+  data: [],
+  dispatch: () => {},
+  filtersHidden: false,
+  handleSubmit: () => {},
+  hasResults: true,
+  initialValues: {},
+  location: {},
+  resetAdvancedFilters: () => {},
+  resetAllFilters: () => {},
+  resultsHidden: false,
+  toggleFilters: () => {},
+  toggleResults: () => {}
+};
+
 describe('Filters component', () => {
   it('displays correct toggle link text', () => {
-    const component = shallow(<FormFilters isDesktop={true} />, {
+    const component = shallow(<FormFilters {...testProps} />, {
       disableLifecycleMethods: true
     });
     const toggleBtn = component.find('.filter-link');
@@ -15,7 +30,7 @@ describe('Filters component', () => {
   });
 
   it('toggle additional filter container', () => {
-    const component = shallow(<FormFilters isDesktop={true} />, {
+    const component = shallow(<FormFilters {...testProps} />, {
       disableLifecycleMethods: true
     });
     const toggleBtn = component.find('.filter-link');
@@ -27,12 +42,13 @@ describe('Filters component', () => {
 
   it('calls resetAdvancedFilters method when filters are hidden', () => {
     const mockDispatch = jest.fn();
-    const component = shallow(
-      <FormFilters isDesktop={true} resetAdvancedFilters={mockDispatch} />,
-      {
-        disableLifecycleMethods: true
-      }
-    );
+    const props = {
+      ...testProps,
+      resetAdvancedFilters: mockDispatch
+    };
+    const component = shallow(<FormFilters {...props} />, {
+      disableLifecycleMethods: true
+    });
     const toggleBtn = component.find('.filter-link');
 
     toggleBtn.simulate('click');
@@ -46,16 +62,13 @@ describe('Filters component', () => {
 
   it('calls resetFilters() when reset filter button is clicked', () => {
     const resetFn = jest.fn();
-    const component = shallow(
-      <FormFilters
-        isDesktop={true}
-        resetAllFilters={resetFn}
-        initialValues={{}}
-      />,
-      {
-        disableLifecycleMethods: true
-      }
-    );
+    const props = {
+      ...testProps,
+      resetAllFilters: resetFn
+    };
+    const component = shallow(<FormFilters {...props} />, {
+      disableLifecycleMethods: true
+    });
     const resetBtn = component.find('.reset-filters');
 
     resetBtn.simulate('click');

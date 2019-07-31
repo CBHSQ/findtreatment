@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset } from 'redux-form';
 import styled from 'styled-components/macro';
@@ -52,6 +53,13 @@ export class FormHomepage extends Component {
     );
   }
 }
+
+FormHomepage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  location: PropTypes.object
+};
 
 const mapStateToProps = state => {
   const values = getFormValues('homepage')(state);
