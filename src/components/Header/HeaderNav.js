@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+
 import { ReactComponent as Logo } from '../../images/logo.svg';
 
 const StyledNav = styled.div`
@@ -19,17 +21,25 @@ const StyledLink = styled(NavLink)`
 const MobileNav = styled.div`
   ${tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
 
-  ${({ isHidden }) => (isHidden ? tw`hidden lg:block` : tw`block`)}
+  ${({ isMenuHidden }) => (isMenuHidden ? tw`hidden lg:block` : tw`block`)}
 `;
 
-class HeaderNav extends Component {
+export class HeaderNav extends Component {
   state = {
-    isHidden: true
+    isMenuHidden: true
   };
 
-  toggleHidden = () => {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.setState({
+        isMenuHidden: true
+      });
+    }
+  }
+
+  toggleMenu = () => {
     this.setState({
-      isHidden: !this.state.isHidden
+      isMenuHidden: !this.state.isMenuHidden
     });
   };
 
@@ -38,7 +48,7 @@ class HeaderNav extends Component {
   };
 
   render() {
-    const { isHidden } = this.state;
+    const { isMenuHidden } = this.state;
 
     return (
       <StyledNav>
@@ -51,7 +61,7 @@ class HeaderNav extends Component {
           </Link>
           <div css={tw`block lg:hidden`}>
             <button
-              onClick={this.toggleHidden}
+              onClick={this.toggleMenu}
               css={tw`flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600`}
             >
               <svg
@@ -65,7 +75,7 @@ class HeaderNav extends Component {
             </button>
           </div>
 
-          <MobileNav isHidden={isHidden}>
+          <MobileNav isMenuHidden={isMenuHidden}>
             <div css={tw`text-sm lg:flex-grow lg:mt-4`}>
               <StyledLink to="/" exact css={tw`mr-6`}>
                 Search for treatment
@@ -84,4 +94,8 @@ class HeaderNav extends Component {
   }
 }
 
-export default HeaderNav;
+HeaderNav.propTypes = {
+  location: PropTypes.object.isRequired
+};
+
+export default withRouter(HeaderNav);
