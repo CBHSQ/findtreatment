@@ -13,6 +13,15 @@ const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-600 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
 
+const renderService = service => {
+  const { name, values } = service;
+  return (
+    <>
+      <span css={tw`font-semibold`}>{name}:</span> {values.join(', ')}
+    </>
+  );
+};
+
 const CardHeading = ({ frid, name1, name2, miles }) => (
   <StyledHeading>
     <Link to={{ pathname: '/details', state: { frid } }}>
@@ -67,9 +76,7 @@ const CardDetails = ({ phone, website, services }) => (
         </li>
       )}
     </ul>
-    <p>
-      <span css={tw`font-semibold`}>Type of care:</span> {services[0].f3}
-    </p>
+    <p>{renderService(services.TC)}</p>
   </>
 );
 
@@ -120,7 +127,7 @@ Card.propTypes = {
   city: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
   zip: PropTypes.string.isRequired,
-  services: PropTypes.array.isRequired,
+  services: PropTypes.object.isRequired,
   phone: PropTypes.string.isRequired,
   website: PropTypes.string
 };
