@@ -2,10 +2,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FormHomepage } from './FormHomepage';
 
+const testProps = {
+  dispatch: () => {},
+  handleSubmit: () => {},
+  initialValues: {}
+};
+
 describe('HomePage component', () => {
   describe('with an invalid location prop', () => {
     it('disables the submit button without a valid location', () => {
-      const component = shallow(<FormHomepage />, {
+      const component = shallow(<FormHomepage {...testProps} />, {
         disableLifecycleMethods: true
       });
 
@@ -17,6 +23,7 @@ describe('HomePage component', () => {
     it('disallows form submission', () => {
       const mockSubmit = jest.fn();
       const props = {
+        ...testProps,
         handleSubmit: mockSubmit
       };
       const component = shallow(<FormHomepage {...props} />, {
@@ -32,7 +39,11 @@ describe('HomePage component', () => {
 
   describe('with a valid location prop', () => {
     it('enables the submit button with a valid location', () => {
-      const component = shallow(<FormHomepage location={{}} />, {
+      const props = {
+        ...testProps,
+        location: {}
+      };
+      const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
       });
       expect(
@@ -43,6 +54,7 @@ describe('HomePage component', () => {
     it('calls its handleSubmit prop when the form is submitted', () => {
       const mockSubmit = jest.fn();
       const props = {
+        ...testProps,
         handleSubmit: mockSubmit,
         location: {}
       };

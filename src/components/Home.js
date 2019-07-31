@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { handleReceiveFacilities } from '../actions/facilities';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+
+import { handleReceiveFacilities } from '../actions/facilities';
 
 import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
@@ -89,5 +91,10 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  content: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 export default withRouter(connect()(Home));

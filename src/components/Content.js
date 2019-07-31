@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
+import { PropTypes } from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
@@ -150,5 +151,11 @@ export class Content extends Component {
     );
   }
 }
+
+Content.propTypes = {
+  content: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
+};
 
 export default withRouter(Content);

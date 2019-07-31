@@ -8,6 +8,7 @@ import NoResults from './NoResults';
 describe('Results component', () => {
   it('shows a loading message', () => {
     const props = {
+      hasResults: true,
       loading: true,
       data: {}
     };
@@ -17,14 +18,26 @@ describe('Results component', () => {
 
   it('shows a provider card when there are results', () => {
     const props = {
+      hasResults: true,
       loading: false,
       page: 1,
       totalPages: 1,
       recordCount: 11,
       rows: [
         {
+          city: 'Tucson',
           frid:
-            '811a908f82269778a2fe2a8bc603afa08df868f3e2fa56aa62e214d03997dea1'
+            '2037b07b2bfb78e1bdaf2b46dd94ceb41c2da1493e7c0c22796d82762c4cbb53',
+          miles: 5.57,
+          name1: 'My Treatment Facility',
+          name2: 'Tucson Northwest',
+          phone: '520-123-4376',
+          services: [{ f3: {} }],
+          state: 'AZ',
+          street1: '3295 West Desert Road',
+          street2: 'Suite 150',
+          website: 'http://www.mytreatmentfacility.com',
+          zip: '85741'
         }
       ]
     };
@@ -34,8 +47,9 @@ describe('Results component', () => {
     expect(component.find(Card).length).toBe(1);
   });
 
-  it('shows no results message with empty array', () => {
+  it('shows no results message if hasResults is false', () => {
     const props = {
+      hasResults: false,
       loading: false,
       page: 1,
       totalPages: 0,

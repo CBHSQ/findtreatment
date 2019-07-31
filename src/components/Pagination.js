@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
@@ -64,6 +65,13 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  values: PropTypes.object.isRequired
+};
 
 export default connect(state => ({
   values: getFormValues('filters')(state)
