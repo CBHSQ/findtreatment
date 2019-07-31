@@ -20,21 +20,16 @@ export class Details extends Component {
     this.props.history.goBack();
   };
 
-  renderService = ({ name, values }) => {
-    console.log(name, values);
-    return (
-      <div css={tw`mb-4 pb-4 border-b`} key={name}>
-        <h3 css={tw`font-semibold text-sm`}>{name}</h3>
-        <ul
-          css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
-        >
-          {values.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
+  renderService = ({ name, values }) => (
+    <div css={tw`mb-4 pb-4 border-b`} key={name}>
+      <h3 css={tw`font-semibold text-sm`}>{name}</h3>
+      <ul css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}>
+        {values.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 
   reportFacility = () => {
     const { facility } = this.props;
