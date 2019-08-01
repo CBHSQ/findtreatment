@@ -16,6 +16,7 @@ import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
+import { LOCATION_WARNING } from '../../utils/warnings';
 
 import ScreenContext from '../ScreenContext';
 import { Button, Location, Select } from '../Input';
@@ -43,7 +44,14 @@ export class FormFilters extends Component {
   }
 
   state = {
-    isHidden: true
+    isHidden: true,
+    showLocationWarning: false
+  };
+
+  toggleShowLocationWarning = value => {
+    this.setState({
+      showLocationWarning: value
+    });
   };
 
   toggleHidden = () => {
@@ -78,7 +86,7 @@ export class FormFilters extends Component {
       resultsHidden,
       hasResults
     } = this.props;
-    const { isHidden } = this.state;
+    const { isHidden, showLocationWarning } = this.state;
     const isDesktop = this.context;
 
     return (
@@ -138,7 +146,13 @@ export class FormFilters extends Component {
                   name="location"
                   placeholder="City or zip code"
                   format={v => (v ? v : '')}
+                  toggleShowWarning={this.toggleShowLocationWarning}
                 />
+                {showLocationWarning && (
+                  <div css={tw`w-full px-3 mt-2 text-red-500 text-sm`}>
+                    {LOCATION_WARNING}
+                  </div>
+                )}
               </div>
               <div css={tw`w-full md:w-2/5 px-2`}>
                 <Field

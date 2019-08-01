@@ -68,6 +68,20 @@ class Location extends Component {
     this.props.input.onChange(suggest || '');
   };
 
+  handleNoResults = () => {
+    const { toggleShowWarning } = this.props;
+    if (toggleShowWarning && this._geoSuggest.state.userInput) {
+      toggleShowWarning(true);
+    }
+  };
+
+  onUpdateSuggests = suggests => {
+    const { toggleShowWarning } = this.props;
+    if (toggleShowWarning && suggests.length) {
+      toggleShowWarning(false);
+    }
+  };
+
   render() {
     const { input, label, placeholder } = this.props;
 
@@ -83,10 +97,11 @@ class Location extends Component {
             types={['(regions)']}
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
-            initialValue={input.value.label}
             queryDelay={100}
             onFocus={this.handleFocus}
             onSuggestSelect={this.handleSuggest}
+            onUpdateSuggests={this.onUpdateSuggests}
+            onSuggestNoResults={this.handleNoResults}
           />
         </StyledLocation>
       </div>
@@ -97,7 +112,8 @@ class Location extends Component {
 Location.propTypes = {
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  toggleShowWarning: PropTypes.func
 };
 
 export default Location;
