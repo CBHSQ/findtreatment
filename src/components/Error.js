@@ -19,7 +19,7 @@ const Error = () => (
         and can assist you with treatment referrals and information.
       </p>
       <OutboundLink
-        eventLabel="Helpline link from 404"
+        eventLabel="Helpline link from error page"
         to={`tel:${HELPLINE_LINK}`}
       >
         <Button primary>
