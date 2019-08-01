@@ -10,7 +10,8 @@ import { servicesToObject } from '../utils/misc';
 const initialState = {
   data: {},
   reported: [],
-  loading: false
+  loading: false,
+  error: false
 };
 
 export default function facilities(state = initialState, action) {
@@ -18,25 +19,29 @@ export default function facilities(state = initialState, action) {
     case RECEIVE_FACILITIES_BEGIN:
       return {
         ...state,
-        loading: true
+        data: {},
+        loading: true,
+        error: false
       };
     case RECEIVE_FACILITIES_SUCCESS:
       return {
         ...state,
-        loading: false,
         data: {
           ...action.payload.data,
           rows: action.payload.data.rows.map(facility => ({
             ...facility,
             services: servicesToObject(facility.services)
           }))
-        }
+        },
+        loading: false,
+        error: false
       };
     case RECEIVE_FACILITIES_FAILURE:
       return {
         ...state,
+        data: {},
         loading: false,
-        data: {}
+        error: true
       };
     case REPORT_FACILITY:
       return {
@@ -46,7 +51,12 @@ export default function facilities(state = initialState, action) {
           .concat(action.frid)
       };
     case DESTROY_FACILITIES:
-      return initialState;
+      return {
+        ...state,
+        data: {},
+        loading: false,
+        error: false
+      };
     default:
       return state;
   }
