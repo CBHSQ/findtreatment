@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { handleReceiveFacilities } from '../actions/facilities';
 
 import ScreenContext from './ScreenContext';
+import Error from './Error';
 import ResultsList from './ResultsList';
 import FormFilters from './Form/FormFilters';
 import MapContainer from './Map/MapContainer';
@@ -39,10 +40,14 @@ export class Results extends Component {
   };
 
   render() {
-    const { loading, data } = this.props;
+    const { loading, error, data } = this.props;
     const { rows, page, totalPages, recordCount } = data;
     const hasResults = !!(rows && rows.length > 0);
     const isDesktop = this.context;
+
+    if (error) {
+      return <Error />;
+    }
 
     return (
       <div className="container">
@@ -88,14 +93,16 @@ Results.contextType = ScreenContext;
 Results.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired
 };
 
 const mapStateToProps = ({ facilities }) => {
-  const { loading, data } = facilities;
+  const { loading, error, data } = facilities;
 
   return {
     loading,
+    error,
     data
   };
 };
