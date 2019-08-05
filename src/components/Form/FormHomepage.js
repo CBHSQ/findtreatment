@@ -12,10 +12,6 @@ const Form = styled.form`
   ${tw`mb-10`}
 `;
 
-const submitStyle = {
-  marginTop: '26px'
-};
-
 export class FormHomepage extends Component {
   state = { showWarning: false };
 
@@ -58,10 +54,7 @@ export class FormHomepage extends Component {
               toggleShowWarning={this.toggleShowWarning}
             />
           </div>
-          <div
-            style={submitStyle}
-            css={tw`flex items-start w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}
-          >
+          <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
             <Button primary disable={!location} css={tw`w-full`} type="submit">
               Find treatment
             </Button>
