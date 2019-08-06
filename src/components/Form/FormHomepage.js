@@ -6,12 +6,15 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Button, Location } from '../Input';
 import { destroyFacilities } from '../../actions/facilities';
+import { LOCATION_WARNING } from '../../utils/warnings';
 
 const Form = styled.form`
   ${tw`mb-10`}
 `;
 
 export class FormHomepage extends Component {
+  state = { showWarning: false };
+
   componentDidMount() {
     const { dispatch, location } = this.props;
 
@@ -20,6 +23,12 @@ export class FormHomepage extends Component {
       dispatch(destroyFacilities());
     }
   }
+
+  toggleShowWarning = value => {
+    this.setState({
+      showWarning: value
+    });
+  };
 
   handleSubmit = submitEvent => {
     if (!this.props.location) {
@@ -31,6 +40,7 @@ export class FormHomepage extends Component {
 
   render() {
     const { location } = this.props;
+    const { showWarning } = this.state;
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -41,6 +51,7 @@ export class FormHomepage extends Component {
               component={Location}
               name="location"
               placeholder="City or zip code"
+              toggleShowWarning={this.toggleShowWarning}
             />
           </div>
           <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
@@ -48,6 +59,13 @@ export class FormHomepage extends Component {
               Find treatment
             </Button>
           </div>
+          {showWarning && (
+            <div
+              css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
+            >
+              {LOCATION_WARNING}
+            </div>
+          )}
         </div>
       </Form>
     );
