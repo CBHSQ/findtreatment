@@ -60,7 +60,9 @@ export class FormHomepage extends Component {
             </Button>
           </div>
           {showWarning && (
-            <div css={tw`w-full px-3 mt-2 text-red-500 text-sm`}>
+            <div
+              css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
+            >
               {LOCATION_WARNING}
             </div>
           )}
