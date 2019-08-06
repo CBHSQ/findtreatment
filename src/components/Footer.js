@@ -40,7 +40,7 @@ const Footer = () => {
             </p>
           </div>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
-            <h4 css={tw`font-bold mb-1`}>Other types of treatment</h4>
+            <p css={tw`font-bold mb-1`}>Other types of treatment</p>
             <ul css={tw`mb-6`}>
               <li>
                 <OutboundLink
@@ -59,7 +59,7 @@ const Footer = () => {
                 </OutboundLink>
               </li>
             </ul>
-            <h4 css={tw`font-bold mb-1`}>Providers</h4>
+            <p css={tw`font-bold mb-1`}>Providers</p>
             <ul>
               <li>
                 <OutboundLink

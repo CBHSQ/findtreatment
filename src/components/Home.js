@@ -32,7 +32,7 @@ class Home extends Component {
               {card.icon}
             </Link>
           </div>
-          <h4 css={tw`text-xl leading-tight mb-4`}>{card.name}</h4>
+          <h3 css={tw`text-xl leading-tight mb-4`}>{card.name}</h3>
           <p css={tw`flex-auto text-sm mb-6`}>{card.description}</p>
           <div>
             <Button as={Link} to={`/content/${card.id}`} outline="true">
@@ -49,9 +49,9 @@ class Home extends Component {
       <>
         <div className="container">
           <div css={tw`text-center mb-10`}>
-            <h2 css={tw`text-3xl lg:text-5xl font-light`}>
+            <h1 css={tw`text-3xl lg:text-5xl font-light`}>
               Find help near you
-            </h2>
+            </h1>
             Quickly find providers who treat{' '}
             <strong>substance use disorders</strong>, <strong>addiction</strong>
             , and <strong>mental illness.</strong>
@@ -71,9 +71,9 @@ class Home extends Component {
           <div className="container">
             <div css={tw`py-6 lg:py-12`}>
               <div css={tw`mb-6 text-center text-gray-700`}>
-                <h3 css={tw`text-2xl lg:text-4xl font-light`}>
+                <h2 css={tw`text-2xl lg:text-4xl font-light`}>
                   What to expect
-                </h3>
+                </h2>
                 <span css={tw`block lg:text-xl`}>
                   Help is available, treatment works, and people recover every
                   day.
