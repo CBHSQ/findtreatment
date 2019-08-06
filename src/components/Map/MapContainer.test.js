@@ -35,7 +35,8 @@ const locations = [
   }
 ];
 const defaultProps = {
-  rows: locations
+  rows: locations,
+  singleMarker: false
 };
 
 describe('MapContainer component', () => {
@@ -91,7 +92,7 @@ describe('MapContainer component', () => {
         expect(component.find('DOMInfoWindow').prop('visible')).toBe(false);
       });
 
-      it('adjusts the bounds when dragged', () => {
+      it('adjusts the bounds once map is ready', () => {
         const map = component.find('Map');
         const googleMap = new window.google.maps.Map();
 
