@@ -935,8 +935,10 @@ export default () => [
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <strong>state agency</strong> for information on how the process
-              works in your state.
+              <a href="https://findtreatment.samhsa.gov/locator/stateagencies#.XUCje5NKju0">
+                <strong>state agency</strong>
+              </a>{' '}
+              for information on how the process works in your state.
             </p>
             <p>
               You may also be able to purchase insurance now and take advantage
