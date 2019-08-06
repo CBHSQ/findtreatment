@@ -10,7 +10,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
-const StyledAddress = tw.address`text-gray-600 not-italic`;
+const StyledAddress = tw.address`text-gray-700 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
 
 const renderService = service => {
@@ -35,7 +35,7 @@ const CardHeading = ({ frid, name1, name2, miles }) => (
       </h2>
     </Link>
     {miles && (
-      <span className="card-miles" css={tw`text-gray-500`}>
+      <span className="card-miles" css={tw`text-gray-800`}>
         {miles} miles
       </span>
     )}
@@ -44,7 +44,7 @@ const CardHeading = ({ frid, name1, name2, miles }) => (
 
 const CardAddress = ({ street1, street2, city, state, zip }) => (
   <StyledAddress>
-    <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-400 mr-1`} />
+    <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-700 mr-1`} />
     {street1}, {street2 && street2 + ', '}
     {city}, {state} {zip}
   </StyledAddress>
