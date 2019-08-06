@@ -149,7 +149,7 @@ export class FormFilters extends Component {
                   toggleShowWarning={this.toggleShowLocationWarning}
                 />
                 {showLocationWarning && (
-                  <div css={tw`w-full px-3 mt-2 text-red-500 text-sm`}>
+                  <div css={tw`w-full mt-2 text-red-500 text-sm`}>
                     {LOCATION_WARNING}
                   </div>
                 )}
