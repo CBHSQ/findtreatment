@@ -5,9 +5,11 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import Label from './Label';
 
-const StyledSelect = styled.div`
-  select {
-    ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+const StyledSelect = styled.select`
+  ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+
+  &::-ms-expand {
+    display: none;
   }
 `;
 
@@ -24,7 +26,7 @@ const Select = ({
   helpText,
   options
 }) => (
-  <StyledSelect>
+  <>
     <div css={tw`flex justify-between items-center`}>
       <Label name={input.name} label={label} />
       {helpURL && (
@@ -35,14 +37,14 @@ const Select = ({
     </div>
 
     <div css={tw`relative`}>
-      <select {...input}>
+      <StyledSelect {...input}>
         {!hideFirst && <option value="">All {plural.toLowerCase()}</option>}
         {options.map(option => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}
-      </select>
+      </StyledSelect>
       <Arrow>
         <svg
           css={tw`fill-current h-3 w-3`}
@@ -53,7 +55,7 @@ const Select = ({
         </svg>
       </Arrow>
     </div>
-  </StyledSelect>
+  </>
 );
 
 Select.propTypes = {
