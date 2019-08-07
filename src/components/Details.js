@@ -10,11 +10,13 @@ import {
   faExternalLinkAlt,
   faFlag
 } from '@fortawesome/free-solid-svg-icons';
+import { OutboundLink } from 'react-ga';
+import { Helmet } from 'react-helmet';
+
 import { reportFacility } from '../actions/facilities';
 
 import MapContainer from './Map/MapContainer';
 import { Button } from './Input';
-import { OutboundLink } from 'react-ga';
 
 export class Details extends Component {
   returnToResults = () => {
@@ -57,6 +59,9 @@ export class Details extends Component {
 
     return (
       <div className="container">
+        <Helmet>
+          <title>{name1}</title>
+        </Helmet>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
             <Button link onClick={this.returnToResults} css={tw`print:hidden`}>

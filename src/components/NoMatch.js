@@ -4,6 +4,7 @@ import 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
+import { Helmet } from 'react-helmet';
 
 import { HELPLINE_LINK, HELPLINE_TEXT } from '../utils/constants';
 
@@ -11,6 +12,9 @@ import { Button } from './Input';
 
 const NoMatch = () => (
   <div css={tw`mx-auto p-6 mb-6 text-center`}>
+    <Helmet>
+      <title>Not found</title>
+    </Helmet>
     <h2 css={tw`text-3xl font-bold mb-10`}>
       This page isn’t here, but we can get you help.
     </h2>
