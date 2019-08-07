@@ -37,7 +37,7 @@ const Select = ({
     </div>
 
     <div css={tw`relative`}>
-      <StyledSelect {...input}>
+      <StyledSelect {...input} id={input.name}>
         {!hideFirst && <option value="">All {plural.toLowerCase()}</option>}
         {options.map(option => (
           <option key={option.value} value={option.value}>
