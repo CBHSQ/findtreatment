@@ -34,16 +34,18 @@ class App extends Component {
         />
         <GlobalStyle />
         <Header />
-        <Switch>
-          <Route exact path="/" render={() => <Home content={content()} />} />
-          <Route path="/results" component={Results} />
-          <Route path="/details" component={Details} />
-          <Route
-            path="/content/:pageId"
-            render={() => <Content content={content()} />}
-          />
-          <Route component={NoMatch} />
-        </Switch>
+        <main role="main">
+          <Switch>
+            <Route exact path="/" render={() => <Home content={content()} />} />
+            <Route path="/results" component={Results} />
+            <Route path="/details" component={Details} />
+            <Route
+              path="/content/:pageId"
+              render={() => <Content content={content()} />}
+            />
+            <Route component={NoMatch} />
+          </Switch>
+        </main>
         <Footer />
       </ScreenContext.Provider>
     );

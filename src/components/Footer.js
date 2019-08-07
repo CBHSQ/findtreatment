@@ -6,7 +6,7 @@ import { OutboundLink } from 'react-ga';
 import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
   ${tw`bg-gray-800 text-gray-200 text-xs print:hidden`}
 
   a {
@@ -16,7 +16,7 @@ const StyledFooter = styled.div`
 
 const Footer = () => {
   return (
-    <StyledFooter>
+    <StyledFooter role="contentinfo">
       <div className="container" css={tw`py-6 lg:p-12`}>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
