@@ -36,11 +36,11 @@ export class ResultsList extends Component {
         <div css={tw`lg:flex lg:justify-between lg:items-baseline mb-6`}>
           <h1 css={tw`mb-2 lg:mb-0`}>
             Results{' '}
-            <span css={tw`text-lg text-gray-600 font-light`}>
+            <span css={tw`text-lg text-gray-700 font-light`}>
               Treatment providers near you
             </span>
           </h1>
-          <span css={tw`block text-gray-500`}>
+          <span css={tw`block text-gray-700`}>
             Showing {offset + 1}-{offset + rows.length} of {recordCount}
           </span>
         </div>

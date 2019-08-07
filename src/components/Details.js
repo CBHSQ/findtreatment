@@ -135,7 +135,7 @@ export class Details extends Component {
                   singleMarker={true}
                 />
               </div>
-              <div css={tw`text-gray-600`}>
+              <div css={tw`text-gray-700`}>
                 {street1}, {street2 && street2 + ','}
                 <br />
                 {city}, {state} {zip}
