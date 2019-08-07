@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { Content } from './Content';
 
@@ -27,6 +29,16 @@ const testProps = {
 };
 
 describe('Content component', () => {
+  it('should render metadata', () => {
+    const wrapper = mount(
+      <BrowserRouter>
+        <Content {...testProps} />
+      </BrowserRouter>
+    );
+    const helmet = Helmet.peek();
+    expect(helmet.title).toEqual('Content name');
+  });
+
   it('displays NoMatch component if topic id is not found', () => {
     const props = {
       ...testProps,

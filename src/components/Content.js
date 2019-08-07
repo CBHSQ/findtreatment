@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { Helmet } from 'react-helmet';
 
 import { convertToSlug, hashLinkScroll } from '../utils/misc';
 
@@ -117,6 +118,9 @@ export class Content extends Component {
     const { name, description, body, subTopics } = topic;
     return (
       <Main>
+        <Helmet>
+          <title>{name}</title>
+        </Helmet>
         {name && <h1 css={tw`text-5xl`}>{name}</h1>}
         {description && <MainLead>{description}</MainLead>}
         {body && <MainSubTopic>{body}</MainSubTopic>}
