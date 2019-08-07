@@ -4,8 +4,10 @@ import { PropTypes } from 'prop-types';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
+import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
+import { SITE_TITLE } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
 import Header from './Header';
@@ -26,6 +28,10 @@ class App extends Component {
   render() {
     return (
       <ScreenContext.Provider value={this.props.isDesktop}>
+        <Helmet
+          titleTemplate={`%s | ${SITE_TITLE}`}
+          defaultTitle={SITE_TITLE}
+        />
         <GlobalStyle />
         <Header />
         <Switch>
