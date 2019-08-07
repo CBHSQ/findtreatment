@@ -90,6 +90,7 @@ class Location extends Component {
         <Label name={input.name} label={label} />
         <StyledLocation>
           <Geosuggest
+            id={input.name}
             name={input.name}
             ref={el => (this._geoSuggest = el)}
             placeholder={placeholder}
