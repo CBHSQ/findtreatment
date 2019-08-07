@@ -26,7 +26,7 @@ export const InfoWindowText = props => {
         <Button
           as={Link}
           css={tw`p-1 w-full`}
-          outline="true"
+          primary="true"
           to={{
             pathname: '/details',
             state: { frid: selectedPlace.details.frid }

@@ -111,7 +111,7 @@ const Card = props => {
         as={Link}
         to={{ pathname: '/details', state: { frid } }}
         css={tw`print:hidden`}
-        outline="true"
+        primary="true"
       >
         View provider details
       </Button>
