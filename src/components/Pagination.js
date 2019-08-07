@@ -60,7 +60,6 @@ class Pagination extends Component {
           pageRangeDisplayed={3}
           onPageChange={this.handlePageClick}
           forcePage={page - 1}
-          css={tw`text-purple-800`}
         />
       </StyledPagination>
     );
