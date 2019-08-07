@@ -6,7 +6,7 @@ const Button = styled.button`
 
   ${props =>
     props.primary &&
-    tw`bg-blue-700 hover:bg-blue-900 border border-blue-700 text-white`}
+    tw`bg-blue-700 hover:bg-blue-900 border border-blue-700 text-white hover:text-white hover:border-blue-900`}
 
   ${props => props.secondary && tw`w-full bg-gray-100 hover:bg-gray-200 border`}
 
