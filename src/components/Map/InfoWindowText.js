@@ -23,17 +23,17 @@ export const InfoWindowText = props => {
         </OutboundLink>
       </p>
       {!singleMarker && (
-        <Link
+        <Button
+          as={Link}
+          css={tw`p-1 w-full`}
+          outline="true"
           to={{
             pathname: '/details',
             state: { frid: selectedPlace.details.frid }
           }}
-          css={tw`block`}
         >
-          <Button css={tw`p-1 w-full`} primary>
-            View provider details
-          </Button>
-        </Link>
+          View provider details
+        </Button>
       )}
     </>
   );
