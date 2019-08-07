@@ -52,17 +52,23 @@ export class MapContainer extends Component {
     }
   };
 
-  adjustMap = (_, map) => {
-    const { rows } = this.props;
-    const bounds = new window.google.maps.LatLngBounds();
+  onReady = (_, map) => {
+    const { rows, singleMarker } = this.props;
 
-    rows.forEach(location => {
-      bounds.extend(
-        new window.google.maps.LatLng(location.latitude, location.longitude)
-      );
+    if (!singleMarker) {
+      const bounds = new window.google.maps.LatLngBounds();
+      rows.forEach(location => {
+        bounds.extend(
+          new window.google.maps.LatLng(location.latitude, location.longitude)
+        );
+      });
+      map.fitBounds(bounds);
+    }
+
+    // Add title to google map iframe
+    window.google.maps.event.addListenerOnce(map, 'idle', () => {
+      document.getElementsByTagName('iframe')[0].title = 'Google Maps';
     });
-
-    map.fitBounds(bounds);
   };
 
   getInitialCenter() {
@@ -95,7 +101,7 @@ export class MapContainer extends Component {
         fullscreenControl={false}
         mapTypeControl={false}
         streetViewControl={false}
-        onReady={!singleMarker && this.adjustMap}
+        onReady={this.onReady}
         onClick={this.onMapClicked}
       >
         {rows.map(location => {

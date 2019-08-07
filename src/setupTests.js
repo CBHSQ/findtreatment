@@ -13,6 +13,7 @@ window.google = {
         this.fitBoundsCalls = fitBounds.mock.calls.length;
       }
     },
+    event: { addListenerOnce: jest.fn() },
     LatLng: class {
       constructor(latitude, longitude) {
         this.lat = latitude;
