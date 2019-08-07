@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.19.0",
     "connected-react-router": "^6.5.2",
@@ -18,17 +18,17 @@
     "react-paginate": "^6.3.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.0",
-    "react-router-hash-link": "^1.2.1",
+    "react-router-hash-link": "^1.2.2",
     "react-scripts": "3.0.1",
     "react-sizes": "^2.0.0",
     "redux": "^4.0.4",
-    "redux-form": "^8.2.4",
+    "redux-form": "^8.2.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2",
     "styled-spinkit": "^0.7.4",
     "tailwind.macro": "^1.0.0-alpha.10",
-    "tailwindcss": "^1.0.5"
+    "tailwindcss": "^1.1.0"
   },
   "scripts": {
     "dev": "npm install && npm run start",
@@ -37,7 +37,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tailwind:css": "tailwind build src/css/tailwind.src.css -c src/tailwind.js -o src/css/build/tailwind.css",
-    "federalist": "npm run build"
+    "federalist": "npm run build",
+    "lint": "eslint src"
   },
   "husky": {
     "hooks": {
@@ -71,6 +72,7 @@
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
+    "react-axe": "^3.2.0",
     "react-test-renderer": "^16.8.6"
   }
 }

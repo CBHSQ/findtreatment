@@ -11,6 +11,11 @@ import App from './components/App';
 
 import './css/build/tailwind.css';
 
+if (process.env.NODE_ENV !== 'production') {
+  var axe = require('react-axe');
+  axe(React, ReactDOM, 1000);
+}
+
 ReactGA.initialize(
   process.env.REACT_APP_BRANCH === process.env.REACT_APP_PROD_BRANCH
     ? process.env.REACT_APP_PROD_GA_TRACKING_ID
