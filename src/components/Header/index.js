@@ -9,7 +9,7 @@ import HeaderNav from './HeaderNav';
 
 const Header = () => {
   return (
-    <div css={tw`print:hidden`}>
+    <header css={tw`print:hidden`} role="banner">
       <HeaderBeta />
       <div css={tw`bg-gray-200`}>
         <div css={tw`lg:relative lg:mx-auto max-w-full lg:max-w-5xl`}>
@@ -18,7 +18,7 @@ const Header = () => {
         </div>
       </div>
       <HeaderNav />
-    </div>
+    </header>
   );
 };
 
