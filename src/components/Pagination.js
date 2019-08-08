@@ -23,11 +23,11 @@ const StyledPagination = styled.div`
   }
 
   .disabled a {
-    ${tw`text-gray-500 bg-transparent hover:bg-transparent cursor-not-allowed`}
+    ${tw`text-gray-700 bg-transparent hover:bg-transparent cursor-not-allowed`}
   }
 
   .selected a {
-    ${tw`text-white bg-blue-500 hover:bg-blue-500`}
+    ${tw`text-white bg-blue-700 hover:bg-blue-500`}
   }
 `;
 
