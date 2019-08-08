@@ -92,6 +92,7 @@ class Location extends Component {
           <Geosuggest
             id={input.name}
             name={input.name}
+            autoComplete="off"
             ref={el => (this._geoSuggest = el)}
             placeholder={placeholder}
             country={['us', 'pr', 'vi', 'gu', 'mp', 'as']}

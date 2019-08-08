@@ -28,14 +28,23 @@ class Home extends Component {
           css={tw`flex flex-col w-full bg-white text-gray-700 text-center rounded shadow-md p-6 `}
         >
           <div>
-            <Link css={tw`inline-block mb-4`} to={`/content/${card.id}`}>
+            <Link
+              css={tw`inline-block mb-4`}
+              to={`/content/${card.id}`}
+              aria-label={`Icon link to learn more about ${card.name}`}
+            >
               {card.icon}
             </Link>
           </div>
           <h4 css={tw`text-xl leading-tight mb-4`}>{card.name}</h4>
           <p css={tw`flex-auto text-sm mb-6`}>{card.description}</p>
           <div>
-            <Button as={Link} to={`/content/${card.id}`} outline="true">
+            <Button
+              as={Link}
+              to={`/content/${card.id}`}
+              outline="true"
+              aria-label={`Button link to learn more about ${card.name}`}
+            >
               Learn more
             </Button>
           </div>

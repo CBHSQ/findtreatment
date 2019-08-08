@@ -24,12 +24,14 @@ const Footer = () => {
               <OutboundLink
                 to="https://www.samhsa.gov/"
                 eventLabel="SAMHSA link from footer"
+                aria-label="Link to the SAMHSA homepage"
               >
                 <LogoSAMHSA css={tw`fill-current mr-4`} />
               </OutboundLink>
               <OutboundLink
                 to="https://www.hhs.gov/"
                 eventLabel="HHS link from footer"
+                aria-label="Link to the HHS homepage"
               >
                 <LogoHHS css={tw`fill-current`} />
               </OutboundLink>
