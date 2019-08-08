@@ -3,6 +3,7 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { handleReceiveFacilities } from '../actions/facilities';
 
@@ -51,6 +52,9 @@ export class Results extends Component {
 
     return (
       <div className="container">
+        <Helmet>
+          <title>Results</title>
+        </Helmet>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:w-2/5 px-6 mb-6 print:hidden`}>
             <FormFilters

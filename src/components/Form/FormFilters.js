@@ -212,7 +212,7 @@ export class FormFilters extends Component {
                   >
                     Special programs
                   </span>
-                  <label css={tw`block`}>
+                  <label htmlFor="VET" css={tw`block`}>
                     <Field
                       css={tw`mr-2 leading-tight`}
                       type="checkbox"
@@ -223,7 +223,7 @@ export class FormFilters extends Component {
                     />
                     <span css={tw`text-sm`}>Veterans</span>
                   </label>
-                  <label css={tw`block`}>
+                  <label htmlFor="GL" css={tw`block`}>
                     <Field
                       css={tw`mr-2 leading-tight`}
                       type="checkbox"

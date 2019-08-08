@@ -4,6 +4,7 @@ import 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
+import { Helmet } from 'react-helmet';
 
 import { HELPLINE_LINK, HELPLINE_TEXT } from '../utils/constants';
 
@@ -11,6 +12,9 @@ import { Button } from './Input';
 
 const Error = () => (
   <div css={tw`mx-auto p-6 mb-6 text-center`}>
+    <Helmet>
+      <title>Error</title>
+    </Helmet>
     <h2 css={tw`text-3xl font-bold mb-10`}>Something's wrong on our side.</h2>
     <div css={tw`max-w-xl mx-auto`}>
       <p css={tw`text-xl mb-6`}>

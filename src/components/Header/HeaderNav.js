@@ -6,7 +6,7 @@ import tw from 'tailwind.macro';
 
 import { ReactComponent as Logo } from '../../images/logo.svg';
 
-const StyledNav = styled.div`
+const StyledNav = styled.nav`
   ${tw`border-b mb-6`}
 `;
 
@@ -51,13 +51,13 @@ export class HeaderNav extends Component {
     const { isMenuHidden } = this.state;
 
     return (
-      <StyledNav>
-        <nav
+      <StyledNav role="navigation">
+        <div
           className="container"
           css={tw`mx-auto py-8 flex items-center justify-between flex-wrap`}
         >
           <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
-            <Logo />
+            <Logo aria-label="Link to the homepage" />
           </Link>
           <div css={tw`block lg:hidden`}>
             <button
@@ -88,7 +88,7 @@ export class HeaderNav extends Component {
               </StyledLink>
             </div>
           </MobileNav>
-        </nav>
+        </div>
       </StyledNav>
     );
   }

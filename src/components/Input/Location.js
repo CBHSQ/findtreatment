@@ -90,7 +90,9 @@ class Location extends Component {
         <Label name={input.name} label={label} />
         <StyledLocation>
           <Geosuggest
+            id={input.name}
             name={input.name}
+            autoComplete="off"
             ref={el => (this._geoSuggest = el)}
             placeholder={placeholder}
             country={['us', 'pr', 'vi', 'gu', 'mp', 'as']}
