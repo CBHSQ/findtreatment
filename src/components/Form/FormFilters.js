@@ -292,6 +292,7 @@ FormFilters.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   hasResults: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
+  isDesktop: PropTypes.bool.isRequired,
   location: PropTypes.object,
   resetAdvancedFilters: PropTypes.func.isRequired,
   resetAllFilters: PropTypes.func.isRequired,
