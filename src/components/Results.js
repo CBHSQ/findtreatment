@@ -64,6 +64,7 @@ export class Results extends Component {
               filtersHidden={this.state.filtersHidden}
               resultsHidden={this.state.resultsHidden}
               hasResults={hasResults}
+              isDesktop={isDesktop}
             />
             {((isDesktop && !loading && hasResults) ||
               (this.state.resultsHidden && !this.state.filtersHidden)) && (
