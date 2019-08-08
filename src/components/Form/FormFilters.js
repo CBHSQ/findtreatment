@@ -3,7 +3,7 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues } from 'redux-form';
+import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -344,7 +344,7 @@ export default connect(
       }
 
       // Only submit if form data has changed from its initialized values
-      dirty && props.submit();
+      dirty && dispatch(submit('filters'));
     }
   })(FormFilters)
 );
