@@ -2,6 +2,7 @@ import React from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
+import qs from 'qs';
 import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +14,13 @@ const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-700 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
 
+const linkToFacility = (frid, longitude, latitude) => {
+  return {
+    pathname: `/details/${frid}`,
+    search: qs.stringify({ sAddr: `${longitude}, ${latitude}` })
+  };
+};
+
 const renderService = service => {
   const { name, values } = service;
   return (
@@ -22,9 +30,9 @@ const renderService = service => {
   );
 };
 
-const CardHeading = ({ frid, name1, name2, miles }) => (
+const CardHeading = ({ frid, name1, name2, miles, latitude, longitude }) => (
   <StyledHeading>
-    <Link to={{ pathname: '/details', state: { frid } }}>
+    <Link to={linkToFacility(frid, latitude, longitude)}>
       <h2 css={tw`mb-2`}>
         {name1}
         {name2 && (
@@ -93,12 +101,21 @@ const Card = props => {
     zip,
     services,
     phone,
-    website
+    website,
+    latitude,
+    longitude
   } = props;
 
   return (
     <StyledCard>
-      <CardHeading frid={frid} name1={name1} name2={name2} miles={miles} />
+      <CardHeading
+        frid={frid}
+        name1={name1}
+        name2={name2}
+        miles={miles}
+        latitude={latitude}
+        longitude={longitude}
+      />
       <CardAddress
         street1={street1}
         street2={street2}
@@ -109,7 +126,7 @@ const Card = props => {
       <CardDetails phone={phone} website={website} services={services} />
       <Button
         as={Link}
-        to={{ pathname: '/details', state: { frid } }}
+        to={linkToFacility(frid, latitude, longitude)}
         css={tw`print:hidden`}
         primary="true"
       >
