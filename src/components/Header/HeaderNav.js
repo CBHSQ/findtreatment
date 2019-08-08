@@ -57,7 +57,7 @@ export class HeaderNav extends Component {
           css={tw`mx-auto py-8 flex items-center justify-between flex-wrap`}
         >
           <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
-            <Logo />
+            <Logo aria-label="Link to the homepage" />
           </Link>
           <div css={tw`block lg:hidden`}>
             <button
