@@ -26,11 +26,11 @@ const testProps = {
   error: false,
   loading: false,
   isReported: false,
-  reportFacility: () => {},
-  handleReceiveFacility: () => {},
-  destroyFacility: () => {},
+  reportFacility: jest.fn(),
+  handleReceiveFacility: jest.fn(),
+  destroyFacility: jest.fn(),
   location: {},
-  match: {},
+  match: { params: {} },
   history: {},
   frid: '12628952a59ffa4ab1ceed0db7c391715eabda9ab1b16745651dffc917af7602'
 };
@@ -41,9 +41,7 @@ describe('Details component', () => {
       ...testProps,
       error: true
     };
-    const component = shallow(<Details {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<Details {...props} />);
     expect(component.find(Error).length).toBe(1);
   });
 
@@ -52,9 +50,7 @@ describe('Details component', () => {
       ...testProps,
       loading: true
     };
-    const component = shallow(<Details {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<Details {...props} />);
     expect(component.find(Loading).length).toBe(1);
   });
 
@@ -63,9 +59,7 @@ describe('Details component', () => {
       ...testProps,
       data: {}
     };
-    const component = shallow(<Details {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<Details {...props} />);
     expect(component.find(NoMatch).length).toBe(1);
   });
 
@@ -75,9 +69,7 @@ describe('Details component', () => {
       ...testProps,
       reportFacility: reportFn
     };
-    const component = shallow(<Details {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<Details {...props} />);
     const reporttBtn = component.find('.report-facility');
 
     reporttBtn.simulate('click');
@@ -90,9 +82,7 @@ describe('Details component', () => {
       ...testProps,
       isReported: true
     };
-    const component = shallow(<Details {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<Details {...props} />);
 
     expect(component.find('.report-facility').length).toBe(0);
   });
