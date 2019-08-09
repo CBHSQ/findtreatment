@@ -67,12 +67,12 @@ export class Details extends Component {
       return <Error />;
     }
 
-    if (!loading && !hasResult) {
-      return <NoMatch />;
+    if (loading) {
+      return <Loading />;
     }
 
-    if (loading || !hasResult) {
-      return <Loading />;
+    if (!loading && !hasResult) {
+      return <NoMatch />;
     }
 
     const {
