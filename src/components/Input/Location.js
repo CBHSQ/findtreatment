@@ -59,9 +59,8 @@ const StyledLocation = styled.div`
 `;
 
 class Location extends Component {
-  handleFocus = () => {
-    this.props.input.onChange('');
-    this._geoSuggest.clear();
+  handleBlur = () => {
+    this._geoSuggest.selectSuggest();
   };
 
   handleSuggest = suggest => {
@@ -99,8 +98,9 @@ class Location extends Component {
             types={['(regions)']}
             placeDetailFields={[]}
             autoActivateFirstSuggest={true}
+            initialValue={input.value.label}
             queryDelay={100}
-            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
             onSuggestSelect={this.handleSuggest}
             onUpdateSuggests={this.onUpdateSuggests}
             onSuggestNoResults={this.handleNoResults}

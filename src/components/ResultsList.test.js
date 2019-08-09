@@ -32,7 +32,7 @@ describe('Results component', () => {
           name1: 'My Treatment Facility',
           name2: 'Tucson Northwest',
           phone: '520-123-4376',
-          services: [{ f3: {} }],
+          services: {},
           state: 'AZ',
           street1: '3295 West Desert Road',
           street2: 'Suite 150',

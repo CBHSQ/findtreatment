@@ -3,7 +3,7 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues } from 'redux-form';
+import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,7 +18,6 @@ import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-import ScreenContext from '../ScreenContext';
 import { Button, Location, Select } from '../Input';
 
 const Row = styled.div`
@@ -84,10 +83,10 @@ export class FormFilters extends Component {
       toggleResults,
       filtersHidden,
       resultsHidden,
-      hasResults
+      hasResults,
+      isDesktop
     } = this.props;
     const { isHidden, showLocationWarning } = this.state;
-    const isDesktop = this.context;
 
     return (
       <>
@@ -266,11 +265,13 @@ export class FormFilters extends Component {
                 css={tw`text-blue-500 ml-1`}
               />
             </button>
-            <Row>
-              <Button primary css={tw`w-full`} type="submit">
-                Update providers
-              </Button>
-            </Row>
+            {!isDesktop && (
+              <Row>
+                <Button primary css={tw`w-full`} type="submit">
+                  Update providers
+                </Button>
+              </Row>
+            )}
             <Row css={tw`mb-0`}>
               <p css={tw`text-sm text-gray-700 mb-0`}>
                 Too many or too few results? Add or remove search filters
@@ -283,7 +284,6 @@ export class FormFilters extends Component {
     );
   }
 }
-FormFilters.contextType = ScreenContext;
 
 FormFilters.propTypes = {
   data: PropTypes.array.isRequired,
@@ -292,6 +292,7 @@ FormFilters.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   hasResults: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
+  isDesktop: PropTypes.bool.isRequired,
   location: PropTypes.object,
   resetAdvancedFilters: PropTypes.func.isRequired,
   resetAllFilters: PropTypes.func.isRequired,
@@ -334,6 +335,16 @@ export default connect(
   reduxForm({
     form: 'filters',
     enableReinitialize: true,
-    destroyOnUnmount: false
+    destroyOnUnmount: false,
+    onChange: (values, dispatch, props, previousValues) => {
+      const { dirty, isDesktop } = props;
+
+      if (!isDesktop) {
+        return;
+      }
+
+      // Only submit if form data has changed from its initialized values
+      dirty && dispatch(submit('filters'));
+    }
   })(FormFilters)
 );
