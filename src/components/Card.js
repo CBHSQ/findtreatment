@@ -2,24 +2,18 @@ import React from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import qs from 'qs';
 import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
+import { linkToFacility } from '../utils/misc';
 
 import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
 const StyledAddress = tw.address`text-gray-700 not-italic`;
 const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
-
-const linkToFacility = (frid, longitude, latitude) => {
-  return {
-    pathname: `/details/${frid}`,
-    search: qs.stringify({ sAddr: `${longitude}, ${latitude}` })
-  };
-};
 
 const renderService = service => {
   const { name, values } = service;
