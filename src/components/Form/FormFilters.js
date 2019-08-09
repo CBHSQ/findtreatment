@@ -337,14 +337,13 @@ export default connect(
     enableReinitialize: true,
     destroyOnUnmount: false,
     onChange: (values, dispatch, props, previousValues) => {
-      const { dirty, isDesktop } = props;
+      const { isDesktop } = props;
 
       if (!isDesktop) {
         return;
       }
 
-      // Only submit if form data has changed from its initialized values
-      dirty && dispatch(submit('filters'));
+      dispatch(submit('filters'));
     }
   })(FormFilters)
 );
