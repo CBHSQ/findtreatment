@@ -30,6 +30,7 @@ const testProps = {
 
 describe('Content component', () => {
   it('should render metadata', () => {
+    /* eslint-disable-next-line no-unused-vars */
     const wrapper = mount(
       <BrowserRouter>
         <Content {...testProps} />

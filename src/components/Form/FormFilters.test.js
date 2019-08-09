@@ -9,6 +9,7 @@ const testProps = {
   handleSubmit: () => {},
   hasResults: true,
   initialValues: {},
+  isDesktop: true,
   location: {},
   resetAdvancedFilters: () => {},
   resetAllFilters: () => {},
