@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import qs from 'qs';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,12 +14,39 @@ import {
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 
+import { handleReceiveFacility, destroyFacility } from '../actions/facility';
 import { reportFacility } from '../actions/facilities';
 
+import Error from './Error';
+import NoMatch from './NoMatch';
+import Loading from './Loading';
 import MapContainer from './Map/MapContainer';
 import { Button } from './Input';
 
 export class Details extends Component {
+  componentDidMount() {
+    const {
+      handleReceiveFacility,
+      location,
+      match,
+      isInternalLink
+    } = this.props;
+
+    if (!isInternalLink) {
+      const params = qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      });
+
+      handleReceiveFacility(match.params.frid, params);
+    }
+  }
+
+  componentWillUnmount() {
+    const { destroyFacility } = this.props;
+
+    destroyFacility();
+  }
+
   returnToResults = () => {
     this.props.history.goBack();
   };
@@ -35,13 +63,25 @@ export class Details extends Component {
   );
 
   reportFacility = () => {
-    const { facility, reportFacility } = this.props;
-    reportFacility(facility.frid);
+    const { data, reportFacility } = this.props;
+
+    reportFacility(data.frid);
   };
 
   render() {
-    if (!this.props.facility) {
-      return <Redirect to="/" />;
+    const { loading, error, data, isReported, isInternalLink } = this.props;
+    const hasResult = data && Object.keys(data).length > 0;
+
+    if (error) {
+      return <Error />;
+    }
+
+    if (loading) {
+      return <Loading />;
+    }
+
+    if (!loading && !hasResult) {
+      return <NoMatch />;
     }
 
     const {
@@ -55,7 +95,7 @@ export class Details extends Component {
       services,
       phone,
       website
-    } = this.props.facility;
+    } = data;
 
     return (
       <div className="container">
@@ -64,9 +104,16 @@ export class Details extends Component {
         </Helmet>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
-            <Button link onClick={this.returnToResults} css={tw`print:hidden`}>
-              ❮ Return to results
-            </Button>
+            {isInternalLink && (
+              <Button
+                link
+                className="back-link"
+                onClick={this.returnToResults}
+                css={tw`print:hidden`}
+              >
+                ❮ Return to results
+              </Button>
+            )}
             <h1 css={tw`font-bold mb-6`}>
               {name1}
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
@@ -130,10 +177,7 @@ export class Details extends Component {
             <div css={tw`border-b pb-6 mb-6`}>
               <h2 css={tw`mb-4`}>Location</h2>
               <div css={tw`relative h-64 w-full mb-2`}>
-                <MapContainer
-                  rows={[this.props.facility]}
-                  singleMarker={true}
-                />
+                <MapContainer rows={[data]} singleMarker={true} />
               </div>
               <div css={tw`text-gray-700`}>
                 {street1}, {street2 && street2 + ','}
@@ -152,7 +196,7 @@ export class Details extends Component {
                 </OutboundLink>
               </div>
             </div>
-            {!this.props.isReported ? (
+            {!isReported ? (
               <Button
                 className="report-facility"
                 css={tw`print:hidden`}
@@ -178,38 +222,53 @@ export class Details extends Component {
 }
 
 Details.propTypes = {
-  facility: PropTypes.shape({
-    frid: PropTypes.string.isRequired,
-    name1: PropTypes.string.isRequired,
-    name2: PropTypes.string,
-    miles: PropTypes.number,
-    street1: PropTypes.string.isRequired,
-    street2: PropTypes.string,
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-    zip: PropTypes.string.isRequired,
-    services: PropTypes.array.isRequired,
-    phone: PropTypes.string.isRequired,
-    website: PropTypes.string
-  }),
-  isReported: PropTypes.bool
+  data: PropTypes.object.isRequired,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isReported: PropTypes.bool.isRequired,
+  isInternalLink: PropTypes.bool.isRequired,
+  reportFacility: PropTypes.func.isRequired,
+  handleReceiveFacility: PropTypes.func.isRequired,
+  destroyFacility: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
   reportFacility(frid) {
     dispatch(reportFacility(frid));
+  },
+
+  handleReceiveFacility(frid, params) {
+    dispatch(handleReceiveFacility(frid, params));
+  },
+
+  destroyFacility() {
+    dispatch(destroyFacility());
   }
 });
 
-const mapStateToProps = ({ facilities }, ownProps) => {
-  const { data, reported } = facilities;
-  const { rows } = data;
-  const facility =
-    rows && rows.find(({ frid }) => frid === ownProps.location.state.frid);
+const mapStateToProps = ({ facility, facilities }, ownProps) => {
+  let data, isInternalLink;
+
+  // If facility results exist in the store, match frid using the existing data
+  if ((facilities.data.rows || {}).length > 0) {
+    data = facilities.data.rows.find(
+      ({ frid }) => frid === ownProps.match.params.frid
+    );
+    isInternalLink = true;
+  } else {
+    data = facility.data;
+    isInternalLink = false;
+  }
 
   return {
-    facility,
-    isReported: facility && reported.includes(facility.frid)
+    data,
+    error: facility.error,
+    loading: facility.loading,
+    isReported: facilities.reported.includes(data.frid),
+    isInternalLink
   };
 };
 

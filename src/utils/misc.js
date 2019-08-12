@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 export const convertToSlug = string =>
   string
     .toLowerCase()
@@ -23,3 +25,10 @@ export const servicesToObject = array =>
     obj[item['f2']] = { name: item['f1'], values: item['f3'].split('; ') };
     return obj;
   }, {});
+
+export const linkToFacility = (frid, longitude, latitude) => {
+  return {
+    pathname: `/details/${frid}`,
+    search: qs.stringify({ sAddr: `${longitude}, ${latitude}` })
+  };
+};

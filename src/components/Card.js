@@ -7,6 +7,8 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { linkToFacility } from '../utils/misc';
+
 import { Button } from './Input';
 
 const StyledHeading = tw.div`flex justify-between`;
@@ -22,9 +24,9 @@ const renderService = service => {
   );
 };
 
-const CardHeading = ({ frid, name1, name2, miles }) => (
+const CardHeading = ({ frid, name1, name2, miles, latitude, longitude }) => (
   <StyledHeading>
-    <Link to={{ pathname: '/details', state: { frid } }}>
+    <Link to={linkToFacility(frid, latitude, longitude)}>
       <h2 css={tw`mb-2`}>
         {name1}
         {name2 && (
@@ -93,12 +95,21 @@ const Card = props => {
     zip,
     services,
     phone,
-    website
+    website,
+    latitude,
+    longitude
   } = props;
 
   return (
     <StyledCard>
-      <CardHeading frid={frid} name1={name1} name2={name2} miles={miles} />
+      <CardHeading
+        frid={frid}
+        name1={name1}
+        name2={name2}
+        miles={miles}
+        latitude={latitude}
+        longitude={longitude}
+      />
       <CardAddress
         street1={street1}
         street2={street2}
@@ -109,7 +120,7 @@ const Card = props => {
       <CardDetails phone={phone} website={website} services={services} />
       <Button
         as={Link}
-        to={{ pathname: '/details', state: { frid } }}
+        to={linkToFacility(frid, latitude, longitude)}
         css={tw`print:hidden`}
         primary="true"
       >

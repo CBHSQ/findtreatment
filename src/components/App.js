@@ -38,7 +38,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home content={content()} />} />
             <Route path="/results" component={Results} />
-            <Route path="/details" component={Details} />
+            <Route path="/details/:frid" component={Details} />
             <Route
               path="/content/:pageId"
               render={() => <Content content={content()} />}
