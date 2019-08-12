@@ -343,7 +343,7 @@ export default connect(
         return;
       }
 
-      dispatch(submit('filters'));
+      !props.loading && dispatch(submit('filters'));
     }
   })(FormFilters)
 );
