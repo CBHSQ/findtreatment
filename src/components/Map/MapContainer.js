@@ -53,9 +53,9 @@ export class MapContainer extends Component {
   };
 
   onReady = (_, map) => {
-    const { rows, singleMarker } = this.props;
+    const { rows } = this.props;
 
-    if (!singleMarker) {
+    if (this.hasMultipleResults()) {
       const bounds = new window.google.maps.LatLngBounds();
       rows.forEach(location => {
         bounds.extend(
@@ -72,7 +72,7 @@ export class MapContainer extends Component {
   };
 
   getInitialCenter() {
-    if (!this.props.singleMarker) {
+    if (this.hasMultipleResults()) {
       return;
     }
 
@@ -85,7 +85,13 @@ export class MapContainer extends Component {
   }
 
   getInitialZoom() {
-    return this.props.singleMarker ? defaultZoomLevel : undefined;
+    return !this.hasMultipleResults() ? defaultZoomLevel : undefined;
+  }
+
+  hasMultipleResults() {
+    const { rows, singleMarker } = this.props;
+
+    return rows.length > 1 && !singleMarker;
   }
 
   render() {
