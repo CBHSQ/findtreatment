@@ -26,6 +26,7 @@ const testProps = {
   error: false,
   loading: false,
   isReported: false,
+  isInternalLink: false,
   reportFacility: jest.fn(),
   handleReceiveFacility: jest.fn(),
   destroyFacility: jest.fn(),
@@ -36,7 +37,7 @@ const testProps = {
 };
 
 describe('Details component', () => {
-  it('shows an error message if error prop is true', () => {
+  it('shows an error message if there is a problem fetching data', () => {
     const props = {
       ...testProps,
       error: true
@@ -45,7 +46,7 @@ describe('Details component', () => {
     expect(component.find(Error).length).toBe(1);
   });
 
-  it('shows a loading message if loading prop is true', () => {
+  it('shows a loading message while fetching data', () => {
     const props = {
       ...testProps,
       loading: true
@@ -75,6 +76,22 @@ describe('Details component', () => {
     reporttBtn.simulate('click');
 
     expect(reportFn.mock.calls.length).toBe(1);
+  });
+
+  it('shows back link if coming from a search results page', () => {
+    const props = {
+      ...testProps,
+      isInternalLink: true
+    };
+    const component = shallow(<Details {...props} />);
+
+    expect(component.find('.back-link').length).toBe(1);
+  });
+
+  it('hides back link if accessing facility directly', () => {
+    const component = shallow(<Details {...testProps} />);
+
+    expect(component.find('.back-link').length).toBe(0);
   });
 
   it('hides report facility button if facility has already been reported', () => {

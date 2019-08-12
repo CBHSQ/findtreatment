@@ -25,12 +25,20 @@ import { Button } from './Input';
 
 export class Details extends Component {
   componentDidMount() {
-    const { handleReceiveFacility, location, match } = this.props;
-    const params = qs.parse(location.search, {
-      ignoreQueryPrefix: true
-    });
+    const {
+      handleReceiveFacility,
+      location,
+      match,
+      isInternalLink
+    } = this.props;
 
-    handleReceiveFacility(match.params.frid, params);
+    if (!isInternalLink) {
+      const params = qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      });
+
+      handleReceiveFacility(match.params.frid, params);
+    }
   }
 
   componentWillUnmount() {
@@ -56,11 +64,12 @@ export class Details extends Component {
 
   reportFacility = () => {
     const { data, reportFacility } = this.props;
+
     reportFacility(data.frid);
   };
 
   render() {
-    const { loading, error, data } = this.props;
+    const { loading, error, data, isReported, isInternalLink } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
 
     if (error) {
@@ -95,9 +104,16 @@ export class Details extends Component {
         </Helmet>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
-            <Button link onClick={this.returnToResults} css={tw`print:hidden`}>
-              ❮ Return to results
-            </Button>
+            {isInternalLink && (
+              <Button
+                link
+                className="back-link"
+                onClick={this.returnToResults}
+                css={tw`print:hidden`}
+              >
+                ❮ Return to results
+              </Button>
+            )}
             <h1 css={tw`font-bold mb-6`}>
               {name1}
               {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
@@ -180,7 +196,7 @@ export class Details extends Component {
                 </OutboundLink>
               </div>
             </div>
-            {!this.props.isReported ? (
+            {!isReported ? (
               <Button
                 className="report-facility"
                 css={tw`print:hidden`}
@@ -210,6 +226,7 @@ Details.propTypes = {
   error: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
   isReported: PropTypes.bool.isRequired,
+  isInternalLink: PropTypes.bool.isRequired,
   reportFacility: PropTypes.func.isRequired,
   handleReceiveFacility: PropTypes.func.isRequired,
   destroyFacility: PropTypes.func.isRequired,
@@ -233,14 +250,25 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = ({ facility, facilities }, ownProps) => {
-  const { data, error, loading } = facility;
-  const { reported } = facilities;
+  let data, isInternalLink;
+
+  // If facility results exist in the store, match frid using the existing data
+  if ((facilities.data.rows || {}).length > 0) {
+    data = facilities.data.rows.find(
+      ({ frid }) => frid === ownProps.match.params.frid
+    );
+    isInternalLink = true;
+  } else {
+    data = facility.data;
+    isInternalLink = false;
+  }
 
   return {
     data,
-    error,
-    loading,
-    isReported: data && reported.includes(data.frid)
+    error: facility.error,
+    loading: facility.loading,
+    isReported: facilities.reported.includes(data.frid),
+    isInternalLink
   };
 };
 
