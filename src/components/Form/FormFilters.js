@@ -337,13 +337,13 @@ export default connect(
     enableReinitialize: true,
     destroyOnUnmount: false,
     onChange: (values, dispatch, props, previousValues) => {
-      const { isDesktop } = props;
+      const { isDesktop, loading } = props;
 
-      if (!isDesktop) {
+      if (!isDesktop || loading || !values.location) {
         return;
       }
 
-      !props.loading && dispatch(submit('filters'));
+      dispatch(submit('filters'));
     }
   })(FormFilters)
 );

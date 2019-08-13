@@ -59,12 +59,12 @@ const StyledLocation = styled.div`
 `;
 
 class Location extends Component {
-  handleBlur = () => {
+  handleBlur = value => {
     this._geoSuggest.selectSuggest();
   };
 
   handleSuggest = suggest => {
-    this.props.input.onChange(suggest || '');
+    this.props.input.onChange(suggest || null);
   };
 
   handleNoResults = () => {
