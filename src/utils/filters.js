@@ -48,17 +48,12 @@ export const type = [
   { value: 'OP', label: 'Outpatient' },
   { value: 'HI', label: 'Hospital inpatient' },
   { value: 'RES', label: 'Residential' },
-  { value: 'WI', label: 'Psychiatric emergency walk-in services' },
-  {
-    value: 'CT',
-    label: 'Telemedicine (including internet and mobile programs)'
-  },
   {
     value: 'CO',
     label: 'Co-occurring mental health and substance use treatment'
   },
   {
-    value: 'Custom-Mental_Health',
-    label: 'Mental health services only'
+    value: 'CT',
+    label: 'Telemedicine (including internet and mobile programs)'
   }
 ];

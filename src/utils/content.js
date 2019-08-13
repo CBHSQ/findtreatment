@@ -651,30 +651,6 @@ export default () => [
               also help people with very serious disorders who have been unable
               to get and stay sober or drug free in other treatment.
             </p>
-            <h3>Psychiatric Emergency Walk-in Services</h3>
-            <p>
-              <em>
-                Walk-in help for urgent/emergency mental health evaluation
-              </em>
-            </p>
-            <p>
-              These facilities focus on resolving a mental health crisis in a
-              less intensive setting than a hospital, though they may recommend
-              hospitalization when appropriate.
-            </p>
-            <h3>Telemedicine (including internet and mobile options)</h3>
-            <p>
-              <em>
-                Care given over the phone or online to support treatment and
-                recovery
-              </em>
-            </p>
-            <p>
-              Telemedicine can be a tremendous help to people who are unable to
-              regularly get to a treatment facility. While it’s not the first
-              step in treatment, telemedicine can be a key part of a treatment
-              plan, especially for patients living far away from a facility.
-            </p>
             <h3>Co-occurring mental health and substance use treatment</h3>
             <p>
               <em>
@@ -693,21 +669,18 @@ export default () => [
               treat the whole person, and ensure that treatment for one factor
               doesn’t interfere with treatment of others.
             </p>
-            <h3>Mental health services</h3>
+            <h3>Telemedicine (including internet and mobile options)</h3>
             <p>
-              <em>Treatment specifically for mental illness</em>
+              <em>
+                Care given over the phone or online to support treatment and
+                recovery
+              </em>
             </p>
             <p>
-              Mental illness can be hard to pinpoint, but getting a diagnosis
-              and treatment can help return to stability. Mental health care
-              facilities offer a range of behavioral health and therapy
-              practices, but all of them can help you determine what would be
-              the right fit for your situation.
-            </p>
-            <p>
-              These facilities might not have care for substance use disorders
-              or addiction. Be sure to ask when you call if you need this kind
-              of care.
+              Telemedicine can be a tremendous help to people who are unable to
+              regularly get to a treatment facility. While it’s not the first
+              step in treatment, telemedicine can be a key part of a treatment
+              plan, especially for patients living far away from a facility.
             </p>
           </>
         )
