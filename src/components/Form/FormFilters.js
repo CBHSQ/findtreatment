@@ -304,14 +304,16 @@ FormFilters.propTypes = {
 const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
-  const locationValue =
-    getFormValues('homepage')(state) || getFormValues('filters')(state);
+  const values =
+    getFormValues('homepage')(state) ||
+    getFormValues('filters')(state) ||
+    state.form.filters.initialValues;
 
   return {
     initialValues: {
-      ...locationValue
+      ...values
     },
-    location: locationValue && locationValue.location,
+    location: values && values.location,
     loading,
     data
   };
