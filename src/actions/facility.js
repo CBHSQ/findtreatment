@@ -14,7 +14,7 @@ export const receiveFacilityBegin = () => {
   };
 };
 
-export const receiveFacilitySucess = (data, frid) => {
+export const receiveFacilitySuccess = (data, frid) => {
   return {
     type: RECEIVE_FACILITY_SUCCESS,
     payload: { data },
@@ -56,7 +56,7 @@ export function handleReceiveFacility(frid, query) {
     return API(options)
       .then(response => {
         if (response.data) {
-          dispatch(receiveFacilitySucess(response.data, frid));
+          dispatch(receiveFacilitySuccess(response.data, frid));
         } else {
           dispatch(receiveFacilityFailure());
         }

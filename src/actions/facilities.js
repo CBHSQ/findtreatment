@@ -23,7 +23,7 @@ export const receiveFacilitiesBegin = () => {
   };
 };
 
-export const receiveFacilitiesSucess = data => {
+export const receiveFacilitiesSuccess = data => {
   return {
     type: RECEIVE_FACILITIES_SUCCESS,
     payload: { data }
@@ -65,7 +65,7 @@ export function handleReceiveFacilities(query) {
       .then(response => {
         if (response.data) {
           trackSearchResults(qs.stringify(params), response.data.recordCount);
-          dispatch(receiveFacilitiesSucess(response.data));
+          dispatch(receiveFacilitiesSuccess(response.data));
         } else {
           dispatch(receiveFacilitiesFailure());
         }
