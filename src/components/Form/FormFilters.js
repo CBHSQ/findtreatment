@@ -14,7 +14,6 @@ import {
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
-import { handleReceiveFacilities } from '../../actions/facilities';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
@@ -39,6 +38,7 @@ const Form = styled.form`
 export class FormFilters extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
+
     dispatch(handleReceiveLanguages());
   }
 
@@ -67,12 +67,7 @@ export class FormFilters extends Component {
   };
 
   handleReset = () => {
-    const { resetAllFilters, initialValues, location } = this.props;
-
-    resetAllFilters({
-      distance: initialValues.distance,
-      location
-    });
+    this.props.resetAllFilters();
   };
 
   render() {
@@ -324,9 +319,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(resetAdvancedFilters());
   },
 
-  resetAllFilters(query) {
+  resetAllFilters() {
     dispatch(resetAllFilters());
-    dispatch(handleReceiveFacilities(query));
   }
 });
 
