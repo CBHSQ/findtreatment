@@ -90,36 +90,4 @@ describe('buildParams()', () => {
     };
     expect(buildParams(query)).toStrictEqual(testProps);
   });
-
-  it('sets sType:MH, and sCode:WI if Psychiatric emergency walk-in services is chosen', () => {
-    const query = {
-      type: 'WI'
-    };
-    expect(buildParams(query)).toStrictEqual({
-      ...testProps,
-      sType: 'MH',
-      sCodes: 'WI'
-    });
-  });
-
-  it('sets sType:BOTH, and sCode:CO if Co-occurring is chosen', () => {
-    const query = {
-      type: 'CO'
-    };
-    expect(buildParams(query)).toStrictEqual({
-      ...testProps,
-      sType: 'BOTH',
-      sCodes: 'CO'
-    });
-  });
-
-  it('sets sType:MH if Mental health services only is chosen', () => {
-    const query = {
-      type: 'Custom-Mental_Health'
-    };
-    expect(buildParams(query)).toStrictEqual({
-      ...testProps,
-      sType: 'MH'
-    });
-  });
 });

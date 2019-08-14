@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   DEFAULT_PAGE_SIZE,
   DEFAULT_LIMIT_TYPE,
-  DEFAULT_SORT
+  DEFAULT_SORT,
+  DEFAULT_STYPE
 } from './constants';
 
 export default axios.create({
@@ -18,7 +19,7 @@ export const buildParams = query => {
   const serviceCodes = Object.values(sCodes);
 
   const params = {
-    sType: setServiceType(type),
+    sType: DEFAULT_STYPE,
     sCodes: combineServiceTypeAndServiceCodes(type, serviceCodes),
     pageSize: DEFAULT_PAGE_SIZE,
     page: page || 1,
@@ -45,31 +46,4 @@ const combineServiceTypeAndServiceCodes = (type = '', serviceCodes = []) => {
         .concat(type)
         .filter(code => !!code)
         .toString();
-};
-
-const serviceTypes = {
-  SUBSTANCE_USE: 'SA', // Substance use only
-  MENTAL_HEALTH: 'MH', // Mental health only
-  BOTH: 'BOTH' // Subtance use and mental health
-};
-
-const serviceCodes = {
-  MENTAL_HEALTH: 'Custom-Mental_Health', // Mental health services only
-  PSYCHIATRIC_WALK_IN: 'WI', // Psychiatric emergency walk-in services
-  CO_OCCURRING: 'CO' // Co-occurring mental health and substance use treatment
-};
-
-const setServiceType = (type = '') => {
-  if (
-    type.toLowerCase() === serviceCodes.MENTAL_HEALTH.toLowerCase() ||
-    type === serviceCodes.PSYCHIATRIC_WALK_IN
-  ) {
-    return serviceTypes.MENTAL_HEALTH;
-  }
-
-  if (type === serviceCodes.CO_OCCURRING) {
-    return serviceTypes.BOTH;
-  }
-
-  return serviceTypes.SUBSTANCE_USE;
 };

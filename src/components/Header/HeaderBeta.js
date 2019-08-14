@@ -7,7 +7,8 @@ const HeaderBeta = () => {
   return (
     <div css={tw`bg-yellow-300`}>
       <div className="container" css={tw`py-4 font-bold`}>
-        We are testing a new design for our treatment locator. Have feedback?{' '}
+        We are testing a new design for our substance use treatment locator.
+        Have feedback?{' '}
         <OutboundLink
           eventLabel="Header feedback form link"
           to="https://forms.gle/35ZHQCGBkxCsJcs78"
