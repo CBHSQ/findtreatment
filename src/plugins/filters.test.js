@@ -3,7 +3,9 @@ import { RESET_ADVANCED_FILTERS, RESET_ALL_FILTERS } from '../actions/filters';
 import { DEFAULT_DISTANCE } from '../utils/constants';
 
 const initialState = {
-  distance: DEFAULT_DISTANCE
+  initialValues: {
+    distance: DEFAULT_DISTANCE
+  }
 };
 
 describe('filters reducer', () => {
@@ -85,7 +87,7 @@ describe('filters reducer', () => {
     ).toEqual({
       ...initialState,
       values: {
-        ...initialState,
+        ...initialState.initialValues,
         location: {
           description: 'Tempe, AZ, USA',
           isFixture: false,
