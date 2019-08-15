@@ -23,7 +23,7 @@ export const buildParams = query => {
     sCodes: combineServiceTypeAndServiceCodes(type, serviceCodes),
     pageSize: DEFAULT_PAGE_SIZE,
     page: page || 1,
-    sAddr: location && `${location.location.lat}, ${location.location.lng}`,
+    sAddr: location && `${location.latLng.lat}, ${location.latLng.lng}`,
     limitType: distance && DEFAULT_LIMIT_TYPE,
     limitValue: distance || null,
     sLanguages: language || null,

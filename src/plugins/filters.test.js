@@ -4,7 +4,8 @@ import { DEFAULT_DISTANCE } from '../utils/constants';
 
 const initialState = {
   initialValues: {
-    distance: DEFAULT_DISTANCE
+    distance: DEFAULT_DISTANCE,
+    location: { address: '' }
   }
 };
 
@@ -25,11 +26,11 @@ describe('filters reducer', () => {
             distance: '40233.6',
             language: 'SP-Spanish',
             location: {
-              description: 'Tempe, AZ, USA',
-              isFixture: false,
-              label: 'Tempe, AZ, USA',
-              matchedSubstrings: {},
-              placeId: 'ChIJ44CqppgIK4cRH7QsOa1K3aI'
+              address: 'Tempe, AZ, USA',
+              latLng: {
+                lat: 33.4255104,
+                lng: -111.94000540000002
+              }
             },
             mat: 'BU',
             payment: 'MD',
@@ -45,11 +46,11 @@ describe('filters reducer', () => {
       values: {
         distance: '40233.6',
         location: {
-          description: 'Tempe, AZ, USA',
-          isFixture: false,
-          label: 'Tempe, AZ, USA',
-          matchedSubstrings: {},
-          placeId: 'ChIJ44CqppgIK4cRH7QsOa1K3aI'
+          address: 'Tempe, AZ, USA',
+          latLng: {
+            lat: 33.4255104,
+            lng: -111.94000540000002
+          }
         },
         payment: 'MD',
         type: 'OP'
@@ -69,11 +70,11 @@ describe('filters reducer', () => {
             distance: '40233.6',
             language: 'SP-Spanish',
             location: {
-              description: 'Tempe, AZ, USA',
-              isFixture: false,
-              label: 'Tempe, AZ, USA',
-              matchedSubstrings: {},
-              placeId: 'ChIJ44CqppgIK4cRH7QsOa1K3aI'
+              address: 'Tempe, AZ, USA',
+              latLng: {
+                lat: 33.4255104,
+                lng: -111.94000540000002
+              }
             },
             mat: 'BU',
             payment: 'MD',
@@ -89,13 +90,19 @@ describe('filters reducer', () => {
       values: {
         ...initialState.initialValues,
         location: {
-          description: 'Tempe, AZ, USA',
-          isFixture: false,
-          label: 'Tempe, AZ, USA',
-          matchedSubstrings: {},
-          placeId: 'ChIJ44CqppgIK4cRH7QsOa1K3aI'
+          address: 'Tempe, AZ, USA',
+          latLng: {
+            lat: 33.4255104,
+            lng: -111.94000540000002
+          }
         }
       }
     });
+  });
+});
+
+describe('homepage reducer', () => {
+  it('should return the initial state', () => {
+    expect(reducer.homepage(undefined, {})).toEqual(initialState);
   });
 });

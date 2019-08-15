@@ -139,7 +139,6 @@ export class FormFilters extends Component {
                   component={Location}
                   name="location"
                   placeholder="City or zip code"
-                  format={v => (v ? v : '')}
                   toggleShowWarning={this.toggleShowLocationWarning}
                 />
                 {showLocationWarning && (
@@ -288,7 +287,6 @@ FormFilters.propTypes = {
   hasResults: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired,
-  location: PropTypes.object,
   resetAdvancedFilters: PropTypes.func.isRequired,
   resetAllFilters: PropTypes.func.isRequired,
   resultsHidden: PropTypes.bool.isRequired,
@@ -308,7 +306,6 @@ const mapStateToProps = state => {
     initialValues: {
       ...values
     },
-    location: values && values.location,
     loading,
     data
   };
@@ -335,7 +332,7 @@ export default connect(
     onChange: (values, dispatch, props, previousValues) => {
       const { isDesktop, loading } = props;
 
-      if (!isDesktop || loading || !values.location) {
+      if (!isDesktop || loading || !values.location.latLng) {
         return;
       }
 

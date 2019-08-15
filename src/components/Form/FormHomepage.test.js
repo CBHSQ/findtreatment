@@ -5,7 +5,8 @@ import { FormHomepage } from './FormHomepage';
 const testProps = {
   dispatch: () => {},
   handleSubmit: () => {},
-  initialValues: {}
+  initialValues: {},
+  location: {}
 };
 
 describe('HomePage component', () => {
@@ -38,10 +39,10 @@ describe('HomePage component', () => {
   });
 
   describe('with a valid location prop', () => {
-    it('enables the submit button with a valid location', () => {
+    it('enables the submit button with a valid latLng', () => {
       const props = {
         ...testProps,
-        location: {}
+        location: { latLng: {} }
       };
       const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
@@ -56,7 +57,7 @@ describe('HomePage component', () => {
       const props = {
         ...testProps,
         handleSubmit: mockSubmit,
-        location: {}
+        location: { latLng: {} }
       };
       const component = shallow(<FormHomepage {...props} />, {
         disableLifecycleMethods: true
