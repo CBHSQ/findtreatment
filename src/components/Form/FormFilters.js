@@ -172,8 +172,8 @@ export class FormFilters extends Component {
             <Row>
               <Field
                 name="type"
-                label="Type of care"
-                plural="types of care"
+                label="Types of treatment"
+                plural="types of treatment"
                 component={Select}
                 options={filterOptions.type}
                 helpURL="/content/treatment-options#types-of-treatment"
