@@ -172,7 +172,7 @@ export class FormFilters extends Component {
             <Row>
               <Field
                 name="type"
-                label="Types of treatment"
+                label="Type of treatment"
                 plural="types of treatment"
                 component={Select}
                 options={filterOptions.type}
