@@ -16,7 +16,6 @@ const StyledGeosuggest = styled.div`
     &__suggests {
       ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray-500 rounded bg-white`}
       max-height: 25em;
-      height: 25em;
       -webkit-transition: max-height 0.2s, border 0.2s;
       transition: max-height 0.2s, border 0.2s;
 
