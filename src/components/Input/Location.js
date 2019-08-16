@@ -5,56 +5,47 @@ import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import Label from './Label';
 
-const StyledLocation = styled.div`
+const StyledGeosuggest = styled.div`
   .geosuggest {
     ${tw`relative`}
-  }
-  label {
-    ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-  }
-  input {
-    ${tw`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
-  }
-  .geosuggest__suggests {
-    ${tw`border border-gray-500`}
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 25em;
-    padding: 0;
-    margin-top: -1px;
-    background: #fff;
-    overflow-x: hidden;
-    overflow-y: auto;
-    list-style: none;
-    z-index: 5;
-    -webkit-transition: max-height 0.2s, border 0.2s;
-    transition: max-height 0.2s, border 0.2s;
-  }
-  .geosuggest__suggests--hidden {
-    max-height: 0;
-    overflow: hidden;
-    border-width: 0;
-  }
-  .geosuggest__item {
-    padding: 0.5em 0.65em;
-    cursor: pointer;
-  }
-  .geosuggest__item:hover,
-  .geosuggest__item:focus {
-    background: #f5f5f5;
-  }
-  .geosuggest__item--active {
-    background: #267dc0;
-    color: #fff;
-  }
-  .geosuggest__item--active:hover,
-  .geosuggest__item--active:focus {
-    background: #ccc;
-  }
-  .geosuggest__item__matched-text {
-    font-weight: bold;
+
+    &__input {
+      ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+    }
+
+    &__suggests {
+      ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray-500 rounded bg-white`}
+      max-height: 25em;
+      -webkit-transition: max-height 0.2s, border 0.2s;
+      transition: max-height 0.2s, border 0.2s;
+
+      &--hidden {
+        ${tw`overflow-hidden border-0`}
+        max-height: 0;
+      }
+    }
+
+    &__item {
+      ${tw`py-3 px-4 cursor-pointer`}
+
+      &:hover,
+      &:focus {
+        ${tw`bg-gray-200`}
+      }
+
+      &--active {
+        ${tw`bg-blue-700 text-white`}
+
+        &:hover,
+        &:focus {
+          ${tw`bg-blue-700`}
+        }
+      }
+
+      &__matched-text {
+        ${tw`font-bold`}
+      }
+    }
   }
 `;
 
@@ -87,7 +78,7 @@ class Location extends Component {
     return (
       <div>
         <Label name={input.name} label={label} />
-        <StyledLocation>
+        <StyledGeosuggest>
           <Geosuggest
             id={input.name}
             name={input.name}
@@ -100,12 +91,11 @@ class Location extends Component {
             autoActivateFirstSuggest={true}
             initialValue={input.value.label}
             queryDelay={100}
-            onBlur={this.handleBlur}
             onSuggestSelect={this.handleSuggest}
             onUpdateSuggests={this.onUpdateSuggests}
             onSuggestNoResults={this.handleNoResults}
           />
-        </StyledLocation>
+        </StyledGeosuggest>
       </div>
     );
   }
