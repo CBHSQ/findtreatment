@@ -512,7 +512,7 @@ export default () => [
         )
       },
       {
-        name: 'Types of providers',
+        name: 'Who provides care?',
         body: (
           <>
             <p>
