@@ -44,7 +44,7 @@ describe('buildParams()', () => {
   it('maps location value to sAddr', () => {
     const query = {
       location: {
-        location: {
+        latLng: {
           lat: 32.4044445,
           lng: -110.98642940000002
         }

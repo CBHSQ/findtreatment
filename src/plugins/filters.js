@@ -3,7 +3,8 @@ import { ADVANCED_FILTERS, DEFAULT_DISTANCE } from '../utils/constants';
 
 const initialFilterState = {
   initialValues: {
-    distance: DEFAULT_DISTANCE
+    distance: DEFAULT_DISTANCE,
+    location: { address: '' }
   }
 };
 
@@ -39,6 +40,13 @@ export default {
           }
         };
       }
+      default:
+        return state;
+    }
+  },
+
+  homepage(state = initialFilterState, action) {
+    switch (action.type) {
       default:
         return state;
     }

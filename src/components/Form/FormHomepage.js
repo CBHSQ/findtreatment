@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset } from 'redux-form';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { Button, Location } from '../Input';
+
 import { destroyFacilities } from '../../actions/facilities';
 import { LOCATION_WARNING } from '../../utils/warnings';
+
+import { Button, Location } from '../Input';
 
 const Form = styled.form`
   ${tw`mb-10`}
@@ -31,7 +33,7 @@ export class FormHomepage extends Component {
   };
 
   handleSubmit = submitEvent => {
-    if (!this.props.location) {
+    if (!this.props.location.latLng) {
       return submitEvent.preventDefault();
     }
 
@@ -55,7 +57,12 @@ export class FormHomepage extends Component {
             />
           </div>
           <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
-            <Button primary disable={!location} css={tw`w-full`} type="submit">
+            <Button
+              primary
+              disable={location && !location.latLng}
+              css={tw`w-full`}
+              type="submit"
+            >
               Find treatment
             </Button>
           </div>
@@ -80,11 +87,12 @@ FormHomepage.propTypes = {
 };
 
 const mapStateToProps = state => {
+  const initialValues = state.form.homepage.initialValues;
   const values = getFormValues('homepage')(state);
 
   return {
     initialValues: {
-      ...state.form.filters.initialValues
+      ...initialValues
     },
     location: values && values.location
   };
