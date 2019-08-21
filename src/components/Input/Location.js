@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { connect } from 'react-redux';
+import { submit } from 'redux-form';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -56,8 +58,12 @@ class Location extends Component {
   };
 
   handleSelect = address => {
-    const { input, toggleShowWarning } = this.props;
+    const { dispatch, input, meta, toggleShowWarning } = this.props;
     const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
+
+    if (address === input.value.address) {
+      dispatch(submit(meta.form));
+    }
 
     if (address && activeSuggestion) {
       if (toggleShowWarning) {
@@ -138,8 +144,9 @@ class Location extends Component {
 Location.propTypes = {
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
+  meta: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   toggleShowWarning: PropTypes.func
 };
 
-export default Location;
+export default connect()(Location);
