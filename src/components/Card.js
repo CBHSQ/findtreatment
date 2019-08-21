@@ -26,7 +26,7 @@ const renderService = service => {
 
 const CardHeading = ({ frid, name1, name2, miles, latitude, longitude }) => (
   <StyledHeading>
-    <Link to={linkToFacility(frid, latitude, longitude)}>
+    <Link to={linkToFacility({ frid, latitude, longitude })}>
       <h2 css={tw`mb-2`}>
         {name1}
         {name2 && (
@@ -120,7 +120,7 @@ const Card = props => {
       <CardDetails phone={phone} website={website} services={services} />
       <Button
         as={Link}
-        to={linkToFacility(frid, latitude, longitude)}
+        to={linkToFacility({ frid, latitude, longitude })}
         css={tw`print:hidden`}
         primary="true"
       >
