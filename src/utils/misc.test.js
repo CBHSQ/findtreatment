@@ -36,7 +36,7 @@ describe('linkToFacility()', () => {
     expect(misc.linkToFacility({ ...params })).toStrictEqual({
       pathname:
         '/details/2037b07b2bfb78e1bdaf2b46dd94ceb41c2da1493e7c0c22796d82762c4cbb53',
-      search: 'sAddr=-110.98642940000002%2C%2032.4044445'
+      search: 'sAddr=32.4044445%2C%20-110.98642940000002'
     });
   });
 });
