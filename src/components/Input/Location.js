@@ -9,8 +9,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { PropTypes } from 'prop-types';
 
-import Label from './Label';
-
 const StyledPlacesAutoComplete = styled.div`
   ${tw`relative`}
 
@@ -87,7 +85,7 @@ class Location extends Component {
   };
 
   render() {
-    const { input, label, placeholder } = this.props;
+    const { input, placeholder } = this.props;
     const searchOptions = {
       componentRestrictions: { country: ['us', 'pr', 'vi', 'gu', 'mp', 'as'] },
       types: ['(regions)']
@@ -95,7 +93,6 @@ class Location extends Component {
 
     return (
       <StyledPlacesAutoComplete>
-        <Label name={input.name} label={label} />
         <PlacesAutocomplete
           value={input.value.address}
           debounce={100}
@@ -133,7 +130,7 @@ class Location extends Component {
                           className
                         })}
                       >
-                        <span>{suggestion.description}</span>
+                        {suggestion.description}
                       </div>
                     );
                   })}
@@ -149,7 +146,6 @@ class Location extends Component {
 
 Location.propTypes = {
   input: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
   meta: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   toggleShowWarning: PropTypes.func
