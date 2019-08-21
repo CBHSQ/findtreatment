@@ -38,7 +38,7 @@ export const buildParams = query => {
 };
 
 // Combines service type and service codes into string, omitting custom values
-// Custom values should be prepended with "Custom-""
+// Custom values should be prepended with "Custom-"
 const combineServiceTypeAndServiceCodes = (type = '', serviceCodes = []) => {
   return type.toLowerCase().startsWith('custom-')
     ? serviceCodes.toString()
