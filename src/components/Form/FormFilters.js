@@ -17,7 +17,7 @@ import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-import { Button, Location, Select } from '../Input';
+import { Button, Label, Location, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-6`}
@@ -136,116 +136,126 @@ export class FormFilters extends Component {
             </div>
             <RowFlex>
               <div css={tw`w-full md:w-3/5 px-2 mb-6 md:mb-0`}>
-                <Field
-                  label="Location"
-                  component={Location}
-                  name="location"
-                  placeholder="City or zip code"
-                  toggleShowWarning={this.toggleShowLocationWarning}
-                />
-                {showLocationWarning && (
-                  <div css={tw`w-full mt-2 text-red-500 text-sm`}>
-                    {LOCATION_WARNING}
-                  </div>
-                )}
+                <Label value="Location">
+                  <Field
+                    component={Location}
+                    name="location"
+                    placeholder="City or zip code"
+                    toggleShowWarning={this.toggleShowLocationWarning}
+                  />
+                  {showLocationWarning && (
+                    <div css={tw`w-full mt-2 text-red-500 text-sm`}>
+                      {LOCATION_WARNING}
+                    </div>
+                  )}
+                </Label>
               </div>
               <div css={tw`w-full md:w-2/5 px-2`}>
-                <Field
-                  name="distance"
-                  label="Distance"
-                  component={Select}
-                  hideFirst={true}
-                  options={filterOptions.distance}
-                />
+                <Label value="Distance">
+                  <Field
+                    name="distance"
+                    component={Select}
+                    hideFirst={true}
+                    options={filterOptions.distance}
+                  />
+                </Label>
               </div>
             </RowFlex>
             <Row>
-              <Field
-                name="payment"
-                label="Payment options"
-                plural="payment options"
-                component={Select}
-                options={filterOptions.payment}
-                helpURL="/content/paying-for-treatment"
-                helpText="Not sure?"
-              />
+              <Label
+                value="Payment options"
+                help={{
+                  url: '/content/paying-for-treatment',
+                  text: 'Not sure?'
+                }}
+              >
+                <Field
+                  name="payment"
+                  plural="payment options"
+                  component={Select}
+                  options={filterOptions.payment}
+                />
+              </Label>
             </Row>
             <Row>
-              <Field
-                name="type"
-                label="Type of treatment"
-                plural="types of treatment"
-                component={Select}
-                options={filterOptions.type}
-                helpURL="/content/treatment-options#types-of-treatment"
-                helpText="Not sure?"
-              />
+              <Label
+                value="Type of treatment"
+                help={{
+                  url: '/content/treatment-options#types-of-treatment',
+                  text: 'Not sure?'
+                }}
+              >
+                <Field
+                  name="type"
+                  plural="types of treatment"
+                  component={Select}
+                  options={filterOptions.type}
+                />
+              </Label>
             </Row>
             {!this.state.isHidden && (
               <div className="filter-container">
                 <Row>
-                  <Field
-                    name="age"
-                    label="Ages accepted"
-                    plural="ages"
-                    component={Select}
-                    options={filterOptions.age}
-                  />
-                </Row>
-                <Row>
-                  <Field
-                    name="language"
-                    label="Language"
-                    plural="languages"
-                    component={Select}
-                    options={languages}
-                  />
-                </Row>
-                <Row>
-                  <span
-                    css={tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
-                  >
-                    Special programs
-                  </span>
-                  <label htmlFor="VET" css={tw`block`}>
+                  <Label value="Ages accepted">
                     <Field
-                      css={tw`mr-2 leading-tight`}
+                      name="age"
+                      plural="ages"
+                      component={Select}
+                      options={filterOptions.age}
+                    />
+                  </Label>
+                </Row>
+                <Row>
+                  <Label value="Language">
+                    <Field
+                      name="language"
+                      plural="languages"
+                      component={Select}
+                      options={languages}
+                    />
+                  </Label>
+                </Row>
+                <Row>
+                  <Label as="span" value="Special programs" />
+                  <Label value="Veterans" inline>
+                    <Field
+                      css={tw`mr-2 `}
                       type="checkbox"
                       name="VET"
                       component="input"
                       format={v => v === 'VET'}
                       normalize={v => (v ? 'VET' : '')}
                     />
-                    <span css={tw`text-sm`}>Veterans</span>
-                  </label>
-                  <label htmlFor="GL" css={tw`block`}>
+                  </Label>
+                  <Label
+                    value="Lesbian, gay, bisexual, transgender (LGBT)"
+                    inline
+                  >
                     <Field
-                      css={tw`mr-2 leading-tight`}
+                      css={tw`mr-2`}
                       type="checkbox"
                       name="GL"
                       component="input"
                       format={v => v === 'GL'}
                       normalize={v => (v ? 'GL' : '')}
                     />
-                    <span css={tw`text-sm`}>
-                      Lesbian, gay, bisexual, transgender (LGBT)
-                    </span>
-                  </label>
+                  </Label>
                 </Row>
                 <Row>
-                  <Field
-                    name="mat"
-                    label="Type of medication-assisted treatment (MAT)"
-                    plural="treatments"
-                    component={Select}
-                    options={filterOptions.mat}
-                  />
-                  <Link
-                    to="/content/treatment-options#medications-used-in-treatment"
-                    css={tw`mb-2 text-sm`}
-                  >
-                    What are the differences between these medications?
-                  </Link>
+                  <Label value="Type of medication-assisted treatment (MAT)">
+                    <Field
+                      name="mat"
+                      plural="treatments"
+                      component={Select}
+                      options={filterOptions.mat}
+                    />
+                    <Link
+                      to="/content/treatment-options#medications-used-in-treatment"
+                      css={tw`mb-2 text-sm`}
+                    >
+                      What are the differences between these medications?
+                    </Link>
+                  </Label>
                 </Row>
               </div>
             )}
