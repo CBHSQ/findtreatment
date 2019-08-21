@@ -107,16 +107,22 @@ class Location extends Component {
           ref={el => (this._placesAutocomplete = el)}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-            <div>
+            <>
               <input
                 {...getInputProps({
                   placeholder: placeholder,
                   name: input.name,
-                  id: input.name
+                  id: input.name,
+                  'aria-owns': 'listbox',
+                  'aria-haspopup': 'listbox'
                 })}
               />
               {suggestions && suggestions.length > 0 && (
-                <div className="autocomplete-dropdown-container">
+                <div
+                  className="autocomplete-dropdown-container"
+                  role="listbox"
+                  id="listbox"
+                >
                   {suggestions.map(suggestion => {
                     const className = suggestion.active
                       ? 'suggestion-item suggestion-item--active'
@@ -133,7 +139,7 @@ class Location extends Component {
                   })}
                 </div>
               )}
-            </div>
+            </>
           )}
         </PlacesAutocomplete>
       </StyledPlacesAutoComplete>
