@@ -129,36 +129,37 @@ export class Details extends Component {
                 </li>
               </ul>
               <div css={tw`lg:flex items-start print:hidden`}>
-                <OutboundLink to={`tel:${phone}`} eventLabel="Facility Phone #">
-                  <Button
-                    primary
-                    css={tw`w-full lg:w-auto lg:mr-2 mb-2 lg:mb-0`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faPhone}
-                      css={tw`fill-current w-4 h-4 mr-2`}
-                    />
-                    <div>
-                      <span css={tw`inline-block font-normal`}>Call</span>{' '}
-                      {phone}
-                    </div>
-                  </Button>
-                </OutboundLink>
+                <Button
+                  as={OutboundLink}
+                  primary
+                  to={`tel:${phone}`}
+                  eventLabel="Facility Phone #"
+                  css={tw`w-full lg:w-auto lg:mr-2 mb-2 lg:mb-0`}
+                >
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    css={tw`fill-current w-4 h-4 mr-2`}
+                  />
+                  <div>
+                    <span css={tw`inline-block font-normal`}>Call</span> {phone}
+                  </div>
+                </Button>
                 {website !== 'http://' && (
-                  <OutboundLink
+                  <Button
+                    as={OutboundLink}
+                    base
                     to={website}
                     target="_blank"
                     eventLabel="Facility website"
                     rel="noopener noreferrer"
+                    css={tw`w-full lg:w-auto`}
                   >
-                    <Button base css={tw`w-full lg:w-auto`}>
-                      <FontAwesomeIcon
-                        icon={faExternalLinkAlt}
-                        css={tw`fill-current w-4 h-4 mr-2`}
-                      />
-                      Visit website
-                    </Button>
-                  </OutboundLink>
+                    <FontAwesomeIcon
+                      icon={faExternalLinkAlt}
+                      css={tw`fill-current w-4 h-4 mr-2`}
+                    />
+                    Visit website
+                  </Button>
                 )}
               </div>
               <Link

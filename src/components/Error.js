@@ -22,15 +22,15 @@ const Error = () => (
         soon, and in the meantime SAMHSA's national helpline is available 24/7
         and can assist you with treatment referrals and information.
       </p>
-      <OutboundLink
+      <Button
         eventLabel="Helpline link from error page"
         to={`tel:${HELPLINE_LINK}`}
+        as={OutboundLink}
+        primary
       >
-        <Button primary>
-          <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
-          {HELPLINE_TEXT}
-        </Button>
-      </OutboundLink>
+        <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
+        {HELPLINE_TEXT}
+      </Button>
     </div>
   </div>
 );

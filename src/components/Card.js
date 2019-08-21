@@ -122,7 +122,7 @@ const Card = props => {
         as={Link}
         to={linkToFacility({ frid, latitude, longitude })}
         css={tw`print:hidden`}
-        primary="true"
+        primary
       >
         View provider details
       </Button>
