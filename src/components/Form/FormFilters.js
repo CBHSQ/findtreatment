@@ -37,9 +37,11 @@ const Form = styled.form`
 
 export class FormFilters extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { languages, dispatch } = this.props;
 
-    dispatch(handleReceiveLanguages());
+    if (!languages.length > 0) {
+      dispatch(handleReceiveLanguages());
+    }
   }
 
   state = {
@@ -73,7 +75,7 @@ export class FormFilters extends Component {
   render() {
     const {
       handleSubmit,
-      data,
+      languages,
       toggleFilters,
       toggleResults,
       filtersHidden,
@@ -196,7 +198,7 @@ export class FormFilters extends Component {
                     label="Language"
                     plural="languages"
                     component={Select}
-                    options={data}
+                    options={languages}
                   />
                 </Row>
                 <Row>
@@ -280,7 +282,7 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
-  data: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   filtersHidden: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -307,7 +309,7 @@ const mapStateToProps = state => {
       ...values
     },
     loading,
-    data
+    languages: data
   };
 };
 

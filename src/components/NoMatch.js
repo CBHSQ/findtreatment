@@ -23,15 +23,15 @@ const NoMatch = () => (
         SAMHSA's national helpline is available 24/7 and can assist you with
         treatment referrals and information.
       </p>
-      <OutboundLink
+      <Button
+        as={OutboundLink}
+        primary
         eventLabel="Helpline link from 404"
         to={`tel:${HELPLINE_LINK}`}
       >
-        <Button primary>
-          <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
-          {HELPLINE_TEXT}
-        </Button>
-      </OutboundLink>
+        <FontAwesomeIcon icon={faPhone} css={tw`mr-2`} className="fa-lg" />
+        {HELPLINE_TEXT}
+      </Button>
     </div>
   </div>
 );

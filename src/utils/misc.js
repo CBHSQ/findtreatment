@@ -26,7 +26,7 @@ export const servicesToObject = array =>
     return obj;
   }, {});
 
-export const linkToFacility = (frid, longitude, latitude) => {
+export const linkToFacility = ({ frid, longitude, latitude }) => {
   return {
     pathname: `/details/${frid}`,
     search: qs.stringify({ sAddr: `${longitude}, ${latitude}` })

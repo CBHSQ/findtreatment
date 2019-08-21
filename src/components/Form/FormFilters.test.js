@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { FormFilters } from './FormFilters';
 
 const testProps = {
-  data: [],
+  languages: [],
   dispatch: () => {},
   filtersHidden: false,
   handleSubmit: () => {},

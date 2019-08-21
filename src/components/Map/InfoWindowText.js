@@ -32,7 +32,7 @@ export const InfoWindowText = props => {
           as={Link}
           css={tw`p-1 w-full`}
           primary="true"
-          to={linkToFacility(frid, latitude, longitude)}
+          to={linkToFacility({ frid, latitude, longitude })}
         >
           View provider details
         </Button>
