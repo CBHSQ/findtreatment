@@ -8,7 +8,7 @@ import tw from 'tailwind.macro';
 import { destroyFacilities } from '../../actions/facilities';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-import { Button, Location } from '../Input';
+import { Button, Label, Location } from '../Input';
 
 const Form = styled.form`
   ${tw`mb-10`}
@@ -48,13 +48,14 @@ export class FormHomepage extends Component {
       <Form onSubmit={this.handleSubmit}>
         <div css={tw`flex flex-wrap -mx-3`}>
           <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
-            <Field
-              label="Location"
-              component={Location}
-              name="location"
-              placeholder="City or zip code"
-              toggleShowWarning={this.toggleShowWarning}
-            />
+            <Label value="Location">
+              <Field
+                component={Location}
+                name="location"
+                placeholder="City or zip code"
+                toggleShowWarning={this.toggleShowWarning}
+              />
+            </Label>
           </div>
           <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
             <Button
