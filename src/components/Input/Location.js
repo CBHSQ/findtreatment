@@ -61,7 +61,7 @@ class Location extends Component {
     const { dispatch, input, meta, toggleShowWarning } = this.props;
     const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
 
-    if (address === input.value.address) {
+    if (input.value.latLng && address === input.value.address) {
       dispatch(submit(meta.form));
     }
 
