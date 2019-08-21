@@ -109,7 +109,6 @@ class Location extends Component {
                 {...getInputProps({
                   placeholder: placeholder,
                   name: input.name,
-                  id: input.name,
                   'aria-owns': 'listbox',
                   'aria-haspopup': 'listbox'
                 })}
