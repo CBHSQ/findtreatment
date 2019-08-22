@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { FormFilters } from './FormFilters';
 
 const testProps = {
+  advancedHidden: true,
   languages: [],
   dispatch: () => {},
   filtersHidden: false,
@@ -10,8 +11,7 @@ const testProps = {
   hasResults: true,
   initialValues: {},
   isDesktop: true,
-  location: {},
-  resetAdvancedFilters: () => {},
+  toggleAdvancedFilters: () => {},
   resetAllFilters: () => {},
   resultsHidden: false,
   toggleFilters: () => {},
@@ -19,40 +19,14 @@ const testProps = {
 };
 
 describe('Filters component', () => {
-  it('displays correct toggle link text', () => {
-    const component = shallow(<FormFilters {...testProps} />, {
-      disableLifecycleMethods: true
-    });
-    const toggleBtn = component.find('.filter-link');
-
-    expect(toggleBtn.text()).toBe('More filters');
-    toggleBtn.simulate('click');
-    expect(component.find('.filter-link').text()).toBe('Less filters');
-  });
-
-  it('toggle additional filter container', () => {
-    const component = shallow(<FormFilters {...testProps} />, {
-      disableLifecycleMethods: true
-    });
-    const toggleBtn = component.find('.filter-link');
-
-    expect(component.find('.filter-container').length).toBe(0);
-    toggleBtn.simulate('click');
-    expect(component.find('.filter-container').length).toBe(1);
-  });
-
-  it('calls resetAdvancedFilters method when filters are hidden', () => {
+  it('calls toggleAdvancedFilters() when filters are toggled', () => {
     const mockDispatch = jest.fn();
     const props = {
       ...testProps,
-      resetAdvancedFilters: mockDispatch
+      toggleAdvancedFilters: mockDispatch
     };
-    const component = shallow(<FormFilters {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<FormFilters {...props} />);
     const toggleBtn = component.find('.filter-link');
-
-    toggleBtn.simulate('click');
 
     expect(mockDispatch.mock.calls.length).toBe(0);
 
@@ -62,18 +36,16 @@ describe('Filters component', () => {
   });
 
   it('calls resetFilters() when reset filter button is clicked', () => {
-    const resetFn = jest.fn();
+    const mockDispatch = jest.fn();
     const props = {
       ...testProps,
-      resetAllFilters: resetFn
+      resetAllFilters: mockDispatch
     };
-    const component = shallow(<FormFilters {...props} />, {
-      disableLifecycleMethods: true
-    });
+    const component = shallow(<FormFilters {...props} />);
     const resetBtn = component.find('.reset-filters');
 
     resetBtn.simulate('click');
 
-    expect(resetFn.mock.calls.length).toBe(1);
+    expect(mockDispatch.mock.calls.length).toBe(1);
   });
 });

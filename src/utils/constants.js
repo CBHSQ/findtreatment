@@ -1,4 +1,3 @@
-export const ADVANCED_FILTERS = ['age', 'language', 'VET', 'GL', 'mat'];
 const metersPerMile = 1609.344;
 export const DEFAULT_DISTANCE = 25 * metersPerMile; // Radius from lat/long in meters
 export const DEFAULT_PAGE_SIZE = 10; // Results returned with each request
