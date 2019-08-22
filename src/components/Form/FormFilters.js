@@ -310,8 +310,8 @@ const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
   const values =
-    getFormValues('homepage')(state) ||
     getFormValues('filters')(state) ||
+    getFormValues('homepage')(state) ||
     state.form.filters.initialValues;
 
   return {
