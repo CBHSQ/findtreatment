@@ -13,7 +13,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { handleReceiveLanguages } from '../../actions/languages';
-import { resetAdvancedFilters, resetAllFilters } from '../../actions/filters';
+import { resetAllFilters } from '../../actions/filters';
+import { toggleAdvancedFilters } from '../../actions/ui';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
@@ -41,7 +42,6 @@ export class FormFilters extends Component {
   }
 
   state = {
-    isHidden: true,
     showLocationWarning: false
   };
 
@@ -51,17 +51,8 @@ export class FormFilters extends Component {
     });
   };
 
-  toggleHidden = () => {
-    this.setState(
-      {
-        isHidden: !this.state.isHidden
-      },
-      () => {
-        if (this.state.isHidden) {
-          this.props.resetAdvancedFilters();
-        }
-      }
-    );
+  toggleAdvancedFilters = () => {
+    this.props.toggleAdvancedFilters();
   };
 
   handleReset = () => {
@@ -70,6 +61,7 @@ export class FormFilters extends Component {
 
   render() {
     const {
+      advancedHidden,
       handleSubmit,
       languages,
       toggleFilters,
@@ -79,7 +71,7 @@ export class FormFilters extends Component {
       hasResults,
       isDesktop
     } = this.props;
-    const { isHidden, showLocationWarning } = this.state;
+    const { showLocationWarning } = this.state;
 
     return (
       <>
@@ -189,7 +181,7 @@ export class FormFilters extends Component {
                 />
               </Label>
             </Row>
-            {!this.state.isHidden && (
+            {!advancedHidden && (
               <div className="filter-container">
                 <Row>
                   <Label value="Ages accepted">
@@ -258,12 +250,12 @@ export class FormFilters extends Component {
             <button
               className="filter-link"
               css={tw`mb-6`}
-              onClick={this.toggleHidden}
+              onClick={this.toggleAdvancedFilters}
               type="button"
             >
-              {isHidden ? 'More' : 'Less'} filters
+              {advancedHidden ? 'More' : 'Less'} filters
               <FontAwesomeIcon
-                icon={isHidden ? faAngleDown : faAngleUp}
+                icon={advancedHidden ? faAngleDown : faAngleUp}
                 css={tw`text-blue-500 ml-1`}
               />
             </button>
@@ -288,6 +280,7 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
+  advancedHidden: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   filtersHidden: PropTypes.bool.isRequired,
@@ -295,7 +288,7 @@ FormFilters.propTypes = {
   hasResults: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired,
-  resetAdvancedFilters: PropTypes.func.isRequired,
+  toggleAdvancedFilters: PropTypes.func.isRequired,
   resetAllFilters: PropTypes.func.isRequired,
   resultsHidden: PropTypes.bool.isRequired,
   toggleFilters: PropTypes.func.isRequired,
@@ -303,14 +296,16 @@ FormFilters.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { languages } = state;
+  const { languages, ui } = state;
   const { loading, data } = languages;
+  const { advancedHidden } = ui;
   const values =
     getFormValues('filters')(state) ||
     getFormValues('homepage')(state) ||
     state.form.filters.initialValues;
 
   return {
+    advancedHidden,
     initialValues: {
       ...values
     },
@@ -320,8 +315,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  resetAdvancedFilters() {
-    dispatch(resetAdvancedFilters());
+  toggleAdvancedFilters() {
+    dispatch(toggleAdvancedFilters());
   },
 
   resetAllFilters() {
