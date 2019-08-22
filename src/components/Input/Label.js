@@ -13,6 +13,10 @@ const StyledLabel = styled.label`
     ${props =>
       props.inline &&
       tw`inline normal-case tracking-normal text-gray-900 text-sm font-normal`}
+
+    ${props =>
+      props.lg &&
+      tw`normal-case tracking-normal text-gray-900 text-2xl font-heading`}
   }
 `;
 
@@ -50,6 +54,7 @@ Label.propTypes = {
     url: PropTypes.string
   }),
   inline: PropTypes.bool,
+  lg: PropTypes.bool,
   value: PropTypes.string.isRequired
 };
 

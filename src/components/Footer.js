@@ -7,10 +7,10 @@ import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
 const StyledFooter = styled.footer`
-  ${tw`bg-gray-800 text-gray-200 text-xs print:hidden`}
+  ${tw`bg-gray-darker text-gray-lighter text-xs print:hidden`}
 
   a {
-    ${tw`text-white hover:text-white`}
+    ${tw`text-gray-lighter hover:text-gray-lighter`}
   }
 `;
 

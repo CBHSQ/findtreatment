@@ -1,5 +1,16 @@
 @tailwind base;
 
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Public Sans Regular'),
+    url('../fonts/PublicSans-Regular.woff2') format('woff2'),
+    url('../fonts/PublicSans-Regular.woff') format('woff'),
+    url('../fonts/PublicSans-Regular.ttf') format('truetype');
+}
+
 h1,
 h2,
 h3,
@@ -7,6 +18,7 @@ h4,
 h5,
 h6 {
   @apply font-bold;
+  font-family: 'Roboto Condensed';
 }
 
 h1 {
@@ -32,11 +44,11 @@ h3 {
 }
 
 a {
-  color: theme('colors.blue.700');
+  color: theme('colors.blue');
 }
 
 a:hover {
-  color: theme('colors.blue.800');
+  color: theme('colors.blue');
 }
 
 @screen print {

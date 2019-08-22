@@ -33,7 +33,7 @@ export default () => [
   {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
-    icon: <IconAddiction css={tw`w-24 h-24`} />,
+    icon: <IconAddiction />,
     description:
       'Addiction is a chronic disease that changes the brain and alters decision-making.',
     subTopics: [
@@ -240,7 +240,7 @@ export default () => [
   {
     name: 'Understanding mental health',
     id: 'understanding-mental-health',
-    icon: <IconMentalHealth css={tw`w-24 h-24`} />,
+    icon: <IconMentalHealth />,
     description:
       'About half of people with a substance use disorder also experience serious mental illness.',
     body: (
@@ -379,7 +379,7 @@ export default () => [
   {
     name: 'Treatment options',
     id: 'treatment-options',
-    icon: <IconTreament css={tw`w-24 h-24`} />,
+    icon: <IconTreament />,
     description:
       'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.',
     subTopics: [
@@ -798,7 +798,7 @@ export default () => [
   {
     name: 'Paying for treatment',
     id: 'paying-for-treatment',
-    icon: <IconPayment css={tw`w-24 h-24`} />,
+    icon: <IconPayment />,
     description: 'Learn more about the cost of treatment and payment options.',
     subTopics: [
       {

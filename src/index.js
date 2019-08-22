@@ -9,7 +9,8 @@ import ScrollToTop from './components/ScrollToTop';
 import configureStore, { history } from './store';
 import App from './components/App';
 
-import './css/build/tailwind.css';
+import 'typeface-roboto-condensed';
+import './css/tailwind.css';
 
 if (process.env.NODE_ENV !== 'production') {
   var axe = require('react-axe');

@@ -29,10 +29,6 @@ const RowFlex = styled.div`
 
 const Form = styled.form`
   ${tw`bg-gray-200 rounded p-6 mb-6`}
-
-  input, select, .geosuggest__input {
-    ${tw`bg-white`}
-  }
 `;
 
 export class FormFilters extends Component {

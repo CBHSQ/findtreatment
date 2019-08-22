@@ -20,7 +20,7 @@ import Footer from './Footer';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    ${tw`font-sans text-gray-900 leading-normal print:text-black`}
+    ${tw`font-sans text-gray-darkest leading-normal`}
   }
 `;
 

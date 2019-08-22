@@ -13,11 +13,24 @@ const StyledPlacesAutoComplete = styled.div`
   ${tw`relative`}
 
   input {
-    ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+    ${tw`block w-full p-4 rounded text-lg`}
+
+    &::-webkit-input-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &::-moz-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &:-ms-input-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &:-moz-placeholder {
+      ${tw`text-gray-darkest`}
+    }
   }
 
   .autocomplete-dropdown-container {
-    ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray-500 rounded bg-white`}
+    ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray rounded bg-white`}
     max-height: 25em;
     -webkit-transition: max-height 0.2s, border 0.2s;
     transition: max-height 0.2s, border 0.2s;
@@ -31,10 +44,10 @@ const StyledPlacesAutoComplete = styled.div`
       ${tw`bg-gray-200`}
     }
     &--active {
-      ${tw`bg-blue-700 text-white`}
+      ${tw`bg-blue text-white`}
       &:hover,
         &:focus {
-        ${tw`bg-blue-700`}
+        ${tw`bg-blue`}
       }
     }
   }

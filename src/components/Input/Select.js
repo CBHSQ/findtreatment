@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 
 const StyledSelect = styled.select`
-  ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+  ${tw`block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
 
   &::-ms-expand {
     display: none;
