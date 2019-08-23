@@ -10,7 +10,7 @@ import configureStore, { history } from './store';
 import App from './components/App';
 
 import 'typeface-roboto-condensed';
-import './css/tailwind.css';
+import './tailwind.css';
 
 if (process.env.NODE_ENV !== 'production') {
   var axe = require('react-axe');
