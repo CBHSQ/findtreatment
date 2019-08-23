@@ -30,6 +30,13 @@ const MobileBgImage = styled.div`
   }
 `;
 
+const DecorativeHeading = styled.div`
+  &:before {
+    content: '';
+    ${tw`hidden md:block mb-4 border-t-4 border-teal w-12 h-0`}
+  }
+`;
+
 class Home extends Component {
   submit = values => {
     const { dispatch } = this.props;
@@ -142,7 +149,9 @@ class Home extends Component {
         </div>
         <div className="container" id="home-learn-more">
           <div css={tw`py-10 md:py-20`}>
-            <h2 css={tw`text-2xl md:text-3xl`}>What to expect</h2>
+            <DecorativeHeading>
+              <h2 css={tw`text-2xl md:text-3xl`}>What to expect</h2>
+            </DecorativeHeading>
             <p css={tw`mb-8 md:text-xl`}>
               Help is available, treatment works, and people recover every day.
             </p>
