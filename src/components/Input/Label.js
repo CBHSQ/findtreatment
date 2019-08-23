@@ -15,8 +15,8 @@ const StyledLabel = styled.label`
       tw`inline normal-case tracking-normal text-gray-900 text-sm font-normal`}
 
     ${props =>
-      props.lg &&
-      tw`normal-case tracking-normal text-gray-900 text-2xl font-heading`}
+      props.large &&
+      tw`normal-case tracking-normal text-gray-900 text-2xl md:text-3xl font-heading`}
   }
 `;
 
@@ -54,7 +54,7 @@ Label.propTypes = {
     url: PropTypes.string
   }),
   inline: PropTypes.bool,
-  lg: PropTypes.bool,
+  large: PropTypes.bool,
   value: PropTypes.string.isRequired
 };
 

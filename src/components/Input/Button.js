@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 
 const Button = styled.button`
-  ${tw`font-bold font-heading text-2xl py-2 px-4 rounded inline-flex items-center justify-center`}
+  ${tw`font-bold font-heading md:font-sans text-2xl md:text-lg py-2 px-4 rounded inline-flex items-center justify-center`}
 
   ${props =>
     props.primary &&
@@ -18,7 +18,8 @@ const Button = styled.button`
 
   ${props => props.disable && tw`hover:bg-blue cursor-not-allowed opacity-50`}
 
-  ${props => props.link && tw`text-blue hover:text-blue font-normal p-0`}
+  ${props =>
+    props.link && tw`inline-block text-blue hover:text-blue font-normal p-0`}
 `;
 
 export default Button;

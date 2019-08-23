@@ -11,6 +11,39 @@
     url('../fonts/PublicSans-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Public Sans Italic'),
+    url('../fonts/PublicSans-Italic.woff2') format('woff2'),
+    url('../fonts/PublicSans-Italic.woff') format('woff'),
+    url('../fonts/PublicSans-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Public Sans Bold'),
+    url('../fonts/PublicSans-Bold.woff2') format('woff2'),
+    url('../fonts/PublicSans-Bold.woff') format('woff'),
+    url('../fonts/PublicSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Public Sans Bold Italic'),
+    url('../fonts/PublicSans-BoldItalic.woff2') format('woff2'),
+    url('../fonts/PublicSans-BoldItalic.woff') format('woff'),
+    url('../fonts/PublicSans-BoldItalic.ttf') format('truetype');
+}
+
 h1,
 h2,
 h3,

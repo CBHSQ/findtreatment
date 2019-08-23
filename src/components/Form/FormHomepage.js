@@ -41,30 +41,31 @@ export class FormHomepage extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div css={tw`flex flex-wrap -mx-3`}>
-          <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
-            <Label value="Find help near you" lg>
-              <Field
-                component={Location}
-                name="location"
-                placeholder="City or zip code"
-                toggleShowWarning={this.toggleShowWarning}
-              />
-            </Label>
+        <Label value="Find a treatment facility near you" css={tw`mb-8`} large>
+          <Field
+            css={tw`md:mt-6 md:w-full md:shadow-md`}
+            component={Location}
+            name="location"
+            placeholder="City or zip code"
+            toggleShowWarning={this.toggleShowWarning}
+          />
+        </Label>
+
+        <Button
+          primary
+          css={tw`w-full md:w-auto md:inline-block md:px-16`}
+          type="submit"
+        >
+          Search
+        </Button>
+
+        {showWarning && (
+          <div
+            css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
+          >
+            {LOCATION_WARNING}
           </div>
-          <div css={tw`flex items-end w-full lg:w-1/3 px-3`}>
-            <Button primary css={tw`w-full`} type="submit">
-              Search
-            </Button>
-          </div>
-          {showWarning && (
-            <div
-              css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
-            >
-              {LOCATION_WARNING}
-            </div>
-          )}
-        </div>
+        )}
       </form>
     );
   }

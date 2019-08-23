@@ -98,7 +98,7 @@ class Location extends Component {
   };
 
   render() {
-    const { input, placeholder } = this.props;
+    const { className, input, placeholder } = this.props;
     const searchOptions = {
       componentRestrictions: { country: ['us', 'pr', 'vi', 'gu', 'mp', 'as'] },
       types: ['(regions)']
@@ -120,6 +120,7 @@ class Location extends Component {
             <>
               <input
                 {...getInputProps({
+                  className,
                   placeholder: placeholder,
                   name: input.name,
                   'aria-owns': 'listbox',

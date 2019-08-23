@@ -1,24 +1,20 @@
 module.exports = {
   theme: {
     colors: {
-      blue: {
-        default: '#1a7bbc'
-      },
+      blue: '#1a7bbc', // primary/outline buttons
+      gold: '#ffbe22', // help line
       gray: {
-        lightest: '#f5f5f8',
-        lighter: '#f0f0f0',
+        lightest: '#f5f5f8', // homepage search background
+        lighter: '#f0f0f0', // official banner
         light: '#a9aeb1',
         default: '#71767a',
-        dark: '#4a5568',
+        dark: '#4e4e4e', // alternative header text
         darker: '#2c3747',
-        darkest: '#171717'
+        darkest: '#171717' // body text
       },
-      teal: {
-        default: '#44bae6'
-      },
-      white: {
-        default: '#ffffff'
-      }
+      teal: '#44bae6', // homepage accent background
+      transparent: 'transparent',
+      white: '#ffffff'
     },
     container: {
       center: true,
