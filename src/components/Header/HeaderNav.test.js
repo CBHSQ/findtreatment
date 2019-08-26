@@ -9,14 +9,14 @@ describe('HeaderNav component', () => {
       location: {}
     };
     const component = shallow(<HeaderNav {...props} />);
-    const toggleBtn = component.find('HeaderNav___StyledButton');
+    const toggleBtn = component.find('button');
 
-    expect(component.find('HeaderNav__MobileNav').prop('isMenuHidden')).toBe(
-      true
-    );
+    expect(
+      component.find('HeaderNav__StyledNav').prop('isMobileMenuHidden')
+    ).toBe(true);
     toggleBtn.simulate('click');
-    expect(component.find('HeaderNav__MobileNav').prop('isMenuHidden')).toBe(
-      false
-    );
+    expect(
+      component.find('HeaderNav__StyledNav').prop('isMobileMenuHidden')
+    ).toBe(false);
   });
 });
