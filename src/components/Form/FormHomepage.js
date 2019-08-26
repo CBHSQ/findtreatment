@@ -14,11 +14,10 @@ export class FormHomepage extends Component {
   state = { showWarning: false };
 
   componentDidMount() {
-    const { dispatch, location } = this.props;
+    const { clearValues, location } = this.props;
 
-    if (location) {
-      dispatch(reset('homepage'));
-      dispatch(destroyFacilities());
+    if (location && location.latLng) {
+      clearValues();
     }
   }
 
@@ -29,11 +28,13 @@ export class FormHomepage extends Component {
   };
 
   handleSubmit = submitEvent => {
-    if (!this.props.location.latLng) {
+    const { handleSubmit, location } = this.props;
+
+    if (!location.latLng) {
       return submitEvent.preventDefault();
     }
 
-    this.props.handleSubmit(submitEvent);
+    handleSubmit(submitEvent);
   };
 
   render() {
@@ -72,11 +73,18 @@ export class FormHomepage extends Component {
 }
 
 FormHomepage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  clearValues: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   location: PropTypes.object
 };
+
+const mapDispatchToProps = dispatch => ({
+  clearValues() {
+    dispatch(reset('homepage'));
+    dispatch(destroyFacilities());
+  }
+});
 
 const mapStateToProps = state => {
   const initialValues = state.form.homepage.initialValues;
@@ -90,7 +98,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
   reduxForm({
     form: 'homepage',
     destroyOnUnmount: false

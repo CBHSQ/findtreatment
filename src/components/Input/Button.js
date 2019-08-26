@@ -18,8 +18,7 @@ const Button = styled.button`
 
   ${props => props.disable && tw`hover:bg-blue cursor-not-allowed opacity-50`}
 
-  ${props =>
-    props.link && tw`inline-block text-blue hover:text-blue font-normal p-0`}
+  ${props => props.link && tw`text-blue hover:text-blue font-normal p-0`}
 `;
 
 export default Button;

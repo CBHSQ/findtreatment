@@ -1,6 +1,7 @@
 module.exports = {
   theme: {
     colors: {
+      black: '#000000', // print text color
       blue: '#1a7bbc', // primary/outline buttons
       gold: '#ffbe22', // help line
       gray: {

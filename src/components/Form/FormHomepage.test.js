@@ -3,70 +3,46 @@ import { shallow } from 'enzyme';
 import { FormHomepage } from './FormHomepage';
 
 const testProps = {
-  dispatch: () => {},
-  handleSubmit: () => {},
+  clearValues: jest.fn(),
+  handleSubmit: jest.fn(),
   initialValues: {},
   location: {}
 };
 
 describe('HomePage component', () => {
-  describe('with an invalid location prop', () => {
-    it('disables the submit button without a valid location', () => {
-      const component = shallow(<FormHomepage {...testProps} />, {
-        disableLifecycleMethods: true
-      });
+  describe('componentDidMount()', () => {
+    it('does not clear values if location is not set', () => {
+      const props = {
+        ...testProps
+      };
+      shallow(<FormHomepage {...props} />);
 
-      expect(
-        component.find('FormHomepage___StyledButton').prop('disable')
-      ).toBe(true);
+      expect(testProps.clearValues.mock.calls.length).toBe(0);
     });
 
-    it('disallows form submission', () => {
-      const mockSubmit = jest.fn();
+    it('clears values if location is already set', () => {
       const props = {
         ...testProps,
-        handleSubmit: mockSubmit
+        location: { latLng: {} }
       };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      const form = component.find('FormHomepage__Form');
+      shallow(<FormHomepage {...props} />);
 
-      form.simulate('submit', { preventDefault() {} });
-
-      expect(mockSubmit.mock.calls.length).toBe(0);
+      expect(props.clearValues.mock.calls.length).toBe(1);
     });
   });
 
   describe('with a valid location prop', () => {
-    it('enables the submit button with a valid latLng', () => {
-      const props = {
-        ...testProps,
-        location: { latLng: {} }
-      };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      expect(
-        component.find('FormHomepage___StyledButton').prop('disable')
-      ).toBe(false);
-    });
-
     it('calls its handleSubmit prop when the form is submitted', () => {
-      const mockSubmit = jest.fn();
       const props = {
         ...testProps,
-        handleSubmit: mockSubmit,
         location: { latLng: {} }
       };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      const form = component.find('FormHomepage__Form');
+      const component = shallow(<FormHomepage {...props} />);
+      const form = component.find('form');
 
       form.simulate('submit');
 
-      expect(mockSubmit.mock.calls.length).toBe(1);
+      expect(props.handleSubmit.mock.calls.length).toBe(1);
     });
   });
 });

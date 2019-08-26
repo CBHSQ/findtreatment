@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
-import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
@@ -10,6 +8,7 @@ import content from '../utils/content';
 import { SITE_TITLE } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
+import GlobalStyle from './GlobalStyle';
 import Header from './Header';
 import Home from './Home';
 import Results from './Results';
@@ -17,12 +16,6 @@ import Details from './Details';
 import Content from './Content';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    ${tw`font-sans text-gray-darkest leading-normal`}
-  }
-`;
 
 class App extends Component {
   render() {

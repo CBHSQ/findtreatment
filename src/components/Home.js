@@ -50,18 +50,20 @@ class Home extends Component {
 
   renderCards(card) {
     return (
-      <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-12`}>
+      <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-10`}>
         <div css={tw`flex -mx-2 mb-4`}>
           <div css={tw`w-1/5 px-2`}>{card.icon}</div>
           <div css={tw`flex-1 px-2`}>
-            <h3 css={tw`text-xl text-gray-dark mb-4`}>{card.name}</h3>
-            <p>{card.description}</p>
+            <h3 css={tw`text-xl font-heading font-bold text-gray-dark mb-4`}>
+              {card.name}
+            </h3>
+            <p css={tw`mb-4`}>{card.description}</p>
             <Button
               as={Link}
               to={`/content/${card.id}`}
               outline={!this.isDesktop}
               link={this.isDesktop}
-              css={tw`w-full`}
+              css={tw`w-full md:inline`}
               aria-label={`Button link to learn more about ${card.name}`}
             >
               Learn more ›
@@ -76,11 +78,10 @@ class Home extends Component {
     const isDesktop = this.context;
 
     return (
-      <div css={tw`overflow-hidden`}>
+      <>
         <MobileBgContainer>
           <MobileBgImage />
         </MobileBgContainer>
-
         <div
           css={tw`pb-10 -mt-8 md:mt-0 md:py-20 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
         >
@@ -95,7 +96,7 @@ class Home extends Component {
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
-                <h1 css={tw`text-3xl pb-4`}>
+                <h1 css={tw`text-3xl font-heading font-bold mb-4`}>
                   Millions of Americans have a substance use disorder. Find
                   help; find hope.
                 </h1>
@@ -149,20 +150,23 @@ class Home extends Component {
         </div>
         <div className="container" id="home-learn-more">
           <div css={tw`py-10 md:py-20`}>
-            <DecorativeHeading>
-              <h2 css={tw`text-2xl md:text-3xl`}>What to expect</h2>
+            <DecorativeHeading
+              as="h2"
+              css={tw`text-2xl md:text-3xl font-heading font-bold`}
+            >
+              What to expect
             </DecorativeHeading>
             <p css={tw`mb-8 md:text-xl`}>
               Help is available, treatment works, and people recover every day.
             </p>
-            <div css={tw`flex flex-wrap -mx-2 -mb-12`}>
+            <div css={tw`flex flex-wrap -mx-2 -mb-10`}>
               {this.props.content
                 .filter(card => !card.hidden)
                 .map(this.renderCards, { isDesktop })}
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

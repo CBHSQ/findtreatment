@@ -6,6 +6,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Helmet } from 'react-helmet';
 
+import { theme } from '../tailwind.js';
 import { convertToSlug, hashLinkScroll } from '../utils/misc';
 
 import NoMatch from './NoMatch';
@@ -26,12 +27,47 @@ const Main = styled.div`
 
   h1,
   h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    ${tw`font-bold font-heading mb-4`}
+  }
+
+  h1 {
+    ${tw`text-xl`}
+  }
+
+  h2 {
+    ${tw`text-lg`}
+  }
+
   h3 {
-    ${tw`mb-4`}
+    ${tw`text-base`}
+  }
+
+  @media (min-width: ${theme.screens.lg}) {
+    h1 {
+      ${tw`text-2xl`}
+    }
+
+    h2 {
+      ${tw`text-xl`}
+    }
+
+    h3 {
+      ${tw`text-lg`}
+    }
   }
 
   h3 {
     ${tw`uppercase font-semibold text-sm`}
+  }
+
+  ol,
+  p,
+  ul {
+    ${tw`mb-4`}
   }
 
   ul,
@@ -117,7 +153,7 @@ export class Content extends Component {
   renderMain = topic => {
     const { name, description, body, subTopics } = topic;
     return (
-      <Main>
+      <Main className="prose">
         <Helmet>
           <title>{name}</title>
         </Helmet>

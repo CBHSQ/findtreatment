@@ -121,7 +121,7 @@ const Footer = () => {
             </ul>
           </div>
           <div css={tw`w-full lg:flex-1 px-6`}>
-            <h3 css={tw`mb-2`}>Contact SAMHSA</h3>
+            <p css={tw`font-bold mb-1`}>Contact SAMHSA</p>
             <p css={tw`mb-4`}>
               5600 Fishers Ln
               <br />
