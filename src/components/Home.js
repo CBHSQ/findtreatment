@@ -59,11 +59,11 @@ class Home extends Component {
             </h3>
             <p css={tw`mb-4`}>{card.description}</p>
             <Button
-              as={Link}
+              forwardedAs={Link}
               to={`/content/${card.id}`}
               outline={!this.isDesktop}
               link={this.isDesktop}
-              css={tw`w-full md:inline`}
+              css={tw`w-full lg:inline`}
               aria-label={`Button link to learn more about ${card.name}`}
             >
               Learn more ›
@@ -109,7 +109,7 @@ class Home extends Component {
                 <Button
                   smooth
                   primary
-                  as={HashLink}
+                  forwardedAs={HashLink}
                   css={tw`w-full mb-4 md:mb-0 md:mr-4 md:w-auto md:inline-block`}
                   to={'/#home-search'}
                 >
@@ -118,7 +118,7 @@ class Home extends Component {
                 <Button
                   smooth
                   outline
-                  as={HashLink}
+                  forwardedAs={HashLink}
                   css={tw`w-full md:w-auto md:inline-block`}
                   to={`#home-learn-more`}
                 >

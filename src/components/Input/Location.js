@@ -132,6 +132,7 @@ class Location extends Component {
                   className="autocomplete-dropdown-container"
                   role="listbox"
                   id="listbox"
+                  aria-label={input.name}
                 >
                   {suggestions.map(suggestion => {
                     const className = suggestion.active

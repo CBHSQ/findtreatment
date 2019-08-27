@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
 import { SITE_TITLE } from '../utils/constants';
+import { theme } from '../tailwind.js';
 
 import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
@@ -49,8 +50,8 @@ App.propTypes = {
   isDesktop: PropTypes.bool.isRequired
 };
 
-const mapSizesToProps = sizes => ({
-  isDesktop: withSizes.isDesktop(sizes)
+const mapSizesToProps = ({ width }) => ({
+  isDesktop: width > parseInt(theme.screens.lg, 10)
 });
 
 export default withSizes(mapSizesToProps)(App);
