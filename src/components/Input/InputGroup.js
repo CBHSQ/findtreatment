@@ -4,11 +4,16 @@ import tw from 'tailwind.macro';
 import { Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 
-import { Button, Label, Radio } from '../Input';
+import { Button, Checkbox, Label, Radio } from '../Input';
 
-class RadioGroup extends Component {
+class InputGroup extends Component {
   state = {
     showAllOptions: false
+  };
+
+  components = {
+    checkbox: Checkbox,
+    radio: Radio
   };
 
   toggleShowAllOptions = () => {
@@ -18,9 +23,10 @@ class RadioGroup extends Component {
   };
 
   render() {
-    const { legend, name, options, visible } = this.props;
+    const { legend, name, options, type, visible } = this.props;
     const { showAllOptions } = this.state;
     const visibleOptions = showAllOptions ? options.length : visible;
+    const Input = this.components[type || 'radio'];
 
     return (
       <>
@@ -30,8 +36,13 @@ class RadioGroup extends Component {
             component={({ input, options }) =>
               options
                 .slice(0, visibleOptions)
-                .map(option => (
-                  <Radio key={option.id} input={input} option={option} />
+                .map((option, index) => (
+                  <Input
+                    key={index}
+                    input={input}
+                    option={option}
+                    index={index}
+                  />
                 ))
             }
             name={name}
@@ -39,7 +50,12 @@ class RadioGroup extends Component {
           />
         </fieldset>
         {visible && (
-          <Button link onClick={this.toggleShowAllOptions} type="button">
+          <Button
+            css={tw`text-sm`}
+            link
+            onClick={this.toggleShowAllOptions}
+            type="button"
+          >
             {showAllOptions ? '- Show less' : '+ Show more'}
           </Button>
         )}
@@ -48,7 +64,7 @@ class RadioGroup extends Component {
   }
 }
 
-RadioGroup.propTypes = {
+InputGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
@@ -61,4 +77,4 @@ RadioGroup.propTypes = {
   visible: PropTypes.number
 };
 
-export default RadioGroup;
+export default InputGroup;

@@ -54,7 +54,7 @@ export class FormHomepage extends Component {
 
         <Button
           primary
-          css={tw`w-full md:w-auto md:inline-block md:px-16`}
+          css={tw`w-full md:w-auto md:inline-block md:px-16 text-2xl md:text-lg `}
           type="submit"
         >
           Search

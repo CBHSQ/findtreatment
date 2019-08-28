@@ -18,7 +18,6 @@ export class Results extends Component {
 
     dispatch(handleReceiveFacilities(values));
 
-    this.toggleFilters();
     window.scrollTo(0, 0);
   };
 

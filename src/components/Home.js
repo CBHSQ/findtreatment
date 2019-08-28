@@ -110,7 +110,7 @@ class Home extends Component {
                   smooth
                   primary
                   forwardedAs={HashLink}
-                  css={tw`w-full mb-4 md:mb-0 md:mr-4 md:w-auto md:inline-block`}
+                  css={tw`w-full mb-4 md:mb-0 md:mr-4 md:w-auto md:inline-block text-2xl md:text-lg`}
                   to={'/#home-search'}
                 >
                   Find treatment
@@ -119,7 +119,7 @@ class Home extends Component {
                   smooth
                   outline
                   forwardedAs={HashLink}
-                  css={tw`w-full md:w-auto md:inline-block`}
+                  css={tw`w-full md:w-auto md:inline-block text-2xl md:text-lg`}
                   to={`#home-learn-more`}
                 >
                   Learn more

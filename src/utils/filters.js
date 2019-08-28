@@ -1,15 +1,16 @@
 export const age = [
+  { value: '', label: 'All ages' },
   { value: 'ADLT', label: 'Adults (18 and older)' },
-  { value: 'CHLD', label: 'Children and adolescents (17 and under)' }
+  { value: 'CHLD', label: 'Youth (under 18)' }
 ];
 
 export const distance = [
-  { value: 8046.72, label: '5 mi.' },
-  { value: 16093.4, label: '10 mi.' },
-  { value: 40233.6, label: '25 mi.' },
-  { value: 80467.2, label: '50 mi.' },
-  { value: 160934, label: '100 mi.' },
-  { value: '', label: '100+ mi.' }
+  { value: 8046.72, label: '5 miles' },
+  { value: 16093.4, label: '10 miles' },
+  { value: 40233.6, label: '25 miles' },
+  { value: 80467.2, label: '50 miles' },
+  { value: 160934, label: '100 miles' },
+  { value: '', label: '100+ miles' }
 ];
 
 export const gender = [
@@ -18,9 +19,21 @@ export const gender = [
 ];
 
 export const mat = [
-  { value: 'BU', label: 'Buprenorphine' },
-  { value: 'METH', label: 'Methadone' },
-  { value: 'NU', label: 'Naltrexone' }
+  {
+    value: 'BU',
+    label: 'Buprenorphine',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'METH',
+    label: 'Methadone',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'NU',
+    label: 'Naltrexone',
+    description: 'Super awesome description.'
+  }
 ];
 
 export const payment = [
@@ -73,6 +86,17 @@ export const payment = [
     value: 'ITU',
     label: 'IHS/Tribal/Urban (ITU) funds',
     description: 'Super awesome description.'
+  }
+];
+
+export const special = [
+  {
+    value: 'VET',
+    label: 'Veterans'
+  },
+  {
+    value: 'GL',
+    label: 'LGBT (Lesbian, gay, bisexual, transgender)'
   }
 ];
 

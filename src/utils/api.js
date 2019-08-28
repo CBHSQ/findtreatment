@@ -16,7 +16,7 @@ export default axios.create({
 
 export const buildParams = query => {
   const { distance, language, location, page, type, ...sCodes } = query;
-  const serviceCodes = Object.values(sCodes);
+  const serviceCodes = flatternServiceCodes(sCodes);
 
   const params = {
     sType: DEFAULT_STYPE,
@@ -46,4 +46,15 @@ const combineServiceTypeAndServiceCodes = (type = '', serviceCodes = []) => {
         .concat(type)
         .filter(code => !!code)
         .toString();
+};
+
+const flatternServiceCodes = sCodes => {
+  return Object.values(sCodes).reduce((memo, item) => {
+    if (Array.isArray(item)) {
+      return memo.concat(item);
+    } else {
+      memo.push(item);
+    }
+    return memo;
+  }, []);
 };
