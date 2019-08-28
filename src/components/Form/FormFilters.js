@@ -94,6 +94,7 @@ export class FormFilters extends Component {
                   legend="Payment options"
                   name="payment"
                   options={filterOptions.payment}
+                  visible={4}
                 />
               </Row>
             </div>
@@ -103,6 +104,7 @@ export class FormFilters extends Component {
                   legend="Type of treatment"
                   name="type"
                   options={filterOptions.type}
+                  visible={3}
                 />
               </Row>
             </div>
