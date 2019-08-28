@@ -24,36 +24,98 @@ export const mat = [
 ];
 
 export const payment = [
-  { value: 'PI', label: 'Private health insurance' },
-  { value: 'MD', label: 'Medicaid' },
-  { value: 'MC', label: 'Medicare' },
+  {
+    value: '',
+    label: 'All payment options',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'PI',
+    label: 'Private health insurance',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'MD',
+    label: 'Medicaid',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'MC',
+    label: 'Medicare',
+    description: 'Super awesome description.'
+  },
   {
     value: 'PA',
-    label: 'Payment assistance available (check with facility for details)'
+    label: 'Payment assistance available (check with facility for details)',
+    description: 'Super awesome description.'
   },
   {
     value: 'SS',
-    label: 'Sliding fee scale'
+    label: 'Sliding fee scale',
+    description: 'Super awesome description.'
   },
-  { value: 'NP', label: 'Free or no-cost care' },
-  { value: 'SF', label: 'Cash or self-payment' },
-  { value: 'MI', label: 'Military insurance (e.g. TRICARE)' },
-  { value: 'ITU', label: 'IHS/Tribal/Urban (ITU) funds' }
+  {
+    value: 'NP',
+    label: 'Free or no-cost care',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'SF',
+    label: 'Cash or self-payment',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'MI',
+    label: 'Military insurance (e.g. TRICARE)',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'ITU',
+    label: 'IHS/Tribal/Urban (ITU) funds',
+    description: 'Super awesome description.'
+  }
 ];
 
 export const type = [
-  { value: 'Custom-Intake', label: 'Assessment and pretreatment' },
-  { value: 'ISC', label: 'Interim care' },
-  { value: 'DT', label: 'Detox' },
-  { value: 'OP', label: 'Outpatient' },
-  { value: 'HI', label: 'Hospital inpatient' },
-  { value: 'RES', label: 'Residential' },
+  {
+    value: '',
+    label: 'All types of treatment',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'Custom-Intake',
+    label: 'Assessment and pretreatment',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'ISC',
+    label: 'Interim care',
+    description: 'Super awesome description.'
+  },
+  { value: 'DT', label: 'Detox', description: 'Super awesome description.' },
+  {
+    value: 'OP',
+    label: 'Outpatient',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'HI',
+    label: 'Hospital inpatient',
+    description: 'Super awesome description.'
+  },
+  {
+    value: 'RES',
+    label: 'Residential',
+    description: 'Super awesome description.'
+  },
   {
     value: 'CO',
-    label: 'Co-occurring mental health and substance use treatment'
+    label: 'Co-occurring mental health and substance use treatment',
+    description: 'Super awesome description.'
   },
   {
     value: 'CT',
-    label: 'Telemedicine (including internet and mobile programs)'
+    label: 'Telemedicine (including internet and mobile programs)',
+    description: 'Super awesome description.'
   }
 ];

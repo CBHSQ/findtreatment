@@ -11,26 +11,8 @@ import ScreenContext from './ScreenContext';
 import Error from './Error';
 import ResultsList from './ResultsList';
 import FormFilters from './Form/FormFilters';
-import MapContainer from './Map/MapContainer';
 
 export class Results extends Component {
-  state = {
-    filtersHidden: false,
-    resultsHidden: false
-  };
-
-  toggleFilters = () => {
-    this.setState({
-      filtersHidden: !this.state.filtersHidden
-    });
-  };
-
-  toggleResults = () => {
-    this.setState({
-      resultsHidden: !this.state.resultsHidden
-    });
-  };
-
   submit = values => {
     const { dispatch } = this.props;
 
@@ -51,33 +33,25 @@ export class Results extends Component {
     }
 
     return (
-      <div className="container">
-        <Helmet>
-          <title>Results</title>
-        </Helmet>
-        <div css={tw`flex flex-wrap -mx-6`}>
-          <div css={tw`w-full lg:w-2/5 px-6 mb-6 print:hidden`}>
-            <FormFilters
-              onSubmit={this.submit}
-              toggleFilters={this.toggleFilters}
-              toggleResults={this.toggleResults}
-              filtersHidden={this.state.filtersHidden}
-              resultsHidden={this.state.resultsHidden}
-              hasResults={hasResults}
-              isDesktop={isDesktop}
-            />
-            {((isDesktop && !loading && hasResults) ||
-              (this.state.resultsHidden && !this.state.filtersHidden)) && (
-              <div css={tw`lg:pt-6 lg:border-t`}>
-                <div css={tw`relative h-64 w-full mb-6`}>
-                  <MapContainer rows={rows} />
-                </div>
+      <div css={tw`py-10 bg-gray-lightest border-t border-gray-lighter`}>
+        <div className="container">
+          <Helmet>
+            <title>Results</title>
+          </Helmet>
+          <div css={tw`flex flex-wrap -mx-6`}>
+            <div css={tw`w-full lg:w-1/3 bg-white rounded shadow print:hidden`}>
+              <div css={tw`p-4 border-b-4 border-gray-lighter`}>
+                <h1 css={tw`text-2xl font-heading font-bold`}>
+                  Refine search results
+                </h1>
               </div>
-            )}
-          </div>
-          <div css={tw`w-full lg:w-3/5 px-6 mb-6 lg:mb-0`}>
-            {(isDesktop ||
-              (!this.state.filtersHidden && !this.state.resultsHidden)) && (
+              <FormFilters
+                onSubmit={this.submit}
+                hasResults={hasResults}
+                isDesktop={isDesktop}
+              />
+            </div>
+            <div css={tw`w-full lg:w-2/3 px-6 mb-6 lg:mb-0`}>
               <ResultsList
                 loading={loading}
                 rows={rows}
@@ -86,7 +60,7 @@ export class Results extends Component {
                 recordCount={recordCount}
                 hasResults={hasResults}
               />
-            )}
+            </div>
           </div>
         </div>
       </div>

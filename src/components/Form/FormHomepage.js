@@ -44,7 +44,7 @@ export class FormHomepage extends Component {
       <form onSubmit={this.handleSubmit}>
         <Label value="Find a treatment facility near you" css={tw`mb-8`} large>
           <Field
-            css={tw`md:mt-6 md:w-full md:shadow-md`}
+            css={tw`md:mt-6 md:w-full md:shadow-md rounded`}
             component={Location}
             name="location"
             placeholder="City or zip code"

@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 
 const StyledSelect = styled.select`
-  ${tw`block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+  ${tw`block bg-white border rounded-none appearance-none w-full py-3 px-4 pr-8`}
 
   &::-ms-expand {
     display: none;
@@ -12,7 +12,7 @@ const StyledSelect = styled.select`
 `;
 
 const Arrow = styled.div`
-  ${tw`pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700`}
+  ${tw`pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-700`}
 `;
 
 const Select = ({ input, label, plural, hideFirst, options }) => (
@@ -28,7 +28,7 @@ const Select = ({ input, label, plural, hideFirst, options }) => (
       </StyledSelect>
       <Arrow>
         <svg
-          css={tw`fill-current h-3 w-3`}
+          css={tw`fill-current h-4 w-4`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 10 14"
         >

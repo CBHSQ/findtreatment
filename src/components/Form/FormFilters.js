@@ -5,12 +5,6 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAngleDown,
-  faAngleUp,
-  faSlidersH
-} from '@fortawesome/free-solid-svg-icons';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import { resetAllFilters } from '../../actions/filters';
@@ -18,18 +12,10 @@ import { toggleAdvancedFilters } from '../../actions/ui';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-import { Button, Label, Location, Select } from '../Input';
+import { Button, Label, Location, RadioGroup, Select } from '../Input';
 
 const Row = styled.div`
-  ${tw`w-full mb-6`}
-`;
-
-const RowFlex = styled.div`
-  ${tw`flex flex-wrap -mx-2 mb-6`}
-`;
-
-const Form = styled.form`
-  ${tw`bg-gray-200 rounded p-6 mb-6`}
+  ${tw`w-full mb-4 px-4`}
 `;
 
 export class FormFilters extends Component {
@@ -61,84 +47,37 @@ export class FormFilters extends Component {
 
   render() {
     const {
+      className,
       advancedHidden,
       handleSubmit,
       languages,
-      toggleFilters,
-      toggleResults,
       filtersHidden,
-      resultsHidden,
-      hasResults,
       isDesktop
     } = this.props;
     const { showLocationWarning } = this.state;
 
     return (
       <>
-        <RowFlex css={tw`flex lg:hidden justify-between border-b pb-6`}>
-          <div css={tw`px-2`}>
-            <Button outline onClick={toggleFilters}>
-              {filtersHidden ? 'Cancel' : 'Filter'}
-            </Button>
-          </div>
-          {filtersHidden ? (
-            <div css={tw`px-2`}>
-              <Button primary onClick={handleSubmit}>
-                Update providers
-              </Button>
-            </div>
-          ) : (
-            hasResults && (
-              <Button onClick={toggleResults} outline>
-                {resultsHidden ? 'List' : 'Map'}
-              </Button>
-            )
-          )}
-        </RowFlex>
         {(isDesktop || filtersHidden) && (
-          <Form onSubmit={handleSubmit}>
-            <div css={tw`hidden lg:flex justify-between flex-no-wrap mb-6`}>
-              <div>
-                <h2>
-                  <FontAwesomeIcon
-                    icon={faSlidersH}
-                    css={tw`mr-1 text-gray-500`}
-                    rotation={90}
-                  />
-                  Filters
-                </h2>
-                <p css={tw`text-xs text-gray-700 font-light mb-0`}>
-                  Search for facilities that match your needs
-                </p>
-              </div>
-              <div>
-                <Button
-                  link
-                  className="reset-filters"
-                  onClick={this.handleReset}
-                  type="button"
-                >
-                  Reset
-                </Button>
-              </div>
-            </div>
-            <RowFlex>
-              <div css={tw`w-full md:w-3/5 px-2 mb-6 md:mb-0`}>
+          <form onSubmit={handleSubmit} className={className}>
+            <div css={tw`border-b border-gray-lighter pt-4`}>
+              <Row>
                 <Label value="Location">
                   <Field
+                    css={tw`bg-gray-lightest`}
                     component={Location}
                     name="location"
                     placeholder="City or zip code"
                     toggleShowWarning={this.toggleShowLocationWarning}
                   />
                   {showLocationWarning && (
-                    <div css={tw`w-full mt-2 text-red-500 text-sm`}>
+                    <div css={tw`mt-2 text-red-500 text-sm`}>
                       {LOCATION_WARNING}
                     </div>
                   )}
                 </Label>
-              </div>
-              <div css={tw`w-full md:w-2/5 px-2`}>
+              </Row>
+              <Row>
                 <Label value="Distance">
                   <Field
                     name="distance"
@@ -147,40 +86,26 @@ export class FormFilters extends Component {
                     options={filterOptions.distance}
                   />
                 </Label>
-              </div>
-            </RowFlex>
-            <Row>
-              <Label
-                value="Payment options"
-                help={{
-                  url: '/content/paying-for-treatment',
-                  text: 'Not sure?'
-                }}
-              >
-                <Field
+              </Row>
+            </div>
+            <div css={tw`border-b border-gray-lighter pt-4`}>
+              <Row>
+                <RadioGroup
+                  legend="Payment options"
                   name="payment"
-                  plural="payment options"
-                  component={Select}
                   options={filterOptions.payment}
                 />
-              </Label>
-            </Row>
-            <Row>
-              <Label
-                value="Type of treatment"
-                help={{
-                  url: '/content/treatment-options#types-of-treatment',
-                  text: 'Not sure?'
-                }}
-              >
-                <Field
+              </Row>
+            </div>
+            <div css={tw`border-b border-gray-lighter pt-4`}>
+              <Row>
+                <RadioGroup
+                  legend="Type of treatment"
                   name="type"
-                  plural="types of treatment"
-                  component={Select}
                   options={filterOptions.type}
                 />
-              </Label>
-            </Row>
+              </Row>
+            </div>
             {!advancedHidden && (
               <div className="filter-container">
                 <Row>
@@ -207,7 +132,7 @@ export class FormFilters extends Component {
                   <Label as="span" value="Special programs" />
                   <Label value="Veterans" inline>
                     <Field
-                      css={tw`mr-2 `}
+                      css={tw`mr-2`}
                       type="checkbox"
                       name="VET"
                       component="input"
@@ -247,18 +172,6 @@ export class FormFilters extends Component {
                 </Row>
               </div>
             )}
-            <button
-              className="filter-link"
-              css={tw`mb-6`}
-              onClick={this.toggleAdvancedFilters}
-              type="button"
-            >
-              {advancedHidden ? 'More' : 'Less'} filters
-              <FontAwesomeIcon
-                icon={advancedHidden ? faAngleDown : faAngleUp}
-                css={tw`text-blue-500 ml-1`}
-              />
-            </button>
             {!isDesktop && (
               <Row>
                 <Button primary css={tw`w-full`} type="submit">
@@ -272,7 +185,7 @@ export class FormFilters extends Component {
                 related to the treatment you’re looking for.
               </p>
             </Row>
-          </Form>
+          </form>
         )}
       </>
     );

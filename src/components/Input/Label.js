@@ -7,16 +7,18 @@ import { Link } from 'react-router-dom';
 const StyledLabel = styled.label`
   ${tw`block`}
 
+  ${props => props.inline && tw`flex`}
+
   span {
-    ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
+    ${tw`block font-bold font-heading uppercase text-sm mb-2`}
 
-    ${props =>
-      props.inline &&
-      tw`inline normal-case tracking-normal text-gray-900 text-sm font-normal`}
+    ${props => props.inline && tw`font-sans normal-case`}
 
-    ${props =>
-      props.large &&
-      tw`normal-case tracking-normal text-gray-900 text-2xl md:text-3xl font-heading`}
+    ${props => props.large && tw`text-2xl md:text-3xl`}
+  }
+
+  p {
+    ${tw`text-sm mb-4`}
   }
 `;
 
@@ -26,7 +28,14 @@ const Label = props => {
       {props.inline ? (
         <StyledLabel {...props}>
           {props.children}
-          <span>{props.value}</span>
+          {props.description ? (
+            <div>
+              <span>{props.value}</span>
+              <p>{props.description}</p>
+            </div>
+          ) : (
+            <span>{props.value}</span>
+          )}
         </StyledLabel>
       ) : (
         <StyledLabel {...props}>

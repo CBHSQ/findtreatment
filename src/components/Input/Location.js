@@ -13,7 +13,7 @@ const StyledPlacesAutoComplete = styled.div`
   ${tw`relative`}
 
   input {
-    ${tw`block w-full p-4 rounded text-lg`}
+    ${tw`block w-full p-4 text-lg`}
 
     &::-webkit-input-placeholder {
       ${tw`text-gray-darkest`}
