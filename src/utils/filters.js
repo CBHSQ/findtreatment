@@ -39,53 +39,54 @@ export const mat = [
 export const payment = [
   {
     value: '',
-    label: 'All payment options',
-    description: 'Super awesome description.'
+    label: 'All payment options'
   },
   {
     value: 'PI',
     label: 'Private health insurance',
-    description: 'Super awesome description.'
+    description:
+      'Those with private insurance typically get it through an employer or insurance exchange. For example: PPO or HMO coverage.'
   },
   {
     value: 'MD',
     label: 'Medicaid',
-    description: 'Super awesome description.'
-  },
-  {
-    value: 'MC',
-    label: 'Medicare',
-    description: 'Super awesome description.'
-  },
-  {
-    value: 'PA',
-    label: 'Payment assistance available (check with facility for details)',
-    description: 'Super awesome description.'
-  },
-  {
-    value: 'SS',
-    label: 'Sliding fee scale',
-    description: 'Super awesome description.'
+    description:
+      'Government program providing health coverage for people with very low income.'
   },
   {
     value: 'NP',
     label: 'Free or no-cost care',
-    description: 'Super awesome description.'
+    description: 'Free services; no payment needed.'
+  },
+  {
+    value: 'MC',
+    label: 'Medicare',
+    description:
+      'Federal health insurance for adults 65 and older, or younger people with certain disabilities.'
+  },
+  {
+    value: 'PA',
+    label: 'Payment assistance available',
+    description:
+      'Facilities that may offer help paying for services. Check with the facility for details.'
+  },
+  {
+    value: 'SS',
+    label: 'Sliding fee scale',
+    description: 'Adjustable fees based on income.'
   },
   {
     value: 'SF',
     label: 'Cash or self-payment',
-    description: 'Super awesome description.'
+    description: 'Accepts direct payment for treatment.'
   },
   {
     value: 'MI',
-    label: 'Military insurance (e.g. TRICARE)',
-    description: 'Super awesome description.'
+    label: 'Military insurance (e.g. TRICARE)'
   },
   {
     value: 'ITU',
-    label: 'IHS/Tribal/Urban (ITU) funds',
-    description: 'Super awesome description.'
+    label: 'IHS/Tribal/Urban (ITU) funds'
   }
 ];
 
@@ -103,43 +104,50 @@ export const special = [
 export const type = [
   {
     value: '',
-    label: 'All types of treatment',
-    description: 'Super awesome description.'
-  },
-  {
-    value: 'Custom-Intake',
-    label: 'Assessment and pretreatment',
-    description: 'Super awesome description.'
+    label: 'All types of treatment'
   },
   {
     value: 'ISC',
     label: 'Interim care',
-    description: 'Super awesome description.'
+    description: 'When immediate admission to other care isn’t available.'
   },
-  { value: 'DT', label: 'Detox', description: 'Super awesome description.' },
+  {
+    value: 'DT',
+    label: 'Detox',
+    description: 'Supervised withdrawal from substance use.'
+  },
   {
     value: 'OP',
     label: 'Outpatient',
-    description: 'Super awesome description.'
+    description:
+      'Treatment at a program site while a patient lives on their own.'
   },
   {
     value: 'HI',
     label: 'Hospital inpatient',
-    description: 'Super awesome description.'
+    description: '24/7 care connected to a hospital, lasting days or weeks.'
   },
   {
     value: 'RES',
     label: 'Residential',
-    description: 'Super awesome description.'
+    description: 'Live-in care, lasting for one month to one year.'
+  },
+  {
+    value: 'HH',
+    label: 'Transitional housing',
+    description:
+      'Temporary space to stay while transitioning from an intensive treatment setting. Sometimes called a halfway house or sober living.'
   },
   {
     value: 'CO',
     label: 'Co-occurring mental health and substance use treatment',
-    description: 'Super awesome description.'
+    description:
+      'Integrated care that addresses substance use and mental illness.'
   },
   {
     value: 'CT',
     label: 'Telemedicine (including internet and mobile programs)',
-    description: 'Super awesome description.'
+    description:
+      'Care given over the phone or online to support treatment and recovery.'
   }
 ];
