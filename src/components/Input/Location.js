@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
 import PlacesAutocomplete, {
-  geocodeByAddress,
+  geocodeByPlaceId,
   getLatLng
 } from 'react-places-autocomplete';
 import { PropTypes } from 'prop-types';
@@ -55,7 +55,7 @@ class Location extends Component {
     input.onChange({ address: address || '' });
   };
 
-  handleSelect = address => {
+  handleSelect = (address, placeId) => {
     const { dispatch, input, meta, toggleShowWarning } = this.props;
     const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
 
@@ -68,7 +68,7 @@ class Location extends Component {
         toggleShowWarning(false);
       }
 
-      geocodeByAddress(address)
+      geocodeByPlaceId(placeId)
         .then(results => getLatLng(results[0]))
         .then(latLng => input.onChange({ address, latLng }));
     }
