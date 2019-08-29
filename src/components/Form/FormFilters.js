@@ -72,20 +72,20 @@ export class FormFilters extends Component {
         <RowWrapper>
           <Row>
             <InputGroup
-              legend="Payment options"
-              name="payment"
-              options={filterOptions.payment}
-              visible={4}
+              legend="Treatment type"
+              name="type"
+              options={filterOptions.type}
+              visible={3}
             />
           </Row>
         </RowWrapper>
         <RowWrapper>
           <Row>
             <InputGroup
-              legend="Treatment type"
-              name="type"
-              options={filterOptions.type}
-              visible={3}
+              legend="Payment options"
+              name="payment"
+              options={filterOptions.payment}
+              visible={4}
             />
           </Row>
         </RowWrapper>
