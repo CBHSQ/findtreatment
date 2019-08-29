@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    ${tw`text-blue hover:text-blue`}
+    ${tw`text-blue`}
   }
 
   @media print {

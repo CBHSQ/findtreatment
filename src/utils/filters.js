@@ -13,12 +13,12 @@ export const distance = [
   { value: '', label: '100+ miles' }
 ];
 
-export const gender = [
-  { value: 'MALE', label: 'Male' },
-  { value: 'FEM', label: 'Female' }
-];
-
 export const mat = [
+  {
+    value: '',
+    label: 'All types of treatment',
+    description: 'Super awesome description.'
+  },
   {
     value: 'BU',
     label: 'Buprenorphine',

@@ -13,7 +13,11 @@ module.exports = {
         darker: '#2c3747',
         darkest: '#171717' // body text
       },
-      teal: '#44bae6', // homepage accent background
+      teal: {
+        lighter: '#F1F5F6',
+        light: '#759aac',
+        default: '#44bae6' // homepage accent background
+      },
       transparent: 'transparent',
       white: '#ffffff'
     },

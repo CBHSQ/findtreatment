@@ -9,6 +9,7 @@ import { handleReceiveFacilities } from '../actions/facilities';
 
 import ScreenContext from './ScreenContext';
 import Error from './Error';
+import Alert from './Alert';
 import ResultsList from './ResultsList';
 import FormFilters from './Form/FormFilters';
 
@@ -37,20 +38,23 @@ export class Results extends Component {
           <Helmet>
             <title>Results</title>
           </Helmet>
-          <div css={tw`flex flex-wrap -mx-6`}>
-            <div css={tw`w-full lg:w-1/3 bg-white rounded shadow print:hidden`}>
-              <div css={tw`p-4 border-b-4 border-gray-lighter`}>
-                <h1 css={tw`text-2xl font-heading font-bold`}>
-                  Refine search results
-                </h1>
+          <div css={tw`flex flex-wrap -mx-4`}>
+            <div css={tw`w-full lg:w-1/3 px-4  mb-6 lg:mb-0 print:hidden`}>
+              <div css={tw`bg-white rounded shadow`}>
+                <div css={tw`p-4 border-b-4 border-gray-lighter`}>
+                  <h1 css={tw`text-2xl font-heading font-bold`}>
+                    Refine search results
+                  </h1>
+                </div>
+                <FormFilters
+                  onSubmit={this.submit}
+                  hasResults={hasResults}
+                  isDesktop={isDesktop}
+                />
               </div>
-              <FormFilters
-                onSubmit={this.submit}
-                hasResults={hasResults}
-                isDesktop={isDesktop}
-              />
             </div>
-            <div css={tw`w-full lg:w-2/3 px-6 mb-6 lg:mb-0`}>
+            <div css={tw`w-full lg:w-2/3 px-4`}>
+              {hasResults && <Alert />}
               <ResultsList
                 loading={loading}
                 rows={rows}

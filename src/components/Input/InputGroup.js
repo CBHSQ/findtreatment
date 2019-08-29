@@ -36,13 +36,8 @@ class InputGroup extends Component {
             component={({ input, options }) =>
               options
                 .slice(0, visibleOptions)
-                .map((option, index) => (
-                  <Input
-                    key={index}
-                    input={input}
-                    option={option}
-                    index={index}
-                  />
+                .map(option => (
+                  <Input key={option.value} input={input} option={option} />
                 ))
             }
             name={name}
