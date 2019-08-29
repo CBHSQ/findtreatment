@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Loading from './Loading';
-import ResultsList from './ResultsList';
+import { ResultsList } from './ResultsList';
 import Card from './Card';
 import NoResults from './NoResults';
 
@@ -10,6 +10,7 @@ describe('Results component', () => {
     const props = {
       hasResults: true,
       loading: true,
+      location: {},
       data: {}
     };
     const component = shallow(<ResultsList {...props} />);
@@ -20,6 +21,7 @@ describe('Results component', () => {
     const props = {
       hasResults: true,
       loading: false,
+      location: { address: '' },
       page: 1,
       totalPages: 1,
       recordCount: 11,
@@ -51,6 +53,7 @@ describe('Results component', () => {
     const props = {
       hasResults: false,
       loading: false,
+      location: {},
       page: 1,
       totalPages: 0,
       recordCount: 0,
