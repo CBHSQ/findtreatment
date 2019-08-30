@@ -19,16 +19,22 @@ export const mat = [
     label: 'All types of treatment'
   },
   {
-    value: 'BU',
-    label: 'Buprenorphine'
+    value: 'METH',
+    label: 'Methadone',
+    description:
+      'Controls symptoms and blocks cravings. Given in person at a clinic, usually every day.'
   },
   {
-    value: 'METH',
-    label: 'Methadone'
+    value: 'BU',
+    label: 'Buprenorphine',
+    description:
+      'Works similar to methadone, and can be prescribed to take at home.'
   },
   {
     value: 'NU',
-    label: 'Naltrexone'
+    label: 'Naltrexone',
+    description:
+      'Blocks the effects of opioids and alcohol completely. Not always the best fit for patients with chronic pain. '
   }
 ];
 
