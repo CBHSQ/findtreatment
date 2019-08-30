@@ -15,24 +15,22 @@ export const distance = [
 
 export const mat = [
   {
-    value: '',
-    label: 'All types of treatment',
-    description: 'Super awesome description.'
+    value: 'METH',
+    label: 'Methadone',
+    description:
+      'Controls symptoms and blocks cravings. Given in person at a clinic, usually every day.'
   },
   {
     value: 'BU',
     label: 'Buprenorphine',
-    description: 'Super awesome description.'
-  },
-  {
-    value: 'METH',
-    label: 'Methadone',
-    description: 'Super awesome description.'
+    description:
+      'Works similar to methadone, and can be prescribed to take at home.'
   },
   {
     value: 'NU',
     label: 'Naltrexone',
-    description: 'Super awesome description.'
+    description:
+      'Blocks the effects of opioids and alcohol completely. Not always the best fit for patients with chronic pain. '
   }
 ];
 
