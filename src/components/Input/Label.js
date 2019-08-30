@@ -5,20 +5,20 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const StyledLabel = styled.label`
-  ${tw`block`}
+  ${tw`block mb-2`}
 
   ${props => props.inline && tw`flex`}
 
   span {
     ${tw`block font-bold font-heading uppercase text-sm mb-2`}
 
-    ${props => props.inline && tw`font-sans normal-case`}
+    ${props => props.inline && tw`font-sans normal-case mb-0`}
 
     ${props => props.large && tw`text-2xl md:text-3xl`}
   }
 
   p {
-    ${tw`text-sm mb-4`}
+    ${tw`text-sm`}
   }
 `;
 
@@ -29,7 +29,7 @@ const Label = props => {
         <StyledLabel {...props}>
           {props.children}
           {props.description ? (
-            <div>
+            <div css={tw`-mt-px`}>
               <span>{props.value}</span>
               <p>{props.description}</p>
             </div>

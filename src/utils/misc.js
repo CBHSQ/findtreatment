@@ -20,6 +20,10 @@ export const hashLinkScroll = () => {
   }
 };
 
+export const removeHttp = url => {
+  return url.replace(/(^\w+:|^)\/\//, '');
+};
+
 export const servicesToObject = array =>
   array.reduce((obj, item) => {
     obj[item['f2']] = { name: item['f1'], values: item['f3'].split('; ') };

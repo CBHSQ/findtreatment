@@ -85,6 +85,9 @@ export class Details extends Component {
     }
 
     const {
+      frid,
+      longitude,
+      latitude,
       name1,
       name2,
       street1,
@@ -178,7 +181,13 @@ export class Details extends Component {
             <div css={tw`border-b pb-6 mb-6`}>
               <h2 css={tw`mb-4`}>Location</h2>
               <div css={tw`relative h-64 w-full mb-2`}>
-                <MapContainer rows={[data]} singleMarker={true} />
+                <MapContainer
+                  frid={frid}
+                  latitude={latitude}
+                  longitude={longitude}
+                  name1={name1}
+                  phone={phone}
+                />
               </div>
               <div css={tw`text-gray-700`}>
                 {street1}, {street2 && street2 + ','}
