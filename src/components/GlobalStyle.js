@@ -6,8 +6,10 @@ const GlobalStyle = createGlobalStyle`
     ${tw`font-sans text-gray-darkest leading-normal`}
   }
 
-  a {
-    ${tw`text-blue`}
+  main {
+    a {
+      ${tw`text-blue`}
+    }
   }
 
   @media print {

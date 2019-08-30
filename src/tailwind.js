@@ -2,7 +2,10 @@ module.exports = {
   theme: {
     colors: {
       black: '#000000', // print text color
-      blue: '#1a7bbc', // primary/outline buttons
+      blue: {
+        light: '#2380bf',
+        default: '#1a7bbc' // primary/outline buttons
+      },
       gold: '#ffbe22', // help line
       gray: {
         lightest: '#f5f5f8', // homepage search background
@@ -13,6 +16,7 @@ module.exports = {
         darker: '#2c3747',
         darkest: '#171717' // body text
       },
+      green: '#49830C',
       teal: {
         lighter: '#F1F5F6',
         light: '#759aac',

@@ -16,23 +16,19 @@ export const distance = [
 export const mat = [
   {
     value: '',
-    label: 'All types of treatment',
-    description: 'Super awesome description.'
+    label: 'All types of treatment'
   },
   {
     value: 'BU',
-    label: 'Buprenorphine',
-    description: 'Super awesome description.'
+    label: 'Buprenorphine'
   },
   {
     value: 'METH',
-    label: 'Methadone',
-    description: 'Super awesome description.'
+    label: 'Methadone'
   },
   {
     value: 'NU',
-    label: 'Naltrexone',
-    description: 'Super awesome description.'
+    label: 'Naltrexone'
   }
 ];
 

@@ -75,7 +75,7 @@ export class FormFilters extends Component {
               legend="Treatment type"
               name="type"
               options={filterOptions.type}
-              visible={3}
+              visible={4}
             />
           </Row>
         </RowWrapper>

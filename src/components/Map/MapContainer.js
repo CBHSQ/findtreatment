@@ -9,7 +9,6 @@ const mapStyles = {
   height: '100%'
 };
 
-const defaultZoomLevel = 15;
 const initialState = {
   showingInfoWindow: false,
   activeMarker: {},
@@ -18,24 +17,7 @@ const initialState = {
   }
 };
 
-const propTypes = {
-  rows: PropTypes.arrayOf(
-    PropTypes.shape({
-      frid: PropTypes.string,
-      latitude: PropTypes.string,
-      longitude: PropTypes.string,
-      name1: PropTypes.string
-    })
-  ).isRequired,
-  singleMarker: PropTypes.bool
-};
-
 export class MapContainer extends Component {
-  static propTypes = propTypes;
-  static defaultProps = {
-    singleMarker: false
-  };
-
   state = initialState;
 
   onMarkerClick = (props, marker, _) => {
@@ -53,40 +35,11 @@ export class MapContainer extends Component {
   };
 
   onReady = (_, map) => {
-    const { rows } = this.props;
-
-    if (this.hasMultipleResults()) {
-      const bounds = new window.google.maps.LatLngBounds();
-      rows.forEach(location => {
-        bounds.extend(
-          new window.google.maps.LatLng(location.latitude, location.longitude)
-        );
-      });
-      map.fitBounds(bounds);
-    }
-
     // Add title to google map iframe
     window.google.maps.event.addListenerOnce(map, 'idle', () => {
       document.getElementsByTagName('iframe')[0].title = 'Google Maps';
     });
   };
-
-  getInitialCenter() {
-    if (this.hasMultipleResults()) {
-      return;
-    }
-
-    const { latitude, longitude } = this.props.rows[0];
-
-    return {
-      lat: latitude,
-      lng: longitude
-    };
-  }
-
-  getInitialZoom() {
-    return !this.hasMultipleResults() ? defaultZoomLevel : undefined;
-  }
 
   hasMultipleResults() {
     const { rows, singleMarker } = this.props;
@@ -95,14 +48,17 @@ export class MapContainer extends Component {
   }
 
   render() {
-    const { rows, singleMarker } = this.props;
+    const { frid, latitude, longitude, name1 } = this.props;
     const { activeMarker, showingInfoWindow, selectedPlace } = this.state;
 
     return (
       <Map
         google={window.google}
-        initialCenter={this.getInitialCenter()}
-        zoom={this.getInitialZoom()}
+        initialCenter={{
+          lat: latitude,
+          lng: longitude
+        }}
+        zoom={12}
         style={mapStyles}
         fullscreenControl={false}
         mapTypeControl={false}
@@ -110,27 +66,28 @@ export class MapContainer extends Component {
         onReady={this.onReady}
         onClick={this.onMapClicked}
       >
-        {rows.map(location => {
-          const { latitude, longitude } = location;
-          return (
-            <Marker
-              key={location.frid}
-              name={location.name1}
-              details={location}
-              position={new window.google.maps.LatLng(latitude, longitude)}
-              onClick={this.onMarkerClick}
-            />
-          );
-        })}
+        <Marker
+          key={frid}
+          name={name1}
+          details={this.props}
+          position={new window.google.maps.LatLng(latitude, longitude)}
+          onClick={this.onMarkerClick}
+        />
+
         <DOMInfoWindow marker={activeMarker} visible={showingInfoWindow}>
-          <InfoWindowText
-            selectedPlace={selectedPlace}
-            singleMarker={singleMarker}
-          />
+          <InfoWindowText selectedPlace={selectedPlace} />
         </DOMInfoWindow>
       </Map>
     );
   }
 }
+
+MapContainer.propTypes = {
+  frid: PropTypes.string.isRequired,
+  latitude: PropTypes.string.isRequired,
+  longitude: PropTypes.string.isRequired,
+  name1: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired
+};
 
 export default MapContainer;

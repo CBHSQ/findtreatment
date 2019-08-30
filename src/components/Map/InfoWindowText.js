@@ -9,9 +9,8 @@ import { linkToFacility } from '../../utils/misc';
 import { Button } from '../Input';
 
 export const InfoWindowText = props => {
-  const { selectedPlace, singleMarker } = props;
-  const { details } = selectedPlace;
-  const { name1, phone, frid, latitude, longitude } = details;
+  const { selectedPlace } = props;
+  const { name1, phone, frid, latitude, longitude } = selectedPlace;
 
   return (
     <>
@@ -27,16 +26,14 @@ export const InfoWindowText = props => {
           {phone}
         </OutboundLink>
       </p>
-      {!singleMarker && (
-        <Button
-          as={Link}
-          css={tw`p-1 w-full`}
-          primary="true"
-          to={linkToFacility({ frid, latitude, longitude })}
-        >
-          View provider details
-        </Button>
-      )}
+      <Button
+        as={Link}
+        css={tw`p-1 w-full`}
+        primary="true"
+        to={linkToFacility({ frid, latitude, longitude })}
+      >
+        View provider details
+      </Button>
     </>
   );
 };
