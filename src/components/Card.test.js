@@ -39,6 +39,20 @@ describe('Card component', () => {
       expect(heading.find('.card-miles').length).toBe(0);
     });
 
+    it('displays 0 miles', () => {
+      const noMilesProps = { ...testProps, miles: 0 };
+      const component = shallow(<Card {...noMilesProps} />);
+      const heading = component.find('CardHeading').dive();
+      expect(heading.find('.card-miles').length).toBe(1);
+    });
+
+    it('does not pluralize 1 mile', () => {
+      const oneMilesProps = { ...testProps, miles: 1 };
+      const component = shallow(<Card {...oneMilesProps} />);
+      const heading = component.find('CardHeading').dive();
+      expect(heading.find('.card-miles').text()).toBe('1 mile');
+    });
+
     it('displays name2 and miles if present', () => {
       const component = shallow(<Card {...testProps} />);
       const heading = component.find('CardHeading').dive();
