@@ -36,9 +36,9 @@ const CardHeading = ({ frid, name1, name2, miles, latitude, longitude }) => (
         )}
       </h2>
     </Link>
-    {miles && (
+    {(miles || miles === 0) && (
       <span className="card-miles" css={tw`text-gray-800`}>
-        {miles} miles
+        {miles} mile{miles !== 1 && 's'}
       </span>
     )}
   </StyledHeading>
