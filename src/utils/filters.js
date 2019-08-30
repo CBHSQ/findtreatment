@@ -15,6 +15,10 @@ export const distance = [
 
 export const mat = [
   {
+    value: '',
+    label: 'All types of treatment'
+  },
+  {
     value: 'METH',
     label: 'Methadone',
     description:
