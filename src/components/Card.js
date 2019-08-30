@@ -13,7 +13,6 @@ import {
   faCreditCard
 } from '@fortawesome/free-solid-svg-icons';
 
-import { theme } from '../tailwind.js';
 import { GOOGLE_MAP_STATIC_URL } from '../utils/constants';
 import { linkToFacility, removeHttp } from '../utils/misc';
 
@@ -98,11 +97,11 @@ const CardDetails = props => {
 
   return (
     <div css={tw`flex flex-wrap -mb-4 -mx-6`}>
-      <div css={tw`w-full md:w-2/3 mb-4 px-6`}>
+      <div css={tw`w-full md:w-3/5 mb-4 px-6`}>
         {renderService(services, 'TC')}
         {renderService(services, 'PAY')}
       </div>
-      <div css={tw`w-full md:w-1/3 mb-4 px-6`}>
+      <div css={tw`w-full md:w-2/5 mb-4 px-6`}>
         <Button
           eventLabel="Facility phone link from card"
           to={`tel:${phone}`}
@@ -131,7 +130,7 @@ const CardDetails = props => {
           </Button>
         )}
       </div>
-      <div css={tw`w-full md:w-2/3 mb-4 px-6`}>
+      <div css={tw`w-full md:w-3/5 mb-4 px-6`}>
         <div css={tw`flex -mx-2 mb-4`}>
           <OutboundLink
             eventLabel="Driving directions link from card thumbnail image"

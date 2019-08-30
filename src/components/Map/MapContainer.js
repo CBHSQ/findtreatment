@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Map, Marker } from 'google-maps-react';
-import DOMInfoWindow from './DOMInfoWindow';
-import InfoWindowText from './InfoWindowText';
+import 'styled-components/macro';
+import tw from 'tailwind.macro';
+import { InfoWindow, Map, Marker } from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',
   height: '100%'
 };
 
-const initialState = {
-  showingInfoWindow: false,
-  activeMarker: {},
-  selectedPlace: {
-    details: {}
-  }
-};
-
 export class MapContainer extends Component {
-  state = initialState;
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
 
-  onMarkerClick = (props, marker, _) => {
+  onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
-  };
 
-  onMapClicked = () => {
+  onMapClicked = props => {
     if (this.state.showingInfoWindow) {
-      this.setState(initialState);
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
     }
   };
 
@@ -41,15 +39,8 @@ export class MapContainer extends Component {
     });
   };
 
-  hasMultipleResults() {
-    const { rows, singleMarker } = this.props;
-
-    return rows.length > 1 && !singleMarker;
-  }
-
   render() {
-    const { frid, latitude, longitude, name1 } = this.props;
-    const { activeMarker, showingInfoWindow, selectedPlace } = this.state;
+    const { latitude, longitude, name1 } = this.props;
 
     return (
       <Map
@@ -66,17 +57,18 @@ export class MapContainer extends Component {
         onReady={this.onReady}
         onClick={this.onMapClicked}
       >
-        <Marker
-          key={frid}
-          name={name1}
-          details={this.props}
-          position={new window.google.maps.LatLng(latitude, longitude)}
-          onClick={this.onMarkerClick}
-        />
+        <Marker name={name1} onClick={this.onMarkerClick} />
 
-        <DOMInfoWindow marker={activeMarker} visible={showingInfoWindow}>
-          <InfoWindowText selectedPlace={selectedPlace} />
-        </DOMInfoWindow>
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+        >
+          <div>
+            <h4 className="infowindow__heading" css={tw`mb-2 font-bold`}>
+              {this.state.selectedPlace.name}
+            </h4>
+          </div>
+        </InfoWindow>
       </Map>
     );
   }
