@@ -192,10 +192,8 @@ export default () => [
               feelings, and you need to support your loved one’s efforts to get
               well.
             </p>
-            <h3>
-              You cannot do someone else’s recovery for them.
-            </h3>
-              <p>
+            <h3>You cannot do someone else’s recovery for them.</h3>
+            <p>
               If you think your family member or friend might be addicted, you
               cannot fix the problem by yourself, or force them into treatment.
               If the person is initially not willing to be helped, learning more
@@ -613,16 +611,19 @@ export default () => [
               to get and stay sober or drug free in other treatment.
             </p>
             <h3>Transitional housing</h3>
-              <p>
-                <em>
-                  A temporary space to stay while transitioning from an intensive treatment setting. 
-                  Sometimes called a halfway house or sober living facility.
-                </em>
-              </p>
             <p>
-              As part of the path to independent living, these facilities support people in recovery 
-              with temporary places to live. They may also have support programs around employment and 
-              education, or case managers to help residents succeed during and after their stay.
+              <em>
+                A temporary space to stay while transitioning from an intensive
+                treatment setting. Sometimes called a halfway house or sober
+                living facility.
+              </em>
+            </p>
+            <p>
+              As part of the path to independent living, these facilities
+              support people in recovery with temporary places to live. They may
+              also have support programs around employment and education, or
+              case managers to help residents succeed during and after their
+              stay.
             </p>
             <h3>Co-occurring mental health and substance use treatment</h3>
             <p>
