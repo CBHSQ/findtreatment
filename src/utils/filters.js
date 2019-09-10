@@ -48,6 +48,7 @@ export const type = [
   { value: 'OP', label: 'Outpatient' },
   { value: 'HI', label: 'Hospital inpatient' },
   { value: 'RES', label: 'Residential' },
+  { value: 'HH', label: 'Transitional housing' },
   {
     value: 'CO',
     label: 'Co-occurring mental health and substance use treatment'
