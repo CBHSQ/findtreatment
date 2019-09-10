@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import { withRouter, NavLink, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import { theme } from '../tailwind.js';
-import { convertToSlug, hashLinkScroll } from '../utils/misc';
+import content from '../utils/content';
 
 import NoMatch from './NoMatch';
 
 const StyledPage = tw.div`flex flex-wrap -mx-6`;
-const SideBar = tw.div`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`;
+const SideBar = tw.div`w-full lg:w-2/5 px-6 mb-6 lg:mb-0`;
 
 const Main = styled.div`
-  ${tw`w-full lg:w-2/3 px-6 mb-10`}
+  ${tw`w-full lg:w-3/5 px-6 mb-10`}
 
   div:last-child {
     ${tw`border-b-0 mb-0 pb-0`}
@@ -92,109 +91,103 @@ const Main = styled.div`
   }
 `;
 
-const MainLead = styled.div`
-  ${tw`max-w-xl mb-8 text-xl font-light`}
-`;
-
-const MainSubTopic = styled.div`
-  ${tw`border-b mb-8 pb-8 max-w-xl`}
-`;
-
 export class Content extends Component {
-  componentDidMount() {
-    hashLinkScroll();
-  }
-
   renderSideBar = () => {
-    const { content } = this.props;
     return (
       <SideBar>
         <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
           <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
-          <ul>{content.map(this.renderSideBarLinks)}</ul>
+          <ul>{content().map(this.renderSideBarLinks)}</ul>
         </div>
       </SideBar>
     );
   };
 
-  renderSideBarLinks = ({ name, id, subTopics }) => {
+  renderSideBarLinks = ({ name, id, subSections }) => {
     const { match } = this.props;
     return (
       <li key={id} css={tw`mb-4`}>
-        <Link to={id} css={tw`text-gray-900 font-bold text-xl`}>
+        <NavLink
+          to={`/content/${id}`}
+          css={tw`text-gray-900 font-bold text-xl`}
+        >
           {name}
-        </Link>
-        {id === match.params.pageId && subTopics && (
-          <ul className="sidebar-subtopics" css={tw`my-2`}>
-            {subTopics.map(this.renderSideBarSubLinks)}
+        </NavLink>
+        {id === match.params.sectionID && subSections && (
+          <ul className="sidebar-subsections" css={tw`my-2`}>
+            {subSections.map(this.renderSideBarSubLinks)}
           </ul>
         )}
       </li>
     );
   };
 
-  renderSideBarSubLinks = ({ name, body }) => {
-    const { location } = this.props;
-    const slug = convertToSlug(name);
+  renderSideBarSubLinks = ({ name, id, body }) => {
+    const { match } = this.props;
     return (
-      <li key={slug} css={tw`mb-3`}>
-        <HashLink
-          smooth
-          to={`#${slug}`}
-          css={tw`text-gray-700 border-l-4 border-gray-200 px-2 py-1`}
-          style={location.hash === `#${slug}` ? { borderColor: '#3182ce' } : {}}
+      <li key={id} css={tw`mb-3`}>
+        <NavLink
+          to={`/content/${match.params.sectionID}/${id}`}
+          css={tw`text-gray-700 py-1`}
+          activeStyle={{ ...tw`border-l-4 border-blue-700 font-bold px-2` }}
         >
           {name}
-        </HashLink>
+        </NavLink>
       </li>
     );
   };
 
-  renderMain = topic => {
-    const { name, description, body, subTopics } = topic;
+  renderMain = section => {
+    const { match } = this.props;
+    const { name, subSections } = section;
+    const subSection = subSections.find(
+      ({ id }) => id === match.params.subSectionID
+    );
+
     return (
       <Main className="prose">
         <Helmet>
-          <title>{name}</title>
+          <title>{subSection.name}</title>
         </Helmet>
-        {name && <h1 css={tw`text-5xl`}>{name}</h1>}
-        {description && <MainLead>{description}</MainLead>}
-        {body && <MainSubTopic>{body}</MainSubTopic>}
-        {subTopics && subTopics.map(this.renderMainSubTopics)}
+        <h1 css={tw`text-xl font-normal`}>{name}</h1>
+        <h2 css={tw`text-3xl mb-4`}>{subSection.name}</h2>
+        {subSection.body}
       </Main>
     );
   };
 
-  renderMainSubTopics = ({ name, body }) => {
-    const slug = convertToSlug(name);
-    return (
-      <MainSubTopic key={slug}>
-        <h2 id={slug}>{name}</h2>
-        {body}
-      </MainSubTopic>
-    );
-  };
-
   render() {
-    const { content, match } = this.props;
-    const topic = content.find(({ id }) => id === match.params.pageId);
+    const { match } = this.props;
+    const { params } = match;
+    const { sectionID, subSectionID } = params;
+    const section = content().find(({ id }) => id === sectionID);
 
-    return topic ? (
-      <div className="container">
-        <StyledPage>
-          {this.renderSideBar()}
-          {this.renderMain(topic)}
-        </StyledPage>
-      </div>
-    ) : (
-      <NoMatch />
-    );
+    if (section) {
+      if (!subSectionID) {
+        return (
+          <Redirect to={`/content/${sectionID}/${section.subSections[0].id}`} />
+        );
+      }
+
+      if (!section.subSections.find(({ id }) => id === subSectionID)) {
+        return <NoMatch />;
+      }
+
+      return (
+        <div className="container">
+          <StyledPage>
+            {this.renderSideBar()}
+            {this.renderMain(section)}
+          </StyledPage>
+        </div>
+      );
+    } else {
+      return <NoMatch />;
+    }
   }
 }
 
 Content.propTypes = {
-  content: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 

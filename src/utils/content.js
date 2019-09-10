@@ -9,36 +9,15 @@ import { ReactComponent as IconTreament } from '../images/what-to-expect-treatme
 
 export default () => [
   {
-    name: 'What to expect',
-    id: 'what-to-expect',
-    hidden: true,
-    description:
-      'Help is available, treatment works, and people recover every day.',
-    body: (
-      <>
-        <p>
-          Beginning recovery can be overwhelming and intimidating. While
-          everyone's path to recovery is unique, there are certain things you
-          can expect and be ready for when you start.
-        </p>
-        <p>
-          There is help. From understanding more about addiction and treatment
-          options, to being ready to navigate insurance and payment, this
-          information can help you feel more confident as you take the next step
-          to finding treatment.
-        </p>
-      </>
-    )
-  },
-  {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
     icon: <IconAddiction />,
     description:
       'Addiction is a chronic disease that changes the brain and alters decision-making.',
-    subTopics: [
+    subSections: [
       {
         name: 'Addiction can affect anyone',
+        id: 'addiction-can-affect-anyone',
         body: (
           <>
             <p>
@@ -72,6 +51,7 @@ export default () => [
       },
       {
         name: 'It’s hard to stop using drugs on your own',
+        id: 'its-hard-to-stop-using-drugs-on-your-own',
         body: (
           <>
             <p>
@@ -110,6 +90,7 @@ export default () => [
       },
       {
         name: 'Asking for help is the first important step',
+        id: 'asking-for-help-is-the-first-important-step',
         body: (
           <>
             <p>
@@ -175,29 +156,8 @@ export default () => [
         )
       },
       {
-        name: 'You cannot do someone else’s recovery for them',
-        body: (
-          <>
-            <p>
-              If you think your family member or friend might be addicted, you
-              cannot fix the problem by yourself, or force them into treatment.
-              If the person is initially not willing to be helped, learning more
-              about drug addiction for your own knowledge, and see if there are
-              resources or information that might convince them to seek help.
-            </p>
-            <p>
-              Everyone acts differently when they start treatment. Some people
-              are very happy to be getting treatment at last; others suffer a
-              great deal while they adjust to a new life and attempt to live it
-              without alcohol and drugs. They may be sad, angry, or confused. It
-              is important for you to realize that these are normal reactions
-              and to get support for yourself.
-            </p>
-          </>
-        )
-      },
-      {
         name: 'Supporting recovery and caring for yourself',
+        id: 'supporting-recovery-and-caring-for-yourself',
         body: (
           <>
             <p>
@@ -232,6 +192,22 @@ export default () => [
               feelings, and you need to support your loved one’s efforts to get
               well.
             </p>
+            <h3>You cannot do someone else’s recovery for them.</h3>
+            <p>
+              If you think your family member or friend might be addicted, you
+              cannot fix the problem by yourself, or force them into treatment.
+              If the person is initially not willing to be helped, learning more
+              about drug addiction for your own knowledge, and see if there are
+              resources or information that might convince them to seek help.
+            </p>
+            <p>
+              Everyone acts differently when they start treatment. Some people
+              are very happy to be getting treatment at last; others suffer a
+              great deal while they adjust to a new life and attempt to live it
+              without alcohol and drugs. They may be sad, angry, or confused. It
+              is important for you to realize that these are normal reactions
+              and to get support for yourself.
+            </p>
           </>
         )
       }
@@ -243,32 +219,10 @@ export default () => [
     icon: <IconMentalHealth />,
     description:
       'About half of people with a substance use disorder also experience serious mental illness.',
-    body: (
-      <>
-        <p>
-          Mental health disorders involve changes in thinking, mood, and/or
-          behavior. These can affect how we relate to others and make choices.
-          Reaching a level that can be formally diagnosed often depends on a
-          reduction in a person’s ability to function in their daily lives, at
-          home, work, or school, as a result of the disorder.
-        </p>
-        <p>
-          Having both a substance use and mental health disorder is called a{' '}
-          <strong>co-occuring disorder</strong>. Co-occurrence happens in about
-          half of people experiencing one of these disorders. Addressing both is
-          critical for success in recovery, and{' '}
-          <strong>integrated treatment</strong> programs can help.
-        </p>
-        <p>
-          Mental health disorders are not something you can just snap out of or
-          shake off, but asking for help is a critical first step. There are
-          many treatment approaches for mental health disorders.
-        </p>
-      </>
-    ),
-    subTopics: [
+    subSections: [
       {
         name: 'Serious mental illness',
+        id: 'serious-mental-illness',
         body: (
           <>
             <p>
@@ -292,6 +246,7 @@ export default () => [
       },
       {
         name: 'Know the warning signs',
+        id: 'know-the-warning-signs',
         body: (
           <>
             <p>
@@ -382,9 +337,10 @@ export default () => [
     icon: <IconTreament />,
     description:
       'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.',
-    subTopics: [
+    subSections: [
       {
         name: 'Calling a facility',
+        id: 'calling-a-facility',
         body: (
           <>
             <h3>What should I know before I call?</h3>
@@ -448,6 +404,7 @@ export default () => [
       },
       {
         name: 'What happens next?',
+        id: 'what-happens-next',
         body: (
           <>
             <h3>Assessment</h3>
@@ -513,6 +470,7 @@ export default () => [
       },
       {
         name: 'Who provides care?',
+        id: 'who-provides-care',
         body: (
           <>
             <p>
@@ -577,6 +535,7 @@ export default () => [
       },
       {
         name: 'Types of treatment',
+        id: 'types-of-treatment',
         body: (
           <>
             <p>
@@ -651,6 +610,21 @@ export default () => [
               also help people with very serious disorders who have been unable
               to get and stay sober or drug free in other treatment.
             </p>
+            <h3>Transitional housing</h3>
+            <p>
+              <em>
+                A temporary space to stay while transitioning from an intensive
+                treatment setting. Sometimes called a halfway house or sober
+                living facility.
+              </em>
+            </p>
+            <p>
+              As part of the path to independent living, these facilities
+              support people in recovery with temporary places to live. They may
+              also have support programs around employment and education, or
+              case managers to help residents succeed during and after their
+              stay.
+            </p>
             <h3>Co-occurring mental health and substance use treatment</h3>
             <p>
               <em>
@@ -687,6 +661,7 @@ export default () => [
       },
       {
         name: 'Medications used in treatment',
+        id: 'medications-used-in-treatment',
         body: (
           <>
             <p>
@@ -800,9 +775,10 @@ export default () => [
     id: 'paying-for-treatment',
     icon: <IconPayment />,
     description: 'Learn more about the cost of treatment and payment options.',
-    subTopics: [
+    subSections: [
       {
         name: 'Understanding the cost of treatment',
+        id: 'understanding-the-cost-of-treatment',
         body: (
           <>
             <p>
@@ -841,6 +817,7 @@ export default () => [
       },
       {
         name: 'If you have insurance',
+        id: 'if-you-have-insurance',
         body: (
           <>
             <p>
@@ -889,6 +866,7 @@ export default () => [
       },
       {
         name: 'If you don’t have insurance',
+        id: 'if-you-dont-have-insurance',
         body: (
           <>
             <p>

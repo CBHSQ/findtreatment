@@ -34,8 +34,9 @@ class App extends Component {
             <Route path="/results" component={Results} />
             <Route path="/details/:frid" component={Details} />
             <Route
-              path="/content/:pageId"
-              render={() => <Content content={content()} />}
+              path="/content/:sectionID/:subSectionID?"
+              component={Content}
+            />
             />
             <Route component={NoMatch} />
           </Switch>

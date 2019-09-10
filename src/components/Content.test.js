@@ -9,23 +9,10 @@ const testProps = {
   location: {},
   match: {
     params: {
-      pageId: 'content-id'
+      sectionID: 'understanding-addiction',
+      subSectionID: 'addiction-can-affect-anyone'
     }
-  },
-  content: [
-    {
-      name: 'Content name',
-      id: 'content-id',
-      description: 'Content description',
-      body: 'Content body',
-      subTopics: [
-        {
-          name: 'Content subtopic',
-          body: 'Content subtopic body'
-        }
-      ]
-    }
-  ]
+  }
 };
 
 describe('Content component', () => {
@@ -37,15 +24,15 @@ describe('Content component', () => {
       </BrowserRouter>
     );
     const helmet = Helmet.peek();
-    expect(helmet.title).toEqual('Content name');
+    expect(helmet.title).toEqual('Addiction can affect anyone');
   });
 
-  it('displays NoMatch component if topic id is not found', () => {
+  it('displays NoMatch component if section id is not found', () => {
     const props = {
       ...testProps,
       match: {
         params: {
-          pageId: 'i-do-not-exist'
+          sectionID: 'i-do-not-exist'
         }
       }
     };
@@ -58,80 +45,29 @@ describe('Content component', () => {
   describe('sidebar', () => {
     it('it renders a link', () => {
       const component = shallow(<Content {...testProps} />);
-      const link = component.find('Content___StyledLink');
+      const link = component.find('Content___StyledNavLink').first();
 
-      expect(link.prop('to')).toBe('content-id');
-      expect(link.text()).toBe('Content name');
-    });
-
-    it('does not display subTopics if not present', () => {
-      const { subTopics, ...rest } = testProps.content[0];
-      const props = {
-        ...testProps,
-        content: [
-          {
-            ...rest
-          }
-        ]
-      };
-      const component = shallow(<Content {...props} />);
-
-      expect(component.find('.sidebar-subtopics').length).toBe(0);
+      expect(link.prop('to')).toBe('/content/understanding-addiction');
+      expect(link.text()).toBe('Understanding addiction');
     });
 
     it('it renders a sublink', () => {
       const component = shallow(<Content {...testProps} />);
-      const link = component.find('Content___StyledHashLink');
+      const link = component.find('Content___StyledNavLink2').first();
 
-      expect(link.prop('to')).toBe('#content-subtopic');
-      expect(link.text()).toBe('Content subtopic');
-    });
-
-    it('it highlights an active sublink', () => {
-      const props = {
-        ...testProps,
-        location: { hash: '#content-subtopic' }
-      };
-      const component = shallow(<Content {...props} />);
-      const link = component.find('Content___StyledHashLink');
-
-      expect(link.prop('style')).toEqual(
-        expect.objectContaining({
-          borderColor: expect.any(String)
-        })
+      expect(link.prop('to')).toBe(
+        '/content/understanding-addiction/addiction-can-affect-anyone'
       );
+      expect(link.text()).toBe('Addiction can affect anyone');
     });
   });
 
   describe('main', () => {
-    it('it renders a subTopic', () => {
+    it('it renders content', () => {
       const component = shallow(<Content {...testProps} />);
-      const link = component.find('Content__MainSubTopic h2');
+      const link = component.find('Content___StyledH2');
 
-      expect(link.text()).toBe('Content subtopic');
-    });
-
-    it('does not display elements if not present', () => {
-      const {
-        name,
-        description,
-        body,
-        subTopics,
-        ...rest
-      } = testProps.content[0];
-      const props = {
-        ...testProps,
-        content: [
-          {
-            ...rest
-          }
-        ]
-      };
-      const component = shallow(<Content {...props} />);
-
-      expect(component.find('Content___StyledH').length).toBe(0);
-      expect(component.find('Content__MainLead').length).toBe(0);
-      expect(component.find('Content__MainSubTopic').length).toBe(0);
+      expect(link.text()).toBe('Addiction can affect anyone');
     });
   });
 });

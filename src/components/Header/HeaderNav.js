@@ -54,7 +54,6 @@ export class HeaderNav extends Component {
             <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
               <Logo aria-label="Link to the homepage" />
             </Link>
-
             <div css={tw`block md:hidden`}>
               <button onClick={this.toggleMobileMenu}>
                 <svg
@@ -68,18 +67,20 @@ export class HeaderNav extends Component {
               </button>
             </div>
           </div>
-
           <StyledNav isMobileMenuHidden={isMobileMenuHidden}>
             <StyledLink to="/" exact>
               Home
             </StyledLink>
-            <StyledLink to="/content/what-to-expect">
+            <StyledLink to="/content/understanding-addiction">
               Understanding addiction
             </StyledLink>
-            <StyledLink to="/content/what-to-expect">
+            <StyledLink to="/content/understanding-mental-health">
+              Understanding mental health
+            </StyledLink>
+            <StyledLink to="/content/treatment-options">
               Treatment options
             </StyledLink>
-            <StyledLink to="/content/what-to-expect">
+            <StyledLink to="/content/paying-for-treatment">
               Paying for treatment
             </StyledLink>
           </StyledNav>
