@@ -77,14 +77,20 @@ export class HeaderNav extends Component {
 
           <MobileNav isMenuHidden={isMenuHidden}>
             <div css={tw`text-sm lg:flex-grow lg:mt-4`}>
-              <StyledLink to="/" exact css={tw`mr-6`}>
-                Search for treatment
+              <StyledLink to="/content/understanding-addiction" css={tw`mr-4`}>
+                Understanding addiction
               </StyledLink>
               <StyledLink
-                to="/content/what-to-expect"
-                isActive={this.isContentSection}
+                to="/content/understanding-mental-health"
+                css={tw`mr-4`}
               >
-                What to expect
+                Understanding mental health
+              </StyledLink>
+              <StyledLink to="/content/treatment-options" css={tw`mr-4`}>
+                Treatment options
+              </StyledLink>
+              <StyledLink to="/content/paying-for-treatment">
+                Paying for treatment
               </StyledLink>
             </div>
           </MobileNav>

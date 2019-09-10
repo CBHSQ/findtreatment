@@ -9,7 +9,7 @@ const testProps = {
   location: {},
   match: {
     params: {
-      pageId: 'content-id'
+      sectionID: 'content-id'
     }
   },
   content: [
@@ -18,7 +18,7 @@ const testProps = {
       id: 'content-id',
       description: 'Content description',
       body: 'Content body',
-      subTopics: [
+      subSections: [
         {
           name: 'Content subtopic',
           body: 'Content subtopic body'
@@ -40,12 +40,12 @@ describe('Content component', () => {
     expect(helmet.title).toEqual('Content name');
   });
 
-  it('displays NoMatch component if topic id is not found', () => {
+  it('displays NoMatch component if section id is not found', () => {
     const props = {
       ...testProps,
       match: {
         params: {
-          pageId: 'i-do-not-exist'
+          sectionID: 'i-do-not-exist'
         }
       }
     };
@@ -76,7 +76,7 @@ describe('Content component', () => {
       };
       const component = shallow(<Content {...props} />);
 
-      expect(component.find('.sidebar-subtopics').length).toBe(0);
+      expect(component.find('.sidebar-subsections').length).toBe(0);
     });
 
     it('it renders a sublink', () => {
