@@ -82,8 +82,8 @@ export class Content extends Component {
       <li key={id} css={tw`mb-3`}>
         <NavLink
           to={`/content/${match.params.sectionID}/${id}`}
-          css={tw`text-gray-900 py-1`}
-          activeStyle={{ ...tw`font-bold` }}
+          css={tw`text-gray-700 py-1`}
+          activeStyle={{ ...tw`border-l-4 border-blue-700 font-bold px-2` }}
         >
           {name}
         </NavLink>
@@ -142,7 +142,6 @@ export class Content extends Component {
 }
 
 Content.propTypes = {
-  location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
