@@ -11,10 +11,10 @@ import content from '../utils/content';
 import NoMatch from './NoMatch';
 
 const StyledPage = tw.div`flex flex-wrap -mx-6`;
-const SideBar = tw.div`w-full lg:w-2/5 px-6 mb-6 lg:mb-0`;
+const SideBar = tw.div`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`;
 
 const Main = styled.div`
-  ${tw`w-full lg:w-3/5 px-6 mb-10`}
+  ${tw`w-full lg:w-2/3 px-6 mb-10`}
 
   div:last-child {
     ${tw`border-b-0 mb-0 pb-0`}
@@ -34,33 +34,29 @@ const Main = styled.div`
   }
 
   h1 {
-    ${tw`text-xl`}
+    ${tw`text-2xl`}
   }
 
   h2 {
-    ${tw`text-lg`}
+    ${tw`text-xl`}
   }
 
   h3 {
-    ${tw`text-base`}
+    ${tw`text-lg`}
   }
 
   @media (min-width: ${theme.screens.lg}) {
     h1 {
-      ${tw`text-2xl`}
+      ${tw`text-4xl`}
     }
 
     h2 {
-      ${tw`text-xl`}
+      ${tw`text-3xl`}
     }
 
     h3 {
-      ${tw`text-lg`}
+      ${tw`text-xl`}
     }
-  }
-
-  h3 {
-    ${tw`uppercase font-semibold text-sm`}
   }
 
   ol,
@@ -96,7 +92,6 @@ export class Content extends Component {
     return (
       <SideBar>
         <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
-          <p css={tw`mb-2 text-sm`}>Browse all recovery resources</p>
           <ul>{content().map(this.renderSideBarLinks)}</ul>
         </div>
       </SideBar>
@@ -109,12 +104,18 @@ export class Content extends Component {
       <li key={id} css={tw`mb-4`}>
         <NavLink
           to={`/content/${id}`}
-          css={tw`text-gray-900 font-bold text-xl`}
+          css={tw`text-gray-darkest font-heading font-bold text-xl`}
+          activeStyle={{
+            ...tw`border-l-4 border-blue text-blue pl-2`
+          }}
         >
           {name}
         </NavLink>
         {id === match.params.sectionID && subSections && (
-          <ul className="sidebar-subsections" css={tw`my-2`}>
+          <ul
+            className="sidebar-subsections"
+            css={tw`my-2 ml-2 border-l-4 border-transparent`}
+          >
             {subSections.map(this.renderSideBarSubLinks)}
           </ul>
         )}
@@ -128,8 +129,10 @@ export class Content extends Component {
       <li key={id} css={tw`mb-3`}>
         <NavLink
           to={`/content/${match.params.sectionID}/${id}`}
-          css={tw`text-gray-700 py-1`}
-          activeStyle={{ ...tw`border-l-4 border-blue-700 font-bold px-2` }}
+          css={tw`text-gray-darkest py-2`}
+          activeStyle={{
+            ...tw`text-blue font-bold`
+          }}
         >
           {name}
         </NavLink>
@@ -145,12 +148,12 @@ export class Content extends Component {
     );
 
     return (
-      <Main className="prose">
+      <Main>
         <Helmet>
           <title>{subSection.name}</title>
         </Helmet>
-        <h1 css={tw`text-xl font-normal`}>{name}</h1>
-        <h2 css={tw`text-3xl mb-4`}>{subSection.name}</h2>
+        <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
+        <h2>{subSection.name}</h2>
         {subSection.body}
       </Main>
     );
@@ -174,11 +177,13 @@ export class Content extends Component {
       }
 
       return (
-        <div className="container">
-          <StyledPage>
-            {this.renderSideBar()}
-            {this.renderMain(section)}
-          </StyledPage>
+        <div css={tw`border-t border-gray-lighter`}>
+          <div className="container" css={tw`mt-10`}>
+            <StyledPage>
+              {this.renderSideBar()}
+              {this.renderMain(section)}
+            </StyledPage>
+          </div>
         </div>
       );
     } else {
