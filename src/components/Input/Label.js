@@ -14,7 +14,7 @@ const StyledLabel = styled.label`
 
     ${props => props.inline && tw`font-sans normal-case mb-0`}
 
-    ${props => props.large && tw`text-2xl md:text-3xl`}
+    ${props => props.large && tw`normal-case text-2xl md:text-3xl`}
   }
 
   p {

@@ -8,4 +8,3 @@ export const GOOGLE_MAP_STATIC_URL =
   'https://maps.googleapis.com/maps/api/staticmap';
 export const HELPLINE_TEXT = '1-800-662-HELP (4357)';
 export const HELPLINE_LINK = '+1-800-662-4357';
-export const SITE_TITLE = 'Treatment Finder';

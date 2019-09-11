@@ -149,16 +149,14 @@ FormFilters.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { languages, ui } = state;
+  const { languages } = state;
   const { loading, data } = languages;
-  const { advancedHidden } = ui;
   const values =
     getFormValues('filters')(state) ||
     getFormValues('homepage')(state) ||
     state.form.filters.initialValues;
 
   return {
-    advancedHidden,
     initialValues: {
       ...values
     },

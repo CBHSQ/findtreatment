@@ -14,7 +14,7 @@ import { Button } from './Input';
 import NoMatch from './NoMatch';
 
 const StyledPage = tw.div`flex flex-wrap -mx-6`;
-const SideBar = tw.div`w-full lg:w-1/3 px-6 mb-6 lg:mb-0`;
+const SideBar = tw.div`w-full lg:w-1/3 px-6 mb-6 lg:mb-0 order-last lg:order-first`;
 
 const Main = styled.div`
   ${tw`w-full lg:w-2/3 px-6 mb-10 relative`}
@@ -191,8 +191,8 @@ export class Content extends Component {
         <div css={tw`border-t border-gray-lighter`}>
           <div className="container" css={tw`mt-10`}>
             <StyledPage>
-              {this.renderSideBar()}
               {this.renderMain(section)}
+              {this.renderSideBar()}
             </StyledPage>
           </div>
         </div>

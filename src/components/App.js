@@ -23,8 +23,8 @@ class App extends Component {
     return (
       <ScreenContext.Provider value={this.props.isDesktop}>
         <Helmet
-          titleTemplate={`%s | ${SITE_TITLE}`}
-          defaultTitle={SITE_TITLE}
+          titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
+          defaultTitle={process.env.REACT_APP_SITE_TITLE}
         />
         <GlobalStyle />
         <Header />
