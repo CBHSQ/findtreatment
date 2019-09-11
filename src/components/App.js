@@ -5,7 +5,6 @@ import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
-import { SITE_TITLE } from '../utils/constants';
 import { theme } from '../tailwind.js';
 
 import ScreenContext from './ScreenContext';

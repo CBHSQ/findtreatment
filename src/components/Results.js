@@ -9,7 +9,6 @@ import { handleReceiveFacilities } from '../actions/facilities';
 
 import ScreenContext from './ScreenContext';
 import Error from './Error';
-import Alert from './Alert';
 import ResultsList from './ResultsList';
 import FormFilters from './Form/FormFilters';
 
@@ -40,8 +39,10 @@ export class Results extends Component {
           </Helmet>
           <div css={tw`flex flex-wrap -mx-4`}>
             <div css={tw`w-full lg:w-1/3 px-4  mb-6 lg:mb-0 print:hidden`}>
-              <div css={tw`bg-white rounded shadow`}>
-                <div css={tw`p-4 border-b-4 border-gray-lighter`}>
+              <div
+                css={tw`bg-teal-lighter rounded shadow border border-gray-light`}
+              >
+                <div css={tw`p-4 shadow`}>
                   <h1 css={tw`text-2xl font-heading font-bold`}>
                     Refine search results
                   </h1>
@@ -54,7 +55,6 @@ export class Results extends Component {
               </div>
             </div>
             <div css={tw`w-full lg:w-2/3 px-4`}>
-              {hasResults && <Alert />}
               <ResultsList
                 loading={loading}
                 rows={rows}

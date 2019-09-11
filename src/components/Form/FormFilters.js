@@ -16,7 +16,7 @@ const Row = styled.div`
 `;
 
 const RowWrapper = styled.div`
-  ${tw`border-b border-gray-lighter pt-4`}
+  ${tw`border-b border-gray-light pt-4`}
 `;
 
 export class FormFilters extends Component {
@@ -48,7 +48,7 @@ export class FormFilters extends Component {
           <Row>
             <Label value="Location">
               <Field
-                css={tw`bg-gray-lightest`}
+                css={tw`bg-gray-lightest border py-3 px-4`}
                 component={Location}
                 name="location"
                 placeholder="City or zip code"

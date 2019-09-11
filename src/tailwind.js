@@ -8,9 +8,9 @@ module.exports = {
       },
       gold: '#ffbe22', // help line
       gray: {
-        lightest: '#f5f5f8', // homepage search background
-        lighter: '#f0f0f0', // official banner
-        light: '#a9aeb1',
+        lightest: '#f9f9f9', // homepage search background
+        lighter: '#f1f5f6', // official banner
+        light: '#d7d7d7',
         default: '#71767a',
         dark: '#4e4e4e', // alternative header text
         darker: '#2c3747',

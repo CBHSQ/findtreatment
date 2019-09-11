@@ -1,5 +1,5 @@
-const metersPerMile = 1609.344;
-export const DEFAULT_DISTANCE = 25 * metersPerMile; // Radius from lat/long in meters
+export const METERS_PER_MILE = 1609.344;
+export const DEFAULT_DISTANCE = 25 * METERS_PER_MILE; // Radius from lat/long in meters
 export const DEFAULT_PAGE_SIZE = 10; // Results returned with each request
 export const DEFAULT_LIMIT_TYPE = 2; // 0 = State, 1 = County, 2 = Distance
 export const DEFAULT_SORT = 0; // 0 = Distance: Low to High

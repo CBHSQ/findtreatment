@@ -8,12 +8,14 @@ import PlacesAutocomplete, {
   getLatLng
 } from 'react-places-autocomplete';
 import { PropTypes } from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const StyledPlacesAutoComplete = styled.div`
   ${tw`relative`}
 
   input {
-    ${tw`block w-full p-4 text-lg`}
+    ${tw`block w-full pr-8 text-lg`}
 
     &::-webkit-input-placeholder {
       ${tw`text-gray-darkest`}
@@ -117,7 +119,7 @@ class Location extends Component {
           ref={el => (this._placesAutocomplete = el)}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-            <>
+            <div css={tw`relative`}>
               <input
                 {...getInputProps({
                   className,
@@ -127,6 +129,12 @@ class Location extends Component {
                   'aria-haspopup': 'listbox'
                 })}
               />
+              <div css={tw`absolute inset-y-0 right-0 flex items-center pr-4`}>
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  css={tw`fill-current w-6 h-6`}
+                />
+              </div>
               {suggestions && suggestions.length > 0 && (
                 <div
                   className="autocomplete-dropdown-container"
@@ -150,7 +158,7 @@ class Location extends Component {
                   })}
                 </div>
               )}
-            </>
+            </div>
           )}
         </PlacesAutocomplete>
       </StyledPlacesAutoComplete>

@@ -156,7 +156,7 @@ class Home extends Component {
             >
               What to expect
             </DecorativeHeading>
-            <p css={tw`mb-8 md:text-xl`}>
+            <p css={tw`mb-10 md:mb-20 md:text-xl`}>
               Help is available, treatment works, and people recover every day.
             </p>
             <div css={tw`flex flex-wrap -mx-2 -mb-10`}>

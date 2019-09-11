@@ -11,11 +11,33 @@ import Card from './Card';
 import Pagination from './Pagination';
 
 export class ResultsList extends Component {
+  state = {
+    location: {}
+  };
+
+  componentDidMount() {
+    if (this.props.location.latLng) {
+      this.updateLocation();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { latLng } = this.props.location;
+    if (latLng && latLng !== prevState.location.latLng) {
+      this.updateLocation();
+    }
+  }
+
+  updateLocation = () => {
+    this.setState({
+      location: this.props.location
+    });
+  };
+
   render() {
     const {
       hasResults,
       loading,
-      location,
       rows,
       page,
       totalPages,
@@ -32,11 +54,11 @@ export class ResultsList extends Component {
 
     return (
       <>
-        <div css={tw`lg:flex lg:justify-between mb-2 text-sm`}>
-          <span>
+        <div css={tw`lg:flex lg:justify-between lg:items-center mb-2 text-sm`}>
+          <h1 css={tw`text-xl font-heading`}>
             Showing <span css={tw`font-bold`}>{recordCount} facilities</span> in{' '}
-            {location.address}
-          </span>
+            {this.state.location.address}
+          </h1>
           <span css={tw`italic`}>Sorted by distance</span>
         </div>
         <ul>

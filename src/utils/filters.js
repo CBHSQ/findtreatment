@@ -1,3 +1,5 @@
+import { METERS_PER_MILE } from '../utils/constants';
+
 export const age = [
   { value: '', label: 'All ages' },
   { value: 'ADLT', label: 'Adults (18 and older)' },
@@ -5,11 +7,11 @@ export const age = [
 ];
 
 export const distance = [
-  { value: 8046.72, label: '5 miles' },
-  { value: 16093.4, label: '10 miles' },
-  { value: 40233.6, label: '25 miles' },
-  { value: 80467.2, label: '50 miles' },
-  { value: 160934, label: '100 miles' },
+  { value: METERS_PER_MILE * 5, label: '5 miles' },
+  { value: METERS_PER_MILE * 10, label: '10 miles' },
+  { value: METERS_PER_MILE * 25, label: '25 miles' },
+  { value: METERS_PER_MILE * 50, label: '50 miles' },
+  { value: METERS_PER_MILE * 100, label: '100 miles' },
   { value: '', label: '100+ miles' }
 ];
 

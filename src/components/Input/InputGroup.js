@@ -46,7 +46,7 @@ class InputGroup extends Component {
         </fieldset>
         {visible && (
           <Button
-            css={tw`text-sm`}
+            css={tw`text-sm font-bold`}
             link
             onClick={this.toggleShowAllOptions}
             type="button"
