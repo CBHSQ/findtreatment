@@ -76,7 +76,7 @@ const CardHeading = ({ frid, name1, name2, latitude, longitude }) => (
       <h2 css={tw`font-heading font-bold text-xl px-2`}>
         {name1} {name2}
       </h2>
-      <span css={tw`flex-none px-2`}>Facility details ›</span>
+      <span css={tw`flex-none px-2`}>more info ›</span>
     </Link>
   </StyledHeading>
 );
@@ -97,39 +97,6 @@ const CardDetails = props => {
 
   return (
     <div css={tw`flex flex-wrap -mb-4 -mx-6`}>
-      <div css={tw`w-full md:w-3/5 mb-4 px-6`}>
-        {renderService(services, 'TC')}
-        {renderService(services, 'PAY')}
-      </div>
-      <div css={tw`w-full md:w-2/5 mb-4 px-6`}>
-        <Button
-          eventLabel="Facility phone link from card"
-          to={`tel:${phone}`}
-          gradient
-          as={OutboundLink}
-          css={tw`w-full mb-4`}
-        >
-          <FontAwesomeIcon icon={faPhone} css={tw`fill-current w-4 h-4 mr-2`} />
-          {phone}
-        </Button>
-        {website !== 'http://' && (
-          <Button
-            eventLabel="Facility website link from card"
-            to={website}
-            gradient
-            target="_blank"
-            rel="noopener noreferrer"
-            as={OutboundLink}
-            css={tw`w-full`}
-          >
-            <FontAwesomeIcon
-              icon={faExternalLinkAlt}
-              css={tw`fill-current w-4 h-4 mr-2`}
-            />
-            Visit website
-          </Button>
-        )}
-      </div>
       <div css={tw`w-full md:w-3/5 mb-4 px-6`}>
         <div css={tw`flex -mx-2 mb-4`}>
           <OutboundLink
@@ -187,6 +154,39 @@ const CardDetails = props => {
             {removeHttp(website)}
           </OutboundLink>
         )}
+      </div>
+      <div css={tw`w-full md:w-2/5 mb-4 px-6`}>
+        <Button
+          eventLabel="Facility phone link from card"
+          to={`tel:${phone}`}
+          gradient
+          as={OutboundLink}
+          css={tw`w-full mb-4`}
+        >
+          <FontAwesomeIcon icon={faPhone} css={tw`fill-current w-4 h-4 mr-2`} />
+          {phone}
+        </Button>
+        {website !== 'http://' && (
+          <Button
+            eventLabel="Facility website link from card"
+            to={website}
+            gradient
+            target="_blank"
+            rel="noopener noreferrer"
+            as={OutboundLink}
+            css={tw`w-full`}
+          >
+            <FontAwesomeIcon
+              icon={faExternalLinkAlt}
+              css={tw`fill-current w-4 h-4 mr-2`}
+            />
+            Visit website
+          </Button>
+        )}
+      </div>
+      <div css={tw`w-full mb-4 px-6`}>
+        {renderService(services, 'TC')}
+        {renderService(services, 'PAY')}
       </div>
     </div>
   );

@@ -83,7 +83,7 @@ class Home extends Component {
           <MobileBgImage />
         </MobileBgContainer>
         <div
-          css={tw`pb-10 -mt-8 md:mt-0 md:py-20 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
+          css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
         >
           <div className="container">
             <div css={tw`md:flex md:-mx-4 lg:-mx-8`}>
@@ -139,10 +139,8 @@ class Home extends Component {
           id="home-search"
         >
           <div className="container">
-            <div css={tw`py-10 md:py-20`}>
-              <div
-                css={tw`md:bg-white md:mx-auto md:max-w-4xl md:px-20 md:py-10 md:shadow-md`}
-              >
+            <div css={tw`py-5 md:py-10`}>
+              <div css={tw`w-full md:bg-white md:px-10 md:py-5 md:shadow-md`}>
                 <FormHomepage onSubmit={this.submit} />
               </div>
             </div>
