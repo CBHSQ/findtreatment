@@ -121,16 +121,16 @@ export class HeaderNav extends Component {
                 Paying for treatment
               </StyledLink>
               {location.pathname !== '/' && (
-                <Link
+                <button
                   onClick={() => window.print()}
-                  css={tw`hidden lg:block w-full flex-grow text-right text-gray text-sm`}
+                  css={tw`hidden lg:block w-full flex-grow text-right text-gray text-sm pb-2`}
                 >
                   <FontAwesomeIcon
                     icon={faPrint}
                     css={tw`fill-current w-4 h-4 mr-1`}
                   />
                   Print
-                </Link>
+                </button>
               )}
             </StyledNav>
           ) : (

@@ -2,26 +2,29 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import qs from 'qs';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPhone,
-  faExternalLinkAlt,
-  faFlag
-} from '@fortawesome/free-solid-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 
 import { handleReceiveFacility, destroyFacility } from '../actions/facility';
 import { reportFacility } from '../actions/facilities';
+import { removeHttp } from '../utils/misc';
 
 import Error from './Error';
 import NoMatch from './NoMatch';
 import Loading from './Loading';
 import MapContainer from './Map/MapContainer';
 import { Button } from './Input';
+
+const DecorativeHeading = styled.div`
+  &:before {
+    content: '';
+    ${tw`block mb-4 border-t-4 border-teal w-12 h-0`}
+  }
+`;
 
 export class Details extends Component {
   componentDidMount() {
@@ -52,8 +55,8 @@ export class Details extends Component {
   };
 
   renderService = ({ name, values }) => (
-    <div css={tw`mb-4 pb-4 border-b`} key={name}>
-      <h3 css={tw`font-semibold text-sm`}>{name}</h3>
+    <div css={tw`mb-4`} key={name}>
+      <h3 css={tw`font-bold font-heading uppercase text-sm mb-4`}>{name}</h3>
       <ul css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}>
         {values.map((item, index) => (
           <li key={index}>{item}</li>
@@ -69,7 +72,7 @@ export class Details extends Component {
   };
 
   render() {
-    const { loading, error, data, isReported, isInternalLink } = this.props;
+    const { loading, error, data, isInternalLink } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
 
     if (error) {
@@ -101,13 +104,13 @@ export class Details extends Component {
     } = data;
 
     return (
-      <div className="container">
+      <>
         <Helmet>
           <title>{name1}</title>
         </Helmet>
-        <div css={tw`flex flex-wrap -mx-6`}>
-          <div css={tw`w-full md:w-3/5 px-6 mb-6`}>
-            {isInternalLink && (
+        {isInternalLink && (
+          <div css={tw`bg-gray-lightest border-t border-b border-gray-lighter`}>
+            <div className="container" css={tw`py-5`}>
               <Button
                 link
                 className="back-link"
@@ -116,117 +119,105 @@ export class Details extends Component {
               >
                 ❮ Return to results
               </Button>
-            )}
-            <h1 css={tw`font-bold mb-6`}>
-              {name1}
-              {name2 && <span css={tw`block text-lg font-light`}>{name2}</span>}
-            </h1>
-            <div css={tw`border-l-4 border-blue-500 py-2 px-4 mb-6`}>
-              <h2 css={tw`mb-2 font-semibold`}>Next step:</h2>
-              <ul css={tw`hidden print:block`}>
-                <li>
-                  <span css={tw`font-bold`}>Phone:</span> {phone}
-                </li>
-                <li>
-                  <span css={tw`font-bold`}>Website:</span> {website}
-                </li>
-              </ul>
-              <div css={tw`lg:flex items-start print:hidden`}>
-                <Button
-                  as={OutboundLink}
-                  primary
-                  to={`tel:${phone}`}
-                  eventLabel="Facility Phone #"
-                  css={tw`w-full lg:w-auto lg:mr-2 mb-2 lg:mb-0`}
-                >
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    css={tw`fill-current w-4 h-4 mr-2`}
-                  />
-                  <div>
-                    <span css={tw`inline-block font-normal`}>Call</span> {phone}
-                  </div>
-                </Button>
+            </div>
+          </div>
+        )}
+        <div css={tw`border-t border-gray-lighter`}>
+          <div className="container" css={tw`py-5`}>
+            <div css={tw`flex flex-wrap md:justify-between -mx-2`}>
+              <div css={tw`px-2`}>
+                <h1 css={tw`font-bold font-heading text-3xl`}>
+                  {name1}
+                  {name2 && ` ${name2}`}
+                </h1>
                 {website !== 'http://' && (
-                  <Button
-                    as={OutboundLink}
-                    base
+                  <OutboundLink
+                    eventLabel="Facility website link from card"
                     to={website}
                     target="_blank"
-                    eventLabel="Facility website"
                     rel="noopener noreferrer"
-                    css={tw`w-full lg:w-auto`}
                   >
-                    <FontAwesomeIcon
-                      icon={faExternalLinkAlt}
-                      css={tw`fill-current w-4 h-4 mr-2`}
-                    />
-                    Visit website
-                  </Button>
+                    {removeHttp(website)}
+                  </OutboundLink>
                 )}
               </div>
-              <Link
-                to="/content/treatment-options#calling-a-facility"
-                css={tw`mb-2 text-sm print:hidden`}
-              >
-                What to expect when you call
-              </Link>
-            </div>
-            <h2 css={tw`mb-2 font-semibold`}>Services</h2>
-            {Object.keys(services).map(key =>
-              this.renderService(services[key])
-            )}
-          </div>
-          <div css={tw`relative w-full md:w-2/5 px-6 mb-6 `}>
-            <div css={tw`border-b pb-6 mb-6`}>
-              <h2 css={tw`mb-4`}>Location</h2>
-              <div css={tw`relative h-64 w-full mb-2`}>
-                <MapContainer
-                  frid={frid}
-                  latitude={latitude}
-                  longitude={longitude}
-                  name1={name1}
-                  phone={phone}
-                />
-              </div>
-              <div css={tw`text-gray-700`}>
-                {street1}, {street2 && street2 + ','}
-                <br />
-                {city}, {state} {zip}
-                <br />
-                <OutboundLink
-                  eventLabel="Driving directions link from details"
-                  to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
-                    `${street1}, ${street2 &&
-                      street2 + ','} ${city}, ${state} ${zip}`
-                  )}`}
-                  css={tw`font-bold`}
-                >
-                  Get driving directions
-                </OutboundLink>
+              <div css={tw`px-2 font-bold text-xl mt-2 flex-none`}>
+                <div css={tw`flex items-center `}>
+                  <span
+                    css={tw`mr-2 bg-blue rounded-full h-8 w-8 flex items-center justify-center`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      css={tw`text-white fill-current w-4 h-4`}
+                    />
+                  </span>
+                  {phone}
+                </div>
               </div>
             </div>
-            {!isReported ? (
-              <Button
-                className="report-facility"
-                css={tw`print:hidden`}
-                secondary
-                onClick={this.reportFacility}
-              >
-                <FontAwesomeIcon icon={faFlag} css={tw`text-orange-600 mr-2`} />
-                Report a problem with this listing
-              </Button>
-            ) : (
-              <div
-                role="alert"
-                css={tw`w-full text-center rounded bg-green-100 border border-green-500 text-green-700 px-4 py-3`}
-              >
-                <strong>Thank you!</strong> Your feedback has been recorded.
-              </div>
-            )}
           </div>
         </div>
-      </div>
+        <div css={tw`bg-gray-lightest`}>
+          <div className="container" css={tw`py-5`}>
+            <div css={tw`flex flex-wrap -mx-4`}>
+              <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
+                <div css={tw`bg-white h-full shadow p-4`}>
+                  <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
+                    Location
+                  </h2>
+                  <div css={tw`relative h-64 w-full mb-4`}>
+                    <MapContainer
+                      frid={frid}
+                      latitude={latitude}
+                      longitude={longitude}
+                      name1={name1}
+                      phone={phone}
+                    />
+                  </div>
+                  <div css={tw`text-gray-700`}>
+                    {street1}, {street2 && street2 + ','}
+                    <br />
+                    {city}, {state} {zip}
+                    <br />
+                    <OutboundLink
+                      eventLabel="Driving directions link from details"
+                      to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                        `${street1}, ${street2 &&
+                          street2 + ','} ${city}, ${state} ${zip}`
+                      )}`}
+                      css={tw`font-bold`}
+                    >
+                      Get driving directions
+                    </OutboundLink>
+                  </div>
+                </div>
+              </div>
+              <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
+                <div css={tw`bg-white h-full  shadow p-4`}>
+                  <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
+                    Payment, insurance, or funding accepted
+                  </h2>
+                  <ul>
+                    {services.PAY.values.map((value, index) => (
+                      <li key={index} css={tw`mb-2`}>
+                        <span>{value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container" css={tw`py-10`}>
+          <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
+            Treatment details
+          </DecorativeHeading>
+          {Object.keys(services)
+            .filter(service => !['PAY', 'TC'].includes(service))
+            .map(key => this.renderService(services[key]))}
+        </div>
+      </>
     );
   }
 }

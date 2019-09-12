@@ -91,7 +91,10 @@ export class Content extends Component {
   renderSideBar = () => {
     return (
       <SideBar>
-        <div css={tw`lg:sticky mb-6`} style={{ top: '1rem' }}>
+        <div
+          css={tw`border-t border-gray-light pt-10 lg:pt-0 lg:border-none lg:sticky mb-6`}
+          style={{ top: '1rem' }}
+        >
           <ul>{content().map(this.renderSideBarLinks)}</ul>
         </div>
       </SideBar>

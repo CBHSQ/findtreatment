@@ -19,10 +19,6 @@ const StyledServices = styled.ul`
     &:not(:last-child):after {
       content: ', ';
     }
-
-    span {
-      ${tw`border-b border-dotted`}
-    }
   }
 `;
 
@@ -38,7 +34,12 @@ const serviceIcons = {
 };
 
 const renderService = (services, key) => {
+  if (!services[key]) {
+    return;
+  }
+
   const { values } = services[key];
+
   return (
     <StyledServices>
       <div css={tw`flex`}>
@@ -78,6 +79,7 @@ const CardDetails = props => {
     latitude,
     longitude,
     miles,
+    name1,
     phone,
     website,
     services,
@@ -101,7 +103,7 @@ const CardDetails = props => {
         >
           <img
             src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-            alt="Google map"
+            alt={`Google map for ${name1}`}
             css={tw`w-full`}
           />
         </OutboundLink>

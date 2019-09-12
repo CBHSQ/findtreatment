@@ -18,6 +18,7 @@ module.exports = {
         darkest: '#171717' // body text
       },
       green: '#39912E',
+      red: '#f56565',
       teal: {
         lighter: '#f1f5f6',
         light: '#ade3f7',

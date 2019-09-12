@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 
 import Loading from './Loading';
+import NoLocation from './NoLocation';
 import NoResults from './NoResults';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -46,6 +47,10 @@ export class ResultsList extends Component {
 
     if (loading) {
       return <Loading />;
+    }
+
+    if (!rows) {
+      return <NoLocation />;
     }
 
     if (!hasResults) {

@@ -14,11 +14,9 @@ export class FormHomepage extends Component {
   state = { showWarning: false };
 
   componentDidMount() {
-    const { clearValues, location } = this.props;
+    const { clearValues } = this.props;
 
-    if (location && location.latLng) {
-      clearValues();
-    }
+    clearValues();
   }
 
   toggleShowWarning = value => {
@@ -43,6 +41,9 @@ export class FormHomepage extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <Label value="Find a treatment facility near you" css={tw`mb-8`} large>
+          {showWarning && (
+            <div css={tw`w-full mb-2 text-red text-sm`}>{LOCATION_WARNING}</div>
+          )}
           <Field
             css={tw`md:mt-6 md:w-full md:shadow-md rounded p-4 border border-gray-light`}
             component={Location}
@@ -59,14 +60,6 @@ export class FormHomepage extends Component {
         >
           Search
         </Button>
-
-        {showWarning && (
-          <div
-            css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
-          >
-            {LOCATION_WARNING}
-          </div>
-        )}
       </form>
     );
   }

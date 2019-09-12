@@ -32,6 +32,16 @@ export class FormFilters extends Component {
     showLocationWarning: false
   };
 
+  handleSubmit = submitEvent => {
+    const { handleSubmit, location } = this.props;
+
+    if (!location.latLng) {
+      return submitEvent.preventDefault();
+    }
+
+    handleSubmit(submitEvent);
+  };
+
   toggleShowLocationWarning = value => {
     this.setState({
       showLocationWarning: value
@@ -43,7 +53,7 @@ export class FormFilters extends Component {
     const { showLocationWarning } = this.state;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <RowWrapper>
           <Row>
             <Label value="Location">
@@ -143,7 +153,6 @@ FormFilters.propTypes = {
   languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  hasResults: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired
 };
@@ -152,14 +161,15 @@ const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
   const values =
-    getFormValues('filters')(state) ||
     getFormValues('homepage')(state) ||
+    getFormValues('filters')(state) ||
     state.form.filters.initialValues;
 
   return {
     initialValues: {
       ...values
     },
+    location: values && values.location,
     loading,
     languages: data
   };

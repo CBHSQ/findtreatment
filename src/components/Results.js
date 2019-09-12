@@ -43,18 +43,14 @@ export class Results extends Component {
                 css={tw`bg-teal-lighter rounded shadow border border-gray-light`}
               >
                 <div css={tw`p-4 shadow`}>
-                  <h1 css={tw`text-2xl font-heading font-bold`}>
+                  <h2 css={tw`text-2xl font-heading font-bold`}>
                     Refine search results
-                  </h1>
+                  </h2>
                 </div>
-                <FormFilters
-                  onSubmit={this.submit}
-                  hasResults={hasResults}
-                  isDesktop={isDesktop}
-                />
+                <FormFilters onSubmit={this.submit} isDesktop={isDesktop} />
               </div>
             </div>
-            <div css={tw`w-full lg:w-2/3 px-4`}>
+            <div css={tw`w-full lg:w-2/3 px-4 order-first lg:order-last`}>
               <ResultsList
                 loading={loading}
                 rows={rows}
