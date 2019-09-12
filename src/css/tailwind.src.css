@@ -25,6 +25,27 @@
   font-family: 'Public Sans';
   font-style: normal;
   font-display: swap;
+  font-weight: 600;
+  src: local('Public Sans SemiBold'),
+    url('./fonts/PublicSans-SemiBold.woff') format('woff'),
+    url('./fonts/PublicSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Public Sans SemiBold Italic'),
+    url('./fonts/PublicSans-SemiBoldItalic.woff2') format('woff2'),
+    url('./fonts/PublicSans-SemiBoldItalic.woff') format('woff'),
+    url('./fonts/PublicSans-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
   font-weight: 700;
   src: local('Public Sans Bold'),
     url('./fonts/PublicSans-Bold.woff2') format('woff2'),

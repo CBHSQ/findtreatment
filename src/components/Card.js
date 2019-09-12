@@ -5,27 +5,19 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faDirections,
-  faPhone,
-  faExternalLinkAlt,
-  faPlusSquare,
-  faCreditCard
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import { GOOGLE_MAP_STATIC_URL } from '../utils/constants';
 import { linkToFacility, removeHttp } from '../utils/misc';
 
-import { Button } from './Input';
-
 const StyledServices = styled.ul`
-  ${tw`text-sm px-2 mb-2`}
+  ${tw`text-sm mb-1`}
 
   li {
     ${tw`inline`}
 
-    &:not(:first-child):before {
-      content: ' • ';
+    &:not(:last-child):after {
+      content: ', ';
     }
 
     span {
@@ -41,29 +33,29 @@ const StyledHeading = styled.div`
 const StyledCard = tw.li`bg-white shadow border-t border-gray-lighter rounded mb-10`;
 
 const serviceIcons = {
-  TC: faPlusSquare,
-  PAY: faCreditCard
+  TC: 'Type of care',
+  PAY: 'Payment options'
 };
 
 const renderService = (services, key) => {
   const { values } = services[key];
   return (
-    <div css={tw`flex -mx-2`}>
-      <div css={tw`w-6 -mt-px px-2 flex-none text-center`}>
+    <StyledServices>
+      <div css={tw`flex`}>
         <FontAwesomeIcon
-          icon={serviceIcons[key]}
-          css={tw`text-gray`}
-          className="fa-sm"
+          icon={faCheck}
+          css={tw`text-green mt-1 fill-current w-4 h-4 mr-2`}
         />
+        <div>
+          <span css={tw`font-bold inline`}>{serviceIcons[key]}: </span>
+          {values.map((value, index) => (
+            <li key={index}>
+              <span>{value}</span>
+            </li>
+          ))}
+        </div>
       </div>
-      <StyledServices>
-        {values.map((value, index) => (
-          <li key={index}>
-            <span>{value}</span>
-          </li>
-        ))}
-      </StyledServices>
-    </div>
+    </StyledServices>
   );
 };
 
@@ -71,7 +63,7 @@ const CardHeading = ({ frid, name1, name2, latitude, longitude }) => (
   <StyledHeading>
     <Link
       to={linkToFacility({ frid, latitude, longitude })}
-      css={tw`flex justify-between -mx-2 text-white `}
+      css={tw`flex justify-between items-center -mx-2 text-white `}
     >
       <h2 css={tw`font-heading font-bold text-xl px-2`}>
         {name1} {name2}
@@ -85,6 +77,7 @@ const CardDetails = props => {
   const {
     latitude,
     longitude,
+    miles,
     phone,
     website,
     services,
@@ -96,52 +89,39 @@ const CardDetails = props => {
   } = props;
 
   return (
-    <div css={tw`flex flex-wrap -mb-4 -mx-6`}>
-      <div css={tw`w-full md:w-3/5 mb-4 px-6`}>
-        <div css={tw`flex -mx-2 mb-4`}>
+    <div css={tw`flex flex-wrap -mb-4 -mx-2`}>
+      <div css={tw`w-1/4 px-2`}>
+        <OutboundLink
+          eventLabel="Driving directions link from card thumbnail image"
+          to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+            `${street1}, ${street2 && street2 + ','} ${city}, ${state} ${zip}`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+            alt="Google map"
+            css={tw`w-full`}
+          />
+        </OutboundLink>
+        <div css={tw`bg-blue-lighter p-1 text-center text-sm text-gray`}>
+          {miles} mile{miles !== 1 && 's'}
+        </div>
+      </div>
+      <div css={tw`w-3/4 px-2`}>
+        <div css={tw`flex items-center`}>
+          <FontAwesomeIcon
+            icon={faPhone}
+            css={tw`text-gray fill-current w-4 h-4 mr-2`}
+          />
           <OutboundLink
-            eventLabel="Driving directions link from card thumbnail image"
-            to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
-              `${street1}, ${street2 && street2 + ','} ${city}, ${state} ${zip}`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            eventLabel="Facility phone link from card"
+            to={`tel:${phone}`}
+            css={tw`block text-gray-darkest text-lg`}
           >
-            <img
-              src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-              alt="Google map"
-              css={tw`px-2`}
-            />
+            {phone}
           </OutboundLink>
-          <div css={tw`px-2`}>
-            <address css={tw`not-italic mb-2`}>
-              {street1}
-              <br />
-              {street2 && (
-                <>
-                  {street2}
-                  <br />
-                </>
-              )}
-              {city}, {state} {zip}
-            </address>
-            <OutboundLink
-              eventLabel="Driving directions link from card"
-              to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
-                `${street1}, ${street2 &&
-                  street2 + ','} ${city}, ${state} ${zip}`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              css={tw`text-sm`}
-            >
-              <FontAwesomeIcon
-                icon={faDirections}
-                css={tw`fill-current w-4 h-4 mr-2`}
-              />
-              Get directions
-            </OutboundLink>
-          </div>
         </div>
         {website !== 'http://' && (
           <OutboundLink
@@ -149,44 +129,19 @@ const CardDetails = props => {
             to={website}
             target="_blank"
             rel="noopener noreferrer"
-            css={tw`text-xs text-green`}
+            css={tw`ml-6`}
           >
             {removeHttp(website)}
           </OutboundLink>
         )}
-      </div>
-      <div css={tw`w-full md:w-2/5 mb-4 px-6`}>
-        <Button
-          eventLabel="Facility phone link from card"
-          to={`tel:${phone}`}
-          gradient
-          as={OutboundLink}
-          css={tw`w-full mb-4`}
-        >
-          <FontAwesomeIcon icon={faPhone} css={tw`fill-current w-4 h-4 mr-2`} />
-          {phone}
-        </Button>
-        {website !== 'http://' && (
-          <Button
-            eventLabel="Facility website link from card"
-            to={website}
-            gradient
-            target="_blank"
-            rel="noopener noreferrer"
-            as={OutboundLink}
-            css={tw`w-full`}
-          >
-            <FontAwesomeIcon
-              icon={faExternalLinkAlt}
-              css={tw`fill-current w-4 h-4 mr-2`}
-            />
-            Visit website
-          </Button>
-        )}
-      </div>
-      <div css={tw`w-full mb-4 px-6`}>
-        {renderService(services, 'TC')}
-        {renderService(services, 'PAY')}
+        <address css={tw`not-italic mb-2 ml-6`}>
+          {street1}
+          {street2 && <>, {street2}</>}, {city}, {state} {zip}
+        </address>
+        <div css={tw`text-sm`}>
+          {renderService(services, 'TC')}
+          {renderService(services, 'PAY')}
+        </div>
       </div>
     </div>
   );

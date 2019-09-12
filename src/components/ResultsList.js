@@ -54,12 +54,23 @@ export class ResultsList extends Component {
 
     return (
       <>
-        <div css={tw`lg:flex lg:justify-between lg:items-center mb-2 text-sm`}>
+        <div css={tw`lg:flex lg:justify-between lg:items-center mb-4`}>
           <h1 css={tw`text-xl font-heading`}>
             Showing <span css={tw`font-bold`}>{recordCount} facilities</span> in{' '}
             {this.state.location.address}
           </h1>
-          <span css={tw`italic`}>Sorted by distance</span>
+          <span css={tw`text-sm italic`}>Sorted by distance</span>
+        </div>
+        <div css={tw`border border-yellow bg-yellow-lighter p-4 mb-8 text-sm`}>
+          <span css={tw`block font-heading font-bold mb-4 uppercase`}>
+            Before you call
+          </span>
+          <p>
+            Before visiting a facility, call to make sure they have the services
+            you need. What to expect when you call. Not sure what you need?
+            Learn more about different types of treatment. All facilities are
+            licensed by their states, and provide assessments.
+          </p>
         </div>
         <ul>
           {rows.map(result => (

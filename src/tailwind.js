@@ -3,6 +3,7 @@ module.exports = {
     colors: {
       black: '#000000', // print text color
       blue: {
+        lighter: '#eefbff',
         light: '#2380bf',
         default: '#1a7bbc' // primary/outline buttons
       },
@@ -16,14 +17,18 @@ module.exports = {
         darker: '#2c3747',
         darkest: '#171717' // body text
       },
-      green: '#49830C',
+      green: '#39912E',
       teal: {
-        lighter: '#F1F5F6',
+        lighter: '#f1f5f6',
         light: '#759aac',
         default: '#44bae6' // homepage accent background
       },
       transparent: 'transparent',
-      white: '#ffffff'
+      white: '#ffffff',
+      yellow: {
+        lighter: '#fffcee',
+        default: '#f7b500'
+      }
     },
     container: {
       center: true,
