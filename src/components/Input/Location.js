@@ -43,13 +43,15 @@ const StyledPlacesAutoComplete = styled.div`
 
     &:hover,
       &:focus {
-      ${tw`bg-gray-200`}
+      ${tw`bg-teal-light font-semibold`}
     }
+
     &--active {
-      ${tw`bg-blue text-white`}
+      ${tw`bg-teal-light font-semibold`}
+
       &:hover,
-        &:focus {
-        ${tw`bg-blue`}
+      &:focus {
+        ${tw`bg-teal-light font-semibold`}
       }
     }
   }

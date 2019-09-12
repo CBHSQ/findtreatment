@@ -62,7 +62,7 @@ const StyledLink = styled(NavLink)`
   ${tw`block text-gray-dark mt-4 md:inline-block md:mt-0 lg:pb-2 lg:px-2 lg:mr-2 lg:border-b-4 lg:border-transparent lg:hover:border-blue lg:hover:text-gray-dark`}
 
   &.active {
-    ${tw`font-bold md:border-blue`}
+    ${tw`font-bold text-blue md:border-blue`}
   }
 `;
 
@@ -93,7 +93,7 @@ export class HeaderNav extends Component {
           </div>
           {isDesktop ? (
             <StyledNav>
-              <StyledLink to="/" exact>
+              <StyledLink to="/results" exact>
                 Search for treatment
               </StyledLink>
               <StyledLink to="/content/understanding-addiction">
@@ -116,7 +116,7 @@ export class HeaderNav extends Component {
                 isOpen={this.state.menuOpen}
                 onStateChange={state => this.handleStateChange(state)}
               >
-                <Link to="/" exact onClick={() => this.closeMenu()}>
+                <Link to="/results" exact onClick={() => this.closeMenu()}>
                   Search for treatment
                 </Link>
                 <Link

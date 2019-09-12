@@ -33,7 +33,7 @@ const MobileBgImage = styled.div`
 const DecorativeHeading = styled.div`
   &:before {
     content: '';
-    ${tw`hidden md:block mb-4 border-t-4 border-teal w-12 h-0`}
+    ${tw`block mb-4 border-t-4 border-teal w-12 h-0`}
   }
 `;
 
@@ -140,24 +140,24 @@ class Home extends Component {
         >
           <div className="container">
             <div css={tw`py-5 md:py-10`}>
-              <div css={tw`w-full md:bg-white md:px-10 md:py-5 md:shadow-md`}>
+              <div css={tw`w-full md:bg-white md:px-20 md:py-10 md:shadow-md`}>
                 <FormHomepage onSubmit={this.submit} />
               </div>
             </div>
           </div>
         </div>
         <div className="container" id="home-learn-more">
-          <div css={tw`py-10 md:py-20`}>
+          <div css={tw`py-5 md:py-10`}>
             <DecorativeHeading
               as="h2"
               css={tw`text-2xl md:text-3xl font-heading font-bold`}
             >
               What to expect
             </DecorativeHeading>
-            <p css={tw`mb-10 md:mb-20 md:text-xl`}>
+            <p css={tw`mb-5 md:mb-10 md:text-xl`}>
               Help is available, treatment works, and people recover every day.
             </p>
-            <div css={tw`flex flex-wrap -mx-2 -mb-10`}>
+            <div css={tw`flex flex-wrap -mx-2 -mb-5 md:-mb-10`}>
               {this.props.content
                 .filter(card => !card.hidden)
                 .map(this.renderCards, { isDesktop })}

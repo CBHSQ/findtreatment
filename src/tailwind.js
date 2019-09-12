@@ -20,7 +20,7 @@ module.exports = {
       green: '#39912E',
       teal: {
         lighter: '#f1f5f6',
-        light: '#759aac',
+        light: '#ade3f7',
         default: '#44bae6' // homepage accent background
       },
       transparent: 'transparent',

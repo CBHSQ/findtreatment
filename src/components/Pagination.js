@@ -15,7 +15,7 @@ const StyledPagination = styled.div`
   }
 
   a {
-    ${tw`block hover:bg-gray-300 border-r px-3 py-2`}
+    ${tw`block hover:bg-gray-light border-r px-3 py-2`}
   }
 
   li:last-of-type a {
@@ -23,11 +23,11 @@ const StyledPagination = styled.div`
   }
 
   .disabled a {
-    ${tw`text-gray-700 bg-transparent hover:bg-transparent cursor-not-allowed`}
+    ${tw`text-gray bg-transparent hover:bg-transparent cursor-not-allowed`}
   }
 
   .selected a {
-    ${tw`text-white bg-blue-700 hover:bg-blue-500`}
+    ${tw`text-white bg-blue hover:bg-blue`}
   }
 `;
 
