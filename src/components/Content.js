@@ -4,13 +4,10 @@ import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { withRouter, NavLink, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 import { theme } from '../tailwind.js';
 import content from '../utils/content';
 
-import { Button } from './Input';
 import NoMatch from './NoMatch';
 
 const StyledPage = tw.div`flex flex-wrap -mx-6`;
@@ -107,7 +104,7 @@ export class Content extends Component {
       <li key={id} css={tw`mb-4`}>
         <NavLink
           to={`/content/${id}`}
-          css={tw`text-gray-darkest font-heading font-bold text-xl`}
+          css={tw`text-gray-darkest font-heading text-xl`}
           activeStyle={{
             ...tw`border-l-4 border-blue text-blue pl-2`
           }}
@@ -155,14 +152,6 @@ export class Content extends Component {
         <Helmet>
           <title>{subSection.name}</title>
         </Helmet>
-        <Button
-          link
-          onClick={() => window.print()}
-          css={tw`hidden lg:block absolute top-0 right-0 text-gray text-sm mr-6`}
-        >
-          <FontAwesomeIcon icon={faPrint} css={tw`fill-current w-4 h-4 mr-1`} />
-          Print
-        </Button>
         <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
         <h2>{subSection.name}</h2>
         {subSection.body}

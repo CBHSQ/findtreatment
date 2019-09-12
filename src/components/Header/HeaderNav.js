@@ -4,6 +4,8 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { slide as Menu } from 'react-burger-menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 import ScreenContext from '../ScreenContext';
 import { ReactComponent as Logo } from '../../images/logo.svg';
@@ -11,6 +13,14 @@ import HeaderHelpLine from './HeaderHelpLine';
 
 const StyledNav = styled.nav`
   ${tw`w-full text-sm flex mt-4`}
+`;
+
+const StyledLink = styled(NavLink)`
+  ${tw`text-gray-dark pb-2 px-2 mr-2 border-b-4 border-transparent hover:border-blue hover:text-gray-dark`}
+
+  &.active {
+    ${tw`font-bold text-blue border-blue`}
+  }
 `;
 
 const StyledMenu = styled.div`
@@ -22,10 +32,10 @@ const StyledMenu = styled.div`
 
   .bm-burger-bars {
     ${tw`bg-gray-dark`}
-  }
 
-  .bm-burger-bars-hover {
-    ${tw`bg-gray`}
+    &-hover {
+      ${tw`bg-gray`}
+    }
   }
 
   .bm-cross-button {
@@ -58,14 +68,6 @@ const StyledMenu = styled.div`
   }
 `;
 
-const StyledLink = styled(NavLink)`
-  ${tw`block text-gray-dark mt-4 md:inline-block md:mt-0 lg:pb-2 lg:px-2 lg:mr-2 lg:border-b-4 lg:border-transparent lg:hover:border-blue lg:hover:text-gray-dark`}
-
-  &.active {
-    ${tw`font-bold text-blue md:border-blue`}
-  }
-`;
-
 export class HeaderNav extends Component {
   state = {
     menuOpen: false
@@ -81,6 +83,7 @@ export class HeaderNav extends Component {
 
   render() {
     const isDesktop = this.context;
+    const { location } = this.props;
 
     return (
       <div className="container" css={tw`py-4 lg:py-0`}>
@@ -93,21 +96,42 @@ export class HeaderNav extends Component {
           </div>
           {isDesktop ? (
             <StyledNav>
-              <StyledLink to="/results" exact>
+              <StyledLink to="/results" exact css={tw`flex-none`}>
                 Search for treatment
               </StyledLink>
-              <StyledLink to="/content/understanding-addiction">
+              <StyledLink
+                to="/content/understanding-addiction"
+                css={tw`flex-none`}
+              >
                 Understanding addiction
               </StyledLink>
-              <StyledLink to="/content/understanding-mental-health">
+              <StyledLink
+                to="/content/understanding-mental-health"
+                css={tw`flex-none`}
+              >
                 Understanding mental health
               </StyledLink>
-              <StyledLink to="/content/treatment-options">
+              <StyledLink to="/content/treatment-options" css={tw`flex-none`}>
                 Treatment options
               </StyledLink>
-              <StyledLink to="/content/paying-for-treatment">
+              <StyledLink
+                to="/content/paying-for-treatment"
+                css={tw`flex-none`}
+              >
                 Paying for treatment
               </StyledLink>
+              {location.pathname !== '/' && (
+                <Link
+                  onClick={() => window.print()}
+                  css={tw`hidden lg:block w-full flex-grow text-right text-gray text-sm`}
+                >
+                  <FontAwesomeIcon
+                    icon={faPrint}
+                    css={tw`fill-current w-4 h-4 mr-1`}
+                  />
+                  Print
+                </Link>
+              )}
             </StyledNav>
           ) : (
             <StyledMenu>
