@@ -49,7 +49,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { handleSubmit, languages, isDesktop } = this.props;
+    const { languages, isDesktop } = this.props;
     const { showLocationWarning } = this.state;
 
     return (
