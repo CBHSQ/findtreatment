@@ -1,24 +1,24 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import styled from 'styled-components/macro';
 import { theme } from '../../tailwind.js';
 
-const Button = styled(({ as, children, primary, outline, link, ...props }) =>
+const Button = styled(({ as, children, primary, outline, link, ...rest }) =>
   as ? (
-    <Button as={as} {...props}>
+    <Button as={as} {...rest}>
       {children}
     </Button>
   ) : (
-    <button {...props}>{children}</button>
+    <button {...rest}>{children}</button>
   )
 )`
-  ${tw`font-semibold font-heading md:font-sans py-2 px-4 rounded inline-flex items-center justify-center`}
+  ${tw`font-semibold font-heading py-2 px-4 rounded inline-flex items-center justify-center`}
 
   ${props =>
     props.primary &&
     tw`bg-blue hover:bg-blue border border-blue text-white hover:text-white`}
 
-  ${props => props.outline && tw`font-semibold text-blue border border-blue`}
+  ${props => props.outline && tw`text-blue border border-blue`}
 
   ${props =>
     props.gradient && {
@@ -27,7 +27,7 @@ const Button = styled(({ as, children, primary, outline, link, ...props }) =>
     }}
 
 
-  ${props => props.link && tw`text-blue hover:text-blue font-normal p-0`}
+  ${props => props.link && tw`font-normal text-blue hover:text-blue p-0`}
 `;
 
 export default Button;

@@ -38,6 +38,8 @@ const DecorativeHeading = styled.div`
 `;
 
 class Home extends Component {
+  innerRef = React.createRef();
+
   submit = values => {
     const { dispatch } = this.props;
 
@@ -46,6 +48,10 @@ class Home extends Component {
     this.props.history.push({
       pathname: '/results'
     });
+  };
+
+  handleClick = () => {
+    this.innerRef.current.focus();
   };
 
   renderCards(card) {
@@ -107,11 +113,9 @@ class Home extends Component {
                   addiction, and mental illness.
                 </p>
                 <Button
-                  smooth
                   primary
-                  forwardedAs={HashLink}
+                  onClick={this.handleClick}
                   css={tw`w-full mb-4 md:mb-0 md:mr-4 md:w-auto md:inline-block text-2xl md:text-lg`}
-                  to={'/#home-search'}
                 >
                   Find treatment
                 </Button>
@@ -141,7 +145,7 @@ class Home extends Component {
           <div className="container">
             <div css={tw`py-5 md:py-10`}>
               <div css={tw`w-full md:bg-white md:px-20 md:py-10 md:shadow-md`}>
-                <FormHomepage onSubmit={this.submit} />
+                <FormHomepage onSubmit={this.submit} innerRef={this.innerRef} />
               </div>
             </div>
           </div>

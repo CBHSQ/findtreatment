@@ -50,6 +50,7 @@ export class FormHomepage extends Component {
             name="location"
             placeholder="City or zip code"
             toggleShowWarning={this.toggleShowWarning}
+            innerRef={this.props.innerRef}
           />
         </Label>
 

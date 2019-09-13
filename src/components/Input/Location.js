@@ -58,14 +58,6 @@ const StyledPlacesAutoComplete = styled.div`
 `;
 
 class Location extends Component {
-  handleBlur = () => {
-    const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
-
-    if (activeSuggestion !== undefined) {
-      this.handleSelect(activeSuggestion.description);
-    }
-  };
-
   handleChange = address => {
     const { input } = this.props;
 
@@ -128,7 +120,8 @@ class Location extends Component {
                   placeholder: placeholder,
                   name: input.name,
                   'aria-owns': 'listbox',
-                  'aria-haspopup': 'listbox'
+                  'aria-haspopup': 'listbox',
+                  ref: this.props.innerRef
                 })}
               />
               <div css={tw`absolute inset-y-0 right-0 flex items-center pr-4`}>
