@@ -8,6 +8,7 @@ import { HashLink } from 'react-router-hash-link';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
+import { destroyFacilities } from '../actions/facilities';
 import mobileBackground from '../images/film-strip_mobile.jpg';
 import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
 import backgroundLeft_2x from '../images/film-strip_l@2x.png';
@@ -18,12 +19,10 @@ import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
 
 const MobileBgContainer = styled.div`
-  ${tw`md:hidden relative border-b-4 border-white`}
   padding-bottom: 75%;
 `;
 
 const MobileBgImage = styled.div`
-  ${tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
   background-image: url(${mobileBackground});
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -41,6 +40,10 @@ const DecorativeHeading = styled.div`
 class Home extends Component {
   innerRef = React.createRef();
 
+  componentDidMount() {
+    this.props.destroyFacilities();
+  }
+
   submit = values => {
     const { dispatch } = this.props;
 
@@ -55,7 +58,9 @@ class Home extends Component {
     this.innerRef.current.focus();
   };
 
-  renderCards(card) {
+  renderCards = card => {
+    const isDesktop = this.context;
+
     return (
       <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-10`}>
         <div css={tw`flex -mx-2 mb-4`}>
@@ -68,8 +73,8 @@ class Home extends Component {
             <Button
               forwardedAs={Link}
               to={`/content/${card.id}`}
-              outline={!this.isDesktop}
-              link={this.isDesktop}
+              outline={!isDesktop}
+              link={isDesktop}
               css={tw`w-full lg:inline`}
               aria-label={`Button link to learn more about ${card.name}`}
             >
@@ -79,15 +84,15 @@ class Home extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   render() {
-    const isDesktop = this.context;
-
     return (
       <>
-        <MobileBgContainer>
-          <MobileBgImage />
+        <MobileBgContainer css={tw`md:hidden relative border-b-4 border-white`}>
+          <MobileBgImage
+            css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
+          />
         </MobileBgContainer>
         <div
           css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
@@ -165,7 +170,7 @@ class Home extends Component {
             <div css={tw`flex flex-wrap -mx-2 -mb-5 md:-mb-10`}>
               {content()
                 .filter(card => !card.hidden)
-                .map(this.renderCards, { isDesktop })}
+                .map(this.renderCards)}
             </div>
           </div>
         </div>
@@ -176,8 +181,20 @@ class Home extends Component {
 Home.contextType = ScreenContext;
 
 Home.propTypes = {
-  content: PropTypes.array.isRequired,
+  destroyFacilities: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-export default withRouter(connect()(Home));
+const mapDispatchToProps = dispatch => ({
+  destroyFacilities() {
+    dispatch(destroyFacilities());
+  },
+  dispatch
+});
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Home)
+);

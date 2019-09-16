@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
+import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
-import 'styled-components/macro';
-import tw from 'tailwind.macro';
-
-import { destroyFacilities } from '../../actions/facilities';
 
 import { Button, Label, Location } from '../Input';
 
 export class FormHomepage extends Component {
-  componentDidMount() {
-    this.props.destroyFacilities();
-  }
-
   handleSubmit = submitEvent => {
     const { handleSubmit, location } = this.props;
 
@@ -50,17 +44,10 @@ export class FormHomepage extends Component {
 }
 
 FormHomepage.propTypes = {
-  clearValues: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   location: PropTypes.object
 };
-
-const mapDispatchToProps = dispatch => ({
-  destroyFacilities() {
-    dispatch(destroyFacilities());
-  }
-});
 
 const mapStateToProps = state => {
   const initialValues = state.form.homepage.initialValues;
@@ -74,10 +61,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
+export default connect(mapStateToProps)(
   reduxForm({
     form: 'homepage'
   })(FormHomepage)

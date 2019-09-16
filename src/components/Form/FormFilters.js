@@ -27,21 +27,11 @@ export class FormFilters extends Component {
     }
   }
 
-  handleSubmit = submitEvent => {
-    const { handleSubmit, location } = this.props;
-
-    if (!location.latLng) {
-      return submitEvent.preventDefault();
-    }
-
-    handleSubmit(submitEvent);
-  };
-
   render() {
-    const { languages } = this.props;
+    const { handleSubmit, languages } = this.props;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <RowWrapper>
           <Row>
             <Label value="Location">
@@ -125,10 +115,12 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
+  initialValues: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired
 };
 

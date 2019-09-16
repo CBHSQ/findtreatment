@@ -65,7 +65,7 @@ describe('Content component', () => {
   describe('main', () => {
     it('it renders content', () => {
       const component = shallow(<Content {...testProps} />);
-      const link = component.find('Content___StyledH2');
+      const link = component.find('h2').first();
 
       expect(link.text()).toBe('Addiction can affect anyone');
     });

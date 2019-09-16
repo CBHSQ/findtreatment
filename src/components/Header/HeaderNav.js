@@ -7,7 +7,6 @@ import { slide as Menu } from 'react-burger-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
-import ScreenContext from '../ScreenContext';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import HeaderHelpLine from './HeaderHelpLine';
 
@@ -82,8 +81,7 @@ export class HeaderNav extends Component {
   };
 
   render() {
-    const isDesktop = this.context;
-    const { location } = this.props;
+    const { isDesktop, location } = this.props;
 
     return (
       <div className="container" css={tw`py-4 lg:py-0`}>
@@ -169,9 +167,9 @@ export class HeaderNav extends Component {
     );
   }
 }
-HeaderNav.contextType = ScreenContext;
 
 HeaderNav.propTypes = {
+  isDesktop: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired
 };
 

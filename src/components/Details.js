@@ -197,13 +197,7 @@ export class Details extends Component {
                   <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
                     Payment, insurance, or funding accepted
                   </h2>
-                  <ul>
-                    {services.PAY.values.map((value, index) => (
-                      <li key={index} css={tw`mb-2`}>
-                        <span>{value}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <ul></ul>
                 </div>
               </div>
             </div>
@@ -227,13 +221,7 @@ export class Details extends Component {
               <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
                 Facility details
               </DecorativeHeading>
-              <ul>
-                {services.PAY.values.map((value, index) => (
-                  <li key={index} css={tw`mb-2`}>
-                    <span>{value}</span>
-                  </li>
-                ))}
-              </ul>
+              <ul></ul>
             </div>
           </div>
         </div>
