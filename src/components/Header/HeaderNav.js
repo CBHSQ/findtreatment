@@ -89,7 +89,7 @@ export class HeaderNav extends Component {
       <div className="container" css={tw`py-4 lg:py-0`}>
         <div css={tw`w-full flex flex-wrap justify-between`}>
           <Link to="/" css={tw`font-semibold text-2xl tracking-tight lg:mt-4`}>
-            <Logo aria-label="Link to the homepage" />
+            <Logo aria-label="Treatment Finder" />
           </Link>
           <div css={tw`hidden lg:block`}>
             <HeaderHelpLine />
