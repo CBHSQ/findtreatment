@@ -7,7 +7,6 @@ import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
-import { LOCATION_WARNING } from '../../utils/warnings';
 
 import { Label, Location, InputGroup, Select } from '../Input';
 
@@ -28,32 +27,11 @@ export class FormFilters extends Component {
     }
   }
 
-  state = {
-    showLocationWarning: false
-  };
-
-  handleSubmit = submitEvent => {
-    const { handleSubmit, location } = this.props;
-
-    if (!location.latLng) {
-      return submitEvent.preventDefault();
-    }
-
-    handleSubmit(submitEvent);
-  };
-
-  toggleShowLocationWarning = value => {
-    this.setState({
-      showLocationWarning: value
-    });
-  };
-
   render() {
-    const { languages } = this.props;
-    const { showLocationWarning } = this.state;
+    const { handleSubmit, languages } = this.props;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <RowWrapper>
           <Row>
             <Label value="Location">
@@ -62,11 +40,7 @@ export class FormFilters extends Component {
                 component={Location}
                 name="location"
                 placeholder="City or zip code"
-                toggleShowWarning={this.toggleShowLocationWarning}
               />
-              {showLocationWarning && (
-                <div css={tw`mt-2 text-red text-sm`}>{LOCATION_WARNING}</div>
-              )}
             </Label>
           </Row>
           <Row>
@@ -141,10 +115,12 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
+  initialValues: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired
 };
 

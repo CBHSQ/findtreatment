@@ -75,11 +75,9 @@ export class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-  frid: PropTypes.string.isRequired,
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
-  name1: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired
+  name1: PropTypes.string.isRequired
 };
 
 export default MapContainer;
