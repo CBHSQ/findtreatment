@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
+import { destroyFacilities } from '../actions/facilities';
 import { handleReceiveFacilities } from '../actions/facilities';
 import ScreenContext from './ScreenContext';
 
@@ -20,17 +21,21 @@ export class Results extends Component {
 
   toggleFilters = () => {
     this.setState({
-      filtersHidden: !this.state.filtersHidden
+      filtersHidden: !!this.state.filtersHidden
     });
   };
 
   submit = values => {
     const { dispatch } = this.props;
 
-    dispatch(handleReceiveFacilities(values));
+    if (values.location.latLng) {
+      dispatch(handleReceiveFacilities(values));
+      window.scrollTo(0, 0);
+    } else {
+      dispatch(destroyFacilities());
+    }
 
     this.toggleFilters();
-    window.scrollTo(0, 0);
   };
 
   render() {

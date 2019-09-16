@@ -3,14 +3,15 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { theme } from '../../tailwind.js';
 
-const Button = styled(({ as, children, primary, outline, link, ...rest }) =>
-  as ? (
-    <Button as={as} {...rest}>
-      {children}
-    </Button>
-  ) : (
-    <button {...rest}>{children}</button>
-  )
+const Button = styled(
+  ({ as, children, primary, outline, gradient, disabled, link, ...rest }) =>
+    as ? (
+      <Button as={as} {...rest}>
+        {children}
+      </Button>
+    ) : (
+      <button {...rest}>{children}</button>
+    )
 )`
   ${tw`font-semibold font-heading py-2 px-4 rounded inline-flex items-center justify-center`}
 
@@ -26,6 +27,7 @@ const Button = styled(({ as, children, primary, outline, link, ...rest }) =>
       background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
     }}
 
+  ${props => props.disabled && tw`opacity-75 cursor-not-allowed`}
 
   ${props => props.link && tw`font-normal text-blue hover:text-blue p-0`}
 `;

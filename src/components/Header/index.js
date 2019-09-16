@@ -1,15 +1,29 @@
 import React from 'react';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
 import HeaderBanner from './HeaderBanner';
+import HeaderHelpLine from './HeaderHelpLine';
 import HeaderNav from './HeaderNav';
 
 const Header = () => {
   return (
     <header css={tw`print:hidden`} role="banner">
       <HeaderBanner />
-      <HeaderNav />
+      <div className="container" css={tw`py-4 lg:py-0`}>
+        <div css={tw`w-full flex flex-wrap justify-between`}>
+          <Link to="/" css={tw`font-semibold text-2xl tracking-tight lg:mt-4`}>
+            <Logo aria-label="Treatment Finder" />
+          </Link>
+          <div css={tw`hidden lg:block`}>
+            <HeaderHelpLine />
+          </div>
+          <HeaderNav />
+        </div>
+      </div>
     </header>
   );
 };

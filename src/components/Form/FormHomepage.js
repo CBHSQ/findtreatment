@@ -9,16 +9,16 @@ import { Button, Label, Location } from '../Input';
 
 export class FormHomepage extends Component {
   handleSubmit = submitEvent => {
-    const { handleSubmit, location } = this.props;
-
-    if (!location.latLng) {
+    if (!this.props.location.latLng) {
       return submitEvent.preventDefault();
     }
 
-    handleSubmit(submitEvent);
+    this.props.handleSubmit(submitEvent);
   };
 
   render() {
+    const { location } = this.props;
+
     return (
       <form onSubmit={this.handleSubmit}>
         <Label value="Find a treatment facility near you" css={tw`mb-8`} large>
@@ -33,6 +33,7 @@ export class FormHomepage extends Component {
 
         <Button
           primary
+          disabled={location && !location.latLng}
           css={tw`w-full md:w-auto md:inline-block md:px-16 text-2xl md:text-lg `}
           type="submit"
         >

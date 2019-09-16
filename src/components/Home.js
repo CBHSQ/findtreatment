@@ -47,7 +47,9 @@ class Home extends Component {
   submit = values => {
     const { dispatch } = this.props;
 
-    dispatch(handleReceiveFacilities(values));
+    if (values.location.latLng) {
+      dispatch(handleReceiveFacilities(values));
+    }
 
     this.props.history.push({
       pathname: '/results'

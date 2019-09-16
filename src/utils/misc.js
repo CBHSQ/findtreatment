@@ -8,15 +8,11 @@ export const removeHttp = url => {
 export const servicesToObject = array =>
   array.reduce((obj, item) => {
     obj[item['f2']] = {
-      name: (services[item['f2']] && services[item['f2']].name) || item['f1'],
+      name: (services[item['f2']] || {}).name || item['f1'],
       values: item['f3']
         .split('; ')
         .map(
-          value =>
-            (services[item['f2']] &&
-              services[item['f2']].values &&
-              services[item['f2']].values[value]) ||
-            value
+          value => ((services[item['f2']] || {}).values || {})[value] || value
         )
     };
     return obj;

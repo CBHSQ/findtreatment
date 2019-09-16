@@ -150,7 +150,7 @@ export default connect(mapStateToProps)(
     onChange: (values, dispatch, props, previousValues) => {
       const { isDesktop, loading } = props;
 
-      if (!isDesktop || loading || !values.location.latLng) {
+      if (!isDesktop || loading) {
         return;
       }
 
