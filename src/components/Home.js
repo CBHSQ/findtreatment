@@ -76,7 +76,7 @@ class Home extends Component {
               outline={!isDesktop}
               link={isDesktop}
               css={tw`w-full lg:inline`}
-              aria-label={`Button link to learn more about ${card.name}`}
+              aria-label={`Learn more about ${card.name}`}
             >
               Learn more ›
             </Button>
@@ -103,7 +103,7 @@ class Home extends Component {
                 src={backgroundLeft_2x}
                 css={tw`hidden lg:block lg:px-8`}
                 style={{ height: '336px' }}
-                alt="photos of people looking into the camera"
+                alt=""
               />
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
@@ -139,7 +139,7 @@ class Home extends Component {
                 src={backgroundRight_2x}
                 css={tw`hidden md:block px-4 lg:px-8`}
                 style={{ height: '336px' }}
-                alt="photos of people looking into the camera"
+                alt=""
               />
             </div>
           </div>
