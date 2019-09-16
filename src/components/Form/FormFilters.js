@@ -7,7 +7,6 @@ import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
-import { LOCATION_WARNING } from '../../utils/warnings';
 
 import { Label, Location, InputGroup, Select } from '../Input';
 
@@ -28,10 +27,6 @@ export class FormFilters extends Component {
     }
   }
 
-  state = {
-    showLocationWarning: false
-  };
-
   handleSubmit = submitEvent => {
     const { handleSubmit, location } = this.props;
 
@@ -42,15 +37,8 @@ export class FormFilters extends Component {
     handleSubmit(submitEvent);
   };
 
-  toggleShowLocationWarning = value => {
-    this.setState({
-      showLocationWarning: value
-    });
-  };
-
   render() {
     const { languages } = this.props;
-    const { showLocationWarning } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -62,11 +50,7 @@ export class FormFilters extends Component {
                 component={Location}
                 name="location"
                 placeholder="City or zip code"
-                toggleShowWarning={this.toggleShowLocationWarning}
               />
-              {showLocationWarning && (
-                <div css={tw`mt-2 text-red text-sm`}>{LOCATION_WARNING}</div>
-              )}
             </Label>
           </Row>
           <Row>

@@ -54,6 +54,12 @@ export class Details extends Component {
     this.props.history.goBack();
   };
 
+  reportFacility = () => {
+    const { data, reportFacility } = this.props;
+
+    reportFacility(data.frid);
+  };
+
   renderService = ({ name, values }) => (
     <div css={tw`mb-4`} key={name}>
       <h3 css={tw`font-bold font-heading uppercase text-sm mb-4`}>{name}</h3>
@@ -64,12 +70,6 @@ export class Details extends Component {
       </ul>
     </div>
   );
-
-  reportFacility = () => {
-    const { data, reportFacility } = this.props;
-
-    reportFacility(data.frid);
-  };
 
   render() {
     const { loading, error, data, isInternalLink } = this.props;
@@ -209,13 +209,33 @@ export class Details extends Component {
             </div>
           </div>
         </div>
-        <div className="container" css={tw`py-10`}>
-          <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
-            Treatment details
-          </DecorativeHeading>
-          {Object.keys(services)
-            .filter(service => !['PAY', 'TC'].includes(service))
-            .map(key => this.renderService(services[key]))}
+        <div className="container" css={tw`py-5`}>
+          <div css={tw`flex flex-wrap -mx-4`}>
+            <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
+              <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
+                Treatment details
+              </DecorativeHeading>
+              <ul>
+                {services.PAY.values.map((value, index) => (
+                  <li key={index} css={tw`mb-2`}>
+                    <span>{value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
+              <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
+                Facility details
+              </DecorativeHeading>
+              <ul>
+                {services.PAY.values.map((value, index) => (
+                  <li key={index} css={tw`mb-2`}>
+                    <span>{value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </>
     );
