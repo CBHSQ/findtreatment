@@ -71,7 +71,7 @@ class Home extends Component {
               outline={!this.isDesktop}
               link={this.isDesktop}
               css={tw`w-full lg:inline`}
-              aria-label={`Button link to learn more about ${card.name}`}
+              aria-label={`Learn more about ${card.name}`}
             >
               Learn more ›
             </Button>
