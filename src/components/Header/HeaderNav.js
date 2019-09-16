@@ -83,7 +83,7 @@ export class HeaderNav extends Component {
       <>
         {isDesktop ? (
           <nav css={tw`w-full text-sm flex mt-4`}>
-            <StyledLink to="/results" exact css={tw`flex-none`}>
+            <StyledLink to="/results" css={tw`flex-none`}>
               Search for treatment
             </StyledLink>
             <StyledLink

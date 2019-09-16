@@ -8,7 +8,7 @@ import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
 
-import { Label, Location, InputGroup, Select } from '../Input';
+import { Button, Label, Location, InputGroup, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-4 px-4`}
@@ -28,88 +28,117 @@ export class FormFilters extends Component {
   }
 
   render() {
-    const { handleSubmit, languages } = this.props;
+    const { handleSubmit, isDesktop, languages } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
-        <RowWrapper>
-          <Row>
-            <Label value="Location">
-              <Field
-                css={tw`bg-gray-lightest border py-3 px-4`}
-                component={Location}
-                name="location"
-                placeholder="City or zip code"
+      <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
+        {isDesktop && (
+          <h2 css={tw`text-2xl font-heading font-bold p-4 shadow`}>
+            Refine search results
+          </h2>
+        )}
+        <form onSubmit={handleSubmit}>
+          {!isDesktop && (
+            <RowWrapper>
+              <Row>
+                <Button primary css={tw`w-full`} type="submit">
+                  Show results
+                </Button>
+              </Row>
+            </RowWrapper>
+          )}
+          <RowWrapper>
+            <Row>
+              <Label value="Location">
+                <Field
+                  css={tw`bg-gray-lightest border py-3 px-4`}
+                  component={Location}
+                  name="location"
+                  placeholder="City or zip code"
+                />
+              </Label>
+            </Row>
+            <Row>
+              <Label value="Distance">
+                <Field
+                  name="distance"
+                  component={Select}
+                  options={filterOptions.distance}
+                />
+              </Label>
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <InputGroup
+                legend="Treatment type"
+                name="type"
+                options={filterOptions.type}
+                visible={4}
               />
-            </Label>
-          </Row>
-          <Row>
-            <Label value="Distance">
-              <Field
-                name="distance"
-                component={Select}
-                options={filterOptions.distance}
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <InputGroup
+                legend="Payment options"
+                name="payment"
+                options={filterOptions.payment}
+                visible={4}
               />
-            </Label>
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <InputGroup
-              legend="Treatment type"
-              name="type"
-              options={filterOptions.type}
-              visible={4}
-            />
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <InputGroup
-              legend="Payment options"
-              name="payment"
-              options={filterOptions.payment}
-              visible={4}
-            />
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <InputGroup legend="Age" name="ages" options={filterOptions.age} />
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <Label value="Other languages spoken">
-              <Field
-                name="language"
-                hideFirst
-                component={Select}
-                options={languages}
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <InputGroup
+                legend="Age"
+                name="ages"
+                options={filterOptions.age}
               />
-            </Label>
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <InputGroup
-              legend="Special programs"
-              name="special"
-              options={filterOptions.special}
-              type="checkbox"
-            />
-          </Row>
-        </RowWrapper>
-        <RowWrapper>
-          <Row>
-            <InputGroup
-              legend="Medication-assisted treatment (MAT)"
-              name="mat"
-              options={filterOptions.mat}
-            />
-          </Row>
-        </RowWrapper>
-      </form>
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <Label value="Other languages spoken">
+                <Field
+                  name="language"
+                  hideFirst
+                  component={Select}
+                  options={languages}
+                />
+              </Label>
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <InputGroup
+                legend="Special programs"
+                name="special"
+                options={filterOptions.special}
+                type="checkbox"
+              />
+            </Row>
+          </RowWrapper>
+          <RowWrapper>
+            <Row>
+              <InputGroup
+                legend="Medication-assisted treatment (MAT)"
+                name="mat"
+                options={filterOptions.mat}
+              />
+            </Row>
+          </RowWrapper>
+          {!isDesktop && (
+            <RowWrapper>
+              <Row>
+                <Button primary css={tw`w-full`} type="submit">
+                  Show results
+                </Button>
+              </Row>
+            </RowWrapper>
+          )}
+        </form>
+      </div>
     );
   }
 }
