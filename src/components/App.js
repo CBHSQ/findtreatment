@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
 
-import content from '../utils/content';
 import { theme } from '../tailwind.js';
 
 import ScreenContext from './ScreenContext';
@@ -29,7 +28,7 @@ class App extends Component {
         <Header />
         <main role="main">
           <Switch>
-            <Route exact path="/" render={() => <Home content={content()} />} />
+            <Route exact path="/" component={Home} />} />
             <Route path="/results" component={Results} />
             <Route path="/details/:frid" component={Details} />
             <Route

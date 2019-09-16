@@ -105,12 +105,6 @@ export class HeaderNav extends Component {
               >
                 Understanding addiction
               </StyledLink>
-              <StyledLink
-                to="/content/understanding-mental-health"
-                css={tw`flex-none`}
-              >
-                Understanding mental health
-              </StyledLink>
               <StyledLink to="/content/treatment-options" css={tw`flex-none`}>
                 Treatment options
               </StyledLink>

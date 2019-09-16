@@ -9,7 +9,7 @@ import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-import { Button, Label, Location, InputGroup, Select } from '../Input';
+import { Label, Location, InputGroup, Select } from '../Input';
 
 const Row = styled.div`
   ${tw`w-full mb-4 px-4`}
@@ -49,7 +49,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { languages, isDesktop } = this.props;
+    const { languages } = this.props;
     const { showLocationWarning } = this.state;
 
     return (
@@ -135,15 +135,6 @@ export class FormFilters extends Component {
             />
           </Row>
         </RowWrapper>
-        {!isDesktop && (
-          <RowWrapper>
-            <Row>
-              <Button primary css={tw`w-full`} type="submit">
-                Update facilities
-              </Button>
-            </Row>
-          </RowWrapper>
-        )}
       </form>
     );
   }

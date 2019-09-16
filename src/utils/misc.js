@@ -1,24 +1,5 @@
 import qs from 'qs';
-
-export const convertToSlug = string =>
-  string
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '');
-
-export const hashLinkScroll = () => {
-  const { hash } = window.location;
-  if (hash !== '') {
-    // Push onto callback queue so it runs after the DOM is updated,
-    // this is required when navigating from a different page so that
-    // the element is rendered on the page before trying to getElementById.
-    setTimeout(() => {
-      const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }, 0);
-  }
-};
+import { services } from './services';
 
 export const removeHttp = url => {
   return url.replace(/(^\w+:|^)\/\//, '');
@@ -26,7 +7,18 @@ export const removeHttp = url => {
 
 export const servicesToObject = array =>
   array.reduce((obj, item) => {
-    obj[item['f2']] = { name: item['f1'], values: item['f3'].split('; ') };
+    obj[item['f2']] = {
+      name: (services[item['f2']] && services[item['f2']].name) || item['f1'],
+      values: item['f3']
+        .split('; ')
+        .map(
+          value =>
+            (services[item['f2']] &&
+              services[item['f2']].values &&
+              services[item['f2']].values[value]) ||
+            value
+        )
+    };
     return obj;
   }, {});
 

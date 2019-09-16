@@ -5,6 +5,8 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 
+import { METERS_PER_MILE } from '../utils/constants';
+
 import Loading from './Loading';
 import NoLocation from './NoLocation';
 import NoResults from './NoResults';
@@ -17,7 +19,8 @@ export class ResultsList extends Component {
   };
 
   componentDidMount() {
-    if (this.props.location.latLng) {
+    const { location } = this.props;
+    if (location && location.latLng) {
       this.updateLocation();
     }
   }
@@ -37,6 +40,7 @@ export class ResultsList extends Component {
 
   render() {
     const {
+      distance,
       hasResults,
       loading,
       rows,
@@ -59,14 +63,14 @@ export class ResultsList extends Component {
 
     return (
       <>
-        <div css={tw`lg:flex lg:justify-between lg:items-center mb-4`}>
+        <div css={tw`mb-4`}>
           <h1 css={tw`text-xl font-heading`}>
-            Showing <span css={tw`font-bold`}>{recordCount} facilities</span> in{' '}
+            Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
+            within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
             {this.state.location.address}
           </h1>
-          <span css={tw`text-sm italic`}>Sorted by distance</span>
         </div>
-        <div css={tw`border border-yellow bg-yellow-lighter p-4 mb-8 text-sm`}>
+        <div css={tw`border border-yellow bg-yellow-lighter p-4 mb-4 text-sm`}>
           <span css={tw`block font-heading font-bold mb-4 uppercase`}>
             Before you call
           </span>
@@ -77,6 +81,7 @@ export class ResultsList extends Component {
             licensed by their states, and provide assessments.
           </p>
         </div>
+        <div css={tw`text-sm italic text-right mb-2`}>Sorted by distance</div>
         <ul>
           {rows.map(result => (
             <Card key={result.frid} {...result} />
@@ -100,6 +105,7 @@ ResultsList.propTypes = {
 
 const selector = formValueSelector('filters');
 const mapStateToProps = state => ({
+  distance: selector(state, 'distance'),
   location: selector(state, 'location')
 });
 

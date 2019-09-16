@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
+import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
 import mobileBackground from '../images/film-strip_mobile.jpg';
 import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
@@ -162,7 +163,7 @@ class Home extends Component {
               Help is available, treatment works, and people recover every day.
             </p>
             <div css={tw`flex flex-wrap -mx-2 -mb-5 md:-mb-10`}>
-              {this.props.content
+              {content()
                 .filter(card => !card.hidden)
                 .map(this.renderCards, { isDesktop })}
             </div>
