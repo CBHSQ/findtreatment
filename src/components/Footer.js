@@ -7,8 +7,6 @@ import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
 const StyledFooter = styled.footer`
-  ${tw`bg-gray-darker text-gray-lighter text-xs print:hidden`}
-
   a {
     ${tw`text-gray-lighter hover:text-gray-lighter`}
   }
@@ -16,7 +14,10 @@ const StyledFooter = styled.footer`
 
 const Footer = () => {
   return (
-    <StyledFooter role="contentinfo">
+    <StyledFooter
+      css={tw`bg-gray-darker text-gray-lighter text-xs print:hidden`}
+      role="contentinfo"
+    >
       <div className="container" css={tw`py-6 lg:p-12`}>
         <div css={tw`flex flex-wrap -mx-6`}>
           <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>

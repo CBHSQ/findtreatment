@@ -9,7 +9,7 @@ const Radio = ({ input, option }) => {
   return (
     <Label value={option.label} description={option.description} inline>
       <input
-        css={tw`mr-2 flex-none`}
+        css={tw`mt-px mr-2 flex-none`}
         type="radio"
         {...input}
         value={option.value}

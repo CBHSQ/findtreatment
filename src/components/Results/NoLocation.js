@@ -3,7 +3,7 @@ import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { OutboundLink } from 'react-ga';
 
-import { HELPLINE_LINK, HELPLINE_TEXT } from '../utils/constants';
+import { HELPLINE_LINK, HELPLINE_TEXT } from '../../utils/constants';
 
 const NoLocation = () => (
   <div css={tw`shadow bg-white border border-gray-lighter rounded p-6 mb-6`}>

@@ -4,10 +4,10 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import Loading from '../Loading';
-import NoLocation from '../NoLocation';
-import NoResults from '../NoResults';
+import NoLocation from './NoLocation';
+import NoResults from './NoResults';
 import Card from '../Card';
-import Pagination from '../Pagination';
+import Pagination from './Pagination';
 
 export class ResultsList extends Component {
   render() {

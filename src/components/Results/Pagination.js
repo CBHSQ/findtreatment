@@ -5,7 +5,8 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
-import { handleReceiveFacilities } from '../actions/facilities';
+
+import { handleReceiveFacilities } from '../../actions/facilities';
 
 const StyledPagination = styled.div`
   ${tw`w-full mb-6 flex justify-center`}

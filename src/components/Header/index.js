@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../images/logo.svg';
 
+import HeaderBeta from './HeaderBeta';
 import HeaderBanner from './HeaderBanner';
 import HeaderHelpLine from './HeaderHelpLine';
 import HeaderNav from './HeaderNav';
@@ -12,6 +13,7 @@ import HeaderNav from './HeaderNav';
 const Header = () => {
   return (
     <header css={tw`print:hidden`} role="banner">
+      <HeaderBeta />
       <HeaderBanner />
       <div className="container" css={tw`py-4 lg:py-0`}>
         <div css={tw`w-full flex flex-wrap justify-between`}>

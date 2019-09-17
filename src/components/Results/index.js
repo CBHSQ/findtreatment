@@ -3,6 +3,8 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { formValueSelector, reset } from 'redux-form';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -96,9 +98,21 @@ export class Results extends Component {
     <Warning heading="Before you call">
       <p>
         Before visiting a facility, call to make sure they have the services you
-        need. What to expect when you call. Not sure what you need? Learn more
-        about different types of treatment. All facilities are licensed by their
-        states, and provide assessments.
+        need.{' '}
+        <Link
+          to="/content/treatment-options/calling-a-facility"
+          css={tw`underline text-gray-darkest`}
+        >
+          What to expect when you call
+        </Link>
+        . Not sure what you need?{' '}
+        <Link
+          to="/content/treatment-options/types-of-treatment"
+          css={tw`underline text-gray-darkest`}
+        >
+          Learn more about different types of treatment
+        </Link>{' '}
+        All facilities are licensed by their states, and provide assessments.
       </p>
     </Warning>
   );
@@ -144,7 +158,7 @@ export class Results extends Component {
                     <span css={tw`text-xl`}>
                       <FontAwesomeIcon
                         icon={faSlidersH}
-                        css={tw`mr-1 text-gray-500`}
+                        css={tw`mr-1`}
                         rotation={90}
                       />
                       Filters
