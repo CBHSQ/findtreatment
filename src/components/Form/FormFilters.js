@@ -41,7 +41,7 @@ export class FormFilters extends Component {
           {!isDesktop && (
             <RowWrapper>
               <Row>
-                <Button primary css={tw`w-full`} type="submit">
+                <Button primary css={tw`w-full text-xl`} type="submit">
                   Show results
                 </Button>
               </Row>
@@ -131,7 +131,7 @@ export class FormFilters extends Component {
           {!isDesktop && (
             <RowWrapper>
               <Row>
-                <Button primary css={tw`w-full`} type="submit">
+                <Button primary css={tw`w-full text-xl`} type="submit">
                   Show results
                 </Button>
               </Row>

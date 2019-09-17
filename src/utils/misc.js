@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { services } from './services';
+import { services, servicesOrder } from './services';
 
 export const removeHttp = url => {
   return url.replace(/(^\w+:|^)\/\//, '');
@@ -17,6 +17,12 @@ export const servicesToObject = array =>
     };
     return obj;
   }, {});
+
+export const sortServicesArray = array => {
+  return array.sort(function(a, b) {
+    return servicesOrder.indexOf(a) - servicesOrder.indexOf(b);
+  });
+};
 
 export const linkToFacility = ({ frid, latitude, longitude }) => {
   return {

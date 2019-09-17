@@ -70,8 +70,34 @@ export class Results extends Component {
     this.toggleFilters();
   };
 
+  renderHeading = () => {
+    const { data, distance } = this.props;
+    const { recordCount } = data;
+
+    return (
+      <div css={tw`mb-4`}>
+        <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
+          Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
+          within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
+          {this.state.location.address}
+        </h1>
+      </div>
+    );
+  };
+
+  renderWarning = () => (
+    <Warning heading="Before you call">
+      <p>
+        Before visiting a facility, call to make sure they have the services you
+        need. What to expect when you call. Not sure what you need? Learn more
+        about different types of treatment. All facilities are licensed by their
+        states, and provide assessments.
+      </p>
+    </Warning>
+  );
+
   render() {
-    const { loading, error, data, distance } = this.props;
+    const { loading, error, data } = this.props;
     const { rows, page, totalPages, recordCount } = data;
     const hasResults = !!(rows && rows.length > 0);
     const isDesktop = this.context;
@@ -88,37 +114,46 @@ export class Results extends Component {
             <title>Results</title>
           </Helmet>
           {!isDesktop && (
-            <div css={tw`flex justify-between mb-4`}>
-              <Button
-                primary={filtersHidden}
-                link={!filtersHidden}
-                css={filtersHidden ? tw`w-full` : tw`ml-4`}
-                onClick={this.toggleFilters}
-              >
-                {filtersHidden ? (
-                  <>
-                    <FontAwesomeIcon
-                      icon={faSlidersH}
-                      css={tw`mr-1 text-gray-500`}
-                      rotation={90}
-                    />
-                    Filters
-                  </>
-                ) : (
-                  '❮ Cancel'
-                )}
-              </Button>
-              {!filtersHidden && (
+            <>
+              {filtersHidden && hasResults && (
                 <>
-                  <h2 css={tw`text-lg font-heading font-bold uppercase`}>
-                    Filters
-                  </h2>
-                  <Button link css={tw`mr-4`} onClick={this.handleReset}>
-                    Clear all
-                  </Button>
+                  {this.renderWarning()}
+                  {this.renderHeading()}
                 </>
               )}
-            </div>
+              <div css={tw`flex justify-between mb-4`}>
+                <Button
+                  primary={filtersHidden}
+                  link={!filtersHidden}
+                  large
+                  css={filtersHidden ? tw`w-full` : tw`ml-4`}
+                  onClick={this.toggleFilters}
+                >
+                  {filtersHidden ? (
+                    <span css={tw`text-xl`}>
+                      <FontAwesomeIcon
+                        icon={faSlidersH}
+                        css={tw`mr-1 text-gray-500`}
+                        rotation={90}
+                      />
+                      Filters
+                    </span>
+                  ) : (
+                    '❮ Cancel'
+                  )}
+                </Button>
+                {!filtersHidden && (
+                  <>
+                    <h2 css={tw`text-lg font-heading font-bold uppercase`}>
+                      Filters
+                    </h2>
+                    <Button link css={tw`mr-4`} onClick={this.handleReset}>
+                      Clear all
+                    </Button>
+                  </>
+                )}
+              </div>
+            </>
           )}
           <div css={tw`flex flex-wrap -mx-4`}>
             {(isDesktop || !this.state.filtersHidden) && (
@@ -130,25 +165,12 @@ export class Results extends Component {
               <div css={tw`w-full lg:w-2/3 px-4`}>
                 {hasResults && (
                   <>
-                    <div css={tw`mb-4`}>
-                      <h1 css={tw`text-lg lg:text-xl font-heading`}>
-                        Showing{' '}
-                        <span css={tw`font-bold`}>
-                          {recordCount} facilities
-                        </span>{' '}
-                        within {distance ? distance / METERS_PER_MILE : '100+'}{' '}
-                        miles of {this.state.location.address}
-                      </h1>
-                    </div>
-                    <Warning heading="Before you call">
-                      <p>
-                        Before visiting a facility, call to make sure they have
-                        the services you need. What to expect when you call. Not
-                        sure what you need? Learn more about different types of
-                        treatment. All facilities are licensed by their states,
-                        and provide assessments.
-                      </p>
-                    </Warning>
+                    {isDesktop && (
+                      <>
+                        {this.renderHeading()}
+                        {this.renderWarning()}
+                      </>
+                    )}
                     <div css={tw`text-sm italic text-right mb-2`}>
                       Sorted by distance
                     </div>

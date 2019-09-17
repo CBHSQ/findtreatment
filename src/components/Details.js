@@ -8,21 +8,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
+import Masonry from 'react-masonry-css';
 
+import { theme } from '../tailwind.js';
 import { handleReceiveFacility, destroyFacility } from '../actions/facility';
 import { reportFacility } from '../actions/facilities';
 import { removeHttp } from '../utils/misc';
+import { servicesOrder } from '../utils/services';
 
 import Error from './Error';
 import NoMatch from './NoMatch';
 import Loading from './Loading';
 import MapContainer from './Map/MapContainer';
-import { Button } from './Input';
+import { Button, Label } from './Input';
 
 const DecorativeHeading = styled.div`
   &:before {
     content: '';
     ${tw`block mb-4 border-t-4 border-teal w-12 h-0`}
+  }
+`;
+
+const StyledMasonaryGrid = styled.div`
+  .masonry-grid {
+    ${tw`flex -mx-4 w-full`}
+
+    &_column {
+      ${tw`px-4`}
+    }
   }
 `;
 
@@ -102,6 +115,8 @@ export class Details extends Component {
       phone,
       website
     } = data;
+
+    console.log(services);
 
     return (
       <>
@@ -209,21 +224,38 @@ export class Details extends Component {
             </div>
           </div>
         </div>
-        <div className="container" css={tw`py-5`}>
-          <div css={tw`flex flex-wrap -mx-4`}>
-            <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
-              <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
-                Treatment details
-              </DecorativeHeading>
-              <ul></ul>
-            </div>
-            <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
-              <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
-                Facility details
-              </DecorativeHeading>
-              <ul></ul>
-            </div>
-          </div>
+        <div className="container" css={tw`py-10`}>
+          <DecorativeHeading css={tw`font-heading font-bold text-xl mb-4`}>
+            Services
+          </DecorativeHeading>
+          <StyledMasonaryGrid>
+            <Masonry
+              breakpointCols={{
+                default: 2,
+                [parseInt(theme.screens.lg, 10)]: 1
+              }}
+              className="masonry-grid"
+              columnClassName="masonry-grid_column"
+            >
+              {Object.keys(services)
+                .filter(key => servicesOrder.includes(key))
+                .sort(function(a, b) {
+                  return servicesOrder.indexOf(a) - servicesOrder.indexOf(b);
+                })
+                .map(key => (
+                  <div css={tw`mb-6`} key={services[key].name}>
+                    <Label as="h3" value={services[key].name} />
+                    <ul
+                      css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
+                    >
+                      {services[key].values.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </Masonry>
+          </StyledMasonaryGrid>
         </div>
       </>
     );
