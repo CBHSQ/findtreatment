@@ -48,7 +48,6 @@ export class FormFilters extends Component {
             primary
             disabled={!(location || {}).latLng}
             css={tw`w-full text-xl`}
-            type="button"
             onClick={(location || {}).latLng && toggleFilters}
           >
             Show {recordCount} results
@@ -159,18 +158,19 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
-  location: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
+  isDesktop: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  isDesktop: PropTypes.bool.isRequired
+  location: PropTypes.object,
+  recordCount: PropTypes.number,
+  toggleFilters: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
   const { languages } = state;
-  const { loading, data } = languages;
+  const { data } = languages;
   const values = getFormValues('filters')(state);
 
   return {
@@ -179,7 +179,6 @@ const mapStateToProps = state => {
       location: { address: '' }
     },
     location: (values || {}).location,
-    loading,
     languages: data
   };
 };
@@ -190,12 +189,6 @@ export default connect(mapStateToProps)(
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
     onChange: (values, dispatch, props, previousValues) => {
-      const { loading } = props;
-
-      if (loading) {
-        return;
-      }
-
       dispatch(submit('filters'));
     }
   })(FormFilters)

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Loading from './Loading';
+import Loading from '../Loading';
 import { ResultsList } from './ResultsList';
-import Card from './Card';
-import NoResults from './NoResults';
+import Card from '../Card';
+import NoResults from '../NoResults';
 
 describe('Results component', () => {
   it('shows a loading message', () => {

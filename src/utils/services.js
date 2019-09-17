@@ -112,7 +112,6 @@ export const services = {
 };
 
 export const servicesOrder = [
-  'PAY',
   'PYAS',
   'TC',
   'SET',

@@ -1,5 +1,6 @@
 import React from 'react';
 import tw from 'tailwind.macro';
+import 'styled-components/macro';
 
 import flag from '../../images/us_flag_small.png';
 

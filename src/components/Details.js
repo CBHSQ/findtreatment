@@ -31,7 +31,7 @@ const DecorativeHeading = styled.div`
 
 const StyledMasonaryGrid = styled.div`
   .masonry-grid {
-    ${tw`flex -mx-4 w-full`}
+    ${tw`flex -mx-4 w-auto`}
 
     &_column {
       ${tw`px-4`}
@@ -115,8 +115,6 @@ export class Details extends Component {
       phone,
       website
     } = data;
-
-    console.log(services);
 
     return (
       <>
@@ -245,9 +243,7 @@ export class Details extends Component {
                 .map(key => (
                   <div css={tw`mb-6`} key={services[key].name}>
                     <Label as="h3" value={services[key].name} />
-                    <ul
-                      css={tw`text-sm leading-relaxed text-gray-700 list-disc list-inside`}
-                    >
+                    <ul css={tw`text-sm list-disc list-inside`}>
                       {services[key].values.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}

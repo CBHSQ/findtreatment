@@ -3,25 +3,90 @@ import { shallow } from 'enzyme';
 import { FormFilters } from './FormFilters';
 
 const testProps = {
-  languages: [],
   dispatch: jest.fn(),
   handleSubmit: jest.fn(),
-  hasResults: true,
   initialValues: {},
   isDesktop: true,
-  resetAllFilters: jest.fn()
+  languages: [],
+  location: {},
+  recordCount: 0,
+  toggleFilters: jest.fn()
 };
 
-describe('Filters component', () => {
-  xit('calls resetFilters() when reset filter button is clicked', () => {
-    const props = {
-      ...testProps
-    };
-    const component = shallow(<FormFilters {...props} />);
-    const resetBtn = component.find('.reset-filters');
+describe('FormFilters component', () => {
+  describe('language data', () => {
+    it('loads if not present', () => {
+      const mockDispatch = jest.fn();
+      const props = {
+        dispatch: mockDispatch,
+        ...testProps
+      };
 
-    resetBtn.simulate('click');
+      shallow(<FormFilters {...props} />);
+      expect(props.dispatch.mock.calls.length).toBe(1);
+    });
 
-    expect(props.resetAllFilters.mock.calls.length).toBe(1);
+    it('does not load if already present', () => {
+      const mockDispatch = jest.fn();
+      const props = {
+        ...testProps,
+        dispatch: mockDispatch,
+        languages: [
+          { value: 'N1-Achumaw', label: 'Achumaw' },
+          { value: 'F110-Akan', label: 'Akan' },
+          { value: 'F2-Albanian', label: 'Albanian' },
+          { value: 'F3-Amharic', label: 'Amharic' }
+        ]
+      };
+
+      shallow(<FormFilters {...props} />);
+      expect(props.dispatch.mock.calls.length).toBe(0);
+    });
+  });
+
+  describe('with an invalid location prop', () => {
+    it('disables the submit button without a valid location', () => {
+      const props = {
+        ...testProps,
+        isDesktop: false
+      };
+      const component = shallow(<FormFilters {...props} />);
+
+      expect(
+        component
+          .find('FormFilters___StyledButton')
+          .first()
+          .prop('disabled')
+      ).toBe(true);
+    });
+
+    it('disallows form submission', () => {
+      const mockSubmit = jest.fn();
+      const props = {
+        ...testProps,
+        handleSubmit: mockSubmit
+      };
+      const component = shallow(<FormFilters {...props} />);
+      const form = component.find('form');
+
+      form.simulate('submit', { preventDefault() {} });
+
+      expect(mockSubmit.mock.calls.length).toBe(0);
+    });
+  });
+
+  describe('with a valid location prop', () => {
+    it('calls its handleSubmit prop when the form changed', () => {
+      const props = {
+        ...testProps,
+        location: { latLng: {} }
+      };
+      const component = shallow(<FormFilters {...props} />);
+      const form = component.find('form');
+
+      form.simulate('submit');
+
+      expect(props.handleSubmit.mock.calls.length).toBe(1);
+    });
   });
 });

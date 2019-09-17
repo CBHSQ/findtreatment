@@ -1,6 +1,6 @@
 import React from 'react';
-import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';

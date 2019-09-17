@@ -8,16 +8,18 @@ import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
-import { destroyFacilities } from '../actions/facilities';
-import { handleReceiveFacilities } from '../actions/facilities';
-import ScreenContext from './ScreenContext';
-import { METERS_PER_MILE } from '../utils/constants';
+import {
+  destroyFacilities,
+  handleReceiveFacilities
+} from '../../actions/facilities';
+import ScreenContext from '../ScreenContext';
+import { METERS_PER_MILE } from '../../utils/constants';
 
-import { Button } from './Input';
-import Error from './Error';
-import Warning from './Warning';
+import { Button } from '../Input';
+import Error from '../Error';
+import Warning from '../Warning';
 import ResultsList from './ResultsList';
-import FormFilters from './Form/FormFilters';
+import FormFilters from '../Form/FormFilters';
 
 export class Results extends Component {
   state = {
