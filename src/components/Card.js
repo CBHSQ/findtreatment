@@ -63,7 +63,12 @@ const Card = props => {
         >
           <h2 css={tw`font-heading font-bold text-xl px-2`}>
             {props.name1}
-            {props.name2 && <span className="card-name2">{props.name2}</span>}
+            {props.name2 && (
+              <>
+                {' '}
+                <span className="card-name2">{props.name2}</span>
+              </>
+            )}
           </h2>
           <span css={tw`flex-none px-2`}>more info ›</span>
         </Link>
