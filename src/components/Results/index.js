@@ -111,8 +111,8 @@ export class Results extends Component {
           css={tw`underline text-gray-darkest`}
         >
           Learn more about different types of treatment
-        </Link>{' '}
-        All facilities are licensed by their states, and provide assessments.
+        </Link>
+        . All facilities are licensed by their states, and provide assessments.
       </p>
     </Warning>
   );
