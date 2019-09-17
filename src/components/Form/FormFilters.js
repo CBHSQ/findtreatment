@@ -7,6 +7,7 @@ import { Field, reduxForm, getFormValues, submit } from 'redux-form';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
+import { DEFAULT_DISTANCE } from '../../utils/constants';
 
 import { Button, Label, Location, InputGroup, Select } from '../Input';
 
@@ -27,8 +28,38 @@ export class FormFilters extends Component {
     }
   }
 
+  handleSubmit = submitEvent => {
+    const { handleSubmit, location } = this.props;
+
+    if (!(location || {}).latLng) {
+      return submitEvent.preventDefault();
+    }
+
+    handleSubmit(submitEvent);
+  };
+
+  renderSubmitButton = () => {
+    const { location, recordCount, toggleFilters } = this.props;
+
+    return (
+      <RowWrapper>
+        <Row>
+          <Button
+            primary
+            disabled={!(location || {}).latLng}
+            css={tw`w-full text-xl`}
+            type="button"
+            onClick={(location || {}).latLng && toggleFilters}
+          >
+            Show {recordCount} results
+          </Button>
+        </Row>
+      </RowWrapper>
+    );
+  };
+
   render() {
-    const { handleSubmit, isDesktop, languages } = this.props;
+    const { isDesktop, languages } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
@@ -37,16 +68,8 @@ export class FormFilters extends Component {
             Refine search results
           </h2>
         )}
-        <form onSubmit={handleSubmit}>
-          {!isDesktop && (
-            <RowWrapper>
-              <Row>
-                <Button primary css={tw`w-full text-xl`} type="submit">
-                  Show results
-                </Button>
-              </Row>
-            </RowWrapper>
-          )}
+        <form onSubmit={this.handleSubmit}>
+          {!isDesktop && this.renderSubmitButton()}
           <RowWrapper>
             <Row>
               <Label value="Location">
@@ -128,15 +151,7 @@ export class FormFilters extends Component {
               />
             </Row>
           </RowWrapper>
-          {!isDesktop && (
-            <RowWrapper>
-              <Row>
-                <Button primary css={tw`w-full text-xl`} type="submit">
-                  Show results
-                </Button>
-              </Row>
-            </RowWrapper>
-          )}
+          {!isDesktop && this.renderSubmitButton()}
         </form>
       </div>
     );
@@ -144,28 +159,26 @@ export class FormFilters extends Component {
 }
 
 FormFilters.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   isDesktop: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
   const { languages } = state;
   const { loading, data } = languages;
-  const values =
-    getFormValues('homepage')(state) ||
-    getFormValues('filters')(state) ||
-    state.form.filters.initialValues;
+  const values = getFormValues('filters')(state);
 
   return {
     initialValues: {
-      ...values
+      distance: DEFAULT_DISTANCE,
+      location: { address: '' }
     },
-    location: values && values.location,
+    location: (values || {}).location,
     loading,
     languages: data
   };
@@ -174,12 +187,12 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(
   reduxForm({
     form: 'filters',
-    enableReinitialize: true,
     destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true,
     onChange: (values, dispatch, props, previousValues) => {
-      const { isDesktop, loading } = props;
+      const { loading } = props;
 
-      if (!isDesktop || loading) {
+      if (loading) {
         return;
       }
 

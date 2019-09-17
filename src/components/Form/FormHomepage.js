@@ -5,15 +5,19 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues } from 'redux-form';
 
+import { DEFAULT_DISTANCE } from '../../utils/constants';
+
 import { Button, Label, Location } from '../Input';
 
 export class FormHomepage extends Component {
   handleSubmit = submitEvent => {
-    if (!this.props.location.latLng) {
+    const { handleSubmit, location } = this.props;
+
+    if (!(location || {}).latLng) {
       return submitEvent.preventDefault();
     }
 
-    this.props.handleSubmit(submitEvent);
+    handleSubmit(submitEvent);
   };
 
   render() {
@@ -33,7 +37,7 @@ export class FormHomepage extends Component {
 
         <Button
           primary
-          disabled={location && !location.latLng}
+          disabled={!(location || {}).latLng}
           css={tw`w-full md:w-auto md:inline-block md:px-16 text-2xl md:text-lg `}
           type="submit"
         >
@@ -51,19 +55,21 @@ FormHomepage.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const initialValues = state.form.homepage.initialValues;
-  const values = getFormValues('homepage')(state);
+  const values = getFormValues('filters')(state);
 
   return {
     initialValues: {
-      ...initialValues
+      distance: DEFAULT_DISTANCE,
+      location: { address: '' }
     },
-    location: values && values.location
+    location: (values || {}).location
   };
 };
 
 export default connect(mapStateToProps)(
   reduxForm({
-    form: 'homepage'
+    form: 'filters',
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true
   })(FormHomepage)
 );

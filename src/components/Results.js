@@ -3,14 +3,13 @@ import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, reset } from 'redux-form';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 import { destroyFacilities } from '../actions/facilities';
 import { handleReceiveFacilities } from '../actions/facilities';
-import { resetAllFilters } from '../actions/filters';
 import ScreenContext from './ScreenContext';
 import { METERS_PER_MILE } from '../utils/constants';
 
@@ -23,55 +22,61 @@ import FormFilters from './Form/FormFilters';
 export class Results extends Component {
   state = {
     filtersHidden: true,
-    location: {}
+    cancelButtonHidden: false
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    if (location && location.latLng) {
-      this.updateLocation();
-    }
+    this.clearResultsIfNoLocation();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { location } = this.props;
-
-    if ((location || {}).latLng !== prevState.location.latLng) {
-      this.updateLocation();
-    }
+  componentDidUpdate(prevProps) {
+    this.clearResultsIfNoLocation();
   }
 
-  updateLocation = () => {
-    this.setState({
-      location: this.props.location
-    });
+  clearResultsIfNoLocation = () => {
+    const { data, dispatch, location } = this.props;
+    const { rows } = data;
+    const hasResults = !!(rows && rows.length > 0);
+
+    if (hasResults && !(location || {}).latLng) {
+      dispatch(destroyFacilities());
+    }
   };
 
   toggleFilters = () => {
     this.setState({
-      filtersHidden: !this.state.filtersHidden
+      filtersHidden: !this.state.filtersHidden,
+      cancelButtonHidden: false
     });
   };
 
   handleReset = () => {
-    this.props.resetAllFilters();
+    const { dispatch } = this.props;
+
+    dispatch(reset('filters'));
   };
 
   submit = values => {
     const { dispatch } = this.props;
+    const isDesktop = this.context;
 
     if (values.location.latLng) {
       dispatch(handleReceiveFacilities(values));
-    } else {
-      dispatch(destroyFacilities());
     }
 
-    window.scrollTo(0, 0);
-    this.toggleFilters();
+    if (isDesktop) {
+      window.scrollTo(0, 0);
+    }
+
+    if (!isDesktop) {
+      this.setState({
+        cancelButtonHidden: true
+      });
+    }
   };
 
   renderHeading = () => {
-    const { data, distance } = this.props;
+    const { data, distance, location } = this.props;
     const { recordCount } = data;
 
     return (
@@ -79,7 +84,7 @@ export class Results extends Component {
         <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
           Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
           within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
-          {this.state.location.address}
+          {location.address}
         </h1>
       </div>
     );
@@ -125,8 +130,12 @@ export class Results extends Component {
                 <Button
                   primary={filtersHidden}
                   link={!filtersHidden}
-                  large
                   css={filtersHidden ? tw`w-full` : tw`ml-4`}
+                  style={
+                    this.state.cancelButtonHidden
+                      ? { ...tw`invisible` }
+                      : { ...tw`visible` }
+                  }
                   onClick={this.toggleFilters}
                 >
                   {filtersHidden ? (
@@ -158,7 +167,12 @@ export class Results extends Component {
           <div css={tw`flex flex-wrap -mx-4`}>
             {(isDesktop || !this.state.filtersHidden) && (
               <div css={tw`w-full lg:w-1/3 px-4  mb-6 lg:mb-0 print:hidden`}>
-                <FormFilters onSubmit={this.submit} isDesktop={isDesktop} />
+                <FormFilters
+                  onSubmit={this.submit}
+                  isDesktop={isDesktop}
+                  toggleFilters={this.toggleFilters}
+                  recordCount={recordCount}
+                />
               </div>
             )}
             {(isDesktop || this.state.filtersHidden) && (
@@ -201,13 +215,6 @@ Results.propTypes = {
   data: PropTypes.object.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  resetAllFilters() {
-    dispatch(resetAllFilters());
-  },
-  dispatch
-});
-
 const selector = formValueSelector('filters');
 const mapStateToProps = state => {
   const { facilities } = state;
@@ -222,7 +229,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Results);
+export default connect(mapStateToProps)(Results);

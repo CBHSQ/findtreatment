@@ -8,7 +8,6 @@ import { HashLink } from 'react-router-hash-link';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
-import { destroyFacilities } from '../actions/facilities';
 import mobileBackground from '../images/film-strip_mobile.jpg';
 import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
 import backgroundLeft_2x from '../images/film-strip_l@2x.png';
@@ -40,10 +39,6 @@ const DecorativeHeading = styled.div`
 class Home extends Component {
   innerRef = React.createRef();
 
-  componentDidMount() {
-    this.props.destroyFacilities();
-  }
-
   submit = values => {
     const { dispatch } = this.props;
 
@@ -60,7 +55,7 @@ class Home extends Component {
     this.innerRef.current.focus();
   };
 
-  renderCards = card => {
+  renderCard = card => {
     const isDesktop = this.context;
 
     return (
@@ -172,7 +167,7 @@ class Home extends Component {
             <div css={tw`flex flex-wrap -mx-2 -mb-5 md:-mb-10`}>
               {content()
                 .filter(card => !card.hidden)
-                .map(this.renderCards)}
+                .map(this.renderCard)}
             </div>
           </div>
         </div>
@@ -183,20 +178,8 @@ class Home extends Component {
 Home.contextType = ScreenContext;
 
 Home.propTypes = {
-  destroyFacilities: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  destroyFacilities() {
-    dispatch(destroyFacilities());
-  },
-  dispatch
-});
-
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(Home)
-);
+export default withRouter(connect()(Home));

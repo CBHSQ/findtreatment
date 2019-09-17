@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
@@ -25,21 +27,23 @@ class App extends Component {
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
         />
         <GlobalStyle />
-        <Header />
-        <main role="main">
-          <Switch>
-            <Route exact path="/" component={Home} />} />
-            <Route path="/results" component={Results} />
-            <Route path="/details/:frid" component={Details} />
-            <Route
-              path="/content/:sectionID/:subSectionID?"
-              component={Content}
-            />
-            />
-            <Route component={NoMatch} />
-          </Switch>
-        </main>
-        <Footer />
+        <div css={tw`overflow-hidden`}>
+          <Header />
+          <main role="main">
+            <Switch>
+              <Route exact path="/" component={Home} />} />
+              <Route path="/results" component={Results} />
+              <Route path="/details/:frid" component={Details} />
+              <Route
+                path="/content/:sectionID/:subSectionID?"
+                component={Content}
+              />
+              />
+              <Route component={NoMatch} />
+            </Switch>
+          </main>
+          <Footer />
+        </div>
       </ScreenContext.Provider>
     );
   }
