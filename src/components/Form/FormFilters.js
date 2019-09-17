@@ -71,7 +71,7 @@ export class FormFilters extends Component {
           {!isDesktop && this.renderSubmitButton()}
           <RowWrapper>
             <Row>
-              <Label value="Location">
+              <Label labelText="Location">
                 <Field
                   css={tw`bg-gray-lightest border py-3 px-4`}
                   component={Location}
@@ -81,7 +81,7 @@ export class FormFilters extends Component {
               </Label>
             </Row>
             <Row>
-              <Label value="Distance">
+              <Label labelText="Distance">
                 <Field
                   name="distance"
                   component={Select}
@@ -121,7 +121,7 @@ export class FormFilters extends Component {
           </RowWrapper>
           <RowWrapper>
             <Row>
-              <Label value="Other languages spoken">
+              <Label labelText="Other languages spoken">
                 <Field
                   name="language"
                   hideFirst

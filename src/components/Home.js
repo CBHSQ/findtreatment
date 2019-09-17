@@ -154,7 +154,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="container" id="home-learn-more">
-          <div css={tw`py-5 md:py-10`}>
+          <div css={tw`py-10`}>
             <DecorativeHeading
               as="h2"
               css={tw`text-2xl md:text-3xl font-heading font-bold`}

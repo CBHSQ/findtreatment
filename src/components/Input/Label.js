@@ -30,24 +30,24 @@ const Label = props => {
           {props.children}
           {props.description ? (
             <div css={tw`-mt-px`}>
-              <span>{props.value}</span>
+              <span>{props.labelText}</span>
               <p>{props.description}</p>
             </div>
           ) : (
-            <span>{props.value}</span>
+            <span>{props.labelText}</span>
           )}
         </StyledLabel>
       ) : (
         <StyledLabel {...props}>
           {props.help ? (
             <div css={tw`flex justify-between items-center`}>
-              <span>{props.value}</span>
+              <span>{props.labelText}</span>
               <Link to={props.help.url} css={tw`mb-2 text-sm`}>
                 {props.help.text}
               </Link>
             </div>
           ) : (
-            <span>{props.value}</span>
+            <span>{props.labelText}</span>
           )}
           {props.children}
         </StyledLabel>
@@ -64,7 +64,7 @@ Label.propTypes = {
   }),
   inline: PropTypes.bool,
   large: PropTypes.bool,
-  value: PropTypes.string.isRequired
+  labelText: PropTypes.string.isRequired
 };
 
 export default Label;

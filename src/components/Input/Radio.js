@@ -7,7 +7,7 @@ import { Label } from '../Input';
 
 const Radio = ({ input, option }) => {
   return (
-    <Label value={option.label} description={option.description} inline>
+    <Label labelText={option.label} description={option.description} inline>
       <input
         css={tw`mt-px mr-2 flex-none`}
         type="radio"

@@ -31,7 +31,7 @@ class InputGroup extends Component {
     return (
       <>
         <fieldset>
-          <Label as="legend" value={legend} />
+          <Label as="legend" labelText={legend} />
           <Field
             component={({ input, options }) =>
               options

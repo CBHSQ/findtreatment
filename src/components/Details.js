@@ -242,7 +242,7 @@ export class Details extends Component {
                 })
                 .map(key => (
                   <div css={tw`mb-6`} key={services[key].name}>
-                    <Label as="h3" value={services[key].name} />
+                    <Label as="h3" labelText={services[key].name} />
                     <ul css={tw`text-sm list-disc list-inside`}>
                       {services[key].values.map((item, index) => (
                         <li key={index}>{item}</li>

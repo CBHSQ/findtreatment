@@ -25,8 +25,11 @@ export class FormHomepage extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <Label css={tw`mb-8`} large>
-          <span>Find a treatment facility near you</span>
+        <Label
+          css={tw`mb-8`}
+          labelText="Find a treatment facility near you"
+          large
+        >
           <Field
             css={tw`md:mt-6 md:w-full md:shadow-md rounded p-4 border border-gray-light`}
             component={Location}

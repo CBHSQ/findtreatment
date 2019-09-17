@@ -17,7 +17,7 @@ const handleChange = (input, option, event) => {
 
 const Checkbox = ({ input, option }) => {
   return (
-    <Label value={option.label} description={option.description} inline>
+    <Label labelText={option.label} description={option.description} inline>
       <input
         css={tw`mt-px mr-2 flex-none`}
         type="checkbox"
