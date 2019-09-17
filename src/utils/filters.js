@@ -102,6 +102,10 @@ export const special = [
   {
     value: 'GL',
     label: 'LGBT (Lesbian, gay, bisexual, transgender)'
+  },
+  {
+    value: 'AH',
+    label: 'Services for the deaf and hard of hearing'
   }
 ];
 

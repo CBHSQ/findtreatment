@@ -69,7 +69,7 @@ export default () => [
                 Trying to stop or cut down on drug use, but not being able to.
               </li>
               <li>
-                Using drugs because of being angry or upset with other people
+                Using drugs because of being angry or upset with other people.
               </li>
               <li>Taking one drug to get over the effects of another.</li>
               <li>
@@ -108,11 +108,18 @@ export default () => [
             <p>
               Our treatment locator lists facilities across the country. We have
               guidance about what to expect when looking for treatment,
-              including <u>different kinds of treatment</u> and{' '}
-              <u>understanding how to pay for treatment</u>.
+              including{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
+                different kinds of treatment
+              </a>{' '}
+              and{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
+                understanding how to pay for treatment
+              </a>
+              .
             </p>
             <p>
-              If treatment isn’t the next right step for you, you can still find
+              If treatment isn’t the right next step for you, you can still find
               someone to talk to:
             </p>
             <ul>
@@ -121,8 +128,9 @@ export default () => [
                   Talking to a professional therapist or counselor.{' '}
                 </strong>
                 Your primary care doctor can recommend therapists in your care
-                network, and NAMI has locations around the country with
-                resources for finding a therapist.
+                network, and National Alliance on Mental Illness (NAMI) has
+                locations around the country with resources for finding a
+                therapist.{' '}
                 <a href="https://www.nami.org/local/">(nami.org/local)</a>
               </li>
               <li>
@@ -748,7 +756,7 @@ export default () => [
             <p>
               Because of the way naltrexone blocks opioid receptors in the
               brain, it’s not a good fit for everyone. Before starting
-              naltrexone, you needs to get through an initial 7-10 days of
+              naltrexone, you need to get through an initial 7-10 days of
               withdrawal. People with chronic pain problems, who sometimes need
               to take opioid medications, should work carefully with their
               doctor about a pain management strategy before starting
@@ -785,7 +793,7 @@ export default () => [
               Understanding the costs of and how to pay for treatment can be
               hard and confusing. Unfortunately, resources aren’t always well
               organized or easy to find. The best way to make sure you choose
-              care you can afford is by asking questions, taking notes, and
+              care that you can afford is by asking questions, taking notes, and
               making sure you know what kind of support you’re eligible for.
             </p>
             <p>
@@ -886,7 +894,7 @@ export default () => [
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <a href="https://findtreatment.samhsa.gov/locator/stateagencies#.XUCje5NKju0">
+              <a href="https://findtreatment.samhsa.gov/locator/stateagencies">
                 <strong>state agency</strong>
               </a>{' '}
               for information on how the process works in your state.
