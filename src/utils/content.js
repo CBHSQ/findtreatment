@@ -50,8 +50,8 @@ export default () => [
         )
       },
       {
-        name: 'It’s hard to stop using drugs on your own',
-        id: 'its-hard-to-stop-using-drugs-on-your-own',
+        name: 'It’s hard to stop on your own',
+        id: 'its-hard-to-stop-on-your-own',
         body: (
           <>
             <p>
@@ -89,8 +89,8 @@ export default () => [
         )
       },
       {
-        name: 'Asking for help is the first important step',
-        id: 'asking-for-help-is-the-first-important-step',
+        name: 'Recovery starts with asking for help',
+        id: 'recovery-starts-with-asking-for-help',
         body: (
           <>
             <p>
@@ -156,8 +156,8 @@ export default () => [
         )
       },
       {
-        name: 'Supporting recovery and caring for yourself',
-        id: 'supporting-recovery-and-caring-for-yourself',
+        name: 'Supporting recovery and self-care',
+        id: 'supporting-recovery-and-self-care',
         body: (
           <>
             <p>
