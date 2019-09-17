@@ -24,8 +24,6 @@ const renderService = (services, frid, latitude, longitude) => {
 
   const servicesArray = services.values;
 
-  console.log(servicesArray);
-
   return (
     <div css={tw`flex text-sm mb-1`}>
       <FontAwesomeIcon
@@ -40,15 +38,12 @@ const renderService = (services, frid, latitude, longitude) => {
           </li>
         ))}
         {servicesArray.length > 0 && (
-          <span>
-            plus{' '}
-            <Link
-              css={tw`font-bold`}
-              to={linkToFacility({ frid, latitude, longitude })}
-            >
-              {servicesArray.length} more
-            </Link>
-          </span>
+          <Link
+            css={tw`font-bold`}
+            to={linkToFacility({ frid, latitude, longitude })}
+          >
+            plus more
+          </Link>
         )}
       </StyledList>
     </div>
@@ -139,8 +134,8 @@ const Card = props => {
               {
                 name: 'Services',
                 values: [
-                  ...(services.TC || {}).values,
-                  ...(services.SET || {}).values
+                  ...((services.TC || {}).values || []),
+                  ...((services.SET || {}).values || [])
                 ]
               },
               frid,

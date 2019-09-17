@@ -166,7 +166,9 @@ class Location extends Component {
                 )}
               </div>
               {this.state.showLocationWarning && (
-                <div css={tw`mt-2 text-red text-sm`}>{LOCATION_WARNING}</div>
+                <div css={tw`mt-2 text-red-light text-sm`}>
+                  {LOCATION_WARNING}
+                </div>
               )}
             </>
           )}

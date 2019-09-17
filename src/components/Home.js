@@ -105,7 +105,7 @@ class Home extends Component {
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
-                <h1 css={tw`text-3xl font-heading font-bold mb-4`}>
+                <h1 css={tw`text-3xl font-heading font-bold leading-snug mb-4`}>
                   Millions of Americans have a substance use disorder. Find
                   help; find hope.
                 </h1>
