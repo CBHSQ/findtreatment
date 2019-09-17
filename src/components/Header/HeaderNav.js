@@ -120,7 +120,7 @@ export class HeaderNav extends Component {
               isOpen={this.state.menuOpen}
               onStateChange={state => this.handleStateChange(state)}
             >
-              <Link to="/" exact onClick={() => this.closeMenu()}>
+              <Link to="/" onClick={() => this.closeMenu()}>
                 Home
               </Link>
               <Link to="/results" onClick={() => this.closeMenu()}>
