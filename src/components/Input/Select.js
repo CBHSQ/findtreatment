@@ -6,12 +6,12 @@ import { PropTypes } from 'prop-types';
 import { ReactComponent as Arrow } from '../../images/arrow.svg';
 
 const StyledSelect = styled.select`
-  $ &::-ms-expand {
+  &::-ms-expand {
     display: none;
   }
 `;
 
-const Select = ({ input, hideFirst, options }) => (
+const Select = ({ hideFirst, input, options }) => (
   <div css={tw`relative`}>
     <StyledSelect
       {...input}

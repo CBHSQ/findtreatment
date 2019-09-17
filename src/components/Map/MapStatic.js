@@ -36,24 +36,29 @@ export class MapStatic extends Component {
             css={tw`w-full`}
           />
         </OutboundLink>
-        <div css={tw`bg-blue-lighter p-1 text-center text-sm text-gray`}>
-          {miles} mile{miles !== 1 && 's'}
-        </div>
+        {(miles || miles === 0) && (
+          <div
+            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray`}
+            className="map-static-miles"
+          >
+            {miles} mile{miles !== 1 && 's'}
+          </div>
+        )}
       </>
     );
   }
 }
 
 MapStatic.propTypes = {
-  name1: PropTypes.string.isRequired,
-  street1: PropTypes.string.isRequired,
-  street2: PropTypes.string,
   city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  zip: PropTypes.string.isRequired,
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
-  miles: PropTypes.number.isRequired
+  miles: PropTypes.number.isRequired,
+  name1: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  street1: PropTypes.string.isRequired,
+  street2: PropTypes.string,
+  zip: PropTypes.string.isRequired
 };
 
 export default MapStatic;

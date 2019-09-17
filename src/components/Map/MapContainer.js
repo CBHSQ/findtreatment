@@ -64,9 +64,9 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
         >
           <div>
-            <h4 className="infowindow__heading" css={tw`mb-2 font-bold`}>
+            <span className="infowindow__heading" css={tw`font-bold`}>
               {this.state.selectedPlace.name}
-            </h4>
+            </span>
           </div>
         </InfoWindow>
       </Map>

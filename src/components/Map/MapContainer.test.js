@@ -33,7 +33,7 @@ describe('MapContainer component', () => {
         const infoWindow = component.find('InfoWindow');
 
         expect(infoWindow.prop('visible')).toBe(true);
-        expect(infoWindow.find('MapContainer___StyledH').text()).toBe(
+        expect(infoWindow.find('.infowindow__heading').text()).toBe(
           firstMarker.prop('name')
         );
       });

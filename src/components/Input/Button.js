@@ -1,6 +1,8 @@
 import React from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
+import { PropTypes } from 'prop-types';
+
 import { theme } from '../../tailwind.js';
 
 const Button = styled(
@@ -31,5 +33,15 @@ const Button = styled(
 
   ${props => props.link && tw`font-normal text-blue hover:text-blue p-0`}
 `;
+
+Button.propTypes = {
+  as: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  gradient: PropTypes.bool,
+  disabled: PropTypes.bool,
+  link: PropTypes.bool
+};
 
 export default Button;
