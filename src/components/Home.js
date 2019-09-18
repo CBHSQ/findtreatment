@@ -106,14 +106,15 @@ class Home extends Component {
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
                 <h1 css={tw`text-3xl font-heading font-bold leading-snug mb-4`}>
-                  Millions of Americans have a substance use disorder. Find
-                  help; find hope.
+                  Millions of Americans have a substance use disorder.{' '}
+                  <br css={tw`hidden md:block`} />
+                  Help is available.
                 </h1>
                 <p css={tw`mb-8`}>
                   The Substance Abuse and Mental Health Services Administration
                   (SAMHSA) collects information on thousands of state-licensed
                   providers who specialize in treating substance use disorders,
-                  addiction, and mental illness.
+                  addiction, and mental illness.{' '}
                 </p>
                 <Button
                   primary
