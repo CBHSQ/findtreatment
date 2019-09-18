@@ -12,7 +12,7 @@ const HeaderHelpLine = () => {
     <OutboundLink
       eventLabel="Header Helpline link`"
       to={`tel:${HELPLINE_LINK}`}
-      css={tw`w-auto px-4 py-4 bg-gold flex items-center rounded-l-full`}
+      css={tw`w-auto px-4 py-4 bg-gold flex items-center rounded-full`}
     >
       <FontAwesomeIcon
         icon={faUser}

@@ -17,10 +17,12 @@ const StyledList = styled.ul`
   }
 `;
 
-const renderService = (services, key) => {
-  if (!services[key]) {
+const renderService = (services, frid, latitude, longitude) => {
+  if (!services) {
     return;
   }
+
+  const servicesArray = services.values;
 
   return (
     <div css={tw`flex text-sm mb-1`}>
@@ -29,12 +31,20 @@ const renderService = (services, key) => {
         css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
       />
       <StyledList>
-        <span css={tw`font-bold inline`}>{services[key].name}: </span>
-        {services[key].values.map((value, index) => (
+        <span css={tw`font-bold inline`}>{services.name}: </span>
+        {servicesArray.slice(0, 3).map((value, index) => (
           <li key={index} css={tw`inline`}>
             <span>{value}</span>
           </li>
         ))}
+        {servicesArray.length > 3 && (
+          <Link
+            css={tw`font-bold`}
+            to={linkToFacility({ frid, latitude, longitude })}
+          >
+            plus more
+          </Link>
+        )}
       </StyledList>
     </div>
   );
@@ -51,7 +61,8 @@ const Card = props => {
     zip,
     latitude,
     longitude,
-    miles
+    miles,
+    services
   } = props;
 
   return (
@@ -119,8 +130,19 @@ const Card = props => {
             {street2 && `, ${street2}`}, {city}, {state} {zip}
           </address>
           <div css={tw`text-sm`}>
-            {renderService(props.services, 'TC')}
-            {renderService(props.services, 'PAY')}
+            {renderService(
+              {
+                name: 'Services',
+                values: [
+                  ...((services.TC || {}).values || []),
+                  ...((services.SET || {}).values || [])
+                ]
+              },
+              frid,
+              latitude,
+              longitude
+            )}
+            {renderService(services.PAY, frid, latitude, longitude)}
           </div>
         </div>
       </div>

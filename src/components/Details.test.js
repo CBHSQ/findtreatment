@@ -73,7 +73,7 @@ describe('Details component', () => {
     expect(component.find(NoMatch).length).toBe(1);
   });
 
-  xit('calls reportFacility() when report facility button is clicked', () => {
+  it('calls reportFacility() when report facility button is clicked', () => {
     const reportFn = jest.fn();
     const props = {
       ...testProps,
@@ -103,7 +103,7 @@ describe('Details component', () => {
     expect(component.find('.back-link').length).toBe(0);
   });
 
-  xit('hides report facility button if facility has already been reported', () => {
+  it('hides report facility button if facility has already been reported', () => {
     const props = {
       ...testProps,
       isReported: true
