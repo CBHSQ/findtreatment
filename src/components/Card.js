@@ -17,7 +17,7 @@ const StyledList = styled.ul`
   }
 `;
 
-const renderService = (services, frid, latitude, longitude) => {
+const renderService = (services, frid, latitude, longitude, name1) => {
   if (!services) {
     return;
   }
@@ -41,6 +41,7 @@ const renderService = (services, frid, latitude, longitude) => {
           <Link
             css={tw`font-bold`}
             to={linkToFacility({ frid, latitude, longitude })}
+            aria-label={`All services for ${name1}`}
           >
             plus more
           </Link>
@@ -52,17 +53,20 @@ const renderService = (services, frid, latitude, longitude) => {
 
 const Card = props => {
   const {
-    frid,
-    name1,
-    street1,
-    street2,
     city,
-    state,
-    zip,
+    frid,
     latitude,
     longitude,
     miles,
-    services
+    name1,
+    name2,
+    phone,
+    services,
+    state,
+    street1,
+    street2,
+    website,
+    zip
   } = props;
 
   return (
@@ -73,11 +77,11 @@ const Card = props => {
           css={tw`flex justify-between items-center -mx-2 text-white `}
         >
           <h2 css={tw`font-heading font-bold text-xl px-2`}>
-            {props.name1}
-            {props.name2 && (
+            {name1}
+            {name2 && (
               <>
                 {' '}
-                <span className="card-name2">{props.name2}</span>
+                <span className="card-name2">{name2}</span>
               </>
             )}
           </h2>
@@ -99,29 +103,31 @@ const Card = props => {
           />
         </div>
         <div css={tw`w-3/4 px-2`}>
-          <div css={tw`flex items-center`}>
-            <FontAwesomeIcon
-              icon={faPhone}
-              css={tw`text-gray fill-current w-4 h-4 mr-2`}
-            />
-            <OutboundLink
-              eventLabel="Facility phone link from card"
-              to={`tel:${props.phone}`}
-              css={tw`block text-gray-darkest text-lg`}
-            >
-              {props.phone}
-            </OutboundLink>
-          </div>
-          {props.website !== 'http://' && (
+          {phone && (
+            <div css={tw`flex items-center`}>
+              <FontAwesomeIcon
+                icon={faPhone}
+                css={tw`text-gray fill-current w-4 h-4 mr-2`}
+              />
+              <OutboundLink
+                eventLabel="Facility phone link from card"
+                to={`tel:${phone}`}
+                css={tw`block text-gray-darkest text-lg`}
+              >
+                {phone}
+              </OutboundLink>
+            </div>
+          )}
+          {website !== 'http://' && (
             <div className="card-website" css={tw`truncate`}>
               <OutboundLink
                 eventLabel="Facility website link from card"
-                to={props.website}
+                to={website}
                 target="_blank"
                 rel="noopener noreferrer"
                 css={tw`ml-6`}
               >
-                {removeHttp(props.website).toLowerCase()}
+                {removeHttp(website).toLowerCase()}
               </OutboundLink>
             </div>
           )}
@@ -140,9 +146,10 @@ const Card = props => {
               },
               frid,
               latitude,
-              longitude
+              longitude,
+              name1
             )}
-            {renderService(services.PAY, frid, latitude, longitude)}
+            {renderService(services.PAY, frid, latitude, longitude, name1)}
           </div>
         </div>
       </div>
@@ -151,17 +158,20 @@ const Card = props => {
 };
 
 Card.propTypes = {
+  city: PropTypes.string.isRequired,
   frid: PropTypes.string.isRequired,
+  latitude: PropTypes.string.isRequired,
+  longitude: PropTypes.string.isRequired,
+  miles: PropTypes.number,
   name1: PropTypes.string.isRequired,
   name2: PropTypes.string,
+  phone: PropTypes.string,
+  services: PropTypes.object.isRequired,
+  state: PropTypes.string.isRequired,
   street1: PropTypes.string.isRequired,
   street2: PropTypes.string,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  zip: PropTypes.string.isRequired,
-  services: PropTypes.object.isRequired,
-  phone: PropTypes.string.isRequired,
-  website: PropTypes.string
+  website: PropTypes.string,
+  zip: PropTypes.string.isRequired
 };
 
 export default Card;
