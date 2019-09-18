@@ -5,7 +5,8 @@ module.exports = {
       blue: {
         lighter: '#eefbff',
         light: '#2380bf',
-        default: '#1a7bbc' // primary/outline buttons
+        default: '#1a7bbc', // primary/outline buttons
+        dark: '#1a4480'
       },
       gold: '#ffbe22', // help line
       gray: {

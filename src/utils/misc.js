@@ -1,6 +1,12 @@
 import qs from 'qs';
 import { services, servicesOrder } from './services';
 
+export const convertToSlug = string =>
+  string
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+
 export const removeHttp = url => {
   return url.replace(/(^\w+:|^)\/\//, '');
 };

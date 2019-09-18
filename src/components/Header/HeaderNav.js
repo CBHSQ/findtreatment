@@ -99,14 +99,15 @@ export class HeaderNav extends Component {
     this.setState({ menuOpen: false });
   };
 
-  renderDesktopLink = link => (
-    <StyledLink to={link.path} css={tw`flex-none`}>
+  renderDesktopLink = (link, index) => (
+    <StyledLink to={link.path} css={tw`flex-none`} key={index}>
       {link.name}
     </StyledLink>
   );
 
-  renderMobileLink = link => (
+  renderMobileLink = (link, index) => (
     <NavLink
+      key={index}
       exact={link.exact}
       to={link.path}
       onClick={() => this.closeMenu()}

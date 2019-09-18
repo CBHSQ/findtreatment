@@ -92,7 +92,7 @@ class Home extends Component {
           />
         </MobileBgContainer>
         <div
-          css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
+          css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:border-t md:border-gray-lighter`}
         >
           <div className="container">
             <div css={tw`md:flex md:-mx-4 lg:-mx-8`}>
