@@ -110,7 +110,7 @@ export class Results extends Component {
           to="/content/treatment-options/types-of-treatment"
           css={tw`underline text-gray-darkest`}
         >
-          Learn more about different types of treatment.
+          Learn more about different types of treatment
         </Link>
         . All facilities are licensed by their states, and provide assessments.
       </p>
