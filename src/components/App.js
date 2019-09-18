@@ -54,7 +54,7 @@ App.propTypes = {
 };
 
 const mapSizesToProps = ({ width }) => ({
-  isDesktop: width > parseInt(theme.screens.lg, 10)
+  isDesktop: width >= parseInt(theme.screens.lg, 10)
 });
 
 export default withSizes(mapSizesToProps)(App);

@@ -12,7 +12,7 @@ const HeaderHelpLine = () => {
     <OutboundLink
       eventLabel="Header Helpline link`"
       to={`tel:${HELPLINE_LINK}`}
-      css={tw`w-auto px-4 py-4 bg-gold flex items-center rounded-full`}
+      css={tw`w-auto px-4 py-4 bg-gold flex items-center lg:rounded-full`}
     >
       <FontAwesomeIcon
         icon={faUser}
@@ -21,7 +21,7 @@ const HeaderHelpLine = () => {
       />
       <div css={tw`text-gray-darkest`}>
         For help finding treatment{' '}
-        <span css={tw`font-bold`}>{HELPLINE_TEXT}</span>
+        <span css={tw`block lg:inline font-bold`}>{HELPLINE_TEXT}</span>
       </div>
     </OutboundLink>
   );

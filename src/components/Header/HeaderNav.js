@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 import ScreenContext from '../ScreenContext';
+import HeaderHelpLine from './HeaderHelpLine';
 
 const StyledLink = styled(NavLink)`
   ${tw`text-gray-dark pb-2 px-2 mr-2 border-b-4 border-transparent hover:border-blue hover:text-gray-dark`}
@@ -20,15 +21,19 @@ const StyledLink = styled(NavLink)`
 const StyledMenu = styled.div`
   ${tw`relative`}
 
+  .active {
+    ${tw`font-bold text-blue`}
+  }
+
   .bm-burger-button {
-    ${tw`h-5 w-5 absolute right-0 top-0 mr-4`}
+    ${tw`h-5 w-5 absolute right-0 top-0 mt-px`}
   }
 
   .bm-burger-bars {
     ${tw`bg-gray-dark`}
 
     &-hover {
-      ${tw`bg-gray`}
+      ${tw`bg-gray-dark`}
     }
   }
 
@@ -45,7 +50,7 @@ const StyledMenu = styled.div`
   }
 
   .bm-menu {
-    ${tw`bg-white p-4`}
+    ${tw`bg-white`}
   }
 
   .bm-item-list {
@@ -53,7 +58,7 @@ const StyledMenu = styled.div`
   }
 
   .bm-item {
-    ${tw`block mb-4 font-heading`}
+    ${tw`h-full`}
   }
 
   .bm-overlay {
@@ -61,6 +66,25 @@ const StyledMenu = styled.div`
     background: 'rgba(0, 0, 0, 0.3)';
   }
 `;
+
+const desktopLinks = [
+  { name: 'Search for treatment', path: '/results' },
+  { name: 'Understanding addiction', path: '/content/understanding-addiction' },
+  { name: 'Treatment options', path: '/content/treatment-options' },
+  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
+];
+
+const mobileLinks = [
+  { name: 'Home', path: '/', exact: true },
+  { name: 'Search for treatment', path: '/results' },
+  { name: 'Understanding addiction', path: '/content/understanding-addiction' },
+  {
+    name: 'Understanding mental health',
+    path: '/content/understanding-mental-health'
+  },
+  { name: 'Treatment options', path: '/content/treatment-options' },
+  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
+];
 
 export class HeaderNav extends Component {
   state = {
@@ -75,6 +99,23 @@ export class HeaderNav extends Component {
     this.setState({ menuOpen: false });
   };
 
+  renderDesktopLink = link => (
+    <StyledLink to={link.path} css={tw`flex-none`}>
+      {link.name}
+    </StyledLink>
+  );
+
+  renderMobileLink = link => (
+    <NavLink
+      exact={link.exact}
+      to={link.path}
+      onClick={() => this.closeMenu()}
+      css={tw`block mb-4 font-heading`}
+    >
+      {link.name}
+    </NavLink>
+  );
+
   render() {
     const isDesktop = this.context;
     const { location } = this.props;
@@ -83,21 +124,7 @@ export class HeaderNav extends Component {
       <>
         {isDesktop ? (
           <nav css={tw`w-full text-sm flex mt-4`}>
-            <StyledLink to="/results" css={tw`flex-none`}>
-              Search for treatment
-            </StyledLink>
-            <StyledLink
-              to="/content/understanding-addiction"
-              css={tw`flex-none`}
-            >
-              Understanding addiction
-            </StyledLink>
-            <StyledLink to="/content/treatment-options" css={tw`flex-none`}>
-              Treatment options
-            </StyledLink>
-            <StyledLink to="/content/paying-for-treatment" css={tw`flex-none`}>
-              Paying for treatment
-            </StyledLink>
+            {desktopLinks.map(this.renderDesktopLink)}
             {location.pathname !== '/' && (
               <div css={tw`hidden lg:block w-full flex-grow text-right`}>
                 <button
@@ -117,39 +144,20 @@ export class HeaderNav extends Component {
           <StyledMenu>
             <Menu
               right
+              disableAutoFocus
               isOpen={this.state.menuOpen}
               onStateChange={state => this.handleStateChange(state)}
             >
-              <Link to="/" onClick={() => this.closeMenu()}>
-                Home
-              </Link>
-              <Link to="/results" onClick={() => this.closeMenu()}>
-                Search for treatment
-              </Link>
-              <Link
-                to="/content/understanding-addiction"
-                onClick={() => this.closeMenu()}
-              >
-                Understanding addiction
-              </Link>
-              <Link
-                to="/content/understanding-mental-health"
-                onClick={() => this.closeMenu()}
-              >
-                Understanding mental health
-              </Link>
-              <Link
-                to="/content/treatment-options"
-                onClick={() => this.closeMenu()}
-              >
-                Treatment options
-              </Link>
-              <Link
-                to="/content/paying-for-treatment"
-                onClick={() => this.closeMenu()}
-              >
-                Paying for treatment
-              </Link>
+              <div>
+                <div css={tw`h-full flex flex-col justify-between`}>
+                  <div css={tw`p-4`}>
+                    {mobileLinks.map(this.renderMobileLink)}
+                  </div>
+                  <div>
+                    <HeaderHelpLine />
+                  </div>
+                </div>
+              </div>
             </Menu>
           </StyledMenu>
         )}
