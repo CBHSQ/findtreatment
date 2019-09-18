@@ -41,7 +41,7 @@ const renderService = (services, frid, latitude, longitude, name1) => {
           <Link
             css={tw`font-bold`}
             to={linkToFacility({ frid, latitude, longitude })}
-            aria-label={`All services for ${name1}`}
+            aria-label={`All ${services.name} for ${name1}`}
           >
             plus more
           </Link>

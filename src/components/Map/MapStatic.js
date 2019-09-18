@@ -29,6 +29,7 @@ export class MapStatic extends Component {
           )}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Driving directions for ${name1}`}
         >
           <img
             src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
