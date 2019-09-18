@@ -18,7 +18,7 @@ const HeaderBeta = () => {
         </OutboundLink>
         <div css={tw`inline lg:block font-normal text-sm`}>
           {' '}
-          Visit current site at{' '}
+          Visit the current site at{' '}
           <OutboundLink
             eventLabel="findtreatment.samhsa.gov link clicked"
             css={tw`underline`}
