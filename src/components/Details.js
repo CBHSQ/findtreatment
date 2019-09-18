@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
@@ -85,7 +85,7 @@ export class Details extends Component {
   );
 
   render() {
-    const { loading, error, data, isInternalLink } = this.props;
+    const { loading, error, data, isInternalLink, isReported } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
 
     if (error) {
@@ -155,7 +155,11 @@ export class Details extends Component {
                 )}
               </div>
               <div css={tw`px-2 font-bold text-xl mt-2 flex-none`}>
-                <div css={tw`flex items-center `}>
+                <OutboundLink
+                  eventLabel="Facility phone link from card"
+                  to={`tel:${phone}`}
+                  css={tw`flex items-center text-gray-darkest`}
+                >
                   <span
                     css={tw`mr-2 bg-blue rounded-full h-8 w-8 flex items-center justify-center`}
                   >
@@ -165,7 +169,7 @@ export class Details extends Component {
                     />
                   </span>
                   {phone}
-                </div>
+                </OutboundLink>
               </div>
             </div>
           </div>
@@ -252,6 +256,24 @@ export class Details extends Component {
                 ))}
             </Masonry>
           </StyledMasonaryGrid>
+        </div>
+        <div css={tw`bg-gray-lightest print:hidden`}>
+          <div className="container" css={tw`py-5`}>
+            {!isReported ? (
+              <Button
+                className="report-facility"
+                secondary
+                onClick={this.reportFacility}
+              >
+                <FontAwesomeIcon icon={faFlag} css={tw`text-white mr-2`} />
+                Report a problem with this listing
+              </Button>
+            ) : (
+              <div role="alert">
+                <strong>Thank you!</strong> Your feedback has been recorded.
+              </div>
+            )}
+          </div>
         </div>
       </>
     );

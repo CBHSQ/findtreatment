@@ -29,6 +29,7 @@ export class MapStatic extends Component {
           )}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Driving directions for ${name1}`}
         >
           <img
             src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
@@ -38,7 +39,7 @@ export class MapStatic extends Component {
         </OutboundLink>
         {(miles || miles === 0) && (
           <div
-            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray`}
+            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
             className="map-static-miles"
           >
             {miles} mile{miles !== 1 && 's'}

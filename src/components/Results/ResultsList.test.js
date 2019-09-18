@@ -30,6 +30,8 @@ describe('Results component', () => {
           city: 'Tucson',
           frid:
             '2037b07b2bfb78e1bdaf2b46dd94ceb41c2da1493e7c0c22796d82762c4cbb53',
+          latitude: '79.7833853960037',
+          longitude: '27.2689918940887',
           miles: 5.57,
           name1: 'My Treatment Facility',
           name2: 'Tucson Northwest',

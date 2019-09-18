@@ -4,6 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 import languages from './languages';
 import facility from './facility';
 import facilities from './facilities';
+import ui from './ui';
 
 export default history =>
   combineReducers({
@@ -11,5 +12,6 @@ export default history =>
     languages,
     facility,
     facilities,
-    form: formReducer
+    form: formReducer,
+    ui
   });

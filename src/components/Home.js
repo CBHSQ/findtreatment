@@ -92,7 +92,7 @@ class Home extends Component {
           />
         </MobileBgContainer>
         <div
-          css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-gray-lightest md:border-t md:border-gray-lighter`}
+          css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:border-t md:border-gray-lighter`}
         >
           <div className="container">
             <div css={tw`md:flex md:-mx-4 lg:-mx-8`}>
@@ -105,8 +105,9 @@ class Home extends Component {
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
-                <h1 css={tw`text-3xl font-heading font-bold mb-4`}>
-                  Millions of Americans have a substance use disorder. <br />
+                <h1 css={tw`text-3xl font-heading font-bold leading-snug mb-4`}>
+                  Millions of Americans have a substance use disorder.{' '}
+                  <br css={tw`hidden md:block`} />
                   Help is available.
                 </h1>
                 <p css={tw`mb-8`}>
