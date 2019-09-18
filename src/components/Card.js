@@ -32,12 +32,12 @@ const renderService = (services, frid, latitude, longitude) => {
       />
       <StyledList>
         <span css={tw`font-bold inline`}>{services.name}: </span>
-        {servicesArray.splice(0, 3).map((value, index) => (
+        {servicesArray.slice(0, 3).map((value, index) => (
           <li key={index} css={tw`inline`}>
             <span>{value}</span>
           </li>
         ))}
-        {servicesArray.length > 0 && (
+        {servicesArray.length > 3 && (
           <Link
             css={tw`font-bold`}
             to={linkToFacility({ frid, latitude, longitude })}
