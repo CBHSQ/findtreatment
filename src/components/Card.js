@@ -31,20 +31,22 @@ const renderService = (services, frid, latitude, longitude, name1) => {
         css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
       />
       <StyledList>
-        <span css={tw`font-bold inline`}>{services.name}: </span>
+        <li css={tw`font-bold inline`}>{services.name}: </li>
         {servicesArray.slice(0, 3).map((value, index) => (
           <li key={index} css={tw`inline`}>
             <span>{value}</span>
           </li>
         ))}
         {servicesArray.length > 3 && (
-          <Link
-            css={tw`font-bold`}
-            to={linkToFacility({ frid, latitude, longitude })}
-            aria-label={`All ${services.name} for ${name1}`}
-          >
-            plus more
-          </Link>
+          <li css={tw`inline`}>
+            <Link
+              css={tw`font-bold`}
+              to={linkToFacility({ frid, latitude, longitude })}
+              aria-label={`All ${services.name} for ${name1}`}
+            >
+              plus more
+            </Link>
+          </li>
         )}
       </StyledList>
     </div>

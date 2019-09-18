@@ -39,7 +39,7 @@ export class MapStatic extends Component {
         </OutboundLink>
         {(miles || miles === 0) && (
           <div
-            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray`}
+            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
             className="map-static-miles"
           >
             {miles} mile{miles !== 1 && 's'}
