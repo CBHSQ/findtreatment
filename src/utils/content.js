@@ -55,10 +55,11 @@ export default () => [
         body: (
           <>
             <p>
-              Addiction is a chronic and treatable disease. Using drugs repeatedly
-              changes the brain, including the parts that help exert
+              Addiction is a chronic and treatable disease. Using drugs
+              repeatedly changes the brain, including the parts that help exert
               self-control. That’s why someone may not be able to stop using
-              drugs, even if they know the drug is causing harm, or feel ready to stop.
+              drugs, even if they know the drug is causing harm, or feel ready
+              to stop.
             </p>
             <p>
               Some common behaviors of addiction and substance use disorder
@@ -124,9 +125,7 @@ export default () => [
             </p>
             <ul>
               <li>
-                <strong>
-                  Talk to a professional therapist or counselor.{' '}
-                </strong>
+                <strong>Talk to a professional therapist or counselor. </strong>
                 Your primary care doctor can recommend therapists in your care
                 network, and National Alliance on Mental Illness (NAMI) has
                 locations around the country with resources for finding a
@@ -169,9 +168,9 @@ export default () => [
         body: (
           <>
             <p>
-              Many treatment professionals consider substance use disorders to be 
-              family diseases. To help everyone recover and cope, family may be
-              asked to take part in treatment. This may involve going to a
+              Many treatment professionals consider substance use disorders to
+              be family diseases. To help everyone recover and cope, family may
+              be asked to take part in treatment. This may involve going to a
               family education program or to counseling for families or couples.
             </p>
             <p>As you and your family member recover, remember:</p>
@@ -439,14 +438,14 @@ export default () => [
                 <strong>Medication.</strong> A facility should only use
                 FDA-approved medication in treating alcohol or opioid use.{' '}
                 <em>
-                  There are no FDA-approved medication to help prevent relapse
+                  There are no FDA-approved medications to help prevent relapse
                   from other problem substances.
                 </em>
               </li>
               <li>
                 <strong>Evidence-based practices.</strong> Quality programs
-                should offer a full range of services that are accepted as effective in
-                treatment and recovery, including:
+                should offer a full range of services that are accepted as
+                effective in treatment and recovery, including:
                 <ul>
                   <li>Motivational therapy</li>
                   <li>Cognitive behavioral therapy (CBT)</li>
@@ -467,10 +466,10 @@ export default () => [
               <li>
                 <strong>Support beyond substance use.</strong> For many,
                 addiction is a chronic disease that needs ongoing support. A
-                quality program treats the whole patient for the long term.
-                This can include ongoing counseling or recovery coaching, and
-                help meeting basic needs like sober housing, employment
-                supports, and continued family involvement.
+                quality program treats the whole patient for the long term. This
+                can include ongoing counseling or recovery coaching, and help
+                meeting basic needs like sober housing, employment supports, and
+                continued family involvement.
               </li>
             </ol>
           </>
@@ -528,10 +527,11 @@ export default () => [
             </p>
             <p>
               Social detoxification centers are not hospitals and seldom use
-              medication, but the person does stay there from several days to one
-              week. A staff of nurses watches each person’s medical condition
-              closely, and counselors are available to help them through the
-              most difficult parts of withdrawing from alcohol and drugs.
+              medication, but the person does stay there from several days to
+              one week. A staff of nurses watches each person’s medical
+              condition closely, and counselors are available to help them
+              through the most difficult parts of withdrawing from alcohol and
+              drugs.
             </p>
             <p>
               It is important to know that{' '}
@@ -641,7 +641,7 @@ export default () => [
             </p>
             <p>
               Having both a substance use and mental health disorder is called a{' '}
-              <strong>co-occuring disorder</strong>. About half of people who
+              <strong>co-occurring disorder</strong>. About half of people who
               experience one will also experience the other. Addressing both is
               critical for success in recovery, and integrated treatment
               programs can help.
@@ -680,8 +680,8 @@ export default () => [
               and behavioral therapies.
             </p>
             <p>
-              Three FDA-approved medications are used in the U.S. to treat opioid
-              addiction: methadone, buprenorphine, and naltrexone.
+              Three FDA-approved medications are used in the U.S. to treat
+              opioid addiction: methadone, buprenorphine, and naltrexone.
             </p>
             <h3>
               Methadone{' '}
@@ -749,9 +749,9 @@ export default () => [
             <p>
               Naltrexone blocks the ability of opioids to eliminate pain and
               induce euphoria. This removes the rewarding aspects of opioid use
-              that result in a desire for more. It is available in either an 
-              extended-release injection that is given every 30 days, or in tablet 
-              form that is taken once a day by mouth. 
+              that result in a desire for more. It is available in either an
+              extended-release injection that is given every 30 days, or in
+              tablet form that is taken once a day by mouth.
             </p>
             <p>
               Because of the way naltrexone blocks opioid receptors in the
@@ -886,10 +886,11 @@ export default () => [
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
-              not perfect. (See what counts as income on {' '}
+              not perfect. (See what counts as income on{' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 healthcare.gov.
-              </a>)
+              </a>
+              )
             </p>
             <p>
               Additionally, every state has funding to provide treatment for
@@ -928,9 +929,11 @@ export default () => [
                 you make less than $17,236 as an individual or $29,435 in a
                 family of three, you’re eligible for free or low-cost health
                 coverage. You can apply for Medicaid at any time —{' '}
-                <strong>there’s no enrollment period</strong>. 
-                <a href="https://www.medicaid.gov/state-overviews">{' '} Contact your state Medicaid 
-                agency for more details if you think you might be eligible.
+                <strong>there’s no enrollment period</strong>.
+                <a href="https://www.medicaid.gov/state-overviews">
+                  {' '}
+                  Contact your state Medicaid agency for more details if you
+                  think you might be eligible.
                 </a>
               </li>
             </ul>
