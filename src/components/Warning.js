@@ -24,6 +24,7 @@ class Warning extends Component {
         <button
           onClick={this.toggleWarning}
           css={tw`flex items-center justify-between w-full`}
+          aria-expanded={!isHidden}
         >
           <span css={tw`block font-heading font-bold uppercase`}>
             {heading}
