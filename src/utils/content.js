@@ -465,7 +465,7 @@ export default () => [
                 recovery.
               </li>
               <li>
-                <strong>Supports beyond substance use.</strong> For many,
+                <strong>Support beyond substance use.</strong> For many,
                 addiction is a chronic disease that needs ongoing support. A
                 quality program treats the whole patient for the long term.
                 This can include ongoing counseling or recovery coaching, and
@@ -886,7 +886,7 @@ export default () => [
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
-              not perfect. (See what countas as income on {' '}
+              not perfect. (See what counts as income on {' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 healthcare.gov.
               </a>)
