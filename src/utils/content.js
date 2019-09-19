@@ -55,10 +55,10 @@ export default () => [
         body: (
           <>
             <p>
-              Addiction is a chronic and treatable disease. Repeated drug use
+              Addiction is a chronic and treatable disease. Using drugs repeatedly
               changes the brain, including the parts that help exert
-              self-control. That’s why even if someone feels ready to stop using
-              drugs, or knows the drug is causing harm, they may not be able to.
+              self-control. That’s why someone may not be able to stop using
+              drugs, even if they know the drug is causing harm, or feel ready to stop.
             </p>
             <p>
               Some common behaviors of addiction and substance use disorder
@@ -125,7 +125,7 @@ export default () => [
             <ul>
               <li>
                 <strong>
-                  Talking to a professional therapist or counselor.{' '}
+                  Talk to a professional therapist or counselor.{' '}
                 </strong>
                 Your primary care doctor can recommend therapists in your care
                 network, and National Alliance on Mental Illness (NAMI) has
@@ -134,7 +134,7 @@ export default () => [
                 <a href="https://www.nami.org/local/">(nami.org/local)</a>
               </li>
               <li>
-                <strong>Joining a support group of peers. </strong>
+                <strong>Join a support group of peers. </strong>
                 People who have common life experiences have a unique ability to
                 help each other. Peers can be very supportive since they have
                 “been there” and serve as living examples that individuals can
@@ -169,7 +169,7 @@ export default () => [
         body: (
           <>
             <p>
-              Many treatment professionals consider substance use disorders
+              Many treatment professionals consider substance use disorders to be 
               family diseases. To help everyone recover and cope, family may be
               asked to take part in treatment. This may involve going to a
               family education program or to counseling for families or couples.
@@ -204,7 +204,7 @@ export default () => [
             <p>
               If you think your family member or friend might be addicted, you
               cannot fix the problem by yourself, or force them into treatment.
-              If the person is initially not willing to be helped, learning more
+              If the person is initially not willing to be helped, learn more
               about drug addiction for your own knowledge, and see if there are
               resources or information that might convince them to seek help.
             </p>
@@ -365,7 +365,7 @@ export default () => [
             <p>
               If a facility can’t see you within 48 hours, try another one. A
               sign of quality care is being able to be seen quickly. Many
-              programs offer walk in care, or interim care if only a waitlist is
+              programs offer walk-in care, or interim care if only a waitlist is
               available.
             </p>
             <h3>Questions you may be asked</h3>
@@ -381,7 +381,7 @@ export default () => [
               </li>
               <li>
                 What financial resources are you working with (insurance, money
-                from a loved one, etc?)
+                from a loved one, etc.?)
               </li>
             </ol>
             <h3>Questions you may want to ask the facility</h3>
@@ -445,7 +445,7 @@ export default () => [
               </li>
               <li>
                 <strong>Evidence-based practices.</strong> Quality programs
-                should offer a full range of services accepted as effective in
+                should offer a full range of services that are accepted as effective in
                 treatment and recovery, including:
                 <ul>
                   <li>Motivational therapy</li>
@@ -465,9 +465,9 @@ export default () => [
                 recovery.
               </li>
               <li>
-                <strong>Supports beyond substance use.</strong> For many,
+                <strong>Support beyond substance use.</strong> For many,
                 addiction is a chronic disease that needs ongoing support. A
-                quality program treat s the whole patient for the long term.
+                quality program treats the whole patient for the long term.
                 This can include ongoing counseling or recovery coaching, and
                 help meeting basic needs like sober housing, employment
                 supports, and continued family involvement.
@@ -483,7 +483,7 @@ export default () => [
           <>
             <p>
               In most treatment programs, the main caregivers are specially
-              trained individuals certified or licensed as{' '}
+              trained individuals who are certified or licensed as{' '}
               <strong>substance abuse treatment counselors</strong>.
             </p>
             <p>
@@ -528,7 +528,7 @@ export default () => [
             </p>
             <p>
               Social detoxification centers are not hospitals and seldom use
-              medication, but the person does stay there from several days to 1
+              medication, but the person does stay there from several days to one
               week. A staff of nurses watches each person’s medical condition
               closely, and counselors are available to help them through the
               most difficult parts of withdrawing from alcohol and drugs.
@@ -550,7 +550,7 @@ export default () => [
               There are many kinds of treatment; your recovery may include one
               or more of these.
             </p>
-            <h3>Detoxification/Detox</h3>
+            <h3>Detoxification (Detox)</h3>
             <p>
               <em>Supervised withdrawal from substance use</em>
             </p>
@@ -568,7 +568,7 @@ export default () => [
               Many facilities have long waitlists, but can still help. Interim
               care provides daily medication and emergency counseling. This can
               be a helpful bridge from beginning recovery to admission to a
-              regular outpatient, inpatient, or residential setting
+              regular outpatient, inpatient, or residential setting.
             </p>
             <h3>Outpatient</h3>
             <p>
@@ -585,7 +585,7 @@ export default () => [
             <p>
               Care frequency depends on the program, with some requiring daily
               attendance and others meeting one to three times per week.
-              Outpatient care usually lasts from about 2 months to 1 year.
+              Outpatient care usually lasts from about two months to one year.
             </p>
             <h3>Hospital inpatient</h3>
             <p>
@@ -593,8 +593,8 @@ export default () => [
             </p>
             <p>
               These are usually connected to a hospital or clinic, and provide
-              detox and rehabilitative care. People with a serious mental or
-              medical concerns as well as substance use disorders are the most
+              detox and rehabilitative care. People with serious mental or
+              medical concerns, as well as substance use disorders, are the most
               likely to use inpatient treatment.
             </p>
             <p>
@@ -680,7 +680,7 @@ export default () => [
               and behavioral therapies.
             </p>
             <p>
-              Three FDA-approved medications are used in the US to treat opioid
+              Three FDA-approved medications are used in the U.S. to treat opioid
               addiction: methadone, buprenorphine, and naltrexone.
             </p>
             <h3>
@@ -749,9 +749,9 @@ export default () => [
             <p>
               Naltrexone blocks the ability of opioids to eliminate pain and
               induce euphoria. This removes the rewarding aspects of opioid use
-              that result in a desire for more. It is available in an extended
-              release injection that is given every 30 days and in tablet form,
-              taken once a day by mouth.
+              that result in a desire for more. It is available in either an 
+              extended-release injection that is given every 30 days, or in tablet 
+              form that is taken once a day by mouth. 
             </p>
             <p>
               Because of the way naltrexone blocks opioid receptors in the
@@ -886,10 +886,10 @@ export default () => [
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
-              not perfect. (For a list of what counts as income, visit{' '}
+              not perfect. (See what counts as income on {' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
-                this page on healthcare.gov.
-              </a>
+                healthcare.gov.
+              </a>)
             </p>
             <p>
               Additionally, every state has funding to provide treatment for
@@ -928,9 +928,10 @@ export default () => [
                 you make less than $17,236 as an individual or $29,435 in a
                 family of three, you’re eligible for free or low-cost health
                 coverage. You can apply for Medicaid at any time —{' '}
-                <strong>there’s no enrollment period</strong> — so contact your
-                state agency for more details if you think you might be
-                eligible.
+                <strong>there’s no enrollment period</strong>. 
+                <a href="https://www.medicaid.gov/state-overviews">{' '} Contact your state Medicaid 
+                agency for more details if you think you might be eligible.
+                </a>
               </li>
             </ul>
             <p>
