@@ -1,55 +1,67 @@
 @tailwind base;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-bold;
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Public Sans Regular'),
+    url('./fonts/PublicSans-Regular.woff') format('woff'),
+    url('./fonts/PublicSans-Regular.ttf') format('truetype');
 }
 
-h1 {
-  @apply text-xl;
-}
-h2 {
-  @apply text-lg;
-}
-h3 {
-  @apply text-base;
-}
-
-@screen lg {
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  h3 {
-    @apply text-lg;
-  }
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Public Sans Italic'),
+    url('./fonts/PublicSans-Italic.woff2') format('woff2'),
+    url('./fonts/PublicSans-Italic.woff') format('woff'),
+    url('./fonts/PublicSans-Italic.ttf') format('truetype');
 }
 
-a {
-  color: theme('colors.blue.700');
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Public Sans SemiBold'),
+    url('./fonts/PublicSans-SemiBold.woff') format('woff'),
+    url('./fonts/PublicSans-SemiBold.ttf') format('truetype');
 }
 
-a:hover {
-  color: theme('colors.blue.800');
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Public Sans SemiBold Italic'),
+    url('./fonts/PublicSans-SemiBoldItalic.woff2') format('woff2'),
+    url('./fonts/PublicSans-SemiBoldItalic.woff') format('woff'),
+    url('./fonts/PublicSans-SemiBoldItalic.ttf') format('truetype');
 }
 
-@screen print {
-  a {
-    color: theme('colors.black');
-  }
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Public Sans Bold'),
+    url('./fonts/PublicSans-Bold.woff2') format('woff2'),
+    url('./fonts/PublicSans-Bold.woff') format('woff'),
+    url('./fonts/PublicSans-Bold.ttf') format('truetype');
 }
 
-address,
-ol,
-p,
-ul {
-  @apply mb-4;
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Public Sans Bold Italic'),
+    url('./fonts/PublicSans-BoldItalic.woff2') format('woff2'),
+    url('./fonts/PublicSans-BoldItalic.woff') format('woff'),
+    url('./fonts/PublicSans-BoldItalic.ttf') format('truetype');
 }
 
 @tailwind components;

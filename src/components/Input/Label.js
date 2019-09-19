@@ -5,14 +5,20 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const StyledLabel = styled.label`
-  ${tw`block`}
+  ${tw`block mb-2`}
+
+  ${props => props.inline && tw`flex`}
 
   span {
-    ${tw`block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2`}
+    ${tw`block font-bold font-heading uppercase text-sm mb-2`}
 
-    ${props =>
-      props.inline &&
-      tw`inline normal-case tracking-normal text-gray-900 text-sm font-normal`}
+    ${props => props.inline && tw`font-sans normal-case mb-0`}
+
+    ${props => props.large && tw`normal-case text-2xl md:text-3xl`}
+  }
+
+  p {
+    ${tw`text-sm`}
   }
 `;
 
@@ -22,19 +28,26 @@ const Label = props => {
       {props.inline ? (
         <StyledLabel {...props}>
           {props.children}
-          <span>{props.value}</span>
+          {props.description ? (
+            <div css={tw`-mt-px`}>
+              <span>{props.labelText}</span>
+              <p>{props.description}</p>
+            </div>
+          ) : (
+            <span>{props.labelText}</span>
+          )}
         </StyledLabel>
       ) : (
         <StyledLabel {...props}>
           {props.help ? (
             <div css={tw`flex justify-between items-center`}>
-              <span>{props.value}</span>
+              <span>{props.labelText}</span>
               <Link to={props.help.url} css={tw`mb-2 text-sm`}>
                 {props.help.text}
               </Link>
             </div>
           ) : (
-            <span>{props.value}</span>
+            <span>{props.labelText}</span>
           )}
           {props.children}
         </StyledLabel>
@@ -50,7 +63,8 @@ Label.propTypes = {
     url: PropTypes.string
   }),
   inline: PropTypes.bool,
-  value: PropTypes.string.isRequired
+  large: PropTypes.bool,
+  labelText: PropTypes.string.isRequired
 };
 
 export default Label;

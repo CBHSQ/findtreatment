@@ -1,107 +1,79 @@
 import React, { Component } from 'react';
+import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues, reset } from 'redux-form';
-import styled from 'styled-components/macro';
-import tw from 'tailwind.macro';
+import { Field, reduxForm, getFormValues } from 'redux-form';
 
-import { destroyFacilities } from '../../actions/facilities';
-import { LOCATION_WARNING } from '../../utils/warnings';
+import { DEFAULT_DISTANCE } from '../../utils/constants';
 
 import { Button, Label, Location } from '../Input';
 
-const Form = styled.form`
-  ${tw`mb-10`}
-`;
-
 export class FormHomepage extends Component {
-  state = { showWarning: false };
-
-  componentDidMount() {
-    const { dispatch, location } = this.props;
-
-    if (location) {
-      dispatch(reset('homepage'));
-      dispatch(destroyFacilities());
-    }
-  }
-
-  toggleShowWarning = value => {
-    this.setState({
-      showWarning: value
-    });
-  };
-
   handleSubmit = submitEvent => {
-    if (!this.props.location.latLng) {
+    const { handleSubmit, location } = this.props;
+
+    if (!(location || {}).latLng) {
       return submitEvent.preventDefault();
     }
 
-    this.props.handleSubmit(submitEvent);
+    handleSubmit(submitEvent);
   };
 
   render() {
     const { location } = this.props;
-    const { showWarning } = this.state;
 
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <div css={tw`flex flex-wrap -mx-3`}>
-          <div css={tw`w-full lg:w-2/3 px-3 mb-6 lg:mb-0`}>
-            <Label value="Location">
-              <Field
-                component={Location}
-                name="location"
-                placeholder="City or zip code"
-                toggleShowWarning={this.toggleShowWarning}
-              />
-            </Label>
-          </div>
-          <div css={tw`flex items-end w-full lg:w-1/3 px-3 mb-6 lg:mb-0`}>
-            <Button
-              primary
-              disable={location && !location.latLng}
-              css={tw`w-full`}
-              type="submit"
-            >
-              Find treatment
-            </Button>
-          </div>
-          {showWarning && (
-            <div
-              css={tw`w-full px-3 my-2 text-red-500 text-sm order-first lg:order-last`}
-            >
-              {LOCATION_WARNING}
-            </div>
-          )}
-        </div>
-      </Form>
+      <form onSubmit={this.handleSubmit}>
+        <Label
+          css={tw`mb-8`}
+          labelText="Find a treatment facility near you"
+          large
+        >
+          <Field
+            css={tw`md:mt-6 md:w-full md:shadow-md rounded p-4 border border-gray-light`}
+            component={Location}
+            name="location"
+            placeholder="City or zip code"
+            innerRef={this.props.innerRef}
+          />
+        </Label>
+
+        <Button
+          primary
+          disabled={!(location || {}).latLng}
+          css={tw`w-full md:w-auto md:inline-block md:px-16 text-2xl md:text-lg `}
+          type="submit"
+        >
+          Search
+        </Button>
+      </form>
     );
   }
 }
 
 FormHomepage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   location: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const initialValues = state.form.homepage.initialValues;
-  const values = getFormValues('homepage')(state);
+  const values = getFormValues('filters')(state);
 
   return {
     initialValues: {
-      ...initialValues
+      distance: DEFAULT_DISTANCE,
+      location: { address: '' }
     },
-    location: values && values.location
+    location: (values || {}).location
   };
 };
 
 export default connect(mapStateToProps)(
   reduxForm({
-    form: 'homepage',
-    destroyOnUnmount: false
+    form: 'filters',
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true
   })(FormHomepage)
 );

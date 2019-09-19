@@ -5,17 +5,18 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import ReactPaginate from 'react-paginate';
-import { handleReceiveFacilities } from '../actions/facilities';
+
+import { handleReceiveFacilities } from '../../actions/facilities';
 
 const StyledPagination = styled.div`
   ${tw`w-full mb-6 flex justify-center`}
 
   ul {
-    ${tw`flex border rounded`}
+    ${tw`flex border border-gray-light rounded`}
   }
 
   a {
-    ${tw`block hover:bg-gray-300 border-r px-3 py-2`}
+    ${tw`block hover:bg-gray-lighter border-r border-gray-light px-3 py-2`}
   }
 
   li:last-of-type a {
@@ -23,11 +24,11 @@ const StyledPagination = styled.div`
   }
 
   .disabled a {
-    ${tw`text-gray-700 bg-transparent hover:bg-transparent cursor-not-allowed`}
+    ${tw`text-gray bg-transparent hover:bg-transparent cursor-not-allowed`}
   }
 
   .selected a {
-    ${tw`text-white bg-blue-700 hover:bg-blue-500`}
+    ${tw`text-white bg-blue hover:bg-blue`}
   }
 `;
 

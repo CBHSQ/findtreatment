@@ -1,98 +1,172 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { Link, NavLink, withRouter } from 'react-router-dom';
-import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
+import styled from 'styled-components/macro';
+import { PropTypes } from 'prop-types';
+import { NavLink, withRouter } from 'react-router-dom';
+import { slide as Menu } from 'react-burger-menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
-import { ReactComponent as Logo } from '../../images/logo.svg';
-
-const StyledNav = styled.nav`
-  ${tw`border-b mb-6`}
-`;
+import ScreenContext from '../ScreenContext';
+import HeaderHelpLine from './HeaderHelpLine';
 
 const StyledLink = styled(NavLink)`
-  ${tw`text-gray-900 block mt-4 lg:inline-block lg:mt-0 lg:pb-2 lg:border-b-4 lg:border-transparent lg:hover:border-blue-800`}
+  ${tw`text-gray-dark pb-2 px-2 mr-2 border-b-4 border-transparent hover:border-blue hover:text-gray-dark`}
 
   &.active {
-    ${tw`font-bold lg:border-blue-800`}
+    ${tw`font-bold text-blue border-blue`}
   }
 `;
 
-const MobileNav = styled.div`
-  ${tw`w-full flex-grow lg:flex lg:items-center lg:w-auto`}
+const StyledMenu = styled.div`
+  ${tw`relative`}
 
-  ${({ isMenuHidden }) => (isMenuHidden ? tw`hidden lg:block` : tw`block`)}
-`;
+  .active {
+    ${tw`font-bold text-blue`}
+  }
 
-export class HeaderNav extends Component {
-  state = {
-    isMenuHidden: true
-  };
+  .bm-burger-button {
+    ${tw`h-5 w-5 absolute right-0 top-0 mt-px`}
+  }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      this.setState({
-        isMenuHidden: true
-      });
+  .bm-burger-bars {
+    ${tw`bg-gray-dark`}
+
+    &-hover {
+      ${tw`bg-gray-dark`}
     }
   }
 
-  toggleMenu = () => {
-    this.setState({
-      isMenuHidden: !this.state.isMenuHidden
-    });
+  .bm-cross-button {
+    ${tw`h-4 w-4`}
+  }
+
+  .bm-cross {
+    ${tw`bg-gray`}
+  }
+
+  .bm-menu-wrap {
+    ${tw`top-0`}
+  }
+
+  .bm-menu {
+    ${tw`bg-white`}
+  }
+
+  .bm-item-list {
+    ${tw`pt-10`}
+  }
+
+  .bm-item {
+    ${tw`h-full`}
+  }
+
+  .bm-overlay {
+    ${tw`inset-0`}
+    background: 'rgba(0, 0, 0, 0.3)';
+  }
+`;
+
+const desktopLinks = [
+  { name: 'Search for treatment', path: '/results' },
+  { name: 'Understanding addiction', path: '/content/understanding-addiction' },
+  { name: 'Treatment options', path: '/content/treatment-options' },
+  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
+];
+
+const mobileLinks = [
+  { name: 'Home', path: '/', exact: true },
+  { name: 'Search for treatment', path: '/results' },
+  { name: 'Understanding addiction', path: '/content/understanding-addiction' },
+  {
+    name: 'Understanding mental health',
+    path: '/content/understanding-mental-health'
+  },
+  { name: 'Treatment options', path: '/content/treatment-options' },
+  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
+];
+
+export class HeaderNav extends Component {
+  state = {
+    menuOpen: false
   };
 
-  isContentSection = (match, location) => {
-    return location.pathname.includes(`/content`);
+  handleStateChange = state => {
+    this.setState({ menuOpen: state.isOpen });
   };
+
+  closeMenu = () => {
+    this.setState({ menuOpen: false });
+  };
+
+  renderDesktopLink = (link, index) => (
+    <StyledLink to={link.path} css={tw`flex-none`} key={index}>
+      {link.name}
+    </StyledLink>
+  );
+
+  renderMobileLink = (link, index) => (
+    <NavLink
+      key={index}
+      exact={link.exact}
+      to={link.path}
+      onClick={() => this.closeMenu()}
+      css={tw`block mb-4 font-heading`}
+    >
+      {link.name}
+    </NavLink>
+  );
 
   render() {
-    const { isMenuHidden } = this.state;
+    const isDesktop = this.context;
+    const { location } = this.props;
 
     return (
-      <StyledNav role="navigation">
-        <div
-          className="container"
-          css={tw`mx-auto py-8 flex items-center justify-between flex-wrap`}
-        >
-          <Link to="/" css={tw`font-semibold text-2xl tracking-tight`}>
-            <Logo aria-label="Link to the homepage" />
-          </Link>
-          <div css={tw`block lg:hidden`}>
-            <button
-              onClick={this.toggleMenu}
-              css={tw`flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600`}
+      <>
+        {isDesktop ? (
+          <nav css={tw`w-full text-sm flex mt-4`}>
+            {desktopLinks.map(this.renderDesktopLink)}
+            {location.pathname !== '/' && (
+              <div css={tw`hidden lg:block w-full flex-grow text-right`}>
+                <button
+                  onClick={() => window.print()}
+                  css={tw`text-gray text-sm pb-2`}
+                >
+                  <FontAwesomeIcon
+                    icon={faPrint}
+                    css={tw`fill-current w-4 h-4 mr-1`}
+                  />
+                  Print
+                </button>
+              </div>
+            )}
+          </nav>
+        ) : (
+          <StyledMenu>
+            <Menu
+              right
+              disableAutoFocus
+              isOpen={this.state.menuOpen}
+              onStateChange={state => this.handleStateChange(state)}
             >
-              <svg
-                css={tw`fill-current h-3 w-3`}
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              </svg>
-            </button>
-          </div>
-
-          <MobileNav isMenuHidden={isMenuHidden}>
-            <div css={tw`text-sm lg:flex-grow lg:mt-4`}>
-              <StyledLink to="/" exact css={tw`mr-6`}>
-                Search for treatment
-              </StyledLink>
-              <StyledLink
-                to="/content/what-to-expect"
-                isActive={this.isContentSection}
-              >
-                What to expect
-              </StyledLink>
-            </div>
-          </MobileNav>
-        </div>
-      </StyledNav>
+              <div>
+                <div css={tw`h-full flex flex-col justify-between`}>
+                  <div css={tw`p-4`}>
+                    {mobileLinks.map(this.renderMobileLink)}
+                  </div>
+                  <div>
+                    <HeaderHelpLine />
+                  </div>
+                </div>
+              </div>
+            </Menu>
+          </StyledMenu>
+        )}
+      </>
     );
   }
 }
+HeaderNav.contextType = ScreenContext;
 
 HeaderNav.propTypes = {
   location: PropTypes.object.isRequired

@@ -1,8 +1,48 @@
 module.exports = {
   theme: {
+    colors: {
+      black: '#000000', // print text color
+      blue: {
+        lighter: '#eefbff',
+        light: '#2380bf',
+        default: '#1a7bbc', // primary/outline buttons
+        dark: '#1a4480'
+      },
+      gold: '#ffbe22', // help line
+      gray: {
+        lightest: '#f9f9f9', // homepage search background
+        lighter: '#f1f5f6', // official banner
+        light: '#d7d7d7',
+        default: '#71767a',
+        dark: '#4e4e4e', // alternative header text
+        darker: '#2c3747',
+        darkest: '#171717' // body text
+      },
+      green: '#39912E',
+      red: {
+        light: '#f56565',
+        default: '#c55652',
+        dark: '#d83933'
+      },
+      teal: {
+        lighter: '#f1f5f6',
+        light: '#ade3f7',
+        default: '#44bae6' // homepage accent background
+      },
+      transparent: 'transparent',
+      white: '#ffffff',
+      yellow: {
+        lighter: '#fffcee',
+        default: '#f7b500'
+      }
+    },
     container: {
       center: true,
-      padding: '1.5rem'
+      padding: '1rem'
+    },
+    fontFamily: {
+      heading: ['Roboto Condensed', 'sans-serif'],
+      sans: ['Public Sans', 'sans-serif']
     },
     screens: {
       sm: '640px',
@@ -10,19 +50,6 @@ module.exports = {
       lg: '1024px'
     },
     extend: {
-      colors: {
-        teal: {
-          '100': '#D8EBF2',
-          '200': '#ADE3F7',
-          '300': '#73CEF0',
-          '400': '#45BAE6',
-          '500': '#2C98C0',
-          '600': '#2285A9',
-          '700': '#196986',
-          '800': '#0F4756',
-          '900': '#033340'
-        }
-      },
       screens: {
         print: { raw: 'print' }
       }

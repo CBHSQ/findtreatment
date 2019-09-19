@@ -1,148 +1,179 @@
 import React from 'react';
 import tw from 'tailwind.macro';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import { linkToFacility } from '../utils/misc';
+import { linkToFacility, removeHttp } from '../utils/misc';
 
-import { Button } from './Input';
+import MapStatic from './Map/MapStatic';
 
-const StyledHeading = tw.div`flex justify-between`;
-const StyledAddress = tw.address`text-gray-700 not-italic`;
-const StyledCard = tw.li`shadow border rounded p-6 mb-6`;
+const StyledList = styled.ul`
+  li:not(:last-child):after {
+    content: ', ';
+  }
+`;
 
-const renderService = service => {
-  const { name, values } = service;
+const renderService = (services, frid, latitude, longitude, name1) => {
+  if (!services) {
+    return;
+  }
+
+  const servicesArray = services.values;
+
   return (
-    <>
-      <span css={tw`font-semibold`}>{name}:</span> {values.join(', ')}
-    </>
+    <div css={tw`flex text-sm mb-1`}>
+      <FontAwesomeIcon
+        icon={faCheck}
+        css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
+      />
+      <StyledList>
+        <li css={tw`font-bold inline`}>{services.name}: </li>
+        {servicesArray.slice(0, 3).map((value, index) => (
+          <li key={index} css={tw`inline`}>
+            <span>{value}</span>
+          </li>
+        ))}
+        {servicesArray.length > 3 && (
+          <li css={tw`inline`}>
+            <Link
+              css={tw`font-bold`}
+              to={linkToFacility({ frid, latitude, longitude })}
+              aria-label={`All ${services.name} for ${name1}`}
+            >
+              plus more
+            </Link>
+          </li>
+        )}
+      </StyledList>
+    </div>
   );
 };
 
-const CardHeading = ({ frid, name1, name2, miles, latitude, longitude }) => (
-  <StyledHeading>
-    <Link to={linkToFacility({ frid, latitude, longitude })}>
-      <h2 css={tw`mb-2`}>
-        {name1}
-        {name2 && (
-          <span className="card-name2" css={tw`block text-lg font-light`}>
-            {name2}
-          </span>
-        )}
-      </h2>
-    </Link>
-    {(miles || miles === 0) && (
-      <span className="card-miles" css={tw`text-gray-800`}>
-        {miles} mile{miles !== 1 && 's'}
-      </span>
-    )}
-  </StyledHeading>
-);
-
-const CardAddress = ({ street1, street2, city, state, zip }) => (
-  <StyledAddress>
-    <FontAwesomeIcon icon={faMapMarkerAlt} css={tw`text-gray-700 mr-1`} />
-    {street1}, {street2 && street2 + ', '}
-    {city}, {state} {zip}
-  </StyledAddress>
-);
-
-const CardDetails = ({ phone, website, services }) => (
-  <>
-    <ul>
-      <li>
-        <span css={tw`font-semibold`}>Phone:</span>{' '}
-        <OutboundLink
-          eventLabel="Facility phone link from card"
-          to={`tel:${phone}`}
-        >
-          {phone}
-        </OutboundLink>
-      </li>
-      {website !== 'http://' && (
-        <li className="card-website" css={tw`truncate`}>
-          <span css={tw`font-semibold`}>Website:</span>{' '}
-          <OutboundLink
-            eventLabel="Facility website link from card"
-            to={website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {website}
-          </OutboundLink>
-        </li>
-      )}
-    </ul>
-    <p>{renderService(services.TC)}</p>
-  </>
-);
-
 const Card = props => {
   const {
+    city,
     frid,
+    latitude,
+    longitude,
+    miles,
     name1,
     name2,
-    miles,
+    phone,
+    services,
+    state,
     street1,
     street2,
-    city,
-    state,
-    zip,
-    services,
-    phone,
     website,
-    latitude,
-    longitude
+    zip
   } = props;
 
   return (
-    <StyledCard>
-      <CardHeading
-        frid={frid}
-        name1={name1}
-        name2={name2}
-        miles={miles}
-        latitude={latitude}
-        longitude={longitude}
-      />
-      <CardAddress
-        street1={street1}
-        street2={street2}
-        city={city}
-        state={state}
-        zip={zip}
-      />
-      <CardDetails phone={phone} website={website} services={services} />
-      <Button
-        as={Link}
-        to={linkToFacility({ frid, latitude, longitude })}
-        css={tw`print:hidden`}
-        primary
-      >
-        View provider details
-      </Button>
-    </StyledCard>
+    <li css={tw`bg-white shadow border-t border-gray-lighter rounded mb-10`}>
+      <div css={tw`px-6 py-4 bg-blue-light text-white rounded-t`}>
+        <Link
+          to={linkToFacility({ frid, latitude, longitude })}
+          css={tw`flex justify-between items-center -mx-2 text-white `}
+        >
+          <h2 css={tw`font-heading font-bold text-xl px-2`}>
+            {name1}
+            {name2 && (
+              <>
+                {' '}
+                <span className="card-name2">{name2}</span>
+              </>
+            )}
+          </h2>
+          <span css={tw`flex-none px-2`}>more info ›</span>
+        </Link>
+      </div>
+      <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6`}>
+        <div css={tw`w-1/4 px-2`}>
+          <MapStatic
+            name1={name1}
+            street1={street1}
+            street2={street2}
+            city={city}
+            state={state}
+            zip={zip}
+            latitude={latitude}
+            longitude={longitude}
+            miles={miles}
+          />
+        </div>
+        <div css={tw`w-3/4 px-2`}>
+          {phone && (
+            <div css={tw`flex items-center`}>
+              <FontAwesomeIcon
+                icon={faPhone}
+                css={tw`text-gray fill-current w-4 h-4 mr-2`}
+              />
+              <OutboundLink
+                eventLabel="Facility phone link from card"
+                to={`tel:${phone}`}
+                css={tw`block text-gray-darkest text-lg`}
+              >
+                {phone}
+              </OutboundLink>
+            </div>
+          )}
+          {website !== 'http://' && (
+            <div className="card-website" css={tw`truncate`}>
+              <OutboundLink
+                eventLabel="Facility website link from card"
+                to={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                css={tw`ml-6`}
+              >
+                {removeHttp(website).toLowerCase()}
+              </OutboundLink>
+            </div>
+          )}
+          <address css={tw`not-italic mb-2 ml-6`}>
+            {street1}
+            {street2 && `, ${street2}`}, {city}, {state} {zip}
+          </address>
+          <div css={tw`text-sm`}>
+            {renderService(
+              {
+                name: 'Services',
+                values: [
+                  ...((services.TC || {}).values || []),
+                  ...((services.SET || {}).values || [])
+                ]
+              },
+              frid,
+              latitude,
+              longitude,
+              name1
+            )}
+            {renderService(services.PAY, frid, latitude, longitude, name1)}
+          </div>
+        </div>
+      </div>
+    </li>
   );
 };
 
 Card.propTypes = {
+  city: PropTypes.string.isRequired,
   frid: PropTypes.string.isRequired,
+  latitude: PropTypes.string.isRequired,
+  longitude: PropTypes.string.isRequired,
+  miles: PropTypes.number,
   name1: PropTypes.string.isRequired,
   name2: PropTypes.string,
-  miles: PropTypes.number,
+  phone: PropTypes.string,
+  services: PropTypes.object.isRequired,
+  state: PropTypes.string.isRequired,
   street1: PropTypes.string.isRequired,
   street2: PropTypes.string,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  zip: PropTypes.string.isRequired,
-  services: PropTypes.object.isRequired,
-  phone: PropTypes.string.isRequired,
-  website: PropTypes.string
+  website: PropTypes.string,
+  zip: PropTypes.string.isRequired
 };
 
 export default Card;

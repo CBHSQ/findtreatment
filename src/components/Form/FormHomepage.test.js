@@ -3,21 +3,25 @@ import { shallow } from 'enzyme';
 import { FormHomepage } from './FormHomepage';
 
 const testProps = {
-  dispatch: () => {},
-  handleSubmit: () => {},
+  destroyFacilities: jest.fn(),
+  handleSubmit: jest.fn(),
   initialValues: {},
   location: {}
 };
 
-describe('HomePage component', () => {
+describe('FormHomepage component', () => {
   describe('with an invalid location prop', () => {
     it('disables the submit button without a valid location', () => {
-      const component = shallow(<FormHomepage {...testProps} />, {
-        disableLifecycleMethods: true
-      });
+      const props = {
+        ...testProps
+      };
+      const component = shallow(<FormHomepage {...props} />);
 
       expect(
-        component.find('FormHomepage___StyledButton').prop('disable')
+        component
+          .find('FormHomepage___StyledButton')
+          .first()
+          .prop('disabled')
       ).toBe(true);
     });
 
@@ -27,10 +31,8 @@ describe('HomePage component', () => {
         ...testProps,
         handleSubmit: mockSubmit
       };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      const form = component.find('FormHomepage__Form');
+      const component = shallow(<FormHomepage {...props} />);
+      const form = component.find('form');
 
       form.simulate('submit', { preventDefault() {} });
 
@@ -39,34 +41,17 @@ describe('HomePage component', () => {
   });
 
   describe('with a valid location prop', () => {
-    it('enables the submit button with a valid latLng', () => {
-      const props = {
-        ...testProps,
-        location: { latLng: {} }
-      };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      expect(
-        component.find('FormHomepage___StyledButton').prop('disable')
-      ).toBe(false);
-    });
-
     it('calls its handleSubmit prop when the form is submitted', () => {
-      const mockSubmit = jest.fn();
       const props = {
         ...testProps,
-        handleSubmit: mockSubmit,
         location: { latLng: {} }
       };
-      const component = shallow(<FormHomepage {...props} />, {
-        disableLifecycleMethods: true
-      });
-      const form = component.find('FormHomepage__Form');
+      const component = shallow(<FormHomepage {...props} />);
+      const form = component.find('form');
 
       form.simulate('submit');
 
-      expect(mockSubmit.mock.calls.length).toBe(1);
+      expect(props.handleSubmit.mock.calls.length).toBe(1);
     });
   });
 });

@@ -1,17 +1,18 @@
-import { TOGGLE_ADVANCED_FILTERS } from '../actions/ui';
+import { TOGGLE_WARNING } from '../actions/ui';
 
 const initialState = {
-  advancedHidden: true
+  warningIds: []
 };
 
-export default function languages(state = initialState, action) {
+export default function ui(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_ADVANCED_FILTERS: {
+    case TOGGLE_WARNING:
       return {
         ...state,
-        advancedHidden: !state.advancedHidden
+        warningIds: state.warningIds.includes(action.id)
+          ? state.warningIds.filter(id => id !== action.id)
+          : state.warningIds.filter(id => id !== action.id).concat(action.id)
       };
-    }
     default:
       return state;
   }

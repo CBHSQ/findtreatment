@@ -1,12 +1,5 @@
 import * as misc from './misc';
 
-describe('convertToSlug()', () => {
-  it('converts string into a slug', () => {
-    const string = 'My super awesome title!';
-    expect(misc.convertToSlug(string)).toStrictEqual('my-super-awesome-title');
-  });
-});
-
 describe('servicesToObject()', () => {
   it('converts array into object with service code as key', () => {
     const services = [

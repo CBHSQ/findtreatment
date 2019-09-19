@@ -1,11 +1,11 @@
 import React from 'react';
-import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import 'styled-components/macro';
 import { OutboundLink } from 'react-ga';
 
 const HeaderBeta = () => {
   return (
-    <div css={tw`bg-yellow-300`}>
+    <div css={tw`bg-blue-lighter`}>
       <div className="container" css={tw`py-4 font-bold`}>
         We are testing a new design for our substance use treatment locator.
         Have feedback?{' '}
@@ -16,8 +16,9 @@ const HeaderBeta = () => {
         >
           We want to hear from you.
         </OutboundLink>
-        <div css={tw`font-normal text-sm`}>
-          Visit current site at{' '}
+        <div css={tw`inline lg:block font-normal text-sm`}>
+          {' '}
+          Visit the current site at{' '}
           <OutboundLink
             eventLabel="findtreatment.samhsa.gov link clicked"
             css={tw`underline`}

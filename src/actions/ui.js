@@ -1,5 +1,6 @@
-export const TOGGLE_ADVANCED_FILTERS = 'TOGGLE_ADVANCED_FILTERS';
+export const TOGGLE_WARNING = 'TOGGLE_WARNING';
 
-export const toggleAdvancedFilters = () => ({
-  type: TOGGLE_ADVANCED_FILTERS
+export const toggleWarning = id => ({
+  type: TOGGLE_WARNING,
+  id
 });

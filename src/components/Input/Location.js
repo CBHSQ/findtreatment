@@ -8,16 +8,33 @@ import PlacesAutocomplete, {
   getLatLng
 } from 'react-places-autocomplete';
 import { PropTypes } from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { LOCATION_WARNING } from '../../utils/warnings';
 
 const StyledPlacesAutoComplete = styled.div`
   ${tw`relative`}
 
   input {
-    ${tw`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
+    ${tw`block w-full pr-8 text-lg`}
+
+    &::-webkit-input-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &::-moz-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &:-ms-input-placeholder {
+      ${tw`text-gray-darkest`}
+    }
+    &:-moz-placeholder {
+      ${tw`text-gray-darkest`}
+    }
   }
 
   .autocomplete-dropdown-container {
-    ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray-500 rounded bg-white`}
+    ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray rounded bg-white`}
     max-height: 25em;
     -webkit-transition: max-height 0.2s, border 0.2s;
     transition: max-height 0.2s, border 0.2s;
@@ -28,25 +45,29 @@ const StyledPlacesAutoComplete = styled.div`
 
     &:hover,
       &:focus {
-      ${tw`bg-gray-200`}
+      ${tw`bg-teal-light font-semibold`}
     }
+
     &--active {
-      ${tw`bg-blue-700 text-white`}
+      ${tw`bg-teal-light font-semibold`}
+
       &:hover,
-        &:focus {
-        ${tw`bg-blue-700`}
+      &:focus {
+        ${tw`bg-teal-light font-semibold`}
       }
     }
   }
 `;
 
 class Location extends Component {
-  handleBlur = () => {
-    const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
+  state = {
+    showLocationWarning: false
+  };
 
-    if (activeSuggestion !== undefined) {
-      this.handleSelect(activeSuggestion.description);
-    }
+  toggleShowLocationWarning = value => {
+    this.setState({
+      showLocationWarning: value
+    });
   };
 
   handleChange = address => {
@@ -56,7 +77,7 @@ class Location extends Component {
   };
 
   handleSelect = (address, placeId) => {
-    const { dispatch, input, meta, toggleShowWarning } = this.props;
+    const { dispatch, input, meta } = this.props;
     const activeSuggestion = this._placesAutocomplete.getActiveSuggestion();
 
     if (input.value.latLng && address === input.value.address) {
@@ -64,9 +85,7 @@ class Location extends Component {
     }
 
     if (address && activeSuggestion) {
-      if (toggleShowWarning) {
-        toggleShowWarning(false);
-      }
+      this.toggleShowLocationWarning(false);
 
       geocodeByPlaceId(placeId)
         .then(results => getLatLng(results[0]))
@@ -75,17 +94,15 @@ class Location extends Component {
   };
 
   handleError = (status, clearSuggestions) => {
-    const { toggleShowWarning } = this.props;
-
-    if (toggleShowWarning && status === 'ZERO_RESULTS') {
-      toggleShowWarning(true);
+    if (status === 'ZERO_RESULTS') {
+      this.toggleShowLocationWarning(true);
     }
 
     clearSuggestions();
   };
 
   render() {
-    const { input, placeholder } = this.props;
+    const { className, input, placeholder } = this.props;
     const searchOptions = {
       componentRestrictions: { country: ['us', 'pr', 'vi', 'gu', 'mp', 'as'] },
       types: ['(regions)']
@@ -105,34 +122,52 @@ class Location extends Component {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
             <>
-              <input
-                {...getInputProps({
-                  placeholder: placeholder,
-                  name: input.name,
-                  'aria-owns': 'listbox',
-                  'aria-haspopup': 'listbox'
-                })}
-              />
-              {suggestions && suggestions.length > 0 && (
-                <div
-                  className="autocomplete-dropdown-container"
-                  role="listbox"
-                  id="listbox"
-                >
-                  {suggestions.map(suggestion => {
-                    const className = suggestion.active
-                      ? 'suggestion-item suggestion-item--active'
-                      : 'suggestion-item';
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className
-                        })}
-                      >
-                        {suggestion.description}
-                      </div>
-                    );
+              <div css={tw`relative`}>
+                <input
+                  {...getInputProps({
+                    className,
+                    placeholder: placeholder,
+                    name: input.name,
+                    'aria-owns': 'listbox',
+                    'aria-haspopup': 'listbox',
+                    ref: this.props.innerRef
                   })}
+                />
+                <div
+                  css={tw`absolute inset-y-0 right-0 flex items-center pr-4`}
+                >
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    css={tw`fill-current w-6 h-6`}
+                  />
+                </div>
+                {suggestions && suggestions.length > 0 && (
+                  <div
+                    className="autocomplete-dropdown-container"
+                    role="listbox"
+                    id="listbox"
+                    aria-label={input.name}
+                  >
+                    {suggestions.map(suggestion => {
+                      const className = suggestion.active
+                        ? 'suggestion-item suggestion-item--active'
+                        : 'suggestion-item';
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className
+                          })}
+                        >
+                          {suggestion.description}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              {this.state.showLocationWarning && (
+                <div css={tw`mt-2 text-red-light text-sm`}>
+                  {LOCATION_WARNING}
                 </div>
               )}
             </>

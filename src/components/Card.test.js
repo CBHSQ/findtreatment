@@ -6,6 +6,8 @@ import Card from './Card';
 const testProps = {
   city: 'Tucson',
   frid: '2037b07b2bfb78e1bdaf2b46dd94ceb41c2da1493e7c0c22796d82762c4cbb53',
+  latitude: '79.7833853960037',
+  longitude: '27.2689918940887',
   miles: 5.57,
   name1: 'My Treatment Facility',
   name2: 'Tucson Northwest',
@@ -28,36 +30,14 @@ describe('Card component', () => {
         name2: ''
       };
       const component = shallow(<Card {...props} />);
-      const heading = component.find('CardHeading').dive();
-      expect(heading.find('.card-name2').length).toBe(0);
+
+      expect(component.find('.card-name2').length).toBe(0);
     });
 
-    it('does not display miles if empty', () => {
-      const { miles, ...rest } = testProps;
-      const component = shallow(<Card {...rest} />);
-      const heading = component.find('CardHeading').dive();
-      expect(heading.find('.card-miles').length).toBe(0);
-    });
-
-    it('displays 0 miles', () => {
-      const noMilesProps = { ...testProps, miles: 0 };
-      const component = shallow(<Card {...noMilesProps} />);
-      const heading = component.find('CardHeading').dive();
-      expect(heading.find('.card-miles').length).toBe(1);
-    });
-
-    it('does not pluralize 1 mile', () => {
-      const oneMilesProps = { ...testProps, miles: 1 };
-      const component = shallow(<Card {...oneMilesProps} />);
-      const heading = component.find('CardHeading').dive();
-      expect(heading.find('.card-miles').text()).toBe('1 mile');
-    });
-
-    it('displays name2 and miles if present', () => {
+    it('displays name2 if present', () => {
       const component = shallow(<Card {...testProps} />);
-      const heading = component.find('CardHeading').dive();
-      expect(heading.find('.card-name2').text()).toBe('Tucson Northwest');
-      expect(heading.find('.card-miles').text()).toBe('5.57 miles');
+
+      expect(component.find('.card-name2').text()).toBe('Tucson Northwest');
     });
   });
 
@@ -68,14 +48,16 @@ describe('Card component', () => {
         street2: ''
       };
       const component = shallow(<Card {...props} />);
-      const address = component.find('CardAddress').dive();
-      expect(address.text()).toBe('3295 West Desert Road, Tucson, AZ 85741');
+
+      expect(component.find('Card___StyledAddress').text()).toBe(
+        '3295 West Desert Road, Tucson, AZ 85741'
+      );
     });
 
     it('displays street2 if present', () => {
       const component = shallow(<Card {...testProps} />);
-      const address = component.find('CardAddress').dive();
-      expect(address.text()).toBe(
+
+      expect(component.find('Card___StyledAddress').text()).toBe(
         '3295 West Desert Road, Suite 150, Tucson, AZ 85741'
       );
     });
@@ -88,19 +70,16 @@ describe('Card component', () => {
         website: 'http://'
       };
       const component = shallow(<Card {...props} />);
-      const details = component.find('CardDetails').dive();
-      expect(details.find('.card-website').length).toBe(0);
+
+      expect(component.find('.card-website').length).toBe(0);
     });
 
     it('displays website if present', () => {
       const component = shallow(<Card {...testProps} />);
-      const details = component.find('CardDetails').dive();
-      expect(
-        details
-          .find('.card-website OutboundLink')
-          .shallow()
-          .text()
-      ).toBe('http://www.mytreatmentfacility.com');
+
+      expect(component.find('Card___StyledOutboundLink2').prop('to')).toBe(
+        'http://www.mytreatmentfacility.com'
+      );
     });
   });
 });

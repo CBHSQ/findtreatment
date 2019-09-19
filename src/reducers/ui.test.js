@@ -1,8 +1,8 @@
 import reducer from './ui';
-import { TOGGLE_ADVANCED_FILTERS } from '../actions/ui';
+import { TOGGLE_WARNING } from '../actions/ui';
 
 const initialState = {
-  advancedHidden: true
+  warningIds: []
 };
 
 describe('ui reducer', () => {
@@ -10,13 +10,14 @@ describe('ui reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should handle TOGGLE_ADVANCED_FILTERS', () => {
+  it('should handle TOGGLE_WARNING', () => {
     expect(
       reducer(initialState, {
-        type: TOGGLE_ADVANCED_FILTERS
+        type: TOGGLE_WARNING,
+        id: 'my-test-warning'
       })
     ).toEqual({
-      advancedHidden: false
+      warningIds: ['my-test-warning']
     });
   });
 });

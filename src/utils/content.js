@@ -9,36 +9,15 @@ import { ReactComponent as IconTreament } from '../images/what-to-expect-treatme
 
 export default () => [
   {
-    name: 'What to expect',
-    id: 'what-to-expect',
-    hidden: true,
-    description:
-      'Help is available, treatment works, and people recover every day.',
-    body: (
-      <>
-        <p>
-          Beginning recovery can be overwhelming and intimidating. While
-          everyone's path to recovery is unique, there are certain things you
-          can expect and be ready for when you start.
-        </p>
-        <p>
-          There is help. From understanding more about addiction and treatment
-          options, to being ready to navigate insurance and payment, this
-          information can help you feel more confident as you take the next step
-          to finding treatment.
-        </p>
-      </>
-    )
-  },
-  {
     name: 'Understanding addiction',
     id: 'understanding-addiction',
-    icon: <IconAddiction css={tw`w-24 h-24`} />,
+    icon: <IconAddiction />,
     description:
       'Addiction is a chronic disease that changes the brain and alters decision-making.',
-    subTopics: [
+    subSections: [
       {
         name: 'Addiction can affect anyone',
+        id: 'addiction-can-affect-anyone',
         body: (
           <>
             <p>
@@ -71,14 +50,15 @@ export default () => [
         )
       },
       {
-        name: 'It’s hard to stop using drugs on your own',
+        name: 'It’s hard to stop on your own',
+        id: 'its-hard-to-stop-on-your-own',
         body: (
           <>
             <p>
-              Addiction is a chronic and treatable disease. Repeated drug use
+              Addiction is a chronic and treatable disease. Using drugs repeatedly
               changes the brain, including the parts that help exert
-              self-control. That’s why even if someone feels ready to stop using
-              drugs, or knows the drug is causing harm, they may not be able to.
+              self-control. That’s why someone may not be able to stop using
+              drugs, even if they know the drug is causing harm, or feel ready to stop.
             </p>
             <p>
               Some common behaviors of addiction and substance use disorder
@@ -89,7 +69,7 @@ export default () => [
                 Trying to stop or cut down on drug use, but not being able to.
               </li>
               <li>
-                Using drugs because of being angry or upset with other people
+                Using drugs because of being angry or upset with other people.
               </li>
               <li>Taking one drug to get over the effects of another.</li>
               <li>
@@ -109,7 +89,8 @@ export default () => [
         )
       },
       {
-        name: 'Asking for help is the first important step',
+        name: 'Recovery starts with asking for help',
+        id: 'recovery-starts-with-asking-for-help',
         body: (
           <>
             <p>
@@ -127,25 +108,33 @@ export default () => [
             <p>
               Our treatment locator lists facilities across the country. We have
               guidance about what to expect when looking for treatment,
-              including <u>different kinds of treatment</u> and{' '}
-              <u>understanding how to pay for treatment</u>.
+              including{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
+                different kinds of treatment
+              </a>{' '}
+              and{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
+                understanding how to pay for treatment
+              </a>
+              .
             </p>
             <p>
-              If treatment isn’t the next right step for you, you can still find
+              If treatment isn’t the right next step for you, you can still find
               someone to talk to:
             </p>
             <ul>
               <li>
                 <strong>
-                  Talking to a professional therapist or counselor.{' '}
+                  Talk to a professional therapist or counselor.{' '}
                 </strong>
                 Your primary care doctor can recommend therapists in your care
-                network, and NAMI has locations around the country with
-                resources for finding a therapist.
+                network, and National Alliance on Mental Illness (NAMI) has
+                locations around the country with resources for finding a
+                therapist.{' '}
                 <a href="https://www.nami.org/local/">(nami.org/local)</a>
               </li>
               <li>
-                <strong>Joining a support group of peers. </strong>
+                <strong>Join a support group of peers. </strong>
                 People who have common life experiences have a unique ability to
                 help each other. Peers can be very supportive since they have
                 “been there” and serve as living examples that individuals can
@@ -175,33 +164,12 @@ export default () => [
         )
       },
       {
-        name: 'You cannot do someone else’s recovery for them',
+        name: 'Supporting recovery and self-care',
+        id: 'supporting-recovery-and-self-care',
         body: (
           <>
             <p>
-              If you think your family member or friend might be addicted, you
-              cannot fix the problem by yourself, or force them into treatment.
-              If the person is initially not willing to be helped, learning more
-              about drug addiction for your own knowledge, and see if there are
-              resources or information that might convince them to seek help.
-            </p>
-            <p>
-              Everyone acts differently when they start treatment. Some people
-              are very happy to be getting treatment at last; others suffer a
-              great deal while they adjust to a new life and attempt to live it
-              without alcohol and drugs. They may be sad, angry, or confused. It
-              is important for you to realize that these are normal reactions
-              and to get support for yourself.
-            </p>
-          </>
-        )
-      },
-      {
-        name: 'Supporting recovery and caring for yourself',
-        body: (
-          <>
-            <p>
-              Many treatment professionals consider substance use disorders
+              Many treatment professionals consider substance use disorders to be 
               family diseases. To help everyone recover and cope, family may be
               asked to take part in treatment. This may involve going to a
               family education program or to counseling for families or couples.
@@ -232,6 +200,22 @@ export default () => [
               feelings, and you need to support your loved one’s efforts to get
               well.
             </p>
+            <h3>You cannot do someone else’s recovery for them.</h3>
+            <p>
+              If you think your family member or friend might be addicted, you
+              cannot fix the problem by yourself, or force them into treatment.
+              If the person is initially not willing to be helped, learn more
+              about drug addiction for your own knowledge, and see if there are
+              resources or information that might convince them to seek help.
+            </p>
+            <p>
+              Everyone acts differently when they start treatment. Some people
+              are very happy to be getting treatment at last; others suffer a
+              great deal while they adjust to a new life and attempt to live it
+              without alcohol and drugs. They may be sad, angry, or confused. It
+              is important for you to realize that these are normal reactions
+              and to get support for yourself.
+            </p>
           </>
         )
       }
@@ -240,35 +224,13 @@ export default () => [
   {
     name: 'Understanding mental health',
     id: 'understanding-mental-health',
-    icon: <IconMentalHealth css={tw`w-24 h-24`} />,
+    icon: <IconMentalHealth />,
     description:
       'About half of people with a substance use disorder also experience serious mental illness.',
-    body: (
-      <>
-        <p>
-          Mental health disorders involve changes in thinking, mood, and/or
-          behavior. These can affect how we relate to others and make choices.
-          Reaching a level that can be formally diagnosed often depends on a
-          reduction in a person’s ability to function in their daily lives, at
-          home, work, or school, as a result of the disorder.
-        </p>
-        <p>
-          Having both a substance use and mental health disorder is called a{' '}
-          <strong>co-occuring disorder</strong>. Co-occurrence happens in about
-          half of people experiencing one of these disorders. Addressing both is
-          critical for success in recovery, and{' '}
-          <strong>integrated treatment</strong> programs can help.
-        </p>
-        <p>
-          Mental health disorders are not something you can just snap out of or
-          shake off, but asking for help is a critical first step. There are
-          many treatment approaches for mental health disorders.
-        </p>
-      </>
-    ),
-    subTopics: [
+    subSections: [
       {
         name: 'Serious mental illness',
+        id: 'serious-mental-illness',
         body: (
           <>
             <p>
@@ -292,6 +254,7 @@ export default () => [
       },
       {
         name: 'Know the warning signs',
+        id: 'know-the-warning-signs',
         body: (
           <>
             <p>
@@ -379,12 +342,13 @@ export default () => [
   {
     name: 'Treatment options',
     id: 'treatment-options',
-    icon: <IconTreament css={tw`w-24 h-24`} />,
+    icon: <IconTreament />,
     description:
       'Learn about finding quality treatment, the different types of treatment, and what to expect when starting treatment.',
-    subTopics: [
+    subSections: [
       {
         name: 'Calling a facility',
+        id: 'calling-a-facility',
         body: (
           <>
             <h3>What should I know before I call?</h3>
@@ -401,7 +365,7 @@ export default () => [
             <p>
               If a facility can’t see you within 48 hours, try another one. A
               sign of quality care is being able to be seen quickly. Many
-              programs offer walk in care, or interim care if only a waitlist is
+              programs offer walk-in care, or interim care if only a waitlist is
               available.
             </p>
             <h3>Questions you may be asked</h3>
@@ -417,7 +381,7 @@ export default () => [
               </li>
               <li>
                 What financial resources are you working with (insurance, money
-                from a loved one, etc?)
+                from a loved one, etc.?)
               </li>
             </ol>
             <h3>Questions you may want to ask the facility</h3>
@@ -448,6 +412,7 @@ export default () => [
       },
       {
         name: 'What happens next?',
+        id: 'what-happens-next',
         body: (
           <>
             <h3>Assessment</h3>
@@ -480,7 +445,7 @@ export default () => [
               </li>
               <li>
                 <strong>Evidence-based practices.</strong> Quality programs
-                should offer a full range of services accepted as effective in
+                should offer a full range of services that are accepted as effective in
                 treatment and recovery, including:
                 <ul>
                   <li>Motivational therapy</li>
@@ -500,9 +465,9 @@ export default () => [
                 recovery.
               </li>
               <li>
-                <strong>Supports beyond substance use.</strong> For many,
+                <strong>Support beyond substance use.</strong> For many,
                 addiction is a chronic disease that needs ongoing support. A
-                quality program treat s the whole patient for the long term.
+                quality program treats the whole patient for the long term.
                 This can include ongoing counseling or recovery coaching, and
                 help meeting basic needs like sober housing, employment
                 supports, and continued family involvement.
@@ -513,11 +478,12 @@ export default () => [
       },
       {
         name: 'Who provides care?',
+        id: 'who-provides-care',
         body: (
           <>
             <p>
               In most treatment programs, the main caregivers are specially
-              trained individuals certified or licensed as{' '}
+              trained individuals who are certified or licensed as{' '}
               <strong>substance abuse treatment counselors</strong>.
             </p>
             <p>
@@ -562,7 +528,7 @@ export default () => [
             </p>
             <p>
               Social detoxification centers are not hospitals and seldom use
-              medication, but the person does stay there from several days to 1
+              medication, but the person does stay there from several days to one
               week. A staff of nurses watches each person’s medical condition
               closely, and counselors are available to help them through the
               most difficult parts of withdrawing from alcohol and drugs.
@@ -577,13 +543,14 @@ export default () => [
       },
       {
         name: 'Types of treatment',
+        id: 'types-of-treatment',
         body: (
           <>
             <p>
               There are many kinds of treatment; your recovery may include one
               or more of these.
             </p>
-            <h3>Detoxification/Detox</h3>
+            <h3>Detoxification (Detox)</h3>
             <p>
               <em>Supervised withdrawal from substance use</em>
             </p>
@@ -601,7 +568,7 @@ export default () => [
               Many facilities have long waitlists, but can still help. Interim
               care provides daily medication and emergency counseling. This can
               be a helpful bridge from beginning recovery to admission to a
-              regular outpatient, inpatient, or residential setting
+              regular outpatient, inpatient, or residential setting.
             </p>
             <h3>Outpatient</h3>
             <p>
@@ -618,7 +585,7 @@ export default () => [
             <p>
               Care frequency depends on the program, with some requiring daily
               attendance and others meeting one to three times per week.
-              Outpatient care usually lasts from about 2 months to 1 year.
+              Outpatient care usually lasts from about two months to one year.
             </p>
             <h3>Hospital inpatient</h3>
             <p>
@@ -626,8 +593,8 @@ export default () => [
             </p>
             <p>
               These are usually connected to a hospital or clinic, and provide
-              detox and rehabilitative care. People with a serious mental or
-              medical concerns as well as substance use disorders are the most
+              detox and rehabilitative care. People with serious mental or
+              medical concerns, as well as substance use disorders, are the most
               likely to use inpatient treatment.
             </p>
             <p>
@@ -650,6 +617,21 @@ export default () => [
               and/or who have limited or no family support in treatment. They
               also help people with very serious disorders who have been unable
               to get and stay sober or drug free in other treatment.
+            </p>
+            <h3>Transitional housing</h3>
+            <p>
+              <em>
+                A temporary space to stay while transitioning from an intensive
+                treatment setting. Sometimes called a halfway house or sober
+                living facility.
+              </em>
+            </p>
+            <p>
+              As part of the path to independent living, these facilities
+              support people in recovery with temporary places to live. They may
+              also have support programs around employment and education, or
+              case managers to help residents succeed during and after their
+              stay.
             </p>
             <h3>Co-occurring mental health and substance use treatment</h3>
             <p>
@@ -687,6 +669,7 @@ export default () => [
       },
       {
         name: 'Medications used in treatment',
+        id: 'medications-used-in-treatment',
         body: (
           <>
             <p>
@@ -697,7 +680,7 @@ export default () => [
               and behavioral therapies.
             </p>
             <p>
-              Three FDA-approved medications are used in the US to treat opioid
+              Three FDA-approved medications are used in the U.S. to treat opioid
               addiction: methadone, buprenorphine, and naltrexone.
             </p>
             <h3>
@@ -766,14 +749,14 @@ export default () => [
             <p>
               Naltrexone blocks the ability of opioids to eliminate pain and
               induce euphoria. This removes the rewarding aspects of opioid use
-              that result in a desire for more. It is available in an extended
-              release injection that is given every 30 days and in tablet form,
-              taken once a day by mouth.
+              that result in a desire for more. It is available in either an 
+              extended-release injection that is given every 30 days, or in tablet 
+              form that is taken once a day by mouth. 
             </p>
             <p>
               Because of the way naltrexone blocks opioid receptors in the
               brain, it’s not a good fit for everyone. Before starting
-              naltrexone, you needs to get through an initial 7-10 days of
+              naltrexone, you need to get through an initial 7-10 days of
               withdrawal. People with chronic pain problems, who sometimes need
               to take opioid medications, should work carefully with their
               doctor about a pain management strategy before starting
@@ -798,18 +781,19 @@ export default () => [
   {
     name: 'Paying for treatment',
     id: 'paying-for-treatment',
-    icon: <IconPayment css={tw`w-24 h-24`} />,
+    icon: <IconPayment />,
     description: 'Learn more about the cost of treatment and payment options.',
-    subTopics: [
+    subSections: [
       {
         name: 'Understanding the cost of treatment',
+        id: 'understanding-the-cost-of-treatment',
         body: (
           <>
             <p>
               Understanding the costs of and how to pay for treatment can be
               hard and confusing. Unfortunately, resources aren’t always well
               organized or easy to find. The best way to make sure you choose
-              care you can afford is by asking questions, taking notes, and
+              care that you can afford is by asking questions, taking notes, and
               making sure you know what kind of support you’re eligible for.
             </p>
             <p>
@@ -841,6 +825,7 @@ export default () => [
       },
       {
         name: 'If you have insurance',
+        id: 'if-you-have-insurance',
         body: (
           <>
             <p>
@@ -889,6 +874,7 @@ export default () => [
       },
       {
         name: 'If you don’t have insurance',
+        id: 'if-you-dont-have-insurance',
         body: (
           <>
             <p>
@@ -900,15 +886,15 @@ export default () => [
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
               much you make — get as close as you can, and don’t worry if it’s
-              not perfect. (For a list of what counts as income, visit{' '}
+              not perfect. (See what counts as income on {' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
-                this page on healthcare.gov.
-              </a>
+                healthcare.gov.
+              </a>)
             </p>
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <a href="https://findtreatment.samhsa.gov/locator/stateagencies#.XUCje5NKju0">
+              <a href="https://findtreatment.samhsa.gov/locator/stateagencies">
                 <strong>state agency</strong>
               </a>{' '}
               for information on how the process works in your state.
@@ -942,9 +928,10 @@ export default () => [
                 you make less than $17,236 as an individual or $29,435 in a
                 family of three, you’re eligible for free or low-cost health
                 coverage. You can apply for Medicaid at any time —{' '}
-                <strong>there’s no enrollment period</strong> — so contact your
-                state agency for more details if you think you might be
-                eligible.
+                <strong>there’s no enrollment period</strong>. 
+                <a href="https://www.medicaid.gov/state-overviews">{' '} Contact your state Medicaid 
+                agency for more details if you think you might be eligible.
+                </a>
               </li>
             </ul>
             <p>
