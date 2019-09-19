@@ -16,12 +16,12 @@ const HeaderHelpLine = () => {
     >
       <FontAwesomeIcon
         icon={faUser}
-        css={tw`text-white fill-current mr-2`}
+        css={tw`text-white fill-current mr-4 lg:mr-2`}
         size="lg"
       />
       <div css={tw`text-gray-darkest`}>
         For help finding treatment{' '}
-        <span css={tw`block lg:inline font-bold`}>{HELPLINE_TEXT}</span>
+        <span css={tw`whitespace-no-wrap font-bold`}>{HELPLINE_TEXT}</span>
       </div>
     </OutboundLink>
   );
