@@ -779,8 +779,7 @@ export default () => [
     ]
   },
   {
-    name: '
-    treatment',
+    name: 'Paying for treatment',
     id: 'paying-for-treatment',
     icon: <IconPayment />,
     description: 'Learn more about the cost of treatment and payment options.',
