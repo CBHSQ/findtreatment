@@ -17,6 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
     collapsed: true
   });
   middleware.push(logger);
+
+  if (process.env.REACT_APP_LOCAL_ANALYTICS_TESTING) {
+    middleware.push(analytics);
+  }
 } else {
   middleware.push(analytics);
 }

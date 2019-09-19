@@ -10,22 +10,33 @@ const trackEvent = action => {
   });
 };
 
-const trackPage = page => {
+const trackPage = (action, page) => {
   ReactGA.set({
     page,
     ...options
   });
-  ReactGA.pageview(page);
+
+  // Allow page title to update before sending
+  setTimeout(() => {
+    if (action === 'PUSH') {
+      // When we change pages, send virtual pageview to DAP
+      window.gas('send', 'pageview', page);
+    }
+    ReactGA.pageview(page);
+  }, 0);
 };
 
 let currentPage = '';
 
 export const analytics = store => next => action => {
-  if (action.type === '@@router/LOCATION_CHANGE') {
+  if (
+    action.type === '@@router/LOCATION_CHANGE' &&
+    ['PUSH', 'POP'].includes(action.payload.action)
+  ) {
     const nextPage = `${action.payload.location.pathname}${action.payload.location.search}`;
     if (currentPage !== nextPage) {
       currentPage = nextPage;
-      trackPage(nextPage);
+      trackPage(action.payload.action, nextPage);
       window.CE_SNAPSHOT_NAME = 'findtreatmentbeta: ' + nextPage;
     }
   }
