@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
@@ -215,11 +215,16 @@ export class Details extends Component {
                     Payment, insurance, or funding accepted
                   </h2>
                   <ul>
-                    {services.PAY.values.map((value, index) => (
-                      <li key={index} css={tw`mb-2`}>
-                        <span>{value}</span>
-                      </li>
-                    ))}
+                    {services.PAY &&
+                      services.PAY.values.map((value, index) => (
+                        <li key={index} css={tw`flex mb-2`}>
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
+                          />
+                          <span>{value}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
               </div>
