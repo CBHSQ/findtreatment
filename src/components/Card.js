@@ -12,7 +12,7 @@ import { linkToFacility, removeHttp } from '../utils/misc';
 import MapStatic from './Map/MapStatic';
 
 const StyledList = styled.ul`
-  li:not(:last-child):after {
+  li:not(:last-child):not(:first-child):after {
     content: ', ';
   }
 `;
