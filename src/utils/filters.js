@@ -17,6 +17,12 @@ export const distance = [
 
 export const mat = [
   {
+    value: '',
+    label: 'Show all facilities',
+    description:
+      'Includes facilities that do not offer medication-assisted treatment'
+  },
+  {
     value: 'METH',
     label: 'Methadone',
     description:
