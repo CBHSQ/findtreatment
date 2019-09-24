@@ -126,9 +126,19 @@ const Footer = () => {
                 <br />
                 Rockville, MD 20857
                 <br />
-                <a href="tel:1-877-726-4727">1-877-SAMHSA-7</a>
+                <OutboundLink
+                  eventLabel="Footer SAMHSA phone link"
+                  to="tel:1-877-726-4727"
+                >
+                  1-877-SAMHSA-7
+                </OutboundLink>
                 <br />
-                <a href="tel:1-877-726-4727">(1-877-726-4727)</a>
+                <OutboundLink
+                  eventLabel="Footer SAMHSA phone link"
+                  to="tel:1-877-726-4727"
+                >
+                  (1-877-726-4727)
+                </OutboundLink>
               </p>
             </div>
           </div>
@@ -144,8 +154,15 @@ const Footer = () => {
           >
             Suicide Prevention Lifeline
           </OutboundLink>{' '}
-          at <a href="tel:1-800-273-8255">1-800-273-8255</a> | In emergencies,
-          dial 911.
+          at{' '}
+          <OutboundLink
+            eventLabel="Suicide prevention hotline link from footer"
+            to="tel:1-800-273-8255"
+            css={tw`underline`}
+          >
+            1-800-273-8255
+          </OutboundLink>{' '}
+          | In emergencies, dial 911.
         </div>
       </div>
     </footer>
