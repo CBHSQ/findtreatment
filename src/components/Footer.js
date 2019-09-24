@@ -158,7 +158,7 @@ const Footer = () => {
           <OutboundLink
             eventLabel="Suicide prevention hotline link from footer"
             to="tel:1-800-273-8255"
-            css={tw`underline`}
+            css={tw`underline whitespace-no-wrap`}
           >
             1-800-273-8255
           </OutboundLink>{' '}
