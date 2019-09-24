@@ -8,10 +8,10 @@ import { HashLink } from 'react-router-hash-link';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
-import mobileBackground from '../images/film-strip_mobile.png';
-import mobileBackground_2x from '../images/film-strip_mobile@2x.png';
-import backgroundLeft_2x from '../images/film-strip_l@2x.png';
-import backgroundRight_2x from '../images/film-strip_r@2x.png';
+import mobileBackground from '../images/film-strip_mobile.jpg';
+import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
+import backgroundLeft_2x from '../images/film-strip_l@2x.jpg';
+import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 
 import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
