@@ -98,7 +98,7 @@ describe('FormFilters component', () => {
       resetForm: resetFn
     };
     const component = shallow(<FormFilters {...props} />);
-    const resetBtn = component.find('#reset-form');
+    const resetBtn = component.find('.reset-form');
 
     resetBtn.simulate('click');
 

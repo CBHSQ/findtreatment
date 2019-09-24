@@ -67,7 +67,7 @@ export class FormFilters extends Component {
             <h2 css={tw`text-2xl font-heading font-bold`}>
               Refine search results
             </h2>
-            <Button link onClick={resetForm} id="reset-form">
+            <Button link onClick={resetForm} className="reset-form">
               Clear all
             </Button>
           </div>
