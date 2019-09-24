@@ -21,7 +21,7 @@ import Footer from './Footer';
 class App extends Component {
   render() {
     return (
-      <ScreenContext.Provider value={this.props.isDesktop}>
+      <ScreenContext.Provider value={this.props}>
         <Helmet
           titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
@@ -50,11 +50,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isDesktop: PropTypes.bool.isRequired
+  isDesktop: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired
 };
 
 const mapSizesToProps = ({ width }) => ({
-  isDesktop: width >= parseInt(theme.screens.lg, 10)
+  isDesktop: width >= parseInt(theme.screens.lg, 10),
+  isTablet: width >= parseInt(theme.screens.md, 10)
 });
 
 export default withSizes(mapSizesToProps)(App);
