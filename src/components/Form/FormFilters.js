@@ -190,7 +190,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  resetForm: dispatch(reset('filters'))
+  resetForm: () => dispatch(reset('filters'))
 });
 
 export default connect(
