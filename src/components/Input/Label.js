@@ -30,7 +30,7 @@ const Label = props => {
       {props.inline ? (
         <StyledLabel {...props}>
           {props.children}
-          <div css={tw``}>
+          <div>
             <span>{props.labelText}</span>
             {props.description && <p>{props.description}</p>}
           </div>
