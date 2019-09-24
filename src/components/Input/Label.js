@@ -20,7 +20,7 @@ const StyledLabel = styled.label`
   }
 
   p {
-    ${tw`text-sm`}
+    ${tw`text-sm text-gray-darker`}
   }
 `;
 
