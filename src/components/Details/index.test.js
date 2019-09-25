@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Details } from './Details';
-import Error from './Error';
-import NoMatch from './NoMatch';
-import Loading from './Loading';
+import { Details } from './';
+import Error from '../Error';
+import NoMatch from '../NoMatch';
+import Loading from '../Loading';
 
 const testProps = {
   data: {
