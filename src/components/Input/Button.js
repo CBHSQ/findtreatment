@@ -6,17 +6,7 @@ import { PropTypes } from 'prop-types';
 import { theme } from '../../tailwind.js';
 
 const Button = styled(
-  ({
-    as,
-    children,
-    primary,
-    secondary,
-    outline,
-    gradient,
-    disabled,
-    link,
-    ...rest
-  }) =>
+  ({ as, children, primary, secondary, outline, gradient, link, ...rest }) =>
     as ? (
       <Button as={as} {...rest}>
         {children}
