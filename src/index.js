@@ -6,4 +6,4 @@ import ReactDOM from 'react-dom';
 import './tailwind.css';
 import 'typeface-roboto-condensed';
 
-ReactDOM.render(<>Coming soon!</>, document.getElementById('root'));
+ReactDOM.render(<></>, document.getElementById('root'));
