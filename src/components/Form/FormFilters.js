@@ -3,7 +3,7 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, getFormValues, submit } from 'redux-form';
+import { Field, reduxForm, getFormValues, reset, submit } from 'redux-form';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
@@ -58,14 +58,19 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { isDesktop, languages } = this.props;
+    const { isDesktop, languages, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
         {isDesktop && (
-          <h2 css={tw`text-2xl font-heading font-bold p-4 shadow`}>
-            Refine search results
-          </h2>
+          <div css={tw`p-4 shadow`}>
+            <h2 css={tw`text-2xl font-heading font-bold`}>
+              Refine search results
+            </h2>
+            <Button link onClick={resetForm} className="reset-form">
+              Clear all
+            </Button>
+          </div>
         )}
         <form onSubmit={this.handleSubmit}>
           {!isDesktop && this.renderSubmitButton()}
@@ -165,6 +170,7 @@ FormFilters.propTypes = {
   languages: PropTypes.array.isRequired,
   location: PropTypes.object,
   recordCount: PropTypes.number,
+  resetForm: PropTypes.func.isRequired,
   toggleFilters: PropTypes.func.isRequired
 };
 
@@ -183,7 +189,14 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(
+const mapDispatchToProps = dispatch => ({
+  resetForm: () => dispatch(reset('filters'))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
   reduxForm({
     form: 'filters',
     destroyOnUnmount: false,

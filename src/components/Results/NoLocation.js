@@ -14,11 +14,11 @@ const NoLocation = () => (
       Start by entering your ZIP code. Locations within 25 miles will be shown
       first, and you can change the distance to show more or fewer locations.
     </p>
-    <p css={tw`mb-4`}>
+    <p css={tw`mb-4 pb-4 border-b border-gray-lighter`}>
       Use the search filters to find locations that match specific needs, like
       the type of treatment offered, groups served, or medication availability.
     </p>
-    <p>
+    <p css={tw`text-sm`}>
       If you need assistance, SAMHSA's national helpline is available 24/7 and
       can assist you with treatment referrals and information. Call{' '}
       <OutboundLink
