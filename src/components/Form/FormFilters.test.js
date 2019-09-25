@@ -10,6 +10,7 @@ const testProps = {
   languages: [],
   location: {},
   recordCount: 0,
+  resetForm: jest.fn(),
   toggleFilters: jest.fn()
 };
 
@@ -88,5 +89,19 @@ describe('FormFilters component', () => {
 
       expect(props.handleSubmit.mock.calls.length).toBe(1);
     });
+  });
+
+  it('resets the form when Clear All button is clicked', () => {
+    const resetFn = jest.fn();
+    const props = {
+      ...testProps,
+      resetForm: resetFn
+    };
+    const component = shallow(<FormFilters {...props} />);
+    const resetBtn = component.find('.reset-form');
+
+    resetBtn.simulate('click');
+
+    expect(resetFn.mock.calls.length).toBe(1);
   });
 });
