@@ -10,17 +10,17 @@ import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
 
-import { theme } from '../tailwind.js';
-import { handleReceiveFacility, destroyFacility } from '../actions/facility';
-import { reportFacility } from '../actions/facilities';
-import { removeHttp } from '../utils/misc';
-import { servicesOrder } from '../utils/services';
+import { theme } from '../../tailwind.js';
+import { handleReceiveFacility, destroyFacility } from '../../actions/facility';
+import { reportFacility } from '../../actions/facilities';
+import { removeHttp } from '../../utils/misc';
+import { servicesOrder } from '../../utils/services';
 
-import Error from './Error';
-import NoMatch from './NoMatch';
-import Loading from './Loading';
-import MapContainer from './Map/MapContainer';
-import { Button, Label } from './Input';
+import Error from '../Error';
+import NoMatch from '../NoMatch';
+import Loading from '../Loading';
+import DetailsLocation from './DetailsLocation';
+import { Button, Label } from '../Input';
 
 const DecorativeHeading = styled.div`
   &:before {
@@ -100,21 +100,7 @@ export class Details extends Component {
       return <NoMatch />;
     }
 
-    const {
-      frid,
-      longitude,
-      latitude,
-      name1,
-      name2,
-      street1,
-      street2,
-      city,
-      state,
-      zip,
-      services,
-      phone,
-      website
-    } = data;
+    const { name1, name2, services, phone, website } = data;
 
     return (
       <>
@@ -177,38 +163,7 @@ export class Details extends Component {
         <div css={tw`bg-gray-lightest`}>
           <div className="container" css={tw`py-5`}>
             <div css={tw`flex flex-wrap -mx-4`}>
-              <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
-                <div css={tw`bg-white h-full shadow p-4`}>
-                  <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
-                    Location
-                  </h2>
-                  <div css={tw`relative h-64 w-full mb-4`}>
-                    <MapContainer
-                      frid={frid}
-                      latitude={latitude}
-                      longitude={longitude}
-                      name1={name1}
-                      phone={phone}
-                    />
-                  </div>
-                  <div css={tw`text-gray-700`}>
-                    {street1}, {street2 && street2 + ','}
-                    <br />
-                    {city}, {state} {zip}
-                    <br />
-                    <OutboundLink
-                      eventLabel="Driving directions link from details"
-                      to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
-                        `${street1}, ${street2 &&
-                          street2 + ','} ${city}, ${state} ${zip}`
-                      )}`}
-                      css={tw`font-bold`}
-                    >
-                      Get driving directions
-                    </OutboundLink>
-                  </div>
-                </div>
-              </div>
+              <DetailsLocation data={data} />
               <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
                 <div css={tw`bg-white h-full  shadow p-4`}>
                   <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
