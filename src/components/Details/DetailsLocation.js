@@ -33,9 +33,9 @@ const DetailsLocation = props => {
 
   return (
     <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
-      <div css={tw`bg-white shadow`}>
-        <div css={tw`flex flex-col`}>
-          <div css={tw`p-4 flex-grow`}>
+      <div css={tw`bg-white h-full shadow`}>
+        <div css={tw`flex flex-col h-full`}>
+          <div css={tw`p-4 flex-1`}>
             <h2 css={tw`font-heading font-bold mb-4 text-xl`}>Location</h2>
             <div css={tw`relative h-64 w-full mb-4`}>
               <MapContainer

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
@@ -20,6 +20,7 @@ import Error from '../Error';
 import NoMatch from '../NoMatch';
 import Loading from '../Loading';
 import DetailsLocation from './DetailsLocation';
+import DetailsPayment from './DetailsPayment';
 import { Button, Label } from '../Input';
 
 const DecorativeHeading = styled.div`
@@ -164,25 +165,7 @@ export class Details extends Component {
           <div className="container" css={tw`py-5`}>
             <div css={tw`flex flex-wrap -mx-4`}>
               <DetailsLocation data={data} />
-              <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
-                <div css={tw`bg-white h-full  shadow p-4`}>
-                  <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
-                    Payment, insurance, or funding accepted
-                  </h2>
-                  <ul>
-                    {services.PAY &&
-                      services.PAY.values.map((value, index) => (
-                        <li key={index} css={tw`flex mb-2`}>
-                          <FontAwesomeIcon
-                            icon={faCheck}
-                            css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
-                          />
-                          <span>{value}</span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              </div>
+              <DetailsPayment services={services} />
             </div>
           </div>
         </div>
