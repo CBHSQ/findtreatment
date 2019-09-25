@@ -118,7 +118,7 @@ export class HeaderNav extends Component {
   );
 
   render() {
-    const isDesktop = this.context;
+    const { isDesktop } = this.context;
     const { location } = this.props;
 
     return (

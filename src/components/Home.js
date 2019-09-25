@@ -8,10 +8,10 @@ import { HashLink } from 'react-router-hash-link';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
-import mobileBackground from '../images/film-strip_mobile.png';
-import mobileBackground_2x from '../images/film-strip_mobile@2x.png';
-import backgroundLeft_2x from '../images/film-strip_l@2x.png';
-import backgroundRight_2x from '../images/film-strip_r@2x.png';
+import mobileBackground from '../images/film-strip_mobile.jpg';
+import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
+import backgroundLeft_2x from '../images/film-strip_l@2x.jpg';
+import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 
 import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
@@ -56,7 +56,7 @@ class Home extends Component {
   };
 
   renderCard = card => {
-    const isDesktop = this.context;
+    const { isDesktop } = this.context;
 
     return (
       <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-10`}>
@@ -84,24 +84,30 @@ class Home extends Component {
   };
 
   render() {
+    const { isDesktop, isTablet } = this.context;
+
     return (
       <>
-        <MobileBgContainer css={tw`md:hidden relative border-b-4 border-white`}>
-          <MobileBgImage
-            css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
-          />
-        </MobileBgContainer>
+        {isTablet || (
+          <MobileBgContainer css={tw`relative border-b-4 border-white`}>
+            <MobileBgImage
+              css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
+            />
+          </MobileBgContainer>
+        )}
         <div
           css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-white md:border-t md:border-gray-lighter`}
         >
           <div className="container">
             <div css={tw`md:flex md:-mx-4 lg:-mx-8`}>
-              <img
-                src={backgroundLeft_2x}
-                css={tw`hidden lg:block lg:px-8`}
-                style={{ height: '336px' }}
-                alt=""
-              />
+              {isDesktop && (
+                <img
+                  src={backgroundLeft_2x}
+                  css={tw`px-8`}
+                  style={{ height: '336px' }}
+                  alt=""
+                />
+              )}
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
@@ -133,12 +139,14 @@ class Home extends Component {
                   Learn more
                 </Button>
               </div>
-              <img
-                src={backgroundRight_2x}
-                css={tw`hidden md:block px-4 lg:px-8`}
-                style={{ height: '336px' }}
-                alt=""
-              />
+              {isTablet && (
+                <img
+                  src={backgroundRight_2x}
+                  css={tw`px-4 lg:px-8`}
+                  style={{ height: '336px' }}
+                  alt=""
+                />
+              )}
             </div>
           </div>
         </div>
