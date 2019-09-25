@@ -18,11 +18,13 @@ const Button = styled(
     ...rest
   }) =>
     as ? (
-      <Button as={as} {...rest}>
+      <Button as={as} disabled={disabled} {...rest}>
         {children}
       </Button>
     ) : (
-      <button {...rest}>{children}</button>
+      <button disabled={disabled} {...rest}>
+        {children}
+      </button>
     )
 )`
   ${tw`font-semibold py-2 px-4 rounded inline-flex items-center justify-center`}
