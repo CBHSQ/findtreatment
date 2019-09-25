@@ -50,7 +50,7 @@ export class Results extends Component {
 
   submit = values => {
     const { dispatch } = this.props;
-    const isDesktop = this.context;
+    const { isDesktop } = this.context;
 
     if (values.location.latLng) {
       dispatch(handleReceiveFacilities(values));
@@ -64,7 +64,7 @@ export class Results extends Component {
   render() {
     const { distance, loading, location, error, data, hasResults } = this.props;
     const { rows, page, totalPages, recordCount } = data;
-    const isDesktop = this.context;
+    const { isDesktop } = this.context;
     const { filtersHidden } = this.state;
 
     if (error) {
