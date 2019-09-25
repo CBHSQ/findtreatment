@@ -1,5 +1,6 @@
 import qs from 'qs';
 import { services, servicesOrder } from './services';
+import { GOOGLE_MAP_EXTERNAL_URL } from './constants';
 
 export const convertToSlug = string =>
   string
@@ -35,4 +36,18 @@ export const linkToFacility = ({ frid, latitude, longitude }) => {
     pathname: `/details/${frid}`,
     search: qs.stringify({ sAddr: `${latitude}, ${longitude}` })
   };
+};
+
+export const formatAddress = (
+  { street1, street2, city, state, zip },
+  lineBreak = false
+) => {
+  return `${street1},${street2 ? ` ${street2},` : ''}${
+    lineBreak ? '\n' : ' '
+  }${city}, ${state} ${zip}`;
+};
+
+export const googleMapUrl = address => {
+  const destination = encodeURI(formatAddress(address));
+  return `${GOOGLE_MAP_EXTERNAL_URL}?api=1&destination=${destination}`;
 };
