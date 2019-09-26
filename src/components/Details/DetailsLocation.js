@@ -86,8 +86,13 @@ const DetailsLocation = props => {
               <strong>
                 {offersTransportation ? 'offers' : 'does not offer'}
               </strong>{' '}
-              transportation assistance. <br css={tw`hidden lg:block`} />
-              Ask them about it when you call.
+              transportation assistance.
+              {offersTransportation && (
+                <>
+                  <br css={tw`hidden lg:block`} /> Ask them about it when you
+                  call.
+                </>
+              )}
             </p>
           </div>
         </div>

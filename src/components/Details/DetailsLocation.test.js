@@ -24,7 +24,7 @@ describe('DetailsLocation component', () => {
     const component = shallow(<DetailsLocation {...testProps} />);
 
     expect(component.find('.transportation-text').text()).toBe(
-      'This facility does not offer transportation assistance. Ask them about it when you call.'
+      'This facility does not offer transportation assistance.'
     );
   });
 
