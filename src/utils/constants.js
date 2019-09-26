@@ -6,5 +6,6 @@ export const DEFAULT_SORT = 0; // 0 = Distance: Low to High
 export const DEFAULT_STYPE = 'SA';
 export const GOOGLE_MAP_STATIC_URL =
   'https://maps.googleapis.com/maps/api/staticmap';
+export const GOOGLE_MAP_EXTERNAL_URL = 'https://www.google.com/maps/dir/';
 export const HELPLINE_TEXT = '1-800-662-HELP (4357)';
 export const HELPLINE_LINK = '+1-800-662-4357';

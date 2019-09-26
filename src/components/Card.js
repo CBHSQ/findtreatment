@@ -7,7 +7,12 @@ import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import { linkToFacility, removeHttp } from '../utils/misc';
+import {
+  googleMapUrl,
+  linkToFacility,
+  removeHttp,
+  formatAddress
+} from '../utils/misc';
 
 import MapStatic from './Map/MapStatic';
 
@@ -71,6 +76,14 @@ const Card = props => {
     zip
   } = props;
 
+  const address = {
+    street1,
+    street2,
+    city,
+    state,
+    zip
+  };
+
   return (
     <li css={tw`bg-white shadow border-t border-gray-lighter rounded mb-10`}>
       <div css={tw`px-6 py-4 bg-blue-light text-white rounded-t`}>
@@ -93,12 +106,8 @@ const Card = props => {
       <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6`}>
         <div css={tw`w-1/4 px-2`}>
           <MapStatic
+            address={address}
             name1={name1}
-            street1={street1}
-            street2={street2}
-            city={city}
-            state={state}
-            zip={zip}
             latitude={latitude}
             longitude={longitude}
             miles={miles}
@@ -106,7 +115,7 @@ const Card = props => {
         </div>
         <div css={tw`w-3/4 px-2`}>
           {phone && (
-            <div css={tw`flex items-center`}>
+            <div css={tw`flex items-center mb-px`}>
               <FontAwesomeIcon
                 icon={faPhone}
                 css={tw`text-gray fill-current w-4 h-4 mr-2`}
@@ -121,7 +130,7 @@ const Card = props => {
             </div>
           )}
           {website !== 'http://' && (
-            <div className="card-website" css={tw`truncate`}>
+            <div className="card-website" css={tw`truncate mb-px`}>
               <OutboundLink
                 eventLabel="Facility website link from card"
                 to={website}
@@ -133,10 +142,17 @@ const Card = props => {
               </OutboundLink>
             </div>
           )}
-          <address css={tw`not-italic mb-2 ml-6`}>
-            {street1}
-            {street2 && `, ${street2}`}, {city}, {state} {zip}
-          </address>
+          <OutboundLink
+            eventLabel="Facility address link from card"
+            to={googleMapUrl(address)}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={tw`block mb-2 ml-6`}
+          >
+            <address css={tw`not-italic text-gray`}>
+              {formatAddress(address)}
+            </address>
+          </OutboundLink>
           <div css={tw`text-sm`}>
             {renderService(
               {

@@ -10,6 +10,7 @@ import {
 import { OutboundLink } from 'react-ga';
 
 import MapContainer from '../Map/MapContainer';
+import { formatAddress, googleMapUrl } from '../../utils/misc';
 
 const DetailsLocation = props => {
   const { data } = props;
@@ -26,6 +27,14 @@ const DetailsLocation = props => {
     services,
     phone
   } = data;
+
+  const address = {
+    street1,
+    street2,
+    city,
+    state,
+    zip
+  };
 
   const offersTransportation = (
     ((services || {}).AS || {}).values || []
@@ -46,18 +55,12 @@ const DetailsLocation = props => {
                 phone={phone}
               />
             </div>
-            <div css={tw`text-gray-700`}>
-              {street1}, {street2 && street2 + ','}
-              <br />
-              {city}, {state} {zip}
-              <br />
+            <div css={tw`text-gray-700 whitespace-pre-line`}>
+              {formatAddress(address, true)}
               <OutboundLink
                 eventLabel="Driving directions link from details"
-                to={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
-                  `${street1}, ${street2 &&
-                    street2 + ','} ${city}, ${state} ${zip}`
-                )}`}
-                css={tw`font-bold`}
+                to={googleMapUrl(address)}
+                css={tw`block font-bold`}
               >
                 Get driving directions
               </OutboundLink>
@@ -86,8 +89,13 @@ const DetailsLocation = props => {
               <strong>
                 {offersTransportation ? 'offers' : 'does not offer'}
               </strong>{' '}
-              transportation assistance. <br css={tw`hidden lg:block`} />
-              Ask them about it when you call.
+              transportation assistance.
+              {offersTransportation && (
+                <>
+                  <br css={tw`hidden lg:block`} /> Ask them about it when you
+                  call.
+                </>
+              )}
             </p>
           </div>
         </div>
