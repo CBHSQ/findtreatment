@@ -67,18 +67,23 @@ export class Results extends Component {
     const { isDesktop } = this.context;
     const { filtersHidden } = this.state;
 
+    let currentA11yMessage;
+
     if (error) {
       return <Error />;
     }
 
     let mainContent;
     if (loading) {
+      currentA11yMessage = 'Results are loading';
       mainContent = <Loading />;
     } else if (!(location || {}).latLng) {
       mainContent = <NoLocation />;
     } else if (!hasResults) {
+      currentA11yMessage = 'There are no reaults for your search criteria';
       mainContent = <NoResults />;
     } else {
+      currentA11yMessage = 'See results';
       mainContent = (
         <>
           {(isDesktop || filtersHidden) && (
@@ -128,7 +133,17 @@ export class Results extends Component {
                 />
               </div>
             )}
-            <div css={tw`w-full lg:w-2/3 px-4`}>{mainContent}</div>
+            <div css={tw`w-full lg:w-2/3 px-4`}>
+              <div
+                // className="sr-only"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                {currentA11yMessage ? <span>{currentA11yMessage}</span> : ''}
+              </div>
+              {mainContent}
+            </div>
           </div>
         </div>
       </div>
