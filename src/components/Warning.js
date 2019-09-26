@@ -4,7 +4,11 @@ import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleDown,
+  faInfoCircle,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
 
 import { toggleWarning } from '../actions/ui';
 import { convertToSlug } from '../utils/misc';
@@ -26,7 +30,12 @@ class Warning extends Component {
           css={tw`flex items-center justify-between w-full`}
           aria-expanded={!isHidden}
         >
-          <span css={tw`block font-heading font-bold uppercase`}>
+          <span css={tw`font-heading font-bold uppercase flex items-center`}>
+            <FontAwesomeIcon
+              icon={faInfoCircle}
+              css={tw`mr-2 text-yellow`}
+              className="fa-lg"
+            />
             {heading}
           </span>
           <div css={tw`flex-none`}>
