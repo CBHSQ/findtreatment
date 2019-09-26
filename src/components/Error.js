@@ -23,13 +23,13 @@ class Error extends Component {
         <Helmet>
           <title>Error</title>
         </Helmet>
-        <h2
+        <h1
           css={tw`text-3xl font-bold mb-10`}
           ref={this.headerRef}
           tabIndex="-1"
         >
           Something's wrong on our side.
-        </h2>
+        </h1>
         <div css={tw`max-w-xl mx-auto`}>
           <p css={tw`text-xl mb-6`}>
             We're having technical issues right now. The problem should be fixed
