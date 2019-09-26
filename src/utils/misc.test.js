@@ -1,3 +1,4 @@
+import { GOOGLE_MAP_EXTERNAL_URL } from './constants';
 import * as misc from './misc';
 
 describe('servicesToObject()', () => {
@@ -32,4 +33,57 @@ describe('linkToFacility()', () => {
       search: 'sAddr=32.4044445%2C%20-110.98642940000002'
     });
   });
+});
+
+describe('formatAddress()', () => {
+  const address = {
+    street1: '19201 120th Avenue NE',
+    city: 'Bothell',
+    state: 'WA',
+    zip: '98011'
+  };
+
+  const addressWithStreet2 = {
+    ...address,
+    street2: 'Suite 108'
+  };
+
+  it('formats the address without street2', () => {
+    expect(misc.formatAddress(address)).toEqual(
+      '19201 120th Avenue NE, Bothell, WA 98011'
+    );
+  });
+
+  it('formats the address with street2', () => {
+    expect(misc.formatAddress(addressWithStreet2)).toEqual(
+      '19201 120th Avenue NE, Suite 108, Bothell, WA 98011'
+    );
+  });
+
+  it('adds a line break when `lineBreak` is true', () => {
+    expect(misc.formatAddress(address, true)).toEqual(
+      `19201 120th Avenue NE,\nBothell, WA 98011`
+    );
+  });
+
+  it('adds a line break when `lineBreak` is true and street2', () => {
+    expect(misc.formatAddress(addressWithStreet2, true)).toEqual(
+      '19201 120th Avenue NE, Suite 108,\nBothell, WA 98011'
+    );
+  });
+});
+
+describe('googleMapUrl()', () => {
+  const address = {
+    street1: '19201 120th Avenue NE',
+    city: 'Bothell',
+    state: 'WA',
+    zip: '98011'
+  };
+
+  expect(misc.googleMapUrl(address)).toEqual(
+    `${GOOGLE_MAP_EXTERNAL_URL}?api=1&destination=${encodeURI(
+      misc.formatAddress(address)
+    )}`
+  );
 });

@@ -3,6 +3,8 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
 import { ReactComponent as LogoHHS } from '../images/logo-hhs.svg';
 
@@ -115,6 +117,19 @@ const Footer = () => {
                     eventLabel="Submit feedback link from footer"
                   >
                     Submit feedback
+                  </OutboundLink>
+                </li>
+                <li>
+                  <OutboundLink
+                    to="https://github.com/18F/samhsa-prototype"
+                    eventLabel="View code on Github"
+                    css={tw`flex items-center`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      css={tw`text-white fill-current w-4 h-4 mr-2`}
+                    />
+                    View code on Github
                   </OutboundLink>
                 </li>
               </ul>
