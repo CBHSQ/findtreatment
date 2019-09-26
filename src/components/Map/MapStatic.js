@@ -5,7 +5,7 @@ import tw from 'tailwind.macro';
 import { OutboundLink } from 'react-ga';
 
 import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
-import { googleMapUrl } from '../../utils/misc';
+import { formatMiles, googleMapUrl } from '../../utils/misc';
 
 export class MapStatic extends Component {
   render() {
@@ -24,14 +24,12 @@ export class MapStatic extends Component {
           alt={`Google map for ${name1}`}
           css={tw`w-full`}
         />
-        {(miles || miles === 0) && (
-          <div
-            css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
-            className="map-static-miles"
-          >
-            {miles} mile{miles !== 1 && 's'}
-          </div>
-        )}
+        <div
+          css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
+          className="map-static-miles"
+        >
+          {formatMiles(miles)}
+        </div>
       </OutboundLink>
     );
   }

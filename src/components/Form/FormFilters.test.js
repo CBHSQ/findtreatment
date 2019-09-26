@@ -9,6 +9,7 @@ const testProps = {
   isDesktop: true,
   languages: [],
   location: {},
+  loading: false,
   recordCount: 0,
   resetForm: jest.fn(),
   toggleFilters: jest.fn()
@@ -88,6 +89,34 @@ describe('FormFilters component', () => {
       form.simulate('submit');
 
       expect(props.handleSubmit.mock.calls.length).toBe(1);
+    });
+  });
+
+  describe('on mobile', () => {
+    it('shows an animation when loading results', () => {
+      const props = {
+        ...testProps,
+        isDesktop: false,
+        loading: true
+      };
+      const component = shallow(<FormFilters {...props} />);
+
+      expect(
+        component.find('FormFilters___StyledChasingDots').first().length
+      ).toBe(1);
+    });
+
+    it('hides animation once results have been retrieved', () => {
+      const props = {
+        ...testProps,
+        isDesktop: false,
+        loading: false
+      };
+      const component = shallow(<FormFilters {...props} />);
+
+      expect(
+        component.find('FormFilters___StyledChasingDots').first().length
+      ).toBe(0);
     });
   });
 

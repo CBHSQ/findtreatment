@@ -13,7 +13,9 @@ const DetailsPayment = props => {
       <div css={tw`bg-white h-full shadow`}>
         <div css={tw`flex flex-col h-full`}>
           <div css={tw`p-4 flex-1`}>
-            <h2 css={tw`font-heading font-bold mb-4 text-xl`}>
+            <h2
+              css={tw`font-heading font-bold leading-none mb-6 pb-4 border-b border-gray-light text-xl`}
+            >
               Payment, insurance, or funding accepted
             </h2>
             <ul>
