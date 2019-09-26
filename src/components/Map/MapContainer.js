@@ -33,9 +33,9 @@ export class MapContainer extends Component {
   };
 
   onReady = (_, map) => {
-    // Add title to google map iframe
+    // Remove google map iframe
     window.google.maps.event.addListenerOnce(map, 'idle', () => {
-      document.getElementsByTagName('iframe')[0].title = 'Google Maps';
+      document.getElementsByTagName('iframe')[0].remove();
     });
   };
 
