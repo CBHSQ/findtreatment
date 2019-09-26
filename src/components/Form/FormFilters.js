@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset, submit } from 'redux-form';
+import { ChasingDots } from 'styled-spinkit';
 
 import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
@@ -39,7 +40,7 @@ export class FormFilters extends Component {
   };
 
   renderSubmitButton = () => {
-    const { location, recordCount, toggleFilters } = this.props;
+    const { loading, location, recordCount, toggleFilters } = this.props;
 
     return (
       <RowWrapper>
@@ -50,7 +51,13 @@ export class FormFilters extends Component {
             css={tw`w-full text-xl`}
             onClick={(location || {}).latLng && toggleFilters}
           >
-            Show {recordCount} results
+            Show{' '}
+            {loading ? (
+              <ChasingDots size={16} css={tw`mx-1 my-0`} color="#fff" />
+            ) : (
+              recordCount
+            )}{' '}
+            results
           </Button>
         </Row>
       </RowWrapper>
@@ -169,13 +176,14 @@ FormFilters.propTypes = {
   isDesktop: PropTypes.bool.isRequired,
   languages: PropTypes.array.isRequired,
   location: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
   recordCount: PropTypes.number,
   resetForm: PropTypes.func.isRequired,
   toggleFilters: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-  const { languages } = state;
+  const { facilities, languages } = state;
   const { data } = languages;
   const values = getFormValues('filters')(state);
 
@@ -185,7 +193,8 @@ const mapStateToProps = state => {
       location: { address: '' }
     },
     location: (values || {}).location,
-    languages: data
+    languages: data,
+    loading: facilities.loading
   };
 };
 
