@@ -98,4 +98,9 @@ describe('formatMiles()', () => {
     const miles = 1;
     expect(misc.formatMiles(miles)).toBe('1 mile');
   });
+
+  it('pluralizes values over 1 mile', () => {
+    const miles = 5.4;
+    expect(misc.formatMiles(miles)).toBe('5.4 miles');
+  });
 });
