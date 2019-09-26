@@ -51,3 +51,6 @@ export const googleMapUrl = address => {
   const destination = encodeURI(formatAddress(address));
   return `${GOOGLE_MAP_EXTERNAL_URL}?api=1&destination=${destination}`;
 };
+
+export const formatMiles = miles =>
+  (miles || miles === 0) && `${miles} mile${miles !== 1 ? 's' : ''}`;
