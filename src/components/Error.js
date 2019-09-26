@@ -19,7 +19,7 @@ class Error extends Component {
   }
 
   render() {
-    const { title, headerText, description, helpLabel } = this.props;
+    const { title, headerText, description } = this.props;
 
     return (
       <div css={tw`mx-auto p-6 mb-6 text-center`}>
@@ -36,7 +36,7 @@ class Error extends Component {
         <div css={tw`max-w-xl mx-auto`}>
           <p css={tw`text-xl mb-6`}>{description}</p>
           <Button
-            eventLabel={helpLabel}
+            eventLabel={`Helpline link from ${title} page`}
             to={`tel:${HELPLINE_LINK}`}
             as={OutboundLink}
             primary
@@ -53,8 +53,7 @@ class Error extends Component {
 Error.propTypes = {
   title: PropTypes.string,
   headerText: PropTypes.string,
-  description: PropTypes.string,
-  helpLabel: PropTypes.string
+  description: PropTypes.string
 };
 
 Error.defaultProps = {
@@ -62,8 +61,7 @@ Error.defaultProps = {
   headerText: 'Something is wrong on our side.',
   description: `We're having technical issues right now. The problem should be fixed
   soon, and in the meantime SAMHSA's national helpline is available
-  24/7 and can assist you with treatment referrals and information.`,
-  helpLabel: 'Helpline link from error page'
+  24/7 and can assist you with treatment referrals and information.`
 };
 
 export default Error;
