@@ -87,3 +87,20 @@ describe('googleMapUrl()', () => {
     )}`
   );
 });
+
+describe('formatMiles()', () => {
+  it('displays distance even if it is zero', () => {
+    const miles = 0;
+    expect(misc.formatMiles(miles)).toBe('0 miles');
+  });
+
+  it('does not pluralize 1 mile', () => {
+    const miles = 1;
+    expect(misc.formatMiles(miles)).toBe('1 mile');
+  });
+
+  it('pluralizes values over 1 mile', () => {
+    const miles = 5.4;
+    expect(misc.formatMiles(miles)).toBe('5.4 miles');
+  });
+});

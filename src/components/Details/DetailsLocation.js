@@ -9,6 +9,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 
+import { formatMiles } from '../../utils/misc';
+
 import MapContainer from '../Map/MapContainer';
 import { formatAddress, googleMapUrl } from '../../utils/misc';
 
@@ -25,7 +27,8 @@ const DetailsLocation = props => {
     state,
     zip,
     services,
-    phone
+    phone,
+    miles
   } = data;
 
   const address = {
@@ -45,7 +48,16 @@ const DetailsLocation = props => {
       <div css={tw`bg-white h-full shadow`}>
         <div css={tw`flex flex-col h-full`}>
           <div css={tw`p-4 flex-1`}>
-            <h2 css={tw`font-heading font-bold mb-4 text-xl`}>Location</h2>
+            <h2
+              css={tw`font-heading font-bold leading-none mb-6 pb-4 border-b border-gray-light text-xl flex items-center justify-between`}
+            >
+              Location
+              {miles !== 0 && (
+                <span css={tw`font-sans font-normal text-gray text-base`}>
+                  {formatMiles(miles)} away
+                </span>
+              )}
+            </h2>
             <div css={tw`relative h-64 w-full mb-4`}>
               <MapContainer
                 frid={frid}
