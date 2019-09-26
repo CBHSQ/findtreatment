@@ -122,14 +122,14 @@ const Footer = () => {
                 <li>
                   <OutboundLink
                     to="https://github.com/18F/samhsa-prototype"
-                    eventLabel="Browse our source code"
+                    eventLabel="View code on Github"
                     css={tw`flex items-center`}
                   >
                     <FontAwesomeIcon
                       icon={faGithub}
                       css={tw`text-white fill-current w-4 h-4 mr-2`}
                     />
-                    We are open source
+                    View code on Github
                   </OutboundLink>
                 </li>
               </ul>
