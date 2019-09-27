@@ -103,7 +103,7 @@ class Home extends Component {
               {isDesktop && (
                 <img
                   src={backgroundLeft_2x}
-                  css={tw`px-8`}
+                  css={tw`px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
@@ -142,7 +142,7 @@ class Home extends Component {
               {isTablet && (
                 <img
                   src={backgroundRight_2x}
-                  css={tw`px-4 lg:px-8`}
+                  css={tw`px-4 lg:px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
