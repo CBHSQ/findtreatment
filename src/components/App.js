@@ -42,11 +42,6 @@ class App extends Component {
               <Route component={NoMatch} />
             </Switch>
           </main>
-          <div className="container" css={tw`mb-4 sm:hidden`}>
-            <a href="#top" aria-label="Return to top" css={tw`text-blue`}>
-              Return to top
-            </a>
-          </div>
           <Footer />
         </div>
       </ScreenContext.Provider>
