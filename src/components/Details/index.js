@@ -16,6 +16,7 @@ import { reportFacility } from '../../actions/facilities';
 import { removeHttp } from '../../utils/misc';
 import { servicesOrder } from '../../utils/services';
 
+import ScreenContext from '../ScreenContext';
 import Error from '../Error';
 import NoMatch from '../NoMatch';
 import Loading from '../Loading';
@@ -36,6 +37,10 @@ const StyledMasonaryGrid = styled.div`
 
     &_column {
       ${tw`px-4`}
+    }
+
+    div:not(:last-child) {
+      ${tw`mb-4`}
     }
   }
 `;
@@ -88,6 +93,7 @@ export class Details extends Component {
   render() {
     const { loading, error, data, isInternalLink, isReported } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
+    const { isTablet } = this.context;
 
     if (error) {
       return <Error />;
@@ -125,7 +131,7 @@ export class Details extends Component {
         <div css={tw`border-t border-gray-lighter`}>
           <div className="container" css={tw`py-5`}>
             <div css={tw`flex flex-wrap md:justify-between -mx-2`}>
-              <div css={tw`px-2`}>
+              <div css={tw`w-full md:w-auto px-2 mb-4 md:mb-0`}>
                 <h1 css={tw`font-bold font-heading text-3xl`}>
                   {name1}
                   {name2 && ` ${name2}`}
@@ -141,11 +147,15 @@ export class Details extends Component {
                   </OutboundLink>
                 )}
               </div>
-              <div css={tw`px-2 font-bold text-xl mt-2 flex-none`}>
-                <OutboundLink
+              <div
+                css={tw`w-full md:w-auto px-2 text-xl mb-2 md:mb-0 flex-none`}
+              >
+                <Button
+                  forwardedAs={OutboundLink}
+                  primary={!isTablet}
                   eventLabel="Facility phone link from card"
                   to={`tel:${phone}`}
-                  css={tw`flex items-center text-gray-darkest`}
+                  css={tw`w-full md:w-auto md:text-gray-darkest`}
                 >
                   <span
                     css={tw`mr-2 bg-blue rounded-full h-8 w-8 flex items-center justify-center`}
@@ -156,7 +166,7 @@ export class Details extends Component {
                     />
                   </span>
                   {phone}
-                </OutboundLink>
+                </Button>
               </div>
             </div>
           </div>
@@ -188,7 +198,7 @@ export class Details extends Component {
                   return servicesOrder.indexOf(a) - servicesOrder.indexOf(b);
                 })
                 .map(key => (
-                  <div css={tw`mb-6`} key={services[key].name}>
+                  <div key={services[key].name}>
                     <Label as="h3" labelText={services[key].name} />
                     <ul css={tw`text-sm list-disc list-inside`}>
                       {services[key].values.map((item, index) => (
@@ -201,7 +211,7 @@ export class Details extends Component {
           </StyledMasonaryGrid>
         </div>
         <div css={tw`bg-gray-lightest print:hidden`}>
-          <div className="container" css={tw`py-5`}>
+          <div className="container" css={tw`py-5 text-center md:text-left`}>
             {!isReported ? (
               <Button
                 className="report-facility"
@@ -222,6 +232,7 @@ export class Details extends Component {
     );
   }
 }
+Details.contextType = ScreenContext;
 
 Details.propTypes = {
   data: PropTypes.object.isRequired,

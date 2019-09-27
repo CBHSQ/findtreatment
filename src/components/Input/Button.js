@@ -29,7 +29,7 @@ const Button = styled(
 
   ${props =>
     props.gradient && {
-      ...tw`shadow text-gray-darker`,
+      ...tw`border border-gray-light shadow text-gray-dark`,
       background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
     }}
 
