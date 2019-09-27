@@ -11,6 +11,7 @@
     "connected-react-router": "^6.5.2",
     "google-maps-react": "^2.0.2",
     "react": "^16.9.0",
+    "react-accessible-tooltip": "^2.0.3",
     "react-app-polyfill": "^1.0.2",
     "react-burger-menu": "^2.6.11",
     "react-dom": "^16.9.0",

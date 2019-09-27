@@ -4,13 +4,15 @@ import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Tooltip from '../Tooltip';
+
 const StyledLabel = styled.label`
   ${tw`block mb-4`}
 
   ${props => props.inline && tw`flex`}
 
   span {
-    ${tw`block font-bold font-heading uppercase text-sm mb-2`}
+    ${tw`inline-block font-bold font-heading uppercase text-sm mb-2`}
 
     ${props =>
       props.inline &&
@@ -37,16 +39,10 @@ const Label = props => {
         </StyledLabel>
       ) : (
         <StyledLabel {...props}>
-          {props.help ? (
-            <div css={tw`flex justify-between items-center`}>
-              <span>{props.labelText}</span>
-              <Link to={props.help.url} css={tw`mb-2 text-sm`}>
-                {props.help.text}
-              </Link>
-            </div>
-          ) : (
+          <div>
             <span>{props.labelText}</span>
-          )}
+            <Tooltip />
+          </div>
           {props.children}
         </StyledLabel>
       )}
