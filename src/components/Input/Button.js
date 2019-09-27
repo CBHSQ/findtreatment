@@ -33,7 +33,7 @@ const Button = styled(
       background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
     }}
 
-  ${props => props.disabled && tw`opacity-75 cursor-not-allowed`}
+  ${props => props.disabled && tw`opacity-50 cursor-not-allowed`}
 
   ${props => props.link && tw`text-blue hover:text-blue p-0`}
 `;
