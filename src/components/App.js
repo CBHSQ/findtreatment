@@ -27,7 +27,7 @@ class App extends Component {
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
         />
         <GlobalStyle />
-        <div css={tw`overflow-hidden`}>
+        <div id="top" css={tw`overflow-hidden`}>
           <Header />
           <main role="main">
             <Switch>
@@ -42,6 +42,11 @@ class App extends Component {
               <Route component={NoMatch} />
             </Switch>
           </main>
+          <div className="container" css={tw`mb-4 sm:hidden`}>
+            <a href="#top" aria-label="Return to top" css={tw`text-blue`}>
+              Return to top
+            </a>
+          </div>
           <Footer />
         </div>
       </ScreenContext.Provider>
