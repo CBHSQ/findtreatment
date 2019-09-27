@@ -16,6 +16,7 @@ import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
+import ReturnToTop from './ReturnToTop';
 
 const MobileBgContainer = styled.div`
   padding-bottom: 75%;
@@ -180,6 +181,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <ReturnToTop />
       </>
     );
   }
