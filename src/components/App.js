@@ -7,6 +7,7 @@ import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
 
 import { theme } from '../tailwind.js';
+import { TOP_ID } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
@@ -27,7 +28,7 @@ class App extends Component {
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
         />
         <GlobalStyle />
-        <div id="top" css={tw`overflow-hidden`}>
+        <div id={TOP_ID} css={tw`overflow-hidden`} tabIndex="-1">
           <Header />
           <main role="main">
             <Switch>
