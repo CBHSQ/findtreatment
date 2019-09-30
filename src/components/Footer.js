@@ -77,7 +77,12 @@ const Footer = () => {
             <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <OutboundLink
+                    to="https://www.samhsa.gov/about-us"
+                    eventLabel="About us link from footer"
+                  >
+                    About us
+                  </OutboundLink>
                 </li>
                 <li>
                   <OutboundLink
