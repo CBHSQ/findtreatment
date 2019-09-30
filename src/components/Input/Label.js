@@ -9,7 +9,7 @@ const StyledLabel = styled.label`
 
   ${props => props.inline && tw`flex`}
 
-  span {
+  .label-text {
     ${tw`block font-bold font-heading uppercase text-sm mb-2`}
 
     ${props =>
@@ -30,22 +30,22 @@ const Label = props => {
       {props.inline ? (
         <StyledLabel {...props}>
           {props.children}
-          <div>
-            <span>{props.labelText}</span>
+          <span css={tw`block`}>
+            <span className="label-text">{props.labelText}</span>
             {props.description && <p>{props.description}</p>}
-          </div>
+          </span>
         </StyledLabel>
       ) : (
         <StyledLabel {...props}>
           {props.help ? (
-            <div css={tw`flex justify-between items-center`}>
-              <span>{props.labelText}</span>
+            <span css={tw`flex justify-between items-center`}>
+              <span className="label-text">>{props.labelText}</span>
               <Link to={props.help.url} css={tw`mb-2 text-sm`}>
                 {props.help.text}
               </Link>
-            </div>
+            </span>
           ) : (
-            <span>{props.labelText}</span>
+            <span className="label-text">{props.labelText}</span>
           )}
           {props.children}
         </StyledLabel>
