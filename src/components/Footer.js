@@ -43,7 +43,7 @@ const Footer = () => {
               </p>
             </div>
             <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
-              <p css={tw`font-bold mb-1`}>Other resources</p>
+              <p css={tw`font-bold mb-1`}>Other treatment resources</p>
               <ul css={tw`mb-6`}>
                 <li>
                   <OutboundLink
@@ -62,7 +62,7 @@ const Footer = () => {
                   </OutboundLink>
                 </li>
               </ul>
-              <p css={tw`font-bold mb-1`}>Providers</p>
+              <p css={tw`font-bold mb-1`}>Professional resources</p>
               <ul>
                 <li>
                   <OutboundLink
@@ -72,14 +72,35 @@ const Footer = () => {
                     List your facility
                   </OutboundLink>
                 </li>
+                <li>
+                  <OutboundLink
+                    to="https://github.com/18F/samhsa-prototype"
+                    eventLabel="View code on Github"
+                    css={tw`flex items-center`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      css={tw`text-white fill-current w-4 h-4 mr-2`}
+                    />
+                    View code on Github
+                  </OutboundLink>
+                </li>
               </ul>
             </div>
             <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
               <ul>
                 <li>
                   <OutboundLink
+                    to="https://forms.gle/8Zf4sCUcgn8Cmoqb6"
+                    eventLabel="Submit feedback link from footer"
+                  >
+                    Submit feedback
+                  </OutboundLink>
+                </li>
+                <li>
+                  <OutboundLink
                     to="https://www.samhsa.gov/about-us"
-                    eventLabel="About us link from footer"
+                    eventLabel="About SAMHSA link from footer"
                   >
                     About us
                   </OutboundLink>
@@ -114,27 +135,6 @@ const Footer = () => {
                     eventLabel="Accessibility link from footer"
                   >
                     Accessibility
-                  </OutboundLink>
-                </li>
-                <li>
-                  <OutboundLink
-                    to="https://forms.gle/8Zf4sCUcgn8Cmoqb6"
-                    eventLabel="Submit feedback link from footer"
-                  >
-                    Submit feedback
-                  </OutboundLink>
-                </li>
-                <li>
-                  <OutboundLink
-                    to="https://github.com/18F/samhsa-prototype"
-                    eventLabel="View code on Github"
-                    css={tw`flex items-center`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faGithub}
-                      css={tw`text-white fill-current w-4 h-4 mr-2`}
-                    />
-                    View code on Github
                   </OutboundLink>
                 </li>
               </ul>
