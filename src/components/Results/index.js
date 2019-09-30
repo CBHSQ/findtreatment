@@ -15,6 +15,7 @@ import { METERS_PER_MILE } from '../../utils/constants';
 
 import Error from '../Error';
 import ResultsList from './ResultsList';
+import ReturnToTop from '../ReturnToTop';
 import FormFilters from '../Form/FormFilters';
 import FilterToggle from './FilterToggle';
 import Loading from '../Loading';
@@ -105,7 +106,7 @@ export class Results extends Component {
     }
 
     return (
-      <div css={tw`py-10 bg-gray-lightest border-t border-gray-lighter`}>
+      <div css={tw`pt-10 bg-gray-lightest border-t border-gray-lighter`}>
         <div className="container">
           <Helmet>
             <title>Results</title>
@@ -130,6 +131,9 @@ export class Results extends Component {
             )}
             <div css={tw`w-full lg:w-2/3 px-4`}>{mainContent}</div>
           </div>
+        </div>
+        <div css={tw`sm:pb-10`}>
+          <ReturnToTop />
         </div>
       </div>
     );

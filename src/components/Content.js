@@ -9,6 +9,7 @@ import { theme } from '../tailwind.js';
 import content from '../utils/content';
 
 import NoMatch from './NoMatch';
+import ReturnToTop from './ReturnToTop';
 
 const StyledPage = tw.div`flex flex-wrap -mx-6`;
 const SideBar = tw.div`w-full lg:w-1/3 px-6 mb-6 lg:mb-0 order-last lg:order-first`;
@@ -186,6 +187,7 @@ export class Content extends Component {
               {this.renderSideBar()}
             </StyledPage>
           </div>
+          <ReturnToTop />
         </div>
       );
     } else {
