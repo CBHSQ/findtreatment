@@ -109,6 +109,10 @@ export class FormFilters extends Component {
                 name="type"
                 options={filterOptions.type}
                 visible={4}
+                help={{
+                  text: 'Details about treatment types',
+                  url: '/content/treatment-options/types-of-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
@@ -119,6 +123,11 @@ export class FormFilters extends Component {
                 name="payment"
                 options={filterOptions.payment}
                 visible={4}
+                help={{
+                  text: 'Not sure how to pay?',
+                  url:
+                    '/content/paying-for-treatment/understanding-the-cost-of-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
@@ -159,6 +168,11 @@ export class FormFilters extends Component {
                 legend="Medication-assisted treatment (MAT)"
                 name="mat"
                 options={filterOptions.mat}
+                help={{
+                  text: 'Details about FDA-approved medications',
+                  url:
+                    '/content/treatment-options/medications-used-in-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
