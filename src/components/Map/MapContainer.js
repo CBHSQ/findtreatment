@@ -65,10 +65,9 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
         className="map-wrapper"
         css={`
-          &:focus {
-            outline: rgba(77, 171, 47, 0.247) solid 5px;
-            outline-offset: 2px;
-          }
+          appearance: textfield;
+          -moz-appearance: textfield;
+          -webkit-appearance: textfield;
         `}
       >
         <Marker name={name1} onClick={this.onMarkerClick} />
