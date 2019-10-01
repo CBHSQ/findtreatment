@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset, submit } from 'redux-form';
 import { ChasingDots } from 'styled-spinkit';
 
-import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
 import { DEFAULT_DISTANCE } from '../../utils/constants';
 
@@ -21,14 +20,6 @@ const RowWrapper = styled.div`
 `;
 
 export class FormFilters extends Component {
-  componentDidMount() {
-    const { languages, dispatch } = this.props;
-
-    if (!languages.length > 0) {
-      dispatch(handleReceiveLanguages());
-    }
-  }
-
   handleSubmit = submitEvent => {
     const { handleSubmit, location } = this.props;
 
@@ -65,7 +56,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { isDesktop, languages, resetForm } = this.props;
+    const { isDesktop, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
@@ -138,7 +129,7 @@ export class FormFilters extends Component {
                   name="language"
                   hideFirst
                   component={Select}
-                  options={languages}
+                  options={filterOptions.languages}
                 />
               </Label>
             </Row>
@@ -174,7 +165,6 @@ FormFilters.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired,
-  languages: PropTypes.array.isRequired,
   location: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   recordCount: PropTypes.number,
@@ -183,8 +173,7 @@ FormFilters.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { facilities, languages } = state;
-  const { data } = languages;
+  const { facilities } = state;
   const values = getFormValues('filters')(state);
 
   return {
@@ -193,7 +182,6 @@ const mapStateToProps = state => {
       location: { address: '' }
     },
     location: (values || {}).location,
-    languages: data,
     loading: facilities.loading
   };
 };
