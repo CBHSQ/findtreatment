@@ -10,7 +10,7 @@ const ResultsWarning = () => (
     <ul css={tw`pl-4 ml-4 list-outside list-disc`}>
       <li css={tw`mb-2`}>
         Call a facility before you visit to make sure they have the services you
-        need. What to expect when you call.{' '}
+        need.{' '}
         <Link
           to="/content/treatment-options/calling-a-facility"
           css={tw`underline text-gray-darkest`}
