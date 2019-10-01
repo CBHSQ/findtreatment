@@ -67,18 +67,7 @@ const StyledMenu = styled.div`
   }
 `;
 
-const desktopLinks = [
-  { name: 'Search for treatment', path: '/results' },
-  { name: 'Understanding addiction', path: '/content/understanding-addiction' },
-  {
-    name: 'Understanding mental health',
-    path: '/content/understanding-mental-health'
-  },
-  { name: 'Treatment options', path: '/content/treatment-options' },
-  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
-];
-
-const mobileLinks = [
+const links = [
   { name: 'Home', path: '/', exact: true },
   { name: 'Search for treatment', path: '/results' },
   { name: 'Understanding addiction', path: '/content/understanding-addiction' },
@@ -129,7 +118,7 @@ export class HeaderNav extends Component {
       <>
         {isDesktop ? (
           <nav css={tw`w-full text-sm flex mt-4`}>
-            {desktopLinks.map(this.renderDesktopLink)}
+            {links.slice(1).map(this.renderDesktopLink)}
             {location.pathname !== '/' && (
               <div css={tw`hidden lg:block w-full flex-grow text-right`}>
                 <button
@@ -155,9 +144,7 @@ export class HeaderNav extends Component {
             >
               <div>
                 <div css={tw`h-full flex flex-col justify-between`}>
-                  <div css={tw`p-4`}>
-                    {mobileLinks.map(this.renderMobileLink)}
-                  </div>
+                  <div css={tw`p-4`}>{links.map(this.renderMobileLink)}</div>
                   <div>
                     <HeaderHelpLine />
                   </div>
