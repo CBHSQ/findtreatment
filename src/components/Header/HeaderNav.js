@@ -71,8 +71,8 @@ const desktopLinks = [
   { name: 'Search for treatment', path: '/results' },
   { name: 'Understanding addiction', path: '/content/understanding-addiction' },
   {
-    name: 'Substance use and mental health',
-    path: '/content/substance-use-and-mental-health'
+    name: 'Understanding mental health',
+    path: '/content/understanding-mental-health'
   },
   { name: 'Treatment options', path: '/content/treatment-options' },
   { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
@@ -83,8 +83,8 @@ const mobileLinks = [
   { name: 'Search for treatment', path: '/results' },
   { name: 'Understanding addiction', path: '/content/understanding-addiction' },
   {
-    name: 'Substance use and mental health',
-    path: '/content/substance-use-and-mental-health'
+    name: 'Understanding mental health',
+    path: '/content/understanding-mental-health'
   },
   { name: 'Treatment options', path: '/content/treatment-options' },
   { name: 'Paying for treatment', path: '/content/paying-for-treatment' }

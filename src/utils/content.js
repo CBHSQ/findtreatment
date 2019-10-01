@@ -221,8 +221,8 @@ export default () => [
     ]
   },
   {
-    name: 'Substance use and mental health',
-    id: 'substance-use-and-mental-health',
+    name: 'Understanding mental health',
+    id: 'understanding-mental-health',
     icon: <IconMentalHealth />,
     description:
       'About half of people with a substance use disorder also experience serious mental illness.',
