@@ -107,6 +107,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <OutboundLink
+                    to="https://www.samhsa.gov/about-us/contact-us"
+                    eventLabel="Contact us/SAMHSA link from footer"
+                  >
+                    Contact us
+                  </OutboundLink>
+                </li>
+                <li>
+                  <OutboundLink
                     to="https://www.samhsa.gov/privacy"
                     eventLabel="Privacy policy link from footer"
                   >
@@ -138,28 +146,6 @@ const Footer = () => {
                   </OutboundLink>
                 </li>
               </ul>
-            </div>
-            <div css={tw`w-full lg:flex-1 px-6`}>
-              <p css={tw`font-bold mb-1`}>Contact SAMHSA</p>
-              <p css={tw`mb-4`}>
-                5600 Fishers Ln
-                <br />
-                Rockville, MD 20857
-                <br />
-                <OutboundLink
-                  eventLabel="Footer SAMHSA phone link"
-                  to="tel:1-877-726-4727"
-                >
-                  1-877-SAMHSA-7
-                </OutboundLink>
-                <br />
-                <OutboundLink
-                  eventLabel="Footer SAMHSA phone link"
-                  to="tel:1-877-726-4727"
-                >
-                  (1-877-726-4727)
-                </OutboundLink>
-              </p>
             </div>
           </div>
         </div>
