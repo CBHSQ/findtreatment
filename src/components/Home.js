@@ -16,6 +16,7 @@ import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
+import ReturnToTop from './ReturnToTop';
 
 const MobileBgContainer = styled.div`
   padding-bottom: 75%;
@@ -103,7 +104,7 @@ class Home extends Component {
               {isDesktop && (
                 <img
                   src={backgroundLeft_2x}
-                  css={tw`px-8`}
+                  css={tw`px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
@@ -142,7 +143,7 @@ class Home extends Component {
               {isTablet && (
                 <img
                   src={backgroundRight_2x}
-                  css={tw`px-4 lg:px-8`}
+                  css={tw`px-4 lg:px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
@@ -180,6 +181,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <ReturnToTop />
       </>
     );
   }

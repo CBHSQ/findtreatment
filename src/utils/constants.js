@@ -9,3 +9,4 @@ export const GOOGLE_MAP_STATIC_URL =
 export const GOOGLE_MAP_EXTERNAL_URL = 'https://www.google.com/maps/dir/';
 export const HELPLINE_TEXT = '1-800-662-HELP (4357)';
 export const HELPLINE_LINK = '+1-800-662-4357';
+export const TOP_ID = 'top';
