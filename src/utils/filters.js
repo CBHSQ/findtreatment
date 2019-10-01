@@ -15,6 +15,105 @@ export const distance = [
   { value: '', label: '100+ miles' }
 ];
 
+export const languages = [
+  {
+    value: 'SP-Spanish',
+    label: 'Spanish'
+  },
+  {
+    value: 'F4-Arabic',
+    label: 'Arabic'
+  },
+  {
+    value: 'F17-Any Chinese Language',
+    label: 'Any Chinese Language'
+  },
+  {
+    value: 'F19-Creole',
+    label: 'Creole'
+  },
+  {
+    value: 'F25-Farsi',
+    label: 'Farsi'
+  },
+  {
+    value: 'F28-French',
+    label: 'French'
+  },
+  {
+    value: 'F30-German',
+    label: 'German'
+  },
+  {
+    value: 'F31-Greek',
+    label: 'Greek'
+  },
+  {
+    value: 'F35-Hebrew',
+    label: 'Hebrew'
+  },
+  {
+    value: 'F36-Hindi',
+    label: 'Hindi'
+  },
+  {
+    value: 'F37-Hmong',
+    label: 'Hmong'
+  },
+  {
+    value: 'N13-Hopi',
+    label: 'Hopi'
+  },
+  {
+    value: 'F42-Italian',
+    label: 'Italian'
+  },
+  {
+    value: 'F43-Japanese',
+    label: 'Japanese'
+  },
+  {
+    value: 'F47-Korean',
+    label: 'Korean'
+  },
+  {
+    value: 'N18-Lakota',
+    label: 'Lakota'
+  },
+  {
+    value: 'N23-Navajo',
+    label: 'Navajo'
+  },
+  {
+    value: 'N24-Ojibwa',
+    label: 'Ojibwa'
+  },
+  {
+    value: 'F66-Polish',
+    label: 'Polish'
+  },
+  {
+    value: 'F67-Portuguese',
+    label: 'Portuguese'
+  },
+  {
+    value: 'F70-Russian',
+    label: 'Russian'
+  },
+  {
+    value: 'F81-Tagalog',
+    label: 'Tagalog'
+  },
+  {
+    value: 'F92-Vietnamese',
+    label: 'Vietnamese'
+  },
+  {
+    value: 'N40-Yupik',
+    label: 'Yupik'
+  }
+];
+
 export const mat = [
   {
     value: '',
