@@ -19,15 +19,21 @@ const DetailsPayment = props => {
               Payment, insurance, or funding accepted
             </h2>
             <ul>
-              {((services.PAY || {}).values || []).map((value, index) => (
-                <li key={index} css={tw`flex mb-2`}>
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
-                  />
-                  <span>{value}</span>
+              {services.PAY ? (
+                services.PAY.values.map((value, index) => (
+                  <li key={index} css={tw`flex mb-2`}>
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      css={tw`text-green mt-1 fill-current w-4 h-4 mr-2 flex-none`}
+                    />
+                    <span>{value}</span>
+                  </li>
+                ))
+              ) : (
+                <li css={tw`italic`} className="no-payment-options">
+                  Check with the facility for payment options
                 </li>
-              ))}
+              )}
             </ul>
           </div>
           <div css={tw`flex-none flex items-center bg-yellow-lighter p-4`}>
