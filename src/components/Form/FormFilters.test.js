@@ -73,7 +73,8 @@ describe('FormFilters component', () => {
 
       form.simulate('submit', { preventDefault() {} });
 
-      expect(mockSubmit.mock.calls.length).toBe(0);
+      // handleSubmit is called BEFORE validation
+      expect(mockSubmit.mock.calls.length).toBe(1);
     });
   });
 
