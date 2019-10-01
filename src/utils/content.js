@@ -18,6 +18,8 @@ export default () => [
       {
         name: 'Addiction can affect anyone',
         id: 'addiction-can-affect-anyone',
+        metaDescription:
+          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
         body: (
           <>
             <p>
@@ -52,6 +54,8 @@ export default () => [
       {
         name: 'It’s hard to stop on your own',
         id: 'its-hard-to-stop-on-your-own',
+        metaDescription:
+          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
         body: (
           <>
             <p>
@@ -92,6 +96,8 @@ export default () => [
       {
         name: 'Recovery starts with asking for help',
         id: 'recovery-starts-with-asking-for-help',
+        metaDescription:
+          'It takes courage to seek help for a drug problem. But remember: treatment works, there are many paths to help, and people recover every day.',
         body: (
           <>
             <p>
@@ -165,6 +171,8 @@ export default () => [
       {
         name: 'Supporting recovery and self-care',
         id: 'supporting-recovery-and-self-care',
+        metaDescription:
+          "Taking care of yourself is important when a family member or friend is in recovery. You can't fix the problem by yourself, or force them to seek help.",
         body: (
           <>
             <p>
@@ -230,6 +238,8 @@ export default () => [
       {
         name: 'Serious mental illness',
         id: 'serious-mental-illness',
+        metaDescription:
+          'About half of people with a substance use disorder also experience serious mental illness.',
         body: (
           <>
             <p>
@@ -254,6 +264,8 @@ export default () => [
       {
         name: 'Know the warning signs',
         id: 'know-the-warning-signs',
+        metaDescription:
+          'For many people, getting an accurate diagnosis of a serious mental illness is the first step in a treatment plan.',
         body: (
           <>
             <p>
@@ -348,6 +360,8 @@ export default () => [
       {
         name: 'Types of treatment',
         id: 'types-of-treatment',
+        metaDescription:
+          "Treatment helps people disrupt addiction's powerful effects on the brain and behavior, and regain control of their lives.",
         body: (
           <>
             <p>
@@ -474,6 +488,8 @@ export default () => [
       {
         name: 'Medications used in treatment',
         id: 'medications-used-in-treatment',
+        metaDescription:
+          'Medication-assisted treatment (MAT) uses FDA-approved medication together with counseling and behavioral therapies.',
         body: (
           <>
             <p>
@@ -583,6 +599,8 @@ export default () => [
       {
         name: 'Calling a facility',
         id: 'calling-a-facility',
+        metaDescription:
+          'Before you visit, call a facility to make sure they have services that meet your needs.',
         body: (
           <>
             <h3>What should I know before I call?</h3>
@@ -647,6 +665,8 @@ export default () => [
       {
         name: 'What happens next?',
         id: 'what-happens-next',
+        metaDescription:
+          'All state-licensed treatment facilities offer clinical assessments to help make a treatment plan that fits your needs.',
         body: (
           <>
             <h3>Assessment</h3>
@@ -713,6 +733,8 @@ export default () => [
       {
         name: 'Who provides care?',
         id: 'who-provides-care',
+        metaDescription:
+          'Most programs assign patients to a treatment team, which can include social workers, counselors, doctors, nurses, psychologists, and psychiatrists.',
         body: (
           <>
             <p>
@@ -787,6 +809,8 @@ export default () => [
       {
         name: 'Understanding the cost of treatment',
         id: 'understanding-the-cost-of-treatment',
+        metaDescription:
+          'The best way to make sure you choose care you can afford is by asking questions, taking notes, and making sure you know what kind of care you’re eligible for.',
         body: (
           <>
             <p>
@@ -826,6 +850,8 @@ export default () => [
       {
         name: 'If you have insurance',
         id: 'if-you-have-insurance',
+        metaDescription:
+          'A guide for understanding common insurance terms and what questions to ask when you call your provider.',
         body: (
           <>
             <p>
@@ -875,6 +901,8 @@ export default () => [
       {
         name: 'If you don’t have insurance',
         id: 'if-you-dont-have-insurance',
+        metaDescription:
+          'Don’t let money stop you from getting help. There are free and low-cost facilities across the country, and states have funds to help people without insurance.',
         body: (
           <>
             <p>
