@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import { Helmet } from 'react-helmet';
+import deepEqual from 'deep-equal';
 
 import {
   destroyFacilities,
@@ -49,11 +50,16 @@ export class Results extends Component {
     });
   };
 
+  previousValues = null;
+
   submit = values => {
     const { dispatch } = this.props;
     const { isDesktop } = this.context;
 
+    if (deepEqual(values, this.previousValues)) return;
+
     if (values.location.latLng) {
+      this.previousValues = values;
       dispatch(handleReceiveFacilities(values));
 
       if (isDesktop) {

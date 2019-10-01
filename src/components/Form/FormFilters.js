@@ -20,16 +20,6 @@ const RowWrapper = styled.div`
 `;
 
 export class FormFilters extends Component {
-  handleSubmit = submitEvent => {
-    const { handleSubmit, location } = this.props;
-
-    if (!(location || {}).latLng) {
-      return submitEvent.preventDefault();
-    }
-
-    handleSubmit(submitEvent);
-  };
-
   renderSubmitButton = () => {
     const { loading, location, recordCount, toggleFilters } = this.props;
 
@@ -56,7 +46,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { isDesktop, resetForm } = this.props;
+    const { handleSubmit, isDesktop, languages, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
@@ -70,7 +60,7 @@ export class FormFilters extends Component {
             </Button>
           </div>
         )}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {!isDesktop && this.renderSubmitButton()}
           <RowWrapper>
             <Row>
