@@ -8,7 +8,7 @@ const ReturnToTop = () => {
   return (
     <div css={tw`pb-4 sm:hidden`} className="container">
       <HashLink
-        to={`/#${TOP_ID}`}
+        to={`#${TOP_ID}`}
         aria-label="Return to top"
         css={tw`text-blue`}
       >
