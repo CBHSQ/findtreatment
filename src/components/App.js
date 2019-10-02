@@ -10,6 +10,7 @@ import { TOP_ID } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
+import SkipNav from './SkipNav';
 import Header from './Header';
 import Home from './Home';
 import Results from './Results';
@@ -21,22 +22,23 @@ import SRAnnouncements from './SRAnnouncements';
 import AppHelmet from './AppHelmet';
 
 class App extends Component {
-  mainRef = React.createRef();
+  topRef = React.createRef();
 
   render() {
     return (
       <ScreenContext.Provider value={{ ...this.props, mainRef: this.mainRef }}>
-        <AppHelmet focusTarget={this.mainRef} />
+        <AppHelmet focusTarget={this.topRef} />
         <GlobalStyle />
         <div
           css={tw`overflow-hidden`}
           id={TOP_ID}
           tabIndex="-1"
-          ref={this.mainRef}
+          ref={this.topRef}
         >
+          <SkipNav to="#main" />
           <SRAnnouncements />
           <Header />
-          <main role="main">
+          <main role="main" id="main" tabIndex="-1">
             <Switch>
               <Route exact path="/" component={Home} />} />
               <Route path="/results" component={Results} />
