@@ -11,6 +11,7 @@ import {
   destroyFacilities,
   handleReceiveFacilities
 } from '../../actions/facilities';
+import { setSRMessage } from '../../actions/ui';
 import ScreenContext from '../ScreenContext';
 import { METERS_PER_MILE } from '../../utils/constants';
 
@@ -30,6 +31,7 @@ export class Results extends Component {
 
   componentDidMount() {
     this.clearResultsIfNoLocation();
+    this.focusTarget.current.focus();
   }
 
   componentDidUpdate(prevProps) {
@@ -37,10 +39,10 @@ export class Results extends Component {
   }
 
   clearResultsIfNoLocation = () => {
-    const { dispatch, hasResults, location } = this.props;
+    const { destroyFacilities, hasResults, location } = this.props;
 
     if (hasResults && !(location || {}).latLng) {
-      dispatch(destroyFacilities());
+      destroyFacilities();
     }
   };
 
@@ -51,20 +53,22 @@ export class Results extends Component {
   };
 
   previousValues = null;
+  focusTarget = React.createRef();
 
   submit = values => {
-    const { dispatch } = this.props;
+    const { handleReceiveFacilities } = this.props;
     const { isDesktop } = this.context;
 
     if (deepEqual(values, this.previousValues)) return;
 
     if (values.location.latLng) {
       this.previousValues = values;
-      dispatch(handleReceiveFacilities(values));
+      handleReceiveFacilities(values);
 
       if (isDesktop) {
         window.scrollTo(0, 0);
       }
+      this.focusTarget.current.focus();
     }
   };
 
@@ -74,23 +78,18 @@ export class Results extends Component {
     const { isDesktop } = this.context;
     const { filtersHidden } = this.state;
 
-    let currentA11yMessage;
-
     if (error) {
       return <Error />;
     }
 
     let mainContent;
     if (loading) {
-      currentA11yMessage = 'Results are loading';
       mainContent = <Loading />;
     } else if (!(location || {}).latLng) {
       mainContent = <NoLocation />;
     } else if (!hasResults) {
-      currentA11yMessage = 'There are no reaults for your search criteria';
       mainContent = <NoResults />;
     } else {
-      currentA11yMessage = 'See results';
       mainContent = (
         <>
           {(isDesktop || filtersHidden) && (
@@ -140,15 +139,11 @@ export class Results extends Component {
                 />
               </div>
             )}
-            <div css={tw`w-full lg:w-2/3 px-4`}>
-              <div
-                // className="sr-only"
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                {currentA11yMessage ? <span>{currentA11yMessage}</span> : ''}
-              </div>
+            <div
+              css={tw`w-full lg:w-2/3 px-4`}
+              tabIndex="-1"
+              ref={this.focusTarget}
+            >
               {mainContent}
             </div>
           </div>
@@ -165,11 +160,13 @@ Results.contextType = ScreenContext;
 Results.propTypes = {
   distance: PropTypes.number,
   location: PropTypes.object,
-  dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
-  hasResults: PropTypes.bool.isRequired
+  hasResults: PropTypes.bool.isRequired,
+  destroyFacilities: PropTypes.func.isRequired,
+  handleReceiveFacilities: PropTypes.func.isRequired,
+  setSRMessage: PropTypes.func.isRequired
 };
 
 const selector = formValueSelector('filters');
@@ -189,4 +186,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Results);
+const mapDispatchToProps = {
+  destroyFacilities,
+  handleReceiveFacilities,
+  setSRMessage
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Results);

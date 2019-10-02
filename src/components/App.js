@@ -4,7 +4,6 @@ import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
-import { Helmet } from 'react-helmet';
 
 import { theme } from '../tailwind.js';
 import { TOP_ID } from '../utils/constants';
@@ -18,19 +17,21 @@ import Details from './Details';
 import Content from './Content';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
+import SRAnnouncements from './SRAnnouncements';
+import AppHelmet from './AppHelmet';
 
 class App extends Component {
+  mainRef = React.createRef();
+
   render() {
     return (
       <ScreenContext.Provider value={this.props}>
-        <Helmet
-          titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
-          defaultTitle={process.env.REACT_APP_SITE_TITLE}
-        />
+        <AppHelmet focusTarget={this.mainRef} />
         <GlobalStyle />
-        <div id={TOP_ID} css={tw`overflow-hidden`} tabIndex="-1">
+        <SRAnnouncements />
+        <div css={tw`overflow-hidden`}>
           <Header />
-          <main role="main">
+          <main id={TOP_ID} role="main" tabIndex="-1" ref={this.mainRef}>
             <Switch>
               <Route exact path="/" component={Home} />} />
               <Route path="/results" component={Results} />

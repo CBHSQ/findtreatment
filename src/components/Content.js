@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import { withRouter, NavLink, Redirect } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import { theme } from '../tailwind.js';
@@ -143,56 +143,42 @@ export class Content extends Component {
     );
   };
 
-  renderMain = section => {
-    const { match } = this.props;
-    const { name, subSections } = section;
-    const subSection = subSections.find(
-      ({ id }) => id === match.params.subSectionID
-    );
-
-    return (
-      <Main>
-        <Helmet>
-          <title>{subSection.name}</title>
-        </Helmet>
-        <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
-        <h2>{subSection.name}</h2>
-        {subSection.body}
-      </Main>
-    );
-  };
-
   render() {
     const { match } = this.props;
     const { params } = match;
-    const { sectionID, subSectionID } = params;
+    const { sectionID } = params;
     const section = content().find(({ id }) => id === sectionID);
 
-    if (section) {
-      if (!subSectionID) {
-        return (
-          <Redirect to={`/content/${sectionID}/${section.subSections[0].id}`} />
-        );
-      }
-
-      if (!section.subSections.find(({ id }) => id === subSectionID)) {
-        return <NoMatch />;
-      }
-
-      return (
-        <div css={tw`border-t border-gray-lighter`}>
-          <div className="container" css={tw`mt-10`}>
-            <StyledPage>
-              {this.renderMain(section)}
-              {this.renderSideBar()}
-            </StyledPage>
-          </div>
-          <ReturnToTop />
-        </div>
-      );
-    } else {
+    if (!section) {
       return <NoMatch />;
     }
+
+    const { name, subSections } = section;
+    const subSectionID = params.subSectionID || subSections[0].id;
+    const subSection = subSections.find(({ id }) => id === subSectionID);
+
+    if (!subSection) {
+      return <NoMatch />;
+    }
+
+    return (
+      <div css={tw`border-t border-gray-lighter`}>
+        <div className="container" css={tw`mt-10`}>
+          <StyledPage>
+            <Main>
+              <Helmet>
+                <title>{subSection.name}</title>
+              </Helmet>
+              <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
+              <h2>{subSection.name}</h2>
+              {subSection.body}
+            </Main>
+            {this.renderSideBar()}
+          </StyledPage>
+        </div>
+        <ReturnToTop />
+      </div>
+    );
   }
 }
 

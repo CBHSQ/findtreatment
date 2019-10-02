@@ -46,7 +46,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { handleSubmit, isDesktop, languages, resetForm } = this.props;
+    const { handleSubmit, isDesktop, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
