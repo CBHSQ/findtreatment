@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const StyledLabel = styled.label`
   ${tw`block mb-4`}
 
-  ${props => props.inline && tw`flex`}
+  ${props => props.inline && tw`flex items-start`}
 
   .label-text {
     ${tw`block font-bold font-heading uppercase text-sm mb-2`}
