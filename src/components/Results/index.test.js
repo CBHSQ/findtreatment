@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import PropTypes from 'prop-types';
+import { shallow } from 'enzyme';
 
 import { Results } from './';
 
@@ -17,7 +18,7 @@ const testProps = {
 describe('Results component', () => {
   describe('on mobile', () => {
     it('should expand filters by default if no location is set', () => {
-      const component = mount(<Results {...testProps} />, {
+      const component = shallow(<Results {...testProps} />, {
         context: { isDesktop: false }
       });
 
@@ -29,7 +30,7 @@ describe('Results component', () => {
         ...testProps,
         location: { latLng: {} }
       };
-      const component = mount(<Results {...props} />, {
+      const component = shallow(<Results {...props} />, {
         context: { isDesktop: false }
       });
 

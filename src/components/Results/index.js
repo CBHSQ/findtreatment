@@ -37,7 +37,7 @@ export class Results extends Component {
     }
 
     this.clearResultsIfNoLocation();
-    this.focusTarget.current.focus();
+    this.focusTarget.current && this.focusTarget.current.focus();
   }
 
   componentDidUpdate(prevProps) {
@@ -74,7 +74,7 @@ export class Results extends Component {
       if (isDesktop) {
         window.scrollTo(0, 0);
       }
-      this.focusTarget.current.focus();
+      this.focusTarget.current && this.focusTarget.current.focus();
     }
   };
 
