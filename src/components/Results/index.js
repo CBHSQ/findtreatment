@@ -161,6 +161,7 @@ export class Results extends Component {
     );
   }
 }
+
 Results.contextType = ScreenContext;
 
 Results.propTypes = {
@@ -173,10 +174,6 @@ Results.propTypes = {
   destroyFacilities: PropTypes.func.isRequired,
   handleReceiveFacilities: PropTypes.func.isRequired,
   setSRMessage: PropTypes.func.isRequired
-};
-
-Results.contextTypes = {
-  isDesktop: PropTypes.bool
 };
 
 const selector = formValueSelector('filters');

@@ -1,11 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import { Results } from './';
 
 const testProps = {
   location: {},
-  dispatch: jest.fn(),
+  destroyFacilities: jest.fn(),
+  handleReceiveFacilities: jest.fn(),
+  setSRMessage: jest.fn(),
   loading: false,
   error: false,
   data: {},
@@ -15,7 +17,7 @@ const testProps = {
 describe('Results component', () => {
   describe('on mobile', () => {
     it('should expand filters by default if no location is set', () => {
-      const component = shallow(<Results {...testProps} />, {
+      const component = mount(<Results {...testProps} />, {
         context: { isDesktop: false }
       });
 
@@ -27,7 +29,7 @@ describe('Results component', () => {
         ...testProps,
         location: { latLng: {} }
       };
-      const component = shallow(<Results {...props} />, {
+      const component = mount(<Results {...props} />, {
         context: { isDesktop: false }
       });
 
