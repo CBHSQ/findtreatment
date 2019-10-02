@@ -30,6 +30,12 @@ export class Results extends Component {
   };
 
   componentDidMount() {
+    const { hasResults, location } = this.props;
+
+    if (!hasResults && !(location || {}).latLng) {
+      this.toggleFilters();
+    }
+
     this.clearResultsIfNoLocation();
     this.focusTarget.current.focus();
   }
@@ -167,6 +173,10 @@ Results.propTypes = {
   destroyFacilities: PropTypes.func.isRequired,
   handleReceiveFacilities: PropTypes.func.isRequired,
   setSRMessage: PropTypes.func.isRequired
+};
+
+Results.contextTypes = {
+  isDesktop: PropTypes.bool
 };
 
 const selector = formValueSelector('filters');
