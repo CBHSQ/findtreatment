@@ -7,7 +7,6 @@ const testProps = {
   handleSubmit: jest.fn(),
   initialValues: {},
   isDesktop: true,
-  languages: [],
   location: {},
   loading: false,
   recordCount: 0,
@@ -16,36 +15,6 @@ const testProps = {
 };
 
 describe('FormFilters component', () => {
-  describe('language data', () => {
-    it('loads if not present', () => {
-      const mockDispatch = jest.fn();
-      const props = {
-        dispatch: mockDispatch,
-        ...testProps
-      };
-
-      shallow(<FormFilters {...props} />);
-      expect(props.dispatch.mock.calls.length).toBe(1);
-    });
-
-    it('does not load if already present', () => {
-      const mockDispatch = jest.fn();
-      const props = {
-        ...testProps,
-        dispatch: mockDispatch,
-        languages: [
-          { value: 'N1-Achumaw', label: 'Achumaw' },
-          { value: 'F110-Akan', label: 'Akan' },
-          { value: 'F2-Albanian', label: 'Albanian' },
-          { value: 'F3-Amharic', label: 'Amharic' }
-        ]
-      };
-
-      shallow(<FormFilters {...props} />);
-      expect(props.dispatch.mock.calls.length).toBe(0);
-    });
-  });
-
   describe('with an invalid location prop', () => {
     it('disables the submit button without a valid location', () => {
       const props = {
@@ -73,7 +42,8 @@ describe('FormFilters component', () => {
 
       form.simulate('submit', { preventDefault() {} });
 
-      expect(mockSubmit.mock.calls.length).toBe(0);
+      // handleSubmit is called BEFORE validation
+      expect(mockSubmit.mock.calls.length).toBe(1);
     });
   });
 
