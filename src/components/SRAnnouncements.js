@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
 export const SRAnnouncements = ({ srMessage }) => (
-  <div className="" role="status" aria-live="polite" aria-atomic="true">
+  <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
     {srMessage ? <span>{srMessage}</span> : ''}
   </div>
 );
