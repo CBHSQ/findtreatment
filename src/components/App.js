@@ -21,12 +21,6 @@ import NoMatch from './NoMatch';
 import Footer from './Footer';
 
 class App extends Component {
-  mainRef = React.createRef();
-
-  skipToMain = () => {
-    this.mainRef.current.focus();
-  };
-
   render() {
     return (
       <ScreenContext.Provider value={this.props}>
@@ -38,7 +32,7 @@ class App extends Component {
         <SkipNav skipToMain={this.skipToMain} />
         <div id={TOP_ID} css={tw`overflow-hidden`} tabIndex="-1">
           <Header />
-          <main role="main" ref={this.mainRef} tabIndex="-1">
+          <main role="main" id="main" tabIndex="-1">
             <Switch>
               <Route exact path="/" component={Home} />} />
               <Route path="/results" component={Results} />
