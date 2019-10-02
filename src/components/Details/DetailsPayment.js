@@ -12,7 +12,7 @@ const DetailsPayment = props => {
     <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
       <div css={tw`bg-white h-full shadow`}>
         <div css={tw`flex flex-col h-full`}>
-          <div css={tw`p-4 flex-1`}>
+          <div css={tw`p-4 flex-auto`}>
             <h2
               css={tw`font-heading font-bold leading-none mb-6 pb-4 border-b border-gray-light text-xl`}
             >
