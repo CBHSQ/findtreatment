@@ -3,14 +3,18 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const StyledLabel = styled.label`
   ${tw`block mb-4`}
 
-  ${props => props.inline && tw`flex`}
+  ${props => props.inline && tw`flex items-start`}
 
   .label-text {
     ${tw`block font-bold font-heading uppercase text-sm mb-2`}
+
+  ${props => props.help && tw`inline-block mb-0`}
 
     ${props =>
       props.inline &&
@@ -38,10 +42,15 @@ const Label = props => {
       ) : (
         <StyledLabel {...props}>
           {props.help ? (
-            <span css={tw`flex justify-between items-center`}>
-              <span className="label-text">>{props.labelText}</span>
-              <Link to={props.help.url} css={tw`mb-2 text-sm`}>
-                {props.help.text}
+            <span css={tw`flex items-center`}>
+              <span className="label-text">{props.labelText}</span>
+              <Link to={props.help.url} css={tw`inline-block flex-none`}>
+                <FontAwesomeIcon
+                  icon={faInfoCircle}
+                  css={tw`fill-current ml-1`}
+                  aria-label={props.help.text}
+                  title={props.help.text}
+                />
               </Link>
             </span>
           ) : (
