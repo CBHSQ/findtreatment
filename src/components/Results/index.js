@@ -37,7 +37,6 @@ export class Results extends Component {
     }
 
     this.clearResultsIfNoLocation();
-    this.focusTarget.current && this.focusTarget.current.focus();
   }
 
   componentDidUpdate(prevProps) {
@@ -59,11 +58,10 @@ export class Results extends Component {
   };
 
   previousValues = null;
-  focusTarget = React.createRef();
 
   submit = values => {
     const { handleReceiveFacilities } = this.props;
-    const { isDesktop } = this.context;
+    const { isDesktop, mainRef } = this.context;
 
     if (deepEqual(values, this.previousValues)) return;
 
@@ -72,9 +70,8 @@ export class Results extends Component {
       handleReceiveFacilities(values);
 
       if (isDesktop) {
-        window.scrollTo(0, 0);
+        mainRef.current.scrollIntoView();
       }
-      this.focusTarget.current && this.focusTarget.current.focus();
     }
   };
 
@@ -145,13 +142,7 @@ export class Results extends Component {
                 />
               </div>
             )}
-            <div
-              css={tw`w-full lg:w-2/3 px-4`}
-              tabIndex="-1"
-              ref={this.focusTarget}
-            >
-              {mainContent}
-            </div>
+            <div css={tw`w-full lg:w-2/3 px-4`}>{mainContent}</div>
           </div>
         </div>
         <div css={tw`sm:pb-10`}>

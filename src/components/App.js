@@ -25,13 +25,18 @@ class App extends Component {
 
   render() {
     return (
-      <ScreenContext.Provider value={this.props}>
+      <ScreenContext.Provider value={{ ...this.props, mainRef: this.mainRef }}>
         <AppHelmet focusTarget={this.mainRef} />
         <GlobalStyle />
-        <SRAnnouncements />
-        <div css={tw`overflow-hidden`}>
+        <div
+          css={tw`overflow-hidden`}
+          id={TOP_ID}
+          tabIndex="-1"
+          ref={this.mainRef}
+        >
+          <SRAnnouncements />
           <Header />
-          <main id={TOP_ID} role="main" tabIndex="-1" ref={this.mainRef}>
+          <main role="main">
             <Switch>
               <Route exact path="/" component={Home} />} />
               <Route path="/results" component={Results} />

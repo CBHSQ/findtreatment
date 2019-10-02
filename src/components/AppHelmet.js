@@ -10,8 +10,9 @@ export const AppHelmet = ({ focusTarget, setSRMessage }) => (
     defaultTitle={process.env.REACT_APP_SITE_TITLE}
     onChangeClientState={newState => {
       setSRMessage(newState.title);
-      focusTarget.current.focus();
-      window.scrollTo(0, 0);
+      const el = focusTarget.current;
+      el.focus();
+      el.scrollIntoView();
     }}
   />
 );
