@@ -24,6 +24,10 @@ export default function ui(state = initialState, action) {
         srMessage: action.message
       };
     case RECEIVE_FACILITIES_FAILURE:
+      return {
+        ...state,
+        srMessage: 'There was a problem fetching results.'
+      };
     case RECEIVE_FACILITIES_SUCCESS:
       return {
         ...state,

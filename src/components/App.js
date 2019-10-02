@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-      <ScreenContext.Provider value={{ ...this.props, mainRef: this.mainRef }}>
+      <ScreenContext.Provider value={{ ...this.props, topRef: this.topRef }}>
         <AppHelmet focusTarget={this.topRef} />
         <GlobalStyle />
         <div

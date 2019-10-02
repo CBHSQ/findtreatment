@@ -61,7 +61,7 @@ export class Results extends Component {
 
   submit = values => {
     const { handleReceiveFacilities } = this.props;
-    const { isDesktop, mainRef } = this.context;
+    const { isDesktop, topRef } = this.context;
 
     if (deepEqual(values, this.previousValues)) return;
 
@@ -70,7 +70,7 @@ export class Results extends Component {
       handleReceiveFacilities(values);
 
       if (isDesktop) {
-        mainRef.current.scrollIntoView();
+        topRef.current.scrollIntoView();
       }
     }
   };

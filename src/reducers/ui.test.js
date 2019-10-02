@@ -46,7 +46,7 @@ describe('ui reducer', () => {
       })
     ).toEqual({
       ...initialState,
-      srMessage: 'New results are available.'
+      srMessage: 'There was a problem fetching results.'
     });
 
     expect(
