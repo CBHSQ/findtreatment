@@ -162,13 +162,14 @@ const Footer = () => {
       <div css={tw`bg-gold`}>
         <div className="container" css={tw`py-2 text-center font-bold`}>
           <p css={tw`md:hidden`}>
-            For help finding treatment, call <br />
+            For help finding treatment, call{' '}
             <OutboundLink
               eventLabel="Helpline link from mobile footer"
               to="tel:1-800-663-4357"
+              css={tw`underline whitespace-no-wrap`}
             >
               1-800-662-HELP (4357).
-            </OutboundLink>{' '}
+            </OutboundLink>
           </p>
           <p>
             If you are feeling suicidal or in emotional distress, call the{' '}
