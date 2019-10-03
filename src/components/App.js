@@ -12,11 +12,13 @@ import { TOP_ID } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
+import SkipNav from './SkipNav';
 import Header from './Header';
 import Home from './Home';
 import Results from './Results';
 import Details from './Details';
 import Content from './Content';
+import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 
@@ -55,9 +57,10 @@ class App extends Component {
           />
         </Helmet>
         <GlobalStyle />
+        <SkipNav skipToMain={this.skipToMain} />
         <div id={TOP_ID} css={tw`overflow-hidden`} tabIndex="-1">
           <Header />
-          <main role="main">
+          <main role="main" id="main" tabIndex="-1">
             <Switch>
               <Route exact path="/" component={Home} />} />
               <Route path="/results" component={Results} />
@@ -67,6 +70,7 @@ class App extends Component {
                 component={Content}
               />
               />
+              <Route path="/error" component={Error} />
               <Route component={NoMatch} />
             </Switch>
           </main>

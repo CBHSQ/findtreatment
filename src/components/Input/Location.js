@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { submit } from 'redux-form';
 import PlacesAutocomplete, {
   geocodeByPlaceId,
@@ -10,6 +11,7 @@ import PlacesAutocomplete, {
 import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga';
 
 import { LOCATION_WARNING } from '../../utils/warnings';
 
@@ -17,7 +19,7 @@ const StyledPlacesAutoComplete = styled.span`
   ${tw`block relative`}
 
   input {
-    ${tw`block w-full pr-8 text-lg`}
+    ${tw`block w-full pr-10 text-lg`}
 
     &::-webkit-input-placeholder {
       ${tw`text-gray-darkest`}
@@ -94,11 +96,22 @@ class Location extends Component {
   };
 
   handleError = (status, clearSuggestions) => {
+    ReactGA.event({
+      category: 'Google Places API',
+      action: 'Place details response',
+      label: 'Error',
+      value: status
+    });
+
     if (status === 'ZERO_RESULTS') {
       this.toggleShowLocationWarning(true);
+      clearSuggestions();
+      return;
     }
 
-    clearSuggestions();
+    this.props.history.push({
+      pathname: '/error'
+    });
   };
 
   render() {
@@ -186,4 +199,4 @@ Location.propTypes = {
   toggleShowWarning: PropTypes.func
 };
 
-export default connect()(Location);
+export default withRouter(connect()(Location));

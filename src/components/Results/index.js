@@ -29,6 +29,12 @@ export class Results extends Component {
   };
 
   componentDidMount() {
+    const { hasResults, location } = this.props;
+
+    if (!hasResults && !(location || {}).latLng) {
+      this.toggleFilters();
+    }
+
     this.clearResultsIfNoLocation();
   }
 
@@ -164,6 +170,10 @@ Results.propTypes = {
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
   hasResults: PropTypes.bool.isRequired
+};
+
+Results.contextTypes = {
+  isDesktop: PropTypes.bool
 };
 
 const selector = formValueSelector('filters');
