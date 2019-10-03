@@ -17,6 +17,7 @@ import Home from './Home';
 import Results from './Results';
 import Details from './Details';
 import Content from './Content';
+import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 
@@ -42,6 +43,7 @@ class App extends Component {
                 component={Content}
               />
               />
+              <Route path="/error" component={Error} />
               <Route component={NoMatch} />
             </Switch>
           </main>
