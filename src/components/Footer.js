@@ -63,7 +63,7 @@ const Footer = () => {
                   </OutboundLink>
                 </li>
               </ul>
-              <p css={tw`font-bold mb-1`}>Professional resources</p>
+              <p css={tw`font-bold mb-1`}>Provider resources</p>
               <ul>
                 <li>
                   <OutboundLink
