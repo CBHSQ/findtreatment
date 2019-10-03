@@ -1,10 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setSRMessage } from '../actions/ui';
 
-export const AppHelmet = ({ focusTarget, setSRMessage }) => (
+export const AppHelmet = ({ focusTarget, location, setSRMessage }) => (
   <Helmet
     titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
     defaultTitle={process.env.REACT_APP_SITE_TITLE}
@@ -27,7 +28,7 @@ export const AppHelmet = ({ focusTarget, setSRMessage }) => (
     />
     <meta
       property="og:url"
-      content={process.env.PUBLIC_URL + this.props.location.pathname}
+      content={process.env.PUBLIC_URL + location.pathname}
     />
     <meta
       property="og:image"
@@ -39,12 +40,15 @@ export const AppHelmet = ({ focusTarget, setSRMessage }) => (
 
 AppHelmet.propTypes = {
   focusTarget: PropTypes.any.isRequired,
+  location: PropTypes.object.isRequired,
   setSRMessage: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = { setSRMessage };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AppHelmet);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(AppHelmet)
+);

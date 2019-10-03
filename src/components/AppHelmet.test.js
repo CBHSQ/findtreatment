@@ -4,6 +4,7 @@ import { AppHelmet } from './AppHelmet';
 
 const testProps = {
   focusTarget: { current: { focus: jest.fn() } },
+  location: {},
   setSRMessage: jest.fn()
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import { withRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
 
 import { theme } from '../tailwind.js';
@@ -70,4 +70,4 @@ const mapSizesToProps = ({ width }) => ({
   isTablet: width >= parseInt(theme.screens.md, 10)
 });
 
-export default withRouter(withSizes(mapSizesToProps)(App));
+export default withSizes(mapSizesToProps)(App);
