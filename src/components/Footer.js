@@ -18,7 +18,7 @@ const Footer = () => {
     <footer css={tw`print:hidden`} role="contentinfo">
       <StyledFooter css={tw`bg-gray-darker text-gray-lighter text-xs`}>
         <div className="container" css={tw`py-6 lg:p-12`}>
-          <div css={tw`flex flex-wrap -mx-4`}>
+          <div css={tw`flex flex-wrap justify-between -mx-4`}>
             <div css={tw`w-full lg:w-1/2 px-4 mb-6 lg:mb-0`}>
               <div
                 css={tw`flex flex-wrap lg:flex-no-wrap items-center text-white`}
@@ -43,7 +43,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <div css={tw`w-full lg:w-1/4 px-4 mb-6 lg:mb-0`}>
+            <div css={tw`w-full lg:w-auto px-4 mb-6 lg:mb-0`}>
               <p css={tw`font-bold mb-1`}>Other treatment resources</p>
               <ul css={tw`mb-6`}>
                 <li>
@@ -75,7 +75,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div css={tw`w-full lg:w-1/4 px-4 mb-6 lg:mb-0`}>
+            <div css={tw`w-full lg:w-auto px-4 mb-6 lg:mb-0`}>
               <ul css={tw`mb-2`}>
                 <li>
                   <OutboundLink
