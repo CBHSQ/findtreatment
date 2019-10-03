@@ -93,7 +93,7 @@ class Home extends Component {
         <Helmet>
           <meta
             property="og:image"
-            content={`${process.env.PUBLIC_URL}/thumbnail-large.jpg`}
+            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail-large.jpg`}
           />
           <meta name="twitter:card" content="summary_large_image" />
         </Helmet>

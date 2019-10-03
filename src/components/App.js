@@ -45,11 +45,13 @@ class App extends Component {
           />
           <meta
             property="og:url"
-            content={process.env.PUBLIC_URL + this.props.location.pathname}
+            content={
+              process.env.REACT_APP_SITE_DOMAIN + this.props.location.pathname
+            }
           />
           <meta
             property="og:image"
-            content={`${process.env.PUBLIC_URL}/thumbnail.png`}
+            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail.png`}
           />
           <meta
             property="og:site_name"
