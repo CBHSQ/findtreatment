@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
@@ -89,6 +90,13 @@ class Home extends Component {
 
     return (
       <>
+        <Helmet>
+          <meta
+            property="og:image"
+            content={`${process.env.PUBLIC_URL}/thumbnail-large.jpg`}
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Helmet>
         {isTablet || (
           <MobileBgContainer css={tw`relative border-b-4 border-white`}>
             <MobileBgImage
