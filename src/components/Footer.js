@@ -28,14 +28,14 @@ const Footer = () => {
                   eventLabel="SAMHSA link from footer"
                   aria-label="Link to the SAMHSA homepage"
                 >
-                  <LogoSAMHSA css={tw`fill-current mr-4`} />
+                  <LogoSAMHSA css={tw`fill-current mr-4 w-32`} />
                 </OutboundLink>
                 <OutboundLink
                   to="https://www.hhs.gov/"
                   eventLabel="HHS link from footer"
                   aria-label="Link to the HHS homepage"
                 >
-                  <LogoHHS css={tw`fill-current`} />
+                  <LogoHHS css={tw`fill-current w-16`} />
                 </OutboundLink>
                 <p css={tw`mt-4 lg:mt-0 lg:ml-4 leading-relaxed`}>
                   SAMHSA's mission is to reduce the impact of substance abuse
