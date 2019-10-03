@@ -11,7 +11,6 @@ import {
   destroyFacilities,
   handleReceiveFacilities
 } from '../../actions/facilities';
-import { setSRMessage } from '../../actions/ui';
 import ScreenContext from '../ScreenContext';
 import { METERS_PER_MILE } from '../../utils/constants';
 
@@ -163,8 +162,7 @@ Results.propTypes = {
   data: PropTypes.object.isRequired,
   hasResults: PropTypes.bool.isRequired,
   destroyFacilities: PropTypes.func.isRequired,
-  handleReceiveFacilities: PropTypes.func.isRequired,
-  setSRMessage: PropTypes.func.isRequired
+  handleReceiveFacilities: PropTypes.func.isRequired
 };
 
 const selector = formValueSelector('filters');
@@ -186,8 +184,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   destroyFacilities,
-  handleReceiveFacilities,
-  setSRMessage
+  handleReceiveFacilities
 };
 
 export default connect(

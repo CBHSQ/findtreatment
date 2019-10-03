@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { shallow } from 'enzyme';
 
 import { Results } from './';
@@ -8,7 +7,6 @@ const testProps = {
   location: {},
   destroyFacilities: jest.fn(),
   handleReceiveFacilities: jest.fn(),
-  setSRMessage: jest.fn(),
   loading: false,
   error: false,
   data: {},
