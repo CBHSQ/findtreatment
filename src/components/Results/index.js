@@ -122,6 +122,15 @@ export class Results extends Component {
         <div className="container">
           <Helmet>
             <title>Results</title>
+            <meta property="og:title" content="Results" />
+            <meta
+              name="description"
+              content="Search for state-licensed treatment near you for addiction and substance use disorder."
+            />
+            <meta
+              property="og:description"
+              content="Search for state-licensed treatment near you for addiction and substance use disorder."
+            />
           </Helmet>
           {!isDesktop && (
             <FilterToggle
