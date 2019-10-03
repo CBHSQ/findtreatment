@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 
 export const SRAnnouncements = ({ srMessage }) => (
   <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-    {srMessage ? <span>{srMessage}</span> : ''}
+    {srMessage ? srMessage : ''}
   </div>
 );
 
