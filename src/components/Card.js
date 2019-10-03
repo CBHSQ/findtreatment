@@ -86,11 +86,11 @@ const Card = props => {
 
   return (
     <li css={tw`bg-white shadow border-t border-gray-lighter rounded mb-10`}>
-      <div css={tw`px-6 py-4 bg-blue-light text-white rounded-t`}>
-        <Link
-          to={linkToFacility({ frid, latitude, longitude })}
-          css={tw`flex justify-between items-center -mx-2 text-white `}
-        >
+      <Link
+        to={linkToFacility({ frid, latitude, longitude })}
+        css={tw`block bg-blue-light text-white rounded-t py-4 px-6`}
+      >
+        <span css={tw`flex items-center justify-between -mx-2`}>
           <h2 css={tw`font-heading font-bold text-xl px-2`}>
             {name1}
             {name2 && (
@@ -101,8 +101,8 @@ const Card = props => {
             )}
           </h2>
           <span css={tw`flex-none px-2`}>more info ›</span>
-        </Link>
-      </div>
+        </span>
+      </Link>
       <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6`}>
         <div css={tw`w-1/4 px-2`}>
           <MapStatic

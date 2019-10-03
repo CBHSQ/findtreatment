@@ -19,7 +19,7 @@ const StyledPlacesAutoComplete = styled.span`
   ${tw`block relative`}
 
   input {
-    ${tw`block w-full pr-8 text-lg`}
+    ${tw`block w-full pr-10 text-lg`}
 
     &::-webkit-input-placeholder {
       ${tw`text-gray-darkest`}

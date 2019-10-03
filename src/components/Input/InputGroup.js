@@ -23,7 +23,7 @@ class InputGroup extends Component {
   };
 
   render() {
-    const { legend, name, options, type, visible } = this.props;
+    const { help, legend, name, options, type, visible } = this.props;
     const { showAllOptions } = this.state;
     const visibleOptions = showAllOptions ? options.length : visible;
     const Input = this.components[type || 'radio'];
@@ -31,7 +31,7 @@ class InputGroup extends Component {
     return (
       <>
         <fieldset>
-          <Label as="legend" labelText={legend} />
+          <Label as="legend" labelText={legend} help={help} />
           <Field
             component={({ input, options }) =>
               options
