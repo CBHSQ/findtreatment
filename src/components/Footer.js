@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { Link } from 'react-router-dom';
 import { OutboundLink } from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -19,9 +18,11 @@ const Footer = () => {
     <footer css={tw`print:hidden`} role="contentinfo">
       <StyledFooter css={tw`bg-gray-darker text-gray-lighter text-xs`}>
         <div className="container" css={tw`py-6 lg:p-12`}>
-          <div css={tw`flex flex-wrap -mx-6`}>
-            <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
-              <div css={tw`flex items-center mb-6 text-white`}>
+          <div css={tw`flex flex-wrap -mx-4`}>
+            <div css={tw`w-full lg:w-1/2 px-4 mb-6 lg:mb-0`}>
+              <div
+                css={tw`flex flex-wrap lg:flex-no-wrap items-center text-white`}
+              >
                 <OutboundLink
                   to="https://www.samhsa.gov/"
                   eventLabel="SAMHSA link from footer"
@@ -36,13 +37,13 @@ const Footer = () => {
                 >
                   <LogoHHS css={tw`fill-current`} />
                 </OutboundLink>
+                <p css={tw`mt-4 lg:mt-0 lg:ml-4 leading-relaxed`}>
+                  SAMHSA's mission is to reduce the impact of substance abuse
+                  and mental illness on America's communities.
+                </p>
               </div>
-              <p css={tw`leading-relaxed`}>
-                SAMHSA's mission is to reduce the impact of substance abuse and
-                mental illness on America's communities.
-              </p>
             </div>
-            <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
+            <div css={tw`w-full lg:w-1/4 px-4 mb-6 lg:mb-0`}>
               <p css={tw`font-bold mb-1`}>Other treatment resources</p>
               <ul css={tw`mb-6`}>
                 <li>
@@ -72,23 +73,10 @@ const Footer = () => {
                     List your facility
                   </OutboundLink>
                 </li>
-                <li>
-                  <OutboundLink
-                    to="https://github.com/18F/samhsa-prototype"
-                    eventLabel="View code on Github"
-                    css={tw`flex items-center`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faGithub}
-                      css={tw`text-white fill-current w-4 h-4 mr-2`}
-                    />
-                    View code on Github
-                  </OutboundLink>
-                </li>
               </ul>
             </div>
-            <div css={tw`w-full lg:flex-1 px-6 mb-6 lg:mb-0`}>
-              <ul>
+            <div css={tw`w-full lg:w-1/4 px-4 mb-6 lg:mb-0`}>
+              <ul css={tw`mb-2`}>
                 <li>
                   <OutboundLink
                     to="https://forms.gle/8Zf4sCUcgn8Cmoqb6"
@@ -143,6 +131,21 @@ const Footer = () => {
                     eventLabel="Accessibility link from footer"
                   >
                     Accessibility
+                  </OutboundLink>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <OutboundLink
+                    to="https://github.com/18F/samhsa-prototype"
+                    eventLabel="View code on Github"
+                    css={tw`flex items-center`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      css={tw`text-white fill-current w-4 h-4 mr-1`}
+                    />
+                    Github
                   </OutboundLink>
                 </li>
               </ul>
