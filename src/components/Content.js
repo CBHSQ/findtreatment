@@ -154,6 +154,12 @@ export class Content extends Component {
       <Main>
         <Helmet>
           <title>{subSection.name}</title>
+          <meta property="og:title" content={subSection.name} />
+          <meta name="description" content={subSection.metaDescription} />
+          <meta
+            property="og:description"
+            content={subSection.metaDescription}
+          />
         </Helmet>
         <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
         <h2>{subSection.name}</h2>

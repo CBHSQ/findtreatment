@@ -70,13 +70,13 @@ const StyledMenu = styled.div`
 const links = [
   { name: 'Home', path: '/', exact: true },
   { name: 'Search for treatment', path: '/results' },
+  { name: 'Treatment options', path: '/content/treatment-options' },
+  { name: 'Paying for treatment', path: '/content/paying-for-treatment' },
   { name: 'Understanding addiction', path: '/content/understanding-addiction' },
   {
     name: 'Understanding mental health',
     path: '/content/understanding-mental-health'
-  },
-  { name: 'Treatment options', path: '/content/treatment-options' },
-  { name: 'Paying for treatment', path: '/content/paying-for-treatment' }
+  }
 ];
 
 export class HeaderNav extends Component {
