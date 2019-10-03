@@ -5,14 +5,15 @@ import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCar,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { OutboundLink } from 'react-ga';
 
-import { formatMiles } from '../../utils/misc';
+import { formatAddress, formatMiles, googleMapUrl } from '../../utils/misc';
 
 import MapContainer from '../Map/MapContainer';
-import { formatAddress, googleMapUrl } from '../../utils/misc';
+import { Button } from '../Input';
 
 const DetailsLocation = props => {
   const { data } = props;
@@ -47,7 +48,7 @@ const DetailsLocation = props => {
     <div css={tw`w-full md:w-1/2 px-4 mb-6`}>
       <div css={tw`bg-white h-full shadow`}>
         <div css={tw`flex flex-col h-full`}>
-          <div css={tw`p-4 flex-1`}>
+          <div css={tw`p-4 flex-auto`}>
             <h2
               css={tw`font-heading font-bold leading-none mb-6 pb-4 border-b border-gray-light text-xl flex items-center justify-between`}
             >
@@ -58,7 +59,7 @@ const DetailsLocation = props => {
                 </span>
               )}
             </h2>
-            <div css={tw`relative h-64 w-full mb-4`}>
+            <div css={tw`relative h-64 w-full mb-6`}>
               <MapContainer
                 frid={frid}
                 latitude={latitude}
@@ -67,19 +68,28 @@ const DetailsLocation = props => {
                 phone={phone}
               />
             </div>
-            <div css={tw`text-gray-700 whitespace-pre-line`}>
-              {formatAddress(address, true)}
-              <OutboundLink
-                eventLabel="Driving directions link from details"
-                to={googleMapUrl(address)}
-                css={tw`block font-bold`}
-              >
-                Get driving directions
-              </OutboundLink>
+            <div css={tw`text-gray-700 flex flex-wrap -mx-2 mb-4 lg:mb-2`}>
+              <div css={tw`w-full lg:w-3/5 px-2 mb-6 lg:mb-0`}>
+                <span css={tw`whitespace-pre-line`}>
+                  {formatAddress(address, true)}
+                </span>
+              </div>
+              <div css={tw`w-full lg:w-2/5 px-2`}>
+                <Button
+                  forwardedAs={OutboundLink}
+                  gradient
+                  eventLabel="Driving directions link from details"
+                  to={googleMapUrl(address)}
+                  css={tw`w-full`}
+                >
+                  <FontAwesomeIcon icon={faExternalLinkAlt} css={tw`mr-2`} />
+                  Get directions
+                </Button>
+              </div>
             </div>
           </div>
           <div
-            css={tw`flex-none flex items-center  p-4`}
+            css={tw`flex-none flex items-center p-4`}
             style={
               offersTransportation
                 ? { ...tw`bg-blue-lighter` }

@@ -29,11 +29,11 @@ const Button = styled(
 
   ${props =>
     props.gradient && {
-      ...tw`shadow text-gray-darker`,
+      ...tw`border border-gray-light shadow text-gray-dark`,
       background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
     }}
 
-  ${props => props.disabled && tw`opacity-75 cursor-not-allowed`}
+  ${props => props.disabled && tw`opacity-50 cursor-not-allowed`}
 
   ${props => props.link && tw`text-blue hover:text-blue p-0`}
 `;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { submit } from 'redux-form';
 import PlacesAutocomplete, {
   geocodeByPlaceId,
@@ -10,14 +11,15 @@ import PlacesAutocomplete, {
 import { PropTypes } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga';
 
 import { LOCATION_WARNING } from '../../utils/warnings';
 
-const StyledPlacesAutoComplete = styled.div`
-  ${tw`relative`}
+const StyledPlacesAutoComplete = styled.span`
+  ${tw`block relative`}
 
   input {
-    ${tw`block w-full pr-8 text-lg`}
+    ${tw`block w-full pr-10 text-lg`}
 
     &::-webkit-input-placeholder {
       ${tw`text-gray-darkest`}
@@ -34,7 +36,7 @@ const StyledPlacesAutoComplete = styled.div`
   }
 
   .autocomplete-dropdown-container {
-    ${tw`absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray rounded bg-white`}
+    ${tw`block absolute z-10 inset-x-0 overflow-x-hidden overflow-y-auto border border-gray rounded bg-white`}
     max-height: 25em;
     -webkit-transition: max-height 0.2s, border 0.2s;
     transition: max-height 0.2s, border 0.2s;
@@ -94,11 +96,22 @@ class Location extends Component {
   };
 
   handleError = (status, clearSuggestions) => {
+    ReactGA.event({
+      category: 'Google Places API',
+      action: 'Place details response',
+      label: 'Error',
+      value: status
+    });
+
     if (status === 'ZERO_RESULTS') {
       this.toggleShowLocationWarning(true);
+      clearSuggestions();
+      return;
     }
 
-    clearSuggestions();
+    this.props.history.push({
+      pathname: '/error'
+    });
   };
 
   render() {
@@ -122,7 +135,7 @@ class Location extends Component {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
             <>
-              <div css={tw`relative`}>
+              <span css={tw`block relative`}>
                 <input
                   {...getInputProps({
                     className,
@@ -133,16 +146,16 @@ class Location extends Component {
                     ref: this.props.innerRef
                   })}
                 />
-                <div
+                <span
                   css={tw`absolute inset-y-0 right-0 flex items-center pr-4`}
                 >
                   <FontAwesomeIcon
                     icon={faSearch}
                     css={tw`fill-current w-6 h-6`}
                   />
-                </div>
+                </span>
                 {suggestions && suggestions.length > 0 && (
-                  <div
+                  <span
                     className="autocomplete-dropdown-container"
                     role="listbox"
                     id="listbox"
@@ -153,22 +166,23 @@ class Location extends Component {
                         ? 'suggestion-item suggestion-item--active'
                         : 'suggestion-item';
                       return (
-                        <div
+                        <span
+                          css={tw`block`}
                           {...getSuggestionItemProps(suggestion, {
                             className
                           })}
                         >
                           {suggestion.description}
-                        </div>
+                        </span>
                       );
                     })}
-                  </div>
+                  </span>
                 )}
-              </div>
+              </span>
               {this.state.showLocationWarning && (
-                <div css={tw`mt-2 text-red-light text-sm`}>
+                <span css={tw`block mt-2 text-red-light text-sm`}>
                   {LOCATION_WARNING}
-                </div>
+                </span>
               )}
             </>
           )}
@@ -185,4 +199,4 @@ Location.propTypes = {
   toggleShowWarning: PropTypes.func
 };
 
-export default connect()(Location);
+export default withRouter(connect()(Location));

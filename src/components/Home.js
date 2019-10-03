@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
 import { handleReceiveFacilities } from '../actions/facilities';
@@ -16,6 +17,7 @@ import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
+import ReturnToTop from './ReturnToTop';
 
 const MobileBgContainer = styled.div`
   padding-bottom: 75%;
@@ -88,6 +90,13 @@ class Home extends Component {
 
     return (
       <>
+        <Helmet>
+          <meta
+            property="og:image"
+            content={`${process.env.PUBLIC_URL}/thumbnail-large.jpg`}
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Helmet>
         {isTablet || (
           <MobileBgContainer css={tw`relative border-b-4 border-white`}>
             <MobileBgImage
@@ -103,7 +112,7 @@ class Home extends Component {
               {isDesktop && (
                 <img
                   src={backgroundLeft_2x}
-                  css={tw`px-8`}
+                  css={tw`px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
@@ -142,7 +151,7 @@ class Home extends Component {
               {isTablet && (
                 <img
                   src={backgroundRight_2x}
-                  css={tw`px-4 lg:px-8`}
+                  css={tw`px-4 lg:px-8 w-auto flex-none`}
                   style={{ height: '336px' }}
                   alt=""
                 />
@@ -180,6 +189,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <ReturnToTop />
       </>
     );
   }

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, getFormValues, reset, submit } from 'redux-form';
 import { ChasingDots } from 'styled-spinkit';
 
-import { handleReceiveLanguages } from '../../actions/languages';
 import * as filterOptions from '../../utils/filters';
 import { DEFAULT_DISTANCE } from '../../utils/constants';
 
@@ -21,24 +20,6 @@ const RowWrapper = styled.div`
 `;
 
 export class FormFilters extends Component {
-  componentDidMount() {
-    const { languages, dispatch } = this.props;
-
-    if (!languages.length > 0) {
-      dispatch(handleReceiveLanguages());
-    }
-  }
-
-  handleSubmit = submitEvent => {
-    const { handleSubmit, location } = this.props;
-
-    if (!(location || {}).latLng) {
-      return submitEvent.preventDefault();
-    }
-
-    handleSubmit(submitEvent);
-  };
-
   renderSubmitButton = () => {
     const { loading, location, recordCount, toggleFilters } = this.props;
 
@@ -65,7 +46,7 @@ export class FormFilters extends Component {
   };
 
   render() {
-    const { isDesktop, languages, resetForm } = this.props;
+    const { handleSubmit, isDesktop, languages, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
@@ -79,7 +60,7 @@ export class FormFilters extends Component {
             </Button>
           </div>
         )}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {!isDesktop && this.renderSubmitButton()}
           <RowWrapper>
             <Row>
@@ -109,6 +90,10 @@ export class FormFilters extends Component {
                 name="type"
                 options={filterOptions.type}
                 visible={4}
+                help={{
+                  text: 'Details about treatment types',
+                  url: '/content/treatment-options/types-of-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
@@ -119,6 +104,11 @@ export class FormFilters extends Component {
                 name="payment"
                 options={filterOptions.payment}
                 visible={4}
+                help={{
+                  text: 'Not sure how to pay?',
+                  url:
+                    '/content/paying-for-treatment/understanding-the-cost-of-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
@@ -138,7 +128,7 @@ export class FormFilters extends Component {
                   name="language"
                   hideFirst
                   component={Select}
-                  options={languages}
+                  options={filterOptions.languages}
                 />
               </Label>
             </Row>
@@ -159,6 +149,11 @@ export class FormFilters extends Component {
                 legend="Medication-assisted treatment (MAT)"
                 name="mat"
                 options={filterOptions.mat}
+                help={{
+                  text: 'Details about FDA-approved medications',
+                  url:
+                    '/content/treatment-options/medications-used-in-treatment'
+                }}
               />
             </Row>
           </RowWrapper>
@@ -174,7 +169,6 @@ FormFilters.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   isDesktop: PropTypes.bool.isRequired,
-  languages: PropTypes.array.isRequired,
   location: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   recordCount: PropTypes.number,
@@ -183,8 +177,7 @@ FormFilters.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { facilities, languages } = state;
-  const { data } = languages;
+  const { facilities } = state;
   const values = getFormValues('filters')(state);
 
   return {
@@ -193,7 +186,6 @@ const mapStateToProps = state => {
       location: { address: '' }
     },
     location: (values || {}).location,
-    languages: data,
     loading: facilities.loading
   };
 };
