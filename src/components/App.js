@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { PropTypes } from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import withSizes from 'react-sizes';
 
 import { theme } from '../tailwind.js';
@@ -16,6 +16,7 @@ import Home from './Home';
 import Results from './Results';
 import Details from './Details';
 import Content from './Content';
+import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 import SRAnnouncements from './SRAnnouncements';
@@ -48,6 +49,7 @@ class App extends Component {
                 component={Content}
               />
               />
+              <Route path="/error" component={Error} />
               <Route component={NoMatch} />
             </Switch>
           </main>
@@ -68,4 +70,4 @@ const mapSizesToProps = ({ width }) => ({
   isTablet: width >= parseInt(theme.screens.md, 10)
 });
 
-export default withSizes(mapSizesToProps)(App);
+export default withRouter(withSizes(mapSizesToProps)(App));

@@ -23,6 +23,7 @@ import Loading from '../Loading';
 import DetailsLocation from './DetailsLocation';
 import DetailsPayment from './DetailsPayment';
 import { Button, Label } from '../Input';
+import ReturnToTop from '../ReturnToTop';
 
 const DecorativeHeading = styled.div`
   &:before {
@@ -210,6 +211,7 @@ export class Details extends Component {
             </Masonry>
           </StyledMasonaryGrid>
         </div>
+        <ReturnToTop />
         <div css={tw`bg-gray-lightest print:hidden`}>
           <div className="container" css={tw`py-5 text-center md:text-left`}>
             {!isReported ? (
