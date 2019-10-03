@@ -168,8 +168,9 @@ const Footer = () => {
               to="tel:1-800-663-4357"
               css={tw`underline whitespace-no-wrap`}
             >
-              1-800-662-HELP (4357).
+              1-800-662-HELP (4357)
             </OutboundLink>
+            .
           </p>
           <p>
             If you are feeling suicidal or in emotional distress, call the{' '}
