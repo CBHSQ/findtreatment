@@ -5,12 +5,14 @@ import { TOP_ID } from '../utils/constants';
 
 class ScrollToTop extends Component {
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    const { pathname, hash } = this.props.location;
+
+    if (pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
 
-    if (this.props.location.hash === `#${TOP_ID}`) {
-      document.getElementById(TOP_ID).focus();
+    if ([`#${TOP_ID}`, '#main'].includes(hash)) {
+      document.getElementById(hash.slice(1)).focus();
     }
   }
 

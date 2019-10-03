@@ -29,6 +29,12 @@ export class Results extends Component {
   };
 
   componentDidMount() {
+    const { hasResults, location } = this.props;
+
+    if (!hasResults && !(location || {}).latLng) {
+      this.toggleFilters();
+    }
+
     this.clearResultsIfNoLocation();
   }
 
@@ -116,6 +122,15 @@ export class Results extends Component {
         <div className="container">
           <Helmet>
             <title>Results</title>
+            <meta property="og:title" content="Results" />
+            <meta
+              name="description"
+              content="Search for state-licensed treatment near you for addiction and substance use disorder."
+            />
+            <meta
+              property="og:description"
+              content="Search for state-licensed treatment near you for addiction and substance use disorder."
+            />
           </Helmet>
           {!isDesktop && (
             <FilterToggle
@@ -155,6 +170,10 @@ Results.propTypes = {
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
   hasResults: PropTypes.bool.isRequired
+};
+
+Results.contextTypes = {
+  isDesktop: PropTypes.bool
 };
 
 const selector = formValueSelector('filters');

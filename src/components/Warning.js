@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleDown,
-  faInfoCircle,
-  faTimes
+  faAngleUp,
+  faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 import { toggleWarning } from '../actions/ui';
@@ -40,7 +40,7 @@ class Warning extends Component {
           </span>
           <div css={tw`flex-none`}>
             <FontAwesomeIcon
-              icon={isHidden ? faAngleDown : faTimes}
+              icon={isHidden ? faAngleDown : faAngleUp}
               css={tw`text-gray fill-current w-4 h-4`}
             />
           </div>
