@@ -161,7 +161,7 @@ const Footer = () => {
       </StyledFooter>
       <div css={tw`bg-gold`}>
         <div className="container" css={tw`py-2 text-center font-bold`}>
-          <p css={tw`sm:hidden`}>
+          <p css={tw`md:hidden`}>
             For help finding treatment, call <br />
             <OutboundLink
               eventLabel="Helpline link from mobile footer"
