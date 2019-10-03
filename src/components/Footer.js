@@ -161,23 +161,36 @@ const Footer = () => {
       </StyledFooter>
       <div css={tw`bg-gold`}>
         <div className="container" css={tw`py-2 text-center font-bold`}>
-          If you are feeling suicidal or in emotional distress, call the{' '}
-          <OutboundLink
-            to="https://suicidepreventionlifeline.org"
-            eventLabel="Suicide prevention link from footer"
-            css={tw`underline`}
-          >
-            Suicide Prevention Lifeline
-          </OutboundLink>{' '}
-          at{' '}
-          <OutboundLink
-            eventLabel="Suicide prevention hotline link from footer"
-            to="tel:1-800-273-8255"
-            css={tw`underline whitespace-no-wrap`}
-          >
-            1-800-273-8255
-          </OutboundLink>{' '}
-          | In emergencies, dial 911.
+          <p css={tw`lg:hidden mb-4`}>
+            For help finding treatment, call{' '}
+            <OutboundLink
+              eventLabel="Helpline link from mobile footer"
+              to="tel:1-800-663-4357"
+              css={tw`underline whitespace-no-wrap`}
+            >
+              1-800-662-HELP (4357)
+            </OutboundLink>
+            .
+          </p>
+          <p>
+            If you are feeling suicidal or in emotional distress, call the{' '}
+            <OutboundLink
+              to="https://suicidepreventionlifeline.org"
+              eventLabel="Suicide prevention link from footer"
+              css={tw`underline`}
+            >
+              Suicide Prevention Lifeline
+            </OutboundLink>{' '}
+            at{' '}
+            <OutboundLink
+              eventLabel="Suicide prevention hotline link from footer"
+              to="tel:1-800-273-8255"
+              css={tw`underline whitespace-no-wrap`}
+            >
+              1-800-273-8255
+            </OutboundLink>{' '}
+            | In emergencies, dial 911.
+          </p>
         </div>
       </div>
     </footer>
