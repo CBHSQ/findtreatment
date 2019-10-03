@@ -15,7 +15,17 @@ const StyledLink = styled(HashLink)`
 `;
 
 const SkipNav = ({ to }) => {
-  return <StyledLink to={to}>Skip to main content</StyledLink>;
+  return (
+    <StyledLink
+      to={to}
+      scroll={el => {
+        el.scrollIntoView();
+        el.focus();
+      }}
+    >
+      Skip to main content
+    </StyledLink>
+  );
 };
 
 export default SkipNav;
