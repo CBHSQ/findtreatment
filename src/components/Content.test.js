@@ -47,8 +47,8 @@ describe('Content component', () => {
       const component = shallow(<Content {...testProps} />);
       const link = component.find('Content___StyledNavLink').first();
 
-      expect(link.prop('to')).toBe('/content/understanding-addiction');
-      expect(link.text()).toBe('Understanding addiction');
+      expect(link.prop('to')).toBe('/content/treatment-options');
+      expect(link.text()).toBe('Treatment options');
     });
 
     it('it renders a sublink', () => {
