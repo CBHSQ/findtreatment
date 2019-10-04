@@ -23,8 +23,9 @@ export default () => [
         body: (
           <>
             <p>
-              There are many kinds of treatment; your recovery may include one
-              or more of these.
+              Treatment helps people disrupt addiction's powerful effects 
+               on the brain and behavior, and regain control of                    
+                their lives. There are many kinds of treatment; your recovery may include one or more of these.
             </p>
             <h3>Detoxification (Detox)</h3>
             <p>
@@ -341,7 +342,76 @@ export default () => [
               treatment program. All facilities in the treatment locator offer
               assessment services.
             </p>
-            <h3>Signs of Quality Treatment</h3>
+             <h3>Pre-treatment and detox</h3>
+            <p>
+              Medically supervised withdrawal (often called detoxification or
+              detox) uses medication to help people withdraw from alcohol or
+              drugs after using large amounts. Sometimes, withdrawal can be so
+              severe that people hallucinate, have convulsions, or develop other
+              dangerous conditions.
+            </p>
+            <p>
+              Detox can take place on a regular medical ward of a hospital, in a
+              specialized inpatient detoxification unit, or on an outpatient
+              basis with close medical supervision. Detoxification may take
+              several days to a week or more.
+            </p>
+            <p>
+              <strong>Social detoxification</strong> can provide the support and
+              care for someone who doesn’t need to be medically supervised
+              during withdrawal. Sometimes social detoxification centers are
+              part of a residential treatment program; other times they are
+              separate facilities.
+            </p>
+            <p>
+              Social detoxification centers are not hospitals and seldom use
+              medication, but the person does stay there from several days to
+              one week. A staff of nurses watches each person’s medical
+              condition closely, and counselors are available to help them
+              through the most difficult parts of withdrawing from alcohol and
+              drugs.
+            </p>
+            <p>
+              It is important to know that{' '}
+              <strong>detoxification is not treatment</strong>; it is a first
+              step that can prepare a person for treatment.
+            </p>
+            
+          </>
+        )
+      },
+      {
+        name: 'Who provides care?',
+        id: 'who-provides-care',
+        metaDescription:
+          'Most programs assign patients to a treatment team, which can include social workers, counselors, doctors, nurses, psychologists, and psychiatrists.',
+        body: (
+          <>
+            <p>
+              In most treatment programs, the main caregivers are specially
+              trained individuals who are certified or licensed as{' '}
+              <strong>substance abuse treatment counselors</strong>.
+            </p>
+            <p>
+              Most treatment programs assign patients to a{' '}
+              <strong>treatment team</strong> of professionals. Depending on the
+              type of treatment, teams can be made up of social workers,
+              counselors, doctors, nurses, psychologists, and psychiatrists.
+            </p>
+            <p>
+              Be honest during the assessment; the counselor needs to get a full
+              picture of the problem to plan and help implement the most
+              effective treatment. You may feel embarrassed answering some of
+              these questions or have difficulty completing the interview, but
+              remember: the counselor is there to help.
+            </p>
+            <p>
+              After the assessment, the counselor will work with you (and
+              possibly your family members) to develop a{' '}
+              <strong>treatment plan</strong>. This plan lists problems,
+              treatment goals, and ways to meet those goals.
+            </p>
+           <h3>Signs of Quality Treatment</h3>
             <ol>
               <li>
                 <strong>Licensed and accredited.</strong> All facilities in the
@@ -385,74 +455,6 @@ export default () => [
                 continued family involvement.
               </li>
             </ol>
-          </>
-        )
-      },
-      {
-        name: 'Who provides care?',
-        id: 'who-provides-care',
-        metaDescription:
-          'Most programs assign patients to a treatment team, which can include social workers, counselors, doctors, nurses, psychologists, and psychiatrists.',
-        body: (
-          <>
-            <p>
-              In most treatment programs, the main caregivers are specially
-              trained individuals who are certified or licensed as{' '}
-              <strong>substance abuse treatment counselors</strong>.
-            </p>
-            <p>
-              Most treatment programs assign patients to a{' '}
-              <strong>treatment team</strong> of professionals. Depending on the
-              type of treatment, teams can be made up of social workers,
-              counselors, doctors, nurses, psychologists, and psychiatrists.
-            </p>
-            <p>
-              Be honest during the assessment; the counselor needs to get a full
-              picture of the problem to plan and help implement the most
-              effective treatment. You may feel embarrassed answering some of
-              these questions or have difficulty completing the interview, but
-              remember: the counselor is there to help.
-            </p>
-            <p>
-              After the assessment, the counselor will work with you (and
-              possibly your family members) to develop a{' '}
-              <strong>treatment plan</strong>. This plan lists problems,
-              treatment goals, and ways to meet those goals.
-            </p>
-            <h3>Pre-treatment and detox</h3>
-            <p>
-              Medically supervised withdrawal (often called detoxification or
-              detox) uses medication to help people withdraw from alcohol or
-              drugs after using large amounts. Sometimes, withdrawal can be so
-              severe that people hallucinate, have convulsions, or develop other
-              dangerous conditions.
-            </p>
-            <p>
-              Detox can take place on a regular medical ward of a hospital, in a
-              specialized inpatient detoxification unit, or on an outpatient
-              basis with close medical supervision. Detoxification may take
-              several days to a week or more.
-            </p>
-            <p>
-              <strong>Social detoxification</strong> can provide the support and
-              care for someone who doesn’t need to be medically supervised
-              during withdrawal. Sometimes social detoxification centers are
-              part of a residential treatment program; other times they are
-              separate facilities.
-            </p>
-            <p>
-              Social detoxification centers are not hospitals and seldom use
-              medication, but the person does stay there from several days to
-              one week. A staff of nurses watches each person’s medical
-              condition closely, and counselors are available to help them
-              through the most difficult parts of withdrawing from alcohol and
-              drugs.
-            </p>
-            <p>
-              It is important to know that{' '}
-              <strong>detoxification is not treatment</strong>; it is a first
-              step that can prepare a person for treatment.
-            </p>
           </>
         )
       }
@@ -677,17 +679,8 @@ export default () => [
                 someone else’s prescription.
               </li>
             </ul>
-          </>
-        )
-      },
-      {
-        name: 'It’s hard to stop on your own',
-        id: 'its-hard-to-stop-on-your-own',
-        metaDescription:
-          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
-        body: (
-          <>
-            <p>
+          <h3>It's hard to stop on your own</h3>
+          <p>
               Addiction is a chronic and treatable disease. Using drugs
               repeatedly changes the brain, including the parts that help exert
               self-control. That’s why someone may not be able to stop using
@@ -873,7 +866,10 @@ export default () => [
           <>
             <p>
               Like addiction, mental health disorders are treatable medical
-              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
+              conditions, not someone’s fault. About half of people with a substance use disorder 
+              also experience serious mental illness. 
+          </p>
+          <p>Almost 1 in 5 adults in the USA
               will experience some form of mental health disorder, and 1 in
               every 22 is living with a <strong>serious mental illness</strong>,
               like schizophrenia, bipolar disorder, or major depressive
