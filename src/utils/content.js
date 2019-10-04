@@ -679,17 +679,8 @@ export default () => [
                 someone else’s prescription.
               </li>
             </ul>
-          </>
-        )
-      },
-      {
-        name: 'It’s hard to stop on your own',
-        id: 'its-hard-to-stop-on-your-own',
-        metaDescription:
-          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
-        body: (
-          <>
-            <p>
+          <h3>It's hard to stop on your own</h3>
+          <p>
               Addiction is a chronic and treatable disease. Using drugs
               repeatedly changes the brain, including the parts that help exert
               self-control. That’s why someone may not be able to stop using
@@ -721,6 +712,17 @@ export default () => [
               </li>
               <li>Overdosing on drugs.</li>
             </ol>
+          </>
+        )
+      },
+      {
+        name: 'It’s hard to stop on your own',
+        id: 'its-hard-to-stop-on-your-own',
+        metaDescription:
+          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
+        body: (
+          <>
+            
           </>
         )
       },
