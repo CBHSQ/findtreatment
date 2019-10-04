@@ -9,348 +9,6 @@ import { ReactComponent as IconTreament } from '../images/what-to-expect-treatme
 
 export default () => [
   {
-    name: 'Understanding addiction',
-    id: 'understanding-addiction',
-    icon: <IconAddiction />,
-    description:
-      'Addiction is a chronic disease that changes the brain and alters decision-making.',
-    subSections: [
-      {
-        name: 'Addiction can affect anyone',
-        id: 'addiction-can-affect-anyone',
-        metaDescription:
-          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
-        body: (
-          <>
-            <p>
-              People from all backgrounds experience addiction. Addiction
-              doesn't care how old you are, how much money you make, or the
-              color of your skin - it has no bias. While the initial choice to
-              use a drug is often voluntary, the powerful effects of addiction
-              makes it very hard to stop, even if someone wants to.
-            </p>
-            <p>
-              When drugs or alcohol are used so often that they have significant
-              negative effects on your life, making it unlivable to the quality
-              it was before, this is called a{' '}
-              <strong>substance use disorder</strong>.
-            </p>
-            <p>
-              It causes intense cravings for alcohol or drugs, and can include:
-            </p>
-            <ul>
-              <li>
-                Using illegal drugs like heroin or cocaine, or excessive alcohol
-                drinking.
-              </li>
-              <li>
-                Using prescription drugs in ways other than prescribed, or using
-                someone else’s prescription.
-              </li>
-            </ul>
-          </>
-        )
-      },
-      {
-        name: 'It’s hard to stop on your own',
-        id: 'its-hard-to-stop-on-your-own',
-        metaDescription:
-          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
-        body: (
-          <>
-            <p>
-              Addiction is a chronic and treatable disease. Using drugs
-              repeatedly changes the brain, including the parts that help exert
-              self-control. That’s why someone may not be able to stop using
-              drugs, even if they know the drug is causing harm, or feel ready
-              to stop.
-            </p>
-            <p>
-              Some common behaviors of addiction and substance use disorder
-              include:
-            </p>
-            <ol>
-              <li>
-                Trying to stop or cut down on drug use, but not being able to.
-              </li>
-              <li>
-                Using drugs because of being angry or upset with other people.
-              </li>
-              <li>Taking one drug to get over the effects of another.</li>
-              <li>
-                Making mistakes at school or on the job because of using drugs.
-              </li>
-              <li>Drug use hurting relationships with family and friends.</li>
-              <li>Being scared at the thought of running out of drugs.</li>
-              <li>Stealing drugs or money to pay for drugs.</li>
-              <li>Being arrested or hospitalized for drug use.</li>
-              <li>
-                Developing a tolerance, and needing larger amounts of drugs or
-                alcohol to get high.
-              </li>
-              <li>Overdosing on drugs.</li>
-            </ol>
-          </>
-        )
-      },
-      {
-        name: 'Recovery starts with asking for help',
-        id: 'recovery-starts-with-asking-for-help',
-        metaDescription:
-          'It takes courage to seek help for a drug problem. But remember: treatment works, there are many paths to help, and people recover every day.',
-        body: (
-          <>
-            <p>
-              It takes courage to seek help for a drug problem. But remember:
-              treatment works, there are many paths to help, and people recover
-              every day.
-            </p>
-            <p>
-              Like other chronic diseases, addiction can be managed
-              successfully. It can take several attempts at treatment to find
-              the right approach. Treatment helps people disrupt addiction's
-              powerful effects on the brain and behavior and regain control of
-              their lives.
-            </p>
-            <p>
-              Our treatment locator lists facilities across the country. We have
-              guidance about what to expect when looking for treatment,
-              including{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
-                different kinds of treatment
-              </a>{' '}
-              and{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
-                understanding how to pay for treatment
-              </a>
-              .
-            </p>
-            <p>
-              If treatment isn’t the right next step for you, you can still find
-              someone to talk to:
-            </p>
-            <ul>
-              <li>
-                <strong>Talk to a professional therapist or counselor. </strong>
-                Your primary care doctor can recommend therapists in your care
-                network, and National Alliance on Mental Illness (NAMI) has
-                locations around the country with resources for finding a
-                therapist.{' '}
-                <a href="https://www.nami.org/local/">(nami.org/local)</a>
-              </li>
-              <li>
-                <strong>Join a support group of peers. </strong>
-                People who have common life experiences have a unique ability to
-                help each other. Peers can be very supportive since they have
-                “been there” and serve as living examples that individuals can
-                and do recover. There are peer groups for people in recovery as
-                well as their families and loved ones, including:
-              </li>
-              <ul>
-                <li>
-                  Narcotics Anonymous <a href="https://na.org">(na.org)</a>, and
-                  Nar-Anon{' '}
-                  <a href="https://www.nar-anon.org/">(nar-anon.org)</a>
-                </li>
-                <li>
-                  Alcoholics Anonymous{' '}
-                  <a href="https://www.aa.org/">(aa.org)</a>, and Al-Anon{' '}
-                  <a href="https://al-anon.org/">(al-anon.org)</a>
-                </li>
-                <li>
-                  Faces and Voices of Recovery{' '}
-                  <a href="https://facesandvoicesofrecovery.org/">
-                    (facesandvoicesofrecovery.org)
-                  </a>
-                </li>
-              </ul>
-            </ul>
-          </>
-        )
-      },
-      {
-        name: 'Supporting recovery and self-care',
-        id: 'supporting-recovery-and-self-care',
-        metaDescription:
-          "Taking care of yourself is important when a family member or friend is in recovery. You can't fix the problem by yourself, or force them to seek help.",
-        body: (
-          <>
-            <p>
-              Many treatment professionals consider substance use disorders to
-              be family diseases. To help everyone recover and cope, family may
-              be asked to take part in treatment. This may involve going to a
-              family education program or to counseling for families or couples.
-            </p>
-            <p>As you and your family member recover, remember:</p>
-            <ul>
-              <li>
-                You are participating in treatment for
-                <strong> yourself</strong>, not just for the sake of the person
-                who used substances.
-              </li>
-              <li>
-                Your loved one’s recovery, sobriety, or abstinence does not
-                depend on you.
-              </li>
-              <li>
-                Your family’s recovery does not depend on the recovery of the
-                person who used substances.
-              </li>
-              <li>
-                You did not cause your family member’s substance use disorder.
-                It is not your fault.
-              </li>
-            </ul>
-            <p>
-              You still may have hurt feelings and anger from the past that need
-              to be resolved. You need support to understand and deal with these
-              feelings, and you need to support your loved one’s efforts to get
-              well.
-            </p>
-            <h3>You cannot do someone else’s recovery for them.</h3>
-            <p>
-              If you think your family member or friend might be addicted, you
-              cannot fix the problem by yourself, or force them into treatment.
-              If the person is initially not willing to be helped, learn more
-              about drug addiction for your own knowledge, and see if there are
-              resources or information that might convince them to seek help.
-            </p>
-            <p>
-              Everyone acts differently when they start treatment. Some people
-              are very happy to be getting treatment at last; others suffer a
-              great deal while they adjust to a new life and attempt to live it
-              without alcohol and drugs. They may be sad, angry, or confused. It
-              is important for you to realize that these are normal reactions
-              and to get support for yourself.
-            </p>
-          </>
-        )
-      }
-    ]
-  },
-  {
-    name: 'Understanding mental health',
-    id: 'understanding-mental-health',
-    icon: <IconMentalHealth />,
-    description:
-      'About half of people with a substance use disorder also experience serious mental illness.',
-    subSections: [
-      {
-        name: 'Serious mental illness',
-        id: 'serious-mental-illness',
-        metaDescription:
-          'About half of people with a substance use disorder also experience serious mental illness.',
-        body: (
-          <>
-            <p>
-              Like addiction, mental health disorders are treatable medical
-              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
-              will experience some form of mental health disorder, and 1 in
-              every 22 is living with a <strong>serious mental illness</strong>,
-              like schizophrenia, bipolar disorder, or major depressive
-              episodes. When a serious mental illness like this affects someone
-              under the age of 18, it’s called a{' '}
-              <strong>serious emotional disturbance</strong>.
-            </p>
-            <p>
-              A lot of stigma and judgement exists around serious mental
-              illness. People may expect someone with serious mental illness to
-              look visibly different, and they may tell someone they don’t "look
-              ill" or that they should just "get over it" by using willpower.
-            </p>
-          </>
-        )
-      },
-      {
-        name: 'Know the warning signs',
-        id: 'know-the-warning-signs',
-        metaDescription:
-          'For many people, getting an accurate diagnosis of a serious mental illness is the first step in a treatment plan.',
-        body: (
-          <>
-            <p>
-              Many people don't seek treatment for mental health disorders or
-              don’t know their symptoms could be connected to a mental health
-              condition. There's no easy test to tell if actions or thoughts are
-              typical for a person, symptoms of a physical illness, or signs of
-              a mental health disorder.
-            </p>
-            <p>
-              Each illness has its own symptoms, but common signs of mental
-              health disorders in adults and adolescents can include the
-              following:
-              <ul>
-                <li>Excessive worrying or fear</li>
-                <li>Feeling excessively sad or low</li>
-                <li>
-                  Confused thinking or problems concentrating and learning
-                </li>
-                <li>
-                  Extreme mood changes, including uncontrollable “highs” or
-                  feelings of euphoria
-                </li>
-                <li>Prolonged or strong feelings of irritability or anger</li>
-                <li>Avoiding friends and social activities</li>
-                <li>Difficulties understanding or relating to other people</li>
-                <li>
-                  Changes in sleeping habits or feeling tired and low energy
-                </li>
-                <li>
-                  Changes in eating habits such as increased hunger or lack of
-                  appetite
-                </li>
-                <li>Changes in sex drive</li>
-                <li>
-                  Difficulty perceiving reality (delusions or hallucinations, in
-                  which a person experiences and senses things that don't exist
-                  in objective reality)
-                </li>
-                <li>
-                  Inability to perceive changes in one’s own feelings, behavior
-                  or personality (”lack of insight” or anosognosia)
-                </li>
-                <li>Abuse of substances like alcohol or drugs</li>
-                <li>
-                  Multiple physical ailments without obvious causes (such as
-                  headaches, stomach aches, vague and ongoing “aches and pains”)
-                </li>
-                <li>Thinking about suicide</li>
-                <li>
-                  Inability to carry out daily activities or handle daily
-                  problems and stress
-                </li>
-                <li>
-                  An intense fear of weight gain or concern with appearance
-                </li>
-              </ul>
-            </p>
-            <p>
-              Mental health disorders can also begin to develop in young
-              children. Because they’re still learning how to identify and talk
-              about their thoughts and emotions, the most obvious symptoms are
-              behavioral. Symptoms in children may include the following:
-              <ul>
-                <li>Changes in school performance</li>
-                <li>
-                  Excessive worry or anxiety, for instance fighting to avoid bed
-                  or school
-                </li>
-                <li>Hyperactive behavior</li>
-                <li>Frequent nightmares</li>
-                <li>Frequent disobedience or aggression</li>
-                <li>Frequent temper tantrums</li>
-              </ul>
-            </p>
-            <p>
-              For many people, getting an accurate diagnosis is the first step
-              in a treatment plan.{' '}
-            </p>
-          </>
-        )
-      }
-    ]
-  },
-  {
     name: 'Treatment options',
     id: 'treatment-options',
     icon: <IconTreament />,
@@ -973,6 +631,348 @@ export default () => [
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
+            </p>
+          </>
+        )
+      }
+    ]
+  },
+  {
+    name: 'Understanding addiction',
+    id: 'understanding-addiction',
+    icon: <IconAddiction />,
+    description:
+      'Addiction is a chronic disease that changes the brain and alters decision-making.',
+    subSections: [
+      {
+        name: 'Addiction can affect anyone',
+        id: 'addiction-can-affect-anyone',
+        metaDescription:
+          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
+        body: (
+          <>
+            <p>
+              People from all backgrounds experience addiction. Addiction
+              doesn't care how old you are, how much money you make, or the
+              color of your skin - it has no bias. While the initial choice to
+              use a drug is often voluntary, the powerful effects of addiction
+              makes it very hard to stop, even if someone wants to.
+            </p>
+            <p>
+              When drugs or alcohol are used so often that they have significant
+              negative effects on your life, making it unlivable to the quality
+              it was before, this is called a{' '}
+              <strong>substance use disorder</strong>.
+            </p>
+            <p>
+              It causes intense cravings for alcohol or drugs, and can include:
+            </p>
+            <ul>
+              <li>
+                Using illegal drugs like heroin or cocaine, or excessive alcohol
+                drinking.
+              </li>
+              <li>
+                Using prescription drugs in ways other than prescribed, or using
+                someone else’s prescription.
+              </li>
+            </ul>
+          </>
+        )
+      },
+      {
+        name: 'It’s hard to stop on your own',
+        id: 'its-hard-to-stop-on-your-own',
+        metaDescription:
+          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
+        body: (
+          <>
+            <p>
+              Addiction is a chronic and treatable disease. Using drugs
+              repeatedly changes the brain, including the parts that help exert
+              self-control. That’s why someone may not be able to stop using
+              drugs, even if they know the drug is causing harm, or feel ready
+              to stop.
+            </p>
+            <p>
+              Some common behaviors of addiction and substance use disorder
+              include:
+            </p>
+            <ol>
+              <li>
+                Trying to stop or cut down on drug use, but not being able to.
+              </li>
+              <li>
+                Using drugs because of being angry or upset with other people.
+              </li>
+              <li>Taking one drug to get over the effects of another.</li>
+              <li>
+                Making mistakes at school or on the job because of using drugs.
+              </li>
+              <li>Drug use hurting relationships with family and friends.</li>
+              <li>Being scared at the thought of running out of drugs.</li>
+              <li>Stealing drugs or money to pay for drugs.</li>
+              <li>Being arrested or hospitalized for drug use.</li>
+              <li>
+                Developing a tolerance, and needing larger amounts of drugs or
+                alcohol to get high.
+              </li>
+              <li>Overdosing on drugs.</li>
+            </ol>
+          </>
+        )
+      },
+      {
+        name: 'Recovery starts with asking for help',
+        id: 'recovery-starts-with-asking-for-help',
+        metaDescription:
+          'It takes courage to seek help for a drug problem. But remember: treatment works, there are many paths to help, and people recover every day.',
+        body: (
+          <>
+            <p>
+              It takes courage to seek help for a drug problem. But remember:
+              treatment works, there are many paths to help, and people recover
+              every day.
+            </p>
+            <p>
+              Like other chronic diseases, addiction can be managed
+              successfully. It can take several attempts at treatment to find
+              the right approach. Treatment helps people disrupt addiction's
+              powerful effects on the brain and behavior and regain control of
+              their lives.
+            </p>
+            <p>
+              Our treatment locator lists facilities across the country. We have
+              guidance about what to expect when looking for treatment,
+              including{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
+                different kinds of treatment
+              </a>{' '}
+              and{' '}
+              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
+                understanding how to pay for treatment
+              </a>
+              .
+            </p>
+            <p>
+              If treatment isn’t the right next step for you, you can still find
+              someone to talk to:
+            </p>
+            <ul>
+              <li>
+                <strong>Talk to a professional therapist or counselor. </strong>
+                Your primary care doctor can recommend therapists in your care
+                network, and National Alliance on Mental Illness (NAMI) has
+                locations around the country with resources for finding a
+                therapist.{' '}
+                <a href="https://www.nami.org/local/">(nami.org/local)</a>
+              </li>
+              <li>
+                <strong>Join a support group of peers. </strong>
+                People who have common life experiences have a unique ability to
+                help each other. Peers can be very supportive since they have
+                “been there” and serve as living examples that individuals can
+                and do recover. There are peer groups for people in recovery as
+                well as their families and loved ones, including:
+              </li>
+              <ul>
+                <li>
+                  Narcotics Anonymous <a href="https://na.org">(na.org)</a>, and
+                  Nar-Anon{' '}
+                  <a href="https://www.nar-anon.org/">(nar-anon.org)</a>
+                </li>
+                <li>
+                  Alcoholics Anonymous{' '}
+                  <a href="https://www.aa.org/">(aa.org)</a>, and Al-Anon{' '}
+                  <a href="https://al-anon.org/">(al-anon.org)</a>
+                </li>
+                <li>
+                  Faces and Voices of Recovery{' '}
+                  <a href="https://facesandvoicesofrecovery.org/">
+                    (facesandvoicesofrecovery.org)
+                  </a>
+                </li>
+              </ul>
+            </ul>
+          </>
+        )
+      },
+      {
+        name: 'Supporting recovery and self-care',
+        id: 'supporting-recovery-and-self-care',
+        metaDescription:
+          "Taking care of yourself is important when a family member or friend is in recovery. You can't fix the problem by yourself, or force them to seek help.",
+        body: (
+          <>
+            <p>
+              Many treatment professionals consider substance use disorders to
+              be family diseases. To help everyone recover and cope, family may
+              be asked to take part in treatment. This may involve going to a
+              family education program or to counseling for families or couples.
+            </p>
+            <p>As you and your family member recover, remember:</p>
+            <ul>
+              <li>
+                You are participating in treatment for
+                <strong> yourself</strong>, not just for the sake of the person
+                who used substances.
+              </li>
+              <li>
+                Your loved one’s recovery, sobriety, or abstinence does not
+                depend on you.
+              </li>
+              <li>
+                Your family’s recovery does not depend on the recovery of the
+                person who used substances.
+              </li>
+              <li>
+                You did not cause your family member’s substance use disorder.
+                It is not your fault.
+              </li>
+            </ul>
+            <p>
+              You still may have hurt feelings and anger from the past that need
+              to be resolved. You need support to understand and deal with these
+              feelings, and you need to support your loved one’s efforts to get
+              well.
+            </p>
+            <h3>You cannot do someone else’s recovery for them.</h3>
+            <p>
+              If you think your family member or friend might be addicted, you
+              cannot fix the problem by yourself, or force them into treatment.
+              If the person is initially not willing to be helped, learn more
+              about drug addiction for your own knowledge, and see if there are
+              resources or information that might convince them to seek help.
+            </p>
+            <p>
+              Everyone acts differently when they start treatment. Some people
+              are very happy to be getting treatment at last; others suffer a
+              great deal while they adjust to a new life and attempt to live it
+              without alcohol and drugs. They may be sad, angry, or confused. It
+              is important for you to realize that these are normal reactions
+              and to get support for yourself.
+            </p>
+          </>
+        )
+      }
+    ]
+  },
+  {
+    name: 'Understanding mental health',
+    id: 'understanding-mental-health',
+    icon: <IconMentalHealth />,
+    description:
+      'About half of people with a substance use disorder also experience serious mental illness.',
+    subSections: [
+      {
+        name: 'Serious mental illness',
+        id: 'serious-mental-illness',
+        metaDescription:
+          'About half of people with a substance use disorder also experience serious mental illness.',
+        body: (
+          <>
+            <p>
+              Like addiction, mental health disorders are treatable medical
+              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
+              will experience some form of mental health disorder, and 1 in
+              every 22 is living with a <strong>serious mental illness</strong>,
+              like schizophrenia, bipolar disorder, or major depressive
+              episodes. When a serious mental illness like this affects someone
+              under the age of 18, it’s called a{' '}
+              <strong>serious emotional disturbance</strong>.
+            </p>
+            <p>
+              A lot of stigma and judgement exists around serious mental
+              illness. People may expect someone with serious mental illness to
+              look visibly different, and they may tell someone they don’t "look
+              ill" or that they should just "get over it" by using willpower.
+            </p>
+          </>
+        )
+      },
+      {
+        name: 'Know the warning signs',
+        id: 'know-the-warning-signs',
+        metaDescription:
+          'For many people, getting an accurate diagnosis of a serious mental illness is the first step in a treatment plan.',
+        body: (
+          <>
+            <p>
+              Many people don't seek treatment for mental health disorders or
+              don’t know their symptoms could be connected to a mental health
+              condition. There's no easy test to tell if actions or thoughts are
+              typical for a person, symptoms of a physical illness, or signs of
+              a mental health disorder.
+            </p>
+            <p>
+              Each illness has its own symptoms, but common signs of mental
+              health disorders in adults and adolescents can include the
+              following:
+              <ul>
+                <li>Excessive worrying or fear</li>
+                <li>Feeling excessively sad or low</li>
+                <li>
+                  Confused thinking or problems concentrating and learning
+                </li>
+                <li>
+                  Extreme mood changes, including uncontrollable “highs” or
+                  feelings of euphoria
+                </li>
+                <li>Prolonged or strong feelings of irritability or anger</li>
+                <li>Avoiding friends and social activities</li>
+                <li>Difficulties understanding or relating to other people</li>
+                <li>
+                  Changes in sleeping habits or feeling tired and low energy
+                </li>
+                <li>
+                  Changes in eating habits such as increased hunger or lack of
+                  appetite
+                </li>
+                <li>Changes in sex drive</li>
+                <li>
+                  Difficulty perceiving reality (delusions or hallucinations, in
+                  which a person experiences and senses things that don't exist
+                  in objective reality)
+                </li>
+                <li>
+                  Inability to perceive changes in one’s own feelings, behavior
+                  or personality (”lack of insight” or anosognosia)
+                </li>
+                <li>Abuse of substances like alcohol or drugs</li>
+                <li>
+                  Multiple physical ailments without obvious causes (such as
+                  headaches, stomach aches, vague and ongoing “aches and pains”)
+                </li>
+                <li>Thinking about suicide</li>
+                <li>
+                  Inability to carry out daily activities or handle daily
+                  problems and stress
+                </li>
+                <li>
+                  An intense fear of weight gain or concern with appearance
+                </li>
+              </ul>
+            </p>
+            <p>
+              Mental health disorders can also begin to develop in young
+              children. Because they’re still learning how to identify and talk
+              about their thoughts and emotions, the most obvious symptoms are
+              behavioral. Symptoms in children may include the following:
+              <ul>
+                <li>Changes in school performance</li>
+                <li>
+                  Excessive worry or anxiety, for instance fighting to avoid bed
+                  or school
+                </li>
+                <li>Hyperactive behavior</li>
+                <li>Frequent nightmares</li>
+                <li>Frequent disobedience or aggression</li>
+                <li>Frequent temper tantrums</li>
+              </ul>
+            </p>
+            <p>
+              For many people, getting an accurate diagnosis is the first step
+              in a treatment plan.{' '}
             </p>
           </>
         )
