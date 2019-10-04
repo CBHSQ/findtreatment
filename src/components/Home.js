@@ -58,8 +58,6 @@ class Home extends Component {
   };
 
   renderCard = card => {
-    const { isDesktop } = this.context;
-
     return (
       <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-10`}>
         <div css={tw`flex -mx-2 mb-4`}>
@@ -72,9 +70,8 @@ class Home extends Component {
             <Button
               forwardedAs={Link}
               to={`/content/${card.id}`}
-              outline={!isDesktop}
-              link={isDesktop}
-              css={tw`w-full lg:inline`}
+              outline
+              css={tw`w-full lg:inline lg:p-0 lg:border-0`}
               aria-label={`Learn more about ${card.name}`}
             >
               Learn more ›
@@ -97,13 +94,11 @@ class Home extends Component {
           />
           <meta name="twitter:card" content="summary_large_image" />
         </Helmet>
-        {isTablet || (
-          <MobileBgContainer css={tw`relative border-b-4 border-white`}>
-            <MobileBgImage
-              css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
-            />
-          </MobileBgContainer>
-        )}
+        <MobileBgContainer css={tw`md:hidden relative border-b-4 border-white`}>
+          <MobileBgImage
+            css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
+          />
+        </MobileBgContainer>
         <div
           css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-white md:border-t md:border-gray-lighter`}
         >

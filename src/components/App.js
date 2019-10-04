@@ -23,6 +23,14 @@ import NoMatch from './NoMatch';
 import Footer from './Footer';
 
 class App extends Component {
+  state = {
+    mounted: false
+  };
+
+  componentDidMount() {
+    this.setState({ mounted: true });
+  }
+
   render() {
     return (
       <ScreenContext.Provider value={this.props}>
