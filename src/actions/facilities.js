@@ -58,7 +58,7 @@ export function handleReceiveFacilities(query) {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       data: qs.stringify(params),
-      url: '/listing'
+      url: '/listing2'
     };
 
     return API(options)
