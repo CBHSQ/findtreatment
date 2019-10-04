@@ -114,6 +114,15 @@ export class Details extends Component {
       <>
         <Helmet>
           <title>{name1}</title>
+          <meta property="og:title" content={name1} />
+          <meta
+            name="description"
+            content="Treatment facility details, including what services it provides, who it serves, and what payments are accepted."
+          />
+          <meta
+            property="og:description"
+            content="Treatment facility details, including what services it provides, who it serves, and what payments are accepted."
+          />
         </Helmet>
         {isInternalLink && (
           <div css={tw`bg-gray-lightest border-t border-b border-gray-lighter`}>
