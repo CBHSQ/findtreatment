@@ -49,7 +49,7 @@ describe('MapContainer component', () => {
 
         expect(infoWindow.prop('visible')).toBe(true);
 
-        component.find('Map').simulate('click');
+        component.find('.map-wrapper').simulate('click');
 
         expect(component.find('InfoWindow').prop('visible')).toBe(false);
       });

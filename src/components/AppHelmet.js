@@ -28,11 +28,11 @@ export const AppHelmet = ({ focusTarget, location, setSRMessage }) => (
     />
     <meta
       property="og:url"
-      content={process.env.PUBLIC_URL + location.pathname}
+      content={process.env.REACT_APP_SITE_DOMAIN + location.pathname}
     />
     <meta
       property="og:image"
-      content={`${process.env.PUBLIC_URL}/thumbnail.png`}
+      content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail.png`}
     />
     <meta property="og:site_name" content={process.env.REACT_APP_SITE_TITLE} />
   </Helmet>
