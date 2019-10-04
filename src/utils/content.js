@@ -877,7 +877,10 @@ export default () => [
           <>
             <p>
               Like addiction, mental health disorders are treatable medical
-              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
+              conditions, not someone’s fault. About half of people with a substance use disorder 
+              also experience serious mental illness. 
+          </p>
+          <p>Almost 1 in 5 adults in the USA
               will experience some form of mental health disorder, and 1 in
               every 22 is living with a <strong>serious mental illness</strong>,
               like schizophrenia, bipolar disorder, or major depressive
