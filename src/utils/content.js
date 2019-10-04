@@ -716,17 +716,6 @@ export default () => [
         )
       },
       {
-        name: 'It’s hard to stop on your own',
-        id: 'its-hard-to-stop-on-your-own',
-        metaDescription:
-          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
-        body: (
-          <>
-            
-          </>
-        )
-      },
-      {
         name: 'Recovery starts with asking for help',
         id: 'recovery-starts-with-asking-for-help',
         metaDescription:
