@@ -64,7 +64,7 @@ The app will automatically reload if you change any of the source files.
 
 ### Contributing
 
- Though we're not actively soliciting contributions, we'll make our best effort to collaborate. That said, we cannot make any promises about having time to review, comment on, or accept pull requests.
+Though we're not actively soliciting contributions, we'll make our best effort to collaborate. That said, we cannot make any promises about having time to review, comment on, or accept pull requests.
 
 Pull requests should be made into the `master` branch. Be sure to check out
 our [contributing](CONTRIBUTING.md) guide.
