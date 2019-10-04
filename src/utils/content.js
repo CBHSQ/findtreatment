@@ -1,6 +1,7 @@
 import React from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
 import { ReactComponent as IconMentalHealth } from '../images/what-to-expect-mental-health.svg';
@@ -37,10 +38,9 @@ export default () => [
               symptoms of withdrawal are treated.{' '}
               <strong>Detoxification by itself is not treatment</strong>; it is
               a first step that can prepare a person for treatment.{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options/what-happens-next">
-                {' '}
+              <Link to="/content/treatment-options/what-happens-next">
                 More details about pretreatment and detox.
-              </a>
+              </Link>
             </p>
             <h3>Interim care</h3>
             <p>
@@ -124,10 +124,10 @@ export default () => [
             <p>
               Having both a substance use and mental health disorder is called a{' '}
               <strong>co-occurring disorder</strong>.{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/understanding-mental-health/serious-mental-illness">
+              <Link to="/content/understanding-mental-health/serious-mental-illness">
                 About half of people who experience one will also experience the
                 other.
-              </a>{' '}
+              </Link>{' '}
               Addressing both is critical for success in recovery, and
               integrated treatment programs can help.
             </p>
@@ -283,9 +283,9 @@ export default () => [
             </p>
             <p>
               If a facility can’t see you within 48 hours, try another one. A{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options/who-provides-care">
+              <Link to="/content/treatment-options/who-provides-care">
                 sign of quality care
-              </a>{' '}
+              </Link>{' '}
               is being able to be seen quickly. Many programs offer walk-in
               care, or interim care if only a waitlist is available.
             </p>
@@ -302,9 +302,9 @@ export default () => [
               </li>
               <li>
                 What{' '}
-                <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment/understanding-the-cost-of-treatment">
+                <Link to="/content/paying-for-treatment/understanding-the-cost-of-treatment">
                   financial resources
-                </a>{' '}
+                </Link>{' '}
                 are you working with (insurance, money from a loved one, etc.?)
               </li>
             </ol>
@@ -431,9 +431,9 @@ export default () => [
               </li>
               <li>
                 <strong>Medication.</strong> A facility should only use{' '}
-                <a href="https://findtreatmentbeta.18f.gov/content/treatment-options/medications-used-in-treatment">
+                <Link to="/content/treatment-options/medications-used-in-treatment">
                   FDA-approved medication
-                </a>{' '}
+                </Link>{' '}
                 in treating alcohol or opioid use.{' '}
                 <em>
                   There are no FDA-approved medications to help prevent relapse
@@ -457,9 +457,9 @@ export default () => [
               </li>
               <li>
                 <strong>Families.</strong>{' '}
-                <a href="https://findtreatmentbeta.18f.gov/content/understanding-addiction/supporting-recovery-and-self-care">
+                <Link to="/content/understanding-addiction/supporting-recovery-and-self-care">
                   Family members should be included in the treatment process.
-                </a>{' '}
+                </Link>{' '}
                 They have an important role in understanding the impact of
                 addiction and being supportive in recovery.
               </li>
@@ -755,13 +755,13 @@ export default () => [
               Our treatment locator lists facilities across the country. We have
               guidance about what to expect when looking for treatment,
               including{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
+              <Link to="/content/treatment-options#types-of-treatment">
                 different kinds of treatment
-              </a>{' '}
+              </Link>{' '}
               and{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
+              <Link to="/content/paying-for-treatment">
                 understanding how to pay for treatment
-              </a>
+              </Link>
               .
             </p>
             <p>
