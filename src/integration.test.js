@@ -1,15 +1,18 @@
-// REACT_APP_PROD_API_URL=https://findtreatment.samhsa.gov/locator/
-// REACT_APP_DEV_API_URL=https://bhsis01.eagletechva.com/locator/
-// REACT_APP_DEV_API_URL=http://localhost:9011/locator/
-
 import axios from 'axios';
 import qs from 'qs';
 
 import { buildParams } from './utils/api';
 import { DEFAULT_PAGE_SIZE, METERS_PER_MILE } from './utils/constants';
 
+const ENV = 'PROD';
+
+const endpoints = {
+  DEV: 'https://kqszbed8ck.execute-api.us-east-1.amazonaws.com/prod/listing2',
+  LOCAL: 'http://localhost:9011/locator/listing',
+  PROD: 'https://findtreatment.samhsa.gov/locator/listing'
+};
+
 const API = axios.create({
-  baseURL: 'http://localhost:9011/locator/',
   responseType: 'json'
 });
 
@@ -18,14 +21,13 @@ const send = query =>
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(buildParams(query)),
-    url: '/listing'
+    url: endpoints[ENV]
   });
 
 const defaultQuery = {
   distance: METERS_PER_MILE * 10,
   pageSize: 100000, // Setting enormous default page size so we don't have to deal with pagination unless we want to!
   location: {
-    // address: '',
     latLng: {
       // 98021
       lat: 47.7972338,
@@ -34,47 +36,52 @@ const defaultQuery = {
   }
 };
 
+beforeAll(() => jest.setTimeout(10000));
+
 describe('Integration Tests', () => {
-  it('sorts by distance ascending', async () => {
-    const { data } = await send({
-      ...defaultQuery,
-      distance: null
+  describe('sorting', () => {
+    it('sorts by distance ascending', async () => {
+      const { data } = await send(defaultQuery);
+
+      sanityChecks(data);
+
+      // Assert the distances are in ascending order
+      const anyDecreases = data.rows.some(
+        (row, idx, array) => idx > 0 && row.miles < array[idx - 1].miles
+      );
+      expect(anyDecreases).toEqual(false);
     });
 
-    // Assert there are results
-    expect(data.rows.length).toBeGreaterThan(0);
+    it('sorts in order of `_irow`', async () => {
+      const { data } = await send(defaultQuery);
 
-    // Assert the distances are in ascending order
-    const anyDecreases = data.rows.some(
-      (row, idx, array) => idx > 0 && row.miles < array[idx - 1].miles
-    );
-    expect(anyDecreases).toEqual(false);
-  });
+      sanityChecks(data);
 
-  it('sorts in order of `_irow`', async () => {
-    const { data } = await send(defaultQuery);
-
-    // Assert there are results
-    expect(data.rows.length).toBeGreaterThan(0);
-
-    // Assert the returned order matches `_irow` values
-    const anyRowMismatches = data.rows.some(
-      (row, idx) => idx + 1 !== row._irow
-    );
-    expect(anyRowMismatches).toEqual(false);
+      // Assert the returned order matches `_irow` values
+      const anyRowMismatches = data.rows.some(
+        (row, idx) => idx + 1 !== row._irow
+      );
+      expect(anyRowMismatches).toEqual(false);
+    });
   });
 
   it('respects distance radius', async () => {
     const smallRadius = 5;
     const largeRadius = 15;
 
-    const [smallRadiusData, largeRadiusData] = await Promise.all([
+    const [
+      { data: smallRadiusData },
+      { data: largeRadiusData }
+    ] = await Promise.all([
       send({ ...defaultQuery, distance: METERS_PER_MILE * smallRadius }),
       send({ ...defaultQuery, distance: METERS_PER_MILE * largeRadius })
     ]);
 
-    const smallRadiusRows = smallRadiusData.data.rows;
-    const largeRadiusRows = largeRadiusData.data.rows;
+    sanityChecks(smallRadiusData);
+    sanityChecks(largeRadiusData);
+
+    const smallRadiusRows = smallRadiusData.rows;
+    const largeRadiusRows = largeRadiusData.rows;
 
     // Assert there are no locations outside the radius
     expect(smallRadiusRows.some(row => row.miles > smallRadius)).toEqual(false);
@@ -216,13 +223,21 @@ describe('Integration Tests', () => {
   it('handles 100+ mile radius', async () => {
     const { data: firstPageData } = await send({
       ...defaultQuery,
+      pageSize: DEFAULT_PAGE_SIZE,
       distance: null
     });
 
-    // Originally, I grabbed the absolute last record, but it did NOT have a miles attribute...
-    // TODO - Verify this isn't the case in production????
+    const { data: lastPageData } = await send({
+      ...defaultQuery,
+      pageSize: DEFAULT_PAGE_SIZE,
+      page: firstPageData.totalPages,
+      distance: null
+    });
+
     // Assert it is farther away than 100 miles
-    const lastLocation = firstPageData.rows[firstPageData.rows.length - 1];
+    // When testing locally, the absolute last record does not have a `miles` attributes
+    const lastLocation =
+      lastPageData.rows[lastPageData.rows.length - (ENV === 'LOCAL' ? 2 : 1)];
     expect(lastLocation.miles).toBeGreaterThan(100);
   });
 
@@ -238,16 +253,13 @@ describe('Integration Tests', () => {
         type: 'DT'
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'TC' &&
-            service.f3 !== 'Detoxification; Substance use treatment'
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'TC',
+        /^Detoxification$/
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -259,15 +271,13 @@ describe('Integration Tests', () => {
         payment: 'MD'
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'PAY' && !service.f3.split('; ').includes('Medicaid')
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'PAY',
+        /^Medicaid$/
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -279,15 +289,13 @@ describe('Integration Tests', () => {
         ages: 'ADLT'
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'AGE' && !service.f3.split('; ').includes('Adults')
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'AGE',
+        /^Adults$/
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -299,15 +307,13 @@ describe('Integration Tests', () => {
         language: 'SP-Spanish'
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'OL' && !service.f3.split('; ').includes('Spanish')
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'OL',
+        /^Spanish$/
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -319,15 +325,13 @@ describe('Integration Tests', () => {
         special: ['VET']
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'SG' && !service.f3.split('; ').includes('Veterans')
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'SG',
+        /^Veterans$/
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -339,22 +343,16 @@ describe('Integration Tests', () => {
         special: ['VET', 'GL']
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filters
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'SG' &&
-            (!service.f3.split('; ').includes('Veterans') ||
-              !service.f3
-                .split('; ')
-                .includes(
-                  'Lesbian, gay, bisexual, or transgender (LGBT) clients'
-                ))
-        )
-      );
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter =
+        missingServiceOrFilter(data.rows, 'SG', /^Veterans$/) ||
+        missingServiceOrFilter(
+          data.rows,
+          'SG',
+          /^Lesbian, gay, bisexual, or transgender \(LGBT\) clients$/
+        );
 
       expect(anyMissingFilter).toEqual(false);
     });
@@ -365,16 +363,13 @@ describe('Integration Tests', () => {
         mat: 'NU'
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filter
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            service.f2 === 'OT' &&
-            !service.f3.split('; ').includes('Naltrexone used in Treatment')
-        )
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter = missingServiceOrFilter(
+        data.rows,
+        'OT',
+        /naltrexone/i
       );
 
       expect(anyMissingFilter).toEqual(false);
@@ -389,26 +384,27 @@ describe('Integration Tests', () => {
         special: ['VET']
       });
 
-      // Assert there is data
-      expect(data.rows.length).toBeGreaterThan(0);
+      sanityChecks(data);
 
-      // Assert all rows include the filters
-      const anyMissingFilter = data.rows.some(row =>
-        row.services.find(
-          service =>
-            (service.f2 === 'AGE' &&
-              !service.f3.split('; ').includes('Adults')) ||
-            (service.f2 === 'SG' &&
-              !service.f3.split('; ').includes('Veterans')) ||
-            (service.f2 === 'OT' &&
-              !service.f3.split('; ').includes('Naltrexone used in Treatment'))
-        )
-      );
+      // Assert all rows include the service category and filtered service
+      const anyMissingFilter =
+        missingServiceOrFilter(data.rows, 'AGE', /^Adults$/) ||
+        missingServiceOrFilter(data.rows, 'SG', /^Veterans$/) ||
+        missingServiceOrFilter(data.rows, 'OT', /naltrexone/i);
 
       expect(anyMissingFilter).toEqual(false);
     });
   });
 });
+
+function sanityChecks(data) {
+  // Assert there are results
+  expect(data.rows.length).toBeGreaterThan(0);
+
+  // Assert all results are returned on the first page
+  expect(data.totalPages === 1);
+  expect(data.rows.length === data.recordCount);
+}
 
 /*
    Helpers
@@ -421,4 +417,11 @@ function inPageRangeByIRow(ary, page, pageSize) {
   return ary.some(
     row => row._irow <= (page - 1) * pageSize || row._irow > page * pageSize
   );
+}
+
+function missingServiceOrFilter(rows, category, regex) {
+  return rows.some(row => {
+    const service = row.services.find(service => service.f2 === category);
+    return !(service && service.f3.split('; ').some(s => regex.test(s)));
+  });
 }
