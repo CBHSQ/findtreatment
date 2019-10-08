@@ -15,13 +15,21 @@ export default axios.create({
 });
 
 export const buildParams = query => {
-  const { distance, language, location, page, type, ...sCodes } = query;
+  const {
+    distance,
+    language,
+    location,
+    page,
+    pageSize,
+    type,
+    ...sCodes
+  } = query;
   const serviceCodes = flattenServiceCodes(sCodes);
 
   const params = {
     sType: DEFAULT_STYPE,
     sCodes: combineServiceTypeAndServiceCodes(type, serviceCodes),
-    pageSize: DEFAULT_PAGE_SIZE,
+    pageSize: pageSize || DEFAULT_PAGE_SIZE,
     page: page || 1,
     sAddr: location && `${location.latLng.lat}, ${location.latLng.lng}`,
     limitType: distance && DEFAULT_LIMIT_TYPE,

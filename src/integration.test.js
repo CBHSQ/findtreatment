@@ -4,6 +4,7 @@
 
 import axios from 'axios';
 import qs from 'qs';
+
 import { buildParams } from './utils/api';
 import { DEFAULT_PAGE_SIZE, METERS_PER_MILE } from './utils/constants';
 
@@ -21,9 +22,10 @@ const send = query =>
   });
 
 const defaultQuery = {
-  distance: METERS_PER_MILE * 25,
+  distance: METERS_PER_MILE * 10,
+  pageSize: 100000, // Setting enormous default page size so we don't have to deal with pagination unless we want to!
   location: {
-    address: '',
+    // address: '',
     latLng: {
       // 98021
       lat: 47.7972338,
@@ -34,16 +36,18 @@ const defaultQuery = {
 
 describe('Integration Tests', () => {
   it('sorts by distance ascending', async () => {
-    const { data } = await send(defaultQuery);
+    const { data } = await send({
+      ...defaultQuery,
+      distance: null
+    });
 
     // Assert there are results
     expect(data.rows.length).toBeGreaterThan(0);
 
     // Assert the distances are in ascending order
-    const anyDecreases = data.rows.some((row, idx, array) => {
-      if (idx === 0) return false;
-      return row.miles < array[idx - 1].miles;
-    });
+    const anyDecreases = data.rows.some(
+      (row, idx, array) => idx > 0 && row.miles < array[idx - 1].miles
+    );
     expect(anyDecreases).toEqual(false);
   });
 
@@ -54,8 +58,10 @@ describe('Integration Tests', () => {
     expect(data.rows.length).toBeGreaterThan(0);
 
     // Assert the returned order matches `_irow` values
-    const rowMismatch = data.rows.some((row, idx) => idx + 1 !== row._irow);
-    expect(rowMismatch).toEqual(false);
+    const anyRowMismatches = data.rows.some(
+      (row, idx) => idx + 1 !== row._irow
+    );
+    expect(anyRowMismatches).toEqual(false);
   });
 
   it('respects distance radius', async () => {
@@ -87,6 +93,7 @@ describe('Integration Tests', () => {
     const firstPage = 1;
     const paginationQuery = {
       ...defaultQuery,
+      pageSize: DEFAULT_PAGE_SIZE,
       page: firstPage
     };
 
@@ -168,7 +175,7 @@ describe('Integration Tests', () => {
 
     // Assert the number returned is correct
     expect(lastPageData.rows.length).toEqual(
-      lastPageData.recordCount % DEFAULT_PAGE_SIZE
+      lastPageData.recordCount % DEFAULT_PAGE_SIZE || DEFAULT_PAGE_SIZE // Replaces 0 with the page size
     );
 
     // Assert the row ids are within the expected range
@@ -206,26 +213,200 @@ describe('Integration Tests', () => {
     expect(outOfRangePageData.rows).toHaveLength(0);
   });
 
-  /*
-    TODO - confirm what "working" means here
-  */
   it('handles 100+ mile radius', async () => {
     const { data: firstPageData } = await send({
       ...defaultQuery,
       distance: null
     });
 
-    const { data: lastPageData } = await send({
-      ...defaultQuery,
-      distance: null,
-      page: firstPageData.totalPages
-    });
-
     // Originally, I grabbed the absolute last record, but it did NOT have a miles attribute...
     // TODO - Verify this isn't the case in production????
     // Assert it is farther away than 100 miles
-    const lastLocation = lastPageData.rows[0];
+    const lastLocation = firstPageData.rows[firstPageData.rows.length - 1];
     expect(lastLocation.miles).toBeGreaterThan(100);
+  });
+
+  /*
+     It's too much to check every filter as the shape of the returned data does
+     not correspond to how we break down the filters. Lets just pick a few to
+     spot check individually and combined.
+  */
+  describe('filters', () => {
+    it('respects treatment type of `Detox`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        type: 'DT'
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'TC' &&
+            service.f3 !== 'Detoxification; Substance use treatment'
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects payment option of `Medicaid`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        payment: 'MD'
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'PAY' && !service.f3.split('; ').includes('Medicaid')
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects ages option of `18+`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        ages: 'ADLT'
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'AGE' && !service.f3.split('; ').includes('Adults')
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects languages option of `Spanish`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        language: 'SP-Spanish'
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'OL' && !service.f3.split('; ').includes('Spanish')
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects special programs option of `Veterans`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        special: ['VET']
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'SG' && !service.f3.split('; ').includes('Veterans')
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects special programs options of `Veterans` AND `LGBT`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        special: ['VET', 'GL']
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filters
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'SG' &&
+            (!service.f3.split('; ').includes('Veterans') ||
+              !service.f3
+                .split('; ')
+                .includes(
+                  'Lesbian, gay, bisexual, or transgender (LGBT) clients'
+                ))
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects medication-assisted treatment option of `Naltrexone`', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        mat: 'NU'
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filter
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            service.f2 === 'OT' &&
+            !service.f3.split('; ').includes('Naltrexone used in Treatment')
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
+
+    it('respects a handful of options', async () => {
+      const { data } = await send({
+        ...defaultQuery,
+        distance: METERS_PER_MILE * 25,
+        ages: 'ADLT',
+        mat: 'NU',
+        special: ['VET']
+      });
+
+      // Assert there is data
+      expect(data.rows.length).toBeGreaterThan(0);
+
+      // Assert all rows include the filters
+      const anyMissingFilter = data.rows.some(row =>
+        row.services.find(
+          service =>
+            (service.f2 === 'AGE' &&
+              !service.f3.split('; ').includes('Adults')) ||
+            (service.f2 === 'SG' &&
+              !service.f3.split('; ').includes('Veterans')) ||
+            (service.f2 === 'OT' &&
+              !service.f3.split('; ').includes('Naltrexone used in Treatment'))
+        )
+      );
+
+      expect(anyMissingFilter).toEqual(false);
+    });
   });
 });
 
