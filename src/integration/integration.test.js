@@ -1,10 +1,10 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import { buildParams } from './utils/api';
-import { DEFAULT_PAGE_SIZE, METERS_PER_MILE } from './utils/constants';
+import { buildParams } from '../utils/api';
+import { DEFAULT_PAGE_SIZE, METERS_PER_MILE } from '../utils/constants';
 
-const ENV = 'PROD';
+const ENDPOINT = process.env.INT_TEST_ENDPOINT || 'LOCAL';
 
 const endpoints = {
   DEV: 'https://kqszbed8ck.execute-api.us-east-1.amazonaws.com/prod/listing2',
@@ -21,7 +21,7 @@ const send = query =>
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(buildParams(query)),
-    url: endpoints[ENV]
+    url: endpoints[ENDPOINT]
   });
 
 const defaultQuery = {
@@ -237,7 +237,9 @@ describe('Integration Tests', () => {
     // Assert it is farther away than 100 miles
     // When testing locally, the absolute last record does not have a `miles` attributes
     const lastLocation =
-      lastPageData.rows[lastPageData.rows.length - (ENV === 'LOCAL' ? 2 : 1)];
+      lastPageData.rows[
+        lastPageData.rows.length - (ENDPOINT === 'LOCAL' ? 2 : 1)
+      ];
     expect(lastLocation.miles).toBeGreaterThan(100);
   });
 

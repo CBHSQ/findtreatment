@@ -62,6 +62,19 @@ Navigate to `http://localhost:3000/`.
 
 The app will automatically reload if you change any of the source files.
 
+### Running integration tests
+The tests in `src/integration/integration.test.js` hit the actual api endpoint and are rather resource intensive so they are not included in the suite of tests to run automatically on every build. They exist to make sure that api responses are consistent across endpoints. When running these tests, the desired endpoint should be specified with an environment variable, Ex:
+```
+INT_TEST_ENDPOINT=PROD npm run test:int
+```
+
+Acceptable values for `INT_TEST_ENDPOINT` are: 
+| Value | Endpoint | Is Default |
+| - | - | :-: |
+| `LOCAL` | http://localhost:9011/locator/listing | X |
+| `DEV` | https://kqszbed8ck.execute-api.us-east-1.amazonaws.com/prod/listing2 | |
+| `PROD` | https://findtreatment.samhsa.gov/locator/listing | |
+
 ### Contributing
 
 Though we're not actively soliciting contributions, we'll make our best effort to collaborate. That said, we cannot make any promises about having time to review, comment on, or accept pull requests.
