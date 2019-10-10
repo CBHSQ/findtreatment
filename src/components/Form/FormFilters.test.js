@@ -6,7 +6,6 @@ const testProps = {
   dispatch: jest.fn(),
   handleSubmit: jest.fn(),
   initialValues: {},
-  isDesktop: true,
   location: {},
   loading: false,
   recordCount: 0,
@@ -17,11 +16,7 @@ const testProps = {
 describe('FormFilters component', () => {
   describe('with an invalid location prop', () => {
     it('disables the submit button without a valid location', () => {
-      const props = {
-        ...testProps,
-        isDesktop: false
-      };
-      const component = shallow(<FormFilters {...props} />);
+      const component = shallow(<FormFilters {...testProps} />);
 
       expect(
         component
@@ -66,7 +61,6 @@ describe('FormFilters component', () => {
     it('shows an animation when loading results', () => {
       const props = {
         ...testProps,
-        isDesktop: false,
         loading: true
       };
       const component = shallow(<FormFilters {...props} />);
@@ -79,7 +73,6 @@ describe('FormFilters component', () => {
     it('hides animation once results have been retrieved', () => {
       const props = {
         ...testProps,
-        isDesktop: false,
         loading: false
       };
       const component = shallow(<FormFilters {...props} />);
