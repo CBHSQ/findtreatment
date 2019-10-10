@@ -64,7 +64,7 @@ class App extends Component {
           />
           <meta
             property="og:image"
-            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail.png`}
+            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail-small.png`}
           />
           <meta
             property="og:site_name"
