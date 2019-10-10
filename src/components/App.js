@@ -24,12 +24,24 @@ import Footer from './Footer';
 import { trackPage } from '../middleware/analytics.js';
 
 class App extends Component {
+  trackInDap = false;
+
+  track = (page, title) => {
+    // DAP is loaded before React and fires a pageview on load
+    // To avoid double counting, we send our _first_ pageview only to
+    // ReactGA
+    trackPage(this.trackInDap, page, title);
+    if (!this.trackInDap) {
+      this.trackInDap = true;
+    }
+  };
+
   render() {
     return (
       <ScreenContext.Provider value={this.props}>
         <Helmet
           onChangeClientState={newState =>
-            trackPage(window.location.pathname, newState.title)
+            this.track(window.location.pathname, newState.title)
           }
           titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
           defaultTitle={process.env.REACT_APP_SITE_TITLE}

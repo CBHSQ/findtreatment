@@ -8,10 +8,12 @@ const trackEvent = action => {
   });
 };
 
-export const trackPage = (page, title) => {
+export const trackPage = (dap, page, title) => {
   // Send virtual pageviews to both DAP and configured ReactGA endpoint
   ReactGA.pageview(page, null, title);
-  window.gas('send', 'pageview', page, title);
+  if (dap) {
+    window.gas('send', 'pageview', page, title);
+  }
 };
 
 let currentPage = '';
