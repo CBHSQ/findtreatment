@@ -33,9 +33,16 @@ export class MapContainer extends Component {
   };
 
   onReady = (_, map) => {
-    // Add title to google map iframe
     window.google.maps.event.addListenerOnce(map, 'idle', () => {
-      document.getElementsByTagName('iframe')[0].title = 'Google Maps';
+      const iframe = document.getElementsByTagName('iframe')[0];
+      iframe.title = 'Google Maps';
+      iframe.setAttribute('tabindex', '-1');
+
+      const innerDiv = document.getElementsByClassName('gm-style-pbc')[0];
+      innerDiv.parentElement.removeAttribute('tabindex');
+
+      const wrapper = document.getElementsByClassName('map-wrapper')[0];
+      wrapper.setAttribute('tabindex', '0');
     });
   };
 
@@ -56,6 +63,12 @@ export class MapContainer extends Component {
         streetViewControl={false}
         onReady={this.onReady}
         onClick={this.onMapClicked}
+        className="map-wrapper"
+        css={`
+          appearance: textfield;
+          -moz-appearance: textfield;
+          -webkit-appearance: textfield;
+        `}
       >
         <Marker name={name1} onClick={this.onMarkerClick} />
 

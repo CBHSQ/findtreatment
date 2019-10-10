@@ -38,7 +38,8 @@
     "dev": "npm install && npm run start",
     "start": "npm run tailwind:css && react-scripts start",
     "build": "npm run tailwind:css && react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --testPathIgnorePatterns='<rootDir>/src/integration/'",
+    "test:int": "react-scripts test -t 'Integration Tests'",
     "eject": "react-scripts eject",
     "tailwind:css": "tailwind build src/css/tailwind.src.css -c src/tailwind.js -o src/tailwind.css",
     "federalist": "npm run build && PUBLIC_URL=$BASEURL react-snap",
@@ -72,12 +73,12 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "eslint-config-prettier": "^5.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
     "react-axe": "^3.3.0",
-    "react-test-renderer": "^16.9.0"
+    "react-test-renderer": "^16.10.2"
   },
   "reactSnap": {
     "puppeteerArgs": [
