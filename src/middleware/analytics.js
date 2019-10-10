@@ -1,7 +1,5 @@
 import ReactGA from 'react-ga';
 
-const options = {};
-
 const trackEvent = action => {
   ReactGA.event({
     category: `Form: ${action.meta.form}`,
@@ -10,12 +8,12 @@ const trackEvent = action => {
   });
 };
 
-const trackPage = page => {
-  ReactGA.set({
-    page,
-    ...options
-  });
-  ReactGA.pageview(page);
+export const trackPage = (dap, page, title) => {
+  // Send virtual pageviews to both DAP and configured ReactGA endpoint
+  ReactGA.pageview(page, null, title);
+  if (dap) {
+    window.gas('send', 'pageview', page, title);
+  }
 };
 
 let currentPage = '';
@@ -24,8 +22,6 @@ export const analytics = store => next => action => {
   if (action.type === '@@router/LOCATION_CHANGE') {
     const nextPage = `${action.payload.location.pathname}${action.payload.location.search}`;
     if (currentPage !== nextPage) {
-      currentPage = nextPage;
-      trackPage(nextPage);
       window.CE_SNAPSHOT_NAME = 'findtreatmentbeta: ' + nextPage;
     }
   }

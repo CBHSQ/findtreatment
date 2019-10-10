@@ -20,7 +20,8 @@ if (process.env.NODE_ENV !== 'production') {
 ReactGA.initialize(
   process.env.REACT_APP_BRANCH === process.env.REACT_APP_PROD_BRANCH
     ? process.env.REACT_APP_PROD_GA_TRACKING_ID
-    : process.env.REACT_APP_DEV_GA_TRACKING_ID
+    : process.env.REACT_APP_DEV_GA_TRACKING_ID,
+  { debug: process.env.REACT_APP_LOCAL_ANALYTICS_TESTING }
 );
 
 const store = configureStore({}, history);
