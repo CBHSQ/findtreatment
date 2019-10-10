@@ -14,7 +14,7 @@ import {
   formatAddress
 } from '../utils/misc';
 
-import MapStatic from './Map/MapStatic';
+import MapLeafletStatic from './Map/MapLeafletStatic';
 
 const StyledList = styled.ul`
   li:not(:last-child):not(:first-child):after {
@@ -105,7 +105,7 @@ const Card = props => {
       </Link>
       <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6`}>
         <div css={tw`w-1/4 px-2`}>
-          <MapStatic
+          <MapLeafletStatic
             address={address}
             name1={name1}
             latitude={latitude}
