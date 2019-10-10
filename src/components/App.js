@@ -21,12 +21,16 @@ import Content from './Content';
 import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
+import { trackPage } from '../middleware/analytics.js';
 
 class App extends Component {
   render() {
     return (
       <ScreenContext.Provider value={this.props}>
         <Helmet
+          onChangeClientState={newState =>
+            trackPage(window.location.pathname, newState.title)
+          }
           titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
         >
