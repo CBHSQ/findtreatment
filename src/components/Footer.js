@@ -48,6 +48,14 @@ const Footer = () => {
               <ul css={tw`mb-6`}>
                 <li>
                   <OutboundLink
+                    to="https://findtreatment.samhsa.gov"
+                    eventLabel="Link back to findtreatment.samhsa.gov from footer"
+                  >
+                    Behavioral Health Treatment Services Locator
+                  </OutboundLink>
+                </li>
+                <li>
+                  <OutboundLink
                     to="https://www.samhsa.gov/medication-assisted-treatment/practitioner-program-data/treatment-practitioner-locator"
                     eventLabel="Buprenorphine practitioners link from footer"
                   >
