@@ -21,10 +21,6 @@ import Footer from './Footer';
 import { trackPage } from '../middleware/analytics.js';
 
 class App extends Component {
-  state = {
-    mounted: false
-  };
-
   trackInDap = false;
 
   track = (page, title) => {
@@ -36,10 +32,6 @@ class App extends Component {
       this.trackInDap = true;
     }
   };
-
-  componentDidMount() {
-    this.setState({ mounted: true });
-  }
 
   render() {
     return (
