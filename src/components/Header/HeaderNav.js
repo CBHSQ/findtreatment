@@ -7,7 +7,6 @@ import { slide as Menu } from 'react-burger-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
-import ScreenContext from '../ScreenContext';
 import HeaderHelpLine from './HeaderHelpLine';
 
 const StyledLink = styled(NavLink)`
@@ -111,53 +110,48 @@ export class HeaderNav extends Component {
   );
 
   render() {
-    const { isDesktop } = this.context;
     const { location } = this.props;
 
     return (
       <>
-        {isDesktop ? (
-          <nav css={tw`w-full text-sm flex mt-4`}>
-            {links.slice(1).map(this.renderDesktopLink)}
-            {location.pathname !== '/' && (
-              <div css={tw`hidden lg:block w-full flex-grow text-right`}>
-                <button
-                  onClick={() => window.print()}
-                  css={tw`text-gray text-sm pb-2`}
-                >
-                  <FontAwesomeIcon
-                    icon={faPrint}
-                    css={tw`fill-current w-4 h-4 mr-1`}
-                  />
-                  Print
-                </button>
-              </div>
-            )}
-          </nav>
-        ) : (
-          <StyledMenu>
-            <Menu
-              right
-              disableAutoFocus
-              isOpen={this.state.menuOpen}
-              onStateChange={state => this.handleStateChange(state)}
-            >
-              <div>
-                <div css={tw`h-full flex flex-col justify-between`}>
-                  <div css={tw`p-4`}>{links.map(this.renderMobileLink)}</div>
-                  <div>
-                    <HeaderHelpLine />
-                  </div>
+        <nav css={tw`w-full text-sm mt-4 hidden lg:flex`}>
+          {links.slice(1).map(this.renderDesktopLink)}
+          {location.pathname !== '/' && (
+            <div css={tw`hidden lg:block w-full flex-grow text-right`}>
+              <button
+                onClick={() => window.print()}
+                css={tw`text-gray text-sm pb-2`}
+              >
+                <FontAwesomeIcon
+                  icon={faPrint}
+                  css={tw`fill-current w-4 h-4 mr-1`}
+                />
+                Print
+              </button>
+            </div>
+          )}
+        </nav>
+        <StyledMenu css={tw`lg:hidden`}>
+          <Menu
+            right
+            disableAutoFocus
+            isOpen={this.state.menuOpen}
+            onStateChange={state => this.handleStateChange(state)}
+          >
+            <div>
+              <div css={tw`h-full flex flex-col justify-between`}>
+                <div css={tw`p-4`}>{links.map(this.renderMobileLink)}</div>
+                <div>
+                  <HeaderHelpLine />
                 </div>
               </div>
-            </Menu>
-          </StyledMenu>
-        )}
+            </div>
+          </Menu>
+        </StyledMenu>
       </>
     );
   }
 }
-HeaderNav.contextType = ScreenContext;
 
 HeaderNav.propTypes = {
   location: PropTypes.object.isRequired

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import 'styled-components/macro';
+import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import { Helmet } from 'react-helmet';
 import deepEqual from 'deep-equal';
-
 import {
   destroyFacilities,
   handleReceiveFacilities
 } from '../../actions/facilities';
-import ScreenContext from '../ScreenContext';
 import { METERS_PER_MILE } from '../../utils/constants';
+import { theme } from '../../tailwind.js';
 
 import Error from '../Error';
 import ResultsList from './ResultsList';
@@ -22,6 +21,18 @@ import FilterToggle from './FilterToggle';
 import Loading from '../Loading';
 import NoLocation from './NoLocation';
 import NoResults from './NoResults';
+
+const DesktopOnlyUnless = styled.div`
+  ${props => props.show || tw`hidden`}
+
+  @media(min-width: ${theme.screens.lg}) {
+    display: initial;
+  }
+`;
+
+const isDesktop = () =>
+  Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
+  Number(theme.screens.lg.replace('px', ''));
 
 export class Results extends Component {
   state = {
@@ -60,7 +71,6 @@ export class Results extends Component {
 
   submit = values => {
     const { dispatch } = this.props;
-    const { isDesktop } = this.context;
 
     if (deepEqual(values, this.previousValues)) return;
 
@@ -68,7 +78,7 @@ export class Results extends Component {
       this.previousValues = values;
       dispatch(handleReceiveFacilities(values));
 
-      if (isDesktop) {
+      if (isDesktop()) {
         window.scrollTo(0, 0);
       }
     }
@@ -77,7 +87,6 @@ export class Results extends Component {
   render() {
     const { distance, loading, location, error, data, hasResults } = this.props;
     const { rows, page, totalPages, recordCount } = data;
-    const { isDesktop } = this.context;
     const { filtersHidden } = this.state;
 
     if (error) {
@@ -93,27 +102,22 @@ export class Results extends Component {
       mainContent = <NoResults />;
     } else {
       mainContent = (
-        <>
-          {(isDesktop || filtersHidden) && (
-            <>
-              <div css={tw`mb-4`}>
-                <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
-                  Showing{' '}
-                  <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
-                  within {distance ? distance / METERS_PER_MILE : '100+'} miles
-                  of {location.address}
-                </h1>
-              </div>
-              <ResultsList
-                loading={loading}
-                rows={rows}
-                page={page}
-                totalPages={totalPages}
-                recordCount={recordCount}
-              />
-            </>
-          )}
-        </>
+        <DesktopOnlyUnless show={filtersHidden}>
+          <div css={tw`mb-4`}>
+            <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
+              Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
+              within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
+              {location.address}
+            </h1>
+          </div>
+          <ResultsList
+            loading={loading}
+            rows={rows}
+            page={page}
+            totalPages={totalPages}
+            recordCount={recordCount}
+          />
+        </DesktopOnlyUnless>
       );
     }
 
@@ -132,24 +136,26 @@ export class Results extends Component {
               content="Search for state-licensed treatment near you for addiction and substance use disorder."
             />
           </Helmet>
-          {!isDesktop && (
+
+          <div css={tw`lg:hidden`}>
             <FilterToggle
               filtersHidden={filtersHidden}
               loading={loading}
               toggleFilters={this.toggleFilters}
             />
-          )}
+          </div>
+
           <div css={tw`flex flex-wrap -mx-4`}>
-            {(isDesktop || !filtersHidden) && (
-              <div css={tw`w-full lg:w-1/3 px-4  mb-6 lg:mb-0 print:hidden`}>
-                <FormFilters
-                  onSubmit={this.submit}
-                  isDesktop={isDesktop}
-                  toggleFilters={this.toggleFilters}
-                  recordCount={recordCount}
-                />
-              </div>
-            )}
+            <DesktopOnlyUnless
+              show={!filtersHidden}
+              css={tw`w-full lg:w-1/3 px-4 mb-6 lg:mb-0 print:hidden`}
+            >
+              <FormFilters
+                onSubmit={this.submit}
+                toggleFilters={this.toggleFilters}
+                recordCount={recordCount}
+              />
+            </DesktopOnlyUnless>
             <div css={tw`w-full lg:w-2/3 px-4`}>{mainContent}</div>
           </div>
         </div>
@@ -160,7 +166,6 @@ export class Results extends Component {
     );
   }
 }
-Results.contextType = ScreenContext;
 
 Results.propTypes = {
   distance: PropTypes.number,
@@ -170,10 +175,6 @@ Results.propTypes = {
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
   hasResults: PropTypes.bool.isRequired
-};
-
-Results.contextTypes = {
-  isDesktop: PropTypes.bool
 };
 
 const selector = formValueSelector('filters');

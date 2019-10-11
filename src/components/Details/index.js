@@ -16,7 +16,6 @@ import { reportFacility } from '../../actions/facilities';
 import { removeHttp } from '../../utils/misc';
 import { servicesOrder } from '../../utils/services';
 
-import ScreenContext from '../ScreenContext';
 import Error from '../Error';
 import NoMatch from '../NoMatch';
 import Loading from '../Loading';
@@ -45,6 +44,10 @@ const StyledMasonaryGrid = styled.div`
     }
   }
 `;
+
+const isTablet = () =>
+  Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
+  Number(theme.screens.md.replace('px', ''));
 
 export class Details extends Component {
   componentDidMount() {
@@ -94,7 +97,6 @@ export class Details extends Component {
   render() {
     const { loading, error, data, isInternalLink, isReported } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
-    const { isTablet } = this.context;
 
     if (error) {
       return <Error />;
@@ -162,7 +164,7 @@ export class Details extends Component {
               >
                 <Button
                   forwardedAs={OutboundLink}
-                  primary={!isTablet}
+                  primary={!isTablet()}
                   eventLabel="Facility phone link from card"
                   to={`tel:${phone}`}
                   css={tw`w-full md:w-auto md:text-gray-darkest`}
@@ -243,7 +245,6 @@ export class Details extends Component {
     );
   }
 }
-Details.contextType = ScreenContext;
 
 Details.propTypes = {
   data: PropTypes.object.isRequired,

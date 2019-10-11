@@ -30,13 +30,17 @@ const Button = styled(
   ${props =>
     props.gradient && {
       ...tw`border border-gray-light shadow text-gray-dark`,
-      background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
+      background: `linear-gradient(${props.theme.colors.white},${props.theme.colors.gray.lightest})`
     }}
 
   ${props => props.disabled && tw`opacity-50 cursor-not-allowed`}
 
   ${props => props.link && tw`text-blue hover:text-blue p-0`}
 `;
+
+Button.defaultProps = {
+  theme
+};
 
 Button.propTypes = {
   as: PropTypes.func,
@@ -46,7 +50,8 @@ Button.propTypes = {
   outline: PropTypes.bool,
   gradient: PropTypes.bool,
   disabled: PropTypes.bool,
-  link: PropTypes.bool
+  link: PropTypes.bool,
+  theme: PropTypes.object.isRequired
 };
 
 export default Button;

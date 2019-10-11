@@ -8,6 +8,7 @@ import ReactGA from 'react-ga';
 import ScrollToTop from './components/ScrollToTop';
 import configureStore, { history } from './store';
 import App from './components/App';
+import { hydrate, render } from 'react-dom';
 
 import './tailwind.css';
 import 'typeface-roboto-condensed';
@@ -26,13 +27,27 @@ ReactGA.initialize(
 
 const store = configureStore({}, history);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <ScrollToTop>
-        <App />
-      </ScrollToTop>
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root');
+if (rootElement.hasChildNodes()) {
+  hydrate(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </ConnectedRouter>
+    </Provider>,
+    rootElement
+  );
+} else {
+  render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </ConnectedRouter>
+    </Provider>,
+    rootElement
+  );
+}
