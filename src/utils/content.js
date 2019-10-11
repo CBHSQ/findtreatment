@@ -273,7 +273,7 @@ export default () => [
             <h3>What should I know before I call?</h3>
             <p>
               When you call, facility staff will ask questions about yourself.
-              You can ask questions too - it’s important to make sure the
+              You can ask questions too. It’s important to make sure the
               services and facility are a good fit for you.
             </p>
             <p>
@@ -511,7 +511,7 @@ export default () => [
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
               “we don’t do substance abuse treatment” or “mental health isn’t
-              covered” — if they do, they’re breaking the law.
+              covered." If they do this, they’re breaking the law.
             </p>
             <p>
               If you’ve been denied coverage for treatment, this{' '}
@@ -667,13 +667,13 @@ export default () => [
         name: 'Addiction can affect anyone',
         id: 'addiction-can-affect-anyone',
         metaDescription:
-          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
+          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin; it has no bias.",
         body: (
           <>
             <p>
               People from all backgrounds experience addiction. Addiction
               doesn't care how old you are, how much money you make, or the
-              color of your skin - it has no bias. While the initial choice to
+              color of your skin; it has no bias. While the initial choice to
               use a drug is often voluntary, the powerful effects of addiction
               makes it very hard to stop, even if someone wants to.
             </p>
