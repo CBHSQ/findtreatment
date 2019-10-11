@@ -1,7 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../tailwind.js';
 
 import { Results } from './';
+
+const options = {
+  wrappingComponent: ThemeProvider,
+  wrappingComponentProps: { theme }
+};
 
 const testProps = {
   location: {},
@@ -9,13 +16,14 @@ const testProps = {
   loading: false,
   error: false,
   data: {},
-  hasResults: false
+  hasResults: false,
+  theme
 };
 
 describe('Results component', () => {
   describe('on mobile', () => {
     it('should expand filters by default if no location is set', () => {
-      const component = shallow(<Results {...testProps} />);
+      const component = shallow(<Results {...testProps} />, options);
 
       expect(component.exists('Connect(ReduxForm)')).toBe(true);
     });
@@ -26,7 +34,7 @@ describe('Results component', () => {
         ...testProps,
         location: { latLng: {} }
       };
-      const component = shallow(<Results {...props} />);
+      const component = shallow(<Results {...props} />, options);
 
       expect(component.exists('Connect(ReduxForm)')).toBe(false);
     });
