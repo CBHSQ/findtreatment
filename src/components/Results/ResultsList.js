@@ -8,6 +8,9 @@ import Card from '../Card';
 import Pagination from './Pagination';
 
 export class ResultsList extends Component {
+  componentDidMount() {
+    console.log('I MOUNT');
+  }
   render() {
     const { rows, page, totalPages } = this.props;
 

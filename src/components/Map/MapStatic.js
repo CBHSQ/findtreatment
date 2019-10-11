@@ -6,6 +6,7 @@ import { OutboundLink } from 'react-ga';
 
 import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
 import { formatMiles, googleMapUrl } from '../../utils/misc';
+import placeholder from '../../images/placeholder.png';
 
 export class MapStatic extends Component {
   render() {
@@ -23,6 +24,7 @@ export class MapStatic extends Component {
           src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
           alt={`Google map for ${name1}`}
           css={tw`w-full`}
+          onError={e => (e.target.src = placeholder)}
         />
         <div
           css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
