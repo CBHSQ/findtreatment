@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withTheme } from 'styled-components';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { PropTypes } from 'prop-types';
@@ -11,7 +12,6 @@ import {
   handleReceiveFacilities
 } from '../../actions/facilities';
 import { METERS_PER_MILE } from '../../utils/constants';
-import { theme } from '../../tailwind.js';
 
 import Error from '../Error';
 import ResultsList from './ResultsList';
@@ -25,14 +25,10 @@ import NoResults from './NoResults';
 const DesktopOnlyUnless = styled.div`
   ${props => props.show || tw`hidden`}
 
-  @media(min-width: ${theme.screens.lg}) {
+  @media(min-width: ${props => props.theme.screens.lg}) {
     display: initial;
   }
 `;
-
-const isDesktop = () =>
-  Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
-  Number(theme.screens.lg.replace('px', ''));
 
 export class Results extends Component {
   state = {
@@ -78,11 +74,15 @@ export class Results extends Component {
       this.previousValues = values;
       dispatch(handleReceiveFacilities(values));
 
-      if (isDesktop()) {
+      if (this.isDesktop()) {
         window.scrollTo(0, 0);
       }
     }
   };
+
+  isDesktop = () =>
+    Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
+    Number(this.props.theme.screens.lg.replace('px', ''));
 
   render() {
     const { distance, loading, location, error, data, hasResults } = this.props;
@@ -174,7 +174,8 @@ Results.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
-  hasResults: PropTypes.bool.isRequired
+  hasResults: PropTypes.bool.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 const selector = formValueSelector('filters');
@@ -194,4 +195,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Results);
+export default connect(mapStateToProps)(withTheme(Results));
