@@ -11,12 +11,16 @@ import { formatMiles, googleMapUrl } from '../../utils/misc';
 
 export class MapStatic extends Component {
   state = {
-    imageError: false
+    imageLoaded: false
+  };
+
+  setImageLoaded = () => {
+    this.setState({ imageLoaded: true });
   };
 
   render() {
     const { address, name1, latitude, longitude, miles } = this.props;
-    const { imageError } = this.state;
+    const { imageLoaded } = this.state;
 
     return (
       <OutboundLink
@@ -26,7 +30,14 @@ export class MapStatic extends Component {
         rel="noopener noreferrer"
         aria-label={`Driving directions for ${name1}`}
       >
-        {imageError ? (
+        <img
+          src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+          alt={`Google map for ${name1}`}
+          css={tw`w-full`}
+          style={{ display: imageLoaded || 'none' }}
+          onLoad={this.setImageLoaded}
+        />
+        {imageLoaded || (
           <div
             css={tw`flex items-center justify-center w-full bg-gray-lighter`}
             style={{ height: '113px' }}
@@ -37,13 +48,6 @@ export class MapStatic extends Component {
               css={tw`text-blue-light`}
             />
           </div>
-        ) : (
-          <img
-            src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-            alt={`Google map for ${name1}`}
-            css={tw`w-full`}
-            onError={e => this.setState({ imageError: true })}
-          />
         )}
         <div
           css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
