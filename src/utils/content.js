@@ -536,7 +536,7 @@ export default () => [
               website and ask about coverage for substance abuse.
             </p>
             <p>
-              You’ll likely have a <strong>deductible</strong> — a specific
+              You’ll likely have a <strong>deductible</strong>, a specific
               amount of money you’ll need to pay out-of-pocket before your
               benefits start covering costs. Find out how much that deductible
               is and how much you’ve already paid towards it for the year. Any
@@ -590,7 +590,7 @@ export default () => [
               You’ll need an <strong>estimate of your annual income</strong> and
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
-              much you make — get as close as you can, and don’t worry if it’s
+              much you make, just get as close as you can, and don’t worry if it’s
               not perfect. (See what counts as income on{' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 healthcare.gov.
@@ -621,8 +621,8 @@ export default () => [
               </li>
               <li>
                 Have a <strong>qualifying life event</strong>. For 60 days after
-                a major change in your life — like having a baby, getting
-                married or divorced, or getting U.S. citizenship — you’re
+                a major change in your life, like having a baby, getting
+                married or divorced, or getting U.S. citizenship, you’re
                 eligible to sign up for new insurance.
                 <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
                   {' '}
@@ -646,7 +646,7 @@ export default () => [
               Some individual treatment facilities offer{' '}
               <strong>grants or scholarships</strong> to help offset the cost of
               attending. Not all of these will cover your whole stay, though,
-              and many will revoke funding if you don’t complete their program —
+              and many will revoke funding if you don’t complete their program, 
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
