@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { OutboundLink } from 'react-ga';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
 import { formatMiles, googleMapUrl } from '../../utils/misc';
-import placeholder from '../../images/placeholder.png';
 
 export class MapStatic extends Component {
+  state = {
+    imageError: false
+  };
+
   render() {
     const { address, name1, latitude, longitude, miles } = this.props;
+    const { imageError } = this.state;
 
     return (
       <OutboundLink
@@ -20,12 +26,25 @@ export class MapStatic extends Component {
         rel="noopener noreferrer"
         aria-label={`Driving directions for ${name1}`}
       >
-        <img
-          src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
-          alt={`Google map for ${name1}`}
-          css={tw`w-full`}
-          onError={e => (e.target.src = placeholder)}
-        />
+        {imageError ? (
+          <div
+            css={tw`flex items-center justify-center w-full bg-gray-lighter`}
+            style={{ height: '113px' }}
+          >
+            <FontAwesomeIcon
+              icon={faMapMarkedAlt}
+              size="4x"
+              css={tw`text-blue-light`}
+            />
+          </div>
+        ) : (
+          <img
+            src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+            alt={`Google map for ${name1}`}
+            css={tw`w-full`}
+            onError={e => this.setState({ imageError: true })}
+          />
+        )}
         <div
           css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
           className="map-static-miles"
