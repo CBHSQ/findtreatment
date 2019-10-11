@@ -5,10 +5,12 @@ import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
+import { ThemeProvider } from 'styled-components';
 import ScrollToTop from './components/ScrollToTop';
 import configureStore, { history } from './store';
 import App from './components/App';
-
+import { hydrate, render } from 'react-dom';
+import { theme } from './tailwind.js';
 import './tailwind.css';
 import 'typeface-roboto-condensed';
 
@@ -26,13 +28,21 @@ ReactGA.initialize(
 
 const store = configureStore({}, history);
 
-ReactDOM.render(
+const Root = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <ScrollToTop>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </ScrollToTop>
     </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
+
+const rootElement = document.getElementById('root');
+if (rootElement.hasChildNodes()) {
+  hydrate(Root, rootElement);
+} else {
+  render(Root, rootElement);
+}

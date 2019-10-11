@@ -273,7 +273,7 @@ export default () => [
             <h3>What should I know before I call?</h3>
             <p>
               When you call, facility staff will ask questions about yourself.
-              You can ask questions too - it’s important to make sure the
+              You can ask questions too. It’s important to make sure the
               services and facility are a good fit for you.
             </p>
             <p>
@@ -511,7 +511,7 @@ export default () => [
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
               “we don’t do substance abuse treatment” or “mental health isn’t
-              covered” — if they do, they’re breaking the law.
+              covered." If they do this, they’re breaking the law.
             </p>
             <p>
               If you’ve been denied coverage for treatment, this{' '}
@@ -536,7 +536,7 @@ export default () => [
               website and ask about coverage for substance abuse.
             </p>
             <p>
-              You’ll likely have a <strong>deductible</strong> — a specific
+              You’ll likely have a <strong>deductible</strong>, a specific
               amount of money you’ll need to pay out-of-pocket before your
               benefits start covering costs. Find out how much that deductible
               is and how much you’ve already paid towards it for the year. Any
@@ -551,7 +551,7 @@ export default () => [
             </p>
             <p>
               Just as with other kinds of medical care, you may have a{' '}
-              <strong>co-pay</strong> — a small amount of money you need to pay
+              <strong>co-pay</strong>, a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
@@ -590,7 +590,7 @@ export default () => [
               You’ll need an <strong>estimate of your annual income</strong> and
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
-              much you make — get as close as you can, and don’t worry if it’s
+              much you make, just get as close as you can, and don’t worry if it’s
               not perfect. (See what counts as income on{' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 healthcare.gov.
@@ -621,8 +621,8 @@ export default () => [
               </li>
               <li>
                 Have a <strong>qualifying life event</strong>. For 60 days after
-                a major change in your life — like having a baby, getting
-                married or divorced, or getting U.S. citizenship — you’re
+                a major change in your life, like having a baby, getting
+                married or divorced, or getting U.S. citizenship, you’re
                 eligible to sign up for new insurance.
                 <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
                   {' '}
@@ -646,7 +646,7 @@ export default () => [
               Some individual treatment facilities offer{' '}
               <strong>grants or scholarships</strong> to help offset the cost of
               attending. Not all of these will cover your whole stay, though,
-              and many will revoke funding if you don’t complete their program —
+              and many will revoke funding if you don’t complete their program, 
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
@@ -667,13 +667,13 @@ export default () => [
         name: 'Addiction can affect anyone',
         id: 'addiction-can-affect-anyone',
         metaDescription:
-          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
+          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin; it has no bias.",
         body: (
           <>
             <p>
               People from all backgrounds experience addiction. Addiction
               doesn't care how old you are, how much money you make, or the
-              color of your skin - it has no bias. While the initial choice to
+              color of your skin; it has no bias. While the initial choice to
               use a drug is often voluntary, the powerful effects of addiction
               makes it very hard to stop, even if someone wants to.
             </p>

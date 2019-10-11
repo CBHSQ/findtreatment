@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
-import { PropTypes } from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
-import withSizes from 'react-sizes';
 import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import { theme } from '../tailwind.js';
 import { TOP_ID } from '../utils/constants';
 
 import ScreenContext from './ScreenContext';
@@ -67,7 +64,7 @@ class App extends Component {
           />
           <meta
             property="og:image"
-            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail.png`}
+            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail-small.png`}
           />
           <meta
             property="og:site_name"
@@ -99,14 +96,4 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  isDesktop: PropTypes.bool.isRequired,
-  isTablet: PropTypes.bool.isRequired
-};
-
-const mapSizesToProps = ({ width }) => ({
-  isDesktop: width >= parseInt(theme.screens.lg, 10),
-  isTablet: width >= parseInt(theme.screens.md, 10)
-});
-
-export default withRouter(withSizes(mapSizesToProps)(App));
+export default withRouter(App);

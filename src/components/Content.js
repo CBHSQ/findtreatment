@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 import { withRouter, NavLink, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import { theme } from '../tailwind.js';
 import content from '../utils/content';
 
 import NoMatch from './NoMatch';
@@ -46,7 +45,7 @@ const Main = styled.div`
     ${tw`text-lg`}
   }
 
-  @media (min-width: ${theme.screens.lg}) {
+  @media (min-width: ${props => props.theme.screens.lg}) {
     h1 {
       ${tw`text-4xl`}
     }
