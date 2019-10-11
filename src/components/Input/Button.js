@@ -3,8 +3,6 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 
-import { theme } from '../../tailwind.js';
-
 const Button = styled(
   ({ as, children, primary, secondary, outline, gradient, link, ...rest }) =>
     as ? (
@@ -30,7 +28,7 @@ const Button = styled(
   ${props =>
     props.gradient && {
       ...tw`border border-gray-light shadow text-gray-dark`,
-      background: `linear-gradient(${theme.colors.white},${theme.colors.gray.lightest})`
+      background: `linear-gradient(${props.theme.colors.white},${props.theme.colors.gray.lightest})`
     }}
 
   ${props => props.disabled && tw`opacity-50 cursor-not-allowed`}

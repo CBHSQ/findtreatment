@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import qs from 'qs';
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,13 +11,11 @@ import { OutboundLink } from 'react-ga';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
 
-import { theme } from '../../tailwind.js';
 import { handleReceiveFacility, destroyFacility } from '../../actions/facility';
 import { reportFacility } from '../../actions/facilities';
 import { removeHttp } from '../../utils/misc';
 import { servicesOrder } from '../../utils/services';
 
-import ScreenContext from '../ScreenContext';
 import Error from '../Error';
 import NoMatch from '../NoMatch';
 import Loading from '../Loading';
@@ -91,10 +90,20 @@ export class Details extends Component {
     </div>
   );
 
+  isTablet = () =>
+    Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
+    Number(this.props.theme.screens.md.replace('px', ''));
+
   render() {
-    const { loading, error, data, isInternalLink, isReported } = this.props;
+    const {
+      loading,
+      error,
+      data,
+      isInternalLink,
+      isReported,
+      theme
+    } = this.props;
     const hasResult = data && Object.keys(data).length > 0;
-    const { isTablet } = this.context;
 
     if (error) {
       return <Error />;
@@ -162,7 +171,7 @@ export class Details extends Component {
               >
                 <Button
                   forwardedAs={OutboundLink}
-                  primary={!isTablet}
+                  primary={!this.isTablet()}
                   eventLabel="Facility phone link from card"
                   to={`tel:${phone}`}
                   css={tw`w-full md:w-auto md:text-gray-darkest`}
@@ -243,7 +252,6 @@ export class Details extends Component {
     );
   }
 }
-Details.contextType = ScreenContext;
 
 Details.propTypes = {
   data: PropTypes.object.isRequired,
@@ -256,7 +264,8 @@ Details.propTypes = {
   destroyFacility: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -299,4 +308,4 @@ const mapStateToProps = ({ facility, facilities }, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Details);
+)(withTheme(Details));

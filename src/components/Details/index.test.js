@@ -1,10 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../tailwind.js';
 
-import { Details } from './';
 import Error from '../Error';
 import NoMatch from '../NoMatch';
 import Loading from '../Loading';
+import { Details } from './';
+
+const options = {
+  wrappingComponent: ThemeProvider,
+  wrappingComponentProps: { theme }
+};
 
 const testProps = {
   data: {
@@ -42,7 +49,8 @@ const testProps = {
   location: {},
   match: { params: {} },
   history: {},
-  frid: '12628952a59ffa4ab1ceed0db7c391715eabda9ab1b16745651dffc917af7602'
+  frid: '12628952a59ffa4ab1ceed0db7c391715eabda9ab1b16745651dffc917af7602',
+  theme
 };
 
 describe('Details component', () => {
@@ -51,7 +59,7 @@ describe('Details component', () => {
       ...testProps,
       error: true
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
     expect(component.find(Error).length).toBe(1);
   });
 
@@ -60,7 +68,7 @@ describe('Details component', () => {
       ...testProps,
       loading: true
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
     expect(component.find(Loading).length).toBe(1);
   });
 
@@ -69,7 +77,7 @@ describe('Details component', () => {
       ...testProps,
       data: {}
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
     expect(component.find(NoMatch).length).toBe(1);
   });
 
@@ -79,7 +87,7 @@ describe('Details component', () => {
       ...testProps,
       reportFacility: reportFn
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
     const reporttBtn = component.find('.report-facility');
 
     reporttBtn.simulate('click');
@@ -92,13 +100,13 @@ describe('Details component', () => {
       ...testProps,
       isInternalLink: true
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
 
     expect(component.find('.back-link').length).toBe(1);
   });
 
   it('hides back link if accessing facility directly', () => {
-    const component = shallow(<Details {...testProps} />);
+    const component = shallow(<Details {...testProps} />, options);
 
     expect(component.find('.back-link').length).toBe(0);
   });
@@ -108,7 +116,7 @@ describe('Details component', () => {
       ...testProps,
       isReported: true
     };
-    const component = shallow(<Details {...props} />);
+    const component = shallow(<Details {...props} />, options);
 
     expect(component.find('.report-facility').length).toBe(0);
   });
