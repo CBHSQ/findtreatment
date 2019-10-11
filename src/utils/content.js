@@ -551,7 +551,7 @@ export default () => [
             </p>
             <p>
               Just as with other kinds of medical care, you may have a{' '}
-              <strong>co-pay</strong> — a small amount of money you need to pay
+              <strong>co-pay</strong>, a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
