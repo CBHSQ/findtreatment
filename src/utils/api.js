@@ -1,4 +1,6 @@
 import axios from 'axios';
+import ReactGA from 'react-ga';
+
 import {
   DEFAULT_PAGE_SIZE,
   DEFAULT_LIMIT_TYPE,
@@ -14,6 +16,16 @@ export default axios.create({
     : 'http://localhost:9011/locator/listing',
   responseType: 'json'
 });
+
+export const reportFailure = error => {
+  if (error) {
+    ReactGA.event({
+      category: `Search`,
+      action: `Fail`,
+      label: error.message
+    });
+  }
+};
 
 export const buildParams = query => {
   const {

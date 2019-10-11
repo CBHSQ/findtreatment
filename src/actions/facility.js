@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import API from '../utils/api';
+import API, { reportFailure } from '../utils/api';
 import { DEFAULT_STYPE } from '../utils/constants';
 
 export const RECEIVE_FACILITY_BEGIN = 'RECEIVE_FACILITY_BEGIN';
@@ -23,6 +23,7 @@ export const receiveFacilitySuccess = (data, frid) => {
 };
 
 export const receiveFacilityFailure = error => {
+  reportFailure(error);
   return {
     type: RECEIVE_FACILITY_FAILURE
   };
@@ -58,11 +59,11 @@ export function handleReceiveFacility(frid, query) {
         if (response.data) {
           dispatch(receiveFacilitySuccess(response.data, frid));
         } else {
-          dispatch(receiveFacilityFailure());
+          dispatch(receiveFacilityFailure({ message: 'No data in response' }));
         }
       })
       .catch(error => {
-        dispatch(receiveFacilityFailure());
+        dispatch(receiveFacilityFailure(error));
       });
   };
 }
