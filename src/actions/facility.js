@@ -24,7 +24,8 @@ export const receiveFacilitySuccess = (data, frid) => {
 
 export const receiveFacilityFailure = error => {
   return {
-    type: RECEIVE_FACILITY_FAILURE
+    type: RECEIVE_FACILITY_FAILURE,
+    error: error
   };
 };
 
@@ -58,11 +59,11 @@ export function handleReceiveFacility(frid, query) {
         if (response.data) {
           dispatch(receiveFacilitySuccess(response.data, frid));
         } else {
-          dispatch(receiveFacilityFailure());
+          dispatch(receiveFacilityFailure({ message: 'No data in response' }));
         }
       })
       .catch(error => {
-        dispatch(receiveFacilityFailure());
+        dispatch(receiveFacilityFailure(error));
       });
   };
 }
