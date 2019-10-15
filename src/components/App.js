@@ -43,7 +43,7 @@ class App extends Component {
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
           onChangeClientState={newState => {
             this.track(window.location.pathname, newState.title);
-            if (this.trackInDap) return;
+            if (!this.trackInDap) return;
             setSRMessage(newState.title);
             const el =
               document.querySelector('h1') || document.querySelector('h2');
