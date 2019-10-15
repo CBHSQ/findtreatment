@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { OutboundLink } from 'react-ga';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
+import placeholder from '../../images/placeholder.png';
 import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
 import { formatMiles, googleMapUrl } from '../../utils/misc';
 
@@ -38,16 +37,11 @@ export class MapStatic extends Component {
           onLoad={this.setImageLoaded}
         />
         {imageLoaded || (
-          <div
-            css={tw`flex items-center justify-center w-full bg-gray-lighter`}
-            style={{ height: '113px' }}
-          >
-            <FontAwesomeIcon
-              icon={faMapMarkedAlt}
-              size="4x"
-              css={tw`text-blue-light`}
-            />
-          </div>
+          <img
+            src={placeholder}
+            css={tw`w-full`}
+            alt={`Placeholder map for ${name1}`}
+          />
         )}
         <div
           css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
