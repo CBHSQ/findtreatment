@@ -1,5 +1,5 @@
 import qs from 'qs';
-import API, { buildParams, reportFailure } from '../utils/api';
+import API, { buildParams } from '../utils/api';
 import ReactGA from 'react-ga';
 
 export const RECEIVE_FACILITIES_BEGIN = 'RECEIVE_FACILITIES_BEGIN';
@@ -31,9 +31,9 @@ export const receiveFacilitiesSuccess = data => {
 };
 
 export const receiveFacilitiesFailure = error => {
-  reportFailure(error);
   return {
-    type: RECEIVE_FACILITIES_FAILURE
+    type: RECEIVE_FACILITIES_FAILURE,
+    error: error
   };
 };
 

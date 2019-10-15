@@ -1,4 +1,8 @@
 import ReactGA from 'react-ga';
+import { RECEIVE_FACILITIES_FAILURE } from '../actions/facilities';
+import { RECEIVE_FACILITY_FAILURE } from '../actions/facility';
+
+import { reportFailure } from '../utils/api';
 
 const trackEvent = action => {
   ReactGA.event({
@@ -38,6 +42,13 @@ export const analytics = store => next => action => {
       action: `Data issue reported for frid`,
       label: action.frid
     });
+  }
+
+  if (
+    action.type === RECEIVE_FACILITIES_FAILURE ||
+    action.type === RECEIVE_FACILITY_FAILURE
+  ) {
+    reportFailure(action.error);
   }
 
   return next(action);

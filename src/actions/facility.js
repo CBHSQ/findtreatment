@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import API, { reportFailure } from '../utils/api';
+import API from '../utils/api';
 import { DEFAULT_STYPE } from '../utils/constants';
 
 export const RECEIVE_FACILITY_BEGIN = 'RECEIVE_FACILITY_BEGIN';
@@ -23,9 +23,9 @@ export const receiveFacilitySuccess = (data, frid) => {
 };
 
 export const receiveFacilityFailure = error => {
-  reportFailure(error);
   return {
-    type: RECEIVE_FACILITY_FAILURE
+    type: RECEIVE_FACILITY_FAILURE,
+    error: error
   };
 };
 
