@@ -1,6 +1,7 @@
 import React from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as IconAddiction } from '../images/what-to-expect-addiction.svg';
 import { ReactComponent as IconMentalHealth } from '../images/what-to-expect-mental-health.svg';
@@ -23,8 +24,10 @@ export default () => [
         body: (
           <>
             <p>
-              There are many kinds of treatment; your recovery may include one
-              or more of these.
+              Treatment helps people disrupt addiction's powerful effects on the
+              brain and behavior, and regain control of their lives. There are
+              many kinds of treatment; your recovery may include one or more of
+              these.
             </p>
             <h3>Detoxification (Detox)</h3>
             <p>
@@ -34,7 +37,10 @@ export default () => [
               A process that helps the body rid itself of substances while the
               symptoms of withdrawal are treated.{' '}
               <strong>Detoxification by itself is not treatment</strong>; it is
-              a first step that can prepare a person for treatment.
+              a first step that can prepare a person for treatment.{' '}
+              <Link to="/content/treatment-options/what-happens-next">
+                More details about pretreatment and detox.
+              </Link>
             </p>
             <h3>Interim care</h3>
             <p>
@@ -117,10 +123,13 @@ export default () => [
             </p>
             <p>
               Having both a substance use and mental health disorder is called a{' '}
-              <strong>co-occurring disorder</strong>. About half of people who
-              experience one will also experience the other. Addressing both is
-              critical for success in recovery, and integrated treatment
-              programs can help.
+              <strong>co-occurring disorder</strong>.{' '}
+              <Link to="/content/understanding-mental-health/serious-mental-illness">
+                About half of people who experience one will also experience the
+                other.
+              </Link>{' '}
+              Addressing both is critical for success in recovery, and
+              integrated treatment programs can help.
             </p>
             <p>
               Integrated care brings together different areas of expertise to
@@ -264,7 +273,7 @@ export default () => [
             <h3>What should I know before I call?</h3>
             <p>
               When you call, facility staff will ask questions about yourself.
-              You can ask questions too - it’s important to make sure the
+              You can ask questions too. It’s important to make sure the
               services and facility are a good fit for you.
             </p>
             <p>
@@ -273,10 +282,12 @@ export default () => [
               enforcement for talking about using illegal drugs.
             </p>
             <p>
-              If a facility can’t see you within 48 hours, try another one. A
-              sign of quality care is being able to be seen quickly. Many
-              programs offer walk-in care, or interim care if only a waitlist is
-              available.
+              If a facility can’t see you within 48 hours, try another one. A{' '}
+              <Link to="/content/treatment-options/who-provides-care">
+                sign of quality care
+              </Link>{' '}
+              is being able to be seen quickly. Many programs offer walk-in
+              care, or interim care if only a waitlist is available.
             </p>
             <h3>Questions you may be asked</h3>
             <ol>
@@ -290,8 +301,11 @@ export default () => [
                 medications you’re currently taking.
               </li>
               <li>
-                What financial resources are you working with (insurance, money
-                from a loved one, etc.?)
+                What{' '}
+                <Link to="/content/paying-for-treatment/understanding-the-cost-of-treatment">
+                  financial resources
+                </Link>{' '}
+                are you working with (insurance, money from a loved one, etc.?)
               </li>
             </ol>
             <h3>Questions you may want to ask the facility</h3>
@@ -341,84 +355,6 @@ export default () => [
               treatment program. All facilities in the treatment locator offer
               assessment services.
             </p>
-            <h3>Signs of Quality Treatment</h3>
-            <ol>
-              <li>
-                <strong>Licensed and accredited.</strong> All facilities in the
-                treatment locator are licensed by the state they’re in.
-              </li>
-              <li>
-                <strong>Medication.</strong> A facility should only use
-                FDA-approved medication in treating alcohol or opioid use.{' '}
-                <em>
-                  There are no FDA-approved medications to help prevent relapse
-                  from other problem substances.
-                </em>
-              </li>
-              <li>
-                <strong>Evidence-based practices.</strong> Quality programs
-                should offer a full range of services that are accepted as
-                effective in treatment and recovery, including:
-                <ul>
-                  <li>Motivational therapy</li>
-                  <li>Cognitive behavioral therapy (CBT)</li>
-                  <li>Drug and alcohol counseling and education</li>
-                  <li>Peer support</li>
-                  <li>
-                    Care for or help accessing care for other physical and
-                    mental health needs.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <strong>Families.</strong> Family members should be included in
-                the treatment process. They have an important role in
-                understanding the impact of addiction and being supportive in
-                recovery.
-              </li>
-              <li>
-                <strong>Support beyond substance use.</strong> For many,
-                addiction is a chronic disease that needs ongoing support. A
-                quality program treats the whole patient for the long term. This
-                can include ongoing counseling or recovery coaching, and help
-                meeting basic needs like sober housing, employment supports, and
-                continued family involvement.
-              </li>
-            </ol>
-          </>
-        )
-      },
-      {
-        name: 'Who provides care?',
-        id: 'who-provides-care',
-        metaDescription:
-          'Most programs assign patients to a treatment team, which can include social workers, counselors, doctors, nurses, psychologists, and psychiatrists.',
-        body: (
-          <>
-            <p>
-              In most treatment programs, the main caregivers are specially
-              trained individuals who are certified or licensed as{' '}
-              <strong>substance abuse treatment counselors</strong>.
-            </p>
-            <p>
-              Most treatment programs assign patients to a{' '}
-              <strong>treatment team</strong> of professionals. Depending on the
-              type of treatment, teams can be made up of social workers,
-              counselors, doctors, nurses, psychologists, and psychiatrists.
-            </p>
-            <p>
-              Be honest during the assessment; the counselor needs to get a full
-              picture of the problem to plan and help implement the most
-              effective treatment. You may feel embarrassed answering some of
-              these questions or have difficulty completing the interview, but
-              remember: the counselor is there to help.
-            </p>
-            <p>
-              After the assessment, the counselor will work with you (and
-              possibly your family members) to develop a{' '}
-              <strong>treatment plan</strong>. This plan lists problems,
-              treatment goals, and ways to meet those goals.
-            </p>
             <h3>Pre-treatment and detox</h3>
             <p>
               Medically supervised withdrawal (often called detoxification or
@@ -453,6 +389,89 @@ export default () => [
               <strong>detoxification is not treatment</strong>; it is a first
               step that can prepare a person for treatment.
             </p>
+          </>
+        )
+      },
+      {
+        name: 'Who provides care?',
+        id: 'who-provides-care',
+        metaDescription:
+          'Most programs assign patients to a treatment team, which can include social workers, counselors, doctors, nurses, psychologists, and psychiatrists.',
+        body: (
+          <>
+            <p>
+              In most treatment programs, the main caregivers are specially
+              trained individuals who are certified or licensed as{' '}
+              <strong>substance abuse treatment counselors</strong>.
+            </p>
+            <p>
+              Most treatment programs assign patients to a{' '}
+              <strong>treatment team</strong> of professionals. Depending on the
+              type of treatment, teams can be made up of social workers,
+              counselors, doctors, nurses, psychologists, and psychiatrists.
+            </p>
+            <p>
+              Be honest during the assessment; the counselor needs to get a full
+              picture of the problem to plan and help implement the most
+              effective treatment. You may feel embarrassed answering some of
+              these questions or have difficulty completing the interview, but
+              remember: the counselor is there to help.
+            </p>
+            <p>
+              After the assessment, the counselor will work with you (and
+              possibly your family members) to develop a{' '}
+              <strong>treatment plan</strong>. This plan lists problems,
+              treatment goals, and ways to meet those goals.
+            </p>
+            <h3>Signs of Quality Treatment</h3>
+            <ol>
+              <li>
+                <strong>Licensed and accredited.</strong> All facilities in the
+                treatment locator are licensed by the state they’re in.
+              </li>
+              <li>
+                <strong>Medication.</strong> A facility should only use{' '}
+                <Link to="/content/treatment-options/medications-used-in-treatment">
+                  FDA-approved medication
+                </Link>{' '}
+                in treating alcohol or opioid use.{' '}
+                <em>
+                  There are no FDA-approved medications to help prevent relapse
+                  from other problem substances.
+                </em>
+              </li>
+              <li>
+                <strong>Evidence-based practices.</strong> Quality programs
+                should offer a full range of services that are accepted as
+                effective in treatment and recovery, including:
+                <ul>
+                  <li>Motivational therapy</li>
+                  <li>Cognitive behavioral therapy (CBT)</li>
+                  <li>Drug and alcohol counseling and education</li>
+                  <li>Peer support</li>
+                  <li>
+                    Care for or help accessing care for other physical and
+                    mental health needs.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Families.</strong>{' '}
+                <Link to="/content/understanding-addiction/supporting-recovery-and-self-care">
+                  Family members should be included in the treatment process.
+                </Link>{' '}
+                They have an important role in understanding the impact of
+                addiction and being supportive in recovery.
+              </li>
+              <li>
+                <strong>Support beyond substance use.</strong> For many,
+                addiction is a chronic disease that needs ongoing support. A
+                quality program treats the whole patient for the long term. This
+                can include ongoing counseling or recovery coaching, and help
+                meeting basic needs like sober housing, employment supports, and
+                continued family involvement.
+              </li>
+            </ol>
           </>
         )
       }
@@ -492,7 +511,7 @@ export default () => [
               substance use treatment and services that they do for medical and
               surgical care. That means your insurance company can’t tell you
               “we don’t do substance abuse treatment” or “mental health isn’t
-              covered” — if they do, they’re breaking the law.
+              covered." If they do this, they’re breaking the law.
             </p>
             <p>
               If you’ve been denied coverage for treatment, this{' '}
@@ -517,7 +536,7 @@ export default () => [
               website and ask about coverage for substance abuse.
             </p>
             <p>
-              You’ll likely have a <strong>deductible</strong> — a specific
+              You’ll likely have a <strong>deductible</strong>, a specific
               amount of money you’ll need to pay out-of-pocket before your
               benefits start covering costs. Find out how much that deductible
               is and how much you’ve already paid towards it for the year. Any
@@ -532,7 +551,7 @@ export default () => [
             </p>
             <p>
               Just as with other kinds of medical care, you may have a{' '}
-              <strong>co-pay</strong> — a small amount of money you need to pay
+              <strong>co-pay</strong>, a small amount of money you need to pay
               upfront to the providers or facilities you visit. Find out how
               much that is, as well as how many appointments or days of
               treatment are covered per year.
@@ -571,7 +590,7 @@ export default () => [
               You’ll need an <strong>estimate of your annual income</strong> and
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
-              much you make — get as close as you can, and don’t worry if it’s
+              much you make, just get as close as you can, and don’t worry if it’s
               not perfect. (See what counts as income on{' '}
               <a href="https://www.healthcare.gov/income-and-household-information/income/">
                 healthcare.gov.
@@ -602,8 +621,8 @@ export default () => [
               </li>
               <li>
                 Have a <strong>qualifying life event</strong>. For 60 days after
-                a major change in your life — like having a baby, getting
-                married or divorced, or getting U.S. citizenship — you’re
+                a major change in your life, like having a baby, getting
+                married or divorced, or getting U.S. citizenship, you’re
                 eligible to sign up for new insurance.
                 <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
                   {' '}
@@ -627,7 +646,7 @@ export default () => [
               Some individual treatment facilities offer{' '}
               <strong>grants or scholarships</strong> to help offset the cost of
               attending. Not all of these will cover your whole stay, though,
-              and many will revoke funding if you don’t complete their program —
+              and many will revoke funding if you don’t complete their program, 
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
@@ -648,13 +667,13 @@ export default () => [
         name: 'Addiction can affect anyone',
         id: 'addiction-can-affect-anyone',
         metaDescription:
-          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin - it has no bias.",
+          "Addiction is a powerful brain disease. It doesn't care how old you are how much money you make, or the color of your skin; it has no bias.",
         body: (
           <>
             <p>
               People from all backgrounds experience addiction. Addiction
               doesn't care how old you are, how much money you make, or the
-              color of your skin - it has no bias. While the initial choice to
+              color of your skin; it has no bias. While the initial choice to
               use a drug is often voluntary, the powerful effects of addiction
               makes it very hard to stop, even if someone wants to.
             </p>
@@ -677,16 +696,7 @@ export default () => [
                 someone else’s prescription.
               </li>
             </ul>
-          </>
-        )
-      },
-      {
-        name: 'It’s hard to stop on your own',
-        id: 'its-hard-to-stop-on-your-own',
-        metaDescription:
-          "Using drugs repeatedly changes the brain, including parts that help exert self-control, making it hard to stop even if you want to or know they're causing harm.",
-        body: (
-          <>
+            <h3>It's hard to stop on your own</h3>
             <p>
               Addiction is a chronic and treatable disease. Using drugs
               repeatedly changes the brain, including the parts that help exert
@@ -745,13 +755,13 @@ export default () => [
               Our treatment locator lists facilities across the country. We have
               guidance about what to expect when looking for treatment,
               including{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/treatment-options#types-of-treatment">
+              <Link to="/content/treatment-options#types-of-treatment">
                 different kinds of treatment
-              </a>{' '}
+              </Link>{' '}
               and{' '}
-              <a href="https://findtreatmentbeta.18f.gov/content/paying-for-treatment">
+              <Link to="/content/paying-for-treatment">
                 understanding how to pay for treatment
-              </a>
+              </Link>
               .
             </p>
             <p>
@@ -873,13 +883,16 @@ export default () => [
           <>
             <p>
               Like addiction, mental health disorders are treatable medical
-              conditions, not someone’s fault. Almost 1 in 5 adults in the USA
-              will experience some form of mental health disorder, and 1 in
-              every 22 is living with a <strong>serious mental illness</strong>,
-              like schizophrenia, bipolar disorder, or major depressive
-              episodes. When a serious mental illness like this affects someone
-              under the age of 18, it’s called a{' '}
-              <strong>serious emotional disturbance</strong>.
+              conditions, not someone’s fault. About half of people with a
+              substance use disorder also experience serious mental illness.
+            </p>
+            <p>
+              Almost 1 in 5 adults in the USA will experience some form of
+              mental health disorder, and 1 in every 22 is living with a{' '}
+              <strong>serious mental illness</strong>, like schizophrenia,
+              bipolar disorder, or major depressive episodes. When a serious
+              mental illness like this affects someone under the age of 18, it’s
+              called a <strong>serious emotional disturbance</strong>.
             </p>
             <p>
               A lot of stigma and judgement exists around serious mental

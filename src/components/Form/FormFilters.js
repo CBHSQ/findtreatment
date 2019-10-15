@@ -19,49 +19,49 @@ const RowWrapper = styled.div`
   ${tw`border-b border-gray-light pt-4`}
 `;
 
+const SubmitButton = ({
+  loading,
+  location,
+  recordCount,
+  toggleFilters,
+  className
+}) => (
+  <RowWrapper className={className}>
+    <Row>
+      <Button
+        primary
+        disabled={!(location || {}).latLng}
+        css={tw`w-full text-xl`}
+        onClick={(location || {}).latLng && toggleFilters}
+      >
+        Show{' '}
+        {loading ? (
+          <ChasingDots size={16} css={tw`mx-1 my-0`} color="#fff" />
+        ) : (
+          recordCount
+        )}{' '}
+        results
+      </Button>
+    </Row>
+  </RowWrapper>
+);
+
 export class FormFilters extends Component {
-  renderSubmitButton = () => {
-    const { loading, location, recordCount, toggleFilters } = this.props;
-
-    return (
-      <RowWrapper>
-        <Row>
-          <Button
-            primary
-            disabled={!(location || {}).latLng}
-            css={tw`w-full text-xl`}
-            onClick={(location || {}).latLng && toggleFilters}
-          >
-            Show{' '}
-            {loading ? (
-              <ChasingDots size={16} css={tw`mx-1 my-0`} color="#fff" />
-            ) : (
-              recordCount
-            )}{' '}
-            results
-          </Button>
-        </Row>
-      </RowWrapper>
-    );
-  };
-
   render() {
-    const { handleSubmit, isDesktop, resetForm } = this.props;
+    const { handleSubmit, resetForm } = this.props;
 
     return (
       <div css={tw`bg-teal-lighter rounded shadow border border-gray-light`}>
-        {isDesktop && (
-          <div css={tw`p-4 shadow`}>
-            <h2 css={tw`text-2xl font-heading font-bold`}>
-              Refine search results
-            </h2>
-            <Button link onClick={resetForm} className="reset-form">
-              Clear all
-            </Button>
-          </div>
-        )}
+        <div css={tw`p-4 shadow hidden lg:block`}>
+          <h2 css={tw`text-2xl font-heading font-bold`}>
+            Refine search results
+          </h2>
+          <Button link onClick={resetForm} className="reset-form">
+            Clear all
+          </Button>
+        </div>
         <form onSubmit={handleSubmit}>
-          {!isDesktop && this.renderSubmitButton()}
+          <SubmitButton {...this.props} css={tw`lg:hidden`} />
           <RowWrapper>
             <Row>
               <Label labelText="Location">
@@ -157,7 +157,7 @@ export class FormFilters extends Component {
               />
             </Row>
           </RowWrapper>
-          {!isDesktop && this.renderSubmitButton()}
+          <SubmitButton {...this.props} css={tw`lg:hidden`} />
         </form>
       </div>
     );
@@ -168,7 +168,6 @@ FormFilters.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
-  isDesktop: PropTypes.bool.isRequired,
   location: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   recordCount: PropTypes.number,

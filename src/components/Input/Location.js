@@ -125,7 +125,7 @@ class Location extends Component {
       <StyledPlacesAutoComplete>
         <PlacesAutocomplete
           value={input.value.address}
-          debounce={100}
+          debounce={200}
           searchOptions={searchOptions}
           highlightFirstSuggestion={true}
           onChange={this.handleChange}

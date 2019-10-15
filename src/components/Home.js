@@ -14,7 +14,6 @@ import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
 import backgroundLeft_2x from '../images/film-strip_l@2x.jpg';
 import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 
-import ScreenContext from './ScreenContext';
 import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
 import ReturnToTop from './ReturnToTop';
@@ -58,8 +57,6 @@ class Home extends Component {
   };
 
   renderCard = card => {
-    const { isDesktop } = this.context;
-
     return (
       <div key={card.id} css={tw`w-full lg:w-1/2 px-2 mb-10`}>
         <div css={tw`flex -mx-2 mb-4`}>
@@ -72,9 +69,8 @@ class Home extends Component {
             <Button
               forwardedAs={Link}
               to={`/content/${card.id}`}
-              outline={!isDesktop}
-              link={isDesktop}
-              css={tw`w-full lg:inline`}
+              outline
+              css={tw`w-full lg:inline lg:p-0 lg:border-0`}
               aria-label={`Learn more about ${card.name}`}
             >
               Learn more ›
@@ -86,8 +82,6 @@ class Home extends Component {
   };
 
   render() {
-    const { isDesktop, isTablet } = this.context;
-
     return (
       <>
         <Helmet>
@@ -97,26 +91,22 @@ class Home extends Component {
           />
           <meta name="twitter:card" content="summary_large_image" />
         </Helmet>
-        {isTablet || (
-          <MobileBgContainer css={tw`relative border-b-4 border-white`}>
-            <MobileBgImage
-              css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
-            />
-          </MobileBgContainer>
-        )}
+        <MobileBgContainer css={tw`md:hidden relative border-b-4 border-white`}>
+          <MobileBgImage
+            css={tw`absolute h-full w-full top-0 bg-center bg-top bg-no-repeat bg-cover`}
+          />
+        </MobileBgContainer>
         <div
           css={tw`pb-5 -mt-8 md:mt-0 md:py-10 bg-teal md:bg-white md:border-t md:border-gray-lighter`}
         >
           <div className="container">
             <div css={tw`md:flex md:-mx-4 lg:-mx-8`}>
-              {isDesktop && (
-                <img
-                  src={backgroundLeft_2x}
-                  css={tw`px-8 w-auto flex-none`}
-                  style={{ height: '336px' }}
-                  alt=""
-                />
-              )}
+              <img
+                src={backgroundLeft_2x}
+                css={tw`px-8 w-auto flex-none hidden lg:block`}
+                style={{ height: '336px' }}
+                alt="Stock people"
+              />
               <div
                 css={tw`relative bg-white md:bg-transparent px-4 lg:px-8 py-6 md:py-0`}
               >
@@ -148,14 +138,12 @@ class Home extends Component {
                   Learn more
                 </Button>
               </div>
-              {isTablet && (
-                <img
-                  src={backgroundRight_2x}
-                  css={tw`px-4 lg:px-8 w-auto flex-none`}
-                  style={{ height: '336px' }}
-                  alt=""
-                />
-              )}
+              <img
+                src={backgroundRight_2x}
+                css={tw`px-4 lg:px-8 w-auto flex-none hidden md:block`}
+                style={{ height: '336px' }}
+                alt="Stock people"
+              />
             </div>
           </div>
         </div>
@@ -194,7 +182,6 @@ class Home extends Component {
     );
   }
 }
-Home.contextType = ScreenContext;
 
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,

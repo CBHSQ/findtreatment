@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
-import { PropTypes } from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
-import withSizes from 'react-sizes';
+import { withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import { theme } from '../tailwind.js';
+import { setSRMessage } from '../actions/ui';
+import { trackPage } from '../middleware/analytics.js';
 import { TOP_ID } from '../utils/constants';
 
-import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
 import SkipNav from './SkipNav';
 import Header from './Header';
@@ -20,15 +21,64 @@ import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
 import SRAnnouncements from './SRAnnouncements';
-import AppHelmet from './AppHelmet';
 
 class App extends Component {
   topRef = React.createRef();
 
+  trackInDap = false;
+
+  track = (page, title) => {
+    // DAP is loaded before React and fires a pageview on load
+    // To avoid double counting, we send our _first_ pageview only to
+    // ReactGA
+    trackPage(this.trackInDap, page, title);
+    if (!this.trackInDap) {
+      this.trackInDap = true;
+    }
+  };
+
   render() {
     return (
-      <ScreenContext.Provider value={{ ...this.props, topRef: this.topRef }}>
-        <AppHelmet focusTarget={this.topRef} />
+      <>
+        <Helmet
+          titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
+          defaultTitle={process.env.REACT_APP_SITE_TITLE}
+          onChangeClientState={newState => {
+            this.track(window.location.pathname, newState.title);
+            setSRMessage(newState.title);
+            const el = this.topRef.current;
+            el.focus();
+            el.scrollIntoView();
+          }}
+        >
+          <title>{process.env.REACT_APP_SITE_TITLE}</title>
+          <meta
+            property="og:title"
+            content={process.env.REACT_APP_SITE_TITLE}
+          />
+          <meta
+            name="description"
+            content="Find state-licensed treatment near you for addiction and substance use disorder."
+          />
+          <meta
+            property="og:description"
+            content="Find state-licensed treatment near you for addiction and substance use disorder."
+          />
+          <meta
+            property="og:url"
+            content={
+              process.env.REACT_APP_SITE_DOMAIN + this.props.location.pathname
+            }
+          />
+          <meta
+            property="og:image"
+            content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail-small.png`}
+          />
+          <meta
+            property="og:site_name"
+            content={process.env.REACT_APP_SITE_TITLE}
+          />
+        </Helmet>
         <GlobalStyle />
         <div
           css={tw`overflow-hidden`}
@@ -55,19 +105,16 @@ class App extends Component {
           </main>
           <Footer />
         </div>
-      </ScreenContext.Provider>
+      </>
     );
   }
 }
 
-App.propTypes = {
-  isDesktop: PropTypes.bool.isRequired,
-  isTablet: PropTypes.bool.isRequired
-};
+const mapDispatchToProps = { setSRMessage };
 
-const mapSizesToProps = ({ width }) => ({
-  isDesktop: width >= parseInt(theme.screens.lg, 10),
-  isTablet: width >= parseInt(theme.screens.md, 10)
-});
-
-export default withSizes(mapSizesToProps)(App);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);
