@@ -47,6 +47,16 @@ export class Results extends Component {
 
   componentDidUpdate(prevProps) {
     this.clearResultsIfNoLocation();
+
+    if (prevProps.loading && !this.props.loading) {
+      const el = document.querySelector('h1') || document.querySelector('h2');
+      if (!el) return;
+
+      el.focus();
+      if (this.isDesktop()) {
+        el.scrollIntoView();
+      }
+    }
   }
 
   clearResultsIfNoLocation = () => {
@@ -73,10 +83,6 @@ export class Results extends Component {
     if (values.location.latLng) {
       this.previousValues = values;
       handleReceiveFacilities(values);
-
-      if (this.isDesktop()) {
-        window.scrollTo(0, 0);
-      }
     }
   };
 
@@ -104,7 +110,7 @@ export class Results extends Component {
       mainContent = (
         <DesktopOnlyUnless show={filtersHidden}>
           <div css={tw`mb-4`}>
-            <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
+            <h1 css={tw`text-sm lg:text-xl lg:font-heading`} tabIndex="-1">
               Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
               within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
               {location.address}

@@ -160,7 +160,9 @@ export class Content extends Component {
             content={subSection.metaDescription}
           />
         </Helmet>
-        <h1 css={tw`pb-4 border-b border-gray-lighter`}>{name}</h1>
+        <h1 css={tw`pb-4 border-b border-gray-lighter`} tabIndex="-1">
+          {name}
+        </h1>
         <h2>{subSection.name}</h2>
         {subSection.body}
       </Main>

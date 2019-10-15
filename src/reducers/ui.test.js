@@ -1,8 +1,4 @@
 import reducer from './ui';
-import {
-  RECEIVE_FACILITIES_FAILURE,
-  RECEIVE_FACILITIES_SUCCESS
-} from '../actions/facilities';
 import { SET_SR_MESSAGE, TOGGLE_WARNING } from '../actions/ui';
 
 const initialState = {
@@ -36,26 +32,6 @@ describe('ui reducer', () => {
     ).toEqual({
       ...initialState,
       srMessage: 'my-sr-message'
-    });
-  });
-
-  it('should handle RECEIVE_FACILITIES end messages', () => {
-    expect(
-      reducer(initialState, {
-        type: RECEIVE_FACILITIES_FAILURE
-      })
-    ).toEqual({
-      ...initialState,
-      srMessage: 'There was a problem fetching results.'
-    });
-
-    expect(
-      reducer(initialState, {
-        type: RECEIVE_FACILITIES_SUCCESS
-      })
-    ).toEqual({
-      ...initialState,
-      srMessage: 'New results are available.'
     });
   });
 });

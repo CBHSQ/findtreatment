@@ -7,7 +7,7 @@ import { HELPLINE_LINK, HELPLINE_TEXT } from '../../utils/constants';
 
 const NoResults = () => (
   <div css={tw`shadow bg-white border border-gray-lighter rounded p-6 mb-6`}>
-    <h1 css={tw`block font-bold font-heading text-2xl mb-6`}>
+    <h1 css={tw`block font-bold font-heading text-2xl mb-6`} tabIndex="-1">
       We couldn't find any providers near you.
     </h1>
     <p css={tw`mb-4 pb-4 border-b border-gray-lighter`}>

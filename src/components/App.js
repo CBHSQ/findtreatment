@@ -23,8 +23,6 @@ import Footer from './Footer';
 import SRAnnouncements from './SRAnnouncements';
 
 class App extends Component {
-  topRef = React.createRef();
-
   trackInDap = false;
 
   track = (page, title) => {
@@ -46,9 +44,11 @@ class App extends Component {
           onChangeClientState={newState => {
             this.track(window.location.pathname, newState.title);
             setSRMessage(newState.title);
-            const el = this.topRef.current;
+            const el =
+              document.querySelector('h1') || document.querySelector('h2');
+            if (!el) return;
             el.focus();
-            el.scrollIntoView();
+            window.scrollTo(0, 0);
           }}
         >
           <title>{process.env.REACT_APP_SITE_TITLE}</title>
@@ -80,12 +80,7 @@ class App extends Component {
           />
         </Helmet>
         <GlobalStyle />
-        <div
-          css={tw`overflow-hidden`}
-          id={TOP_ID}
-          tabIndex="-1"
-          ref={this.topRef}
-        >
+        <div css={tw`overflow-hidden`} id={TOP_ID} tabIndex="-1">
           <SkipNav to="#main" />
           <SRAnnouncements />
           <Header />

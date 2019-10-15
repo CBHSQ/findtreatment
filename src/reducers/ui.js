@@ -1,8 +1,4 @@
 import { SET_SR_MESSAGE, TOGGLE_WARNING } from '../actions/ui';
-import {
-  RECEIVE_FACILITIES_FAILURE,
-  RECEIVE_FACILITIES_SUCCESS
-} from '../actions/facilities';
 
 const initialState = {
   srMessage: '',
@@ -22,16 +18,6 @@ export default function ui(state = initialState, action) {
       return {
         ...state,
         srMessage: action.message
-      };
-    case RECEIVE_FACILITIES_FAILURE:
-      return {
-        ...state,
-        srMessage: 'There was a problem fetching results.'
-      };
-    case RECEIVE_FACILITIES_SUCCESS:
-      return {
-        ...state,
-        srMessage: 'New results are available.'
       };
     default:
       return state;
