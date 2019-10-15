@@ -125,7 +125,7 @@ export const mat = [
     value: 'METH',
     label: 'Methadone',
     description:
-      'Controls symptoms and blocks cravings. Given in person at a clinic, usually every day.'
+      'Controls withdrawl symptoms and blocks cravings. Given in person at a clinic, usually every day.'
   },
   {
     value: 'BU',
@@ -137,7 +137,7 @@ export const mat = [
     value: 'NU',
     label: 'Naltrexone',
     description:
-      'Blocks the effects of opioids and alcohol completely. Not always the best fit for patients with chronic pain. '
+      'Blocks the effects of opioids and alcohol completely.'
   }
 ];
 
