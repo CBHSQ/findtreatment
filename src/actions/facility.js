@@ -50,7 +50,7 @@ export function handleReceiveFacility(frid, query) {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       data: qs.stringify(params),
-      url: '/listing'
+      url: ''
     };
 
     return API(options)
