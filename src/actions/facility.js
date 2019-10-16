@@ -44,7 +44,7 @@ export function handleReceiveFacility(frid, query) {
       pageSize: 100, // Return up to 100 results in initial fetch
       sAddr: query.sAddr,
       limitType: 2, // Limit by distance
-      limitValue: 0 // Match the exact lat/lng only
+      limitValue: 1 // Return results within 1 meter
     };
 
     const options = {
