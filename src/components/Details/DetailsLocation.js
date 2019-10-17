@@ -12,13 +12,12 @@ import { OutboundLink } from 'react-ga';
 
 import { formatAddress, formatMiles, googleMapUrl } from '../../utils/misc';
 
-import MapContainer from '../Map/MapContainer';
+import MapLeafletContainer from '../Map/MapLeafletContainer';
 import { Button } from '../Input';
 
 const DetailsLocation = props => {
   const { data } = props;
   const {
-    frid,
     longitude,
     latitude,
     name1,
@@ -28,7 +27,6 @@ const DetailsLocation = props => {
     state,
     zip,
     services,
-    phone,
     miles
   } = data;
 
@@ -60,12 +58,10 @@ const DetailsLocation = props => {
               )}
             </h2>
             <div css={tw`relative h-64 w-full mb-6`}>
-              <MapContainer
-                frid={frid}
+              <MapLeafletContainer
                 latitude={latitude}
                 longitude={longitude}
                 name1={name1}
-                phone={phone}
               />
             </div>
             <div css={tw`text-gray-700 flex flex-wrap -mx-2 mb-4 lg:mb-2`}>
