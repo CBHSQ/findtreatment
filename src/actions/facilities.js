@@ -11,7 +11,7 @@ export const DESTROY_FACILITIES = 'DESTROY_FACILITIES';
 const trackSearchResults = (params, results) => {
   ReactGA.event({
     category: `Search`,
-    action: `Paramaters and # of results`,
+    action: `Parameters and # of results`,
     label: params,
     value: results
   });
@@ -32,7 +32,8 @@ export const receiveFacilitiesSuccess = data => {
 
 export const receiveFacilitiesFailure = error => {
   return {
-    type: RECEIVE_FACILITIES_FAILURE
+    type: RECEIVE_FACILITIES_FAILURE,
+    error: error
   };
 };
 
@@ -67,11 +68,13 @@ export function handleReceiveFacilities(query) {
           trackSearchResults(qs.stringify(params), response.data.recordCount);
           dispatch(receiveFacilitiesSuccess(response.data));
         } else {
-          dispatch(receiveFacilitiesFailure());
+          dispatch(
+            receiveFacilitiesFailure({ message: 'No data in response' })
+          );
         }
       })
       .catch(error => {
-        dispatch(receiveFacilitiesFailure());
+        dispatch(receiveFacilitiesFailure(error));
       });
   };
 }
