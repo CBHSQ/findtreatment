@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+import { setSRMessage } from '../actions/ui';
+import { trackPage } from '../middleware/analytics.js';
 import { TOP_ID } from '../utils/constants';
 
-import ScreenContext from './ScreenContext';
 import GlobalStyle from './GlobalStyle';
 import SkipNav from './SkipNav';
 import Header from './Header';
@@ -18,7 +20,7 @@ import Content from './Content';
 import Error from './Error';
 import NoMatch from './NoMatch';
 import Footer from './Footer';
-import { trackPage } from '../middleware/analytics.js';
+import SRAnnouncements from './SRAnnouncements';
 
 class App extends Component {
   trackInDap = false;
@@ -34,14 +36,23 @@ class App extends Component {
   };
 
   render() {
+    const { setSRMessage } = this.props;
+
     return (
-      <ScreenContext.Provider value={this.props}>
+      <>
         <Helmet
-          onChangeClientState={newState =>
-            this.track(window.location.pathname, newState.title)
-          }
           titleTemplate={`%s | ${process.env.REACT_APP_SITE_TITLE}`}
           defaultTitle={process.env.REACT_APP_SITE_TITLE}
+          onChangeClientState={newState => {
+            this.track(window.location.pathname, newState.title);
+            if (!this.trackInDap) return;
+            setSRMessage(newState.title);
+            const el =
+              document.querySelector('h1') || document.querySelector('h2');
+            if (!el) return;
+            el.focus();
+            window.scrollTo(0, 0);
+          }}
         >
           <title>{process.env.REACT_APP_SITE_TITLE}</title>
           <meta
@@ -72,8 +83,9 @@ class App extends Component {
           />
         </Helmet>
         <GlobalStyle />
-        <SkipNav skipToMain={this.skipToMain} />
-        <div id={TOP_ID} css={tw`overflow-hidden`} tabIndex="-1">
+        <div css={tw`overflow-hidden`} id={TOP_ID} tabIndex="-1">
+          <SkipNav to="#main" />
+          <SRAnnouncements />
           <Header />
           <main role="main" id="main" tabIndex="-1">
             <Switch>
@@ -91,9 +103,16 @@ class App extends Component {
           </main>
           <Footer />
         </div>
-      </ScreenContext.Provider>
+      </>
     );
   }
 }
 
-export default withRouter(App);
+const mapDispatchToProps = { setSRMessage };
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);

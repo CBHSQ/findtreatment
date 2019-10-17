@@ -12,7 +12,8 @@ const options = {
 
 const testProps = {
   location: {},
-  dispatch: jest.fn(),
+  destroyFacilities: jest.fn(),
+  handleReceiveFacilities: jest.fn(),
   loading: false,
   error: false,
   data: {},

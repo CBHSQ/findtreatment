@@ -11,6 +11,10 @@ const ReturnToTop = () => {
         to={`#${TOP_ID}`}
         aria-label="Return to top"
         css={tw`text-blue`}
+        scroll={el => {
+          el.scrollIntoView();
+          el.focus();
+        }}
       >
         Return to top
       </HashLink>

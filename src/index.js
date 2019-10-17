@@ -1,18 +1,17 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
+import 'typeface-roboto-condensed';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { hydrate, render } from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import { ThemeProvider } from 'styled-components';
-import ScrollToTop from './components/ScrollToTop';
+
 import configureStore, { history } from './store';
 import App from './components/App';
-import { hydrate, render } from 'react-dom';
 import { theme } from './tailwind.js';
 import './tailwind.css';
-import 'typeface-roboto-condensed';
 
 if (process.env.NODE_ENV !== 'production') {
   var axe = require('react-axe');
@@ -31,11 +30,9 @@ const store = configureStore({}, history);
 const Root = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <ScrollToTop>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </ScrollToTop>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </ConnectedRouter>
   </Provider>
 );

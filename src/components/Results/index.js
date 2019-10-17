@@ -47,13 +47,23 @@ export class Results extends Component {
 
   componentDidUpdate(prevProps) {
     this.clearResultsIfNoLocation();
+
+    if (prevProps.loading && !this.props.loading) {
+      const el = document.querySelector('h1') || document.querySelector('h2');
+      if (!el) return;
+
+      el.focus();
+      if (this.isDesktop()) {
+        el.scrollIntoView();
+      }
+    }
   }
 
   clearResultsIfNoLocation = () => {
-    const { dispatch, hasResults, location } = this.props;
+    const { destroyFacilities, hasResults, location } = this.props;
 
     if (hasResults && !(location || {}).latLng) {
-      dispatch(destroyFacilities());
+      destroyFacilities();
     }
   };
 
@@ -66,17 +76,13 @@ export class Results extends Component {
   previousValues = null;
 
   submit = values => {
-    const { dispatch } = this.props;
+    const { handleReceiveFacilities } = this.props;
 
     if (deepEqual(values, this.previousValues)) return;
 
     if (values.location.latLng) {
       this.previousValues = values;
-      dispatch(handleReceiveFacilities(values));
-
-      if (this.isDesktop()) {
-        window.scrollTo(0, 0);
-      }
+      handleReceiveFacilities(values);
     }
   };
 
@@ -104,7 +110,7 @@ export class Results extends Component {
       mainContent = (
         <DesktopOnlyUnless show={filtersHidden}>
           <div css={tw`mb-4`}>
-            <h1 css={tw`text-sm lg:text-xl lg:font-heading`}>
+            <h1 css={tw`text-sm lg:text-xl lg:font-heading`} tabIndex="-1">
               Showing <span css={tw`font-bold`}>{recordCount} facilities</span>{' '}
               within {distance ? distance / METERS_PER_MILE : '100+'} miles of{' '}
               {location.address}
@@ -170,11 +176,12 @@ export class Results extends Component {
 Results.propTypes = {
   distance: PropTypes.number,
   location: PropTypes.object,
-  dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
   hasResults: PropTypes.bool.isRequired,
+  destroyFacilities: PropTypes.func.isRequired,
+  handleReceiveFacilities: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired
 };
 
@@ -195,4 +202,12 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withTheme(Results));
+const mapDispatchToProps = {
+  destroyFacilities,
+  handleReceiveFacilities
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTheme(Results));
