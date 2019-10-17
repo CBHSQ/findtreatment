@@ -36,6 +36,8 @@ class App extends Component {
   };
 
   render() {
+    const { setSRMessage } = this.props;
+
     return (
       <>
         <Helmet
