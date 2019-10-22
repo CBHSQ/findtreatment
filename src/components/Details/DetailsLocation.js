@@ -81,6 +81,7 @@ const DetailsLocation = props => {
                   eventLabel="Driving directions link from details"
                   to={googleMapUrl(address)}
                   css={tw`w-full`}
+                  target="_blank"
                 >
                   <FontAwesomeIcon icon={faExternalLinkAlt} css={tw`mr-2`} />
                   Get directions
