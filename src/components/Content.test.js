@@ -13,6 +13,7 @@ const options = {
 };
 
 const testProps = {
+  isInternalLink: false,
   location: {},
   match: {
     params: {
@@ -77,5 +78,21 @@ describe('Content component', () => {
 
       expect(link.text()).toBe('Addiction can affect anyone');
     });
+  });
+
+  it('shows back link if coming from a search results page', () => {
+    const props = {
+      ...testProps,
+      isInternalLink: true
+    };
+    const component = shallow(<Content {...props} />, options);
+
+    expect(component.find('BackToSearchResultsLink').length).toBe(1);
+  });
+
+  it('hides back link if accessing facility directly', () => {
+    const component = shallow(<Content {...testProps} />, options);
+
+    expect(component.find('BackToSearchResultsLink').length).toBe(0);
   });
 });
