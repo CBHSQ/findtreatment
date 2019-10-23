@@ -87,7 +87,7 @@ const Footer = () => {
               <ul css={tw`mb-2`}>
                 <li>
                   <OutboundLink
-                    to="https://forms.gle/8Zf4sCUcgn8Cmoqb6"
+                    to={process.env.REACT_APP_FEEDBACK_FORM_URL}
                     eventLabel="Submit feedback link from footer"
                   >
                     Submit feedback

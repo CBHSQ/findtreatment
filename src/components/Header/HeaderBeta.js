@@ -11,7 +11,7 @@ const HeaderBeta = () => {
         Have feedback?{' '}
         <OutboundLink
           eventLabel="Header feedback form link"
-          to="https://forms.gle/35ZHQCGBkxCsJcs78"
+          to={process.env.REACT_APP_FEEDBACK_FORM_URL}
           css={tw`underline`}
         >
           We want to hear from you.
