@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
+import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter, NavLink, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
-
+import BackToSearchResultsLink from './BackToSearchResultsLink';
 import NoMatch from './NoMatch';
 import ReturnToTop from './ReturnToTop';
 
@@ -170,7 +171,7 @@ export class Content extends Component {
   };
 
   render() {
-    const { match } = this.props;
+    const { isInternalLink, match } = this.props;
     const { params } = match;
     const { sectionID, subSectionID } = params;
     const section = content().find(({ id }) => id === sectionID);
@@ -188,6 +189,7 @@ export class Content extends Component {
 
       return (
         <div css={tw`border-t border-gray-lighter`}>
+          {isInternalLink && <BackToSearchResultsLink />}
           <div className="container" css={tw`mt-10`}>
             <StyledPage>
               {this.renderMain(section)}
@@ -204,7 +206,12 @@ export class Content extends Component {
 }
 
 Content.propTypes = {
+  isInternalLink: PropTypes.bool.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default withRouter(Content);
+const mapStateToProps = ({ facilities }) => ({
+  isInternalLink: (facilities.data.rows || {}).length > 0
+});
+
+export default connect(mapStateToProps)(withRouter(Content));
