@@ -102,13 +102,13 @@ describe('Details component', () => {
     };
     const component = shallow(<Details {...props} />, options);
 
-    expect(component.find('.back-link').length).toBe(1);
+    expect(component.find('BackToSearchResultsLink').length).toBe(1);
   });
 
   it('hides back link if accessing facility directly', () => {
     const component = shallow(<Details {...testProps} />, options);
 
-    expect(component.find('.back-link').length).toBe(0);
+    expect(component.find('BackToSearchResultsLink').length).toBe(0);
   });
 
   it('hides report facility button if facility has already been reported', () => {
