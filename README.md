@@ -4,7 +4,7 @@
 [18F](https://18f.gsa.gov) is collaborating with [SAMHSA](https://www.samhsa.gov) to develop a new experience for finding treatment. This repository contains the development for the front-end application of that experience.
 
 ## Instances
-`master` is our primary and stable development branch which is available at https://findtreatmentbeta.18f.gov
+`master` is our primary and stable development branch which is available at https://findtreatment.gov
 
 ## Feedback
 

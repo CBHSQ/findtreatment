@@ -26,7 +26,7 @@ export const analytics = store => next => action => {
   if (action.type === '@@router/LOCATION_CHANGE') {
     const nextPage = `${action.payload.location.pathname}${action.payload.location.search}`;
     if (currentPage !== nextPage) {
-      window.CE_SNAPSHOT_NAME = 'findtreatmentbeta: ' + nextPage;
+      window.CE_SNAPSHOT_NAME = 'findtreatment: ' + nextPage;
     }
   }
 
