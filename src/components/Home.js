@@ -132,6 +132,10 @@ class Home extends Component {
                   smooth
                   outline
                   forwardedAs={HashLink}
+                  scroll={el => {
+                    el.scrollIntoView();
+                    el.focus();
+                  }}
                   css={tw`w-full md:w-auto md:inline-block text-2xl md:text-lg`}
                   to={`#home-learn-more`}
                 >
@@ -159,7 +163,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <div className="container" id="home-learn-more">
+        <div className="container" id="home-learn-more" tabIndex="-1">
           <div css={tw`py-10`}>
             <DecorativeHeading
               as="h2"
