@@ -22,6 +22,7 @@ import Loading from '../Loading';
 import DetailsLocation from './DetailsLocation';
 import DetailsPayment from './DetailsPayment';
 import { Button, Label } from '../Input';
+import BackToSearchResultsLink from '../BackToSearchResultsLink';
 import ReturnToTop from '../ReturnToTop';
 
 const DecorativeHeading = styled.div`
@@ -68,10 +69,6 @@ export class Details extends Component {
 
     destroyFacility();
   }
-
-  returnToResults = () => {
-    this.props.history.goBack();
-  };
 
   reportFacility = () => {
     const { data, reportFacility } = this.props;
@@ -133,20 +130,7 @@ export class Details extends Component {
             content="Treatment facility details, including what services it provides, who it serves, and what payments are accepted."
           />
         </Helmet>
-        {isInternalLink && (
-          <div css={tw`bg-gray-lightest border-t border-b border-gray-lighter`}>
-            <div className="container" css={tw`py-5`}>
-              <Button
-                link
-                className="back-link"
-                onClick={this.returnToResults}
-                css={tw`print:hidden`}
-              >
-                ❮ Return to results
-              </Button>
-            </div>
-          </div>
-        )}
+        {isInternalLink && <BackToSearchResultsLink />}
         <div css={tw`border-t border-gray-lighter`}>
           <div className="container" css={tw`py-5`}>
             <div css={tw`flex flex-wrap md:justify-between -mx-2`}>
@@ -264,7 +248,6 @@ Details.propTypes = {
   destroyFacility: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
