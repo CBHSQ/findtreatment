@@ -16,17 +16,6 @@ const HeaderBeta = () => {
         >
           We want to hear from you.
         </OutboundLink>
-        <div css={tw`inline lg:block font-normal text-sm`}>
-          {' '}
-          Visit the current site at{' '}
-          <OutboundLink
-            eventLabel="findtreatment.samhsa.gov link clicked"
-            css={tw`underline`}
-            to="https://findtreatment.samhsa.gov"
-          >
-            findtreatment.samhsa.gov
-          </OutboundLink>
-        </div>
       </div>
     </div>
   );
