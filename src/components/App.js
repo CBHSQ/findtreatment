@@ -35,6 +35,12 @@ class App extends Component {
     }
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.location.pathname === this.props.location.pathname
+      ? false
+      : true;
+  }
+
   render() {
     const { setSRMessage } = this.props;
 
