@@ -143,7 +143,6 @@ export class Details extends Component {
                   <OutboundLink
                     eventLabel="Facility website link from card"
                     to={website}
-                    rel="noopener noreferrer"
                   >
                     {removeHttp(website)}
                   </OutboundLink>
