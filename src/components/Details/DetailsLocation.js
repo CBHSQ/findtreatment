@@ -8,7 +8,7 @@ import {
   faExclamationTriangle,
   faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from '../OutboundLink';
 
 import { formatAddress, formatMiles, googleMapUrl } from '../../utils/misc';
 
@@ -81,7 +81,6 @@ const DetailsLocation = props => {
                   eventLabel="Driving directions link from details"
                   to={googleMapUrl(address)}
                   css={tw`w-full`}
-                  target="_blank"
                 >
                   <FontAwesomeIcon icon={faExternalLinkAlt} css={tw`mr-2`} />
                   Get directions
