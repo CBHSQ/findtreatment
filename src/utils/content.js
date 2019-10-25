@@ -7,6 +7,7 @@ import { ReactComponent as IconAddiction } from '../images/what-to-expect-addict
 import { ReactComponent as IconMentalHealth } from '../images/what-to-expect-mental-health.svg';
 import { ReactComponent as IconPayment } from '../images/what-to-expect-payment.svg';
 import { ReactComponent as IconTreament } from '../images/what-to-expect-treatment.svg';
+import OutboundLink from '../components/OutboundLink';
 
 export default () => [
   {
@@ -515,9 +516,13 @@ export default () => [
             </p>
             <p>
               If you’ve been denied coverage for treatment, this{' '}
-              <a href="https://www.hhs.gov/mental-health-and-addiction-insurance-help">
+              <OutboundLink
+                to="https://www.hhs.gov/mental-health-and-addiction-insurance-help"
+                eventLabel="Mental Health and Addiction Insurance Help link from content"
+                aria-label="Link to Mental Health and Addiction Insurance Help"
+              >
                 Mental Health and Addiction Insurance Help
-              </a>{' '}
+              </OutboundLink>{' '}
               tool can help you find the right resources to solve issues with
               your insurance.
             </p>
@@ -590,21 +595,30 @@ export default () => [
               You’ll need an <strong>estimate of your annual income</strong> and
               a correct count of your family members to determine if you’re
               eligible for some services. You don’t have to know exactly how
-              much you make, just get as close as you can, and don’t worry if it’s
-              not perfect. (See what counts as income on{' '}
-              <a href="https://www.healthcare.gov/income-and-household-information/income/">
-                healthcare.gov.
-              </a>
-              )
+              much you make, just get as close as you can, and don’t worry if
+              it’s not perfect. (See what counts as income on{' '}
+              <OutboundLink
+                to="https://www.healthcare.gov/income-and-household-information/income/"
+                eventLabel="Healthcare.gov link from content"
+                aria-label="Link to healthcare.gov"
+              >
+                healthcare.gov
+              </OutboundLink>
+              .)
             </p>
             <p>
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
-              <a href="https://findtreatment.samhsa.gov/locator/stateagencies">
+              <OutboundLink
+                to="https://findtreatment.samhsa.gov/locator/stateagencies"
+                eventLabel="State agency link from content"
+                aria-label="Link to state agencies"
+              >
                 <strong>state agency</strong>
-              </a>{' '}
+              </OutboundLink>{' '}
               for information on how the process works in your state.
             </p>
+
             <p>
               You may also be able to purchase insurance now and take advantage
               of those benefits as soon as you can (usually two weeks to one
@@ -621,32 +635,38 @@ export default () => [
               </li>
               <li>
                 Have a <strong>qualifying life event</strong>. For 60 days after
-                a major change in your life, like having a baby, getting
-                married or divorced, or getting U.S. citizenship, you’re
-                eligible to sign up for new insurance.
-                <a href="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/">
-                  {' '}
-                  Learn more about qualifying events.
-                </a>
+                a major change in your life, like having a baby, getting married
+                or divorced, or getting U.S. citizenship, you’re eligible to
+                sign up for new insurance.{' '}
+                <OutboundLink
+                  to="https://www.healthcare.gov/coverage-outside-open-enrollment/special-enrollment-period/"
+                  eventLabel="Qualifying event link from content"
+                  aria-label="Link to qualifying events"
+                >
+                  Learn more about qualifying events.          
+                </OutboundLink>
               </li>
               <li>
                 Are <strong>eligible for Medicaid</strong>. In most states, if
                 you make less than $17,236 as an individual or $29,435 in a
                 family of three, you’re eligible for free or low-cost health
                 coverage. You can apply for Medicaid at any time —{' '}
-                <strong>there’s no enrollment period</strong>.
-                <a href="https://www.medicaid.gov/state-overviews">
-                  {' '}
-                  Contact your state Medicaid agency for more details if you
-                  think you might be eligible.
-                </a>
+                <strong>there’s no enrollment period</strong>. Contact your{' '}
+                <OutboundLink
+                  to="https://www.medicaid.gov/state-overviews"
+                  eventLabel="State medicaid agency link from content"
+                  aria-label="Link to state Medicaid agencies"
+                >
+                  state Medicaid agency
+                </OutboundLink>{' '}
+                for more details if you think you might be eligible.
               </li>
             </ul>
             <p>
               Some individual treatment facilities offer{' '}
               <strong>grants or scholarships</strong> to help offset the cost of
               attending. Not all of these will cover your whole stay, though,
-              and many will revoke funding if you don’t complete their program, 
+              and many will revoke funding if you don’t complete their program,
               leaving you financially responsible for the time you spent there.
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
@@ -775,7 +795,13 @@ export default () => [
                 network, and National Alliance on Mental Illness (NAMI) has
                 locations around the country with resources for finding a
                 therapist.{' '}
-                <a href="https://www.nami.org/local/">(nami.org/local)</a>
+                <OutboundLink
+                  to="https://www.nami.org/local/"
+                  eventLabel="NAMI link from content"
+                  aria-label="Link to NAMI.org"
+                >
+                  (nami.org/local)
+                </OutboundLink>
               </li>
               <li>
                 <strong>Join a support group of peers. </strong>
@@ -787,20 +813,50 @@ export default () => [
               </li>
               <ul>
                 <li>
-                  Narcotics Anonymous <a href="https://na.org">(na.org)</a>, and
-                  Nar-Anon{' '}
-                  <a href="https://www.nar-anon.org/">(nar-anon.org)</a>
+                  Narcotics Anonymous{' '}
+                  <OutboundLink
+                    to="https://na.org"
+                    eventLabel="Narcotics Anonymous link from content"
+                    aria-label="Link to Narcotics Anonymous"
+                  >
+                    (na.org)
+                  </OutboundLink>
+                  , and Nar-Anon{' '}
+                  <OutboundLink
+                    to="https://www.nar-anon.org/"
+                    eventLabel="Nar-Anon link from content"
+                    aria-label="Link to Nar-Anon"
+                  >
+                    (nar-anon.org)
+                  </OutboundLink>
                 </li>
                 <li>
                   Alcoholics Anonymous{' '}
-                  <a href="https://www.aa.org/">(aa.org)</a>, and Al-Anon{' '}
-                  <a href="https://al-anon.org/">(al-anon.org)</a>
+                  <OutboundLink
+                    to="https://www.aa.org/"
+                    eventLabel="Alcoholics Anonymous link from content"
+                    aria-label="Link to Alcoholics Anonymous"
+                  >
+                    (aa.org)
+                  </OutboundLink>
+                  , and Al-Anon{' '}
+                  <OutboundLink
+                    to="https://al-anon.org"
+                    eventLabel="Al-Anon link from content"
+                    aria-label="Link to Al-Anon"
+                  >
+                    (al-anon.org)
+                  </OutboundLink>
                 </li>
                 <li>
                   Faces and Voices of Recovery{' '}
-                  <a href="https://facesandvoicesofrecovery.org/">
+                  <OutboundLink
+                    to="https://facesandvoicesofrecovery.org/"
+                    eventLabel="Faces and Voices of Recovery link from content"
+                    aria-label="Link to Faces and Voices of Recovery"
+                  >
                     (facesandvoicesofrecovery.org)
-                  </a>
+                  </OutboundLink>
                 </li>
               </ul>
             </ul>

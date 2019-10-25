@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from './OutboundLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { ReactComponent as LogoSAMHSA } from '../images/logo-samhsa.svg';
