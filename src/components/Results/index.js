@@ -51,11 +51,7 @@ export class Results extends Component {
     if (prevProps.loading && !this.props.loading) {
       const el = document.querySelector('h1') || document.querySelector('h2');
       if (!el) return;
-
       el.focus();
-      if (this.isDesktop()) {
-        el.scrollIntoView();
-      }
     }
   }
 
@@ -83,6 +79,12 @@ export class Results extends Component {
     if (values.location.latLng) {
       this.previousValues = values;
       handleReceiveFacilities(values);
+
+      if (this.isDesktop()) {
+        const el = document.querySelector('h1') || document.querySelector('h2');
+        if (!el) return;
+        el.scrollIntoView();
+      }
     }
   };
 
