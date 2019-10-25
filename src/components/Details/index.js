@@ -7,7 +7,7 @@ import styled from 'styled-components/macro';
 import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from '../OutboundLink';
 import { Helmet } from 'react-helmet';
 import Masonry from 'react-masonry-css';
 
@@ -143,8 +143,6 @@ export class Details extends Component {
                   <OutboundLink
                     eventLabel="Facility website link from card"
                     to={website}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     {removeHttp(website)}
                   </OutboundLink>

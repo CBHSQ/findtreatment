@@ -3,7 +3,7 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components/macro';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from './OutboundLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPhone } from '@fortawesome/free-solid-svg-icons';
 
@@ -134,8 +134,6 @@ const Card = props => {
               <OutboundLink
                 eventLabel="Facility website link from card"
                 to={website}
-                target="_blank"
-                rel="noopener noreferrer"
                 css={tw`ml-6`}
               >
                 {removeHttp(website).toLowerCase()}
@@ -145,8 +143,6 @@ const Card = props => {
           <OutboundLink
             eventLabel="Facility address link from card"
             to={googleMapUrl(address)}
-            target="_blank"
-            rel="noopener noreferrer"
             css={tw`block mb-2 ml-6`}
           >
             <address css={tw`not-italic text-gray`}>

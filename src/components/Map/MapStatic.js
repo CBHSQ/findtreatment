@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from '../OutboundLink';
 
 import placeholder from '../../images/placeholder.png';
 import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
@@ -25,8 +25,6 @@ export class MapStatic extends Component {
       <OutboundLink
         eventLabel="Driving directions link from card thumbnail image"
         to={googleMapUrl(address)}
-        target="_blank"
-        rel="noopener noreferrer"
         aria-label={`Driving directions for ${name1}`}
       >
         <img

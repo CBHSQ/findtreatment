@@ -1,7 +1,7 @@
 import React from 'react';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from '../OutboundLink';
 
 import { HELPLINE_LINK, HELPLINE_TEXT } from '../../utils/constants';
 
