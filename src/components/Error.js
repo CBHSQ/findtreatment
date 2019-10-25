@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 import 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { OutboundLink } from 'react-ga';
+import OutboundLink from './OutboundLink';
 import { Helmet } from 'react-helmet';
 
 import { HELPLINE_LINK, HELPLINE_TEXT } from '../utils/constants';
