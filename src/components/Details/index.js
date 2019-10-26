@@ -56,11 +56,13 @@ export class Details extends Component {
     } = this.props;
 
     if (!isInternalLink) {
-      const params = qs.parse(location.search, {
-        ignoreQueryPrefix: true
-      });
+      // const params = qs.parse(location.search, {
+      //   ignoreQueryPrefix: true
+      // });
 
-      handleReceiveFacility(match.params.frid, params);
+      const [frid, latitude, longitude] = match.params.params.split(';');
+
+      handleReceiveFacility(frid, { sAddr: `${latitude}, ${longitude}` });
     }
   }
 
@@ -269,7 +271,7 @@ const mapStateToProps = ({ facility, facilities }, ownProps) => {
   // If facility results exist in the store, match frid using the existing data
   if ((facilities.data.rows || {}).length > 0) {
     data = facilities.data.rows.find(
-      ({ frid }) => frid === ownProps.match.params.frid
+      ({ frid }) => frid === ownProps.match.params.params.split(';')[0]
     );
     isInternalLink = true;
   } else {

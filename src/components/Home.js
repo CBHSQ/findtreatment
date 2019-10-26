@@ -8,6 +8,7 @@ import { HashLink } from 'react-router-hash-link';
 import { Helmet } from 'react-helmet';
 
 import content from '../utils/content';
+import { linkToFacility } from '../utils/misc';
 import { handleReceiveFacilities } from '../actions/facilities';
 import mobileBackground from '../images/film-strip_mobile.jpg';
 import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
@@ -182,6 +183,17 @@ class Home extends Component {
           </div>
         </div>
         <ReturnToTop />
+        <Link
+          to={linkToFacility({
+            frid:
+              '466e6adfaf82ca0bd7d8760a86cfaa0f9df355d49c85ea3b6f37a089d066f80e',
+            latitude: '47.7670442',
+            longitude: '-122.1812081'
+          })}
+          aria-label={`Foobar`}
+        >
+          oy
+        </Link>
       </>
     );
   }

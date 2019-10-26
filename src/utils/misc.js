@@ -31,12 +31,8 @@ export const sortServicesArray = array => {
   });
 };
 
-export const linkToFacility = ({ frid, latitude, longitude }) => {
-  return {
-    pathname: `/details/${frid}`,
-    search: qs.stringify({ sAddr: `${latitude}, ${longitude}` })
-  };
-};
+export const linkToFacility = ({ frid, latitude, longitude }) =>
+  `/details/${frid};${latitude};${longitude}`;
 
 export const formatAddress = (
   { street1, street2, city, state, zip },
