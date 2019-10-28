@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Error from './Error';
 import Loading from './Loading';
 
+// The runaround with setting mounted = true is necessary due to errors in React's hydration.
+// If this is not done, the Error component is rendered INSIDE the Loading component, causing
+// the page to render incorrectly.
 class NoMatch extends Component {
   state = {
     mounted: false
