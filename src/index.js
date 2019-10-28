@@ -27,11 +27,13 @@ ReactGA.initialize(
 
 const store = configureStore({}, history);
 
+const isReactSnap = navigator && navigator.userAgent === 'ReactSnap';
+
 const Root = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <ThemeProvider theme={theme}>
-        <App />
+        <App isReactSnap={isReactSnap} />
       </ThemeProvider>
     </ConnectedRouter>
   </Provider>
