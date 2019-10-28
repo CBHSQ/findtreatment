@@ -2,24 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import tw from 'tailwind.macro';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDirections } from '@fortawesome/free-solid-svg-icons';
+
 import OutboundLink from '../OutboundLink';
 
-import placeholder from '../../images/placeholder.png';
-import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
+// import placeholder from '../../images/placeholder.png';
+// import { GOOGLE_MAP_STATIC_URL } from '../../utils/constants';
 import { formatMiles, googleMapUrl } from '../../utils/misc';
 
 export class MapStatic extends Component {
-  state = {
-    imageLoaded: false
-  };
+  // state = {
+  //   imageLoaded: false
+  // };
 
-  setImageLoaded = () => {
-    this.setState({ imageLoaded: true });
-  };
+  // setImageLoaded = () => {
+  //   this.setState({ imageLoaded: true });
+  // };
 
   render() {
-    const { address, name1, latitude, longitude, miles } = this.props;
-    const { imageLoaded } = this.state;
+    // const { address, name1, latitude, longitude, miles } = this.props;
+    const { address, name1, miles } = this.props;
+    // const { imageLoaded } = this.state;
 
     return (
       <OutboundLink
@@ -27,7 +31,7 @@ export class MapStatic extends Component {
         to={googleMapUrl(address)}
         aria-label={`Driving directions for ${name1}`}
       >
-        <img
+        {/* <img
           src={`${GOOGLE_MAP_STATIC_URL}?zoom=15&size=140x113&markers=size:small%7C${latitude},${longitude}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
           alt={`Google map for ${name1}`}
           css={tw`w-full`}
@@ -40,11 +44,16 @@ export class MapStatic extends Component {
             css={tw`w-full`}
             alt={`Placeholder map for ${name1}`}
           />
-        )}
+        )} */}
         <div
-          css={tw`bg-blue-lighter p-1 text-center text-sm text-gray-dark`}
+          css={tw`hidden sm:block bg-blue-lighter p-2 text-sm text-gray-dark font-semibold`}
           className="map-static-miles"
         >
+          <FontAwesomeIcon
+            icon={faDirections}
+            size="lg"
+            css={tw`text-blue fill-current mr-3 ml-1`}
+          />
           {formatMiles(miles)}
         </div>
       </OutboundLink>
