@@ -150,6 +150,10 @@ export default () => [
               step in treatment, telemedicine can be a key part of a treatment
               plan, especially for patients living far away from a facility.
             </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -261,6 +265,10 @@ export default () => [
               Since it is approved for treating alcohol problems as well, people
               taking naltrexone may find it also helps them avoid drinking.
             </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -332,6 +340,10 @@ export default () => [
                 </ul>
               </li>
             </ol>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -389,6 +401,10 @@ export default () => [
               It is important to know that{' '}
               <strong>detoxification is not treatment</strong>; it is a first
               step that can prepare a person for treatment.
+            </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
             </p>
           </>
         )
@@ -473,6 +489,10 @@ export default () => [
                 continued family involvement.
               </li>
             </ol>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       }
@@ -526,6 +546,10 @@ export default () => [
               tool can help you find the right resources to solve issues with
               your insurance.
             </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -576,6 +600,10 @@ export default () => [
               trusted family member or friend who can help, there is a way your
               insurer can authorize them to make decisions on your behalf. Ask
               your insurer for more details about how to set this up.
+            </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
             </p>
           </>
         )
@@ -671,6 +699,10 @@ export default () => [
               Before accepting any grants or scholarships, make sure you ask
               questions about what (if any) strings are attached to that money.
             </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       }
@@ -749,6 +781,10 @@ export default () => [
               </li>
               <li>Overdosing on drugs.</li>
             </ol>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -860,6 +896,10 @@ export default () => [
                 </li>
               </ul>
             </ul>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       },
@@ -918,6 +958,10 @@ export default () => [
               is important for you to realize that these are normal reactions
               and to get support for yourself.
             </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
+            </p>
           </>
         )
       }
@@ -955,6 +999,10 @@ export default () => [
               illness. People may expect someone with serious mental illness to
               look visibly different, and they may tell someone they don’t "look
               ill" or that they should just "get over it" by using willpower.
+            </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
             </p>
           </>
         )
@@ -1042,6 +1090,10 @@ export default () => [
             <p>
               For many people, getting an accurate diagnosis is the first step
               in a treatment plan.{' '}
+            </p>
+            <br />
+            <p>
+              <em>(Page published: October 2019)</em>
             </p>
           </>
         )
