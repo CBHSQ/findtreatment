@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Error from './Error';
+import Loading from './Loading';
 
-const NoMatch = ({ isStatic }) => (
-  <Error
-    title="Not found"
-    headerText={
-      isStatic ? 'Loading...' : 'This page isn’t here, but we can get you help.'
+class NoMatch extends Component {
+  state = {
+    mounted: false
+  };
+
+  componentDidMount() {
+    const { isReactSnap } = this.props;
+    if (!isReactSnap) {
+      this.setState({ mounted: true });
     }
-    description="SAMHSA's national helpline is available 24/7 and can assist you with treatment referrals and information."
-  />
-);
+  }
+
+  render() {
+    const { isReactSnap } = this.props;
+    const { mounted } = this.state;
+
+    if (isReactSnap || !mounted) {
+      return <Loading />;
+    }
+
+    return (
+      <Error
+        title="Not found"
+        headerText="This page isn’t here, but we can get you help."
+        description="SAMHSA's national helpline is available 24/7 and can assist you with treatment referrals and information."
+      />
+    );
+  }
+}
 
 NoMatch.propTypes = {
-  isStatic: PropTypes.bool.isRequired
+  isReactSnap: PropTypes.bool.isRequired
 };
 
 NoMatch.defaultProps = {
-  isStatic: false
+  isReactSnap: false
 };
 
 export default NoMatch;

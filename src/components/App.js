@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { isStatic, setSRMessage } = this.props;
+    const { isReactSnap, setSRMessage } = this.props;
 
     return (
       <>
@@ -105,7 +105,7 @@ class App extends Component {
               />
               <Route path="/error" component={Error} />
               <Route>
-                <NoMatch isStatic={isStatic} />
+                <NoMatch isReactSnap={isReactSnap} />
               </Route>
             </Switch>
           </main>
@@ -117,11 +117,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isStatic: PropTypes.bool.isRequired
+  isReactSnap: PropTypes.bool.isRequired
 };
 
 App.defaultProps = {
-  isStatic: false
+  isReactSnap: false
 };
 
 const mapDispatchToProps = { setSRMessage };

@@ -27,11 +27,13 @@ ReactGA.initialize(
 
 const store = configureStore({}, history);
 
-const Root = (isStatic = false) => (
+const isReactSnap = navigator && navigator.userAgent === 'ReactSnap';
+
+const Root = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <ThemeProvider theme={theme}>
-        <App isStatic={isStatic} />
+        <App isReactSnap={isReactSnap} />
       </ThemeProvider>
     </ConnectedRouter>
   </Provider>
@@ -39,7 +41,7 @@ const Root = (isStatic = false) => (
 
 const rootElement = document.getElementById('root');
 if (rootElement.hasChildNodes()) {
-  hydrate(Root(), rootElement);
+  hydrate(Root, rootElement);
 } else {
-  render(Root(true), rootElement);
+  render(Root, rootElement);
 }
