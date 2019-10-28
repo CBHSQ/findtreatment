@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
@@ -115,6 +116,14 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isStatic: PropTypes.bool.isRequired
+};
+
+App.defaultProps = {
+  isStatic: false
+};
 
 const mapDispatchToProps = { setSRMessage };
 
