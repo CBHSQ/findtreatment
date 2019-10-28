@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { setSRMessage } = this.props;
+    const { isReactSnap, setSRMessage } = this.props;
 
     return (
       <>
@@ -95,16 +96,17 @@ class App extends Component {
           <Header />
           <main role="main" id="main" tabIndex="-1">
             <Switch>
-              <Route exact path="/" component={Home} />} />
+              <Route exact path="/" component={Home} />
               <Route path="/results" component={Results} />
               <Route path="/details/:frid" component={Details} />
               <Route
                 path="/content/:sectionID/:subSectionID?"
                 component={Content}
               />
-              />
               <Route path="/error" component={Error} />
-              <Route component={NoMatch} />
+              <Route>
+                <NoMatch isReactSnap={isReactSnap} />
+              </Route>
             </Switch>
           </main>
           <Footer />
@@ -113,6 +115,14 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isReactSnap: PropTypes.bool.isRequired
+};
+
+App.defaultProps = {
+  isReactSnap: false
+};
 
 const mapDispatchToProps = { setSRMessage };
 
