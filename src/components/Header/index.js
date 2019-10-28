@@ -21,7 +21,7 @@ const Header = () => {
             <Link
               to="/"
               css={tw`font-semibold text-2xl tracking-tight`}
-              aria-label="Treatment Finder"
+              aria-label="FindTreatment.gov"
             >
               <Logo aria-hidden="true" />
             </Link>

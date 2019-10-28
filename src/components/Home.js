@@ -85,6 +85,7 @@ class Home extends Component {
     return (
       <>
         <Helmet>
+          <title>Home</title>
           <meta
             property="og:image"
             content={`${process.env.REACT_APP_SITE_DOMAIN}/thumbnail-large.jpg`}
