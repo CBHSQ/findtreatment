@@ -96,13 +96,12 @@ class App extends Component {
           <Header />
           <main role="main" id="main" tabIndex="-1">
             <Switch>
-              <Route exact path="/" component={Home} />} />
+              <Route exact path="/" component={Home} />
               <Route path="/results" component={Results} />
               <Route path="/details/:frid" component={Details} />
               <Route
                 path="/content/:sectionID/:subSectionID?"
                 component={Content}
-              />
               />
               <Route path="/error" component={Error} />
               <Route>
