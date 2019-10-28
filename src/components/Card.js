@@ -11,7 +11,8 @@ import {
   googleMapUrl,
   linkToFacility,
   removeHttp,
-  formatAddress
+  formatAddress,
+  formatMiles
 } from '../utils/misc';
 
 import MapStatic from './Map/MapStatic';
@@ -103,8 +104,8 @@ const Card = props => {
           <span css={tw`flex-none px-2`}>more info ›</span>
         </span>
       </Link>
-      <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6`}>
-        <div css={tw`w-1/4 px-2`}>
+      <div css={tw`flex flex-wrap -mb-4 -mx-2 p-6 sm:pl-0`}>
+        <div css={tw`hidden sm:block sm:w-1/4 sm:px-2`}>
           <MapStatic
             address={address}
             name1={name1}
@@ -113,9 +114,9 @@ const Card = props => {
             miles={miles}
           />
         </div>
-        <div css={tw`w-3/4 px-2`}>
+        <div css={tw`w-full sm:w-3/4 px-2`}>
           {phone && (
-            <div css={tw`flex items-center mb-px`}>
+            <div css={tw`flex items-center mb-2 sm:mb-px`}>
               <FontAwesomeIcon
                 icon={faPhone}
                 css={tw`text-gray fill-current w-4 h-4 mr-2`}
@@ -130,7 +131,7 @@ const Card = props => {
             </div>
           )}
           {website !== 'http://' && (
-            <div className="card-website" css={tw`truncate mb-px`}>
+            <div className="card-website" css={tw`truncate mb-2 sm:mb-px`}>
               <OutboundLink
                 eventLabel="Facility website link from card"
                 to={website}
@@ -143,9 +144,12 @@ const Card = props => {
           <OutboundLink
             eventLabel="Facility address link from card"
             to={googleMapUrl(address)}
-            css={tw`block mb-2 ml-6`}
+            css={tw`block mb-3 sm:mb-2 ml-6`}
           >
-            <address css={tw`not-italic text-gray`}>
+            <div css={tw`text-gray text-sm sm:hidden`}>
+              {formatMiles(miles)} away
+            </div>
+            <address css={tw`not-italic text-gray-darkest sm:text-gray`}>
               {formatAddress(address)}
             </address>
           </OutboundLink>
