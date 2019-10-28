@@ -27,19 +27,37 @@ ReactGA.initialize(
 
 const store = configureStore({}, history);
 
-const Root = (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </ConnectedRouter>
-  </Provider>
-);
+// const Root = (
+//   <Provider store={store}>
+//     <ConnectedRouter history={history}>
+//       <ThemeProvider theme={theme}>
+//         <App />
+//       </ThemeProvider>
+//     </ConnectedRouter>
+//   </Provider>
+// );
 
 const rootElement = document.getElementById('root');
 if (rootElement.hasChildNodes()) {
-  hydrate(Root, rootElement);
+  hydrate(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </ConnectedRouter>
+    </Provider>,
+    rootElement
+  );
 } else {
-  render(Root, rootElement);
+  render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ThemeProvider theme={theme}>
+          <App isStatic={true} />
+        </ThemeProvider>
+      </ConnectedRouter>
+    </Provider>,
+    rootElement
+  );
 }

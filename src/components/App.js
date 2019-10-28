@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   render() {
-    const { setSRMessage } = this.props;
+    const { isStatic, setSRMessage } = this.props;
 
     return (
       <>
@@ -104,7 +104,9 @@ class App extends Component {
               />
               />
               <Route path="/error" component={Error} />
-              <Route component={NoMatch} />
+              <Route>
+                <NoMatch isStatic={isStatic} />
+              </Route>
             </Switch>
           </main>
           <Footer />
