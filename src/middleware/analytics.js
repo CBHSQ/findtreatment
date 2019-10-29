@@ -20,13 +20,20 @@ export const trackPage = (dap, page, title) => {
   }
 };
 
+const getCrazyEggTrackingName = page => {
+  if (page.startsWith('/details')) {
+    page = '/details';
+  }
+  return `${process.env.REACT_APP_CRAZYEGG_SNAPSHOT_TITLE}: ${page}`;
+};
+
 let currentPage = '';
 
 export const analytics = store => next => action => {
   if (action.type === '@@router/LOCATION_CHANGE') {
     const nextPage = `${action.payload.location.pathname}${action.payload.location.search}`;
     if (currentPage !== nextPage) {
-      window.CE_SNAPSHOT_NAME = 'findtreatmentbeta: ' + nextPage;
+      window.CE_SNAPSHOT_NAME = getCrazyEggTrackingName(nextPage);
     }
   }
 
