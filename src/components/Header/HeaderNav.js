@@ -68,7 +68,7 @@ const StyledMenu = styled.div`
 
 const links = [
   { name: 'Home', path: '/', exact: true },
-  { name: 'Search for treatment', path: '/results' },
+  // { name: 'Search for treatment', path: '/results' },
   { name: 'Treatment options', path: '/content/treatment-options' },
   { name: 'Paying for treatment', path: '/content/paying-for-treatment' },
   { name: 'Understanding addiction', path: '/content/understanding-addiction' },

@@ -14,9 +14,10 @@ import mobileBackground_2x from '../images/film-strip_mobile@2x.jpg';
 import backgroundLeft_2x from '../images/film-strip_l@2x.jpg';
 import backgroundRight_2x from '../images/film-strip_r@2x.jpg';
 
-import FormHomepage from './Form/FormHomepage';
+// import FormHomepage from './Form/FormHomepage';
 import { Button } from './Input';
 import ReturnToTop from './ReturnToTop';
+import OutboundLink from './OutboundLink';
 
 const MobileBgContainer = styled.div`
   padding-bottom: 75%;
@@ -122,13 +123,13 @@ class Home extends Component {
                   providers who specialize in treating substance use disorders,
                   addiction, and mental illness.{' '}
                 </p>
-                <Button
+                {/* <Button
                   primary
                   onClick={this.handleClick}
                   css={tw`w-full mb-4 md:mb-0 md:mr-4 md:w-auto md:inline-block text-2xl md:text-lg`}
                 >
                   Find treatment
-                </Button>
+                </Button> */}
                 <Button
                   smooth
                   outline
@@ -159,7 +160,25 @@ class Home extends Component {
           <div className="container">
             <div css={tw`py-5 md:py-10`}>
               <div css={tw`w-full md:bg-white md:px-20 md:py-10 md:shadow-md`}>
-                <FormHomepage onSubmit={this.submit} innerRef={this.innerRef} />
+                {/* <FormHomepage onSubmit={this.submit} innerRef={this.innerRef} /> */}
+                <span
+                  css={tw`block mb-4 normal-case text-2xl md:text-3xl font-semibold`}
+                >
+                  For help finding treatment, call{' '}
+                  <OutboundLink
+                    eventLabel="Helpline link"
+                    to="tel:1-800-662-4357"
+                    css={tw`whitespace-no-wrap text-gray-darkest`}
+                  >
+                    1-800-662-HELP (4357)
+                  </OutboundLink>
+                </span>
+                <p css={tw`text-lg`}>
+                  We're having technical issues right now, but are working hard
+                  to get things working again soon. In the meantime, SAMHSA's
+                  national helpline is available 24/7 and can help you with
+                  treatment referrals and information.
+                </p>
               </div>
             </div>
           </div>

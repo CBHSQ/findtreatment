@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import tw from 'tailwind.macro';
 import 'styled-components/macro';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -15,7 +15,7 @@ import GlobalStyle from './GlobalStyle';
 import SkipNav from './SkipNav';
 import Header from './Header';
 import Home from './Home';
-import Results from './Results';
+// import Results from './Results';
 import Details from './Details';
 import Content from './Content';
 import Error from './Error';
@@ -97,7 +97,8 @@ class App extends Component {
           <main role="main" id="main" tabIndex="-1">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/results" component={Results} />
+              {/* <Route path="/results" component={Results} /> */}
+              <Redirect path="/results" to="/" />
               <Route path="/details/:frid" component={Details} />
               <Route
                 path="/content/:sectionID/:subSectionID?"
