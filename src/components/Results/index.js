@@ -64,9 +64,16 @@ export class Results extends Component {
   };
 
   toggleFilters = () => {
-    this.setState({
-      filtersHidden: !this.state.filtersHidden
-    });
+    this.setState(
+      {
+        filtersHidden: !this.state.filtersHidden
+      },
+      () => {
+        if (!this.isDesktop() && this.state.filtersHidden) {
+          this.scrollToTop();
+        }
+      }
+    );
   };
 
   previousValues = null;
@@ -81,9 +88,7 @@ export class Results extends Component {
       handleReceiveFacilities(values);
 
       if (this.isDesktop()) {
-        const el = document.querySelector('h1') || document.querySelector('h2');
-        if (!el) return;
-        el.scrollIntoView();
+        this.scrollToTop();
       }
     }
   };
@@ -91,6 +96,12 @@ export class Results extends Component {
   isDesktop = () =>
     Math.max(document.documentElement.clientWidth, window.innerWidth || 0) >=
     Number(this.props.theme.screens.lg.replace('px', ''));
+
+  scrollToTop = () => {
+    const el = document.querySelector('h1') || document.querySelector('h2');
+    if (!el) return;
+    el.scrollIntoView();
+  };
 
   render() {
     const { distance, loading, location, error, data, hasResults } = this.props;
