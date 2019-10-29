@@ -26,7 +26,7 @@ const DesktopOnlyUnless = styled.div`
   ${props => props.show || tw`hidden`}
 
   @media(min-width: ${props => props.theme.screens.lg}) {
-    display: initial;
+    display: block;
   }
 `;
 
