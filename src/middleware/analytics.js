@@ -6,8 +6,8 @@ import { reportFailure } from '../utils/api';
 
 const trackEvent = action => {
   ReactGA.event({
-    category: `Form: ${action.meta.form}`,
-    action: `Selected: ${action.payload}`,
+    category: `forms`,
+    action: `${action.meta.form}, selected: ${action.payload}`,
     label: `Field: ${action.meta.field}`
   });
 };
@@ -38,7 +38,7 @@ export const analytics = store => next => action => {
 
   if (action.type === 'REPORT_FACILITY') {
     ReactGA.event({
-      category: `Listing Data Report`,
+      category: `user report`,
       action: `Data issue reported for frid`,
       label: action.frid
     });
