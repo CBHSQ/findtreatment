@@ -64,9 +64,16 @@ export class Results extends Component {
   };
 
   toggleFilters = () => {
-    this.setState({
-      filtersHidden: !this.state.filtersHidden
-    });
+    this.setState(
+      {
+        filtersHidden: !this.state.filtersHidden
+      },
+      () => {
+        if (!this.isDesktop() && this.state.filtersHidden && this._listTop) {
+          this._listTop.scrollIntoView();
+        }
+      }
+    );
   };
 
   previousValues = null;
@@ -118,6 +125,7 @@ export class Results extends Component {
               {location.address}
             </h1>
           </div>
+          <span ref={el => (this._listTop = el)} />
           <ResultsList
             loading={loading}
             rows={rows}
