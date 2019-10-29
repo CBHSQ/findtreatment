@@ -97,8 +97,8 @@ class Location extends Component {
 
   handleError = (status, clearSuggestions) => {
     ReactGA.event({
-      category: 'Google Places API',
-      action: 'Place details response',
+      category: 'errors',
+      action: 'autocomplete API',
       label: 'Error',
       value: status
     });

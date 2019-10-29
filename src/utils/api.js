@@ -20,7 +20,7 @@ export default axios.create({
 export const reportFailure = error => {
   if (error) {
     ReactGA.event({
-      category: `Search`,
+      category: `search`,
       action: `Fail`,
       label: error.message
     });

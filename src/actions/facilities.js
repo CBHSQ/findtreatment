@@ -10,7 +10,7 @@ export const DESTROY_FACILITIES = 'DESTROY_FACILITIES';
 
 const trackSearchResults = (params, results) => {
   ReactGA.event({
-    category: `Search`,
+    category: `search`,
     action: `Parameters and # of results`,
     label: params,
     value: results
