@@ -16,7 +16,7 @@ import SkipNav from './SkipNav';
 import Header from './Header';
 import Home from './Home';
 // import Results from './Results';
-import Details from './Details';
+// import Details from './Details';
 import Content from './Content';
 import Error from './Error';
 import NoMatch from './NoMatch';
@@ -98,8 +98,9 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               {/* <Route path="/results" component={Results} /> */}
+              {/* <Route path="/details/:frid" component={Details} /> */}
               <Redirect path="/results" to="/" />
-              <Route path="/details/:frid" component={Details} />
+              <Redirect path="/details" to="/" />
               <Route
                 path="/content/:sectionID/:subSectionID?"
                 component={Content}
