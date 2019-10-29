@@ -167,7 +167,7 @@ const Footer = () => {
             For help finding treatment, call{' '}
             <OutboundLink
               eventLabel="Helpline link from mobile footer"
-              to="tel:1-800-663-4357"
+              to="tel:1-800-662-4357"
               css={tw`underline whitespace-no-wrap`}
             >
               1-800-662-HELP (4357)
