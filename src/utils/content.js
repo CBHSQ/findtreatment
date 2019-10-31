@@ -199,8 +199,8 @@ export default () => [
             </p>
             <p>
               Methadone can work for people who have made other unsuccessful
-              attempts to stop using opioids or alcohol. It is a recommended
-              treatment for opioid use disorder during pregnancy.
+              attempts to stop using opioids. It is a recommended treatment for
+              opioid use disorder during pregnancy.
             </p>
             <h3>
               Buprenorphine
