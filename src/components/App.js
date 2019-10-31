@@ -88,6 +88,12 @@ class App extends Component {
             property="og:site_name"
             content={process.env.REACT_APP_SITE_TITLE}
           />
+          <link
+            rel="canonical"
+            href={
+              process.env.REACT_APP_SITE_DOMAIN + this.props.location.pathname
+            }
+          />
         </Helmet>
         <GlobalStyle />
         <div css={tw`overflow-hidden`} id={TOP_ID} tabIndex="-1">
