@@ -58,7 +58,9 @@ class App extends Component {
               document.querySelector('h1') || document.querySelector('h2');
             if (!el) return;
             el.focus();
-            window.scrollTo(0, 0);
+            setTimeout(() => {
+              window.scrollTo(0, 0);
+            }, 0);
           }}
         >
           <title>{process.env.REACT_APP_SITE_TITLE}</title>
