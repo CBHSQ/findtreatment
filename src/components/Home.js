@@ -183,6 +183,7 @@ class Home extends Component {
           </div>
         </div>
         <ReturnToTop />
+        <Link to="/error" css={tw`hidden`} />
       </>
     );
   }
