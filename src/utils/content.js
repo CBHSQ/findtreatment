@@ -199,8 +199,8 @@ export default () => [
             </p>
             <p>
               Methadone can work for people who have made other unsuccessful
-              attempts to stop using opioids or alcohol. It is a recommended
-              treatment for opioid use disorder during pregnancy.
+              attempts to stop using opioids. It is a recommended treatment for
+              opioid use disorder during pregnancy.
             </p>
             <h3>
               Buprenorphine
@@ -638,7 +638,7 @@ export default () => [
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
               <OutboundLink
-                to="https://findtreatment.samhsa.gov/locator/stateagencies"
+                to="https://findtreatment.samhsa.gov/locator/stateagencies.html"
                 eventLabel="State agency link from content"
                 aria-label="Link to state agencies"
               >

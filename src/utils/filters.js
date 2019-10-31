@@ -136,8 +136,7 @@ export const mat = [
   {
     value: 'NU',
     label: 'Naltrexone',
-    description:
-      'Blocks the effects of opioids and alcohol completely.'
+    description: 'Blocks the effects of opioids and alcohol completely.'
   }
 ];
 
@@ -254,7 +253,7 @@ export const type = [
       'Integrated care that addresses substance use and mental illness.'
   },
   {
-    value: 'CT',
+    value: 'TELE',
     label: 'Telemedicine (including internet and mobile programs)',
     description:
       'Care given over the phone or online to support treatment and recovery.'
