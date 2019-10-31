@@ -638,7 +638,7 @@ export default () => [
               Additionally, every state has funding to provide treatment for
               people without insurance. Contact your{' '}
               <OutboundLink
-                to="https://findtreatment.samhsa.gov/locator/stateagencies"
+                to="https://findtreatment.samhsa.gov/locator/stateagencies.html"
                 eventLabel="State agency link from content"
                 aria-label="Link to state agencies"
               >
