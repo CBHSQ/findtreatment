@@ -9,8 +9,6 @@ import PlacesAutocomplete, {
   getLatLng
 } from 'react-places-autocomplete';
 import { PropTypes } from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ReactGA from 'react-ga';
 
 import { LOCATION_WARNING } from '../../utils/warnings';
@@ -146,14 +144,6 @@ class Location extends Component {
                     ref: this.props.innerRef
                   })}
                 />
-                <span
-                  css={tw`absolute inset-y-0 right-0 flex items-center pr-4`}
-                >
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    css={tw`fill-current w-6 h-6`}
-                  />
-                </span>
                 {suggestions && suggestions.length > 0 && (
                   <span
                     className="autocomplete-dropdown-container"
