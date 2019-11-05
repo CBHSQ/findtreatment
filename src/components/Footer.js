@@ -75,7 +75,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <OutboundLink
-                    to="https://findtreatment.samhsa.gov/locator/link-App.html"
+                    to="https://findtreatment.samhsa.gov/locator/link-AppIns.html"
                     eventLabel="List your facility link from footer"
                   >
                     List your facility
