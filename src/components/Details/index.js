@@ -140,12 +140,14 @@ export class Details extends Component {
                   {name2 && ` ${name2}`}
                 </h1>
                 {website !== 'http://' && (
-                  <OutboundLink
-                    eventLabel="Facility website link from card"
-                    to={website}
-                  >
-                    {removeHttp(website)}
-                  </OutboundLink>
+                  <div css={tw`truncate`}>
+                    <OutboundLink
+                      eventLabel="Facility website link from card"
+                      to={website}
+                    >
+                      {removeHttp(website)}
+                    </OutboundLink>
+                  </div>
                 )}
               </div>
               <div
