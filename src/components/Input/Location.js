@@ -94,19 +94,17 @@ class Location extends Component {
   };
 
   handleError = (status, clearSuggestions) => {
+    if (status === 'ZERO_RESULTS') {
+      this.toggleShowLocationWarning(true);
+      clearSuggestions();
+      return;
+    }
     ReactGA.event({
       category: 'errors',
       action: 'autocomplete API',
       label: 'Error',
       value: status
     });
-
-    if (status === 'ZERO_RESULTS') {
-      this.toggleShowLocationWarning(true);
-      clearSuggestions();
-      return;
-    }
-
     this.props.history.push({
       pathname: '/error'
     });
