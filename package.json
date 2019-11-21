@@ -81,6 +81,7 @@
     "react-test-renderer": "^16.10.2"
   },
   "reactSnap": {
+    "skipThirdPartyRequests": true,
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
