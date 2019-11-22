@@ -38,7 +38,7 @@ export default () => [
               A process that helps the body rid itself of substances while the
               symptoms of withdrawal are treated.{' '}
               <strong>Detoxification by itself is not treatment</strong>; it is
-              a first step that can prepare a person for treatment.{' '}
+              a first step that can prepare a person for treatment and recovery.{' '}
               <Link to="/content/treatment-options/what-happens-next">
                 More details about pretreatment and detox.
               </Link>
