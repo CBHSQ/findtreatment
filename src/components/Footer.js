@@ -137,7 +137,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <OutboundLink
-                    to="https://github.com/18F/samhsa-prototype"
+                    to="https://github.com/CBHSQ/findtreatment"
                     eventLabel="View code on Github"
                     css={tw`flex items-center`}
                   >
