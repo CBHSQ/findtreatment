@@ -87,14 +87,6 @@ const Footer = () => {
               <ul css={tw`mb-2`}>
                 <li>
                   <OutboundLink
-                    to={process.env.REACT_APP_FEEDBACK_FORM_URL}
-                    eventLabel="Submit feedback link from footer"
-                  >
-                    Submit feedback
-                  </OutboundLink>
-                </li>
-                <li>
-                  <OutboundLink
                     to="https://www.samhsa.gov/about-us"
                     eventLabel="About SAMHSA link from footer"
                   >
