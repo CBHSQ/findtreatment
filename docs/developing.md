@@ -15,17 +15,17 @@ you have your SSH keys configured, you'll clone from the SSH link. You can
 find the link by clicking the green "Clone or download" button above the file
 listing on this page.
 
-The link is https://github.com/18F/samhsa-prototype.git
+The link is https://github.com/CBHSQ/findtreatment.git
 
 If you're familiar with git and want to work from the command line, you
 may run:
 
 ```shell
-git clone https://github.com/18F/samhsa-prototype.git
+git clone https://github.com/CBHSQ/findtreatment.git
 ```
 
 If you can't use git for some reason, you may also download the most recent
-code as [a ZIP file](https://github.com/18F/samhsa-prototype/archive/master.zip).
+code as [a ZIP file](https://github.com/CBHSQ/findtreatment/archive/master.zip).
 
 ## Setting up the environment
 

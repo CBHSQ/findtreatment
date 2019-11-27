@@ -128,6 +128,7 @@ class Location extends Component {
           onSelect={this.handleSelect}
           onError={this.handleError}
           ref={el => (this._placesAutocomplete = el)}
+          googleCallbackName="googleMapsLoaded"
         >
           {({ getInputProps, suggestions, getSuggestionItemProps }) => (
             <>
