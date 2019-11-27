@@ -45,7 +45,6 @@ If you'd like to report a bug or technical issue with the website, please feel f
 
 ---
 ## Technical
-* [CircleCI](https://circleci.com/gh/18F/samhsa-prototype/tree/master.svg?style=svg)](https://circleci.com/gh/18F/samhsa-prototype/tree/master)
 * [Architecture](./docs/architecture.md)
 * [Developing](./docs/developing.md)
 * [Testing](./docs/testing.md)
