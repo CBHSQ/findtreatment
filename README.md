@@ -41,13 +41,10 @@ Throughout the project, we have used a Github project board to manage a prioriti
 ---
 ## Feedback
 
-If you'd like to provide feedback or comments on the website please use [this google form](https://forms.gle/ceUB7jd2GULXdQj96).
-
 If you'd like to report a bug or technical issue with the website, please feel free to submit an issue here. We'll do our best to respond.
 
 ---
 ## Technical
-[![CircleCI](https://circleci.com/gh/18F/samhsa-prototype/tree/master.svg?style=svg)](https://circleci.com/gh/18F/samhsa-prototype/tree/master)
 * [Architecture](./docs/architecture.md)
 * [Developing](./docs/developing.md)
 * [Testing](./docs/testing.md)
