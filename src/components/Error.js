@@ -59,7 +59,7 @@ Error.propTypes = {
 Error.defaultProps = {
   title: 'Error',
   headerText: 'Something is wrong on our side.',
-  description: `A lot of people are searching for treatment right now, and we're working hard to get things fixed. Try your search again in a few minutes, or call SAMHSA's national helpline. Helpline staff are available 24/7 and can help you with treatment information and referrals.`
+  description: `We're having technical issues right now. The problem should be fixed soon, and in the meantime SAMHSA's national helpline is available 24/7 and can assist you with treatment referrals and information.`
 };
 
 export default Error;
