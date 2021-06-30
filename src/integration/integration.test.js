@@ -7,7 +7,7 @@ import { DEFAULT_PAGE_SIZE, METERS_PER_MILE } from '../utils/constants';
 const ENDPOINT = process.env.INT_TEST_ENDPOINT || 'LOCAL';
 
 const endpoints = {
-  DEV: 'https://kqszbed8ck.execute-api.us-east-1.amazonaws.com/prod/listing2',
+  DEV: 'https://findtreatment.samhsa.gov/locator/listing',
   LOCAL: 'http://localhost:9011/locator/listing',
   PROD: 'https://findtreatment.samhsa.gov/locator/listing'
 };
