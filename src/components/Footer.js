@@ -167,21 +167,21 @@ const Footer = () => {
             .
           </p>
           <p>
-            If you are feeling suicidal or in emotional distress, call the{' '}
+            If you are feeling suicidal or in emotional distress, call or text the{' '}
             <OutboundLink
-              to="https://suicidepreventionlifeline.org"
-              eventLabel="Suicide prevention link from footer"
+              to="https://988lifeline.org"
+              eventLabel="988 Suicide & Crisis Lifeline link from footer"
               css={tw`underline`}
             >
-              Suicide Prevention Lifeline
+              988 Suicide & Crisis Lifeline
             </OutboundLink>{' '}
             at{' '}
             <OutboundLink
-              eventLabel="Suicide prevention hotline link from footer"
-              to="tel:1-800-273-8255"
+              eventLabel="988 Suicide & Crisis Lifeline link from footer"
+              to="tel:988"
               css={tw`underline whitespace-no-wrap`}
             >
-              1-800-273-8255
+              988
             </OutboundLink>{' '}
             | In emergencies, dial 911.
           </p>
