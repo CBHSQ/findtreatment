@@ -167,22 +167,22 @@ const Footer = () => {
             .
           </p>
           <p>
-            If you are feeling suicidal or in emotional distress, call the{' '}
-            <OutboundLink
-              to="https://suicidepreventionlifeline.org"
-              eventLabel="Suicide prevention link from footer"
-              css={tw`underline`}
+            If you are feeling suicidal or in emotional distress, call or text the{' '}
+            <a
+              href="https://988lifeline.org"
+              target="_blank" title="988 Suicide & Crisis Lifeline link from footer"
+              style={{textDecoration: "underline"}}
             >
-              Suicide Prevention Lifeline
-            </OutboundLink>{' '}
+              988 Suicide & Crisis Lifeline
+            </a>{' '}
             at{' '}
-            <OutboundLink
-              eventLabel="Suicide prevention hotline link from footer"
-              to="tel:1-800-273-8255"
-              css={tw`underline whitespace-no-wrap`}
+            <a
+              title="988 Suicide & Crisis Lifeline hotline link from footer"
+              to="tel:988"
+              style={{textDecoration: "underline", whiteSpace:"nowrap"}}
             >
-              1-800-273-8255
-            </OutboundLink>{' '}
+              988
+            </a>{' '}
             | In emergencies, dial 911.
           </p>
         </div>
