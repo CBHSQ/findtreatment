@@ -155,18 +155,7 @@ const Footer = () => {
       </StyledFooter>
       <div css={tw`bg-gold`}>
         <div className="container" css={tw`py-2 text-center font-bold`}>
-          <p css={tw`lg:hidden mb-4`}>
-            For help finding treatment, call{' '}
-            <OutboundLink
-              eventLabel="Helpline link from mobile footer"
-              to="tel:1-800-662-4357"
-              css={tw`underline whitespace-no-wrap`}
-            >
-              1-800-662-HELP (4357)
-            </OutboundLink>
-            .
-          </p>
-          <p>
+          <p style={{display:"inline"}}>
             If you are feeling suicidal or in emotional distress, call or text the{' '}
             <a
               href="https://988lifeline.org"
@@ -176,7 +165,9 @@ const Footer = () => {
               988 Suicide & Crisis Lifeline
             </a>{' '}
             at{' '}
-            <a
+          </p>
+          <p style={{display:"inline"}}>
+          <a
               title="988 Suicide & Crisis Lifeline hotline link from footer"
               href="tel:988"
               style={{textDecoration: "underline", whiteSpace:"nowrap"}}
