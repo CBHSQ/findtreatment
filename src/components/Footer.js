@@ -178,7 +178,7 @@ const Footer = () => {
             at{' '}
             <a
               title="988 Suicide & Crisis Lifeline hotline link from footer"
-              to="tel:988"
+              href="tel:988"
               style={{textDecoration: "underline", whiteSpace:"nowrap"}}
             >
               988
