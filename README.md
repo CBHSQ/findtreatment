@@ -1,7 +1,7 @@
 # FindTreatment.gov
 ## An 18F+SAMHSA Collaboration
 
-## Project background
+## Project background 
 
 The opioid epidemic is overwhelming in scale and complexity. Drug overdoses are the leading cause of death for Americans under 50. To combat this crisis, 11+ federal agencies, dozens of state agencies, and other providers have mobilized resources. Currently, resources and websites in this space are so fragmented that searching for help online can become an overwhelming and discouraging experience for people in crisis.
 
