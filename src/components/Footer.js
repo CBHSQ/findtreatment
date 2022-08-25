@@ -133,6 +133,14 @@ const Footer = () => {
                     Accessibility
                   </OutboundLink>
                 </li>
+                <li>
+                  <OutboundLink
+                    to="https://www.hhs.gov/vulnerability-disclosure-policy/index.html"
+                    eventLabel="Vulnerability Disclosure Policy link from footer"
+                  >
+                    Vulnerability Disclosure Policy
+                  </OutboundLink>
+                </li>
               </ul>
               <ul>
                 <li>
@@ -155,22 +163,24 @@ const Footer = () => {
       </StyledFooter>
       <div css={tw`bg-gold`}>
         <div className="container" css={tw`py-2 text-center font-bold`}>
-          <p style={{display:"inline"}}>
-            If you are feeling suicidal or in emotional distress, call or text the{' '}
+          <p style={{ display: 'inline' }}>
+            If you are feeling suicidal or in emotional distress, call or text
+            the{' '}
             <a
               href="https://988lifeline.org"
-              target="_blank" title="988 Suicide & Crisis Lifeline link from footer"
-              style={{textDecoration: "underline"}}
+              target="_blank"
+              title="988 Suicide & Crisis Lifeline link from footer"
+              style={{ textDecoration: 'underline' }}
             >
               988 Suicide & Crisis Lifeline
             </a>{' '}
             at{' '}
           </p>
-          <p style={{display:"inline"}}>
-          <a
+          <p style={{ display: 'inline' }}>
+            <a
               title="988 Suicide & Crisis Lifeline hotline link from footer"
               href="tel:988"
-              style={{textDecoration: "underline", whiteSpace:"nowrap"}}
+              style={{ textDecoration: 'underline', whiteSpace: 'nowrap' }}
             >
               988
             </a>{' '}
