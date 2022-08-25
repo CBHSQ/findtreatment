@@ -83,7 +83,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div css={tw`w-full lg:w-auto px-4 mb-6 lg:mb-0`}>
+            <div css={tw`w-full lg:flex-no-wrap w-auto px-4 mb-6 lg:mb-0`}>
               <ul css={tw`mb-2`}>
                 <li>
                   <OutboundLink
